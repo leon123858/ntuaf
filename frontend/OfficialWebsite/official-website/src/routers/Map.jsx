@@ -2,10 +2,10 @@ import React from 'react';
 import style from './Home.module.css';
 import Header from '../components/Header/Header';
 
-function Home() {
+function Map() {
 	return (
 		<>
-			<Header initItem={'home'} />
+			<Header initItem={'map'} />
 			<div className={style.APP}>
 				<header className={style['App-header']}>
 					<img src={'/logo.svg'} className={style['App-logo']} alt='logo' />
@@ -26,4 +26,4 @@ function Home() {
 	);
 }
 
-export default Home;
+export default Map;

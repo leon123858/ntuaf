@@ -4,13 +4,43 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import ErrorPage from './error-page';
 import reportWebVitals from './reportWebVitals';
-import App from './routers/Home';
+import Home from './routers/Home';
 import Display from './routers/Display';
+import Introduce from './routers/Introduce';
+import Calendar from './routers/Calendar';
+import Map from './routers/Map';
+import About from './routers/About';
+import History from './routers/History';
 
 const router = createBrowserRouter([
 	{
 		path: '/',
-		element: <App />,
+		element: <Home />,
+		errorElement: <ErrorPage />,
+	},
+	{
+		path: '/introduce',
+		element: <Introduce />,
+		errorElement: <ErrorPage />,
+	},
+	{
+		path: '/calendar',
+		element: <Calendar />,
+		errorElement: <ErrorPage />,
+	},
+	{
+		path: '/map',
+		element: <Map />,
+		errorElement: <ErrorPage />,
+	},
+	{
+		path: '/about',
+		element: <About />,
+		errorElement: <ErrorPage />,
+	},
+	{
+		path: '/history',
+		element: <History />,
 		errorElement: <ErrorPage />,
 	},
 	{

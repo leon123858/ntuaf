@@ -1,74 +1,33 @@
 import React from 'react';
-import {
-	AppstoreOutlined,
-	MailOutlined,
-	SettingOutlined,
-} from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 import { Menu as AntdMenu } from 'antd';
 const defaultItems = [
 	{
-		label: 'Navigation One',
-		key: 'mail',
-		icon: <MailOutlined />,
+		label: <Link to={'/'}>首頁</Link>,
+		key: 'home',
 	},
 	{
-		label: 'Navigation Two',
-		key: 'app',
-		icon: <AppstoreOutlined />,
-		disabled: true,
+		label: <Link to={'/introduce'}>展覽介紹</Link>,
+		key: 'introduce',
 	},
 	{
-		label: 'Navigation Three - Submenu',
-		key: 'SubMenu',
-		icon: <SettingOutlined />,
-		children: [
-			{
-				type: 'group',
-				label: 'Item 1',
-				children: [
-					{
-						label: 'Option 1',
-						key: 'setting:1',
-					},
-					{
-						label: 'Option 2',
-						key: 'setting:2',
-					},
-				],
-			},
-			{
-				type: 'group',
-				label: 'Item 2',
-				children: [
-					{
-						label: 'Option 3',
-						key: 'setting:3',
-					},
-					{
-						label: 'Option 4',
-						key: 'setting:4',
-					},
-				],
-			},
-		],
+		label: <Link to={'/calendar'}>行事曆</Link>,
+		key: 'calendar',
 	},
 	{
-		label: (
-			<a href='https://ant.design' target='_blank' rel='noopener noreferrer'>
-				Navigation Four - Link
-			</a>
-		),
-		key: 'alipay',
+		label: <Link to={'/map'}>地圖</Link>,
+		key: 'map',
+	},
+	{
+		label: <Link to={'/about'}>關於我們</Link>,
+		key: 'about',
+	},
+	{
+		label: <Link to={'/history'}>歷屆回顧</Link>,
+		key: 'history',
 	},
 ];
-const Menu = ({ onClick, current, items = defaultItems }) => {
-	return (
-		<AntdMenu
-			onClick={onClick}
-			selectedKeys={[current]}
-			mode='horizontal'
-			items={items}
-		/>
-	);
+const Menu = ({ initItem, items = defaultItems }) => {
+	return <AntdMenu selectedKeys={[initItem]} mode='horizontal' items={items} />;
 };
 export default Menu;
