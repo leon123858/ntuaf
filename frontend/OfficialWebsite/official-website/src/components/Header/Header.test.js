@@ -1,13 +1,33 @@
-import { render } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
+import {
+	createBrowserRouter,
+	createRoutesFromElements,
+	Outlet,
+	Route,
+	RouterProvider,
+} from 'react-router-dom';
 import App from './Header';
-import { Router } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
 
-test('renders learn react link', () => {
-	const history = createMemoryHistory({ initialEntries: ['/home'] });
-	render(
-		<Router location={history.location} navigator={history}>
-			<App />
-		</Router>
-	);
+const RoutesJSX = (
+	<Route path='/' element={<Outlet />}>
+		<Route
+			index
+			loader={({ request }) => {
+				return { testData: 'testData here' };
+			}}
+			element={<App />}
+		></Route>
+	</Route>
+);
+
+const routes = createRoutesFromElements(RoutesJSX);
+
+const router = createBrowserRouter(routes);
+
+test('renders learn react link', async () => {
+	render(<RouterProvider router={router} />);
+	await waitFor(() => {
+		const linkElement = screen.getByText(/首頁/i);
+		expect(linkElement).toBeInTheDocument();
+	});
 });

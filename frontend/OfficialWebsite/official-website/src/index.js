@@ -11,36 +11,40 @@ import Calendar from './routers/Calendar';
 import Map from './routers/Map';
 import About from './routers/About';
 import History from './routers/History';
+import Layout from './components/Layout/Layout';
 
 const router = createBrowserRouter([
 	{
 		path: '/',
-		element: <Home />,
-		errorElement: <ErrorPage />,
-	},
-	{
-		path: '/introduce',
-		element: <Introduce />,
-		errorElement: <ErrorPage />,
-	},
-	{
-		path: '/calendar',
-		element: <Calendar />,
-		errorElement: <ErrorPage />,
-	},
-	{
-		path: '/map',
-		element: <Map />,
-		errorElement: <ErrorPage />,
-	},
-	{
-		path: '/about',
-		element: <About />,
-		errorElement: <ErrorPage />,
-	},
-	{
-		path: '/history',
-		element: <History />,
+		element: <Layout initItem={'home'} />,
+		loader: async () => {
+			console.log('load static bundle data');
+			return {};
+		},
+		children: [
+			{
+				path: '/',
+				element: <Home />,
+			},
+			{
+				path: '/introduce',
+				element: <Introduce />,
+			},
+			{
+				path: '/calendar',
+				element: <Calendar />,
+			},
+			{ path: '/map', element: <Map /> },
+			{
+				path: '/about',
+				element: <About />,
+			},
+			{
+				path: '/history',
+				element: <History />,
+				errorElement: <ErrorPage />,
+			},
+		],
 		errorElement: <ErrorPage />,
 	},
 	{

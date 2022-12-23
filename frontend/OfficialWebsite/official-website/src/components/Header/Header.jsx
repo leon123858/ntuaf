@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
 import { Menu as AntdMenu } from 'antd';
 const defaultItems = [
 	{
@@ -27,7 +27,18 @@ const defaultItems = [
 		key: 'history',
 	},
 ];
-const Menu = ({ initItem, items = defaultItems }) => {
-	return <AntdMenu selectedKeys={[initItem]} mode='horizontal' items={items} />;
+const Menu = ({ initItem, content, items = defaultItems }) => {
+	const [item, setItem] = useState(initItem);
+	console.log(useLoaderData());
+	return (
+		<AntdMenu
+			selectedKeys={[item]}
+			mode='horizontal'
+			items={items}
+			onClick={(e) => {
+				setItem(e.key);
+			}}
+		/>
+	);
 };
 export default Menu;

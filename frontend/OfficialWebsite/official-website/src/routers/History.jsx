@@ -1,11 +1,9 @@
 import React from 'react';
 import style from './Home.module.css';
-import Header from '../components/Header/Header';
 
 function History() {
 	return (
 		<>
-			<Header initItem={'history'} />
 			<div className={style.APP}>
 				<header className={style['App-header']}>
 					<img src={'/logo.svg'} className={style['App-logo']} alt='logo' />
