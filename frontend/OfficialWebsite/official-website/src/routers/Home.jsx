@@ -5,7 +5,7 @@ import Carousel from '../components/Carousel/Carousel'
 function Home() {
 	return (
 		<>
-			<Carousel/>
+			<Carousel style={{maxWidth:"100vw"}}/>
 		</>
 	);
 }
