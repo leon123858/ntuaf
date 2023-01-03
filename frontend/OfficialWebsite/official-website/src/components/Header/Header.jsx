@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { Menu as AntdMenu } from 'antd';
+import "./Header.css"
+
 const defaultItems = [
 	{
 		label: <Link to={'/'}>首頁</Link>,
@@ -31,14 +33,24 @@ const Menu = ({ initItem, content, items = defaultItems }) => {
 	const [item, setItem] = useState(initItem);
 	console.log(useLoaderData());
 	return (
-		<AntdMenu
-			selectedKeys={[item]}
-			mode='horizontal'
-			items={items}
-			onClick={(e) => {
-				setItem(e.key);
-			}}
-		/>
+		<div className='headerWrapper'>
+			<div className='logo'>LOGO</div>
+			<h1 className='title'>台大藝術季28th</h1>
+			<div class="iconContainer">
+				<div class="bar1"></div>
+				<div class="bar2"></div>
+				<div class="bar3"></div>
+			</div>
+			
+		</div>
+		// <AntdMenu
+		// 	selectedKeys={[item]}
+		// 	mode='horizontal'
+		// 	items={items}
+		// 	onClick={(e) => {
+		// 		setItem(e.key);
+		// 	}}
+		// />
 	);
 };
 export default Menu;
