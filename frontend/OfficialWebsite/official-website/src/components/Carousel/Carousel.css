@@ -6,15 +6,10 @@
 }
 .App {
     margin:0 auto 0 auto;
-
     background-color: blanchedalmond;
     padding:auto;
-    height: 100%;
     font-size: 24;
     overflow: hidden;
-    display: flex; 
-    flex-direction: column;
-
 }
 
 .headerWrapper{
