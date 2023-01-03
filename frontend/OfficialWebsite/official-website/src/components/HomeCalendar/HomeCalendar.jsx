@@ -3,7 +3,7 @@ import moment from 'moment'
 import { DayPickerSingleDateController } from "react-dates";
 import DayScheduleCard from './DayScheduleCard'
 import 'react-dates/initialize';
-import './HomeCalendar.css';
+import style from './HomeCalendar.module.css';
 
 const defaultEvents = [
 	{
@@ -127,7 +127,7 @@ const HomeCalendar = ({events = defaultEvents}) => {
 	}
 
 	return (
-		<div style={{width: '320px', marginLeft: 'auto', marginRight: 'auto'}}>
+		<div className={style.container}>
 			<DayPickerSingleDateController
 				date={date}
 				focused={focused}
