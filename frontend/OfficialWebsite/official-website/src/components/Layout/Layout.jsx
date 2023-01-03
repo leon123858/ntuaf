@@ -6,7 +6,7 @@ const Layout = ({ initItem }) => {
 	return (
 		<>
 			<Header initItem={initItem} />
-			<Outlet />
+			{/* <Outlet /> */}
 		</>
 	);
 };
