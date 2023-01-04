@@ -6,17 +6,20 @@ const Footer = ()=>{
     return (
         <div className="footerWrapper">
             <div className="title">
-                <div className="logo">LOGO</div>
+                <span className="logo">LOGO</span>
                 <h2>台大藝術季28th</h2>
-                <hr></hr>
+                
             </div>
-            <div>
+            <hr></hr>
+            <div className="infoWrapper">
+                <div>
                 <h3>聯絡我們</h3>
                 <p>羅斯福路</p>
                 <p>ntuartfest@gmail</p>
+                </div>
                 <div className="iconGroup">
-                    <a><InstagramOutlined/></a>
-                    <a><FacebookOutlined /></a>
+                    <a href="https://www.instagram.com/"><InstagramOutlined/></a>
+                    <a href="https://www.facebook.com/"><FacebookOutlined /></a>
                 </div>
             </div>
         </div>

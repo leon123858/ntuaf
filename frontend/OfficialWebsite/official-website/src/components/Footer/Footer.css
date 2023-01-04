@@ -1,3 +1,42 @@
 *{
     box-sizing: border-box;
 }
+.footerWrapper{
+    display: flex;
+    flex-direction: column;
+    background-color: #efefefef;
+
+}
+.title{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+hr{
+    width: 80%;
+}
+.logo {
+    cursor: pointer;
+    border: solid gray;
+    border-radius: 1em;
+    padding:0.25em;
+}
+h2{
+    display: inline;
+}
+.infoWrapper{
+    display: flex;
+    justify-content: space-evenly;
+}
+.iconGroup{
+    display: flex;
+}
+
+.iconGroup a{
+    display: inline-block;
+    margin:auto 0;
+    text-decoration: none;
+    color:black;
+    font-size: 2em;
+}
