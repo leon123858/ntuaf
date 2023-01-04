@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { Menu as AntdMenu, Input } from 'antd';
-import "./Header.css"
+import styles from "./Header.module.css"
 const { Search } = Input
 const defaultItems = [
 	{
@@ -33,9 +33,9 @@ const defaultItems = [
 const SideBar = ({ sideBarActive, setSideBarActive }) => {
 	useEffect(()=>{
 		//info click non element to deactivate sidebar
-		let sideBarWrapperE = document.getElementsByClassName("sideBarWrapper")[0]
+		let sideBarWrapperE = document.getElementsByClassName(styles.sideBarWrapper)[0]
 		sideBarWrapperE.addEventListener("click", (evt) => {
-			const searchElement = document.getElementsByClassName("searchIcon")[0]
+			const searchElement = document.getElementsByClassName(styles.searchIcon)[0]
 			let triggerE = evt.target; // clicked element      
 
 			//* maybe the trigger element which is take less area is the decendent of target element
@@ -53,22 +53,22 @@ const SideBar = ({ sideBarActive, setSideBarActive }) => {
 	
 	return (
 		
-		<div className={sideBarActive ? "sideBarWrapperActive sideBarWrapper" : "sideBarWrapper"}>
+		<div className={sideBarActive ? `${styles.sideBarWrapperActive} ${styles.sideBarWrapper}`: styles.sideBarWrapper}>
 			{/* <div className='search'>&#xf002;</div> */}
-			<div className='searchIcon'>
+			<div className={styles.searchIcon}>
 				<Search placeholder="input search text"
 					style={{
 						width: 200,
 					}}
 				/>
 			</div>
-			<Link className="link" to={'/'}>首頁</Link>
-			<Link className="link" to={'/introduce'}>展覽介紹</Link>
-			<Link className="link" to={'/calendar'}>行事曆</Link>
-			<Link className="link" to={'/map'}>地圖</Link>
-			<Link className="link" to={'/about'}>關於我們</Link>
-			<Link className="link" to={'/history'}>歷屆回顧</Link>
-			<div className='closeIcon'>
+			<Link className={styles.link} to={'/'}>首頁</Link>
+			<Link className={styles.link} to={'/introduce'}>展覽介紹</Link>
+			<Link className={styles.link} to={'/calendar'}>行事曆</Link>
+			<Link className={styles.link} to={'/map'}>地圖</Link>
+			<Link className={styles.link} to={'/about'}>關於我們</Link>
+			<Link className={styles.link} to={'/history'}>歷屆回顧</Link>
+			<div className={styles.closeIcon}>
 				<div>X</div>
 			</div>
 
@@ -81,16 +81,16 @@ const Menu = ({ initItem, content, items = defaultItems }) => {
 	const [sideBarActive, setSideBarActive] = useState(false)
 	
 	return (
-		<div className='totalWrapper'>
+		<div className={styles.totalWrapper}>
 			<SideBar sideBarActive={sideBarActive} setSideBarActive={setSideBarActive} />
 
-			<div className='headerWrapper'>
-				<div className='logo'>LOGO</div>
-				<h1 className='title'>台大藝術季28th</h1>
-				<div className="iconContainer" onClick={() => { setSideBarActive(!sideBarActive) }}>
-					<div className="bar1"></div>
-					<div className="bar2"></div>
-					<div className="bar3"></div>
+			<div className={styles.headerWrapper}>
+				<div className={styles.logo}>LOGO</div>
+				<h1 className={styles.title}>台大藝術季28th</h1>
+				<div className={styles.iconContainer} onClick={() => { setSideBarActive(!sideBarActive) }}>
+					<div className={styles.bar1}></div>
+					<div className={styles.bar2}></div>
+					<div className={styles.bar3}></div>
 				</div>
 
 				{/* <div class="overlay">
