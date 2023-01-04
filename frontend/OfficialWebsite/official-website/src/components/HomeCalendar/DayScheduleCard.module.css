@@ -1,0 +1,40 @@
+.container {
+    margin-top: 16px;
+    border: 1px solid #e4e4e4;
+}
+
+.category {
+    font-weight: 700;
+}
+
+.dataContainer {
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 10px;
+}
+
+.dataContainer .event {
+    height: 35px;
+    padding: 7.5px 14px;
+    margin: auto 0;
+    cursor: pointer;
+    border: 1px solid #e4e4e4;
+    border-radius: 8px;
+}
+
+.eventName {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+    margin: 0;
+    width: 100%;
+}
+
+.eventInfo {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 10px;
+    margin: 0;
+}
