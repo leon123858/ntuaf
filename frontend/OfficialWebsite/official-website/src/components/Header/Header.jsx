@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import { Menu as AntdMenu, Input} from 'antd';
+import { Menu as AntdMenu, Input } from 'antd';
 import "./Header.css"
-const {Search} = Input
+const { Search } = Input
 const defaultItems = [
 	{
 		label: <Link to={'/'}>首頁</Link>,
@@ -30,48 +30,75 @@ const defaultItems = [
 	},
 ];
 
-const SideBar = ({setSideBarActive})=>{
-	return(
-		<div className='sideBarWrapper'>
+const SideBar = ({ sideBarActive, setSideBarActive }) => {
+	useEffect(()=>{
+		//info click non element to deactivate sidebar
+		let sideBarWrapperE = document.getElementsByClassName("sideBarWrapper")[0]
+		sideBarWrapperE.addEventListener("click", (evt) => {
+			const searchElement = document.getElementsByClassName("searchIcon")[0]
+			let triggerE = evt.target; // clicked element      
+
+			//* maybe the trigger element which is take less area is the decendent of target element
+			//* this is, triiger is smaller than target
+			do{
+				if (triggerE == searchElement) {
+					return;
+				}
+				triggerE = triggerE.parentNode;
+			}while(triggerE)
+			setSideBarActive(false)
+		});
+	}, [])
+	
+	
+	return (
+		
+		<div className={sideBarActive ? "sideBarWrapperActive sideBarWrapper" : "sideBarWrapper"}>
 			{/* <div className='search'>&#xf002;</div> */}
-			<Search placeholder="input search text"
-				style={{
-					width: 200,
-				}}
+			<div className='searchIcon'>
+				<Search placeholder="input search text"
+					style={{
+						width: 200,
+					}}
 				/>
+			</div>
 			<Link className="link" to={'/'}>首頁</Link>
 			<Link className="link" to={'/introduce'}>展覽介紹</Link>
 			<Link className="link" to={'/calendar'}>行事曆</Link>
 			<Link className="link" to={'/map'}>地圖</Link>
 			<Link className="link" to={'/about'}>關於我們</Link>
 			<Link className="link" to={'/history'}>歷屆回顧</Link>
-			<div className='closeIcon' onClick={()=>{setSideBarActive((prev)=>(!prev))}}>X</div>
+			<div className='closeIcon'>
+				<div>X</div>
+			</div>
 
 		</div>
+		
 	)
 }
 const Menu = ({ initItem, content, items = defaultItems }) => {
 	const [item, setItem] = useState(initItem);
 	const [sideBarActive, setSideBarActive] = useState(false)
-
+	
 	return (
-		<>
-		{sideBarActive?<SideBar setSideBarActive={setSideBarActive}/>:<></>}
-		<div className='headerWrapper'>
-			<div className='logo'>LOGO</div>
-			<h1 className='title'>台大藝術季28th</h1>
-			<div className="iconContainer" onClick={()=>{setSideBarActive(!sideBarActive)}}>
-				<div className="bar1"></div>
-				<div className="bar2"></div>
-				<div className="bar3"></div>
-			</div>
-			
-			{/* <div class="overlay">
+		<div className='totalWrapper'>
+			<SideBar sideBarActive={sideBarActive} setSideBarActive={setSideBarActive} />
+
+			<div className='headerWrapper'>
+				<div className='logo'>LOGO</div>
+				<h1 className='title'>台大藝術季28th</h1>
+				<div className="iconContainer" onClick={() => { setSideBarActive(!sideBarActive) }}>
+					<div className="bar1"></div>
+					<div className="bar2"></div>
+					<div className="bar3"></div>
+				</div>
+
+				{/* <div class="overlay">
 				<div class="text">Hello World</div>
 			</div> */}
-			
+
+			</div>
 		</div>
-		</>
 		// <AntdMenu
 		// 	selectedKeys={[item]}
 		// 	mode='horizontal'
