@@ -1,5 +1,5 @@
 import { useState } from "react"
-import "./Carousel.css"
+import style from "./Carousel.module.css"
 
 const CarouselCard = ({index, activateImg, cardContent}) => {
 
@@ -16,12 +16,12 @@ const CarouselCard = ({index, activateImg, cardContent}) => {
     }
 
     return (
-        <div className={index === activateImg ? "slide activeSlide" : "slide"} style={{transform:`translateX(${translatePercent}%) scale(${scale})`, opacity:`${opacity}`,}}>
+        <div className={index === activateImg ? [style.activeSlide, style.slide].join(' '): style.slide} style={{transform:`translateX(${translatePercent}%) scale(${scale})`, opacity:`${opacity}`,}}>
             {/* <a href='https://google.com' style={{textDecoration:"none", color:"black"}}> */}
                 <img src='https://images.squarespace-cdn.com/content/v1/5452d441e4b0c188b51fef1a/1615326541809-TW01PVTOJ4PXQUXVRLHI/male-orange-tabby-cat.jpg?format=300w'
                 alt="here"></img>
-                <h4 className='title'>{cardContent.header}</h4>
-                <p className="disc">{cardContent.content} {index}</p>
+                <h4 className={style.title}>{cardContent.header}</h4>
+                <p className={style.disc}>{cardContent.content} {index}</p>
             {/* </a> */}
         </div>
     )
@@ -44,9 +44,9 @@ const CarouselComponent = ({cardCotents}) => {
         setActivateImg((activateImg+1)%(cardCotents.length))
     }
     return (
-        <div className='carouselWrapper'>
-                <div className="prev" onClick={moveLeft}>❮</div>
-                <div className="next" onClick={moveRight}>❯</div>
+        <div className={style.carouselWrapper}>
+                <div className={style.prev} onClick={moveLeft}>❮</div>
+                <div className={style.next} onClick={moveRight}>❯</div>
                 {cardCotents.map((cardContent, idx) => (
                         <CarouselCard index={idx} cardContent={cardContent} activateImg={activateImg}/>
                 ))}
@@ -65,10 +65,10 @@ const Carousel = () => {
     }
     let cardCotents = images.map(()=>cardContent)
     return (
-        <div className="App">
-            <div className="headerWrapper">
-                <h1 className="header">近期活動</h1>
-                <h1 className="header">常設展覽</h1>
+        <div className={style.App}>
+            <div className={style.headerWrapper}>
+                <h1 className={style.header}>近期活動</h1>
+                <h1 className={style.header}>常設展覽</h1>
             </div>
             <CarouselComponent cardCotents={cardCotents}/>
         </div>
