@@ -1,12 +1,10 @@
-@import "slick-carousel/slick/slick.css";
-@import "slick-carousel/slick/slick-theme.css";
 
 *{
     box-sizing: border-box;
 }
 .App {
     margin:0 auto 0 auto;
-    background-color: blanchedalmond;
+    /* background-color: blanchedalmond; */
     padding:auto;
     font-size: 24;
     overflow: hidden;
@@ -104,13 +102,13 @@
     transition: all 0.6s ease;
     border-radius: 10%;
 }
+.prev{
+    left: 0;
+}
 .next {
     right: 0;
 }
-.prev:hover, .next:hover {
-    background-color: rgb(65, 65, 65, 0.7);
-    color:  rgb(221, 221, 221);
-}
+
 .prev:active, .next:active {
     background-color: rgb(65, 65, 65, 0.7);
     color: white;
@@ -120,4 +118,8 @@
         width: 70%;
         height: 100%;
     }
+    .prev:hover, .next:hover {
+    background-color: rgb(65, 65, 65, 0.7);
+    color:  rgb(221, 221, 221);
+}
 }
