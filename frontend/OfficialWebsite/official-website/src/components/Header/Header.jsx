@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { Menu as AntdMenu, Input } from 'antd';
 import styles from "./Header.module.css"
+import {useSwipeable} from "react-swipeable"
 const { Search } = Input
 const LinkGroup = ({css})=> {
 	return (
@@ -17,6 +18,10 @@ const LinkGroup = ({css})=> {
 }
 
 const SideBar = ({ sideBarActive, setSideBarActive }) => {
+	const handlers = useSwipeable({
+		// onSwiped: (eventData) => console.log("User Swiped!", eventData),
+		onSwipedRight: ()=>{if(window.innerWidth<769){setSideBarActive(false)}}
+	});
 	useEffect(()=>{
 		//info click non element to deactivate sidebar
 		let sideBarWrapperE = document.getElementsByClassName(styles.sideBarWrapper)[0]
@@ -35,9 +40,9 @@ const SideBar = ({ sideBarActive, setSideBarActive }) => {
 			setSideBarActive(false)
 		});
 	}, [])
-	
+
 	return (
-		<div className={sideBarActive ? `${styles.sideBarWrapperActive} ${styles.sideBarWrapper}`: styles.sideBarWrapper}>
+		<div className={sideBarActive ? `${styles.sideBarWrapperActive} ${styles.sideBarWrapper}`: styles.sideBarWrapper}  {...handlers}>
 			{/* <div className='search'>&#xf002;</div> */}
 			<div className={styles.searchIcon}>
 				<Search placeholder="input search text" style={{width: 200,}}/>
