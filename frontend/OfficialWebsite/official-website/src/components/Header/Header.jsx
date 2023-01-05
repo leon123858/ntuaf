@@ -3,32 +3,18 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { Menu as AntdMenu, Input } from 'antd';
 import styles from "./Header.module.css"
 const { Search } = Input
-const defaultItems = [
-	{
-		label: <Link to={'/'}>首頁</Link>,
-		key: 'home',
-	},
-	{
-		label: <Link to={'/introduce'}>展覽介紹</Link>,
-		key: 'introduce',
-	},
-	{
-		label: <Link to={'/calendar'}>行事曆</Link>,
-		key: 'calendar',
-	},
-	{
-		label: <Link to={'/map'}>地圖</Link>,
-		key: 'map',
-	},
-	{
-		label: <Link to={'/about'}>關於我們</Link>,
-		key: 'about',
-	},
-	{
-		label: <Link to={'/history'}>歷屆回顧</Link>,
-		key: 'history',
-	},
-];
+const LinkGroup = ({css})=> {
+	return (
+		<div className={css}>
+			<Link className={styles.link} to={'/'}>首頁</Link>
+			<Link className={styles.link} to={'/introduce'}>展覽介紹</Link>
+			<Link className={styles.link} to={'/calendar'}>行事曆</Link>
+			<Link className={styles.link} to={'/map'}>地圖</Link>
+			<Link className={styles.link} to={'/about'}>關於我們</Link>
+			<Link className={styles.link} to={'/history'}>歷屆回顧</Link>
+		</div>
+	)
+}
 
 const SideBar = ({ sideBarActive, setSideBarActive }) => {
 	useEffect(()=>{
@@ -50,24 +36,13 @@ const SideBar = ({ sideBarActive, setSideBarActive }) => {
 		});
 	}, [])
 	
-	
 	return (
-		
 		<div className={sideBarActive ? `${styles.sideBarWrapperActive} ${styles.sideBarWrapper}`: styles.sideBarWrapper}>
 			{/* <div className='search'>&#xf002;</div> */}
 			<div className={styles.searchIcon}>
-				<Search placeholder="input search text"
-					style={{
-						width: 200,
-					}}
-				/>
+				<Search placeholder="input search text" style={{width: 200,}}/>
 			</div>
-			<Link className={styles.link} to={'/'}>首頁</Link>
-			<Link className={styles.link} to={'/introduce'}>展覽介紹</Link>
-			<Link className={styles.link} to={'/calendar'}>行事曆</Link>
-			<Link className={styles.link} to={'/map'}>地圖</Link>
-			<Link className={styles.link} to={'/about'}>關於我們</Link>
-			<Link className={styles.link} to={'/history'}>歷屆回顧</Link>
+			<LinkGroup css={styles.linkGroupMobile}/>
 			<div className={styles.closeIcon}>
 				<div>X</div>
 			</div>
@@ -76,8 +51,8 @@ const SideBar = ({ sideBarActive, setSideBarActive }) => {
 		
 	)
 }
-const Menu = ({ initItem, content, items = defaultItems }) => {
-	const [item, setItem] = useState(initItem);
+const Menu = () => {
+	// const [item, setItem] = useState(initItem);
 	const [sideBarActive, setSideBarActive] = useState(false)
 	
 	return (
@@ -93,20 +68,10 @@ const Menu = ({ initItem, content, items = defaultItems }) => {
 					<div className={styles.bar3}></div>
 				</div>
 
-				{/* <div class="overlay">
-				<div class="text">Hello World</div>
-			</div> */}
+				<LinkGroup css={styles.linkGroupWeb}/>
 
 			</div>
 		</div>
-		// <AntdMenu
-		// 	selectedKeys={[item]}
-		// 	mode='horizontal'
-		// 	items={items}
-		// 	onClick={(e) => {
-		// 		setItem(e.key);
-		// 	}}
-		// />
 	);
 };
 export default Menu;

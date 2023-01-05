@@ -24,6 +24,7 @@
     text-decoration: none;
     color:black;
     font-size: 24px;
+    margin: 5px auto;
 }
 .searchIcon{
     height: 30%;
@@ -102,3 +103,24 @@
     -ms-transform: translate(-50%, -50%);
 }
 
+.linkGroupMobile{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.linkGroupWeb{
+    display: none;
+}
+@media screen and (min-width:769px){
+    .linkGroupWeb{
+        display: flex;
+    }
+
+    .link{
+        font-size: 16px;
+        margin: auto 0.5rem;
+    }
+    .iconContainer{
+        display: none;
+    }
+}
