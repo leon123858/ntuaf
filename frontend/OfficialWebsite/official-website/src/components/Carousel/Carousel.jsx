@@ -1,5 +1,6 @@
 import { useState } from "react"
 import style from "./Carousel.module.css"
+import {useSwipeable} from "react-swipeable"
 
 const CarouselCard = ({index, activateImg, cardContent}) => {
 
@@ -27,6 +28,7 @@ const CarouselCard = ({index, activateImg, cardContent}) => {
     )
 }
 const CarouselComponent = ({cardCotents}) => {
+
     const [activateImg, setActivateImg] = useState(1);
     const moveLeft = ()=>{
         if (activateImg<=0){
@@ -43,8 +45,13 @@ const CarouselComponent = ({cardCotents}) => {
         }
         setActivateImg((activateImg+1)%(cardCotents.length))
     }
+    //info swipe effect
+    const handlers = useSwipeable({
+        onSwipedLeft: () => {if (activateImg+1<=cardCotents.length-1){setActivateImg((prev)=>prev+1)}},
+        onSwipedRight: ()=> {if (0<=activateImg-1){setActivateImg((prev)=>prev-1)}},
+    });
     return (
-        <div className={style.carouselWrapper}>
+        <div className={style.carouselWrapper}  {...handlers}>
                 <div className={style.prev} onClick={moveLeft}>❮</div>
                 <div className={style.next} onClick={moveRight}>❯</div>
                 {cardCotents.map((cardContent, idx) => (
@@ -63,7 +70,9 @@ const Carousel = () => {
         header:"展覽活動名稱",
         content: "展覽簡介內容"
     }
+    
     let cardCotents = images.map(()=>cardContent)
+
     return (
         <div className={style.App}>
             <div className={style.headerWrapper}>
