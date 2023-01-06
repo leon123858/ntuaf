@@ -1,11 +1,12 @@
 import React from 'react';
 import style from './Home.module.css';
+import HomeCalendar from '../components/HomeCalendar/HomeCalendar';
 
 function Home() {
 	return (
 		<>
 			<div className={style.APP}>
-				<header className={style['App-header']}>
+				{/* <header className={style['App-header']}>
 					<img src={'/logo.svg'} className={style['App-logo']} alt='logo' />
 					<p>
 						Edit <code>src/App.js</code> and save to reload.
@@ -18,7 +19,8 @@ function Home() {
 					>
 						Learn React
 					</a>
-				</header>
+				</header> */}
+				<HomeCalendar />
 			</div>
 		</>
 	);
