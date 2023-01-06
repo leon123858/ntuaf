@@ -108,6 +108,10 @@
     flex-direction: column;
     justify-content: space-between;
 }
+.linkGroupMobile .link:first-child {
+    display:none;
+}
+
 .linkGroupWeb{
     display: none;
 }
@@ -123,4 +127,5 @@
     .iconContainer{
         display: none;
     }
+
 }

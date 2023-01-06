@@ -8,11 +8,11 @@ const LinkGroup = ({css})=> {
 	return (
 		<div className={css}>
 			<Link className={styles.link} to={'/'}>首頁</Link>
-			<Link className={styles.link} to={'/introduce'}>展覽介紹</Link>
-			<Link className={styles.link} to={'/calendar'}>行事曆</Link>
-			<Link className={styles.link} to={'/map'}>地圖</Link>
 			<Link className={styles.link} to={'/about'}>關於我們</Link>
-			<Link className={styles.link} to={'/history'}>歷屆回顧</Link>
+			<Link className={styles.link} to={'/calendar'}>展覽/活動</Link>
+			<Link className={styles.link} to={'/map'}>行事曆</Link>
+			<Link className={styles.link} to={'/map'}>特別企劃</Link>
+			{/* <Link className={styles.link} to={'/history'}>歷屆回顧</Link> */}
 		</div>
 	)
 }
