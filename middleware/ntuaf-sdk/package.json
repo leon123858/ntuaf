@@ -15,7 +15,10 @@
 		"setGit": "npm set registry https://npm.pkg.github.com",
 		"setNpm": "npm set registry https://registry.npmjs.org",
 		"deploy": "yarn test && yarn start && npm publish --registry=https://npm.pkg.github.com",
-		"addUser": "npm adduser --registry=https://npm.pkg.github.com --scope=@leon123858"
+		"addUser": "npm adduser --registry=https://npm.pkg.github.com --scope=@leon123858",
+		"enumerate": "firebase emulators:start --import=./test/saved-data",
+		"enumerateExport": "firebase emulators:start --export-on-exit=./test/saved-data",
+		"setEnumerate": "firebase init emulators"
 	},
 	"author": "leon123858",
 	"license": "ISC",
@@ -33,6 +36,7 @@
 	},
 	"dependencies": {
 		"axios": "^0.27.2",
-		"chai": "^4.3.6"
+		"chai": "^4.3.6",
+		"firebase": "^9.15.0"
 	}
 }
