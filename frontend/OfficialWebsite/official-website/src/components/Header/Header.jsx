@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { Menu as AntdMenu } from 'antd';
+import { BreakPointContext } from '../../useBreakPoint';
+
 const defaultItems = [
 	{
 		label: <Link to={'/'}>首頁</Link>,
@@ -29,6 +31,8 @@ const defaultItems = [
 ];
 const Menu = ({ initItem, content, items = defaultItems }) => {
 	const [item, setItem] = useState(initItem);
+	const { toggleInBreakPoint } = useContext(BreakPointContext);
+	toggleInBreakPoint();
 	console.log(useLoaderData());
 	return (
 		<AntdMenu
