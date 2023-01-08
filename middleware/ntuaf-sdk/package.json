@@ -10,14 +10,15 @@
 		"LICENSE"
 	],
 	"scripts": {
-		"test": "mocha -r ts-node/register test/*.ts  --exit",
+		"testScript": "mocha -r ts-node/register test/*.ts  --exit",
+		"test": "firebase emulators:exec \"yarn testScript\" --import=./test/saved-data",
 		"start": "tsc --build && node ./dist/index.js",
 		"setGit": "npm set registry https://npm.pkg.github.com",
 		"setNpm": "npm set registry https://registry.npmjs.org",
 		"deploy": "yarn test && yarn start && npm publish --registry=https://npm.pkg.github.com",
 		"addUser": "npm adduser --registry=https://npm.pkg.github.com --scope=@leon123858",
 		"enumerate": "firebase emulators:start --import=./test/saved-data",
-		"enumerateExport": "firebase emulators:start --export-on-exit=./test/saved-data",
+		"enumerateExport": "firebase emulators:start --import=./test/saved-data --export-on-exit=./test/saved-data",
 		"setEnumerate": "firebase init emulators"
 	},
 	"author": "leon123858",
