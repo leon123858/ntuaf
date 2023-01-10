@@ -2,7 +2,7 @@
  * test methods about native event
  */
 import { expect } from 'chai';
-import { getEvent } from '../src/utils/db/event';
+import { getEvent, updateEvent } from '../src/utils/db/event';
 import { loginForTest, logout } from '../src/utils/auth';
 import { EVENT_TYPE } from '../src/types/enums';
 
@@ -34,10 +34,22 @@ describe('test get event info', function () {
 describe('test update event', function () {
 	it('should update success with right auth', async () => {
 		await loginForTest('a0970785699@gmail.com');
-
+		await updateEvent({ id: 'test0', blocks: [{}, {}] } as any);
+		expect(await getEvent('test0')).eqls({
+			type: '展覽',
+			image: { banner: null, card: null },
+			blocks: [
+				{ text: '', type: 0, title: '', items: [], url: null },
+				{ text: '', type: 0, title: '', items: [], url: null },
+			],
+			startTime: 0,
+			endTime: 0,
+			place: { name: '待訂', url: null },
+			title: '未定義標題',
+		});
 		await logout();
 	});
-	it('should update error with wrong/null auth', async () => {
+	xit('should update error with wrong/null auth', async () => {
 		await loginForTest('a0983906079@gmail.com');
 
 		await logout();
@@ -45,12 +57,12 @@ describe('test update event', function () {
 
 		await logout();
 	});
-	it('should update success by correct wrong input', async () => {
+	xit('should update success by correct wrong input', async () => {
 		await loginForTest('a0970785699@gmail.com');
 
 		await logout();
 	});
-	it('should update error with no id', async () => {
+	xit('should update error with no id', async () => {
 		await loginForTest('a0970785699@gmail.com');
 
 		await logout();
