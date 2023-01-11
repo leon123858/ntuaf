@@ -61,7 +61,22 @@ const ImageList = ({data = defaultData}) => {
                 </div>
             </div>
             
-        ) : ''
+        ) :
+        (
+            <div className={style.container}>
+                <p className={style.lgTopic}>{(data.type === 1) ? '社團介紹' : '藝人介紹'}</p>
+                <div className={style.lgImgList}>
+                    {data.images.map((image, idx) => (
+                        <div className={style.lgImgContainer} key={idx}>
+                            <img alt='team img' src={image.src} className={style.img}/>
+                            <p>
+                                {image.name}
+                            </p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        )
     );
 };
 export default ImageList;
