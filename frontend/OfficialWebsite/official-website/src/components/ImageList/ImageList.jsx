@@ -6,6 +6,7 @@ import { BreakPointContext } from '../../useBreakPoint';
 
 const defaultData = {
     type: 2,
+    topic: '藝人介紹',
     images: [
         {
             name: '我是藝人',
@@ -48,7 +49,7 @@ const ImageList = ({data = defaultData}) => {
         (inBreakPoint) 
         ?  (
             <div className={style.container}>
-                <p className={style.topic}>{(data.type === 1) ? '社團介紹' : '藝人介紹'}</p>
+                <p className={style.topic}>{data.topic}</p>
                 <div className={(data.type === 1) ? style.imgList : style.imgList2}>
                     {data.images.map((image, idx) => (
                         <div className={(data.type === 1) ? style.imgContainer : style.imgContainer2} key={idx}>
@@ -64,14 +65,12 @@ const ImageList = ({data = defaultData}) => {
         ) :
         (
             <div className={style.container}>
-                <p className={style.lgTopic}>{(data.type === 1) ? '社團介紹' : '藝人介紹'}</p>
+                <p className={style.lgTopic}>{data.topic}</p>
                 <div className={style.lgImgList}>
                     {data.images.map((image, idx) => (
                         <div className={style.lgImgContainer} key={idx}>
                             <img alt='team img' src={image.src} className={style.lgImg}/>
-                            <p>
-                                {image.name}
-                            </p>
+                            <p>{image.name}</p>
                         </div>
                     ))}
                 </div>
