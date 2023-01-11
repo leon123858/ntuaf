@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './Home.module.css';
-import HomeCalendar from '../components/HomeCalendar/HomeCalendar';
+import ImageList from '../components/ImageList/ImageList';
 
 function Home() {
 	return (
@@ -20,7 +20,7 @@ function Home() {
 						Learn React
 					</a>
 				</header> */}
-				<HomeCalendar />
+				<ImageList />
 			</div>
 		</>
 	);
