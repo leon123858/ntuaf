@@ -1,6 +1,6 @@
 .container {
   margin: 0 auto;
-  width: 80%;
+  width: 75%;
   text-align: center;
   font-size: 20px;
 }
@@ -31,7 +31,7 @@
 
 .lgImgList {
   display: grid;
-  grid-template-columns: 33% 33% 33%;
+  grid-template-columns: 33.3% 33.3% 33.3%;
   row-gap: 20px;
 }
 
@@ -42,8 +42,9 @@
 .imgContainer2 {
   position: relative;
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 50% 40%;
   align-items: end;
+  font-size: 22px;
 }
 
 .lgImgContainer {
@@ -51,6 +52,11 @@
 }
 
 .img {
+  width: 80%;
+  border-radius: 10px;
+}
+
+.lgImg {
   width: 80%;
   border-radius: 10px;
 }

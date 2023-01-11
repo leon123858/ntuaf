@@ -68,7 +68,7 @@ const ImageList = ({data = defaultData}) => {
                 <div className={style.lgImgList}>
                     {data.images.map((image, idx) => (
                         <div className={style.lgImgContainer} key={idx}>
-                            <img alt='team img' src={image.src} className={style.img}/>
+                            <img alt='team img' src={image.src} className={style.lgImg}/>
                             <p>
                                 {image.name}
                             </p>
