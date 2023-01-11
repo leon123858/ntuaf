@@ -10,7 +10,7 @@ const DayScheduleCard = ({data}) => {
             <div className={(inBreakPoint) ? '' : style.lgDisplay}>
                 <div>
                     <p className={style.category}>當天活動</p>
-                    <div className={(inBreakPoint) ? style.dataContainer : style.lgDataContainer}>
+                    <div className={(inBreakPoint) ? style.dataContainer : style.lgEventContainer}>
                     {
                         (data.data.activity.length !== 0) ?
                         data.data.activity.map((a, idx) => (
@@ -31,11 +31,11 @@ const DayScheduleCard = ({data}) => {
                 
                 <div>
                     <p className={style.category}>常態展覽</p>
-                    <div className={(inBreakPoint) ? style.dataContainer : style.lgDataContainer}>
+                    <div className={(inBreakPoint) ? style.dataContainer : style.lgExhibitionContainer}>
                     {
                         (data.data.exhibition.length !== 0) ?
                         data.data.exhibition.map((a, idx) => (
-                            <div className={style.event}>
+                            <div key={idx} className={style.event}>
                                 <p className={style.eventName}>{a.name}</p>
                                 <p className={style.eventInfo}>{a.info}</p>
                             </div>
