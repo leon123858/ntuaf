@@ -8,9 +8,11 @@ import { BlOCK_TYPE, EVENT_TYPE, ITEM_TYPE } from '../../types/enums';
  * @returns 事件型別, 若事件不存在, 回傳未定義
  */
 export const getEvent = async (eventId: string) => {
-	return (await getDoc(doc(dbInstance, 'Events', eventId))).data() as
+	const data = (await getDoc(doc(dbInstance, 'Events', eventId))).data() as
 		| Event
 		| undefined;
+	if (!data) return data;
+	return correctEvent(data);
 };
 
 const correctPlace = (place: Place) => {
@@ -53,7 +55,7 @@ const correctBlock = (block: Block) => {
  * @param event
  * @returns 校正結果
  */
-const correctEvent = (event: Event) => {
+export const correctEvent = (event: Event) => {
 	const {
 		startTime = 0,
 		endTime = 0,
