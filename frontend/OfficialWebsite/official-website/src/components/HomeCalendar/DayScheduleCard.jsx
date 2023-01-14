@@ -9,7 +9,7 @@ const DayScheduleCard = ({data}) => {
         <Card title={(inBreakPoint) ? '' : `${data.month} / ${data.date}`} className={(inBreakPoint) ? style.container : style.lgContainer}>
             <div className={(inBreakPoint) ? '' : style.lgDisplay}>
                 <div>
-                    <p className={style.category}>當天活動</p>
+                    <p className={`${style.category} ${style.firstCategory}`}>當天活動</p>
                     <div className={(inBreakPoint) ? style.dataContainer : style.lgEventContainer}>
                     {
                         (data.data.activity.length !== 0) ?
