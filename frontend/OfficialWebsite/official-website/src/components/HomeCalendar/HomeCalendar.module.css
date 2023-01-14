@@ -3,6 +3,12 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.lgContainer {
+  width: 80%;
+  display: flex;
+}
+
 :global .SingleDatePickerInput {
   display: inline-block;
   background-color: #fff;
