@@ -3,59 +3,142 @@
     box-sizing: border-box;
 }
 .App {
-    margin:0 auto 0 auto;
+    /* margin:0 auto 0 auto; */
     /* background-color: blanchedalmond; */
-    padding:auto;
-    font-size: 24;
-    overflow: hidden;
+    /* padding:auto; */
+    /* font-size: 24; */
+    /* overflow: hidden; */
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-
+.cardWrapper{
+    background-color: red;
+    border: solid 4px black;
+    height:100%; 
+    min-width: 300px; /* width have to be absolute size */
+}
 .headerWrapper{
+    width: 100%;
     display:flex;
-    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content:space-between;
+
+    
 }
 .header{
     flex:1; 
     text-align:center; 
     padding:"10px"
 }
-.carouselWrapper{
-    display:flex;
-    padding:5px; /* for shadow of the car */
-    position: relative; /* for position the arrow */
-    max-height: 100%;
+.header:hover{
+    cursor: pointer;
 }
 
+
+.inner:hover{
+    transform: rotateY(180deg);
+}
 .slide img{
     width: 100%;
     height:auto;
     border-radius: inherit;
 }
-.disc{
-    margin:auto;
-    border-radius: inherit;
-    background-color: rgba(0, 0, 0, 0.2);
-    text-align: center;
-    padding:50% 0;
-}
+
+
 
 .slide {
-    background-color: white;
-    min-width: 50%;
-    padding: 10px;
-
-    border-radius: 10px;
-    border: solid 0.5px;
+    /* background-color: white; */
+    /* min-width: 50%; */
+    /* padding: 10px; */
+    height: 100px;
+    /* border-radius: 10px; */
+    /* border: solid 0.5px; */
     height: inherit;
-    box-shadow: 3px 2px 2px 1px rgba(0, 0, 0, 0.4);
+    /* box-shadow: 3px 2px 2px 1px rgba(0, 0, 0, 0.4); */
     transition: all 1s;
-
+    /* perspective: 1000px; */
+    /* transform-style: preserve-3d; */
+}
+.slide:hover{
+    /* transform: rotateY(180deg); */
 }
 
 .activeSlide {
     z-index: 1;
     transform: scale(1);
 }
+.oneSideCard{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    background-color: white;
+    margin: auto;
+    /* width:80%; */
+    min-width: 50%;
+    padding: 10px;
+    height: 100%;
+    border-radius: 10px;
+    border: solid 0.5px;
+    /* height: inherit; */
+    box-shadow: 3px 2px 2px 1px rgba(0, 0, 0, 0.4);
+}
+.carouselWrapper{
+    position:"relative";
+    border: solid 50px red;
+    /* background-color: aqua; */
+    width: 100%; /* for position the arrow */
+    height: 100vh; /* it determine the height of carousel card */ 
+    margin: "0px auto";
+} 
+.oneSideCard img{
+    /* flex: 4; */
+    width: 100%;
+    border-radius: inherit;
+}
+.disc{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: inherit;
+    background-color: rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin: 0px
+}
+.dCardWrapper{
+    perspective:1500px;
+    width:100%;
+    height: 100%;
+    padding:0px;
+    margin:auto;
+    /* background-color: transparent; */
+    
+}
+.dCardInnerWrapper{
+    padding:auto;
+    transition:all 3s;
+    transform-style: preserve-3d;
+    position: relative;
+    width: 100%;
+    height:100%;
+}
+.dCardInnerWrapperFlip{
+    transform: rotateY(180deg);
+}
+.flipFrontCard, .flipBackCard{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+
+}
+.flipBackCard{
+    transform: rotateY(180deg);
+}
+
+
 .arrowWrapper{
     display: inline-block;
     padding:2px;
