@@ -13,10 +13,14 @@
     /* height: inherit; */
     box-shadow: 3px 2px 2px 1px rgba(0, 0, 0, 0.4);
 }
-
-.oneSideCard img{
-    /* flex: 4; */
+.imageWrapper{
+    /* border: solid 2px; */
+    border-radius: inherit;
+}
+img{
+    object-fit:fill;
     width: 100%;
+    height: auto;
     border-radius: inherit;
 }
 .disc{
@@ -28,4 +32,9 @@
     background-color: rgba(0, 0, 0, 0.2);
     text-align: center;
     margin: 0px
+}
+@media screen and (min-width:769px){
+    .oneSideCard{
+        max-width: 400px;
+    }
 }
