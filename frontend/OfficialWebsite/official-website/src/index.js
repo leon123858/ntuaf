@@ -12,6 +12,7 @@ import Map from './routers/Map';
 import About from './routers/About';
 import History from './routers/History';
 import Layout from './components/Layout/Layout';
+import { BreakPointProvider } from './useBreakPoint.jsx';
 
 const router = createBrowserRouter([
 	{
@@ -55,7 +56,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
-		<RouterProvider router={router} />
+		<BreakPointProvider>
+			<RouterProvider router={router} />
+		</BreakPointProvider>
 	</React.StrictMode>
 );
 
