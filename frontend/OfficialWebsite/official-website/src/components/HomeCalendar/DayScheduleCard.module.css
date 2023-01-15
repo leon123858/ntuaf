@@ -23,6 +23,10 @@
     font-weight: 700;
 }
 
+.firstCategory {
+    margin-top: 0;
+}
+
 .dataContainer {
     display: grid;
     grid-template-columns: 100%;
