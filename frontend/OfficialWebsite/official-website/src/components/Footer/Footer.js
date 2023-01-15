@@ -1,5 +1,5 @@
 import styles from "./Footer.module.css"
-import {InstagramOutlined, FacebookOutlined, ArrowUpOutlined} from '@ant-design/icons';
+import {InstagramOutlined, FacebookOutlined, ArrowUpOutlined, YoutubeOutlined} from '@ant-design/icons';
 
 const Footer = ()=>{
     function topFunction() {
@@ -23,8 +23,15 @@ const Footer = ()=>{
                     <span>ntuartfest@gmail</span>
                 </div>
                 <div className={styles.iconGroup}>
-                    <a href="https://www.instagram.com/"><InstagramOutlined/></a>
-                    <a href="https://www.facebook.com/"><FacebookOutlined /></a>
+                    <div>
+                        <a href="https://www.instagram.com/"><InstagramOutlined/></a>
+                        <a href="https://www.facebook.com/"><FacebookOutlined /></a>
+                    </div>
+                    <div>
+                        <a href="https://www.facebook.com/"><YoutubeOutlined /></a>
+                        <a href="https://www.facebook.com/" style={{color:"#66FF00", border:"solid 2px #66FF00", borderRadius:"5px", margin:"0px"}}>LN</a>
+                    </div>
+                
                 </div>
                 
             </div>

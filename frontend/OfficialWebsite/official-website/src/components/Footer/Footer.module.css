@@ -34,7 +34,7 @@ h2{
     padding:0 0 5vw 10%;
     align-items: flex-end;
 }
-.infoWrapper div:first-child{
+.infoWrapper>div:first-child{
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -46,8 +46,13 @@ h2{
 
 .iconGroup{
     display: flex;
+    flex-direction: column;
     padding: 0 10% 0 0;
     align-items: center;
+}
+.iconGroup div{
+    display: flex;
+    flex-direction: row;
 }
 
 .iconGroup a{
