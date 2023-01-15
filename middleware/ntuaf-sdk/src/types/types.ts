@@ -9,6 +9,8 @@ import * as enums from './enums';
  * @property url 圖片 url
  * @property text 文字內容
  * @property createTime 創建時間
+ * @property like 喜歡數
+ * @property tmpLike 暫存喜歡數(腳本確認後併入喜歡)
  */
 export interface Artwork {
 	id?: string;
@@ -18,18 +20,22 @@ export interface Artwork {
 	url: string;
 	text: string;
 	createTime: number;
+	like: number;
+	tmpLike: number;
 }
 /**
  * 活動工作人員
  * @property id 用戶的 gmail
  * @property name 成員姓名
- * @property department 隸屬部門列表
+ * @property job 職位稱呼 ex: 組長/組員
+ * @property department 隸屬部門
  * @property admin 管理事件列表
  */
 export interface Member {
 	id?: string;
 	name: string;
-	department: enums.DEPARTMENT[];
+	job: string;
+	department: enums.DEPARTMENT;
 	admin: string[];
 }
 /**
@@ -96,4 +102,11 @@ export interface Place {
 export interface Images {
 	card: string;
 	banner: string;
+}
+/**
+ * 用戶暫存資料
+ * @property likeArtwork 暫存用戶當日喜歡的作品
+ */
+export interface UserTmpData {
+	likeArtwork: string[];
 }
