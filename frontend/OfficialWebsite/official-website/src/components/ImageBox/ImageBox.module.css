@@ -1,0 +1,41 @@
+.container {
+  width: 80%;
+  margin: 32px auto;
+  position: relative;
+  margin: '32px auto';
+}
+
+.topic {
+  background-color: #FFFFFF;
+  font-size: 16px;
+  margin-top: 0px;
+}
+
+.lgDisplay {
+  display: flex;
+}
+
+.img {
+  width: 60%;
+  max-width: 225px;
+  border-radius: 10px;
+  margin: 16px auto;
+  display: block;
+}
+
+.lgImg {
+  border-radius: 10px;
+  margin-right: 32px;
+  width: 60%;
+  max-width: 200px;
+}
+
+.content {
+  margin: 0px auto;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  padding: 18px;
+  font-size: 14px;
+  max-width: 80%;
+}
+
