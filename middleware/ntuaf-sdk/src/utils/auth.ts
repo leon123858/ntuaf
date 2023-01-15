@@ -40,6 +40,15 @@ export const userEmail = () => {
 };
 
 /**
+ * @description 使用者唯一編號
+ * @return string || undefined
+ * @note 未登入狀態回傳 "undefined", 剛開啟程式時調用,可能取得未登入結果其實已登入
+ */
+export const userId = () => {
+	return authInstance.currentUser?.uid;
+};
+
+/**
  * 訂閱登入狀態
  * @param func 函數,每次進入登入狀態後調用
  * @example
