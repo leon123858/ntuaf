@@ -7,6 +7,7 @@ const Layout = ({ initItem }) => {
 	return (
 		<div className='screen'>
 			<Header initItem={initItem} />
+			<div style={{width:"100vw", height:"1500px", background:"linear-gradient(#F00, #FF0)"}}></div>
 			{/* <Outlet /> */}
 		</div>
 	);
