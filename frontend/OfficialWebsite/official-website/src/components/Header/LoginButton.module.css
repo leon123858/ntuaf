@@ -1,0 +1,9 @@
+.loginButton{
+    height: 32px;
+    width: auto;
+    background-color: white ;
+    border: solid 2px;
+    border-radius: 5px;
+    white-space: normal;
+    word-break: keep-all;
+}

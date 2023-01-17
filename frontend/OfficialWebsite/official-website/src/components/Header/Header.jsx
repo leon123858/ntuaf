@@ -1,82 +1,126 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
-import { Menu as AntdMenu, Input } from 'antd';
+import React, { useState } from 'react';
 import styles from "./Header.module.css"
-import {useSwipeable} from "react-swipeable"
-const { Search } = Input
-const LinkGroup = ({css})=> {
+import SideBar from "./SideBar.jsx"
+import { Menu, Input, Dropdown } from 'antd';
+import { Link } from 'react-router-dom';
+import { SearchOutlined } from "@ant-design/icons"
+import LoginButton from "./LoginButton.jsx"
+
+const items1 = [
+	{
+		key: '1',
+		label: (
+			<a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+				1st menu item
+			</a>
+		),
+	},
+	{
+		key: '1',
+		label: (
+			<a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+				1st menu item
+			</a>
+		),
+	}
+]
+const items = [
+	{
+		label: <Link className={styles.link} to={'/about'}>關於我們</Link>,
+		key: 'about',
+
+	},
+	{
+		label: <Link className={styles.link} to={'/calendar'}>展覽/活動</Link>,
+		key: 'event',
+		children: [
+			{
+			  label: '展覽',
+			  key: 'event',
+			},
+			{
+			  label: '活動',
+			  key: 'activity',
+			},
+		  ],
+
+	},
+	{
+		label: <Link className={styles.link} to={'/about'}>行事曆</Link>,
+		key: 'calendar',
+	},
+	{
+		label: <Link className={styles.link} to={'/about'}>特別企劃</Link>,
+		key: 'special',
+		children: [
+			{
+			  label: '回溯',
+			  key: 'backward',
+			},
+			{
+			  label: '藝術季地圖',
+			  key: 'afMap',
+			},
+			{
+				label: '心理測驗',
+				key: 'psychoTest',
+			  },
+		  ],
+
+	},
+]
+const SearchBar = () => {
+	const [searchBarActive, setSearchBarActive] = useState(false)
 	return (
-		<div className={css}>
-			<Link className={styles.link} to={'/'}>首頁</Link>
+		<div className={searchBarActive ? styles.searchIconWrapperActive : styles.searchIconWrapper}>
+			<div onClick={() => { setSearchBarActive(false) }} className={styles.exitButton}>X</div>
+			<div className={searchBarActive ? "" : styles.hidden}><Input placeholder="input search text" /></div>
+			<SearchOutlined onClick={() => { setSearchBarActive(true) }} style={{ fontSize: "1rem", width: "32px", color: "white" }} />
+		</div>
+	)
+}
+const MenuM = () => {
+
+	return (
+		<div className={styles.menuWrapper}>
 			<Link className={styles.link} to={'/about'}>關於我們</Link>
+			{/* <Dropdown menu={{ items1 }}>
+			</Dropdown> */}
 			<Link className={styles.link} to={'/calendar'}>展覽/活動</Link>
-			<Link className={styles.link} to={'/map'}>行事曆</Link>
-			<Link className={styles.link} to={'/map'}>特別企劃</Link>
-			{/* <Link className={styles.link} to={'/history'}>歷屆回顧</Link> */}
+			<Link className={styles.link} to={'/about'}>行事曆</Link>
+			<Link className={styles.link} to={'/about'}>特別企劃</Link>
+			<SearchBar />
 		</div>
 	)
 }
-
-const SideBar = ({ sideBarActive, setSideBarActive }) => {
-	const handlers = useSwipeable({
-		// onSwiped: (eventData) => console.log("User Swiped!", eventData),
-		onSwipedRight: ()=>{if(window.innerWidth<769){setSideBarActive(false)}}
-	});
-	useEffect(()=>{
-		//info click non element to deactivate sidebar
-		let sideBarWrapperE = document.getElementsByClassName(styles.sideBarWrapper)[0]
-		sideBarWrapperE.addEventListener("click", (evt) => {
-			const searchElement = document.getElementsByClassName(styles.searchIcon)[0]
-			let triggerE = evt.target; // clicked element      
-
-			//* maybe the trigger element which is take less area is the decendent of target element
-			//* this is, triiger is smaller than target
-			do{
-				if (triggerE == searchElement) {
-					return;
-				}
-				triggerE = triggerE.parentNode;
-			}while(triggerE)
-			setSideBarActive(false)
-		});
-	}, [])
-
-	return (
-		<div className={sideBarActive ? `${styles.sideBarWrapperActive} ${styles.sideBarWrapper}`: styles.sideBarWrapper}  {...handlers}>
-			{/* <div className='search'>&#xf002;</div> */}
-			<div className={styles.searchIcon}>
-				<Search placeholder="input search text" style={{width: 200,}}/>
-			</div>
-			<LinkGroup css={styles.linkGroupMobile}/>
-			<div className={styles.closeIcon}>
-				<div>X</div>
-			</div>
-
-		</div>
-		
-	)
-}
-const Menu = () => {
+const Header = () => {
 	// const [item, setItem] = useState(initItem);
 	const [sideBarActive, setSideBarActive] = useState(false)
-	
+	const [searchBarActive, setSearchBarActive] = useState(false)
+	const onClose = () => {
+		setSideBarActive(false)
+	}
 	return (
 		<div className={styles.totalWrapper}>
-			<SideBar sideBarActive={sideBarActive} setSideBarActive={setSideBarActive} />
-
 			<div className={styles.headerWrapper}>
 				<div className={styles.logo}>LOGO</div>
 				<h1 className={styles.title}>台大藝術季28th</h1>
+				<div className={styles.menuWrapper}>
+					<Menu selectable={false} selectedKeys={"1"}multiple={true} mode="horizontal" items={items} style={{backgroundColor:"rgba(0, 0, 0,0)", border:"none"}} inlineCollapsed={false} disabledOverflow={true}/>
+					<SearchBar />
+				</div>
+				{/* <MenuM /> */}
+				<div className={styles.hidden}><LoginButton /></div>
+
 				<div className={styles.iconContainer} onClick={() => { setSideBarActive(!sideBarActive) }}>
 					<div className={styles.bar1}></div>
 					<div className={styles.bar2}></div>
 					<div className={styles.bar3}></div>
 				</div>
-
-				<LinkGroup css={styles.linkGroupWeb}/>
+				<SideBar activeSideBar={sideBarActive} onClose={onClose}></SideBar>
 
 			</div>
 		</div>
 	);
 };
-export default Menu;
+export default Header;
