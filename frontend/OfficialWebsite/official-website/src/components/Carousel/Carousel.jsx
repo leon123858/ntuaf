@@ -21,16 +21,19 @@ const Carousel = () => {
     let defaultContent = {
         imageUrl: "",
         header: "to be continue...",
+        date: "date",
         content: "to be continue..."
     }
     let acardContent = {
         imageUrl: "",
         header: "近期活動名稱",
+        date: "date",
         content: "近期活動簡介內容"
     }
     let ecardContent = {
         imageUrl: "",
         header: "常設展覽名稱",
+        date: "date",
         content: "常設展覽簡介內容"
     }
     let activityContentList = aimages.map((index) => {return ({...acardContent, index:index})})
@@ -74,12 +77,13 @@ const Carousel = () => {
             <div className={style.headerWrapper}>
                 <h1 className={style.header} onClick={()=>{setFlip(false)}}>近期活動</h1>
                 <h1 className={style.header} onClick={()=>{setFlip(true)}}>常設展覽</h1>
+                <div className={style.prev} onClick={moveLeft}>❮</div>
+                <div className={style.next} onClick={moveRight}>❯</div>
             </div>
             
             <div className={style.carouselWrapper}  {...handlers}>
-                <div className={style.prev} onClick={moveLeft}>❮</div>
-                <div className={style.next} onClick={moveRight}>❯</div>
-                <CarouselImport slides={slides} goToSlide={activateImg}></CarouselImport>
+
+                <CarouselImport slides={slides} goToSlide={activateImg} offsetRadius={2} animationConfig={{ tension: 120, friction: 14 }}></CarouselImport>
             </div>
             
         </div>

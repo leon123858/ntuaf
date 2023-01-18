@@ -1,16 +1,19 @@
-import style from "./OneSideCard.module.css"
+import styles from "./OneSideCard.module.css"
 
 const OneSideCard = ({cardContent}) => {
     return (
-        <div className={style.oneSideCard}>
+        <div className={styles.oneSideCard}>
             {/* <a href='https://google.com' style={{textDecoration:"none", color:"black"}}> */}
-            <div className={style.imageWrapper}>
+            <div className={styles.imageWrapper}>
                 <img src='https://images.squarespace-cdn.com/content/v1/5452d441e4b0c188b51fef1a/1615326541809-TW01PVTOJ4PXQUXVRLHI/male-orange-tabby-cat.jpg?format=600w'
                 alt="here"></img>
             </div>
-            
+            <div className={styles.headerWrapper}>
             <h4>{cardContent.header}</h4>
-            <p className={style.disc}>{cardContent.content} {cardContent.index}</p>
+            <h4>{cardContent.date}</h4>
+            </div>
+            
+            <p className={styles.disc}>{cardContent.content} {cardContent.index}</p>
             {/* </a> */}
         </div>
     )
