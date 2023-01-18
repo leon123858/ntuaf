@@ -40,6 +40,6 @@ img{
 }
 @media screen and (min-width:769px){
     .oneSideCard{
-        max-width: 400px;
+        max-width: 300px;
     }
 }
