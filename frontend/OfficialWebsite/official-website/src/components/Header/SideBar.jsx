@@ -44,7 +44,7 @@ const SideBar = (props) => {
 
 	useEffect(()=>{
 		setActiveSideBar(props.activeSideBar)
-		console.log(activeSideBar)
+		// console.log(activeSideBar)
 	}, [props.activeSideBar])
 	const handlers = useSwipeable({
 		// onSwiped: (eventData) => console.log("User Swiped!", eventData),
@@ -58,7 +58,7 @@ const SideBar = (props) => {
 		//info click non element to deactivate sidebar
 		let sideBarWrapperE = document.getElementsByClassName(styles.drawerBodyWrapper)
 		// console.log(document.getElementsByTagName("div"))
-		console.log(styles.sideBarWrapper, sideBarWrapperE)
+		// console.log(styles.sideBarWrapper, sideBarWrapperE)
 		// sideBarWrapperE.addEventListener("click", (evt) => {
 		// 	const searchElement = document.getElementsByClassName(styles.header)[0]
 		// 	console.log(searchElement)

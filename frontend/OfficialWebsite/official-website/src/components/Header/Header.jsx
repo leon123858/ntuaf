@@ -5,25 +5,6 @@ import { Menu, Input, Dropdown } from 'antd';
 import { Link } from 'react-router-dom';
 import { SearchOutlined } from "@ant-design/icons"
 import LoginButton from "./LoginButton.jsx"
-
-const items1 = [
-	{
-		key: '1',
-		label: (
-			<a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
-				1st menu item
-			</a>
-		),
-	},
-	{
-		key: '1',
-		label: (
-			<a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
-				1st menu item
-			</a>
-		),
-	}
-]
 const items = [
 	{
 		label: <Link className={styles.link} to={'/about'}>關於我們</Link>,
@@ -35,11 +16,11 @@ const items = [
 		key: 'event',
 		children: [
 			{
-			  label: '展覽',
+			  label: <div className={styles.subMenu}>展覽</div>,
 			  key: 'event',
 			},
 			{
-			  label: '活動',
+			  label: <div className={styles.subMenu}>活動</div>,
 			  key: 'activity',
 			},
 		  ],
@@ -54,15 +35,15 @@ const items = [
 		key: 'special',
 		children: [
 			{
-			  label: '回溯',
+			  label: <div className={styles.subMenu}>洄溯</div>,
 			  key: 'backward',
 			},
 			{
-			  label: '藝術季地圖',
+			  label: <div className={styles.subMenu}>藝術季地圖</div>,
 			  key: 'afMap',
 			},
 			{
-				label: '心理測驗',
+				label: <div className={styles.subMenu}>心理測驗</div>,
 				key: 'psychoTest',
 			  },
 		  ],
@@ -72,28 +53,22 @@ const items = [
 const SearchBar = () => {
 	const [searchBarActive, setSearchBarActive] = useState(false)
 	let className="{searchBarActive ? styles.searchBarWrapperActive : styles.searchBarWrapper}"
+	const onClick = ()=>{
+		if (searchBarActive){
+
+		}else{
+			setSearchBarActive(true)
+		}
+		
+	}
 	return (
 		<div className={searchBarActive ? styles.searchBarWrapperActive :styles.searchBarWrapper}>
 			<div className={searchBarActive?styles.exitButton:styles.exitButtonHidden} onClick={() => { setSearchBarActive(false) }} >X</div>
 			<div className={searchBarActive ? "" : styles.inputWrapperHidden}><Input placeholder="input search text" /></div>
 			<div className={styles.searchIconWrapper}>
-				<SearchOutlined onClick={() => { setSearchBarActive(true) }} style={{ fontSize: "1rem", width: "32px", color: "black" }} />
+				<SearchOutlined onClick={onClick} style={{ fontSize: "1rem", width: "32px", color: "black" }} />
 			</div>
 			
-		</div>
-	)
-}
-const MenuM = () => {
-
-	return (
-		<div className={styles.menuWrapper}>
-			<Link className={styles.link} to={'/about'}>關於我們</Link>
-			{/* <Dropdown menu={{ items1 }}>
-			</Dropdown> */}
-			<Link className={styles.link} to={'/calendar'}>展覽/活動</Link>
-			<Link className={styles.link} to={'/about'}>行事曆</Link>
-			<Link className={styles.link} to={'/about'}>特別企劃</Link>
-			<SearchBar />
 		</div>
 	)
 }
@@ -106,7 +81,6 @@ const Header = () => {
 	}
 	useEffect(()=>{
 		const headerE = document.getElementsByClassName(styles.menuWrapper)[0]
-		console.log(styles.menuWrapper, headerE)
 		const add_class_on_scroll = () => {
 			headerE.classList.add(styles.menuWrapperTransparent)
 		}

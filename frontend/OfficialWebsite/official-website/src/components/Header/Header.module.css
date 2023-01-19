@@ -79,6 +79,9 @@
         transition: all 1s;
         background-color: rgba(50, 50, 50, 0);
     }
+    .subMenu{
+        text-align: center;
+    }
     .searchBarWrapperActive{
         background-color: rgba(110, 110, 110, 1);
         position: absolute;
