@@ -60,9 +60,7 @@ const SideBar = (props) => {
 			//info click non element to deactivate sidebar
 			drawerBodyWrapperE.addEventListener("click", (evt) => {
 				const searchElement = document.getElementById("inputSearch")
-				console.log(searchElement)
 				let triggerE = evt.target; // clicked element      
-
 				//* maybe the trigger element which takes less area is the decendent of target element
 				//* this is, triiger is smaller than target
 				do{
@@ -75,7 +73,7 @@ const SideBar = (props) => {
 			});
 		}
 		
-	}, [])
+	}, [props.activeSideBar])
 
 	return (
 		<Drawer placement="right" open={props.activeSideBar} closable={false} width={"100vw"} mask={false} bodyStyle={activeSearch?{backgroundColor:"gray", transition:"all 1s"}:{}}>

@@ -51,6 +51,7 @@
     width:0px;
     transition: all 1s;
     opacity: 0;
+    display: none;
 }
 .input{
     width:70%;
