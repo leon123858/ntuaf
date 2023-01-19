@@ -1,32 +1,10 @@
 import React from 'react';
 // import style from './Home.module.css';
-import {Card,Tag,Image} from 'antd';
-
-const { Meta } = Card;
-
-const Event = () => {
-	return(
-		<div style={{position: 'relative',top:'-20px', left: '-20px'}}>
-			<div style={{position: 'relative'}}>
-				<Image alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
-				<div style={{position: 'relative', bottom: '25px', left: '0'}}>
-					<Tag color="magenta" >工作仿</Tag>
-				</div>	
-			</div>
-		</div>
-		
-	)
-}
+import EventList from '../components/EventList/EventList';
 
 function About() {
 	return (
-		<Card
-			hoverable
-			style={{ width: 240,position: 'relative' }}
-			cover= {<Event/>}
-		>
-			<Meta title="Europe Street beat" description="www.instagram.com" />
-		</Card>
+		<EventList/>
 		// <>
 		// 	<div className={style.APP}>
 		// 		<header className={style['App-header']}>
