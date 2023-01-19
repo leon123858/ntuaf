@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styles from "./Header.module.css"
 import SideBar from "./SideBar.jsx"
-import { Menu, Input, Dropdown } from 'antd';
+import { Menu, Dropdown } from 'antd';
 import { Link } from 'react-router-dom';
-import { SearchOutlined } from "@ant-design/icons"
+import SearchBar from './SearchBar.jsx';
 import LoginButton from "./LoginButton.jsx"
 const items = [
 	{
@@ -50,28 +50,7 @@ const items = [
 
 	},
 ]
-const SearchBar = () => {
-	const [searchBarActive, setSearchBarActive] = useState(false)
-	let className="{searchBarActive ? styles.searchBarWrapperActive : styles.searchBarWrapper}"
-	const onClick = ()=>{
-		if (searchBarActive){
 
-		}else{
-			setSearchBarActive(true)
-		}
-		
-	}
-	return (
-		<div className={searchBarActive ? styles.searchBarWrapperActive :styles.searchBarWrapper}>
-			<div className={searchBarActive?styles.exitButton:styles.exitButtonHidden} onClick={() => { setSearchBarActive(false) }} >X</div>
-			<div className={searchBarActive ? "" : styles.inputWrapperHidden}><Input placeholder="input search text" /></div>
-			<div className={styles.searchIconWrapper}>
-				<SearchOutlined onClick={onClick} style={{ fontSize: "1rem", width: "32px", color: "black" }} />
-			</div>
-			
-		</div>
-	)
-}
 const Header = () => {
 	// const [item, setItem] = useState(initItem);
 	const [sideBarActive, setSideBarActive] = useState(false)
@@ -111,7 +90,6 @@ const Header = () => {
 					<Menu selectable={false} selectedKeys={"1"}multiple={true} mode="horizontal" items={items} style={{backgroundColor:"rgba(0, 0, 0,0)", border:"none"}} inlineCollapsed={false} disabledOverflow={true}/>
 					<SearchBar />
 				</div>
-				{/* <MenuM /> */}
 				<div className={styles.hidden}><LoginButton /></div>
 
 				<div className={styles.iconContainer} onClick={() => { setSideBarActive(!sideBarActive) }}>
