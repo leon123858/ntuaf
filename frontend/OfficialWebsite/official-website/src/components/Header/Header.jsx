@@ -71,11 +71,15 @@ const items = [
 ]
 const SearchBar = () => {
 	const [searchBarActive, setSearchBarActive] = useState(false)
+	let className="{searchBarActive ? styles.searchBarWrapperActive : styles.searchBarWrapper}"
 	return (
-		<div className={searchBarActive ? styles.searchIconWrapperActive : styles.searchIconWrapper}>
-			<div onClick={() => { setSearchBarActive(false) }} className={styles.exitButton}>X</div>
-			<div className={searchBarActive ? "" : styles.hidden}><Input placeholder="input search text" /></div>
-			<SearchOutlined onClick={() => { setSearchBarActive(true) }} style={{ fontSize: "1rem", width: "32px", color: "black" }} />
+		<div className={searchBarActive ? styles.searchBarWrapperActive :styles.searchBarWrapper}>
+			<div className={searchBarActive?styles.exitButton:styles.exitButtonHidden} onClick={() => { setSearchBarActive(false) }} >X</div>
+			<div className={searchBarActive ? "" : styles.inputWrapperHidden}><Input placeholder="input search text" /></div>
+			<div className={styles.searchIconWrapper}>
+				<SearchOutlined onClick={() => { setSearchBarActive(true) }} style={{ fontSize: "1rem", width: "32px", color: "black" }} />
+			</div>
+			
 		</div>
 	)
 }
@@ -118,9 +122,6 @@ const Header = () => {
 			}else{
 				remove_class_on_scroll()
 			}
-			// if (scrollpos >= scrollChange) { add_class_on_scroll() }
-			// else { remove_class_on_scroll() }
-			
 		})
 	}, [])
 	
