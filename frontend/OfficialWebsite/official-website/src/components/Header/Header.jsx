@@ -87,7 +87,7 @@ const Header = () => {
 				<div className={styles.logo}>LOGO</div>
 				<h1 className={styles.title}>台大藝術季28th</h1>
 				<div className={styles.menuWrapper}>
-					<Menu selectable={false} selectedKeys={"1"}multiple={true} mode="horizontal" items={items} style={{backgroundColor:"rgba(0, 0, 0,0)", border:"none"}} inlineCollapsed={false} disabledOverflow={true}/>
+					<Menu selectable={false} selectedKeys={"1"}multiple={true} mode="horizontal" items={items} style={{backgroundColor:"rgba(0, 0, 0,0)", border:"none"}} disabledOverflow={true}/>
 					<SearchBar />
 				</div>
 				<div className={styles.hidden}><LoginButton /></div>
@@ -97,7 +97,7 @@ const Header = () => {
 					<div className={styles.bar2}></div>
 					<div className={styles.bar3}></div>
 				</div>
-				<SideBar activeSideBar={sideBarActive} onClose={onClose}></SideBar>
+				<SideBar activeSideBar={sideBarActive} setSideBarActive={setSideBarActive} onClose={onClose}></SideBar>
 
 			</div>
 		</div>
