@@ -7,10 +7,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(255, 248, 240);
+    background-color: rgb(255, 248, 240, 0);
     padding: 0 2%;
     /* overflow: hidden; */
     height: 80px;
+    transition:all 1s
 }
 
 .logo {
@@ -61,6 +62,9 @@
         position: fixed;
         width:100%
         /* top: 0; */
+    }
+    .headerWrapperTransparent{
+        background-color: rgb(255, 248, 240);
     }
     .menuWrapper{
         position: fixed;

@@ -80,21 +80,24 @@ const Header = () => {
 		setSideBarActive(false)
 	}
 	useEffect(()=>{
-		const headerE = document.getElementsByClassName(styles.menuWrapper)[0]
-		const add_class_on_scroll = () => {
-			headerE.classList.add(styles.menuWrapperTransparent)
+		// const headerE = document.getElementsByClassName(styles.menuWrapper)[0]
+		const add_class_on_scroll = (element, className) => {
+			element.classList.add(className)
 		}
-		const remove_class_on_scroll = () => {
-			headerE.classList.remove(styles.menuWrapperTransparent)
+		const remove_class_on_scroll = (element, className) => {
+			element.classList.remove(className)
 		}
 		window.addEventListener('scroll', function() {
+			const menuE = document.getElementsByClassName(styles.menuWrapper)[0]
+			const headerE = document.getElementsByClassName(styles.headerWrapper)[0]
 			let offsetChangeHeader = 10 
 			let scrollpos = window.scrollY;
-			console.log(scrollpos)
 			if (scrollpos>offsetChangeHeader){
-				add_class_on_scroll()
+				add_class_on_scroll(menuE, styles.menuWrapperTransparent)
+				add_class_on_scroll(headerE, styles.headerWrapperTransparent)
 			}else{
-				remove_class_on_scroll()
+				remove_class_on_scroll(menuE, styles.menuWrapperTransparent)
+				remove_class_on_scroll(headerE, styles.headerWrapperTransparent)
 			}
 		})
 	}, [])
