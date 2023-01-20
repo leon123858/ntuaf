@@ -11,14 +11,23 @@ import { uploadImage } from '../storage';
  * @returns 投稿唯一識別號
  */
 export const createArtwork = async (
-	artwork: Omit<Artwork, 'id' | 'email' | 'createTime' | 'like' | 'tmpLike'>
+	artwork:
+		| Pick<Artwork, 'type' | 'name' | 'text' | 'url'>
+		| Pick<Artwork, 'type' | 'name' | 'text'>
 ) => {
-	const { type, name, url = null, text = '' } = artwork;
-	const email = userEmail();
-	if (!email) throw 'Should login first';
+	const {
+		type,
+		name,
+		text = '',
+		url = null,
+	} = artwork as Pick<Artwork, 'type' | 'name' | 'text' | 'url'>;
 	if (!Object.values(ARTWORK_TYPE).includes(type))
 		throw 'not exist type of artwork';
+	if (type !== ARTWORK_TYPE.PURE_TEXT && url == null)
+		throw 'please input image for this type artwork';
 	if (!name || (!url && text == '')) throw 'less name or url or text';
+	const email = userEmail();
+	if (!email) throw 'Should login first';
 	const newUrl = !url ? null : await uploadImage(url);
 	const newArtwork: Artwork = {
 		type,
