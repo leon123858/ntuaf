@@ -3,7 +3,7 @@
  */
 import { expect } from 'chai';
 import { loginForTest, logout } from '../src/utils/auth';
-import { createArtwork } from '../src/utils/db/artwork';
+import { createArtwork, getArtworkList } from '../src/utils/db/artwork';
 import { ARTWORK_TYPE } from '../src/types/enums';
 import { readFile } from 'fs/promises';
 import { collection, addDoc } from 'firebase/firestore';
@@ -112,4 +112,51 @@ describe('test artwork create operation', function () {
 	});
 });
 
-describe('test artwork get operation', function () {});
+describe('test artwork get operation', function () {
+	before(async () => {
+		await loginForTest('a0970785699@gmail.com', '000000');
+		await Promise.all(
+			[...new Array(20)].map((v, i) =>
+				createArtwork({
+					type: ARTWORK_TYPE.PURE_TEXT,
+					name: 'testName' + i,
+					text: 'test text' + i,
+				})
+			)
+		);
+		await logout();
+	});
+	it('Should get artwork list success', async () => {
+		const firstFetch = await getArtworkList(ARTWORK_TYPE.PURE_TEXT);
+		expect(firstFetch.cursor).is.not.null;
+		expect(firstFetch.data[0]).includes({
+			like: 0,
+			type: '純文字組',
+			email: 'a0970785699@gmail.com',
+			url: null,
+			tmpLike: 0,
+		});
+		expect(typeof firstFetch.data[0].id).eql('string');
+		expect(typeof firstFetch.data[0].text).eql('string');
+		expect(typeof firstFetch.data[0].name).eql('string');
+		const secondFetch = await getArtworkList(
+			ARTWORK_TYPE.PURE_TEXT,
+			firstFetch.cursor
+		);
+		expect(secondFetch.cursor).is.not.null;
+		expect(secondFetch.data.length).eql(10);
+		const finalFetch = await getArtworkList(
+			ARTWORK_TYPE.PURE_TEXT,
+			secondFetch.cursor
+		);
+		expect(finalFetch.cursor).is.null;
+	});
+	it('Should error with wrong artwork type', async () => {
+		try {
+			await getArtworkList('AAA' as any);
+			throw 'should be error here';
+		} catch (err) {
+			expect(err).eql('not exist type of artwork');
+		}
+	});
+});
