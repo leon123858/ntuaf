@@ -1,7 +1,7 @@
 import { dbInstance } from '../initFirebase';
 import { Artwork } from '../../types/types';
 import { ARTWORK_TYPE } from '../../types/enums';
-import { userEmail } from '../auth';
+import { userEmail, userId } from '../auth';
 import { uploadImage } from '../storage';
 import {
 	collection,
@@ -14,6 +14,9 @@ import {
 	startAfter,
 	getDocs,
 	where,
+	getDoc,
+	doc,
+	setDoc,
 } from 'firebase/firestore';
 
 /**
@@ -100,8 +103,36 @@ export const getArtworkList = async (
 	};
 };
 
-export const getLikeToday = async () => {};
+export const getLikeToday = async () => {
+	const id = userId();
+	if (!id) throw 'should login first';
+	const data = (await getDoc(doc(dbInstance, 'UserTmpData', id))).data() as
+		| { likeArtwork: string[] }
+		| undefined;
+	if (!data) return [] as string[];
+	return data.likeArtwork;
+};
 
-export const likeArtwork = async () => {};
+const removeItem = (arr: Array<string>, value: string): Array<string> => {
+	const index = arr.indexOf(value);
+	if (index > -1) {
+		arr.splice(index, 1);
+	}
+	return arr;
+};
 
-export const unlikeArtwork = async () => {};
+export const triggerLikeArtwork = async (artworkId: string) => {
+	let currentList = await getLikeToday();
+	// 追加,或消去
+	currentList = currentList.includes(artworkId)
+		? removeItem(currentList, artworkId)
+		: [...currentList, artworkId];
+	// 查看是否合法
+	if (currentList.length > 3) {
+		throw 'user can not like more than 3 items';
+	}
+	await setDoc(doc(dbInstance, 'UserTmpData', userId()), {
+		likeArtwork: currentList,
+	});
+	return currentList;
+};
