@@ -1,10 +1,15 @@
 import React from 'react';
-import style from './Home.module.css';
+// import style from './Home.module.css';
+import ArtBox from '../components/artBox/artBox.jsx'
+// import Video from '../components/VideoBox/videoBox.jsx';
+import Map from '../components/Map/Map.jsx';
 
 function About() {
 	return (
 		<>
-			<div className={style.APP}>
+			<ArtBox></ArtBox>
+			<Map></Map>
+			{/* <div className={style.APP}>
 				<header className={style['App-header']}>
 					<img src={'/logo.svg'} className={style['App-logo']} alt='logo' />
 					<p>
@@ -19,7 +24,7 @@ function About() {
 						Learn React
 					</a>
 				</header>
-			</div>
+			</div> */}
 		</>
 	);
 }
