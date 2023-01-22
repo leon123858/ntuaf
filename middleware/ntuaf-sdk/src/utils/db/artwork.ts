@@ -17,6 +17,8 @@ import {
 	getDoc,
 	doc,
 	setDoc,
+	updateDoc,
+	increment,
 } from 'firebase/firestore';
 
 /**
@@ -102,8 +104,11 @@ export const getArtworkList = async (
 		}),
 	};
 };
-
-export const getLikeToday = async () => {
+/**
+ * 獲取該用戶當日的喜愛作品
+ * @returns 作品編號列表
+ */
+export const getLikeArtworkToday = async () => {
 	const id = userId();
 	if (!id) throw 'should login first';
 	const data = (await getDoc(doc(dbInstance, 'UserTmpData', id))).data() as
@@ -113,24 +118,30 @@ export const getLikeToday = async () => {
 	return data.likeArtwork;
 };
 
-const removeItem = (arr: Array<string>, value: string): Array<string> => {
+const removeItem = <T>(arr: Array<T>, value: T): Array<T> => {
 	const index = arr.indexOf(value);
 	if (index > -1) {
 		arr.splice(index, 1);
 	}
 	return arr;
 };
-
+/**
+ * 觸發用戶對投稿的喜歡事件, 第一次是喜歡, 第二次是取消
+ * @param artworkId 投稿編號
+ * @returns 當前的喜歡列表
+ */
 export const triggerLikeArtwork = async (artworkId: string) => {
-	let currentList = await getLikeToday();
+	const currentList = await getLikeArtworkToday();
+	const isInclude = currentList.includes(artworkId);
 	// 追加,或消去
-	currentList = currentList.includes(artworkId)
-		? removeItem(currentList, artworkId)
-		: [...currentList, artworkId];
+	isInclude ? removeItem(currentList, artworkId) : currentList.push(artworkId);
 	// 查看是否合法
 	if (currentList.length > 3) {
 		throw 'user can not like more than 3 items';
 	}
+	await updateDoc(doc(dbInstance, 'Artworks', artworkId), {
+		tmpLike: increment(isInclude ? -1 : 1),
+	});
 	await setDoc(doc(dbInstance, 'UserTmpData', userId()), {
 		likeArtwork: currentList,
 	});

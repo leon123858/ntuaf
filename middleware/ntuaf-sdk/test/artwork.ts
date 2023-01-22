@@ -2,11 +2,24 @@
  * test artwork operation
  */
 import { expect } from 'chai';
-import { loginForTest, logout } from '../src/utils/auth';
-import { createArtwork, getArtworkList } from '../src/utils/db/artwork';
+import { loginForTest, logout, userId } from '../src/utils/auth';
+import {
+	createArtwork,
+	getArtworkList,
+	getLikeArtworkToday,
+	triggerLikeArtwork,
+} from '../src/utils/db/artwork';
 import { ARTWORK_TYPE } from '../src/types/enums';
 import { readFile } from 'fs/promises';
-import { collection, addDoc } from 'firebase/firestore';
+import {
+	collection,
+	addDoc,
+	setDoc,
+	doc,
+	getDoc,
+	updateDoc,
+	increment,
+} from 'firebase/firestore';
 import { dbInstance } from '../src/utils/initFirebase';
 
 describe('test artwork create operation', function () {
@@ -161,6 +174,100 @@ describe('test artwork get operation', function () {
 			throw 'should be error here';
 		} catch (err) {
 			expect(err).eql('not exist type of artwork');
+		}
+	});
+});
+
+describe('test artwork like operation', function () {
+	before(async () => {
+		await loginForTest('a0970785699@gmail.com', '000000');
+		await setDoc(doc(dbInstance, 'UserTmpData', userId() as string), {
+			likeArtwork: ['test1', 'test2', 'test3'],
+		});
+	});
+	after(async () => {
+		await logout();
+	});
+	it('Should get user today like list and trigger tmpData/tmpLike', async () => {
+		const list = await getLikeArtworkToday();
+		expect(list).eqls(['test1', 'test2', 'test3']);
+		await getLikeArtworkToday();
+		await triggerLikeArtwork('test1');
+		expect(await getLikeArtworkToday()).eql(['test2', 'test3']);
+		const tmpDoc = (
+			await getDoc(doc(dbInstance, 'Artworks', 'test1'))
+		).data() as any;
+		expect(tmpDoc.tmpLike).eql(32);
+		await triggerLikeArtwork('test1');
+		const tmpDo2 = (
+			await getDoc(doc(dbInstance, 'Artworks', 'test1'))
+		).data() as any;
+		expect(tmpDo2.tmpLike).eql(33);
+	});
+	it('Should not get/trigger when logout', async () => {
+		await logout();
+		try {
+			await getLikeArtworkToday();
+			throw 'should be error';
+		} catch (err) {
+			expect(err).eql('should login first');
+		}
+		try {
+			await triggerLikeArtwork('test1');
+			throw 'should be error';
+		} catch (err) {
+			expect(err).eql('should login first');
+		}
+		await loginForTest('a0970785699@gmail.com', '000000');
+	});
+	it('Should not read/write other user tmp data', async () => {
+		// write other user
+		try {
+			await setDoc(doc(dbInstance, 'UserTmpData', 'otherUserId'), {
+				likeArtwork: [],
+			});
+			throw 'should be error';
+		} catch (err) {
+			expect(err.code).eql('permission-denied');
+		}
+		// read other user
+		try {
+			await getDoc(doc(dbInstance, 'UserTmpData', 'otherUserId'));
+			throw 'should be error';
+		} catch (err) {
+			expect(err.code).eql('permission-denied');
+		}
+	});
+	it('Should only update tmpLike in artwork and artwork should be exist', async () => {
+		await updateDoc(doc(dbInstance, 'Artworks', 'test3'), {
+			tmpLike: increment(1),
+		});
+		// not exist can not update
+		try {
+			await updateDoc(doc(dbInstance, 'Artworks', 'test000'), {
+				tmpLike: increment(1),
+			});
+			throw 'should be error';
+		} catch (err) {
+			expect(err.code).eql('permission-denied');
+		}
+		// update other field
+		try {
+			await updateDoc(doc(dbInstance, 'Artworks', 'test1'), {
+				tmpLike: increment(1),
+				like: increment(10),
+			});
+			throw 'should be error';
+		} catch (err) {
+			expect(err.code).eql('permission-denied');
+		}
+		try {
+			await updateDoc(doc(dbInstance, 'Artworks', 'test1'), {
+				text: 'Test text',
+			});
+			throw 'should be error';
+		} catch (err) {
+			expect(err.code).eql('permission-denied');
 		}
 	});
 });
