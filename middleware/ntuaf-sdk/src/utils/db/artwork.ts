@@ -57,26 +57,30 @@ export const createArtwork = async (
 /**
  * 依類別獲取投稿內容
  * @param type 投稿類別
+ * @param orderByCol 利用喜歡數或創建時間排序
  * @param cursor page 游標, 輸入 null 表示從頭取
  * @returns data 為數據, cursor 為下一頁的游標, 游標為 null 表示最末頁
  */
 export const getArtworkList = async (
 	type: ARTWORK_TYPE,
+	orderByCol: 'like' | 'createTime',
 	cursor: DocumentSnapshot<DocumentData> | null = null
 ) => {
+	if (orderByCol !== 'like' && orderByCol !== 'createTime')
+		throw 'orderByCol should be [like] or [createTime]';
 	if (!Object.values(ARTWORK_TYPE).includes(type))
 		throw 'not exist type of artwork';
 	const queryCommand = cursor
 		? query(
 				collection(dbInstance, 'Artworks'),
-				orderBy('like'),
+				orderBy(orderByCol, 'desc'),
 				where('type', '==', type),
 				startAfter(cursor),
 				limit(10)
 		  )
 		: query(
 				collection(dbInstance, 'Artworks'),
-				orderBy('like'),
+				orderBy(orderByCol, 'desc'),
 				where('type', '==', type),
 				limit(10)
 		  );

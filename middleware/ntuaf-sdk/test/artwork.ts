@@ -127,33 +127,37 @@ describe('test artwork get operation', function () {
 		await logout();
 	});
 	it('Should get artwork list success', async () => {
-		const firstFetch = await getArtworkList(ARTWORK_TYPE.PURE_TEXT);
-		expect(firstFetch.cursor).is.not.null;
-		expect(firstFetch.data[0]).includes({
-			like: 0,
-			type: '純文字組',
-			email: 'a0970785699@gmail.com',
-			url: null,
-			tmpLike: 0,
+		['like', 'createTime'].forEach(async (v: any) => {
+			const firstFetch = await getArtworkList(ARTWORK_TYPE.PURE_TEXT, v);
+			expect(firstFetch.cursor).is.not.null;
+			expect(firstFetch.data[0]).includes({
+				like: 0,
+				type: '純文字組',
+				email: 'a0970785699@gmail.com',
+				url: null,
+				tmpLike: 0,
+			});
+			expect(typeof firstFetch.data[0].id).eql('string');
+			expect(typeof firstFetch.data[0].text).eql('string');
+			expect(typeof firstFetch.data[0].name).eql('string');
+			const secondFetch = await getArtworkList(
+				ARTWORK_TYPE.PURE_TEXT,
+				v,
+				firstFetch.cursor
+			);
+			expect(secondFetch.cursor).is.not.null;
+			expect(secondFetch.data.length).eql(10);
+			const finalFetch = await getArtworkList(
+				ARTWORK_TYPE.PURE_TEXT,
+				v,
+				secondFetch.cursor
+			);
+			expect(finalFetch.cursor).is.null;
 		});
-		expect(typeof firstFetch.data[0].id).eql('string');
-		expect(typeof firstFetch.data[0].text).eql('string');
-		expect(typeof firstFetch.data[0].name).eql('string');
-		const secondFetch = await getArtworkList(
-			ARTWORK_TYPE.PURE_TEXT,
-			firstFetch.cursor
-		);
-		expect(secondFetch.cursor).is.not.null;
-		expect(secondFetch.data.length).eql(10);
-		const finalFetch = await getArtworkList(
-			ARTWORK_TYPE.PURE_TEXT,
-			secondFetch.cursor
-		);
-		expect(finalFetch.cursor).is.null;
 	});
 	it('Should error with wrong artwork type', async () => {
 		try {
-			await getArtworkList('AAA' as any);
+			await getArtworkList('AAA' as any, 'createTime');
 			throw 'should be error here';
 		} catch (err) {
 			expect(err).eql('not exist type of artwork');
