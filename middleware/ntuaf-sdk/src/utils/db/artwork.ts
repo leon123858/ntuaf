@@ -25,6 +25,12 @@ import {
  * 上傳投稿表單
  * @param artwork 去掉對應參數
  * @returns 投稿唯一識別號
+ * @description 重要: 上傳本地圖片需要用 URL.createObjectURL(blob) 轉換成 url
+ * @example
+ * // 創建含圖片投稿
+ * await createArtwork({type: ARTWORK_TYPE.PAINTING,name: '王小小',url,text: '測試文字內容',})
+ * // 不含圖片投稿
+ * await createArtwork({type: ARTWORK_TYPE.PURE_TEXT,name: '王小小',text: '測試文字內容',})
  */
 export const createArtwork = async (
 	artwork:
@@ -65,6 +71,11 @@ export const createArtwork = async (
  * @param orderByCol 利用喜歡數或創建時間排序
  * @param cursor page 游標, 輸入 null 表示從頭取
  * @returns data 為數據, cursor 為下一頁的游標, 游標為 null 表示最末頁
+ * @example
+ * // 用 like 排序, 從頭排
+ * let {cursor} = await getArtworkList(ARTWORK_TYPE.PURE_TEXT, 'like');
+ * // 下一頁
+ * await getArtworkList(ARTWORK_TYPE.PURE_TEXT, 'like', cursor)
  */
 export const getArtworkList = async (
 	type: ARTWORK_TYPE,
@@ -107,6 +118,8 @@ export const getArtworkList = async (
 /**
  * 獲取該用戶當日的喜愛作品
  * @returns 作品編號列表
+ * @example
+ * await getLikeArtworkToday() // ['id1','id2']
  */
 export const getLikeArtworkToday = async () => {
 	const id = userId();
@@ -129,6 +142,9 @@ const removeItem = <T>(arr: Array<T>, value: T): Array<T> => {
  * 觸發用戶對投稿的喜歡事件, 第一次是喜歡, 第二次是取消
  * @param artworkId 投稿編號
  * @returns 當前的喜歡列表
+ * @example
+ * await getLikeArtworkToday() // []
+ * await triggerLikeArtwork('id5') // ['id5']
  */
 export const triggerLikeArtwork = async (artworkId: string) => {
 	const currentList = await getLikeArtworkToday();

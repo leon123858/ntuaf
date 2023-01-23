@@ -25,6 +25,9 @@ export const loginForTest = async (email: string, password = '000000') => {
 
 /**
  * 使用者登出
+ * @example
+ * // 用戶按下登出後
+ * await logout()
  */
 export const logout = async () => {
 	await signOut(authInstance);
@@ -34,6 +37,11 @@ export const logout = async () => {
  * 使用者信箱
  * @return string || undefined
  * @note 未登入狀態回傳 "undefined", 剛開啟程式時調用,可能取得未登入結果其實已登入
+ * @example
+ * // 當已用 gmail: a0970785699@gmail.com 登入
+ * console.log(userEmail()) // a0970785699@gmail.com
+ * // 當沒登入
+ * console.log(userEmail()) // undefined
  */
 export const userEmail = () => {
 	return authInstance.currentUser?.email;
@@ -43,6 +51,11 @@ export const userEmail = () => {
  * @description 使用者唯一編號
  * @return string || undefined
  * @note 未登入狀態回傳 "undefined", 剛開啟程式時調用,可能取得未登入結果其實已登入
+ * @example
+ * // 當已用 gmail: a0970785699@gmail.com 登入
+ * console.log(userId()) // 某特定唯一編號
+ * // 當沒登入
+ * console.log(userId()) // undefined
  */
 export const userId = () => {
 	return authInstance.currentUser?.uid;
@@ -51,6 +64,7 @@ export const userId = () => {
 /**
  * 訂閱登入狀態
  * @param func 函數,每次進入登入狀態後調用
+ * @description 常用來抓取上一次進入網頁的登入狀態
  * @example
  * function callback(user){
  * 	console.log(user.uid)
@@ -67,6 +81,9 @@ export const subscriptAuthState = (func: (user: User) => void) => {
 
 /**
  * 第三方登入
+ * @example
+ * // 按下登入後執行
+ * await login()
  */
 export const login = async () => {
 	await signInWithRedirect(authInstance, new GoogleAuthProvider());
@@ -75,6 +92,10 @@ export const login = async () => {
 /**
  * 抓取用戶第三方登入結果
  * @returns 用戶信箱
+ * @example
+ * // 第三方登入流程
+ * await login()
+ * console.log(await getLoginResult()) // user email
  */
 export const getLoginResult = async () => {
 	try {

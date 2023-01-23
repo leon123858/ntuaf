@@ -80,6 +80,19 @@ classDiagram
 
 ## methods
 
+### 常用列表獲取
+
+```javascript
+// 獲取部門成員
+await getMembersByDepartment('策展部');
+// 獲取近期/常設推薦事件
+await getRecommendEvents('recent');
+// 獲取當天事件
+await getDayEvents(2, 28);
+// 獲取大類別事件列表
+await getTabEvents('展覽');
+```
+
 ### 用戶相關
 
 ```javascript

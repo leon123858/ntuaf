@@ -6,6 +6,8 @@ import { BlOCK_TYPE, EVENT_TYPE, ITEM_TYPE } from '../../types/enums';
  * 獲取系統事件詳細資訊
  * @param eventId 事件唯一編號
  * @returns 事件型別, 若事件不存在, 回傳未定義
+ * @example
+ * await getEvent('eventId')
  */
 export const getEvent = async (eventId: string) => {
 	const data = (await getDoc(doc(dbInstance, 'Events', eventId))).data() as
@@ -53,7 +55,9 @@ const correctBlock = (block: Block) => {
 /**
  * 校正事件欄位
  * @param event
- * @returns 校正結果
+ * @returns 校正結果, 去掉錯誤欄位, 補上不完整欄位
+ * @example
+ * const newEvent = correctEvent(oldEvent)
  */
 export const correctEvent = (event: Event) => {
 	const {
@@ -82,6 +86,8 @@ export const correctEvent = (event: Event) => {
  * 更新事件
  * @param event 完整事件資訊, 需包含事件 id
  * @note 若事件不存在, 權限不足皆會對外報錯
+ * @example
+ * await updateEvent({ id: 'test0', ...someThing });
  */
 export const updateEvent = async (event: Event) => {
 	const { id } = event;
