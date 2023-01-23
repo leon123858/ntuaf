@@ -44,8 +44,8 @@ export const getDayEvents = async (
 	).data() as
 		| {
 				data: {
-					activity: { name: string; info: string }[];
-					exhibition: { name: string; info: string }[];
+					activity: { name: string; info: string; id: string }[];
+					exhibition: { name: string; info: string; id: string }[];
 				};
 		  }
 		| undefined;
@@ -62,7 +62,15 @@ export const getTabEvents = async (tabName: '展覽' | '活動') => {
 	const data = (
 		await getDoc(doc(dbInstance, 'Cache', 'TabEvents', tabName))
 	).data() as
-		| { data: { subTab: string; title: string; date: string; url: string }[] }
+		| {
+				data: {
+					subTab: string;
+					title: string;
+					date: string;
+					url: string;
+					id: string;
+				}[];
+		  }
 		| undefined;
 	if (!data) throw 'can not fetch target cache';
 	return data.data;
