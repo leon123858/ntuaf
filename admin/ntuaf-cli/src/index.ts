@@ -1,7 +1,8 @@
+#! /usr/bin/env node
 import { assert } from 'console';
 import { Command } from 'commander';
 import { insertSample } from './utils/insertSample';
-import { askMode } from './utils/prompts';
+import { askMode, MODE_TYPE } from './utils/prompts';
 const figlet = require('figlet');
 
 const program = new Command();
@@ -38,7 +39,7 @@ const options = program.opts();
 	}
 	const mode = (await askMode()).mode;
 	switch (mode) {
-		case 'insertSample':
+		case MODE_TYPE.插入測試資料:
 			await insertSample();
 			break;
 		default:
