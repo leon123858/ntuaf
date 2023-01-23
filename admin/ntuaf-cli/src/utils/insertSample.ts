@@ -1,4 +1,4 @@
-const { db } = require('../init');
+import { db } from '../init';
 
 const insertSample = async () => {
 	const cityRef = db.collection('cities').doc('BJ');

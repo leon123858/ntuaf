@@ -1,7 +1,7 @@
-const { assert } = require('console');
-const { Command } = require('commander');
-const { insertSample } = require('./utils/insertSample');
-const { askMode } = require('./utils/prompts');
+import { assert } from 'console';
+import { Command } from 'commander';
+import { insertSample } from './utils/insertSample';
+import { askMode } from './utils/prompts';
 const figlet = require('figlet');
 
 const program = new Command();
