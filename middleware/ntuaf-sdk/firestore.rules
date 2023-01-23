@@ -1,6 +1,26 @@
 rules_version = '2';
+function isUpdateOnlySuchField(field) {
+    return request.resource.data.diff(resource.data).affectedKeys().hasOnly([field]);
+}
 service cloud.firestore {
   match /databases/{database}/documents {
+    match /UserTmpData/{userId} {
+      allow read, write: if request.auth != null
+                            && request.auth.uid == userId;
+    }
+    match /Artworks/{artworkId} {
+  	  allow read : if true;
+  	  allow create : if request.auth != null 
+                        && request.auth.token.email == request.resource.data.email
+                        && request.resource.data.like == 0
+                        && request.resource.data.tmpLike == 0;
+      allow update : if request.auth != null
+                        && isUpdateOnlySuchField('tmpLike');
+  	}
+    match /Events/{eventId} {
+  	  allow read : if true;
+  	  allow update : if eventId in get(/databases/$(database)/documents/Members/$(request.auth.token.email)).data.admin;
+  	}
     match /{document=**} {
       allow read, write: if false;
     }
