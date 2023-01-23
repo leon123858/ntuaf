@@ -1,6 +1,6 @@
 {
 	"name": "@leon123858/ntuaf-sdk",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "an npm module to access database of ntuaf system",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -13,7 +13,8 @@
 		"testScript": "mocha -r ts-node/register test/*.ts  --exit",
 		"test": "firebase emulators:exec \"yarn testScript\" --import=./test/saved-data",
 		"start": "tsc --build && node ./dist/index.js",
-		"deploy": "yarn test && yarn start && npm publish --registry=https://npm.pkg.github.com",
+		"rules": "firebase deploy --only firestore:rules && firebase deploy --only storage",
+		"deploy": "yarn test && yarn start && yarn rules && npm publish --registry=https://npm.pkg.github.com",
 		"addUser": "npm adduser --registry=https://npm.pkg.github.com --scope=@leon123858",
 		"enumerate": "firebase emulators:start --import=./test/saved-data",
 		"enumerateExport": "firebase emulators:start --import=./test/saved-data --export-on-exit=./test/saved-data",
