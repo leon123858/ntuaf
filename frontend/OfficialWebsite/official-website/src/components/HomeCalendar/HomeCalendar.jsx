@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import moment from 'moment'
 import { DayPickerSingleDateController } from "react-dates";
 import DayScheduleCard from './DayScheduleCard'
 import 'react-dates/initialize';
 import style from './HomeCalendar.module.css';
+import { BreakPointContext } from '../../useBreakPoint';
 
 const defaultEvents = [
     {
@@ -17,6 +18,30 @@ const defaultEvents = [
                 },
             ],
             exhibition: [
+                {
+                    name: '莫比烏斯環: 止宿之境',
+                    info: '振興草坪'
+                },
+                {
+                    name: '莫比烏斯環: 止宿之境',
+                    info: '振興草坪'
+                },
+                {
+                    name: '莫比烏斯環: 止宿之境',
+                    info: '振興草坪'
+                },
+                {
+                    name: '莫比烏斯環: 止宿之境',
+                    info: '振興草坪'
+                },
+                {
+                    name: '莫比烏斯環: 止宿之境',
+                    info: '振興草坪'
+                },
+                {
+                    name: '莫比烏斯環: 止宿之境',
+                    info: '振興草坪'
+                },
                 {
                     name: '莫比烏斯環: 止宿之境',
                     info: '振興草坪'
@@ -112,6 +137,7 @@ const HomeCalendar = ({events = defaultEvents}) => {
     const startDate = moment("05-04-2023", "MM-DD-YYYY");
     const [date, setDate] = useState(startDate);
     const [focused, setFocused] = useState(true);
+    const { inBreakPoint } = useContext(BreakPointContext);
     
     const onDateChange = (currentDate) => setDate(currentDate);
     const onFocusChange = () => setFocused(true);
@@ -127,7 +153,7 @@ const HomeCalendar = ({events = defaultEvents}) => {
     }
 
     return (
-        <div className={style.container}>
+        <div className={(inBreakPoint) ? style.container : `${style.container} ${style.lgContainer}`}>
             <DayPickerSingleDateController
                 date={date}
                 focused={focused}

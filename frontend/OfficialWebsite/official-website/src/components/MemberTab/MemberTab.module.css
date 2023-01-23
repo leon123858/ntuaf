@@ -1,35 +1,46 @@
 .container {
   margin: 0 auto;
+  width: 100%;
 }
-
 .department {
+  display: grid;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 8px;
+}
+.lgDepartment {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 8px;
+  margin-top: 12px;
 }
-
-.imageContainer img {
+.img {
   width: 125px;
   border-radius: 50%;
-  margin-right: 84px;
+  margin: 0 auto 32px auto;
 }
-
-.memberContainer {
-  width: 15%;
-  font-size: 16px;
+.lgImg {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  margin-right: 70px;
+}
+.positionRow {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  grid-template-columns: 20% 80%;
+  margin-bottom: 8px;
+  font-size: 16px;
+  white-space: nowrap;
 }
-
+.memberContainer {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  row-gap: 8px;
+}
 .member {
-  width: 150px;
-  text-overflow: ellipsis;
+  width: 80px;
   white-space: nowrap;
   overflow: hidden;
-}
-
-.memberName {
-  margin-right: 16px;
+  text-overflow: ellipsis;
 }
