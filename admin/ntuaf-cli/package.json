@@ -5,9 +5,9 @@
 	"main": "index.js",
 	"scripts": {
 		"build": "npx tsc",
-		"start": "yarn build && node ./dist/index.js",
+		"start": "yarn build && cp ./key.json ./dist/key.json && node ./dist/index.js",
 		"cliExtHelp": "yarn build && node ./dist/index.js -h",
-		"test": "export FIRESTORE_EMULATOR_HOST='127.0.0.1:8080' && ts-node ./src/index.ts -d",
+		"test": "export FIRESTORE_EMULATOR_HOST='127.0.0.1:8080' && cp ./key.json ./src/key.json && ts-node ./src/index.ts -d",
 		"enumerate": "firebase emulators:start",
 		"globalInstall": "yarn build && npm install -g .",
 		"globalRemove": "npm uninstall -g ntuaf-cli"

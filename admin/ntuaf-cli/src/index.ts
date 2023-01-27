@@ -1,8 +1,10 @@
 #! /usr/bin/env node
+import { Socket } from 'net';
 import { assert } from 'console';
 import { Command } from 'commander';
 import { insertSample } from './utils/insertSample';
 import { askMode, MODE_TYPE } from './utils/prompts';
+
 const figlet = require('figlet');
 
 const program = new Command();
@@ -29,6 +31,12 @@ const options = program.opts();
 		if (!isEnvSet) {
 			return 1;
 		}
+		if (!(await isPortReachable(8080, { host: '127.0.0.1' }))) {
+			console.error(
+				"Should use 'yarn enumerate' to start a enumerate local for testing"
+			);
+			return 1;
+		}
 	}
 	// 是否為允許的可自動化執行模式
 	if (options.mode) {
@@ -52,3 +60,33 @@ const options = program.opts();
 			break;
 	}
 })();
+
+async function isPortReachable(
+	port: number,
+	{ host, timeout = 1000 }: { host: string; timeout?: number }
+) {
+	const promise = new Promise((resolve, reject) => {
+		const socket = new Socket();
+
+		const onError = () => {
+			socket.destroy();
+			reject(1);
+		};
+
+		socket.setTimeout(timeout);
+		socket.once('error', onError);
+		socket.once('timeout', onError);
+
+		socket.connect(port, host, () => {
+			socket.end();
+			resolve(0);
+		});
+	});
+
+	try {
+		await promise;
+		return true;
+	} catch {
+		return false;
+	}
+}
