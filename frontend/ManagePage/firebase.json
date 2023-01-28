@@ -1,7 +1,7 @@
 {
 	"hosting": {
 		"site": "ntuaf-manage-dev",
-		"public": "./manage-page/dist",
+		"public": "./manage-page/build",
 		"ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
 	}
 }
