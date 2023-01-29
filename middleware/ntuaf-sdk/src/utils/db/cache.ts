@@ -7,8 +7,9 @@ import { getDoc, doc } from 'firebase/firestore';
  * @returns job 是職稱 ex: 部長
  */
 export const getMembersByDepartment = async (departmentName: string) => {
+	// ex: Cache/Members/Department/策展部
 	const data = (
-		await getDoc(doc(dbInstance, 'Cache', 'Members', departmentName))
+		await getDoc(doc(dbInstance, 'Cache/Members/Department', departmentName))
 	).data() as { data: { name: string; job: string }[] } | undefined;
 	if (!data) throw 'can not fetch target cache';
 	return data.data;
@@ -20,8 +21,9 @@ export const getMembersByDepartment = async (departmentName: string) => {
  * @returns
  */
 export const getRecommendEvents = async (type: 'recent' | 'always') => {
+	// ex: Cache/Events/Recommend/recent
 	const data = (
-		await getDoc(doc(dbInstance, 'Cache', 'Recommend', type))
+		await getDoc(doc(dbInstance, 'Cache/Events/Recommend', type))
 	).data() as
 		| { data: { image: string; text: string; id: string }[] }
 		| undefined;
@@ -39,8 +41,9 @@ export const getDayEvents = async (
 	month: number | string,
 	day: number | string
 ) => {
+	// ex: Cache/Events/DayEvents/4_4
 	const data = (
-		await getDoc(doc(dbInstance, 'Cache', 'DayEvents', `${month}_${day}`))
+		await getDoc(doc(dbInstance, 'Cache/Events/DayEvents', `${month}_${day}`))
 	).data() as
 		| {
 				data: {
@@ -59,8 +62,9 @@ export const getDayEvents = async (
  * @returns
  */
 export const getTabEvents = async (tabName: '展覽' | '活動') => {
+	// ex: Cache/Events/TabEvents/展覽
 	const data = (
-		await getDoc(doc(dbInstance, 'Cache', 'TabEvents', tabName))
+		await getDoc(doc(dbInstance, 'Cache/Events/TabEvents', tabName))
 	).data() as
 		| {
 				data: {
