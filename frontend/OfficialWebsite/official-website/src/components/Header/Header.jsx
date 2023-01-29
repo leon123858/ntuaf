@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+
+import React, { useEffect, useState, useContext } from 'react';
 import styles from "./Header.module.css"
 import SideBar from "./SideBar.jsx"
 import { Menu, Dropdown } from 'antd';
 import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar.jsx';
 import LoginButton from "./LoginButton.jsx"
+import { BreakPointContext } from '../../useBreakPoint';
+
 const items = [
 	{
 		label: <Link className={styles.link} to={'/about'}>關於我們</Link>,
@@ -16,14 +19,14 @@ const items = [
 		key: 'event',
 		children: [
 			{
-			  label: <div className={styles.subMenu}>展覽</div>,
-			  key: 'event',
+				label: <div className={styles.subMenu}>展覽</div>,
+				key: 'event',
 			},
 			{
-			  label: <div className={styles.subMenu}>活動</div>,
-			  key: 'activity',
+				label: <div className={styles.subMenu}>活動</div>,
+				key: 'activity',
 			},
-		  ],
+		],
 
 	},
 	{
@@ -35,30 +38,32 @@ const items = [
 		key: 'special',
 		children: [
 			{
-			  label: <div className={styles.subMenu}>洄溯</div>,
-			  key: 'backward',
+				label: <div className={styles.subMenu}>洄溯</div>,
+				key: 'backward',
 			},
 			{
-			  label: <div className={styles.subMenu}>藝術季地圖</div>,
-			  key: 'afMap',
+				label: <div className={styles.subMenu}>藝術季地圖</div>,
+				key: 'afMap',
 			},
 			{
 				label: <div className={styles.subMenu}>心理測驗</div>,
 				key: 'psychoTest',
-			  },
-		  ],
+			},
+		],
 
 	},
 ]
 
 const Header = () => {
 	// const [item, setItem] = useState(initItem);
+	const { toggleInBreakPoint } = useContext(BreakPointContext);
+	toggleInBreakPoint();
 	const [sideBarActive, setSideBarActive] = useState(false)
 	const [searchBarActive, setSearchBarActive] = useState(false)
 	const onClose = () => {
 		setSideBarActive(false)
 	}
-	useEffect(()=>{
+	useEffect(() => {
 		// const headerE = document.getElementsByClassName(styles.menuWrapper)[0]
 		const add_class_on_scroll = (element, className) => {
 			element.classList.add(className)
@@ -66,28 +71,30 @@ const Header = () => {
 		const remove_class_on_scroll = (element, className) => {
 			element.classList.remove(className)
 		}
-		window.addEventListener('scroll', function() {
+		window.addEventListener('scroll', function () {
 			const menuE = document.getElementsByClassName(styles.menuWrapper)[0]
 			const headerE = document.getElementsByClassName(styles.headerWrapper)[0]
-			let offsetChangeHeader = 10 
+			let offsetChangeHeader = 10
 			let scrollpos = window.scrollY;
-			if (scrollpos>offsetChangeHeader){
+			if (scrollpos > offsetChangeHeader) {
 				add_class_on_scroll(menuE, styles.menuWrapperTransparent)
 				add_class_on_scroll(headerE, styles.headerWrapperTransparent)
-			}else{
+			} else {
 				remove_class_on_scroll(menuE, styles.menuWrapperTransparent)
 				remove_class_on_scroll(headerE, styles.headerWrapperTransparent)
 			}
 		})
 	}, [])
-	
+
+
+
 	return (
 		<div className={styles.totalWrapper}>
 			<div className={styles.headerWrapper}>
 				<div className={styles.logo}>LOGO</div>
 				<h1 className={styles.title}>台大藝術季28th</h1>
 				<div className={styles.menuWrapper}>
-					<Menu selectable={false} selectedKeys={"1"}multiple={true} mode="horizontal" items={items} style={{backgroundColor:"rgba(0, 0, 0,0)", border:"none"}} disabledOverflow={true}/>
+					<Menu selectable={false} selectedKeys={"1"} multiple={true} mode="horizontal" items={items} style={{ backgroundColor: "rgba(0, 0, 0,0)", border: "none" }} disabledOverflow={true} />
 					<SearchBar />
 				</div>
 				<div className={styles.hidden}><LoginButton /></div>
