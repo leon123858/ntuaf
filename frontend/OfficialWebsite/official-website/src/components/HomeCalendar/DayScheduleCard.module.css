@@ -1,0 +1,80 @@
+.container {
+    margin-top: 16px;
+    border: 1px solid #e4e4e4;
+    max-height: 352px;
+    overflow: scroll;
+}
+
+.lgContainer {
+    margin: 0 0 0 20px;
+    border: 1px solid #e4e4e4;
+    width: 100%;
+    overflow: scroll;
+}
+
+.lgDisplay {
+    display: grid;
+    grid-template-columns: 1fr 2fr !important;
+    gap: 10px;
+    height: 176px;
+}
+
+.category {
+    font-weight: 700;
+}
+
+.firstCategory {
+    margin-top: 0;
+}
+
+.dataContainer {
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 10px;
+}
+
+.lgEventContainer {
+    display: grid;
+    width: 100%;
+    gap: 10px;
+    grid-template-columns: 1fr !important;
+    max-height: 176px !important;
+    overflow-x: scroll;
+}
+
+.lgExhibitionContainer {
+    display: grid;
+    width: 100%;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr !important;
+    max-height: 176px !important;
+    overflow-x: scroll;
+}
+
+.event {
+    height: 35px;
+    padding: 7.5px 14px;
+    margin: auto 0;
+    cursor: pointer;
+    border: 1px solid #e4e4e4;
+    border-radius: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.eventName {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+    margin: 0;
+}
+
+.eventInfo {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 10px;
+    margin: 0;
+}
