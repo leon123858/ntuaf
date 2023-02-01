@@ -1,15 +1,17 @@
 import React from 'react';
 import Header from '../Header/Header';
 import { Outlet } from 'react-router-dom';
+import styles from "./Layout.module.css"
 import Footer from "../Footer/Footer"
+
 
 const Layout = ({ initItem }) => {
 	return (
-		<>
+		<div className={styles.layout}>
 			<Header initItem={initItem} />
-			{/* <Outlet /> */}
+			<Outlet />
 			<Footer/>
-		</>
+		</div>
 	);
 };
 export default Layout;
