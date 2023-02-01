@@ -106,7 +106,9 @@ userId();
 subscriptAuthState(callback);
 // google 第三方登入
 await login();
-// 獲取前一次第三方登入的結果
+// 獲取成員個資(含管理事件列表等)
+await getMemberInfo();
+// 獲取前一次第三方登入的結果(理論上用不太到)
 await getLoginResult();
 ```
 
