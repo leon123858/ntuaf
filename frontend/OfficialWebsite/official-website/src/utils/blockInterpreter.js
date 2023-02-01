@@ -9,7 +9,7 @@
  */
 class BlockInterpreter {
 	constructor(block2element, item2element) {
-		if (block2element || item2element)
+		if (!(block2element && item2element))
 			throw new Error('should give it how to translate block and item');
 		this.block2element = block2element;
 		this.item2element = item2element;
