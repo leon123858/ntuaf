@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
 import style from './ImageBox.module.css';
+import 'react-slideshow-image/dist/styles.css'
+
 import { BreakPointContext } from '../../useBreakPoint';
 import { Card, Image } from 'antd';
+import { Slide } from 'react-slideshow-image';
 
 const defaultImages = {
-    type: 2,
-    topic: '講者介紹',
+    type: 3,
     images: [
         {
             src: 'https://i.seadn.io/gae/7B0qai02OdHA8P_EOVK672qUliyjQdQDGNrACxs7WnTgZAkJa_wWURnIFKeOh5VTf8cfTqW3wQpozGedaC9mteKphEOtztls02RlWQ',
@@ -58,17 +60,32 @@ const ImageBox = ({ images = defaultImages }) => {
 
             2: (
                 <div className={style.container}>
+                    <div style={{ width: '65%', margin: '0 auto', minWidth: 400 }}>
+                        <Slide
+                            indicators={true}
+                            transitionDuration={300}
+                            autoplay={false}
+                        >
+                            {
+                                images.images.map((image, idx) => (
+                                    <div className={style.slide} key={idx}>
+                                        <img src={image.src} alt="" style={{ height: 300 }} />
+                                    </div>
+                                ))
+                            }
+                        </Slide>
+                    </div>
                 </div>
             ),
 
-            // 3: (
-            //     <div className={style.container} style={{ textAlign: 'center' }}>
-            //         <Image
-            //             alt='img'
-            //             src={images.images.src}
-            //         />
-            //     </div>
-            // )
+            3: (
+                <div className={style.container} style={{ textAlign: 'center' }}>
+                    <Image
+                        alt='img'
+                        src={images.images[0].src}
+                    />
+                </div>
+            )
 
         }[images.type]
     );
