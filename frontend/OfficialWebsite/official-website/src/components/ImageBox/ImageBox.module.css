@@ -1,7 +1,17 @@
 .container {
   width: 80%;
   margin: 32px auto;
-  position: relative;
+}
+
+.picBox {
+  display: grid;
+  gap: 70px;
+}
+
+.lgPicBox {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
 }
 
 .topic {
@@ -10,21 +20,27 @@
   margin-top: 0px;
 }
 
-.lgDisplay {
-  display: flex;
-  margin-top: 24px;
+.lgImg {
+  width: 120px;
+  display: block;
+  position: absolute;
+  right: -60px;
+  bottom: -55px;
+  border-radius: 50%;
+  z-index: 100;
 }
 
 .img {
-  max-width: 225px;
-  border-radius: 10px;
-  margin: 16px auto;
+  width: 100px;
   display: block;
+  position: absolute;
+  right: -50px;
+  bottom: -45px;
+  border-radius: 50%;
+  z-index: 100;
 }
 
-.lgImg {
-  border-radius: 10px;
-  margin-right: 32px;
-  max-height: 225px;
-  height: 100%;
+.card {
+  borderColor: 'black';
+  margin-bottom: 32px
 }
