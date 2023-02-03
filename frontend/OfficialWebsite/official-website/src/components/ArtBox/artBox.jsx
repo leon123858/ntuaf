@@ -2,31 +2,32 @@ import { EditOutlined, EllipsisOutlined, SettingOutlined, HeartOutlined } from '
 import { Avatar, Card } from 'antd';
 import styles from "./artBox.module.css"
 const { Meta } = Card;
-const artBox = () => {
+const artBox = (props) => {
+    console.log(props);
+    const mystyle = {
+        width : `${props.width}%`
+    }
+    const imageHeight = props.imageWidth*9/16
     return(
         <Card
-            style={{
-            width: 400,
-            }}
+            style={mystyle}
             cover={
             <img
                 alt="example"
-                src="https://wallpapercrafter.com/sizes/2048x1152/120189-Final-Fantasy-XV-video-games-Luna-Final-Fantasy-XV-Final-Fantasy.png"
+                src={props.arturl}
+                style = {{
+                    width : 300,
+                    height : `${imageHeight}%`
+                }}
             />
             }
-            // actions={[
-            // <SettingOutlined key="setting" />,
-            // <EditOutlined key="edit" />,
-            // <EllipsisOutlined key="ellipsis" />,
-            // <HeartOutlined/>,
-            // ]}
         >
             <div className={styles.container}>
                 <Meta
-                title="作品名稱"
-                description="創作者姓名"
+                title={props.artName}
+                description={props.artist}
                 style={{
-                    width: 200,
+                    width: 100,
                 }}
                 className={styles.left}
                 >
