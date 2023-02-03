@@ -91,4 +91,3 @@ const ImageBox = ({ images = defaultImages }) => {
     );
 };
 export default ImageBox;
-
