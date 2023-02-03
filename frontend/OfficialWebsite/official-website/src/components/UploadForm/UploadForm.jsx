@@ -55,12 +55,12 @@ const UploadForm = () => {
                     <Form.Item
                         name="username"
                         label="姓名 / 暱稱"
-                        rules={[{ required: true, message: 'Please input your username!' }]}
+                        rules={[{ required: true, message: '請輸入您的名字' }]}
                     >
                         <Input />
                     </Form.Item>
 
-                    <Form.Item name="radio" label="參與組別">
+                    <Form.Item name="radio" label="參與組別" defaultValue="text">
                         <Radio.Group defaultValue="text">
                             <Radio value="text" onClick={() => setCateGory('text')}>純文字</Radio>
                             <Radio value="photo" onClick={() => setCateGory('photo')}> 照片</Radio>
@@ -69,7 +69,7 @@ const UploadForm = () => {
 
                     <Form.Item
                         name="workname"
-                        rules={[{ required: true, message: 'Please input your username!' }]}
+                        rules={[{ required: true, message: '請輸入您的作品名稱' }]}
                         label="作品名稱"
                     >
                         <Input />
@@ -80,8 +80,11 @@ const UploadForm = () => {
                             ? (
                                 <Form.Item
                                     name="content"
-                                    rules={[{ required: true, message: 'Please input your password!' }]}
-                                    label="文字內容"
+                                    rules={[
+                                        { required: true, message: '請輸入您的文字內容' },
+                                        { max: 500, message: '字數超過限制' }
+                                    ]}
+                                    label="文字內容（500字以內）"
                                 >
                                     <Input.TextArea rows={6} />
                                 </Form.Item>
@@ -89,15 +92,18 @@ const UploadForm = () => {
                             : (
                                 <>
                                     <Form.Item
-                                        name="content"
-                                        rules={[{ required: true, message: 'Please input your password!' }]}
-                                        label="文字內容"
+                                        name="description"
+                                        rules={[
+                                            { required: true, message: '請輸入您的文字內容' },
+                                            { max: 100, message: '字數超過限制' }
+                                        ]}
+                                        label="文字說明（100字以內）"
                                     >
                                         <Input.TextArea rows={4} />
                                     </Form.Item>
                                     <Form.Item
                                         name="file"
-                                        rules={[{ required: true, message: 'Please input your password!' }]}
+                                        rules={[{ required: true, message: '請上傳您的作品檔案' }]}
                                         label="上傳檔案"
                                     >
                                         <Upload.Dragger
