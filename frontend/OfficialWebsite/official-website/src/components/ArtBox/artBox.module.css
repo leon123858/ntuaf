@@ -1,0 +1,11 @@
+.container{
+    position:relative; /*父元素加上relative*/
+    /* background-color: red; */
+    padding: 40px;
+}​
+.right{
+    float:right;
+}
+.left{
+    float:left;
+}

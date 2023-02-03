@@ -1,10 +1,15 @@
-import React from 'react';
-import style from './Home.module.css';
+// import React from 'react';
+// import style from './Home.module.css';
+import ArtBox from "../components/ArtBox/artBox";
+import Carousel from '../components/Carousel/Carousel'
+
 
 function About() {
 	return (
 		<>
-			<div className={style.APP}>
+			<ArtBox/>
+			{/* <Carousel/> */}
+			{/* <div className={style.APP}>
 				<header className={style['App-header']}>
 					<img src={'/logo.svg'} className={style['App-logo']} alt='logo' />
 					<p>
@@ -19,7 +24,7 @@ function About() {
 						Learn React
 					</a>
 				</header>
-			</div>
+			</div> */}
 		</>
 	);
 }
