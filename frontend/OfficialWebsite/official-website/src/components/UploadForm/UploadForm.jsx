@@ -60,10 +60,11 @@ const UploadForm = () => {
                         <Input />
                     </Form.Item>
 
-                    <Form.Item name="radio" label="參與組別" defaultValue="text">
+                    <Form.Item name="category" label="參與組別" defaultValue="text">
                         <Radio.Group defaultValue="text">
-                            <Radio value="text" onClick={() => setCateGory('text')}>純文字</Radio>
-                            <Radio value="photo" onClick={() => setCateGory('photo')}> 照片</Radio>
+                            <Radio value="text" onClick={() => setCateGory('text')}>純文字組</Radio>
+                            <Radio value="photo" onClick={() => setCateGory('photo')}> 照片組</Radio>
+                            <Radio value="paint" onClick={() => setCateGory('paint')}> 繪畫組</Radio>
                         </Radio.Group>
                     </Form.Item>
 
