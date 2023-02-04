@@ -8,12 +8,13 @@ import Heart from "react-heart"
 const { Meta } = Card;
 export default function ArtBox(props) {
     const [isClick, setClick] = useState(false);
+    const [active, setActive] = useState(false)
+
 
     console.log(props);
     const mystyle = {
         width : `${props.width}%`
     }
-    let acttive = true;
     // const imageHeight = 12;
     return(
         <div className={styles.App}>
