@@ -13,7 +13,7 @@ const insertMember = async () => {
 		const departList = Object.keys(DEPARTMENT).map((key) => DEPARTMENT[key as keyof typeof DEPARTMENT])
 		const maxLengthOfAdmin = 5
 		const member:Member = {
-			id: uuidv4()+"@gmail.com",
+			id: "(test)_"+uuidv4()+"@gmail.com",
 			name:"name_"+uuidv4(),
 			job:"job_"+uuidv4(),
 			department: departList[Math.floor(Math.random()*departList.length)],
@@ -36,7 +36,7 @@ const insertArtWork = async ()=>{
 		const likeMax = 1000
 		const tmpLiktMax = 1000
 		const artWork:Artwork = {
-			id:uuidv4(),
+			id:"(test)_"+uuidv4(),
 			type:typeList[Math.floor(Math.random()*typeList.length)],
 			name:"name_"+uuidv4(),
 			email:"email_"+uuidv4(),
@@ -52,10 +52,10 @@ const insertArtWork = async ()=>{
 	bar.stop();
 }
 const insertEvent = async ()=>{
-	console.log("inserting Events sample data")
+	console.log("===========================inserting Events sample data")
 	const bar = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
 	bar.start(1, 0);
-	const numOfNewDoc = 10
+	const numOfNewDoc = 1
 	for(let i=0; i<numOfNewDoc; i++){
 		const typeList = Object.keys(EVENT_TYPE).map((key) => EVENT_TYPE[key as keyof typeof EVENT_TYPE])
 		const creatTimeMax = 100
@@ -67,11 +67,19 @@ const insertEvent = async ()=>{
 			name:"name_"+uuidv4(),
 			url:"https://"+ uuidv4(), 
 		}
+
+
 		const blockListMaxLength = 3
 		const createBlockList = ()=>{
 			return Array.from({length: Math.random()*blockListMaxLength}, () => {
-				const blockTypeList = Object.keys(BlOCK_TYPE).map((key) => BlOCK_TYPE[key as keyof typeof BlOCK_TYPE])
-				const itemTypeList = Object.keys(ITEM_TYPE).map((key) => ITEM_TYPE[key as keyof typeof ITEM_TYPE])
+				const blockTypeList = Object.values(BlOCK_TYPE)
+				.filter((v) => !isNaN(Number(v)))
+				.map((key) => BlOCK_TYPE[key as keyof typeof BlOCK_TYPE])
+
+				const itemTypeList = Object.values(ITEM_TYPE)
+				.filter((v) => !isNaN(Number(v)))
+				.map((key) => ITEM_TYPE[key as keyof typeof ITEM_TYPE])
+
 				const maxLengthOfItem = 5
 				const block:Block = {
 					type: blockTypeList[Math.floor(Math.random()*blockTypeList.length)],
@@ -95,8 +103,9 @@ const insertEvent = async ()=>{
 			card: uuidv4(),
 			banner: uuidv4()
 		}
+
 		const event:Event = {
-			id:uuidv4(),
+			id:"(test)_"+uuidv4(),
 			startTime:Math.floor(Math.random()*startTimeMax),
 			endTime: Math.floor(Math.random()*endTimeMax),
 			place: place,

@@ -18,7 +18,18 @@ program
   .parse(process.argv);
 
 const options = program.opts();
+// console.log("helo")
+// enum test{
+//   "A",
+//   "B",
+//   "C"
+// }
+// console.log(test)
+// const blockTypeList = Object.keys(test).map((key) => test[key as keyof typeof test])
+// const values = Object.values(test).filter((v) => isNaN(Number(v)));
 
+// console.log(blockTypeList)
+// console.log(values)
 (async function () {
   // 確認測試模式連線本地模擬器
   if (options.dev) {
@@ -53,8 +64,8 @@ const options = program.opts();
   const mode: MODE_TYPE = options.mode || (await askMode()).mode;
   switch (mode) {
     case MODE_TYPE.插入測試資料:{
-      await insertMember()
-      await insertArtWork()
+      // await insertMember()
+      // await insertArtWork()
       await insertEvent ()
 		break;
 	}
