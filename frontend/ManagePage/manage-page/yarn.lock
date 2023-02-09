@@ -2189,10 +2189,10 @@
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz#b2ac626d6cb9c8718ab459166d4bb405b8ffa78b"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
-"@leon123858/ntuaf-sdk@0.0.4":
-  version "0.0.4"
-  resolved "https://npm.pkg.github.com/download/@leon123858/ntuaf-sdk/0.0.4/07399bbaf1ad91ff36e8024b4b65cdf38a70d8af#07399bbaf1ad91ff36e8024b4b65cdf38a70d8af"
-  integrity sha512-B9K0Jp6A5kEiR7BFPji8svrwXTOVzlyxJ3awQGQu8G9+aL7yoSuc2UvCNVeWnYNJ6Td9ENMBClHA4NqJZ7Dw7A==
+"@leon123858/ntuaf-sdk@0.0.7":
+  version "0.0.7"
+  resolved "https://npm.pkg.github.com/download/@leon123858/ntuaf-sdk/0.0.7/7d1c7cd38314bc24eedd8d7d23bfee4e6482f36f#7d1c7cd38314bc24eedd8d7d23bfee4e6482f36f"
+  integrity sha512-Q61fl2wfG0h9tFDduSEBIKXyPYT/uxsRErL7YmyikteE72LthGWCHcY3Hj5VXHOd8EfKSUl6CLbv4/OcecLETg==
   dependencies:
     axios "^0.27.2"
     chai "^4.3.6"
