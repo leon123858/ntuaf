@@ -136,6 +136,13 @@ await getArtworkList({...})
 await triggerLikeArtwork({...})
 ```
 
+### 其他功能
+
+```js
+// 單張圖片上傳
+await uploadImage(url);
+```
+
 ## sample
 
 see each JSDoc for methods above
