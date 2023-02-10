@@ -5,7 +5,7 @@ import { Command } from "commander";
 import { insertMember, insertArtWork, insertEvent } from "./utils/insertSample";
 import {deleteCollection} from "./utils/deleteSample";
 import { askMode, askEnv, askAction, MODE_TYPE } from "./utils/prompts";
-import {transformMembersByDepartment, transformRecommendEvents, createAlwaysEvent, transformDayEvents} from "./utils/transformData"
+import {transformMembers, transformRecommendEvents, transformDayEvents} from "./utils/transformData/index"
 const figlet = require("figlet");
 
 const program = new Command();
@@ -19,9 +19,6 @@ program
   .parse(process.argv);
 
 const options = program.opts();
-// createAlwaysEvent();
-// transformRecommendEvents();
-transformDayEvents();
 // console.log("helo")
 // enum test{
 //   "A",

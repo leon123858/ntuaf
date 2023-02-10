@@ -54,7 +54,7 @@ const insertArtWork = async ()=>{
 const insertEvent = async ()=>{
 	const bar = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
 	bar.start(1, 0);
-	const numOfNewDoc = 20
+	const numOfNewDoc = 10
 	const afStart = moment('2023/04/20', 'YYYY/MM/DD')
 	const afEnd = moment('2023/05/20', 'YYYY/MM/DD')
 	const afPeriod = afEnd.diff(afStart, "days")
