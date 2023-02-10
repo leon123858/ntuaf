@@ -19,10 +19,6 @@ program
   .parse(process.argv);
 
 const options = program.opts();
-// transformMembers();
-// transformRecommendEvents();
-// transformDayEvents();
-transformTabEvents();
 
 (async function () {
   // 確認測試模式連線本地模擬器
@@ -74,7 +70,11 @@ transformTabEvents();
     break;
     }
     case MODE_TYPE.refreshCache:{
-
+      transformMembers();
+      transformRecommendEvents();
+      transformDayEvents();
+      transformTabEvents();
+      break
     }
     default:{
       console.log("未選擇");
@@ -82,7 +82,7 @@ transformTabEvents();
     }
 
   }
-});
+})();
 
 async function isPortReachable(
   port: number,
