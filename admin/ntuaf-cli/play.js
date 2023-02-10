@@ -1,14 +1,11 @@
+
+// require moment from "moment"
+const moment = require('moment');
 const cliProgress = require('cli-progress');
+const afStart = moment('04/20/2023', 'MM/DD/YYYY')
+const afend = moment('05/20/2023', 'MM/DD/YYYY')
+console.log(moment(afStart).add("3", "day").format("MM-DD-YYYY") )
+console.log(afend.diff(afStart, "days"))
+console.log(afend.diff(afStart, "days"))
 
-// create a new progress bar instance and use shades_classic theme
-const bar1 = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
-
-// start the progress bar with a total value of 200 and start value of 0
-
-bar1.start(200, 0);
-
-// update the current value in your application..
-bar1.update(10);
-bar1.increment()
-// stop the progress bar
-bar1.stop();
+// console.log(timeStamp, timeStamp.valueOf())

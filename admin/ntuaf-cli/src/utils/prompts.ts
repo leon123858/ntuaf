@@ -2,7 +2,8 @@ const prompts = require('prompts');
 
 enum MODE_TYPE {
 	'插入測試資料' = 'insertSample',
-	"刪除測試資料" = "",
+	"刪除測試資料" = "deleteSample",
+	"refreshCache" = "refreshCache"
 }
 
 const modeChoices = Object.keys(MODE_TYPE).map((key) => {

@@ -5,6 +5,7 @@ import { Command } from "commander";
 import { insertMember, insertArtWork, insertEvent } from "./utils/insertSample";
 import {deleteCollection} from "./utils/deleteSample";
 import { askMode, askEnv, askAction, MODE_TYPE } from "./utils/prompts";
+import {transformMembersByDepartment} from "./utils/transformData"
 const figlet = require("figlet");
 
 const program = new Command();
@@ -18,6 +19,7 @@ program
   .parse(process.argv);
 
 const options = program.opts();
+transformMembersByDepartment();
 // console.log("helo")
 // enum test{
 //   "A",
@@ -62,13 +64,14 @@ const options = program.opts();
     }
   }
   const mode: MODE_TYPE = options.mode || (await askMode()).mode;
+  
   switch (mode) {
     case MODE_TYPE.插入測試資料:{
       // await insertMember()
       // await insertArtWork()
       await insertEvent ()
 		break;
-	}
+    }
     
     case MODE_TYPE.刪除測試資料:{
 		// const o = (await askEnv()).env;
@@ -76,12 +79,16 @@ const options = program.opts();
 		await deleteCollection("Members")
     await deleteCollection("Events")
     await deleteCollection("ArtWorks")
-
     break;
-	}
-    default:
+    }
+    case MODE_TYPE.refreshCache:{
+
+    }
+    default:{
       console.log("未選擇");
       break;
+    }
+
   }
 })();
 

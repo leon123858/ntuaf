@@ -1,5 +1,5 @@
 import { db } from '../init';
-
+import moment from "moment"
 import {Member, DEPARTMENT, Artwork, ARTWORK_TYPE, Event, Place, Images, EVENT_TYPE, Block, BlOCK_TYPE, ITEM_TYPE, Item} from "@leon123858/ntuaf-sdk"
 const {v4: uuidv4} = require('uuid');
 const cliProgress = require('cli-progress');
@@ -52,17 +52,19 @@ const insertArtWork = async ()=>{
 	bar.stop();
 }
 const insertEvent = async ()=>{
-	console.log("===========================inserting Events sample data")
 	const bar = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
 	bar.start(1, 0);
-	const numOfNewDoc = 1
+	const numOfNewDoc = 10
+	const afStart = moment('04/20/2023', 'MM/DD/YYYY')
+	const afEnd = moment('05/20/2023', 'MM/DD/YYYY')
+	const afPeriod = afEnd.diff(afStart, "days")
+
 	for(let i=0; i<numOfNewDoc; i++){
 		const typeList = Object.keys(EVENT_TYPE).map((key) => EVENT_TYPE[key as keyof typeof EVENT_TYPE])
-		const creatTimeMax = 100
-		const likeMax = 1000
-		const tmpLiktMax = 1000
-		const startTimeMax = 100
-		const endTimeMax = 100
+		const startOffset = Math.random()*afPeriod
+		const endOffest = (Math.random()*(afPeriod-startOffset))+1
+		const startTime =  afStart.add(startOffset, "days").valueOf()
+		const endTime = afStart.add(endOffest, "days").valueOf()
 		const place:Place = {
 			name:"name_"+uuidv4(),
 			url:"https://"+ uuidv4(), 
@@ -105,9 +107,9 @@ const insertEvent = async ()=>{
 		}
 
 		const event:Event = {
-			id:"(test)_"+uuidv4(),
-			startTime:Math.floor(Math.random()*startTimeMax),
-			endTime: Math.floor(Math.random()*endTimeMax),
+			id: "(test)_"+uuidv4(),
+			startTime: startTime,
+			endTime: endTime, 
 			place: place,
 			image: image,
 			type:typeList[Math.floor(Math.random()*typeList.length)],
