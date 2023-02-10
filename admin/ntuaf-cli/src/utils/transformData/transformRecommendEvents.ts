@@ -1,6 +1,6 @@
 import { db } from '../../init';
 import moment from "moment"
-const {FieldValue } = require('firebase-admin/firestore');
+const { FieldValue } = require('firebase-admin/firestore');
 
 const transformRegularEvent = async ()=>{
     const toDbPath = "Cache/Events/Recommend"

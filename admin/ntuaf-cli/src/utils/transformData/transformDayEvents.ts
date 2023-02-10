@@ -2,7 +2,7 @@ import { db } from '../../init';
 import moment from "moment"
 const {FieldValue } = require('firebase-admin/firestore');
 
-import {DEPARTMENT, Artwork, ARTWORK_TYPE, Event, Place, Images, EVENT_TYPE, Block, BlOCK_TYPE, ITEM_TYPE, Item} from "@leon123858/ntuaf-sdk"
+import {EVENT_TYPE} from "@leon123858/ntuaf-sdk"
 
 const transformDayEvents = async ()=>{
     const toDbPath = "Cache/Events/DayEvents"
@@ -10,6 +10,7 @@ const transformDayEvents = async ()=>{
 	const afEnd = moment('05/20/2023', 'MM/DD/YYYY')
     const key = "data"
     const handleDay = afStart.clone()
+    //info create bucket aka empty list
     for (let i=0;;){
         // initialize document
         const id = handleDay.format("M_D")

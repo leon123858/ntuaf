@@ -5,7 +5,7 @@ import { Command } from "commander";
 import { insertMember, insertArtWork, insertEvent } from "./utils/insertSample";
 import {deleteCollection} from "./utils/deleteSample";
 import { askMode, askEnv, askAction, MODE_TYPE } from "./utils/prompts";
-import {transformMembers, transformRecommendEvents, transformDayEvents} from "./utils/transformData/index"
+import {transformMembers, transformRecommendEvents, transformDayEvents, transformTabEvents} from "./utils/transformData/index"
 const figlet = require("figlet");
 
 const program = new Command();
@@ -19,18 +19,11 @@ program
   .parse(process.argv);
 
 const options = program.opts();
-// console.log("helo")
-// enum test{
-//   "A",
-//   "B",
-//   "C"
-// }
-// console.log(test)
-// const blockTypeList = Object.keys(test).map((key) => test[key as keyof typeof test])
-// const values = Object.values(test).filter((v) => isNaN(Number(v)));
+// transformMembers();
+// transformRecommendEvents();
+// transformDayEvents();
+transformTabEvents();
 
-// console.log(blockTypeList)
-// console.log(values)
 (async function () {
   // 確認測試模式連線本地模擬器
   if (options.dev) {
