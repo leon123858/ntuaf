@@ -2,11 +2,12 @@ import { EditOutlined, EllipsisOutlined, SettingOutlined, HeartOutlined, HeartFi
 import { Avatar, Card ,Image, Button} from 'antd';
 import styles from "./artBox.module.css"
 import React, { useState } from "react";
-import Heart from "react-heart"
+import Heart from "./heart"
 
 
 const { Meta } = Card;
-export default function ArtBox(props) {
+
+const ArtBox = (props) =>{
     const [isClick, setClick] = useState(false);
     const [active, setActive] = useState(false)
 
@@ -45,22 +46,15 @@ export default function ArtBox(props) {
                 className={styles.left}
                 >
                 </Meta>
-                {/* <Button
-                    onClick={alert("clicked")}
-                >
-                  <HeartFilled className={styles.right}
-                style={{ fontSize: '45px', color: 'red' }}/>
-                </Button> */}
-                <Heart isActive={active} onClick={() => setActive(!active)} animationScale = {1.25} style = {{marginBottom:'1rem'}} />
-                <Button  onclick={()=>{alert("clicked");}} className={styles.Layout_layout__m8Vdf}>
-                    <HeartFilled className={styles.right}
-                    style={{ fontSize: '45px', color: 'red' }}
-                    />
-                </Button>
-
+			    <Heart  
+                style={{
+                    width: 50,
+                }}
+                className={styles.right} isActive={active} onClick={() => setActive(!active)}/>
             </div>
         </Card>
         </div>
     )
 };
-// export default ArtBox;
+
+export default ArtBox;
