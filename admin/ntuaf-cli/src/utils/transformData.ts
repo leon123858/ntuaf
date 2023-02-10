@@ -1,16 +1,72 @@
 import { db } from '../init';
 import moment from "moment"
 const {FieldValue } = require('firebase-admin/firestore');
-import { getDoc, doc } from 'firebase/firestore';
 
 import {DEPARTMENT, Artwork, ARTWORK_TYPE, Event, Place, Images, EVENT_TYPE, Block, BlOCK_TYPE, ITEM_TYPE, Item} from "@leon123858/ntuaf-sdk"
+import { initializeApp } from 'firebase-admin';
+
+const transformDayEvents = async ()=>{
+    const toDbPath = "Cache/Events/DayEvents"
+    const afStart = moment('04/20/2023', 'MM/DD/YYYY')
+	const afEnd = moment('05/20/2023', 'MM/DD/YYYY')
+    const key = "data"
+    const handleDay = afStart.clone()
+    for (let i=0;;){
+        // initialize document
+        const id = handleDay.format("M_D")
+        await db.collection(toDbPath).doc(id).set({[key]:{
+            activity:[],
+            exhibition:[]
+        }})
+        handleDay.add(1, "days")
+        if (handleDay>afEnd){
+            break
+        }
+    }
+    //info distribute event to 
+    const eventRef = await db.collection("Events").get()
+    const event:any = {
+        activity: [] as any[],
+        exhibition: [] as any[]
+    }
+    eventRef.forEach(async (doc)=>{
+        const data = doc.data()
+        const startTime = moment(data.startTime, "x")
+        const endTime = moment(data.endTime, "x")
+        console.log(startTime.format("M/D"), endTime.format("M/D"), data.id)
+        const handleTime = startTime.clone()
+        for (;;){
+            const id = handleTime.format("M_D")
+            if (data.type===EVENT_TYPE.展覽){
+                await db.collection(toDbPath).doc(id).set({[key]:{
+                    activity:FieldValue.arrayUnion({name:data.title, info:data.title, id:data.id}),
+                }})
+            }else{
+                await db.collection(toDbPath).doc(id).set({[key]:{
+                    exhibition:FieldValue.arrayUnion({name:data.title, info:data.title, id:data.id}),
+                }})
+            }
+            handleDay.add(1, "days")
+            if (handleDay.valueOf()>=endTime.valueOf()){
+                break
+            }
+        }
+    })
+
+}
+
 const createAlwaysEvent = async ()=>{
     //regularEventIdList must be filled manually from Events collection
-    const regularEventIdList = ["(test)_0d4d173f-7cc6-4201-8de7-9fa85af1cf00", "(test)_18d0a7b4-2b5c-4208-b25a-4f85dab02753", "(test)_2f54560d-846c-4204-b1e0-6ca34839bb7b"]
-    regularEventIdList.forEach(async (eventId)=>{
-        const eventRef = await db.collection("Events").doc(eventId).get()
-        await db.collection("Cache/RegularEvents/Events").doc(eventId).set({data:eventRef.data()})
-    })
+    const regularEventIdList = ["(test)_00f87359-d8a1-4f4f-8725-f701b050e872", "(test)_04b6ef4b-f3e1-4e34-a16c-ce6c668c395d", "(test)_0a26759c-6a4f-43ba-83f0-38d9f7723f33"]
+    try{
+        regularEventIdList.forEach(async (eventId)=>{
+            const eventRef = await db.collection("Events").doc(eventId).get()
+            await db.collection("Cache/RegularEvents/Events").doc(eventId).set({data:eventRef.data()})
+        })
+    }catch(e){
+        console.log("HINT: regularEventIdList need to be refresh")
+    }
+    
 }
 const transformRegularEvent = async ()=>{
     const toDbPath = "Cache/Events/Recommend"
@@ -49,7 +105,7 @@ const transformRecentEvent = async ()=>{
     const currentTimeStamp = moment().valueOf()
     const recentEvents = orderedKey.map((startTime)=>{
         if((parseInt(startTime)>currentTimeStamp) || (parseInt(startTime)<currentTimeStamp && currentTimeStamp<event[startTime].endTime)){
-            
+            //? what is image and text for an event
             return {image:event[startTime].image, text:event[startTime].title, id:event[startTime].id}
         }
     })
@@ -62,7 +118,7 @@ const transformRecentEvent = async ()=>{
 
 }
 const transformRecommendEvents = async() => {
-    console.log("tranformRecommendEvents")
+    console.log("transformRecommendEvents")
     transformRegularEvent()
     transformRecentEvent()
 }
@@ -122,4 +178,4 @@ const transformMembersByDepartment = async ()=>{
 
 
 
-export {transformMembersByDepartment, transformRecommendEvents, createAlwaysEvent}
+export {transformMembersByDepartment, transformRecommendEvents, createAlwaysEvent, transformDayEvents}

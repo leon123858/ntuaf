@@ -54,17 +54,19 @@ const insertArtWork = async ()=>{
 const insertEvent = async ()=>{
 	const bar = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
 	bar.start(1, 0);
-	const numOfNewDoc = 10
-	const afStart = moment('04/20/2023', 'MM/DD/YYYY')
-	const afEnd = moment('05/20/2023', 'MM/DD/YYYY')
+	const numOfNewDoc = 20
+	const afStart = moment('2023/04/20', 'YYYY/MM/DD')
+	const afEnd = moment('2023/05/20', 'YYYY/MM/DD')
 	const afPeriod = afEnd.diff(afStart, "days")
 
 	for(let i=0; i<numOfNewDoc; i++){
+		const currentDay = afStart.clone()
 		const typeList = Object.keys(EVENT_TYPE).map((key) => EVENT_TYPE[key as keyof typeof EVENT_TYPE])
-		const startOffset = Math.random()*afPeriod
-		const endOffest = (Math.random()*(afPeriod-startOffset))+1
-		const startTime =  afStart.add(startOffset, "days").valueOf()
-		const endTime = afStart.add(endOffest, "days").valueOf()
+		const startOffset = Math.floor(Math.random()*afPeriod)
+		const endOffest = Math.floor((Math.random()*(afPeriod-startOffset)))+1
+		const startTime =  currentDay.add(startOffset, "days").valueOf()
+		const endTime = currentDay.add(endOffest, "days").valueOf()
+
 		const place:Place = {
 			name:"name_"+uuidv4(),
 			url:"https://"+ uuidv4(), 

@@ -5,7 +5,7 @@ import { Command } from "commander";
 import { insertMember, insertArtWork, insertEvent } from "./utils/insertSample";
 import {deleteCollection} from "./utils/deleteSample";
 import { askMode, askEnv, askAction, MODE_TYPE } from "./utils/prompts";
-import {transformMembersByDepartment, transformRecommendEvents, createAlwaysEvent} from "./utils/transformData"
+import {transformMembersByDepartment, transformRecommendEvents, createAlwaysEvent, transformDayEvents} from "./utils/transformData"
 const figlet = require("figlet");
 
 const program = new Command();
@@ -19,7 +19,9 @@ program
   .parse(process.argv);
 
 const options = program.opts();
-transformRecommendEvents();
+// createAlwaysEvent();
+// transformRecommendEvents();
+transformDayEvents();
 // console.log("helo")
 // enum test{
 //   "A",
@@ -67,8 +69,8 @@ transformRecommendEvents();
   
   switch (mode) {
     case MODE_TYPE.插入測試資料:{
-      // await insertMember()
-      // await insertArtWork()
+      await insertMember()
+      await insertArtWork()
       await insertEvent ()
 		break;
     }
