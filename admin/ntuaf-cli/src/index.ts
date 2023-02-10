@@ -5,7 +5,7 @@ import { Command } from "commander";
 import { insertMember, insertArtWork, insertEvent } from "./utils/insertSample";
 import {deleteCollection} from "./utils/deleteSample";
 import { askMode, askEnv, askAction, MODE_TYPE } from "./utils/prompts";
-import {transformMembersByDepartment} from "./utils/transformData"
+import {transformMembersByDepartment, transformRecommendEvents, createAlwaysEvent} from "./utils/transformData"
 const figlet = require("figlet");
 
 const program = new Command();
@@ -19,7 +19,7 @@ program
   .parse(process.argv);
 
 const options = program.opts();
-transformMembersByDepartment();
+transformRecommendEvents();
 // console.log("helo")
 // enum test{
 //   "A",
@@ -90,7 +90,7 @@ transformMembersByDepartment();
     }
 
   }
-})();
+});
 
 async function isPortReachable(
   port: number,
