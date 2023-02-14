@@ -11,13 +11,11 @@ const transformTabEvents = async ()=>{
     //? Is that the way we distinguish two different events?
     const ref =  db.collection(toDbPath).doc(EVENT_TYPE.展覽)
     await ref.set({data:[]})
-    const res = await db.collection(toDbPath).doc("活動").set({[key]:[]})
+    await db.collection(toDbPath).doc("活動").set({[key]:[]})
     const collectionRef = await db.collection(fromDbPath).get()
     collectionRef.forEach(async (doc)=>{
-        
         const data = doc.data()
         if (data.type===EVENT_TYPE.展覽){
-            console.log(data)
             await db.collection(toDbPath).doc(EVENT_TYPE.展覽).update({
                 //? what is the meaning for different field
                 [key]:FieldValue.arrayUnion({
