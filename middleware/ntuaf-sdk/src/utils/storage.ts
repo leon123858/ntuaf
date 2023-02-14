@@ -7,6 +7,9 @@ import { ref, getDownloadURL, uploadBytes } from 'firebase/storage';
  * @param url 本機圖片網址
  * @param skipTest 略過前端驗證 default:false
  * @returns 下載圖片網址
+ * @example
+ * const url = URL.createObjectURL(blob);
+ * const downloadUrl = await uploadImage(url);
  */
 export const uploadImage = async (url: string, skipTest = false) => {
 	const uid = userId();
