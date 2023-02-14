@@ -69,7 +69,7 @@ const options = program.opts();
     await deleteCollection("ArtWorks")
     break;
     }
-    case MODE_TYPE.refreshCache:{
+    case MODE_TYPE.更新系統暫存:{
       transformMembers();
       transformRecommendEvents();
       transformDayEvents();
