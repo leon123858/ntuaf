@@ -38,7 +38,6 @@ const transformRecentEvent = async ()=>{
         event[doc.data().startTime] = doc.data()
     })
     const orderedKey = Object.keys(event).sort()
-    console.log(orderedKey)
     const currentTimeStamp = moment().valueOf()
     const recentEvents = orderedKey.map((startTime)=>{
         if((parseInt(startTime)>currentTimeStamp) || (parseInt(startTime)<currentTimeStamp && currentTimeStamp<event[startTime].endTime)){
