@@ -100,6 +100,9 @@ function Auth({user}:{user:any}) {
 		
 	  ];
 
+	const usercolumn:any =[
+
+	]
 	return (
 		<>
 			<div>
@@ -110,6 +113,7 @@ function Auth({user}:{user:any}) {
 			<Title level={2}>信箱：</Title>
 			<Title level={4}>{user.email}</Title>
 			</div>
+			<Table />
 			<Table columns={columns} dataSource={user.admin} />
 		</>
 	);
