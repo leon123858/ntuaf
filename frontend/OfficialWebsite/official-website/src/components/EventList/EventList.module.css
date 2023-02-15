@@ -29,6 +29,12 @@
     align-items: center;
 }
 
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
 .felxList {
     display: flex;
     justify-content: center;

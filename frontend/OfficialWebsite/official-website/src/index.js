@@ -27,7 +27,7 @@ const router = createBrowserRouter([
 				element: <Home />,
 			},
 			{
-				path: '/introduce',
+				path: '/introduce/:type',
 				element: <Introduce />,
 			},
 			{
