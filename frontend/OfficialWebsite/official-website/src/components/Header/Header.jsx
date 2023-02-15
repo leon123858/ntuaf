@@ -15,22 +15,28 @@ const items = [
 
 	},
 	{
-		label: <Link className={styles.link} to={'/calendar'}>展覽/活動</Link>,
+		label: <Link className={styles.link} to={'/introduce/1'}>展覽/活動</Link>,
 		key: 'event',
 		children: [
 			{
-				label: <div className={styles.subMenu}>展覽</div>,
+				label:
+					<div className={styles.subMenu}>
+						<Link to='/introduce/1'>展覽</Link>
+					</div>,
 				key: 'event',
 			},
 			{
-				label: <div className={styles.subMenu}>活動</div>,
+				label:
+					<div className={styles.subMenu}>
+						<Link to='/introduce/2'>活動</Link>
+					</div>,
 				key: 'activity',
 			},
 		],
 
 	},
 	{
-		label: <Link className={styles.link} to={'/about'}>行事曆</Link>,
+		label: <Link className={styles.link} to={'/calendar'}>行事曆</Link>,
 		key: 'calendar',
 	},
 	{

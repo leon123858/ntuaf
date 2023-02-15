@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-// import style from './Home.module.css';
 import { Card, Tag, Image, Col, Row, Tabs } from 'antd';
 import style from './EventList.module.css'
 import { BreakPointContext } from '../../useBreakPoint';
@@ -7,7 +6,7 @@ const { Meta } = Card;
 
 const EventImg = ({ tagName, imgUrl, inBreakPoint }) => {
     return (
-        <div className={(inBreakPoint)? style.eventImg1: style.eventImg2}>
+        <div className={(inBreakPoint) ? style.eventImg1 : style.eventImg2}>
             <div className={`${style.img} ${style.flexCenter}`}>
                 <Image
                     src={imgUrl}
@@ -26,7 +25,7 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint }) => {
         <Card
             hoverable
             style={{ width: 320, position: 'relative' }}
-            cover={<EventImg tagName={tagName} imgUrl={imgUrl} inBreakPoint={inBreakPoint}/>}
+            cover={<EventImg tagName={tagName} imgUrl={imgUrl} inBreakPoint={inBreakPoint} />}
         >
             <Meta title={title} description={date} className={style.meta} />
         </Card>
@@ -37,108 +36,40 @@ function EventList({ data = DefaultData }) {
     const { inBreakPoint } = useContext(BreakPointContext);
     const spanRWD = inBreakPoint ? 24 : 12
     return (
-        <Tabs
-            className={style.container}
-            defaultActiveKey="1"
-            centered
-            items={new Array(2).fill(null).map((_, i) => {
-                const id = String(i + 1);
-                return {
-                    label: data.eventsAndEvents[i].topic,
-                    key: id,
-                    children: (<div className={`${style.flexCenter} ${style.marginTop40}`}>
-                        <Row gutter={[4, 56]}>
-                            {data.eventsAndEvents[i].events.map((event) => (
-                                <Col className={style.flexCenter} span={spanRWD} >
-                                    <Event tagName={event.tagName} imgUrl={event.imgUrl} title={event.title} date={event.date} inBreakPoint={inBreakPoint} />
-                                </Col>
+        <div className={`${style.flexCenter} ${style.marginTop40}`}>
+            <div className={style.grid}>
+                {data.events.map((event) => (
+                    <div className={style.flexCenter} span={spanRWD} >
+                        <Event tagName={event.tagName} imgUrl={event.imgUrl} title={event.title} date={event.date} inBreakPoint={inBreakPoint} />
+                    </div>
 
-                            ))}
-                        </Row>
-                    </div>),
-                };
-            })}
-        />
-
-
+                ))}
+            </div>
+        </div>
     );
 }
 
 export default EventList;
 
 const DefaultData = {
-    eventsAndEvents: [
+    events: [
         {
-            topic: "展覽",
-            events: [
-                {
-                    tagName: "展覽",
-                    imgUrl: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
-                    title: "標題 1",
-                    date: "日期"
-                },
-                {
-                    tagName: "展覽",
-                    imgUrl: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
-                    title: "標題 2",
-                    date: "日期"
-                },
-                {
-                    tagName: "展覽",
-                    imgUrl: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
-                    title: "標題 3",
-                    date: "日期"
-                },
-                {
-                    tagName: "展覽",
-                    imgUrl: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
-                    title: "標題 4",
-                    date: "日期"
-                },
-                {
-                    tagName: "展覽",
-                    imgUrl: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
-                    title: "標題 5",
-                    date: "日期"
-                }
-            ]
+            tagName: "展覽",
+            imgUrl: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
+            title: "標題 1",
+            date: "日期"
         },
         {
-            topic: "活動",
-            events: [
-
-                {
-                    tagName: "工作坊",
-                    imgUrl: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
-                    title: "標題 1",
-                    date: "日期"
-                },
-                {
-                    tagName: "工作坊",
-                    imgUrl: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
-                    title: "標題 2",
-                    date: "日期"
-                },
-                {
-                    tagName: "工作坊",
-                    imgUrl: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
-                    title: "標題 3",
-                    date: "日期"
-                },
-                {
-                    tagName: "工作坊",
-                    imgUrl: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
-                    title: "標題 4",
-                    date: "日期"
-                },
-                {
-                    tagName: "工作坊",
-                    imgUrl: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
-                    title: "標題 5",
-                    date: "日期"
-                }
-            ]
-        }
+            tagName: "展覽",
+            imgUrl: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
+            title: "標題 2",
+            date: "日期"
+        },
+        {
+            tagName: "展覽",
+            imgUrl: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
+            title: "標題 3",
+            date: "日期"
+        },
     ]
-
 }

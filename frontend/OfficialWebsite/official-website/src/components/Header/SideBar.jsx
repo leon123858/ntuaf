@@ -13,15 +13,15 @@ const LinkGroup = () => {
 		<div className={styles.sideBarWrapper}>
 			<Collapse ghost>
 				<Panel header={<div className={styles.headerWrapper}><Link className={styles.link} to={'/about'}>關於我們</Link></div>} key="2" showArrow={false} />
-				<Panel header={<div className={styles.headerWrapper}><Link className={styles.link} to={'/calendar'}>展覽/活動</Link></div>} key="3" showArrow={false}>
+				<Panel header={<div className={styles.headerWrapper}><Link className={styles.link} to={'/introduce'}>展覽/活動</Link></div>} key="3" showArrow={false}>
 					<div className={styles.collapseItemWrapper}>
-						<Link className={styles.link} to={'/calendar'}>展覽</Link>
-						<Link className={styles.link} to={'/calendar'}>活動</Link>
+						<Link className={styles.link} to={'/introduce/1'}>展覽</Link>
+						<Link className={styles.link} to={'/introduce/2'}>活動</Link>
 					</div>
 
 				</Panel>
-				<Panel header={<div className={styles.headerWrapper}><Link className={styles.link} to={'/map'}>行事曆</Link></div>} key="4" showArrow={false} />
-				<Panel header={<div className={styles.headerWrapper}><Link className={styles.link} to={'/map'}>特別企劃</Link></div>} key="5" showArrow={false}>
+				<Panel header={<div className={styles.headerWrapper}><Link className={styles.link} to={'/calendar'}>行事曆</Link></div>} key="4" showArrow={false} />
+				<Panel header={<div className={styles.headerWrapper}><Link className={styles.link} to={'/history'}>特別企劃</Link></div>} key="5" showArrow={false}>
 					<div className={styles.collapseItemWrapper}>
 						<Link className={styles.link} to={'/calendar'}>洄溯</Link>
 						<Link className={styles.link} to={'/calendar'}>藝術季地圖</Link>

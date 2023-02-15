@@ -8,7 +8,6 @@ import Home from './routers/Home';
 import Display from './routers/Display';
 import Introduce from './routers/Introduce';
 import Calendar from './routers/Calendar';
-import Map from './routers/Map';
 import About from './routers/About';
 import History from './routers/History';
 import Layout from './components/Layout/Layout';
@@ -28,14 +27,13 @@ const router = createBrowserRouter([
 				element: <Home />,
 			},
 			{
-				path: '/introduce',
+				path: '/introduce/:type',
 				element: <Introduce />,
 			},
 			{
 				path: '/calendar',
 				element: <Calendar />,
 			},
-			{ path: '/map', element: <Map /> },
 			{
 				path: '/about',
 				element: <About />,
