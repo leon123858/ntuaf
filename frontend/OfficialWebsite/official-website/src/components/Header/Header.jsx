@@ -17,10 +17,6 @@ const defaultItems = [
 		key: 'calendar',
 	},
 	{
-		label: <Link to={'/map'}>地圖</Link>,
-		key: 'map',
-	},
-	{
 		label: <Link to={'/about'}>關於我們</Link>,
 		key: 'about',
 	},
