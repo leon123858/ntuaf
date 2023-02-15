@@ -11,7 +11,7 @@ const Layout = ({ initItem }) => {
 		<div className={styles.layout}>
 			<Header initItem={initItem} />
 			<FourCircle/>
-			{/* <Outlet /> */}
+			<Outlet />
 			<Footer/>
 		</div>
 
