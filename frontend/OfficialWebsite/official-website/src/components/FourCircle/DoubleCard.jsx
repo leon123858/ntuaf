@@ -5,17 +5,17 @@ import BackCard from "./BackCard.jsx"
 import {useState} from "react"
 
 const DoubleSideCard = ({FrontCardContent, BackCardContent}) => {
-    const [flip, setFlip] = useState(true)
+    const [flip, setFlip] = useState(false)
     return (
         <div className={style.dCardWrapper}>
             {/* <a href='https://google.com' style={{textDecoration:"none", color:"black"}}> */}
                 <div className={flip===true?[style.dCardInnerWrapper, style.dCardInnerWrapperFlip].join(' '):style.dCardInnerWrapper}>
-                    <div className={style.flipFrontCard}><FrontCard/></div>
+                    <div className={style.flipFrontCard}><FrontCard setFlip={setFlip}/></div>
                     {/* <div className={style.flipFrontCard}>helo</div> */}
                     {/* {FrontCard?<FrontCard/>:<></>} */}
                     {/* {BackCard?<BackCard/>:<></>} */}
                     {/* <div className={style.flipBackCard}>heloback</div> */}
-                    <div className={style.flipBackCard}><BackCard/></div>
+                    <div className={style.flipBackCard}><BackCard setFlip={setFlip}/></div>
                 </div>
                 {/* <button onclick={()=>{setFlip(prev=>!prev)}}>flip</button> */}
             {/* </a> */}

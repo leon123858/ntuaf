@@ -11,6 +11,10 @@ service cloud.firestore {
       allow read, write: if request.auth != null
                             && request.auth.uid == userId;
     }
+    match /Members/{email} {
+      allow read: if request.auth != null
+                        && request.auth.token.email == email;
+    }
     match /Artworks/{artworkId} {
   	  allow read : if true;
   	  allow create : if request.auth != null 

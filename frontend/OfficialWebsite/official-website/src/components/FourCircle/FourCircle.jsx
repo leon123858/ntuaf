@@ -9,18 +9,18 @@ const contents = [
         title: "起",
         content: "毀滅與混沌"
     },
-    {
-        title: "起",
-        content: "毀滅與混沌"
-    },
-    {
-        title: "起",
-        content: "毀滅與混沌"
-    },
-    {
-        title: "起",
-        content: "毀滅與混沌"
-    },
+    // {
+    //     title: "起",
+    //     content: "毀滅與混沌"
+    // },
+    // {
+    //     title: "起",
+    //     content: "毀滅與混沌"
+    // },
+    // {
+    //     title: "起",
+    //     content: "毀滅與混沌"
+    // },
 ]
 const FourCircle = () => {
     // const [isModalOpen, setIsModalOpen] = useState(false);
@@ -54,10 +54,10 @@ const FourCircle = () => {
                     )
                 })}
             </div>
-                  {/* <Button type="primary" onClick={showModal}>
+                {/* <Button type="primary" onClick={showModal}>
         Open Modal
-      </Button>
-                         <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+        </Button>
+                        <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
         <p>Some contents...</p>
         <p>Some contents...</p>
         <p>Some contents...</p>
