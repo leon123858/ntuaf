@@ -5,9 +5,10 @@ import 'react-slideshow-image/dist/styles.css'
 import { BreakPointContext } from '../../useBreakPoint';
 import { Card, Image } from 'antd';
 import { Slide } from 'react-slideshow-image';
+import { BlOCK_TYPE } from '@leon123858/ntuaf-sdk'
 
 const defaultImages = {
-    type: 3,
+    type: [BlOCK_TYPE.IMAGE_B],
     images: [
         {
             src: 'https://i.seadn.io/gae/7B0qai02OdHA8P_EOVK672qUliyjQdQDGNrACxs7WnTgZAkJa_wWURnIFKeOh5VTf8cfTqW3wQpozGedaC9mteKphEOtztls02RlWQ',
@@ -33,7 +34,7 @@ const ImageBox = ({ images = defaultImages }) => {
 
     return (
         {
-            1: (
+            [BlOCK_TYPE.IMAGE_A]: (
                 <div className={style.container}>
                     <div className={(inBreakPoint) ? style.picBox : style.lgPicBox}>
                         {
@@ -58,7 +59,7 @@ const ImageBox = ({ images = defaultImages }) => {
 
             ),
 
-            2: (
+            [BlOCK_TYPE.IMAGE_B]: (
                 <div className={style.container}>
                     <div style={{ width: '65%', margin: '0 auto', minWidth: 400 }}>
                         <Slide
@@ -78,7 +79,7 @@ const ImageBox = ({ images = defaultImages }) => {
                 </div>
             ),
 
-            3: (
+            [BlOCK_TYPE.IMAGE_C]: (
                 <div className={style.container} style={{ textAlign: 'center' }}>
                     <Image
                         alt='img'

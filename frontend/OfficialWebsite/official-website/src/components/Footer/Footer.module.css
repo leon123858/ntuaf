@@ -7,11 +7,11 @@
 	flex-direction: column;
 	background-color: #efefefef;
 }
-.title {
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-	padding: 0 0 0 10%;
+.title{
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding:0 0 0 10%;
 }
 hr {
 	width: 80%;
