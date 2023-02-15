@@ -13801,7 +13801,6 @@ react-scripts@5.0.1:
     workbox-webpack-plugin "^6.4.1"
   optionalDependencies:
     fsevents "^2.3.2"
-
 react-spring-3d-carousel@^1.3.2:
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/react-spring-3d-carousel/-/react-spring-3d-carousel-1.3.4.tgz#0802a0ceaa0ba182e76119292611df411805ac59"
@@ -13818,7 +13817,6 @@ react-spring@^8.0.5:
   dependencies:
     "@babel/runtime" "^7.3.1"
     prop-types "^15.5.8"
-
 react-swipeable@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/react-swipeable/-/react-swipeable-7.0.0.tgz#7a12570ee435d35ac700511de338384aa78d12cd"
@@ -13830,7 +13828,6 @@ react-text-collapse@^0.6.1:
   integrity sha512-v1xCCs78Os+XXk3MPVLVkdd+Wbrq0RPi5vv71gZsHyXWJ14p6UW4MFyB9nbL8TBOr8WyAlONfhD16B+6mjIIlA==
   dependencies:
     prop-types "^15.5.10"
-
 react-slideshow-image@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/react-slideshow-image/-/react-slideshow-image-4.2.0.tgz#a0cb1409360e4c51b21cfa1d03d45e3fed209351"
