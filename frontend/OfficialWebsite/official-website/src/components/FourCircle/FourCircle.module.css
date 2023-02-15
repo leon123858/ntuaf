@@ -3,8 +3,8 @@
 }
 .cardWrapper{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-direction: column;
-    padding:20% 0 ;
+    padding:10vh 0 ;
     height: 100vh;
 }
