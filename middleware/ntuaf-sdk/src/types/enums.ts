@@ -38,6 +38,7 @@ export enum BlOCK_TYPE {
 	TEXT_A,
 	TEXT_B,
 	TEXT_C,
+	TEXT_D,
 	IMAGE_A,
 	IMAGE_B,
 	IMAGE_C,
