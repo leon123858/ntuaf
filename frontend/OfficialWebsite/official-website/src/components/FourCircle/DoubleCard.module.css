@@ -1,0 +1,30 @@
+.dCardWrapper{
+    perspective:1500px;
+    width:100%;
+    height: 80vh;
+    padding:0px;
+    margin:auto;
+
+}
+.dCardInnerWrapper{
+    padding:auto;
+    transition:all 3s;
+    transform-style: preserve-3d;
+    position: relative;
+    width: 100%;
+    height:100%;
+}
+.dCardInnerWrapperFlip{
+    transform: rotateY(180deg);
+}
+.flipFrontCard, .flipBackCard{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+}
+.flipBackCard{
+    transform: rotateY(180deg);
+}
