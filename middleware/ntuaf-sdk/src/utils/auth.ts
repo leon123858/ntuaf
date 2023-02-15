@@ -7,7 +7,30 @@ import {
 	onAuthStateChanged,
 	User,
 } from 'firebase/auth';
-import { authInstance } from './initFirebase';
+import { doc, getDoc } from '@firebase/firestore';
+import { authInstance, dbInstance } from './initFirebase';
+import { Member } from 'types';
+
+/**
+ * 獲取用戶資料, 含管理事件列表,姓名,email,... 等
+ * @returns {Member} 用戶資料
+ * @example
+ * expect(await getMemberInfo()).eqls({
+ *		name: '林俊佑',
+ *		admin: ['test0', 'test1', 'test2'],
+ *		department: '策展部',
+ *		job: '組長',
+ *		id: 'a0970785699@gmail.com',
+ * });
+ */
+export const getMemberInfo = async () => {
+	if (!userId()) throw '用戶須先登入';
+	const data = (
+		await getDoc(doc(dbInstance, 'Members', userEmail()))
+	).data() as Member | undefined;
+	if (!data) throw '用戶不在成員列表';
+	return { ...data, id: userEmail() } as Member;
+};
 
 /**
  * 測試用登入 production 勿用

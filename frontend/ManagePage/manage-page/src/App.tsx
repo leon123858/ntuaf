@@ -14,7 +14,9 @@ import {
 	logout,
 	userId,
 	subscriptAuthState,
+	getMemberInfo,
 } from '@leon123858/ntuaf-sdk';
+
 import { Home, Auth, Update, Support } from './component';
 
 // set each page component
@@ -28,7 +30,9 @@ enum PATH_NAME {
 const path2component: { [key: string]: (params: any) => JSX.Element } = {};
 path2component[PATH_NAME.Home] = (params: any) => <Home />;
 path2component[PATH_NAME.AUTH] = (params: any) => <Auth />;
-path2component[PATH_NAME.UPDATE] = (params: any) => <Update />;
+path2component[PATH_NAME.UPDATE] = (params: any) => (
+	<Update email={params.email} admin={params.admin} />
+);
 path2component[PATH_NAME.SUPPORT] = (params: any) => <Support />;
 
 // router for menu
@@ -67,16 +71,26 @@ const defaultProps = {
 function App() {
 	const [pathname, setPath] = useState(PATH_NAME.Home);
 	const [isLogin, setLogin] = useState(false);
+	const [memberInfo, setMemberInfo] = useState(
+		{} as { name?: string; admin?: string[]; email: string }
+	);
+
 	useEffect(() => {
-		subscriptAuthState((user: any) => {
-			if (userId()) {
-				setLogin(true);
-			} else {
-				setLogin(false);
-			}
-			console.log(userId());
+		subscriptAuthState(async (user: any) => {
+			userId() ? setLogin(true) : setLogin(false);
 		});
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
+
+	useEffect(() => {
+		if (isLogin) {
+			(async () => {
+				console.log('fetch user info');
+				const { name, admin, id } = await getMemberInfo();
+				setMemberInfo({ name, admin, email: id });
+			})();
+		}
+	}, [isLogin]);
 
 	return (
 		<ProConfigProvider dark={true}>
@@ -100,17 +114,19 @@ function App() {
 						</p>
 					);
 				}}
-				menuItemRender={(item, dom) => (
-					<h1
-						onClick={() => {
-							if (Object.values(PATH_NAME).includes(item.path as PATH_NAME))
-								setPath(item.path as PATH_NAME);
-							else setPath(PATH_NAME.Home);
-						}}
-					>
-						{dom}
-					</h1>
-				)}
+				menuItemRender={(item, dom) =>
+					isLogin ? (
+						<h1
+							onClick={() => {
+								if (Object.values(PATH_NAME).includes(item.path as PATH_NAME))
+									setPath(item.path as PATH_NAME);
+								else setPath(PATH_NAME.Home);
+							}}
+						>
+							{dom}
+						</h1>
+					) : null
+				}
 			>
 				<PageContainer
 					extra={
@@ -143,11 +159,10 @@ function App() {
 				>
 					<ProCard
 						style={{
-							height: '200vh',
-							minHeight: 800,
+							minHeight: '100vh',
 						}}
 					>
-						{path2component[pathname]({})}
+						{path2component[pathname](memberInfo)}
 					</ProCard>
 				</PageContainer>
 			</ProLayout>

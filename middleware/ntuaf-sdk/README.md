@@ -106,7 +106,9 @@ userId();
 subscriptAuthState(callback);
 // google 第三方登入
 await login();
-// 獲取前一次第三方登入的結果
+// 獲取成員個資(含管理事件列表等)
+await getMemberInfo();
+// 獲取前一次第三方登入的結果(理論上用不太到)
 await getLoginResult();
 ```
 
@@ -132,6 +134,13 @@ await getLikeArtworkToday()
 await getArtworkList({...})
 // 喜歡或不喜歡某投稿
 await triggerLikeArtwork({...})
+```
+
+### 其他功能
+
+```js
+// 單張圖片上傳
+await uploadImage(url);
 ```
 
 ## sample
