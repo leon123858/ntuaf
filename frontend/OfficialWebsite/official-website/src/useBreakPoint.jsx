@@ -5,6 +5,7 @@ import { subscriptAuthState } from '@leon123858/ntuaf-sdk';
 const BreakPointContext = createContext({
 	inBreakPoint: true,
 	isLogin: false,
+	handleLogout: () => {}
 });
 
 function BreakPointProvider({ children }) {
@@ -26,9 +27,14 @@ function BreakPointProvider({ children }) {
 		}
 	}, [width]);
 
+	const handleLogout = () => {
+		setLogin(false);
+	}
+
 	const defaultValue = {
 		inBreakPoint,
 		isLogin,
+		handleLogout
 	};
 
 	return (
