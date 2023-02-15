@@ -7,20 +7,28 @@ import DoubleCard from "./DoubleCard.jsx"
 const contents = [
     {
         title: "起",
-        content: "毀滅與混沌"
+        content: "毀滅與混沌",
+        discription:"discription for 起",
+        activity:["相應展覽活動", "相應展覽活動", "相應展覽活動", "相應展覽活動"]
     },
-    // {
-    //     title: "起",
-    //     content: "毀滅與混沌"
-    // },
-    // {
-    //     title: "起",
-    //     content: "毀滅與混沌"
-    // },
-    // {
-    //     title: "起",
-    //     content: "毀滅與混沌"
-    // },
+    {
+        title: "承",
+        content: "毀滅與混沌",
+        discription:"discription for 承",
+        activity:["相應展覽活動", "相應展覽活動", "相應展覽活動", "相應展覽活動"]
+    },
+    {
+        title: "轉",
+        content: "毀滅與混沌",
+        discription:"discription for 轉",
+        activity:["相應展覽活動", "相應展覽活動", "相應展覽活動", "相應展覽活動"]
+    },
+    {
+        title: "合",
+        content: "毀滅與混沌",
+        discription:"discription for 合",
+        activity:["相應展覽活動", "相應展覽活動", "相應展覽活動", "相應展覽活動"]
+    },
 ]
 const FourCircle = () => {
     // const [isModalOpen, setIsModalOpen] = useState(false);
@@ -48,9 +56,9 @@ const FourCircle = () => {
     return (
         <>
             <div className={styles.cardWrapper}>
-                {contents.map((e, index) => {
+                {contents.map((content, index) => {
                     return (
-                        <Card title={e.title} content={e.content} />
+                        <Card content={content} />
                     )
                 })}
             </div>
