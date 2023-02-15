@@ -15,7 +15,7 @@ const items = [
 
 	},
 	{
-		label: <Link className={styles.link} to={'/calendar'}>展覽/活動</Link>,
+		label: <Link className={styles.link} to={'/introduce'}>展覽/活動</Link>,
 		key: 'event',
 		children: [
 			{
@@ -30,7 +30,7 @@ const items = [
 
 	},
 	{
-		label: <Link className={styles.link} to={'/about'}>行事曆</Link>,
+		label: <Link className={styles.link} to={'/calendar'}>行事曆</Link>,
 		key: 'calendar',
 	},
 	{
