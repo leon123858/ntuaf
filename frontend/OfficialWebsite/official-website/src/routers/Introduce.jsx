@@ -1,19 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Tabs } from 'antd';
 import { useParams } from 'react-router-dom';
 import style from './Home.module.css';
 import EventList from '../components/EventList/EventList'
 
-
 function Introduce() {
 	const { type } = useParams();
+	const [ key, setKey ] = useState(type);
+	const onChange = (e) => setKey(e);
+
+	useEffect(() => { setKey(type); }, [type])
 
 	return (
 		<>
 			<div className={style.APP}>
 				<Tabs
 					className={style.container}
-					defaultActiveKey={type}
+					activeKey={key}
 					centered
 					items={[
 						{
@@ -27,6 +30,7 @@ function Introduce() {
 							children: <EventList data={DefaultData}/>,
 						},
 					]}
+					onChange={onChange}
 				>
 				</Tabs>
 			</div>
