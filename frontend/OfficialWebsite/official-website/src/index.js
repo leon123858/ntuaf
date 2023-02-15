@@ -16,9 +16,8 @@ import { BreakPointProvider } from './useBreakPoint.jsx';
 const router = createBrowserRouter([
 	{
 		path: '/',
-		element: <Layout initItem={'home'} />,
+		element: <Layout />,
 		loader: async () => {
-			console.log('load static bundle data');
 			return {};
 		},
 		children: [
@@ -41,21 +40,27 @@ const router = createBrowserRouter([
 			{
 				path: '/history',
 				element: <History />,
-				errorElement: <ErrorPage />,
 			},
 		],
 		errorElement: <ErrorPage />,
 	},
 	{
 		path: 'display/:displayId',
-		element: <Display />,
+		element: (
+			<>
+				<Layout />
+				<Display />
+			</>
+		),
 	},
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+	<React.StrictMode>
 		<BreakPointProvider>
 			<RouterProvider router={router} />
 		</BreakPointProvider>
+	</React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

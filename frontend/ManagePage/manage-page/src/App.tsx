@@ -29,7 +29,7 @@ enum PATH_NAME {
 }
 const path2component: { [key: string]: (params: any) => JSX.Element } = {};
 path2component[PATH_NAME.Home] = (params: any) => <Home />;
-path2component[PATH_NAME.AUTH] = (params: any) => <Auth />;
+path2component[PATH_NAME.AUTH] = (params: any) => <Auth user={params}/>;
 path2component[PATH_NAME.UPDATE] = (params: any) => (
 	<Update email={params.email} admin={params.admin} />
 );
@@ -74,7 +74,7 @@ function App() {
 	const [memberInfo, setMemberInfo] = useState(
 		{} as { name?: string; admin?: string[]; email: string }
 	);
-
+	console.log("member info",memberInfo);
 	useEffect(() => {
 		subscriptAuthState(async (user: any) => {
 			userId() ? setLogin(true) : setLogin(false);
