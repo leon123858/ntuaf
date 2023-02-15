@@ -1,0 +1,10 @@
+*{
+    box-sizing:border-box;
+}
+.cardWrapper{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    padding:10vh 0 ;
+    height: 100vh;
+}

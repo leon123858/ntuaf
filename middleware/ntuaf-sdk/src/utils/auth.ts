@@ -9,7 +9,7 @@ import {
 } from 'firebase/auth';
 import { doc, getDoc } from '@firebase/firestore';
 import { authInstance, dbInstance } from './initFirebase';
-import { Member } from 'types';
+import { Member } from '../types/types';
 
 /**
  * 獲取用戶資料, 含管理事件列表,姓名,email,... 等
