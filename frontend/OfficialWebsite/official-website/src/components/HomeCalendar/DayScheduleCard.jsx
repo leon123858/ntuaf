@@ -30,7 +30,7 @@ const DayScheduleCard = ({data}) => {
                 </div>
                 
                 <div>
-                    <p className={style.category}>常態展覽</p>
+                    <p className={`${style.category} ${(inBreakPoint) ? '' : style.firstCategory}`}>常態展覽</p>
                     <div className={(inBreakPoint) ? style.dataContainer : style.lgExhibitionContainer}>
                     {
                         (data.data.exhibition.length !== 0) ?
