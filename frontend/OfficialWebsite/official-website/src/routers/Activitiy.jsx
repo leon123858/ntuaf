@@ -7,7 +7,7 @@ import ImageBox from '../components/ImageBox/ImageBox'
 import Video from '../components/VideoBox/videoBox';
 import ImageList from '../components/ImageList/ImageList';
 
-function Activity() {
+function Activity(blocks) {
     const block2element = {
 		[BlOCK_TYPE.TEXT_A]: ({ text, title }) => {
 			return (
@@ -128,7 +128,9 @@ function Activity() {
     let interpreter = new BlockInterpreter(block2element, item2element);
     return (
         <>
-            <div className={style.APP}></div>
+            <div className={style.APP}>
+                {interpreter.transfer(blocks)}
+            </div>
         </>
     );
 }
