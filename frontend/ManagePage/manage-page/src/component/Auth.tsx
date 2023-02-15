@@ -13,7 +13,7 @@ function Auth({user}:{user:any}) {
 
 	
 	console.log("user",(user));
-	const data = user;
+	// const data = user;
 	const [isModalOpen, ModalOpen] = useState(false);
 
 	const eventdata: any = {
@@ -87,11 +87,22 @@ function Auth({user}:{user:any}) {
 							結束時間 : {curdata.endTime}
 						</div>
 						<div>
-							地點 :{
+							地點 :
+							{
 								curdata.place.name
 							}
 							<br></br>
 							<a href={curdata.place.url}>{curdata.place.url}</a>
+						</div>
+						<div>
+							圖片 :
+							{
+								curdata.image.card
+							}
+							<br></br>
+							{
+								curdata.image.banner
+							}
 						</div>
 					</Modal>
 				</Space>
@@ -100,20 +111,20 @@ function Auth({user}:{user:any}) {
 		
 	  ];
 
-	const usercolumn:any =[
+	const usercolumn : any =[
+		{
+			title: '使用者名稱',
+			dataIndex: 'name',
+		},
+		{
+			title: '使用者信箱',
+			dataIndex: 'email',
+		}
 
 	]
 	return (
 		<>
-			<div>
-			<Title level={2}>使用者名稱：</Title>
-			<Title level={4}>{user.name}</Title>
-			</div>
-			<div>
-			<Title level={2}>信箱：</Title>
-			<Title level={4}>{user.email}</Title>
-			</div>
-			<Table />
+			<Table columns={usercolumn} dataSource={[user]}/>
 			<Table columns={columns} dataSource={user.admin} />
 		</>
 	);
