@@ -4,6 +4,7 @@ import {
 	CrownFilled,
 	SmileFilled,
 	HomeFilled,
+	ProjectFilled,
 } from '@ant-design/icons';
 import { PageContainer, ProLayout, ProCard } from '@ant-design/pro-components';
 import { ProConfigProvider } from '@ant-design/pro-provider';
@@ -17,7 +18,7 @@ import {
 	getMemberInfo,
 } from '@leon123858/ntuaf-sdk';
 
-import { Home, Auth, Update, Support } from './component';
+import { Home, Auth, Update, Support, Post } from './component';
 
 // set each page component
 
@@ -26,14 +27,17 @@ enum PATH_NAME {
 	AUTH = '/auth',
 	UPDATE = '/update',
 	SUPPORT = '/support',
+	POST = '/post',
+	
 }
 const path2component: { [key: string]: (params: any) => JSX.Element } = {};
 path2component[PATH_NAME.Home] = (params: any) => <Home />;
-path2component[PATH_NAME.AUTH] = (params: any) => <Auth />;
+path2component[PATH_NAME.AUTH] = (params: any) => <Auth email={params.email} admin={params.admin} name={params.name}/>;
 path2component[PATH_NAME.UPDATE] = (params: any) => (
 	<Update email={params.email} admin={params.admin} />
 );
 path2component[PATH_NAME.SUPPORT] = (params: any) => <Support />;
+path2component[PATH_NAME.POST] = (params: any) => <Post />;
 
 // router for menu
 const defaultProps = {
@@ -60,6 +64,10 @@ const defaultProps = {
 				path: PATH_NAME.SUPPORT,
 				name: '相關協助',
 				icon: <ChromeFilled />,
+			},{
+				path: PATH_NAME.POST,
+				name: '查看投稿',
+				icon: <ProjectFilled />,
 			},
 		],
 	},
