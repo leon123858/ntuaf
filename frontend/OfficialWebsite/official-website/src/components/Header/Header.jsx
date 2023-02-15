@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useContext } from 'react';
 import styles from "./Header.module.css"
 import SideBar from "./SideBar.jsx"
@@ -90,8 +89,6 @@ const Header = () => {
 			}
 		})
 	}, [])
-
-
 
 	return (
 		<div className={styles.totalWrapper}>

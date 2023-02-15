@@ -143,7 +143,7 @@ describe('test update event', function () {
 			title: '未定義標題',
 			blocks: [
 				{
-					type: 3,
+					type: BlOCK_TYPE.IMAGE_A,
 					text: '',
 					url: null,
 					title: '',
