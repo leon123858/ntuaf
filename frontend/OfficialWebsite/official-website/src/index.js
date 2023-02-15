@@ -53,11 +53,9 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-	<React.StrictMode>
 		<BreakPointProvider>
 			<RouterProvider router={router} />
 		</BreakPointProvider>
-	</React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
