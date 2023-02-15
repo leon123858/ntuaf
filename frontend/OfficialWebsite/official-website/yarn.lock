@@ -2092,10 +2092,10 @@
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz#b2ac626d6cb9c8718ab459166d4bb405b8ffa78b"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
-"@leon123858/ntuaf-sdk@0.0.5":
-  version "0.0.5"
-  resolved "https://npm.pkg.github.com/download/@leon123858/ntuaf-sdk/0.0.5/f4b88e1d8733ddb2535e81bf4b7284e697b8f7b1#f4b88e1d8733ddb2535e81bf4b7284e697b8f7b1"
-  integrity sha512-GoSqmJE2TTpKKNTdkULDOU3TwkHKd8IGHFHLHYTCwvDrHdvUSmK4wDVx1bJHsDSxFhMcXaqZzcHVFl/B1CLJAQ==
+"@leon123858/ntuaf-sdk@0.1.2":
+  version "0.1.2"
+  resolved "https://npm.pkg.github.com/download/@leon123858/ntuaf-sdk/0.1.2/80253a3cfdac57241db6c8357a69d39404668bd5#80253a3cfdac57241db6c8357a69d39404668bd5"
+  integrity sha512-ZKaJ3Gh7qPXtw56Fr01KANy4lWZP1QPsd5eDDPuuDwRQWCI+BQfTdZmxST80dFKmdwW4wfgiR/qc38jP9o7+lg==
   dependencies:
     axios "^0.27.2"
     chai "^4.3.6"
@@ -9053,6 +9053,14 @@ react-scripts@5.0.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
+react-slideshow-image@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/react-slideshow-image/-/react-slideshow-image-4.2.0.tgz#a0cb1409360e4c51b21cfa1d03d45e3fed209351"
+  integrity sha512-bdYyarv6EDg0H1SLzCA9lgbnavsQ/wkynVOOXaILTbcNZb8OQvUtSn5BulNemHTJRgJdsapQUVVKJNFuQMgd5A==
+  dependencies:
+    "@tweenjs/tween.js" "^18.6.4"
+    resize-observer-polyfill "^1.5.1"
+
 react-spring-3d-carousel@^1.3.2:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/react-spring-3d-carousel/-/react-spring-3d-carousel-1.3.2.tgz#a9414e36ddf45a642d3574356ee7be195c63dc40"
@@ -9074,14 +9082,6 @@ react-swipeable@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/react-swipeable/-/react-swipeable-7.0.0.tgz#7a12570ee435d35ac700511de338384aa78d12cd"
   integrity sha512-NI7KGfQ6gwNFN0Hor3vytYW3iRfMMaivGEuxcADOOfBCx/kqwXE8IfHFxEcxSUkxCYf38COLKYd9EMYZghqaUA==
-
-react-slideshow-image@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/react-slideshow-image/-/react-slideshow-image-4.2.0.tgz#a0cb1409360e4c51b21cfa1d03d45e3fed209351"
-  integrity sha512-bdYyarv6EDg0H1SLzCA9lgbnavsQ/wkynVOOXaILTbcNZb8OQvUtSn5BulNemHTJRgJdsapQUVVKJNFuQMgd5A==
-  dependencies:
-    "@tweenjs/tween.js" "^18.6.4"
-    resize-observer-polyfill "^1.5.1"
 
 react-with-direction@^1.3.1:
   version "1.4.0"
