@@ -1,6 +1,12 @@
-import styles from "./LoginButton.module.css" 
-const LoginButton = ()=>{
-    return (<button className={styles.loginButton}>登入</button>)
-}
+import styles from './LoginButton.module.css';
+import { login } from '@leon123858/ntuaf-sdk';
 
-export default LoginButton
+const LoginButton = () => {
+	return (
+		<button onClick={async () => await login()} className={styles.loginButton}>
+			登入
+		</button>
+	);
+};
+
+export default LoginButton;
