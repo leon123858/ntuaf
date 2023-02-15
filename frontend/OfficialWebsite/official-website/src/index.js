@@ -19,7 +19,6 @@ const router = createBrowserRouter([
 		path: '/',
 		element: <Layout initItem={'home'} />,
 		loader: async () => {
-			console.log('load static bundle data');
 			return {};
 		},
 		children: [

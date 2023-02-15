@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './Home.module.css';
+import Carousel from '../components/Carousel/Carousel';
 
 function About() {
 	return (
@@ -10,6 +11,7 @@ function About() {
 					<p>
 						Edit <code>src/App.js</code> and save to reload.
 					</p>
+
 					<a
 						className={style['App-link']}
 						href='https://reactjs.org'

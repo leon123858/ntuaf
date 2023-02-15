@@ -1,6 +1,7 @@
 import { DEPARTMENT } from '../../types/enums';
 import { dbInstance } from '../initFirebase';
 import { getDoc, doc } from 'firebase/firestore';
+import { Images } from '../../types/types';
 
 /**
  * 獲取該部門成員列表
@@ -35,7 +36,7 @@ export const getRecommendEvents = async (type: 'recent' | 'always') => {
 	const data = (
 		await getDoc(doc(dbInstance, 'Cache/Events/Recommend', type))
 	).data() as
-		| { data: { image: string; text: string; id: string }[] }
+		| { data: { image: Images; text: string; id: string; date: string }[] }
 		| undefined;
 	if (!data) throw 'can not fetch target cache';
 	return data.data;
