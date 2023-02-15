@@ -1,12 +1,11 @@
 import { SearchOutlined } from "@ant-design/icons"
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {Input} from "antd"
 import styles from "./SearchBar.module.css"
 
 const SearchBar = () => {
 	const [searchBarActive, setSearchBarActive] = useState(false)
     const [searchWord, setSearchWord] = useState("")
-	let className="{searchBarActive ? styles.searchBarWrapperActive : styles.searchBarWrapper}"
 	const onClick = ()=>{
 		if (searchBarActive){
             console.log("search key word", searchWord)

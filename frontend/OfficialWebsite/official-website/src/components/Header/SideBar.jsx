@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSwipeable } from "react-swipeable"
 import styles from "./SideBar.module.css"
-import { Collapse, theme, Drawer, Input } from 'antd';
+import { Collapse, Drawer, Input } from 'antd';
 import { SearchOutlined } from "@ant-design/icons"
 import LoginButton from "./LoginButton.jsx"
 const { Panel } = Collapse;
@@ -35,7 +35,7 @@ const LinkGroup = () => {
 }
 const SideBar = (props) => {
 	const [activeSearch, setActiveSearch] = useState(false)
-	const [activeSideBar, setActiveSideBar] = useState(false)
+	// const [activeSideBar, setActiveSideBar] = useState(false)
 	const [searchWord, setSearchWord] = useState("")
 	const search = (e)=>{
 		if (e.key === 'Enter') {
@@ -44,36 +44,10 @@ const SideBar = (props) => {
 
 	}
 	//info swipe for disabling sideBar
-	useEffect(() => {
-		setActiveSideBar(props.activeSideBar)
-		// console.log(activeSideBar)
-	}, [props.activeSideBar])
 	const handlers = useSwipeable({
-		// onSwiped: (eventData) => console.log("User Swiped!", eventData),
 		onSwipedRight: () => { if (window.innerWidth < 769) { props.setSideBarActive(false) } }
 	});
-	//info click for disable searchBar
-	useEffect(() => {
-		setActiveSideBar(props.activeSideBar)
-		let drawerBodyWrapperE = document.getElementsByClassName(styles.drawerBodyWrapper)[0]
-		if(drawerBodyWrapperE){
-			//info click non element to deactivate sidebar
-			drawerBodyWrapperE.addEventListener("click", (evt) => {
-				const searchElement = document.getElementById("inputSearch")
-				let triggerE = evt.target; // clicked element      
-				//* maybe the trigger element which takes less area is the decendent of target element
-				//* this is, triiger is smaller than target
-				do{
-					if (triggerE === searchElement) {
-						return;
-					}
-					triggerE = triggerE.parentNode;
-				}while(triggerE)
-				setActiveSearch(false)
-			});
-		}
-		
-	}, [props.activeSideBar])
+
 
 	return (
 		<Drawer placement="right" open={props.activeSideBar} closable={false} width={"100vw"} mask={false} bodyStyle={activeSearch?{backgroundColor:"gray", transition:"all 1s"}:{}}>

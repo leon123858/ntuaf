@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import styles from "./Header.module.css"
 import SideBar from "./SideBar.jsx"
-import { Menu, Dropdown } from 'antd';
+import { Menu } from 'antd';
 import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar.jsx';
 import LoginButton from "./LoginButton.jsx"
@@ -59,7 +59,6 @@ const Header = () => {
 	const { toggleInBreakPoint } = useContext(BreakPointContext);
 	toggleInBreakPoint();
 	const [sideBarActive, setSideBarActive] = useState(false)
-	const [searchBarActive, setSearchBarActive] = useState(false)
 	const onClose = () => {
 		setSideBarActive(false)
 	}
