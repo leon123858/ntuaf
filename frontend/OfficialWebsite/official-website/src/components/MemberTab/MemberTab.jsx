@@ -2,9 +2,9 @@ import React, { useContext, useState, useEffect } from 'react';
 import style from './MemberTab.module.css';
 import { Tabs } from 'antd';
 import { BreakPointContext } from '../../useBreakPoint';
-import { getMembersByDepartment } from '@leon123858/ntuaf-sdk'
+import { getMembersByDepartment, DEPARTMENT } from '@leon123858/ntuaf-sdk'
 
-const departmentNames = ['核心團隊', '設計部', '行政部', '公關部', '策展部']
+const departmentNames = [DEPARTMENT.核心團隊, DEPARTMENT.設計部, DEPARTMENT.行政部, DEPARTMENT.公關部, DEPARTMENT.策展部]
 
 const PositionRow = ({ members, position }) => {
     return (
@@ -26,49 +26,15 @@ const PositionRow = ({ members, position }) => {
 
 const MemberTab = () => {
     const { inBreakPoint } = useContext(BreakPointContext);
-    const [curDepartment, setCurDepartment] = useState('');
+    const [curDepartment, setCurDepartment] = useState(DEPARTMENT.核心團隊);
     const [memberData, setMemeberData] = useState([]);
 
-    const fetchData = async () => {
-        const k = await getMembersByDepartment('策展部');
-        setMemeberData(k);
-    }
-
-    const onChange = (key) => {
-        setCurDepartment(key);
-    }
-
     useEffect(() => {
-       fetchData(curDepartment)
+        (async function () {
+            const data = await getMembersByDepartment(curDepartment);
+            setMemeberData(data);
+        })()
     }, [curDepartment]);
-
-    const handleProcess = (members) => {
-        return (
-                <div className={(inBreakPoint) ? style.department : style.lgDepartment}>
-                    <img
-                        alt='team img'
-                        src='https://i.seadn.io/gcs/files/9d1db9251715abbf63586037840a319c.png?auto=format'
-                        className={(inBreakPoint) ? style.img : style.lgImg}
-                    />
-                    {
-                        (curDepartment === '核心團隊')
-                            ? (
-                                <div>
-                                    <PositionRow members={members} position={"總招"} />
-                                    <PositionRow members={members} position={"副招"} />
-                                    <PositionRow members={members} position={"執秘"} />
-                                </div>
-                            )
-                            : (
-                                <div>
-                                    <PositionRow members={members} position={"部長"} />
-                                    <PositionRow members={members} position={"部員"} />
-                                </div>
-                            )
-                    }
-                </div>
-            )
-    };
 
     return (
         <div className={style.container}>
@@ -81,11 +47,34 @@ const MemberTab = () => {
                         return {
                             label: departmentName,
                             key: departmentName,
-                            children: handleProcess(memberData),
+                            children:
+                                <div className={(inBreakPoint) ? style.department : style.lgDepartment}>
+                                    <img
+                                        alt='team img'
+                                        src='https://i.seadn.io/gcs/files/9d1db9251715abbf63586037840a319c.png?auto=format'
+                                        className={(inBreakPoint) ? style.img : style.lgImg}
+                                    />
+                                    {
+                                        (curDepartment === '核心團隊')
+                                            ? (
+                                                <div>
+                                                    <PositionRow members={memberData} position={"總招"} />
+                                                    <PositionRow members={memberData} position={"副招"} />
+                                                    <PositionRow members={memberData} position={"執秘"} />
+                                                </div>
+                                            )
+                                            : (
+                                                <div>
+                                                    <PositionRow members={memberData} position={"部長"} />
+                                                    <PositionRow members={memberData} position={"部員"} />
+                                                </div>
+                                            )
+                                    }
+                                </div>,
                         };
                     }
-                )}
-                onChange={onChange}
+                    )}
+                onChange={(key) => setCurDepartment(key)}
             >
             </Tabs>
         </div>
