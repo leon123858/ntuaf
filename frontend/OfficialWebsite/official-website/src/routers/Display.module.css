@@ -1,0 +1,15 @@
+.App {
+	text-align: center;
+}
+.Spin {
+	margin: 20px 0;
+	margin-bottom: 20px;
+	padding: 30px 50px;
+	text-align: center;
+	background: rgba(0, 0, 0, 0.05);
+	border-radius: 4px;
+}
+.Image {
+	width: 100vw;
+	width: 100%;
+}

@@ -30,7 +30,11 @@ const correctImage = (images: Images) => {
 const correctItem = (item: Item) => {
 	const { type = ITEM_TYPE.作者, url = null, name = '' } = item;
 	if (!Object.values(ITEM_TYPE).includes(type)) throw 'not exist type of item';
-	return { type, url, name } as Item;
+	return {
+		type: typeof type == 'number' ? type : ITEM_TYPE[type],
+		url,
+		name,
+	} as Item;
 };
 
 const correctBlock = (block: Block) => {
@@ -44,7 +48,7 @@ const correctBlock = (block: Block) => {
 	if (!Object.values(BlOCK_TYPE).includes(type))
 		throw 'not exist type of block';
 	return {
-		type,
+		type: typeof type == 'number' ? type : BlOCK_TYPE[type],
 		text,
 		url,
 		title,

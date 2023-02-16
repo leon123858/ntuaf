@@ -151,6 +151,33 @@ describe('test update event', function () {
 				},
 			],
 		});
+		await updateEvent({
+			id: 'test0',
+			type: EVENT_TYPE.展覽,
+			blocks: [
+				{
+					type: 'IMAGE_A' as any,
+					items: [{ type: '作者' as any } as Item],
+				} as Block,
+			],
+		} as any);
+		expect(await getEvent('test0')).eqls({
+			startTime: 0,
+			endTime: 0,
+			place: { name: '待訂', url: null },
+			image: { card: null, banner: null },
+			type: '展覽',
+			title: '未定義標題',
+			blocks: [
+				{
+					type: BlOCK_TYPE.IMAGE_A,
+					text: '',
+					url: null,
+					title: '',
+					items: [{ type: 0, url: null, name: '' }],
+				},
+			],
+		});
 		await logout();
 	});
 	it('should update error with no id', async () => {

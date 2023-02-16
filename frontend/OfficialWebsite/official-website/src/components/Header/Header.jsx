@@ -58,11 +58,19 @@ const items = [
 		key: 'special',
 		children: [
 			{
-				label: <div className={styles.subMenu}>洄溯</div>,
+				label: (
+					<div className={styles.subMenu}>
+						<Link to={'/artwork'}>洄溯</Link>
+					</div>
+				),
 				key: 'backward',
 			},
 			{
-				label: <div className={styles.subMenu}>藝術季地圖</div>,
+				label: (
+					<div className={styles.subMenu}>
+						<Link to={'/map'}>藝術季地圖</Link>
+					</div>
+				),
 				key: 'afMap',
 			},
 			{

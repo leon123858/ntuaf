@@ -36,7 +36,15 @@ export const getRecommendEvents = async (type: 'recent' | 'always') => {
 	const data = (
 		await getDoc(doc(dbInstance, 'Cache/Events/Recommend', type))
 	).data() as
-		| { data: { image: Images; text: string; id: string; date: string }[] }
+		| {
+				data: {
+					image: Images;
+					text: string;
+					id: string;
+					date: string;
+					info: string;
+				}[];
+		  }
 		| undefined;
 	if (!data) throw 'can not fetch target cache';
 	return data.data;

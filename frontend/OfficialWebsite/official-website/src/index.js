@@ -10,6 +10,8 @@ import Introduce from './routers/Introduce';
 import Calendar from './routers/Calendar';
 import About from './routers/About';
 import History from './routers/History';
+import Artwork from './routers/Artwork';
+import Map from './routers/Map';
 import Layout from './components/Layout/Layout';
 import { BreakPointProvider } from './useBreakPoint.jsx';
 
@@ -41,17 +43,20 @@ const router = createBrowserRouter([
 				path: '/history',
 				element: <History />,
 			},
+			{
+				path: '/artwork',
+				element: <Artwork />,
+			},
+			{
+				path: '/map',
+				element: <Map />,
+			},
+			{
+				path: 'display/:displayId',
+				element: <Display />,
+			},
 		],
 		errorElement: <ErrorPage />,
-	},
-	{
-		path: 'display/:displayId',
-		element: (
-			<>
-				<Layout />
-				<Display />
-			</>
-		),
 	},
 ]);
 

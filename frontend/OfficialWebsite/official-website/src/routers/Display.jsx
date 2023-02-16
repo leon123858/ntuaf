@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import style from './Home.module.css';
+import style from './Display.module.css';
 import BlockInterpreter from '../utils/blockInterpreter';
 import { BlOCK_TYPE, ITEM_TYPE, getEvent } from '@leon123858/ntuaf-sdk';
 import Textbox from '../components/Textbox/TextBox';
@@ -7,6 +7,7 @@ import ImageBox from '../components/ImageBox/ImageBox';
 import Video from '../components/VideoBox/videoBox';
 import ImageList from '../components/ImageList/ImageList';
 import { useParams } from 'react-router-dom';
+import { Spin, Image } from 'antd';
 
 const block2element = {
 	[BlOCK_TYPE.TEXT_A]: ({ text, title }) => {
@@ -144,18 +145,28 @@ const item2element = {
 function Display() {
 	const { displayId } = useParams();
 	const interpreter = new BlockInterpreter(block2element, item2element);
-	const [eventState, setEventState] = useState({ blocks: [] });
+	const [eventState, setEventState] = useState(undefined);
 	useEffect(() => {
 		(async function () {
 			const event = await getEvent(displayId);
 			setEventState(event);
 		})();
-	});
+	}, [displayId]);
 
-	return (
+	return eventState ? (
 		<>
+			<Image
+				className={style.Image}
+				preview={false}
+				src={eventState.image?.banner}
+				fallback='https://fakeimg.pl/1900x500/?text=WrongImage'
+			/>
 			<div className={style.APP}>{interpreter.transfer(eventState.blocks)}</div>
 		</>
+	) : (
+		<div className={style.Spin}>
+			<Spin></Spin>
+		</div>
 	);
 }
 
