@@ -29,7 +29,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/introduce/:type',
-				element: <Introduce />,
+				element: <Introduce/>,
 			},
 			{
 				path: '/calendar',

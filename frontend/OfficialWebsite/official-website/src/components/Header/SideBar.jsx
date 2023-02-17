@@ -7,14 +7,17 @@ import { SearchOutlined } from '@ant-design/icons';
 import LoginButton from './LoginButton.jsx';
 const { Panel } = Collapse;
 
-const LinkGroup = () => {
+const LinkGroup = ({setSideBarActive}) => {
+	const handleClickLink = ()=>{
+		setSideBarActive(false)
+	}
 	return (
 		<div className={styles.sideBarWrapper}>
 			<Collapse ghost>
 				<Panel
 					header={
 						<div className={styles.headerWrapper}>
-							<Link className={styles.link} to={'/about'}>
+							<Link className={styles.link} to={'/about'} onClick={handleClickLink}>
 								關於我們
 							</Link>
 						</div>
@@ -25,7 +28,7 @@ const LinkGroup = () => {
 				<Panel
 					header={
 						<div className={styles.headerWrapper}>
-							<Link className={styles.link} to={'/introduce'}>
+							<Link className={styles.link}>
 								展覽/活動
 							</Link>
 						</div>
@@ -34,10 +37,10 @@ const LinkGroup = () => {
 					showArrow={false}
 				>
 					<div className={styles.collapseItemWrapper}>
-						<Link className={styles.link} to={'/introduce/1'}>
+						<Link className={styles.link} to={'/introduce/1'} onClick={handleClickLink}>
 							展覽
 						</Link>
-						<Link className={styles.link} to={'/introduce/2'}>
+						<Link className={styles.link} to={'/introduce/2'} onClick={handleClickLink}>
 							活動
 						</Link>
 					</div>
@@ -45,7 +48,7 @@ const LinkGroup = () => {
 				<Panel
 					header={
 						<div className={styles.headerWrapper}>
-							<Link className={styles.link} to={'/calendar'}>
+							<Link className={styles.link} to={'/calendar'} onClick={handleClickLink}>
 								行事曆
 							</Link>
 						</div>
@@ -56,7 +59,7 @@ const LinkGroup = () => {
 				<Panel
 					header={
 						<div className={styles.headerWrapper}>
-							<Link className={styles.link} to={'/history'}>
+							<Link className={styles.link} to={'/history'} onClick={handleClickLink}>
 								特別企劃
 							</Link>
 						</div>
@@ -65,13 +68,13 @@ const LinkGroup = () => {
 					showArrow={false}
 				>
 					<div className={styles.collapseItemWrapper}>
-						<Link className={styles.link} to={'/artwork'}>
+						<Link className={styles.link} to={'/artwork'} onClick={handleClickLink}>
 							洄溯
 						</Link>
-						<Link className={styles.link} to={'/map'}>
+						<Link className={styles.link} to={'/map'} onClick={handleClickLink}>
 							藝術季地圖
 						</Link>
-						<Link className={styles.link} to={'/'}>
+						<Link className={styles.link} to={'/'} onClick={handleClickLink}>
 							心理測驗
 						</Link>
 					</div>
@@ -97,6 +100,9 @@ const SideBar = (props) => {
 			}
 		},
 	});
+	const handleClickLink = ()=>{
+		setActiveSearch(false)
+	}
 
 	return (
 		<Drawer
@@ -133,7 +139,7 @@ const SideBar = (props) => {
 					<LoginButton />
 				</div>
 				<div>
-					<LinkGroup />
+					<LinkGroup setSideBarActive={props.setSideBarActive}/>
 				</div>
 				<div className={styles.closeIcon}>
 					<span
