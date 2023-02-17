@@ -18,22 +18,12 @@ function Post() {
 		setLoading(true);
 		(async () => {
 			await initData()
-			
 		})().then(()=>{setLoading(false)})
 		
 	}, []);
 	useEffect(() => {
-		console.log("cursor:", cursor);
-		console.log("data:", dataList);
-		setDataList([]);
-		setCursor(1);
-		if (loading) {
-			console.log("return")
-			return;
-		}
-		setLoading(true);
 		(async () => {
-			await initData().then(() => { console.log("initS") })
+			await initData()
 		})().then(()=>{setLoading(false)})
 	}, [activeKey]);
 	const loadMoreData = () => {
@@ -43,9 +33,8 @@ function Post() {
 			return;
 		}
 		setLoading(true);
-
 		(async () => {
-			await updateData().then(() => { console.log("updateS") });
+			await updateData()
 		})().then(()=>{setLoading(false)})
 	};
 
@@ -53,16 +42,18 @@ function Post() {
 		const type = activeKey === "1" ? ARTWORK_TYPE.PURE_TEXT : activeKey === "2" ? ARTWORK_TYPE.PHOTO : ARTWORK_TYPE.PAINTING;
 		let { cursor: tempCursor, data } = await getArtworkList(type, 'like', cursor);
 		setDataList([...dataList, ...data])
-		setCursor(tempCursor)
-		console.log("dataUpdated", type)
+		setCursor(tempCursor)	
 	}
 	const initData = async () => {
 		const type = activeKey === "1" ? ARTWORK_TYPE.PURE_TEXT : activeKey === "2" ? ARTWORK_TYPE.PHOTO : ARTWORK_TYPE.PAINTING;
 		let { cursor: tempCursor, data } = await getArtworkList(type, 'like');
+		await delay(200)
 		setDataList(data)
 		setCursor(tempCursor)
-		console.log("datainited", type)
 	}
+	const delay = (delayInms:number) => {
+		return new Promise(resolve => setTimeout(resolve, delayInms));
+	  }
 	const getChildren = () => (
 		<div
 			id="scrollableDiv"
@@ -73,7 +64,6 @@ function Post() {
 				border: '1px solid rgba(140, 140, 140, 0.35)',
 			}}
 		>
-
 			<InfiniteScroll
 				dataLength={dataList.length}
 				next={loadMoreData}
@@ -126,6 +116,9 @@ function Post() {
 	];
 	const onChange = (key: string) => {
 		setActiveKey(key);
+		setLoading(true);
+		setDataList([]);
+		setCursor(1)
 	}
 	function export2json(data:Artwork) {
 		const a = document.createElement("a");

@@ -32,7 +32,7 @@ enum PATH_NAME {
 }
 const path2component: { [key: string]: (params: any) => JSX.Element } = {};
 path2component[PATH_NAME.Home] = (params: any) => <Home />;
-path2component[PATH_NAME.AUTH] = (params: any) => <Auth email={params.email} admin={params.admin} name={params.name}/>;
+path2component[PATH_NAME.AUTH] = (params: any) => <Auth />;
 path2component[PATH_NAME.UPDATE] = (params: any) => (
 	<Update email={params.email} admin={params.admin} />
 );
