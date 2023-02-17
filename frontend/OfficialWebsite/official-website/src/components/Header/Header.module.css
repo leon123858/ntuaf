@@ -14,13 +14,6 @@
     transition:all 1s
 }
 
-.logo {
-    cursor: pointer;
-    border: solid gray;
-    border-radius: 1em;
-    padding:0.25em;
-}
-
 .menuWrapper{
     display:none
 }
