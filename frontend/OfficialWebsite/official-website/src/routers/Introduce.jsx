@@ -11,7 +11,7 @@ function Introduce() {
 	const [firstData, setFirstData] = useState({ events: [] });
 	const [secondData, setSecondData] = useState({ events: [] });
 	const onChange = (e) => setKey(e);
-
+	console.log("type", type)
 	useEffect(() => {
 		setKey(type);
 	}, [type]);

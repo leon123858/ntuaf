@@ -1,0 +1,9 @@
+*{
+    box-sizing: border-box;
+}
+.logo {
+    cursor: pointer;
+    border: solid gray;
+    border-radius: 1em;
+    padding:0.25em;
+}
