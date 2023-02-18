@@ -36,7 +36,7 @@ const Carousel = () => {
 					header: v.text,
 					date: v.date,
 					id: v.id,
-					content: '之後去掉這欄',
+					content: v.info,
 					index: i,
 				};
 			});
@@ -46,7 +46,7 @@ const Carousel = () => {
 					header: v.text,
 					date: v.date,
 					id: v.id,
-					content: '之後去掉這欄',
+					content: v.info,
 					index: i,
 				};
 			});

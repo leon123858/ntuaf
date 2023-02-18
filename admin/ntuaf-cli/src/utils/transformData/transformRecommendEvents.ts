@@ -30,7 +30,7 @@ const transformRegularEvent = async () => {
 					doc.data().data.startTime,
 					doc.data().data.endTime
 				),
-				info:doc.data().data.blocks[0].text
+				info: doc.data().data.blocks[0]?.text || '無資料',
 			}),
 		});
 	});
@@ -50,8 +50,8 @@ const transformRecentEvent = async () => {
 	});
 	const orderedKey = Object.keys(event).sort();
 	const currentTimeStamp = moment().valueOf();
-	const maxNumOfEvent = 10
-	let count = 0
+	const maxNumOfEvent = 10;
+	let count = 0;
 	let recentEvents = orderedKey.map((startTime) => {
 		if (
 			parseInt(startTime) > currentTimeStamp ||
@@ -59,9 +59,9 @@ const transformRecentEvent = async () => {
 				currentTimeStamp < event[startTime].endTime)
 		) {
 			//? what is image and text for an event
-			count++
-			if (count>maxNumOfEvent){
-				return
+			count++;
+			if (count > maxNumOfEvent) {
+				return;
 			}
 			return {
 				image: event[startTime].image,
@@ -71,11 +71,11 @@ const transformRecentEvent = async () => {
 					event[startTime].startTime,
 					event[startTime].endTime
 				),
-				info:event[startTime].blocks[0].text
+				info: event[startTime].blocks[0]?.text || '無資料',
 			};
 		}
 	});
-	recentEvents = recentEvents.filter((e)=>e!=undefined)
+	recentEvents = recentEvents.filter((e) => e != undefined);
 	const docRef = db.collection(toDbPath).doc(id);
 	await docRef.set({ [key]: [] });
 	await db
