@@ -1,5 +1,5 @@
 import { db } from '../../init';
-import moment, { max } from 'moment';
+import moment from 'moment';
 import { Event } from '@leon123858/ntuaf-sdk';
 const { FieldValue } = require('firebase-admin/firestore');
 
@@ -19,7 +19,6 @@ const transformRegularEvent = async () => {
 	await docRef.set({ [key]: [] });
 	ref.forEach(async (doc) => {
 		// fill list
-		console.log(doc.data().data.blocks[0].text)
 		const docRef = db.collection(toDbPath).doc(id);
 		await docRef.update({
 			//? what is image and text for an event
