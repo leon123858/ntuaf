@@ -98,7 +98,7 @@ const insertEvent = async () => {
 
 		const blockListMaxLength = 3;
 		const createBlockList = () => {
-			return Array.from({ length: Math.random() * blockListMaxLength }, () => {
+			return Array.from({ length: (Math.random() * blockListMaxLength)+1 }, () => {
 				const blockTypeList = Object.values(BlOCK_TYPE)
 					.filter((v) => !isNaN(Number(v)))
 					.map((key) => BlOCK_TYPE[key as keyof typeof BlOCK_TYPE]);
