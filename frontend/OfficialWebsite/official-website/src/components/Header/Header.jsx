@@ -5,6 +5,7 @@ import { Menu } from 'antd';
 import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar.jsx';
 import LoginButton from './LoginButton.jsx';
+import Logo from "./Logo"
 
 const items = [
 	{
@@ -112,8 +113,8 @@ const Header = () => {
 	return (
 		<div className={styles.totalWrapper}>
 			<div className={styles.headerWrapper}>
-				<div className={styles.logo}>LOGO</div>
-				<h1 className={styles.title}>台大藝術季28th</h1>
+				<Logo/>
+				<h1 className={styles.title}><Link className={styles.link} to={'/'}>台大藝術季28th</Link></h1>
 				<div className={styles.menuWrapper}>
 					<Menu
 						selectable={false}
