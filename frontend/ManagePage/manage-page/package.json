@@ -16,6 +16,7 @@
 		"@types/react": "^18.0.0",
 		"@types/react-dom": "^18.0.0",
 		"antd": "^5.1.6",
+		"bezier-js": "^6.1.1",
 		"moment": "^2.29.4",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",

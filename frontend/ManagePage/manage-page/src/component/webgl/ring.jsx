@@ -25,10 +25,10 @@ function Circle(props) {
 
   console.log(props.visible);
 
-  useFrame((state, delta) => {
+  // useFrame((state, delta) => {
     
 
-  })
+  // })
 
   return (
     <mesh

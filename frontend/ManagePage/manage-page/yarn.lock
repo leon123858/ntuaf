@@ -3769,6 +3769,11 @@ batch@0.6.1:
   resolved "https://registry.yarnpkg.com/batch/-/batch-0.6.1.tgz#dc34314f4e679318093fc760272525f94bf25c16"
   integrity sha512-x+VAiMRL6UPkx+kudNvxTl6hB2XNNCG2r+7wixVfIYwu/2HKRXimwQyaumLjMveWvT2Hkd/cAJw+QBMfJ/EKVw==
 
+bezier-js@^6.1.1:
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/bezier-js/-/bezier-js-6.1.1.tgz#b4f20d84539513d4562c59e41eed21d380f67bd2"
+  integrity sha512-oqqU9kX6MG/NU7ift6kywGvAAaBKjRY9HTxkzQqajEmAQzqJMA5QHW8DkfcMMUL1gFNF6Tmso80VOf+TDdF7ig==
+
 bfj@^7.0.2:
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/bfj/-/bfj-7.0.2.tgz#1988ce76f3add9ac2913fd8ba47aad9e651bfbb2"
