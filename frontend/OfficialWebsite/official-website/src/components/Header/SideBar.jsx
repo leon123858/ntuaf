@@ -116,9 +116,7 @@ const SideBar = (props) => {
 			}
 		},
 	});
-	const handleClickLink = () => {
-		setActiveSearch(false);
-	};
+	// const handleClickLink = () => { setActiveSearch(false); };
 
 	return (
 		<Drawer

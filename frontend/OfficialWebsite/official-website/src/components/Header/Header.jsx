@@ -3,7 +3,7 @@ import styles from './Header.module.css';
 import SideBar from './SideBar.jsx';
 import { Menu } from 'antd';
 import { Link } from 'react-router-dom';
-import SearchBar from './SearchBar.jsx';
+// import SearchBar from './SearchBar.jsx';
 import LoginButton from './LoginButton.jsx';
 import Logo from "./Logo"
 
@@ -52,9 +52,9 @@ const items = [
 	},
 	{
 		label: (
-			<Link className={styles.link} to={'/about'}>
+			<p className={styles.link}>
 				特別企劃
-			</Link>
+			</p>
 		),
 		key: 'special',
 		children: [
