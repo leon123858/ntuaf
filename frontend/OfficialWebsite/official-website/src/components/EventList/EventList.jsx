@@ -45,12 +45,12 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 	);
 };
 
-function EventList({ data = DefaultData }) {
+function EventList({ data }) {
 	const { inBreakPoint } = useContext(BreakPointContext);
 	const spanRWD = inBreakPoint ? 24 : 12;
 	return (
 		<div className={`${style.flexCenter} ${style.marginTop40}`}>
-			<div className={style.grid}>
+			<div className={(inBreakPoint) ? style.smGrid : style.grid}>
 				{data.events.map((event) => (
 					<div className={style.flexCenter} span={spanRWD}>
 						<Event
@@ -69,26 +69,3 @@ function EventList({ data = DefaultData }) {
 }
 
 export default EventList;
-
-const DefaultData = {
-	events: [
-		{
-			tagName: '展覽',
-			imgUrl: 'https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png',
-			title: '標題 1',
-			date: '日期',
-		},
-		{
-			tagName: '展覽',
-			imgUrl: 'https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png',
-			title: '標題 2',
-			date: '日期',
-		},
-		{
-			tagName: '展覽',
-			imgUrl: 'https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png',
-			title: '標題 3',
-			date: '日期',
-		},
-	],
-};
