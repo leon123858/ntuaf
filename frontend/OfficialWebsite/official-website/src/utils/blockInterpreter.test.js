@@ -1,16 +1,10 @@
 /* eslint-disable jest/no-conditional-expect */
 import { render, screen } from '@testing-library/react';
 import BlockInterpreter from './blockInterpreter';
-import { BlOCK_TYPE, ITEM_TYPE } from '@leon123858/ntuaf-sdk';
+import { BlOCK_TYPE } from '@leon123858/ntuaf-sdk';
 
 test('interpreter should have parameter in constructor', () => {
-	new BlockInterpreter([], []);
-	try {
-		new BlockInterpreter([]);
-		throw new Error('Should be error here');
-	} catch (err) {
-		expect(err.message).not.toBe('Should be error here');
-	}
+	new BlockInterpreter([]);
 	try {
 		new BlockInterpreter();
 		throw new Error('Should be error here');
@@ -66,7 +60,11 @@ test('should translate correct', async () => {
 					<span>
 						{text},{url},{title}
 					</span>
-					<div>{items}</div>
+					<div>
+						{items.map((v) => (
+							<span>{v.name}</span>
+						))}
+					</div>
 				</div>
 			);
 		},
@@ -77,35 +75,19 @@ test('should translate correct', async () => {
 					<span>
 						{text},{url},{title}
 					</span>
-					<div>{items}</div>
+					<div>
+						{items.map((v) => (
+							<span>{v.name}</span>
+						))}
+					</div>
 				</div>
 			);
 		},
 	};
-	const item2element = {
-		[ITEM_TYPE.作者]: ({ url, name, key }) => {
-			return (
-				<div key={key}>
-					<h1>作者{name}</h1>;<h2>{url}</h2>;
-				</div>
-			);
-		},
-		[ITEM_TYPE.社團]: ({ url, name, key }) => {
-			return (
-				<div key={key}>
-					<h1>社團{name}</h1>;<h2>{url}</h2>;
-				</div>
-			);
-		},
-	};
-	let interpreter = new BlockInterpreter(block2element, item2element);
+	let interpreter = new BlockInterpreter(block2element);
 	render(interpreter.transfer(sampleBlocks));
 	let linkElement = screen.getByText(
-		/作者name_20999340-fbc0-4eef-a60c-417d6adef871/i
-	);
-	expect(linkElement).toBeInTheDocument();
-	linkElement = screen.getByText(
-		/社團name_ee2203d6-f3c1-40c0-9e7c-de17f2e1212d/i
+		/name_ee2203d6-f3c1-40c0-9e7c-de17f2e1212d/i
 	);
 	expect(linkElement).toBeInTheDocument();
 	linkElement = screen.getByText(/TEXT_A/i);
