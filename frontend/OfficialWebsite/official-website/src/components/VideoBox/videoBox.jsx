@@ -1,24 +1,24 @@
 import React from 'react';
-// import style from './Home.module.css';
+import style from './VideoBox.module.css';
 import { Card } from 'antd';
 
-const Video = (url) => {
+const Video = ({url, text}) => {
+
 	return (
-		<>
-			<div style={{ textAlign: 'center', width: 560, marginBottom: 20 }}>回顧片</div>
-			<Card style={{ width: 560, marginBottom: 20 }}>
-				<p>Card content</p>
+		<div className={style.container}>
+			<h1 style={{ marginBottom: 20 }}>回顧片</h1>
+			<Card style={{ marginBottom: 20 }}>
+				<p>{text}</p>
 			</Card>
 			<iframe
-				width="560"
-				height="315"
-				src="https://www.youtube.com/embed/YI88ca_jzSs"
+				height="480"
+				src={url}
 				title="YouTube video player"
-				frameborder="1"
-				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-				allowfullscreen 
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+				allowFullScreen
+				style={{ width: '100%' }} 
 			/>
-		</>
+		</div>
 	);
 }
 

@@ -36,7 +36,7 @@ const FourCircle = () => {
             <div className={styles.cardWrapper}>
                 {contents.map((content, index) => {
                     return (
-                        <Card content={content} />
+                        <Card content={content} key={index} />
                     )
                 })}
             </div>
