@@ -27,11 +27,10 @@ enum PATH_NAME {
 	UPDATE = '/update',
 	SUPPORT = '/support',
 	POST = '/post',
-
 }
 const path2component: { [key: string]: (params: any) => JSX.Element } = {};
 path2component[PATH_NAME.Home] = (params: any) => <Home />;
-path2component[PATH_NAME.AUTH] = (params: any) => <Auth user={params}/>;
+path2component[PATH_NAME.AUTH] = (params: any) => <Auth user={params} />;
 path2component[PATH_NAME.UPDATE] = (params: any) => (
 	<Update email={params.email} admin={params.admin} />
 );
@@ -63,7 +62,8 @@ const defaultProps = {
 				path: PATH_NAME.SUPPORT,
 				name: '相關協助',
 				icon: <ChromeFilled />,
-			}, {
+			},
+			{
 				path: PATH_NAME.POST,
 				name: '查看投稿',
 				icon: <ProjectFilled />,
@@ -81,7 +81,7 @@ function App() {
 	const [memberInfo, setMemberInfo] = useState(
 		{} as { name?: string; admin?: string[]; email: string }
 	);
-	console.log("member info",memberInfo);
+	console.log('member info', memberInfo);
 	useEffect(() => {
 		subscriptAuthState(async (user: any) => {
 			userId() ? setLogin(true) : setLogin(false);
@@ -94,18 +94,20 @@ function App() {
 			(async () => {
 				console.log('fetch user info');
 				try {
-					const { name, admin, id } = await getMemberInfo();
-					message.success("Logged in", 2)
+					const { name, admin, id } = (await getMemberInfo()) as {
+						name: string;
+						admin: string[];
+						id: string;
+					};
+					message.success('Logged in', 2);
 					setMemberInfo({ name, admin, email: id });
-				}
-				catch (e) {
-					console.log(e)
-					await message.error("You have no permission", 2)
-					await logout()
-						.then(() => {
-							message.info("Logged out", 2)
-							setLogin(false)
-						})
+				} catch (e) {
+					console.log(e);
+					await message.error('You have no permission', 2);
+					await logout().then(() => {
+						message.info('Logged out', 2);
+						setLogin(false);
+					});
 				}
 			})();
 		}
@@ -151,28 +153,28 @@ function App() {
 					extra={
 						!isLogin
 							? [
-								<Button
-									key='1'
-									type='primary'
-									onClick={async () => {
-										await login();
-									}}
-								>
-									登入
-								</Button>,
-							]
+									<Button
+										key='1'
+										type='primary'
+										onClick={async () => {
+											await login();
+										}}
+									>
+										登入
+									</Button>,
+							  ]
 							: [
-								<Button
-									key='1'
-									type='dashed'
-									onClick={async () => {
-										await logout();
-										setLogin(false);
-									}}
-								>
-									登出
-								</Button>,
-							]
+									<Button
+										key='1'
+										type='dashed'
+										onClick={async () => {
+											await logout();
+											setLogin(false);
+										}}
+									>
+										登出
+									</Button>,
+							  ]
 					}
 					footer={[]}
 				>
