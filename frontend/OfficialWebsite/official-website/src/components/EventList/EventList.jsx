@@ -49,8 +49,8 @@ function EventList({ data }) {
 	const { inBreakPoint } = useContext(BreakPointContext);
 	const spanRWD = inBreakPoint ? 24 : 12;
 	return (
-		<div className={`${style.flexCenter} ${style.marginTop40}`}>
-			<div className={(inBreakPoint) ? style.smGrid : style.grid}>
+		<div className={`${style.flexCenter} ${style.container}`}>
+			<div className={(inBreakPoint) ? style.grid : style.lgGrid}>
 				{data.events.map((event) => (
 					<div className={style.flexCenter} span={spanRWD}>
 						<Event
