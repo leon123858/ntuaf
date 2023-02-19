@@ -1,17 +1,25 @@
 .container {
   width: 80%;
-  margin: 32px auto;
+  margin: 48px auto;
 }
 
-.picBox {
+.picBox1 {
   display: grid;
   gap: 70px;
+  margin-bottom: 64px;
 }
 
-.lgPicBox {
+.lgPicBox1 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
+  margin-bottom: 64px;
+}
+
+.picBox2 {
+  width: 65%; 
+  margin: 0 auto;
+  minWidth: 400;
 }
 
 .topic {
@@ -20,22 +28,13 @@
   margin-top: 0px;
 }
 
-.lgImg {
-  width: 120px;
-  display: block;
-  position: absolute;
-  right: -60px;
-  bottom: -55px;
-  border-radius: 50%;
-  z-index: 100;
-}
-
 .img {
-  width: 100px;
+  width: 10vh;
+  height: 10vh;
   display: block;
   position: absolute;
-  right: -50px;
-  bottom: -45px;
+  right: -38px;
+  bottom: -38px;
   border-radius: 50%;
   z-index: 100;
 }

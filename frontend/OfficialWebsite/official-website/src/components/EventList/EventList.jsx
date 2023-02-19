@@ -52,7 +52,7 @@ function EventList({ data }) {
 		<div className={`${style.flexCenter} ${style.container}`}>
 			<div className={(inBreakPoint) ? style.grid : style.lgGrid}>
 				{data.events.map((event) => (
-					<div className={style.flexCenter} span={spanRWD}>
+					<div className={style.flexCenter} span={spanRWD} key={event.id}>
 						<Event
 							tagName={event.tagName}
 							imgUrl={event.imgUrl}
@@ -60,7 +60,6 @@ function EventList({ data }) {
 							date={event.date}
 							id={event.id}
 							inBreakPoint={inBreakPoint}
-							key={event.id}
 						/>
 					</div>
 				))}

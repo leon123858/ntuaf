@@ -7,36 +7,14 @@ import { Card, Image } from 'antd';
 import { Slide } from 'react-slideshow-image';
 import { BlOCK_TYPE } from '@leon123858/ntuaf-sdk'
 
-const defaultImages = {
-    type: [BlOCK_TYPE.IMAGE_B],
-    images: [
-        {
-            src: 'https://i.seadn.io/gae/7B0qai02OdHA8P_EOVK672qUliyjQdQDGNrACxs7WnTgZAkJa_wWURnIFKeOh5VTf8cfTqW3wQpozGedaC9mteKphEOtztls02RlWQ',
-            content: '「從前從前...有一個...」、「好久好久以前...」、「在七座山七條河以外...」早在公元前兩千多年前，人類就已使用楔型文字記錄下第一個故事《吉爾伽美什史詩》。一個不可考的時空、一個主角、一個轉折，加上追求動機，過程中還會有幫助者與阻礙者，將所有元素連接起來'
-        },
-        {
-            src: 'https://i.seadn.io/gae/7B0qai02OdHA8P_EOVK672qUliyjQdQDGNrACxs7WnTgZAkJa_wWURnIFKeOh5VTf8cfTqW3wQpozGedaC9mteKphEOtztls02RlWQ',
-            content: '「從前從前...有一個...」、「好久好久以前...」、「在七座山七條河以外...」早在公元前兩千多年前，人類就已使用楔型文字記錄下第一個故事《吉爾伽美什史詩》。一個不可考的時空、一個主角、一個轉折，加上追求動機，過程中還會有幫助者與阻礙者，將所有元素連接起來'
-        },
-        {
-            src: 'https://i.seadn.io/gae/7B0qai02OdHA8P_EOVK672qUliyjQdQDGNrACxs7WnTgZAkJa_wWURnIFKeOh5VTf8cfTqW3wQpozGedaC9mteKphEOtztls02RlWQ',
-            content: '「從前從前...有一個...」、「好久好久以前...」、「在七座山七條河以外...」早在公元前兩千多年前，人類就已使用楔型文字記錄下第一個故事《吉爾伽美什史詩》。一個不可考的時空、一個主角、一個轉折，加上追求動機，過程中還會有幫助者與阻礙者，將所有元素連接起來'
-        },
-        {
-            src: 'https://i.seadn.io/gae/7B0qai02OdHA8P_EOVK672qUliyjQdQDGNrACxs7WnTgZAkJa_wWURnIFKeOh5VTf8cfTqW3wQpozGedaC9mteKphEOtztls02RlWQ',
-            content: '「從前從前...有一個...」、「好久好久以前...」、「在七座山七條河以外...」早在公元前兩千多年前，人類就已使用楔型文字記錄下第一個故事《吉爾伽美什史詩》。一個不可考的時空、一個主角、一個轉折，加上追求動機，過程中還會有幫助者與阻礙者，將所有元素連接起來'
-        },
-    ]
-}
-
-const ImageBox = ({ images = defaultImages }) => {
+const ImageBox = ({ images }) => {
     const { inBreakPoint } = useContext(BreakPointContext);
 
     return (
         {
             [BlOCK_TYPE.IMAGE_A]: (
                 <div className={style.container}>
-                    <div className={(inBreakPoint) ? style.picBox : style.lgPicBox}>
+                    <div className={(inBreakPoint) ? style.picBox1 : style.lgPicBox1}>
                         {
                             images.images.map((image, idx) => (
                                 <div key={idx}>
@@ -47,7 +25,7 @@ const ImageBox = ({ images = defaultImages }) => {
                                     >
                                         <img
                                             alt='img' src={image.src}
-                                            className={(inBreakPoint) ? style.img : style.lgImg}
+                                            className={style.img}
                                         />
                                         {image.content}
                                     </Card>
@@ -61,7 +39,7 @@ const ImageBox = ({ images = defaultImages }) => {
 
             [BlOCK_TYPE.IMAGE_B]: (
                 <div className={style.container}>
-                    <div style={{ width: '65%', margin: '0 auto', minWidth: 400 }}>
+                    <div className={style.picBox2}>
                         <Slide
                             indicators={true}
                             transitionDuration={300}

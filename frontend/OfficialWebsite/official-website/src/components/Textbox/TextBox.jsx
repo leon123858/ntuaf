@@ -30,7 +30,7 @@ const TextBox = ({ text }) => {
             ),
 
             [BlOCK_TYPE.TEXT_D]: (
-                <div className={style.container}>
+                <div className={style.container} style={{ margin: '48px auto' }}>
                     <p className={style.content}>{text.content}</p>
                 </div>
             )
