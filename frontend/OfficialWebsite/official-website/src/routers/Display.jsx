@@ -6,7 +6,7 @@ import Textbox from '../components/Textbox/TextBox';
 import ImageBox from '../components/ImageBox/ImageBox';
 import Video from '../components/VideoBox/VideoBox';
 import ImageList from '../components/ImageList/ImageList';
-import Link from '../components/Link/Link'
+import Link from '../components/Link/Link';
 import Map from '../components/Map/Map';
 import { useParams } from 'react-router-dom';
 import { Spin, Image } from 'antd';
@@ -20,7 +20,7 @@ const block2element = {
 					type: BlOCK_TYPE.TEXT_A,
 					title: title,
 					text: text,
-					url: url
+					url: url,
 				}}
 			/>
 		);
@@ -38,7 +38,6 @@ const block2element = {
 		);
 	},
 	[BlOCK_TYPE.TEXT_C]: ({ text, title }) => {
-
 		return (
 			<Textbox
 				key={BlOCK_TYPE.TEXT_C}
@@ -86,9 +85,7 @@ const block2element = {
 		);
 	},
 	[BlOCK_TYPE.LINK_A]: ({ url, title }) => {
-		return (
-			<Link url={url} title={title} key={BlOCK_TYPE.LINK_A} />
-		);
+		return <Link url={url} title={title} key={BlOCK_TYPE.LINK_A} />;
 	},
 	[BlOCK_TYPE.MAP_A]: ({ text, url }) => {
 		return (
@@ -120,10 +117,10 @@ const block2element = {
 				data={{
 					type: [BlOCK_TYPE.IMAGE_LIST_A],
 					topic: title,
-					items: items
+					items: items,
 				}}
 			/>
-		)
+		);
 	},
 	[BlOCK_TYPE.IMAGE_LIST_B]: ({ title, url, items, text }) => {
 		return (
@@ -134,10 +131,10 @@ const block2element = {
 					title: title,
 					items: items,
 					url: url,
-					text: text
+					text: text,
 				}}
 			/>
-		)
+		);
 	},
 	[BlOCK_TYPE.IMAGE_LIST_C]: ({ title, url, items, text }) => {
 		return (
@@ -148,10 +145,10 @@ const block2element = {
 					title: title,
 					items: items,
 					url: url,
-					text: text
+					text: text,
 				}}
 			/>
-		)
+		);
 	},
 	[BlOCK_TYPE.IMAGE_LIST_D]: ({ title, items }) => {
 		return (
@@ -160,10 +157,10 @@ const block2element = {
 				data={{
 					type: [BlOCK_TYPE.IMAGE_LIST_A],
 					topic: title,
-					items: items
+					items: items,
 				}}
 			/>
-		)
+		);
 	},
 	[BlOCK_TYPE.IMAGE_LIST_E]: ({ title, items }) => {
 		return (
@@ -172,10 +169,10 @@ const block2element = {
 				data={{
 					type: [BlOCK_TYPE.IMAGE_LIST_E],
 					topic: title,
-					items: items
+					items: items,
 				}}
 			/>
-		)
+		);
 	},
 };
 
