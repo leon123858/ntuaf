@@ -2400,10 +2400,10 @@
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz#b2ac626d6cb9c8718ab459166d4bb405b8ffa78b"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
-"@leon123858/ntuaf-sdk@0.1.2":
-  version "0.1.2"
-  resolved "https://npm.pkg.github.com/download/@leon123858/ntuaf-sdk/0.1.2/80253a3cfdac57241db6c8357a69d39404668bd5#80253a3cfdac57241db6c8357a69d39404668bd5"
-  integrity sha512-ZKaJ3Gh7qPXtw56Fr01KANy4lWZP1QPsd5eDDPuuDwRQWCI+BQfTdZmxST80dFKmdwW4wfgiR/qc38jP9o7+lg==
+"@leon123858/ntuaf-sdk@0.1.8":
+  version "0.1.6"
+  resolved "https://npm.pkg.github.com/download/@leon123858/ntuaf-sdk/0.1.6/a907240e8d96a87675a0170e6998948602306de7#a907240e8d96a87675a0170e6998948602306de7"
+  integrity sha512-3U6e0P5WIbf8lIGkzuV0+opQWXAnadcWLBRs4bY5nbPR93H2HMHNbRDs/0s/0XCOXOMWx4FrHWeVoYmFVVGo9g==
   dependencies:
     axios "^0.27.2"
     chai "^4.3.6"

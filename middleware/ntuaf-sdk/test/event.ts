@@ -76,7 +76,7 @@ describe('test update event', function () {
 			blocks: [
 				{
 					type: BlOCK_TYPE.IMAGE_A,
-					items: [{ type: ITEM_TYPE.作者 } as Item],
+					items: [{ type: ITEM_TYPE.圖片 } as Item],
 				} as Block,
 			],
 		} as any);
@@ -87,7 +87,7 @@ describe('test update event', function () {
 				blocks: [
 					{
 						type: BlOCK_TYPE.IMAGE_A,
-						items: [{ type: ITEM_TYPE.作者 } as Item],
+						items: [{ type: ITEM_TYPE.圖片 } as Item],
 					} as Block,
 				],
 			} as any);
@@ -130,7 +130,7 @@ describe('test update event', function () {
 			blocks: [
 				{
 					type: BlOCK_TYPE.IMAGE_A,
-					items: [{ type: ITEM_TYPE.作者 } as Item],
+					items: [{ type: ITEM_TYPE.圖片 } as Item],
 				} as Block,
 			],
 		} as any);
@@ -157,7 +157,7 @@ describe('test update event', function () {
 			blocks: [
 				{
 					type: 'IMAGE_A' as any,
-					items: [{ type: '作者' as any } as Item],
+					items: [{ type: '圖片' as any } as Item],
 				} as Block,
 			],
 		} as any);
@@ -188,7 +188,7 @@ describe('test update event', function () {
 				blocks: [
 					{
 						type: BlOCK_TYPE.IMAGE_A,
-						items: [{ type: ITEM_TYPE.作者 } as Item],
+						items: [{ type: ITEM_TYPE.圖片 } as Item],
 					} as Block,
 				],
 			} as any);
