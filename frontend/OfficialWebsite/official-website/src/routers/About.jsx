@@ -10,8 +10,8 @@ function About() {
 			<div className={style.APP}>
 				<Murmur/>
 				<DynamicVision/>
-				<Sponsor/>
 				<MemberTab />
+				<Sponsor/>
 			</div>
 	);
 }
