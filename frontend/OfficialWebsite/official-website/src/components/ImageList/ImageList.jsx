@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
 import style from './ImageList.module.css';
 import { BreakPointContext } from '../../useBreakPoint';
-
-
+import { BlOCK_TYPE } from '@leon123858/ntuaf-sdk'
 
 const defaultData = {
-    type: 2,
+    type: [BlOCK_TYPE.IMAGE_LIST_A],
     topic: '藝人介紹',
     images: [
         {
@@ -50,11 +49,11 @@ const ImageList = ({data = defaultData}) => {
         ?  (
             <div className={style.container}>
                 <p className={style.topic}>{data.topic}</p>
-                <div className={(data.type === 1) ? style.imgList : style.imgList2}>
+                <div className={(data.type === [BlOCK_TYPE.IMAGE_LIST_A]) ? style.imgList : style.imgList2}>
                     {data.images.map((image, idx) => (
-                        <div className={(data.type === 1) ? style.imgContainer : style.imgContainer2} key={idx}>
+                        <div className={(data.type === [BlOCK_TYPE.IMAGE_LIST_A]) ? style.imgContainer : style.imgContainer2} key={idx}>
                             <img alt='team img' src={image.src} className={style.img}/>
-                            <p className={(data.type === 1) ? style.imgName : style.imgName2}>
+                            <p className={(data.type === [BlOCK_TYPE.IMAGE_LIST_A]) ? style.imgName : style.imgName2}>
                                 {((data.type === 1) ? '' : '/')} {image.name}
                             </p>
                         </div>

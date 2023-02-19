@@ -106,7 +106,9 @@ userId();
 subscriptAuthState(callback);
 // google 第三方登入
 await login();
-// 獲取前一次第三方登入的結果
+// 獲取成員個資(含管理事件列表等)
+await getMemberInfo();
+// 獲取前一次第三方登入的結果(理論上用不太到)
 await getLoginResult();
 ```
 
@@ -132,6 +134,13 @@ await getLikeArtworkToday()
 await getArtworkList({...})
 // 喜歡或不喜歡某投稿
 await triggerLikeArtwork({...})
+```
+
+### 其他功能
+
+```js
+// 單張圖片上傳
+await uploadImage(url);
 ```
 
 ## sample
@@ -183,20 +192,25 @@ export enum BlOCK_TYPE {
 	TEXT_A,
 	TEXT_B,
 	TEXT_C,
+	TEXT_D,
 	IMAGE_A,
 	IMAGE_B,
-	IMAGE_C,
+	LINK_A,
+	MAP_A,
+	MAP_B,
 	VIDEO_A,
 	IMAGE_LIST_A,
 	IMAGE_LIST_B,
+	IMAGE_LIST_C,
+	IMAGE_LIST_D,
+	IMAGE_LIST_E,
 }
 
 /**
  * 子資訊分類
  */
 export enum ITEM_TYPE {
-	作者,
-	社團,
+	圖片,
 }
 ```
 

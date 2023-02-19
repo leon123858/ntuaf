@@ -1,5 +1,6 @@
 import styles from "./Footer.module.css"
 import {InstagramOutlined, FacebookOutlined, ArrowUpOutlined, YoutubeOutlined} from '@ant-design/icons';
+import Logo from "../Header/Logo"
 
 const Footer = ()=>{
     function topFunction() {
@@ -11,7 +12,7 @@ const Footer = ()=>{
         <div className={styles.footerWrapper}>
             <ArrowUpOutlined onClick={topFunction} className={styles.top} size="big"/>
             <div className={styles.title}>
-                <span className={styles.logo}>LOGO</span>
+                <Logo/>
                 <h2>台大藝術季28th</h2>
                 
             </div>

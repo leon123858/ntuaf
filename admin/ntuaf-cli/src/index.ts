@@ -1,8 +1,23 @@
 #! /usr/bin/env node
+import { Socket } from 'net';
 import { assert } from 'console';
 import { Command } from 'commander';
-import { insertSample } from './utils/insertSample';
-import { askMode, MODE_TYPE } from './utils/prompts';
+import { insertMember, insertArtwork, insertEvent } from './utils/insertSample';
+import { deleteCollection } from './utils/deleteSample';
+import { askMode, MODE_TYPE, askId } from './utils/prompts';
+import {
+	transformMembers,
+	transformRecommendEvents,
+	transformDayEvents,
+	transformTabEvents,
+} from './utils/transformData/index';
+import { createAlwaysEvent } from './tools/createRegularEvents';
+import {
+	// createFakeTmpData,
+	deleteAllUserTmpData,
+	updateArtworkLike,
+	setAllTmpDataAsInit,
+} from './utils/updateUserData';
 const figlet = require('figlet');
 
 const program = new Command();
@@ -29,6 +44,12 @@ const options = program.opts();
 		if (!isEnvSet) {
 			return 1;
 		}
+		if (!(await isPortReachable(8080, { host: '127.0.0.1' }))) {
+			console.error(
+				"Should use 'yarn enumerate' to start a enumerate local for testing"
+			);
+			return 1;
+		}
 	}
 	// 是否為允許的可自動化執行模式
 	if (options.mode) {
@@ -43,12 +64,75 @@ const options = program.opts();
 		}
 	}
 	const mode: MODE_TYPE = options.mode || (await askMode()).mode;
+
 	switch (mode) {
-		case MODE_TYPE.插入測試資料:
-			await insertSample();
+		case MODE_TYPE.插入測試資料: {
+			await insertMember();
+			await insertArtwork();
+			await insertEvent();
 			break;
-		default:
+		}
+
+		case MODE_TYPE.刪除測試資料: {
+			// const o = (await askEnv()).env;
+			// console.log(o)
+			await deleteCollection('Members');
+			await deleteCollection('Events');
+			await deleteCollection('Artworks');
+			break;
+		}
+		case MODE_TYPE.更新系統暫存: {
+			transformMembers();
+			transformRecommendEvents();
+			transformDayEvents();
+			transformTabEvents();
+			break;
+		}
+		case MODE_TYPE.彙整當日用戶操作: {
+			// await createFakeTmpData();
+			await updateArtworkLike();
+			await deleteAllUserTmpData();
+			await setAllTmpDataAsInit();
+			break;
+		}
+		case MODE_TYPE.插入例行展覽: {
+			const id = (await askId()).id;
+			await createAlwaysEvent(id);
+			break;
+		}
+		default: {
 			console.log('未選擇');
 			break;
+		}
 	}
 })();
+
+async function isPortReachable(
+	port: number,
+	{ host, timeout = 1000 }: { host: string; timeout?: number }
+) {
+	const promise = new Promise((resolve, reject) => {
+		const socket = new Socket();
+
+		const onError = () => {
+			socket.destroy();
+			reject(1);
+		};
+
+		socket.setTimeout(timeout);
+		socket.once('error', onError);
+		socket.once('timeout', onError);
+
+		socket.connect(port, host, () => {
+			socket.end();
+			resolve(0);
+		});
+	});
+
+	try {
+		await promise;
+		return true;
+	} catch {
+		return false;
+	}
+}

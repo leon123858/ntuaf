@@ -8,18 +8,18 @@ import Home from './routers/Home';
 import Display from './routers/Display';
 import Introduce from './routers/Introduce';
 import Calendar from './routers/Calendar';
-import Map from './routers/Map';
 import About from './routers/About';
 import History from './routers/History';
+import Artwork from './routers/Artwork';
+import Map from './routers/Map';
 import Layout from './components/Layout/Layout';
 import { BreakPointProvider } from './useBreakPoint.jsx';
 
 const router = createBrowserRouter([
 	{
 		path: '/',
-		element: <Layout initItem={'home'} />,
+		element: <Layout />,
 		loader: async () => {
-			console.log('load static bundle data');
 			return {};
 		},
 		children: [
@@ -28,14 +28,13 @@ const router = createBrowserRouter([
 				element: <Home />,
 			},
 			{
-				path: '/introduce',
-				element: <Introduce />,
+				path: '/introduce/:type',
+				element: <Introduce/>,
 			},
 			{
 				path: '/calendar',
 				element: <Calendar />,
 			},
-			{ path: '/map', element: <Map /> },
 			{
 				path: '/about',
 				element: <About />,
@@ -43,14 +42,21 @@ const router = createBrowserRouter([
 			{
 				path: '/history',
 				element: <History />,
-				errorElement: <ErrorPage />,
+			},
+			{
+				path: '/artwork',
+				element: <Artwork />,
+			},
+			{
+				path: '/map',
+				element: <Map />,
+			},
+			{
+				path: 'display/:displayId',
+				element: <Display />,
 			},
 		],
 		errorElement: <ErrorPage />,
-	},
-	{
-		path: 'display/:displayId',
-		element: <Display />,
 	},
 ]);
 

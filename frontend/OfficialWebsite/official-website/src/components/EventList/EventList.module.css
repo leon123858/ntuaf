@@ -1,0 +1,57 @@
+.tag {
+    position: relative;
+    bottom: 30px;
+    left: 10px;
+}
+
+.img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.eventImg2 {
+    position: relative;
+    top: -10px;
+    left: -10px;
+}
+.eventImg1 {
+    position: relative;
+    top: -20px;
+    left: 2.5%;
+    width: 95% !important;
+}
+
+.flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.felxList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.meta {
+    text-align: center;
+}
+
+.container {
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 75%;
+  }
+
+.marginTop40 {
+    margin-top: 40px;
+}
