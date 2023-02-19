@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Tabs } from 'antd';
+import { Tabs, Spin } from 'antd';
 import { useParams } from 'react-router-dom';
-import style from './Home.module.css';
+import style from './Introduce.module.css';
 import EventList from '../components/EventList/EventList';
 import { getTabEvents } from '@leon123858/ntuaf-sdk';
 
@@ -56,12 +56,20 @@ function Introduce() {
 					{
 						key: '1',
 						label: `展覽`,
-						children: <EventList data={firstData} />,
+						children: (
+							(firstData.events.length === 0) 
+							? <div className={style.Spin}><Spin /></div>
+							: <EventList data={firstData} />
+						),
 					},
 					{
 						key: '2',
 						label: `活動`,
-						children: <EventList data={secondData} />,
+						children: (
+							(secondData.events.length === 0) 
+							? <div className={style.Spin}><Spin /></div>
+							: <EventList data={secondData} />
+						),
 					},
 				]}
 				onChange={onChange}

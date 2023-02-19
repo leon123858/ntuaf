@@ -18,7 +18,7 @@ const items = [
 	},
 	{
 		label: (
-			<Link className={styles.link} to={'/introduce/1'}>
+			<Link className={styles.link} to={'/introduce/exhibition'}>
 				展覽/活動
 			</Link>
 		),
