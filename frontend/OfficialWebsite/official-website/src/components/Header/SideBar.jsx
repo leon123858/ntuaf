@@ -59,7 +59,7 @@ const LinkGroup = ({setSideBarActive}) => {
 				<Panel
 					header={
 						<div className={styles.headerWrapper}>
-							<Link className={styles.link} to={'/history'} onClick={handleClickLink}>
+							<Link className={styles.link}>
 								特別企劃
 							</Link>
 						</div>
