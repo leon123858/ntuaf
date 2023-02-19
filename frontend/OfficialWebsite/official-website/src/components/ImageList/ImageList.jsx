@@ -5,7 +5,6 @@ import { BlOCK_TYPE } from '@leon123858/ntuaf-sdk'
 
 const ImageList = ({ data }) => {
     const { inBreakPoint } = useContext(BreakPointContext);
-
     return (
         (inBreakPoint)
             ? (

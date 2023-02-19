@@ -5,14 +5,14 @@ import React from 'react';
 
 const Map = (props) => {
 	console.log(props);
-	const { inputValue,width,height,font } = props;
+	const { inputValue, width, height, font } = props;
 	console.log(props.width);
-	return(
+	return (
 		<>
-	
-				<div style={{ textAlign : 'center',marginBottom : 20, width: 'props.width' }}>藝術家地圖</div>
-				<iframe src={inputValue} width={width} height={height} loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="myFrame"></iframe>
-        </>
+
+			<div style={{ textAlign: 'center', marginBottom: 20, width: 'props.width' }}>藝術家地圖</div>
+			<iframe src={inputValue} width={width} height={height} loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="myFrame"></iframe>
+		</>
 	);
 }
 

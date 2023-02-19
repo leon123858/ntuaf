@@ -10,14 +10,15 @@ import { useParams } from 'react-router-dom';
 import { Spin, Image } from 'antd';
 
 const block2element = {
-	[BlOCK_TYPE.TEXT_A]: ({ text, title }) => {
+	[BlOCK_TYPE.TEXT_A]: ({ text, title, url }) => {
 		return (
 			<Textbox
 				key={0}
 				text={{
 					type: BlOCK_TYPE.TEXT_A,
-					topic: title,
-					content: text,
+					title: title,
+					text: text,
+					url: url
 				}}
 			/>
 		);
@@ -28,8 +29,8 @@ const block2element = {
 				key={1}
 				text={{
 					type: BlOCK_TYPE.TEXT_B,
-					topic: title,
-					content: text,
+					title: title,
+					text: text,
 				}}
 			/>
 		);
@@ -41,20 +42,19 @@ const block2element = {
 				key={2}
 				text={{
 					type: BlOCK_TYPE.TEXT_C,
-					topic: title,
-					content: text,
+					title: title,
+					text: text,
 				}}
 			/>
 		);
 	},
-	[BlOCK_TYPE.TEXT_D]: ({ text, title }) => {
+	[BlOCK_TYPE.TEXT_D]: ({ text }) => {
 		return (
 			<Textbox
 				key={3}
 				text={{
 					type: BlOCK_TYPE.TEXT_D,
-					topic: title,
-					content: text,
+					text: text,
 				}}
 			/>
 		);
@@ -65,12 +65,10 @@ const block2element = {
 				key={4}
 				images={{
 					type: BlOCK_TYPE.IMAGE_A,
-					images: [
-						{
-							src: url,
-							content: text,
-						},
-					],
+					image: {
+						src: url,
+						content: text,
+					},
 				}}
 			/>
 		);

@@ -9,29 +9,29 @@ const TextBox = ({ text }) => {
         {
             [BlOCK_TYPE.TEXT_A]: (
                 <div className={style.container}>
-                    <h1 className={`${style.topic} ${style.one}`}>{text.topic}</h1>
-                    <p className={style.content} style={{ paddingTop: '22px' }}>{text.content}</p>
+                    <h1 className={`${style.topic} ${style.one}`}>{text.url}</h1>
+                    <textarea className={style.content} style={{ paddingTop: '22px' }} defaultValue={text.text} />
                 </div>
 
             ),
 
             [BlOCK_TYPE.TEXT_B]: (
                 <div className={style.container} style={{ margin: '32px auto' }}>
-                    <h1 className={`${style.topic} ${style.two}`}>{text.topic}</h1>
-                    <p className={style.content}>{text.content}</p>
+                    <h1 className={`${style.topic} ${style.two}`}>{text.title}</h1>
+                    <p className={style.content}>{text.text}</p>
                 </div>
             ),
 
             [BlOCK_TYPE.TEXT_C]: (
                 <div className={style.container}>
-                    <h1 className={`${style.topic} ${style.three}`}>{text.topic}</h1>
-                    <p className={style.content}>{text.content}</p>
+                    <h1 className={`${style.topic} ${style.three}`}>{text.title}</h1>
+                    <p className={style.content}>{text.text}</p>
                 </div>
             ),
 
             [BlOCK_TYPE.TEXT_D]: (
                 <div className={style.container} style={{ margin: '48px auto' }}>
-                    <p className={style.content}>{text.content}</p>
+                    <p className={style.content}>{text.text}</p>
                 </div>
             )
 
