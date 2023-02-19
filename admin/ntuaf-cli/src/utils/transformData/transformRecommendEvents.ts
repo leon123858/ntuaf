@@ -15,9 +15,10 @@ const transformRegularEvent = async () => {
 	const ref = await db.collection(fromDbPath).get();
 	//info for regular events: transform Cache/RegularEvents/Events document to Cache/Events/Recommend
 	const docRef = db.collection(toDbPath).doc(id);
+	// initialize list
 	await docRef.set({ [key]: [] });
 	ref.forEach(async (doc) => {
-		// fill each list
+		// fill list
 		const docRef = db.collection(toDbPath).doc(id);
 		await docRef.update({
 			//? what is image and text for an event
@@ -29,6 +30,7 @@ const transformRegularEvent = async () => {
 					doc.data().data.startTime,
 					doc.data().data.endTime
 				),
+				info: doc.data().data.blocks[0]?.text || '無資料',
 			}),
 		});
 	});
@@ -48,13 +50,19 @@ const transformRecentEvent = async () => {
 	});
 	const orderedKey = Object.keys(event).sort();
 	const currentTimeStamp = moment().valueOf();
-	const recentEvents = orderedKey.map((startTime) => {
+	const maxNumOfEvent = 10;
+	let count = 0;
+	let recentEvents = orderedKey.map((startTime) => {
 		if (
 			parseInt(startTime) > currentTimeStamp ||
 			(parseInt(startTime) < currentTimeStamp &&
 				currentTimeStamp < event[startTime].endTime)
 		) {
 			//? what is image and text for an event
+			count++;
+			if (count > maxNumOfEvent) {
+				return;
+			}
 			return {
 				image: event[startTime].image,
 				text: event[startTime].title,
@@ -63,9 +71,11 @@ const transformRecentEvent = async () => {
 					event[startTime].startTime,
 					event[startTime].endTime
 				),
+				info: event[startTime].blocks[0]?.text || '無資料',
 			};
 		}
 	});
+	recentEvents = recentEvents.filter((e) => e != undefined);
 	const docRef = db.collection(toDbPath).doc(id);
 	await docRef.set({ [key]: [] });
 	await db

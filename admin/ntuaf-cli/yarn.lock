@@ -492,10 +492,10 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@leon123858/ntuaf-sdk@0.1.2":
-  version "0.1.2"
-  resolved "https://npm.pkg.github.com/download/@leon123858/ntuaf-sdk/0.1.2/80253a3cfdac57241db6c8357a69d39404668bd5#80253a3cfdac57241db6c8357a69d39404668bd5"
-  integrity sha512-ZKaJ3Gh7qPXtw56Fr01KANy4lWZP1QPsd5eDDPuuDwRQWCI+BQfTdZmxST80dFKmdwW4wfgiR/qc38jP9o7+lg==
+"@leon123858/ntuaf-sdk@0.1.8":
+  version "0.1.8"
+  resolved "https://npm.pkg.github.com/download/@leon123858/ntuaf-sdk/0.1.8/d867966bd304888fef9e48d8b745723e2539dd33#d867966bd304888fef9e48d8b745723e2539dd33"
+  integrity sha512-rdCBKMFiqe05ekptYfJfzIW92y1j4fh890NngpWqMkp+6e4zCq0IX/9NYmGTqX6Qd6uSxPmhfQvdfl9pINjRdw==
   dependencies:
     axios "^0.27.2"
     chai "^4.3.6"

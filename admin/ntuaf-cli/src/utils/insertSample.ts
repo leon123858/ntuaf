@@ -98,34 +98,42 @@ const insertEvent = async () => {
 
 		const blockListMaxLength = 3;
 		const createBlockList = () => {
-			return Array.from({ length: Math.random() * blockListMaxLength }, () => {
-				const blockTypeList = Object.values(BlOCK_TYPE)
-					.filter((v) => !isNaN(Number(v)))
-					.map((key) => BlOCK_TYPE[key as keyof typeof BlOCK_TYPE]);
+			return Array.from(
+				{ length: Math.random() * blockListMaxLength + 1 },
+				() => {
+					const blockTypeList = Object.values(BlOCK_TYPE)
+						.filter((v) => isNaN(Number(v)))
+						.map((key) => BlOCK_TYPE[key as keyof typeof BlOCK_TYPE]);
 
-				const itemTypeList = Object.values(ITEM_TYPE)
-					.filter((v) => !isNaN(Number(v)))
-					.map((key) => ITEM_TYPE[key as keyof typeof ITEM_TYPE]);
+					const itemTypeList = Object.values(ITEM_TYPE)
+						.filter((v) => isNaN(Number(v)))
+						.map((key) => ITEM_TYPE[key as keyof typeof ITEM_TYPE]);
 
-				const maxLengthOfItem = 5;
-				const block: Block = {
-					type: blockTypeList[Math.floor(Math.random() * blockTypeList.length)],
-					text: 'text_' + uuidv4(),
-					url: 'https://' + uuidv4(),
-					title: 'title_' + uuidv4(),
-					items: Array.from({ length: Math.random() * maxLengthOfItem }, () => {
-						const item: Item = {
-							type: itemTypeList[
-								Math.floor(Math.random() * itemTypeList.length)
-							],
-							url: 'https://' + uuidv4(),
-							name: 'name_' + uuidv4(),
-						};
-						return item;
-					}),
-				};
-				return block;
-			});
+					const maxLengthOfItem = 5;
+					const block: Block = {
+						type: blockTypeList[
+							Math.floor(Math.random() * blockTypeList.length)
+						],
+						text: 'text_' + uuidv4(),
+						url: 'https://' + uuidv4(),
+						title: 'title_' + uuidv4(),
+						items: Array.from(
+							{ length: Math.random() * maxLengthOfItem },
+							() => {
+								const item: Item = {
+									type: itemTypeList[
+										Math.floor(Math.random() * itemTypeList.length)
+									],
+									url: 'https://' + uuidv4(),
+									name: 'name_' + uuidv4(),
+								};
+								return item;
+							}
+						),
+					};
+					return block;
+				}
+			);
 		};
 		const image: Images = {
 			card: uuidv4(),

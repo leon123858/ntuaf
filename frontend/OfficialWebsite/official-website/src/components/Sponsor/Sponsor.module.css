@@ -1,0 +1,14 @@
+*{
+    box-sizing: border-box;
+}
+.iconsWrapper{
+    display: flex;
+    width: 100vw;
+    flex-wrap: wrap;
+
+}
+.iconWrapper{
+    width:33%;
+    padding:10%;
+    text-align: center;
+}

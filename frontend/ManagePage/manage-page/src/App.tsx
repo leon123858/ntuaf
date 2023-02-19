@@ -4,10 +4,11 @@ import {
 	CrownFilled,
 	SmileFilled,
 	HomeFilled,
+	ProjectFilled,
 } from '@ant-design/icons';
 import { PageContainer, ProLayout, ProCard } from '@ant-design/pro-components';
 import { ProConfigProvider } from '@ant-design/pro-provider';
-import { Button } from 'antd';
+import { Button, message } from 'antd';
 import { useState } from 'react';
 import {
 	login,
@@ -17,8 +18,7 @@ import {
 	getMemberInfo,
 } from '@leon123858/ntuaf-sdk';
 
-import { Home, Auth, Update, Support } from './component';
-
+import { Home, Auth, Update, Support, Post } from './component';
 // set each page component
 
 enum PATH_NAME {
@@ -26,14 +26,16 @@ enum PATH_NAME {
 	AUTH = '/auth',
 	UPDATE = '/update',
 	SUPPORT = '/support',
+	POST = '/post',
 }
 const path2component: { [key: string]: (params: any) => JSX.Element } = {};
 path2component[PATH_NAME.Home] = (params: any) => <Home />;
-path2component[PATH_NAME.AUTH] = (params: any) => <Auth user={params}/>;
+path2component[PATH_NAME.AUTH] = (params: any) => <Auth user={params} />;
 path2component[PATH_NAME.UPDATE] = (params: any) => (
 	<Update email={params.email} admin={params.admin} />
 );
 path2component[PATH_NAME.SUPPORT] = (params: any) => <Support />;
+path2component[PATH_NAME.POST] = (params: any) => <Post />;
 
 // router for menu
 const defaultProps = {
@@ -61,6 +63,11 @@ const defaultProps = {
 				name: '相關協助',
 				icon: <ChromeFilled />,
 			},
+			{
+				path: PATH_NAME.POST,
+				name: '查看投稿',
+				icon: <ProjectFilled />,
+			},
 		],
 	},
 	location: {
@@ -74,7 +81,7 @@ function App() {
 	const [memberInfo, setMemberInfo] = useState(
 		{} as { name?: string; admin?: string[]; email: string }
 	);
-	console.log("member info",memberInfo);
+	console.log('member info', memberInfo);
 	useEffect(() => {
 		subscriptAuthState(async (user: any) => {
 			userId() ? setLogin(true) : setLogin(false);
@@ -86,8 +93,22 @@ function App() {
 		if (isLogin) {
 			(async () => {
 				console.log('fetch user info');
-				const { name, admin, id } = await getMemberInfo();
-				setMemberInfo({ name, admin, email: id });
+				try {
+					const { name, admin, id } = (await getMemberInfo()) as {
+						name: string;
+						admin: string[];
+						id: string;
+					};
+					message.success('Logged in', 2);
+					setMemberInfo({ name, admin, email: id });
+				} catch (e) {
+					console.log(e);
+					await message.error('You have no permission', 2);
+					await logout().then(() => {
+						message.info('Logged out', 2);
+						setLogin(false);
+					});
+				}
 			})();
 		}
 	}, [isLogin]);

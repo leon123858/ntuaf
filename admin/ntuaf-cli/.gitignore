@@ -72,3 +72,4 @@ report/
 *.csv
 
 tmp/
+.npmrc

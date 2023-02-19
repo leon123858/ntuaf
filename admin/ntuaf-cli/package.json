@@ -29,7 +29,7 @@
 	},
 	"homepage": "https://github.com/leon123858/ntuaf#readme",
 	"dependencies": {
-		"@leon123858/ntuaf-sdk": "0.1.2",
+		"@leon123858/ntuaf-sdk": "0.1.8",
 		"cli-progress": "^3.11.2",
 		"commander": "^10.0.0",
 		"figlet": "^1.5.2",

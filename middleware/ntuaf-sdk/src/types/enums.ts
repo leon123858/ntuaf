@@ -41,16 +41,20 @@ export enum BlOCK_TYPE {
 	TEXT_D,
 	IMAGE_A,
 	IMAGE_B,
-	IMAGE_C,
+	LINK_A,
+	MAP_A,
+	MAP_B,
 	VIDEO_A,
 	IMAGE_LIST_A,
 	IMAGE_LIST_B,
+	IMAGE_LIST_C,
+	IMAGE_LIST_D,
+	IMAGE_LIST_E,
 }
 
 /**
  * 子資訊分類
  */
 export enum ITEM_TYPE {
-	作者,
-	社團,
+	圖片,
 }
