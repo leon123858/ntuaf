@@ -11,8 +11,8 @@ const TextBox = ({ text }) => {
                 <div className={style.container}>
                     <h1 className={`${style.topic} ${style.one}`}>{text.url}</h1>
                     <div className={style.content} style={{ paddingTop: '22px' }}>
-                        {text.text.split('\n').map((str) => (
-                            <p>{str}</p>
+                        {text.text.split('\n').map((str, idx) => (
+                            <p key={idx}>{str}</p>
                         ))}
                     </div>
 

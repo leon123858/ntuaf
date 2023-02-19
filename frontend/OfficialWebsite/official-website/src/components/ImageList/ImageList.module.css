@@ -49,10 +49,11 @@
 
 .lgImgContainer {
   position: relative;
+  object-fit: fill;
 }
 
 .img {
-  width: 80%;
+  width: 100%;
   border-radius: 10px;
 }
 
@@ -82,4 +83,28 @@
   padding: 14px;
   color: #000000;
   font-weight: 700;
+}
+
+.picBox1 {
+  display: grid;
+  gap: 70px;
+  margin-bottom: 64px;
+}
+
+.lgPicBox1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-bottom: 64px;
+}
+
+.iimg {
+  width: 10vh;
+  height: 10vh;
+  display: block;
+  position: absolute;
+  right: -38px;
+  bottom: -38px;
+  border-radius: 50%;
+  z-index: 100;
 }

@@ -19,10 +19,10 @@ const Map = ({ type, url, text }) => {
 			[BlOCK_TYPE.MAP_B]: (
 				<div className={style.container}>
                     <h1 className={`${style.topic} ${style.three}`}>{'活動資訊'}</h1>
-                    <p className={style.content}>
-						{text}
+                    <div className={style.content}>
+						<p>{text}</p>
 						<Button style={{ marginTop: 16, backgroundColor: 'grey', color: 'white' }}>活動位置</Button>
-					</p>
+					</div>
                 </div>
 			)
 		}[type]
