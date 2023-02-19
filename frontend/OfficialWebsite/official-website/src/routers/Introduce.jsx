@@ -11,9 +11,10 @@ function Introduce() {
 	const [firstData, setFirstData] = useState({ events: [] });
 	const [secondData, setSecondData] = useState({ events: [] });
 	const onChange = (e) => setKey(e);
-	console.log("type", type)
+
 	useEffect(() => {
-		setKey(type);
+		const curKey = (type === 'exhibition') ? '1' : '2'
+		setKey(curKey);
 	}, [type]);
 
 	useEffect(() => {
@@ -46,52 +47,27 @@ function Introduce() {
 	}, [key]);
 
 	return (
-		<>
-			<div className={style.APP}>
-				<Tabs
-					className={style.container}
-					activeKey={key}
-					centered
-					items={[
-						{
-							key: '1',
-							label: `展覽`,
-							children: <EventList data={firstData} />,
-						},
-						{
-							key: '2',
-							label: `活動`,
-							children: <EventList data={secondData} />,
-						},
-					]}
-					onChange={onChange}
-				></Tabs>
-			</div>
-		</>
+		<div className={style.APP}>
+			<Tabs
+				className={style.container}
+				activeKey={key}
+				centered
+				items={[
+					{
+						key: '1',
+						label: `展覽`,
+						children: <EventList data={firstData} />,
+					},
+					{
+						key: '2',
+						label: `活動`,
+						children: <EventList data={secondData} />,
+					},
+				]}
+				onChange={onChange}
+			></Tabs>
+		</div>
 	);
 }
 
 export default Introduce;
-
-// const DefaultData = {
-// 	events: [
-// 		{
-// 			tagName: '展覽',
-// 			imgUrl: 'https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png',
-// 			title: '標題 1',
-// 			date: '日期',
-// 		},
-// 		{
-// 			tagName: '展覽',
-// 			imgUrl: 'https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png',
-// 			title: '標題 2',
-// 			date: '日期',
-// 		},
-// 		{
-// 			tagName: '展覽',
-// 			imgUrl: 'https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png',
-// 			title: '標題 3',
-// 			date: '日期',
-// 		},
-// 	],
-// };

@@ -27,7 +27,7 @@ const items = [
 			{
 				label: (
 					<div className={styles.subMenu}>
-						<Link to='/introduce/1'>展覽</Link>
+						<Link to='/introduce/exhibition'>展覽</Link>
 					</div>
 				),
 				key: 'show',
@@ -35,7 +35,7 @@ const items = [
 			{
 				label: (
 					<div className={styles.subMenu}>
-						<Link to='/introduce/2'>活動</Link>
+						<Link to='/introduce/activity'>活動</Link>
 					</div>
 				),
 				key: 'activity',

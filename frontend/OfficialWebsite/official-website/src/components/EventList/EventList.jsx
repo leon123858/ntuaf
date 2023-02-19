@@ -60,6 +60,7 @@ function EventList({ data }) {
 							date={event.date}
 							id={event.id}
 							inBreakPoint={inBreakPoint}
+							key={event.id}
 						/>
 					</div>
 				))}
