@@ -4,7 +4,7 @@ import { assert } from 'console';
 import { Command } from 'commander';
 import { insertMember, insertArtwork, insertEvent } from './utils/insertSample';
 import { deleteCollection } from './utils/deleteSample';
-import { askMode, askEnv, askAction, MODE_TYPE, askId } from './utils/prompts';
+import { askMode, MODE_TYPE, askId } from './utils/prompts';
 import {
 	transformMembers,
 	transformRecommendEvents,
@@ -12,6 +12,12 @@ import {
 	transformTabEvents,
 } from './utils/transformData/index';
 import { createAlwaysEvent } from './tools/createRegularEvents';
+import {
+	// createFakeTmpData,
+	deleteAllUserTmpData,
+	updateArtworkLike,
+	setAllTmpDataAsInit,
+} from './utils/updateUserData';
 const figlet = require('figlet');
 
 const program = new Command();
@@ -80,6 +86,13 @@ const options = program.opts();
 			transformRecommendEvents();
 			transformDayEvents();
 			transformTabEvents();
+			break;
+		}
+		case MODE_TYPE.彙整當日用戶操作: {
+			// await createFakeTmpData();
+			await updateArtworkLike();
+			await deleteAllUserTmpData();
+			await setAllTmpDataAsInit();
 			break;
 		}
 		case MODE_TYPE.插入例行展覽: {
