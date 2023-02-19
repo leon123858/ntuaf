@@ -41,14 +41,14 @@ const LinkGroup = ({ setSideBarActive }) => {
 					<div className={styles.collapseItemWrapper}>
 						<Link
 							className={styles.link}
-							to={'/introduce/1'}
+							to={'/introduce/exhibition'}
 							onClick={handleClickLink}
 						>
 							展覽
 						</Link>
 						<Link
 							className={styles.link}
-							to={'/introduce/2'}
+							to={'/introduce/activity'}
 							onClick={handleClickLink}
 						>
 							活動
@@ -118,9 +118,7 @@ const SideBar = (props) => {
 			}
 		},
 	});
-	const handleClickLink = () => {
-		setActiveSearch(false);
-	};
+	// const handleClickLink = () => { setActiveSearch(false); };
 
 	return (
 		<Drawer

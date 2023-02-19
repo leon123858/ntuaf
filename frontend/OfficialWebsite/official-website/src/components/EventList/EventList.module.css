@@ -29,17 +29,16 @@
     align-items: center;
 }
 
-.grid {
+.lgGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
 }
 
-.felxList {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
 }
 
 .meta {
@@ -47,11 +46,5 @@
 }
 
 .container {
-    margin: 0 auto;
-    margin-top: 30px;
-    width: 75%;
-  }
-
-.marginTop40 {
-    margin-top: 40px;
+    margin: 40px 0;
 }

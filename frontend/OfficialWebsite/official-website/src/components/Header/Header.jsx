@@ -3,7 +3,7 @@ import styles from './Header.module.css';
 import SideBar from './SideBar.jsx';
 import { Menu } from 'antd';
 import { Link } from 'react-router-dom';
-import SearchBar from './SearchBar.jsx';
+// import SearchBar from './SearchBar.jsx';
 import LoginButton from './LoginButton.jsx';
 import Logo from "./Logo"
 
@@ -18,7 +18,7 @@ const items = [
 	},
 	{
 		label: (
-			<Link className={styles.link} to={'/introduce/1'}>
+			<Link className={styles.link} to={'/introduce/exhibition'}>
 				展覽/活動
 			</Link>
 		),
@@ -27,7 +27,7 @@ const items = [
 			{
 				label: (
 					<div className={styles.subMenu}>
-						<Link to='/introduce/1'>展覽</Link>
+						<Link to='/introduce/exhibition'>展覽</Link>
 					</div>
 				),
 				key: 'show',
@@ -35,7 +35,7 @@ const items = [
 			{
 				label: (
 					<div className={styles.subMenu}>
-						<Link to='/introduce/2'>活動</Link>
+						<Link to='/introduce/activity'>活動</Link>
 					</div>
 				),
 				key: 'activity',
@@ -52,9 +52,9 @@ const items = [
 	},
 	{
 		label: (
-			<Link className={styles.link} to={'/about'}>
+			<p className={styles.link}>
 				特別企劃
-			</Link>
+			</p>
 		),
 		key: 'special',
 		children: [
@@ -84,11 +84,9 @@ const items = [
 
 const Header = () => {
 	const [sideBarActive, setSideBarActive] = useState(false);
-	const onClose = () => {
-		setSideBarActive(false);
-	};
+	const onClose = () => { setSideBarActive(false); };
+	
 	useEffect(() => {
-		// const headerE = document.getElementsByClassName(styles.menuWrapper)[0]
 		const add_class_on_scroll = (element, className) => {
 			element.classList.add(className);
 		};
@@ -125,7 +123,7 @@ const Header = () => {
 						style={{ backgroundColor: 'rgba(0, 0, 0,0)', border: 'none' }}
 						disabledOverflow={true}
 					/>
-					<SearchBar />
+					{/* <SearchBar /> */}
 				</div>
 				<div className={styles.hidden}>
 					<LoginButton />

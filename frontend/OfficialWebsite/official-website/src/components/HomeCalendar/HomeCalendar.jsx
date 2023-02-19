@@ -7,134 +7,6 @@ import style from './HomeCalendar.module.css';
 import { BreakPointContext } from '../../useBreakPoint';
 import { getDayEvents as getDbDayEvents } from '@leon123858/ntuaf-sdk';
 
-// const defaultEvents = [
-// 	{
-// 		month: 5,
-// 		date: 5,
-// 		data: {
-// 			activity: [
-// 				{
-// 					name: '開幕式',
-// 					info: '振興草坪',
-// 				},
-// 			],
-// 			exhibition: [
-// 				{
-// 					name: '莫比烏斯環: 止宿之境',
-// 					info: '振興草坪',
-// 				},
-// 				{
-// 					name: '莫比烏斯環: 止宿之境',
-// 					info: '振興草坪',
-// 				},
-// 				{
-// 					name: '莫比烏斯環: 止宿之境',
-// 					info: '振興草坪',
-// 				},
-// 				{
-// 					name: '莫比烏斯環: 止宿之境',
-// 					info: '振興草坪',
-// 				},
-// 				{
-// 					name: '莫比烏斯環: 止宿之境',
-// 					info: '振興草坪',
-// 				},
-// 				{
-// 					name: '莫比烏斯環: 止宿之境',
-// 					info: '振興草坪',
-// 				},
-// 				{
-// 					name: '莫比烏斯環: 止宿之境',
-// 					info: '振興草坪',
-// 				},
-// 				{
-// 					name: '莫比烏斯環: 止宿之境',
-// 					info: '振興草坪',
-// 				},
-// 				{
-// 					name: '莫比烏斯環: 止宿之境',
-// 					info: '振興草坪',
-// 				},
-// 			],
-// 		},
-// 	},
-// 	{
-// 		month: 5,
-// 		date: 12,
-// 		data: {
-// 			activity: [
-// 				{
-// 					name: '永續主題綠色市集',
-// 					info: '一活 陳文成廣場',
-// 				},
-// 				{
-// 					name: '永續主題綠色市集',
-// 					info: '一活 陳文成廣場',
-// 				},
-// 			],
-// 			exhibition: [
-// 				{
-// 					name: '屠:屠宰場屠:屠宰場屠:屠宰場屠:屠宰場屠:屠宰場屠:屠宰場',
-// 					info: '一活 B1F',
-// 				},
-// 				{
-// 					name: '想開了',
-// 					info: '活大 B1F',
-// 				},
-// 				{
-// 					name: '想開了',
-// 					info: '活大 B1F',
-// 				},
-// 			],
-// 		},
-// 	},
-// 	{
-// 		month: 5,
-// 		date: 13,
-// 		data: {
-// 			activity: [
-// 				{
-// 					name: '永續主題綠色市集',
-// 					info: '一活 陳文成廣場',
-// 				},
-// 			],
-// 			exhibition: [],
-// 		},
-// 	},
-// 	{
-// 		month: 5,
-// 		date: 17,
-// 		data: {
-// 			activity: [],
-// 			exhibition: [
-// 				{
-// 					name: 'Labyrinth of Eddy and Eternity in An Hour',
-// 					info: '活大木椅區 (天井)',
-// 				},
-// 			],
-// 		},
-// 	},
-// 	{
-// 		month: 5,
-// 		date: 20,
-// 		data: {
-// 			activity: [
-// 				{
-// 					name: '閉幕式',
-// 					info: '振興草坪',
-// 				},
-// 			],
-// 			exhibition: [
-// 				{
-// 					name: '勾勒_恆動即生',
-// 					info: '振興草坪',
-// 				},
-// 			],
-// 		},
-// 	},
-// ];
-
-// const HomeCalendar = ({ events = defaultEvents }) => {
 const HomeCalendar = () => {
 	const startDate = moment('05-04-2023', 'MM-DD-YYYY');
 	const [date, setDate] = useState(startDate);
@@ -170,9 +42,7 @@ const HomeCalendar = () => {
 		})();
 	}, [date]);
 
-	const onDateChange = async (currentDate) => {
-		setDate(currentDate);
-	};
+	const onDateChange = async (currentDate) => setDate(currentDate);
 	const onFocusChange = () => setFocused(true);
 
 	return (
