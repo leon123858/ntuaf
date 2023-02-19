@@ -1,13 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import style from './ImageBox.module.css';
 import 'react-slideshow-image/dist/styles.css'
 
-import { BreakPointContext } from '../../useBreakPoint';
-import { Card, Image } from 'antd';
+import { Image } from 'antd';
 import { BlOCK_TYPE } from '@leon123858/ntuaf-sdk'
 
 const ImageBox = ({ image }) => {
-    const { inBreakPoint } = useContext(BreakPointContext);
     return (
         {
             [BlOCK_TYPE.IMAGE_A]: (
