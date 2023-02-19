@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import style from './Display.module.css';
 import BlockInterpreter from '../utils/blockInterpreter';
-import { BlOCK_TYPE, ITEM_TYPE, getEvent } from '@leon123858/ntuaf-sdk';
+import { BlOCK_TYPE, getEvent } from '@leon123858/ntuaf-sdk';
 import Textbox from '../components/Textbox/TextBox';
 import ImageBox from '../components/ImageBox/ImageBox';
 import Video from '../components/VideoBox/VideoBox';
 import ImageList from '../components/ImageList/ImageList';
+import Link from '../components/Link/Link'
+import Map from '../components/Map/Map';
 import { useParams } from 'react-router-dom';
 import { Spin, Image } from 'antd';
 
@@ -63,12 +65,10 @@ const block2element = {
 		return (
 			<ImageBox
 				key={4}
-				images={{
+				image={{
 					type: BlOCK_TYPE.IMAGE_A,
-					image: {
-						src: url,
-						content: text,
-					},
+					text: text,
+					url: url,
 				}}
 			/>
 		);
@@ -77,48 +77,46 @@ const block2element = {
 		return (
 			<ImageBox
 				key={5}
-				images={{
+				image={{
 					type: BlOCK_TYPE.IMAGE_B,
-					images: [
-						{
-							src: url,
-							content: text,
-						},
-					],
+					text: text,
+					url: url,
 				}}
 			/>
 		);
 	},
-	[BlOCK_TYPE.IMAGE_C]: ({ text, url }) => {
+	[BlOCK_TYPE.LINK_A]: ({ url, title }) => {
 		return (
-			<ImageBox
-				key={6}
-				images={{
-					type: BlOCK_TYPE.IMAGE_C,
-					images: [
-						{
-							src: url,
-							content: text,
-						},
-					],
-				}}
+			<Link url={url} title={title} />
+		);
+	},
+	[BlOCK_TYPE.MAP_A]: ({ text, url }) => {
+		return (
+			<Map
+				key={3}
+				type={[BlOCK_TYPE.MAP_A]}
+				url={url}
+				text={text}
 			/>
 		);
 	},
-	[BlOCK_TYPE.VIDEO_A]: ({ text, url }) => {
-		return <Video url={url} text={text} key={7} />;
+	[BlOCK_TYPE.MAP_B]: ({ text, url }) => {
+		return (
+			<Map
+				key={3}
+				type={[BlOCK_TYPE.MAP_B]}
+				url={url}
+				text={text}
+			/>
+		);
 	},
+	[BlOCK_TYPE.VIDEO_A]: ({ title, url }) => {
+		return <Video url={url} text={title} key={7} />;
+	},
+
 	[BlOCK_TYPE.IMAGE_LIST_A]: ({ text, url, title, items }) => {
 		return (
-			<ImageList
-				key={8}
-				data={{
-
-					type: [BlOCK_TYPE.IMAGE_LIST_A],
-					topic: title,
-					images: items,
-				}}
-			/>
+			<h1>hi</h1>
 		);
 	},
 	[BlOCK_TYPE.IMAGE_LIST_B]: ({ text, url, title, items }) => {
@@ -134,26 +132,10 @@ const block2element = {
 		);
 	},
 };
-const item2element = {
-	[ITEM_TYPE.作者]: ({ url, name, key }) => {
-		return (
-			<div key={key}>
-				<h1>作者{name}</h1>;<h2>{url}</h2>;
-			</div>
-		);
-	},
-	[ITEM_TYPE.社團]: ({ url, name, key }) => {
-		return (
-			<div key={key}>
-				<h1>社團{name}</h1>;<h2>{url}</h2>;
-			</div>
-		);
-	},
-};
 
 function Display() {
 	const { displayId } = useParams();
-	const interpreter = new BlockInterpreter(block2element, item2element);
+	const interpreter = new BlockInterpreter(block2element);
 	const [eventState, setEventState] = useState(undefined);
 	useEffect(() => {
 		(async function () {

@@ -1,18 +1,31 @@
 import React from 'react';
-// import style from './Home.module.css';
-// import { Card } from 'antd';
+import style from './Map.module.css';
+import { BlOCK_TYPE } from '@leon123858/ntuaf-sdk'
+import { Button } from 'antd';
 
 
-const Map = (props) => {
-	console.log(props);
-	const { inputValue, width, height, font } = props;
-	console.log(props.width);
+const Map = ({ type, url, text }) => {
 	return (
-		<>
+		{
+			[BlOCK_TYPE.MAP_A]: (
+				<div style={{ textAlign: 'center' }}>
+					<div style={{ textAlign: 'center', margin: '20px auto', width: 'props.width' }}>藝術家地圖</div>
+					<div>
+						<iframe loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="myFrame" ></iframe>
+					</div>
 
-			<div style={{ textAlign: 'center', marginBottom: 20, width: 'props.width' }}>藝術家地圖</div>
-			<iframe src={inputValue} width={width} height={height} loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="myFrame"></iframe>
-		</>
+				</div>
+			),
+			[BlOCK_TYPE.MAP_B]: (
+				<div className={style.container}>
+                    <h1 className={`${style.topic} ${style.three}`}>{'活動資訊'}</h1>
+                    <p className={style.content}>
+						{text}
+						<Button style={{ marginTop: 16, backgroundColor: 'grey', color: 'white' }}>活動位置</Button>
+					</p>
+                </div>
+			)
+		}[type]
 	);
 }
 

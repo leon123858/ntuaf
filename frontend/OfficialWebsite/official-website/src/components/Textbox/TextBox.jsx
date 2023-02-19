@@ -5,12 +5,17 @@ import { BlOCK_TYPE } from '@leon123858/ntuaf-sdk'
 const TextBox = ({ text }) => {
 
     return (
-        
+
         {
             [BlOCK_TYPE.TEXT_A]: (
                 <div className={style.container}>
                     <h1 className={`${style.topic} ${style.one}`}>{text.url}</h1>
-                    <textarea className={style.content} style={{ paddingTop: '22px' }} defaultValue={text.text} />
+                    <div className={style.content} style={{ paddingTop: '22px' }}>
+                        {text.text.split('\n').map((str) => (
+                            <p>{str}</p>
+                        ))}
+                    </div>
+
                 </div>
 
             ),

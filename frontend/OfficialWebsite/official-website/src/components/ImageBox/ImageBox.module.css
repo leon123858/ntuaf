@@ -1,6 +1,8 @@
 .container {
   width: 80%;
   margin: 48px auto;
+  position: relative;
+  text-align: center;
 }
 
 .picBox1 {
@@ -50,4 +52,26 @@
   justify-content: center;
   background-size: cover;
   height: 100%;
+}
+
+.content {
+  margin: 0px;
+  width: 100%;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  padding: 18px;
+  font-size: 14px;
+}
+
+.topic.three {
+  font-size: 14px;
+  margin: 0;
+  position: absolute;
+  top: var(--top);
+  left: -8px;
+  background-color: #808080;
+  border-radius: 10px;
+  padding: 8px 40px;
+  color: #FFFFFF;
+  font-weight: 300;
 }

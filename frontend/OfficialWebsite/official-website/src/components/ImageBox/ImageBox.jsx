@@ -7,9 +7,9 @@ import { Card, Image } from 'antd';
 import { Slide } from 'react-slideshow-image';
 import { BlOCK_TYPE } from '@leon123858/ntuaf-sdk'
 
-const ImageBox = ({ images }) => {
+const ImageBox = ({ image }) => {
     const { inBreakPoint } = useContext(BreakPointContext);
-
+    console.log(image);
     return (
         {
             [BlOCK_TYPE.IMAGE_A]: (
@@ -35,10 +35,24 @@ const ImageBox = ({ images }) => {
                 //     </div>
                 // </div>
                 <div className={style.container} style={{ margin: '32px auto' }}>
-                    <h1 className={`${style.topic} ${style.two}`}>{images.content}</h1>
-                    <p className={style.content}>{images.text}</p>
+                    <h1 className={`${style.topic} ${style.three}`}>{image?.text}</h1>
+                    <div className={style.content}>
+                        <Image
+                        alt='img'
+                        src={image.url}
+                    />
+                    </div>
                 </div>
             ),
+            
+            [BlOCK_TYPE.IMAGE_B]: (
+                <div className={style.container} style={{ textAlign: 'center' }}>
+                    <Image
+                        alt='img'
+                        src={image.url}
+                    />
+                </div>
+            )
 
             // [BlOCK_TYPE.IMAGE_B]: (
             //     <div className={style.container}>
@@ -60,16 +74,7 @@ const ImageBox = ({ images }) => {
             //     </div>
             // ),
 
-            // [BlOCK_TYPE.IMAGE_C]: (
-            //     <div className={style.container} style={{ textAlign: 'center' }}>
-            //         <Image
-            //             alt='img'
-            //             src={images.images[0].src}
-            //         />
-            //     </div>
-            // )
-
-        }[images.type]
+        }[image.type]
     );
 };
 export default ImageBox;
