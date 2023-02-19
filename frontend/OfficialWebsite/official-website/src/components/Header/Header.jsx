@@ -84,11 +84,9 @@ const items = [
 
 const Header = () => {
 	const [sideBarActive, setSideBarActive] = useState(false);
-	const onClose = () => {
-		setSideBarActive(false);
-	};
+	const onClose = () => { setSideBarActive(false); };
+	
 	useEffect(() => {
-		// const headerE = document.getElementsByClassName(styles.menuWrapper)[0]
 		const add_class_on_scroll = (element, className) => {
 			element.classList.add(className);
 		};
@@ -125,7 +123,7 @@ const Header = () => {
 						style={{ backgroundColor: 'rgba(0, 0, 0,0)', border: 'none' }}
 						disabledOverflow={true}
 					/>
-					<SearchBar />
+					{/* <SearchBar /> */}
 				</div>
 				<div className={styles.hidden}>
 					<LoginButton />
