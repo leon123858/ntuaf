@@ -28,7 +28,7 @@ const correctImage = (images: Images) => {
 };
 
 const correctItem = (item: Item) => {
-	const { type = ITEM_TYPE.作者, url = null, name = '' } = item;
+	const { type = ITEM_TYPE.圖片, url = null, name = '' } = item;
 	if (!Object.values(ITEM_TYPE).includes(type)) throw 'not exist type of item';
 	return {
 		type: typeof type == 'number' ? type : ITEM_TYPE[type],
