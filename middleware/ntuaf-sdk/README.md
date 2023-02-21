@@ -222,6 +222,7 @@ export enum ITEM_TYPE {
  * @property id 投稿編號
  * @property type 投稿的活動類別
  * @property name 作者姓名
+ * @property artworkName 作品名稱
  * @property email 作者 email
  * @property url 圖片 url
  * @property text 文字內容
@@ -233,6 +234,7 @@ export interface Artwork {
 	id?: string;
 	type: enums.ARTWORK_TYPE;
 	name: string;
+	artworkName: string;
 	email: string;
 	url: string;
 	text: string;
