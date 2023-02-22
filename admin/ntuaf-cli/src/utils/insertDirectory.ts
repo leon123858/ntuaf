@@ -4,10 +4,6 @@ import { db } from '../init';
 import fs from "fs"
 const path = require('path');
 const cliProgress = require('cli-progress');
-import {
-	Member,
-	DEPARTMENT,
-} from '@leon123858/ntuaf-sdk';
 
 
 const insertDirectory = async ()=>{
@@ -32,20 +28,7 @@ const insertDirectory = async ()=>{
     })
     .on('end', () => {
     });
-    // console.log("memberList", memberList)
-    // memberList.forEach((member:any, index:number)=>{
-    //     const memberInput = {
-    //         id: member.email,
-	// 		name: member.name,
-	// 		job: member.job,
-	// 		department: member.department,
-    //         admin:[]
-    //     }
-    //     console.log(memberInput)
-    //     db.collection('Members').doc(`${member.id}`).set(memberInput);
-    // })
     
-	
 	// bar.increment(1);
 	// bar.stop();
 }
