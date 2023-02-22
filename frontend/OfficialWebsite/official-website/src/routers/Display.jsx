@@ -9,7 +9,7 @@ import ImageList from '../components/ImageList/ImageList';
 import Link from '../components/Link/Link'
 import Map from '../components/Map/Map';
 import { useParams } from 'react-router-dom';
-import { Spin, Image } from 'antd';
+import { Spin, Image, message } from 'antd';
 
 const block2element = {
 	[BlOCK_TYPE.TEXT_A]: ({ text, title, url }) => {
@@ -183,16 +183,25 @@ function Display() {
 	const { displayId } = useParams();
 	const interpreter = new BlockInterpreter(block2element);
 	const [eventState, setEventState] = useState(undefined);
+	const [messageApi, contextHolder] = message.useMessage();
+	const error = () => {
+		messageApi.error('資料版本有誤');
+	};
+
 	useEffect(() => {
 		(async function () {
-			const event = await getEvent(displayId);
-			setEventState(event);
-			console.log(event);
+			try {
+				const event = await getEvent(displayId);
+				setEventState(event);
+			} catch {
+				error();
+			}
 		})();
 	}, [displayId]);
 
 	return eventState ? (
 		<>
+			{contextHolder}
 			<Image
 				className={style.Image}
 				preview={false}
@@ -203,6 +212,7 @@ function Display() {
 		</>
 	) : (
 		<div className={style.Spin}>
+			{contextHolder}
 			<Spin></Spin>
 		</div>
 	);
