@@ -18,6 +18,7 @@ import {
 	updateArtworkLike,
 	setAllTmpDataAsInit,
 } from './utils/updateUserData';
+import { insertDirectory } from "./utils/insertDirectory"
 const figlet = require('figlet');
 
 const program = new Command();
@@ -67,7 +68,7 @@ const options = program.opts();
 
 	switch (mode) {
 		case MODE_TYPE.插入測試資料: {
-			await insertMember();
+			// await insertMember();
 			await insertArtwork();
 			await insertEvent();
 			break;
@@ -76,7 +77,7 @@ const options = program.opts();
 		case MODE_TYPE.刪除測試資料: {
 			// const o = (await askEnv()).env;
 			// console.log(o)
-			await deleteCollection('Members');
+			// await deleteCollection('Members');
 			await deleteCollection('Events');
 			await deleteCollection('Artworks');
 			break;
@@ -98,6 +99,11 @@ const options = program.opts();
 		case MODE_TYPE.插入例行展覽: {
 			const id = (await askId()).id;
 			await createAlwaysEvent(id);
+			break;
+		}
+		case MODE_TYPE.插入人員列表: {
+			console.log(".插入人員列表")
+			await insertDirectory()
 			break;
 		}
 		default: {
