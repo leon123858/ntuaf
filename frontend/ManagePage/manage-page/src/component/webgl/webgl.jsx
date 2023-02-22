@@ -21,6 +21,8 @@ const Index=()=>{
 
     const seconds =8;
 
+    const seconds2 =50;
+
     // const [rotation,setRotation] = useState([0, 0, 0]);
 
     // const [angle, setangle] = useState(rotation);
@@ -35,13 +37,26 @@ const Index=()=>{
     const [myarray,setarray] = useState(array);
 
     const curve = new THREE.CubicBezierCurve3(
-        new THREE.Vector3( 80, 35, -60 ),
-        new THREE.Vector3( 30, -30, -60 ),
-        new THREE.Vector3(-30, -30, -60 ),
-        new THREE.Vector3( -60, 35, -60 )
+        new THREE.Vector3( 60, 20, -60 ),
+        new THREE.Vector3( 20, -50, -60 ),
+        new THREE.Vector3(-50, -50, -60 ),
+        new THREE.Vector3( -80, 20, -60 )
     );
 
+    const curve2 = new THREE.CubicBezierCurve3(
+        new THREE.Vector3( 60, 20, -60 ),
+        new THREE.Vector3( 20, -50, -60 ),
+        new THREE.Vector3(-50, -50, -60 ),
+        new THREE.Vector3( -80, 20, -60 )
+    );
+    
+
     const points = curve.getPoints( 7 );
+
+    const points2 = curve2.getPoints( 70 );
+
+    console.log("curve2",points2);
+    const [curPoints,setPoints] = useState(points2[0]);
 
     // console.log("rotation",rotation);
 
@@ -85,17 +100,40 @@ const Index=()=>{
     },[seconds])
 
 
+
+    useEffect(()=>{
+        const countdown = 70;
+
+        const startTome = Date.now();
+        // console.log("remian",remainseconds,"s")
+        const countDownTimer = setInterval(() =>{
+            const pastSeconds = parseInt((Date.now() - startTome)/57)
+            const remain = (countdown - pastSeconds)
+
+            setRemainSecond(remain < 0 ? 0 : remain);
+            setPoints(points2[70-remain]);
+            if(remain <=0){
+                clearInterval(countDownTimer)
+            }
+        },57)
+    },[seconds])
+
+
     return(
         <div
             style={{
+                // width: "50vw",
                 height: "60vh",
             }}
         >
-            <Canvas camera={{ position: [0, 0, 0], fov: 1000 }} >
+            <Canvas camera={{ position: [0,0,0], fov: 1000 }} shadows >
                 <ambientLight intensity={1} />
+                <spotLight intensity={0.5} position={[0,0,-10]} />
                 <Physics colliders="cuboid">
                     <mesh>
                         {/* <Plane position={[0, 0, -15]} rotation-z={1} scale={[1, 1, 1]} /> */}
+                        <Ring position={curPoints} rotation={[Math.PI / 0.9, 0, 0]} visible ={myarray[0]}/>
+
                         <Ring position={points[0]} rotation={[Math.PI / 0.9, 0, 0]} visible ={myarray[0]}/>
                         <Ring position={points[1]}  rotation={[Math.PI / 1.5, 0, 0]} visible ={myarray[1]}/>
                         <Ring position={points[2]}  rotation={[Math.PI / 2.3, 2.5, 0]} visible ={myarray[2]}/>

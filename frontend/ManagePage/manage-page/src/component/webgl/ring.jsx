@@ -39,7 +39,10 @@ function Circle(props) {
     >
      
 
-      <torusGeometry args={[10, 0.9, 30, 200, 65]}></torusGeometry>
+      <torusGeometry 
+        castShadow
+        receiveShadow 
+        args={[10, 0.9, 30, 200, 65]}></torusGeometry>
       {/* <boxGeometry args={[3, 3, 3]} /> */}
       <meshBasicMaterial attach="material" map={base} />
     </mesh>
