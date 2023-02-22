@@ -4,7 +4,6 @@ import { db } from '../init';
 import fs from "fs"
 const path = require('path');
 const cliProgress = require('cli-progress');
-const { v4: uuidv4 } = require('uuid');
 import {
 	Member,
 	DEPARTMENT,
