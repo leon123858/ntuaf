@@ -1,7 +1,7 @@
 import { React, useState } from 'react';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import { Avatar, Card, Typography, Modal, Divider, Image } from 'antd';
-import Heart from '../artBox/heart';
+import Heart from '../ArtBox/heart';
 import styles from "./ArtworkList.module.css"
 import { triggerLikeArtwork } from '@leon123858/ntuaf-sdk'
 import styled from 'styled-components';
