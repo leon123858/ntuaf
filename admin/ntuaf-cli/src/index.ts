@@ -87,9 +87,9 @@ const options = program.opts();
 		}
 		case MODE_TYPE.更新系統暫存: {
 			await transformMembers();
-			// await transformRecommendEvents();
-			// await transformDayEvents();
-			// await transformTabEvents();
+			await transformRecommendEvents();
+			await transformDayEvents();
+			await transformTabEvents();
 			break;
 		}
 		case MODE_TYPE.彙整當日用戶操作: {

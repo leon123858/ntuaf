@@ -15,7 +15,6 @@ const insertDirectory = async ()=>{
     fs.createReadStream(path.resolve(__dirname, '../data/directory.csv'))
     .pipe(csv({ headers:["email","name","job","department"]}))
     .on('data', (data) => {
-        console.log(data)
         const member = {
             id: data["email"],
 			name: data["name"],
