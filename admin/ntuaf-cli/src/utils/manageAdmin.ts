@@ -11,8 +11,8 @@ const insertAdmin = async (email:string, eventId:string) =>{
     }
     const adminList = data.get("admin")
     console.log(adminList)
+    //todo go to event collection to check if event id exist
     if (adminList.includes(eventId)){
-        //todo go to event collection to check if event id exist
         return 
     }
     adminList.push(eventId)
