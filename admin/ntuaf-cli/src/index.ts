@@ -113,7 +113,7 @@ const options = program.opts();
 			const name = (await askMemberName()).memberName
 			const job = (await askMemberJob()).memberJob
 			const department = (await askMemberDep()).memberDepartment
-			insertMemberManually(email, name, job, department)
+			await insertMemberManually(email, name, job, department)
 			break;
 		}
 		case MODE_TYPE.增加權限: {
