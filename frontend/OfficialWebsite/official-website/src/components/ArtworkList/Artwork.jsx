@@ -27,12 +27,13 @@ const CreaterName = styled.div`
 font-weight: 600;
 font-size: 16px;
 `
-export const ArtworkText = ({ data = test }) => {
-    const [active, setActive] = useState(false)
-    const [open, setOpen] = useState(false)    
-    const [likeShow, setLikeShow] = useState(data.tmpLike+data.like)
+export const ArtworkText = ({ data, heartOnClick }) => {
+    const [active, setActive] = useState(data.likeToday)
+    const [open, setOpen] = useState(false)
+    const likeShow =(data.tmpLike + data.like+(data.likeToday?1:0)) 
     return (
         <>
+            {data.like ? "true" : "false"}
             <div className={styles.container} >
                 <Card bordered={false} style={{ width: "100%" }} hoverable={true} onClick={() => { setOpen(true) }}>
                     <ArtworkName>{data.artworkName}</ArtworkName>
@@ -55,7 +56,7 @@ export const ArtworkText = ({ data = test }) => {
                             width: 20,
                             marginLeft: 5
                         }}
-                        isActive={active} onClick={() => setActive(!active)} />
+                        isActive={data.likeToday} onClick={() => heartOnClick(data.id)} />
                 </div>
             </div>
 
@@ -76,7 +77,7 @@ export const ArtworkText = ({ data = test }) => {
                                 width: 20,
                                 marginLeft: 5
                             }}
-                            isActive={active} onClick={() => setActive(!active)} />
+                            isActive={data.likeToday} onClick={() => heartOnClick(data.id)} />
                     </div>
                 </div>
                 <Divider />
@@ -89,10 +90,10 @@ export const ArtworkText = ({ data = test }) => {
     )
 }
 
-export const ArtworkImg = ({ data = test }) => {
-    const [active, setActive] = useState(false)
+export const ArtworkImg = ({ data, heartOnClick }) => {
+    const [active, setActive] = useState(data.likeToday)
     const [open, setOpen] = useState(false)
-    const [likeShow, setLikeShow] = useState(data.tmpLike+data.like)
+    const [likeShow, setLikeShow] = useState(data.tmpLike + data.like+(data.likeToday?1:0))
     return (
         <>
             <div className={styles.container} >
@@ -107,7 +108,7 @@ export const ArtworkImg = ({ data = test }) => {
                             width: 20,
                             marginLeft: 5
                         }}
-                        isActive={active} onClick={() => setActive(!active)} />
+                        isActive={data.likeToday} onClick={() => heartOnClick(data.id)} />
                 </div>
             </div>
 
@@ -128,7 +129,7 @@ export const ArtworkImg = ({ data = test }) => {
                                 width: 20,
                                 marginLeft: 5
                             }}
-                            isActive={active} onClick={() => setActive(!active)} />
+                            isActive={data.likeToday} onClick={() => heartOnClick(data.id)} />
                     </div>
                 </div>
                 <br />
