@@ -15,6 +15,7 @@ import ArtworkList from './routers/ArtworkList';
 import Map from './routers/Map';
 import Layout from './components/Layout/Layout';
 import { BreakPointProvider } from './useBreakPoint.jsx';
+import Artworkupload from './routers/Artworkupload';
 
 const router = createBrowserRouter([
 	{
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
 			{
 				path: '/artwork',
 				element: <Artwork />,
+			},
+			{
+				path: '/artwork/upload',
+				element: <Artworkupload />,
 			},
 			{
 				path: '/artworkList',
