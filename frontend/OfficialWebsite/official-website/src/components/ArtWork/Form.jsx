@@ -248,7 +248,7 @@ const FormDisabledDemo = () => {
                 {previewImage ? (
                     null
                 ) : (
-                    <div></div>
+                    uploadButton
                 )}
                 </Upload>
                 <Modal
