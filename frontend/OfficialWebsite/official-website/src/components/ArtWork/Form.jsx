@@ -39,7 +39,7 @@ const FormDisabledDemo = () => {
 
     const navigate = useNavigate();
 	const goBack = () => {
-		// navigate(-1);
+		navigate(-1);
 	}
 
     const onFinish = async(values) => {
