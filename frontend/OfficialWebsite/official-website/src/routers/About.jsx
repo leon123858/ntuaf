@@ -7,9 +7,9 @@ import Sponsor from "../components/Sponsor/Sponsor"
 
 function About() {
 	return (
-			<div className={style.APP}>
-				<Murmur/>
+			<div>
 				<DynamicVision/>
+				<Murmur/>
 				<MemberTab />
 				<Sponsor/>
 			</div>
