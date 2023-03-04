@@ -8,3 +8,9 @@
     padding:10vh 0 ;
     height: 100vh;
 }
+.lgCardWrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}

@@ -1,8 +1,10 @@
 import Card from "./Card.jsx"
 import styles from "./FourCircle.module.css"
-import {useState, useEffect} from "react"
+import {useState, useEffect, useContext} from "react"
+import { BreakPointContext } from '../../useBreakPoint';
 const FourCircle = () => {
     const [contents, setContents] = useState([])
+    const { inBreakPoint } = useContext(BreakPointContext);
     useEffect(()=>{
         setContents([
             {
@@ -33,7 +35,7 @@ const FourCircle = () => {
     }, [])
     return (
         <>
-            <div className={styles.cardWrapper}>
+            <div className={inBreakPoint?styles.cardWrapper:styles.lgCardWrapper}>
                 {contents.map((content, index) => {
                     return (
                         <Card content={content} />
