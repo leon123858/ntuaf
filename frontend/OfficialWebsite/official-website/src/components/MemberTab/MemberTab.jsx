@@ -84,14 +84,13 @@ const MemberTab = () => {
 								/>
 								{curDepartment === '核心團隊' ? (
 									<div>
-										<PositionRow members={memberData} position={'總招'} />
-										<PositionRow members={memberData} position={'副招'} />
-										<PositionRow members={memberData} position={'執秘'} />
+										<PositionRow members={memberData} position={'總召集人'} />
+										<PositionRow members={memberData} position={'副召集人'} />
 									</div>
 								) : (
 									<div>
 										<PositionRow members={memberData} position={'部長'} />
-										<PositionRow members={memberData} position={'部員'} />
+										<PositionRow members={memberData} position={'組員'} />
 									</div>
 								)}
 							</div>
