@@ -11,12 +11,14 @@ import {
   Image,
   Typography,
 } from 'antd';
-import { useEffect, useState } from 'react';
+import { useEffect, useState , useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RcFile, UploadFile, UploadProps } from 'antd/lib/upload';
 import { UploadRequestOption } from 'rc-upload/lib/interface';
-import { createArtwork, ARTWORK_TYPE } from '@leon123858/ntuaf-sdk';
+import { createArtwork, ARTWORK_TYPE, userId } from '@leon123858/ntuaf-sdk';
 import Artwork from '../../routers/Artwork';
+import { BreakPointContext } from '../../useBreakPoint';
+
 
 
 const { TextArea } = Input;
@@ -49,12 +51,17 @@ const FormDisabledDemo = () => {
         console.log(values);
         // form.url = previewImage;
         console.log("form",form);
-        await createArtwork(values);
-        setTimeout(() =>{
-             form.resetFields();
-        },500);
-        message.success("上傳成功");
-        goBack();
+        try{
+            await createArtwork(values);
+        }catch(err){
+            console.log("上傳失敗",err);
+            message.error("上傳失敗");
+            return;
+        }
+        form.resetFields();
+        message.success("上傳成功",()=>{},()=>{
+            goBack();
+        });
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -107,11 +114,14 @@ const FormDisabledDemo = () => {
 
 		const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
 		if (!isJpgOrPng) {
+            setLoading(false);
 			alert('You can only upload JPG/PNG file!');
 			isOK = false;
+            //setLoading(false);
 		} else if (isLt2M) {
 			alert('Image must smaller than 25 MB!');
 			isOK = false;
+            setLoading(false);
 		}
 
 		if (isOK) {
@@ -138,15 +148,13 @@ const FormDisabledDemo = () => {
     function handleChange(value) {
         console.log(`Selected ${value}`);
         console.log((form.getFieldValue("type")));
-        if(form.getFieldValue("type")===ARTWORK_TYPE.PHOTO)
+        if(form.getFieldValue("type")===ARTWORK_TYPE.PHOTO || form.getFieldValue("type")===ARTWORK_TYPE.PAINTING)
             setHidden(false);
         else
             setHidden(true);
     }
-    // const handleUploadChange = ({ fileList }) => {
-    //     setFileList(fileList);
-    //   };
-    
+    const { isLogin } = useContext(BreakPointContext);
+
     
 
     return (
@@ -174,7 +182,7 @@ const FormDisabledDemo = () => {
     <div style={{ width: '70%',backgroundColor : '#D3D3D3'}}>
         
         <Form
-            
+            disabled={!isLogin}
             layout="vertical"
             style={{
             // maxWidth: 600,
@@ -193,9 +201,6 @@ const FormDisabledDemo = () => {
                 remember: true,
                 img : previewImage,
             }}
-
-            // style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}
-
         >
             <Form.Item 
             label="姓名/暱稱" 
@@ -212,17 +217,18 @@ const FormDisabledDemo = () => {
                 <Select onChange={handleChange}>
                     <Select.Option value={ARTWORK_TYPE.PHOTO}>照片組</Select.Option>
                     <Select.Option value={ARTWORK_TYPE.PURE_TEXT}>文字組</Select.Option>
+                    <Select.Option value={ARTWORK_TYPE.PAINTING}>繪畫組</Select.Option>
                 </Select>
             </Form.Item>
             <Form.Item label="作品名稱"
             name = "artworkName"
-            rules={[{ required: true, message: "請上傳您的作品" }]}
+            rules={[{ required: true, message: "請上傳您的作品名稱" }]}
             >
                 <Input />
             </Form.Item>
             <Form.Item label="文字說明"
             name = "text"
-            rules={[{ required: true, message: "請上傳您的作品" }]}
+            rules={[{ required: true, message: "請上傳您的作品文字說明" }]}
             >
                 <TextArea rows={4} />
             </Form.Item>
@@ -230,7 +236,7 @@ const FormDisabledDemo = () => {
             <Form.Item name ="url" label="上傳檔案：（XXX檔，？像素以上，？mb以內）"
             value = ""
             getValueFromEvent={normFile}
-            rules={[{ required: true, message: "請上傳您的作品" }]}
+            rules={[{ required: form.getFieldValue("type")===ARTWORK_TYPE.PHOTO || form.getFieldValue("type")===ARTWORK_TYPE.PAINTING?true:false, message: "請上傳您的作品照片" }]}
             // style={{ display: "none" }}
             hidden={hidden}
             >
@@ -266,9 +272,10 @@ const FormDisabledDemo = () => {
             </Form.Item>
             
             <Form.Item>
-                <Button htmlType="submit">上傳</Button>
+              <Button htmlType="submit">上傳</Button>
             </Form.Item>
         </Form>
+        
     </div>
     </div>
     </>
