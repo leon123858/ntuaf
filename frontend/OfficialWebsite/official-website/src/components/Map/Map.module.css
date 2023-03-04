@@ -1,0 +1,29 @@
+.topic {
+    font-size: 14px;
+    margin: 0;
+    position: absolute;
+    top: var(--top);
+    left: -8px;
+    background-color: #808080;
+    border-radius: 10px;
+    padding: 8px 40px;
+    color: #FFFFFF;
+    font-weight: 300;
+}
+
+.content {
+    margin: 0px;
+    width: 100%;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 18px;
+    font-size: 14px;
+}
+
+.container {
+    position: relative; 
+    margin: 40px 0;
+    width: 40%;
+    text-align: center;
+    margin: 60px auto
+}

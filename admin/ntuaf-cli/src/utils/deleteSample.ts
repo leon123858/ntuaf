@@ -7,7 +7,6 @@ async function deleteCollection(collectionPath:string) {
   const batchSize = 10;
 
   const snapshot = await db.collection(collectionPath).get();
-  const tmp = await db.collection('cities').doc('DC')
   
   snapshot.forEach(async(doc) => {
     if(doc.data().id.includes("(test)_")){

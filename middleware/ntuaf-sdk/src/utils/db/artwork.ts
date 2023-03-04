@@ -34,20 +34,25 @@ import {
  */
 export const createArtwork = async (
 	artwork:
-		| Pick<Artwork, 'type' | 'name' | 'text' | 'url'>
-		| Pick<Artwork, 'type' | 'name' | 'text'>
+		| Pick<Artwork, 'type' | 'name' | 'artworkName' | 'text' | 'url'>
+		| Pick<Artwork, 'type' | 'name' | 'artworkName' | 'text'>
 ) => {
 	const {
 		type,
 		name,
 		text = '',
 		url = null,
-	} = artwork as Pick<Artwork, 'type' | 'name' | 'text' | 'url'>;
+		artworkName,
+	} = artwork as Pick<
+		Artwork,
+		'type' | 'name' | 'text' | 'url' | 'artworkName'
+	>;
 	if (!Object.values(ARTWORK_TYPE).includes(type))
 		throw 'not exist type of artwork';
 	if (type !== ARTWORK_TYPE.PURE_TEXT && url == null)
 		throw 'please input image for this type artwork';
-	if (!name || (!url && text == '')) throw 'less name or url or text';
+	if (!name || !artworkName || (!url && text == ''))
+		throw 'less name or url or text';
 	const email = userEmail();
 	if (!email) throw 'Should login first';
 	const newUrl = !url ? null : await uploadImage(url);
@@ -57,12 +62,37 @@ export const createArtwork = async (
 		url: newUrl,
 		text,
 		name,
+		artworkName,
 		createTime: new Date().getTime(),
 		like: 0,
 		tmpLike: 0,
 	};
 	const result = await addDoc(collection(dbInstance, 'Artworks'), newArtwork);
 	return result.id;
+};
+
+const correctArtworks = ({
+	type = ARTWORK_TYPE.PAINTING,
+	name = '作者暱稱',
+	artworkName = '作品名稱',
+	email = '為設定 email',
+	url = '',
+	text = '',
+	createTime = 0,
+	like = 0,
+	tmpLike = 0,
+}: Artwork) => {
+	return {
+		type,
+		name,
+		artworkName,
+		email,
+		url,
+		text,
+		createTime,
+		like,
+		tmpLike,
+	} as Artwork;
 };
 
 /**
@@ -111,7 +141,8 @@ export const getArtworkList = async (
 	return {
 		cursor: nextCursor as DocumentSnapshot<DocumentData>,
 		data: result.docs.map((v) => {
-			return { id: v.id, ...v.data() } as Artwork;
+			const newData = correctArtworks(v.data() as Artwork);
+			return { id: v.id, ...newData } as Artwork;
 		}),
 	};
 };

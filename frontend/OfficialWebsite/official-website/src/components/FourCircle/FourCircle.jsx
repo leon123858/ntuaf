@@ -38,7 +38,7 @@ const FourCircle = () => {
             <div className={inBreakPoint?styles.cardWrapper:styles.lgCardWrapper}>
                 {contents.map((content, index) => {
                     return (
-                        <Card content={content} />
+                        <Card content={content} key={index} />
                     )
                 })}
             </div>

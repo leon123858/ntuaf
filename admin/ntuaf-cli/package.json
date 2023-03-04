@@ -29,9 +29,10 @@
 	},
 	"homepage": "https://github.com/leon123858/ntuaf#readme",
 	"dependencies": {
-		"@leon123858/ntuaf-sdk": "0.1.8",
+		"@leon123858/ntuaf-sdk": "0.1.9",
 		"cli-progress": "^3.11.2",
 		"commander": "^10.0.0",
+		"csv-parser": "^3.0.0",
 		"figlet": "^1.5.2",
 		"firebase-admin": "^11.5.0",
 		"moment": "^2.29.4",
