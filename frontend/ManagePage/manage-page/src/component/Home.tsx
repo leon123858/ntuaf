@@ -1,5 +1,6 @@
 import React from 'react';
 import Index from './webgl/webgl';
+import App from './webgl/app';
 
 function Home() {
 	return (
