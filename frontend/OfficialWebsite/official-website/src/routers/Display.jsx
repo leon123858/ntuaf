@@ -4,7 +4,7 @@ import BlockInterpreter from '../utils/blockInterpreter';
 import { BlOCK_TYPE, getEvent } from '@leon123858/ntuaf-sdk';
 import Textbox from '../components/Textbox/TextBox';
 import ImageBox from '../components/ImageBox/ImageBox';
-import Video from '../components/VideoBox/VideoBox';
+import Video from '../components/VideoBox/videoBox';
 import ImageList from '../components/ImageList/ImageList';
 import Link from '../components/Link/Link'
 import Map from '../components/Map/Map';
@@ -37,12 +37,7 @@ const block2element = {
 			/>
 		);
 	},
-<<<<<<< Updated upstream
-	[BlOCK_TYPE.TEXT_C]: ({ text, title }) => {
-
-=======
 	[BlOCK_TYPE.TEXT_C]: ({ text, title, key }) => {
->>>>>>> Stashed changes
 		return (
 			<Textbox
 				key={key}
@@ -89,15 +84,8 @@ const block2element = {
 			/>
 		);
 	},
-<<<<<<< Updated upstream
-	[BlOCK_TYPE.LINK_A]: ({ url, title }) => {
-		return (
-			<Link url={url} title={title} key={BlOCK_TYPE.LINK_A} />
-		);
-=======
 	[BlOCK_TYPE.LINK_A]: ({ url, title, key }) => {
 		return <Link url={url} title={title} key={key} />;
->>>>>>> Stashed changes
 	},
 	[BlOCK_TYPE.MAP_A]: ({ text, url, key }) => {
 		return (
