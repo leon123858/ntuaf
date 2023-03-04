@@ -116,9 +116,11 @@ const FormDisabledDemo = () => {
 		if (!isJpgOrPng) {
 			alert('You can only upload JPG/PNG file!');
 			isOK = false;
+            setLoading(false);
 		} else if (isLt2M) {
 			alert('Image must smaller than 25 MB!');
 			isOK = false;
+            setLoading(false);
 		}
 
 		if (isOK) {
