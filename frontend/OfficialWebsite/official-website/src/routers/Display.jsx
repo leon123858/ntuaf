@@ -12,10 +12,10 @@ import { useParams } from 'react-router-dom';
 import { Spin, Image, message } from 'antd';
 
 const block2element = {
-	[BlOCK_TYPE.TEXT_A]: ({ text, title, url }) => {
+	[BlOCK_TYPE.TEXT_A]: ({ text, title, url, key }) => {
 		return (
 			<Textbox
-				key={[BlOCK_TYPE.TEXT_A]}
+				key={key}
 				text={{
 					type: BlOCK_TYPE.TEXT_A,
 					title: title,
@@ -25,10 +25,10 @@ const block2element = {
 			/>
 		);
 	},
-	[BlOCK_TYPE.TEXT_B]: ({ text, title }) => {
+	[BlOCK_TYPE.TEXT_B]: ({ text, title, key }) => {
 		return (
 			<Textbox
-				key={BlOCK_TYPE.TEXT_B}
+				key={key}
 				text={{
 					type: BlOCK_TYPE.TEXT_B,
 					title: title,
@@ -37,11 +37,15 @@ const block2element = {
 			/>
 		);
 	},
+<<<<<<< Updated upstream
 	[BlOCK_TYPE.TEXT_C]: ({ text, title }) => {
 
+=======
+	[BlOCK_TYPE.TEXT_C]: ({ text, title, key }) => {
+>>>>>>> Stashed changes
 		return (
 			<Textbox
-				key={BlOCK_TYPE.TEXT_C}
+				key={key}
 				text={{
 					type: BlOCK_TYPE.TEXT_C,
 					title: title,
@@ -50,10 +54,10 @@ const block2element = {
 			/>
 		);
 	},
-	[BlOCK_TYPE.TEXT_D]: ({ text }) => {
+	[BlOCK_TYPE.TEXT_D]: ({ text, key }) => {
 		return (
 			<Textbox
-				key={BlOCK_TYPE.TEXT_D}
+				key={key}
 				text={{
 					type: BlOCK_TYPE.TEXT_D,
 					text: text,
@@ -61,10 +65,10 @@ const block2element = {
 			/>
 		);
 	},
-	[BlOCK_TYPE.IMAGE_A]: ({ text, url }) => {
+	[BlOCK_TYPE.IMAGE_A]: ({ text, url, key }) => {
 		return (
 			<ImageBox
-				key={BlOCK_TYPE.IMAGE_A}
+				key={key}
 				image={{
 					type: BlOCK_TYPE.IMAGE_A,
 					text: text,
@@ -73,10 +77,10 @@ const block2element = {
 			/>
 		);
 	},
-	[BlOCK_TYPE.IMAGE_B]: ({ text, url }) => {
+	[BlOCK_TYPE.IMAGE_B]: ({ text, url, key }) => {
 		return (
 			<ImageBox
-				key={BlOCK_TYPE.IMAGE_B}
+				key={key}
 				image={{
 					type: BlOCK_TYPE.IMAGE_B,
 					text: text,
@@ -85,38 +89,43 @@ const block2element = {
 			/>
 		);
 	},
+<<<<<<< Updated upstream
 	[BlOCK_TYPE.LINK_A]: ({ url, title }) => {
 		return (
 			<Link url={url} title={title} key={BlOCK_TYPE.LINK_A} />
 		);
+=======
+	[BlOCK_TYPE.LINK_A]: ({ url, title, key }) => {
+		return <Link url={url} title={title} key={key} />;
+>>>>>>> Stashed changes
 	},
-	[BlOCK_TYPE.MAP_A]: ({ text, url }) => {
+	[BlOCK_TYPE.MAP_A]: ({ text, url, key }) => {
 		return (
 			<Map
-				key={BlOCK_TYPE.MAP_A}
+				key={key}
 				type={[BlOCK_TYPE.MAP_A]}
 				url={url}
 				text={text}
 			/>
 		);
 	},
-	[BlOCK_TYPE.MAP_B]: ({ text, url }) => {
+	[BlOCK_TYPE.MAP_B]: ({ text, url, key }) => {
 		return (
 			<Map
-				key={BlOCK_TYPE.MAP_B}
+				key={key}
 				type={[BlOCK_TYPE.MAP_B]}
 				url={url}
 				text={text}
 			/>
 		);
 	},
-	[BlOCK_TYPE.VIDEO_A]: ({ title, url, items, text }) => {
-		return <Video url={url} text={title} key={BlOCK_TYPE.VIDEO_A} />;
+	[BlOCK_TYPE.VIDEO_A]: ({ title, url, key }) => {
+		return <Video url={url} text={title} key={key} />;
 	},
-	[BlOCK_TYPE.IMAGE_LIST_A]: ({ title, items }) => {
+	[BlOCK_TYPE.IMAGE_LIST_A]: ({ title, items, key }) => {
 		return (
 			<ImageList
-				key={[BlOCK_TYPE.IMAGE_LIST_A]}
+				key={key}
 				data={{
 					type: [BlOCK_TYPE.IMAGE_LIST_A],
 					topic: title,
@@ -125,10 +134,10 @@ const block2element = {
 			/>
 		)
 	},
-	[BlOCK_TYPE.IMAGE_LIST_B]: ({ title, url, items, text }) => {
+	[BlOCK_TYPE.IMAGE_LIST_B]: ({ title, url, items, text, key }) => {
 		return (
 			<ImageList
-				key={9}
+				key={key}
 				data={{
 					type: [BlOCK_TYPE.IMAGE_LIST_B],
 					title: title,
@@ -139,10 +148,10 @@ const block2element = {
 			/>
 		)
 	},
-	[BlOCK_TYPE.IMAGE_LIST_C]: ({ title, url, items, text }) => {
+	[BlOCK_TYPE.IMAGE_LIST_C]: ({ title, url, items, text, key }) => {
 		return (
 			<ImageList
-				key={[BlOCK_TYPE.IMAGE_LIST_C]}
+				key={key}
 				data={{
 					type: [BlOCK_TYPE.IMAGE_LIST_C],
 					title: title,
@@ -153,10 +162,10 @@ const block2element = {
 			/>
 		)
 	},
-	[BlOCK_TYPE.IMAGE_LIST_D]: ({ title, items }) => {
+	[BlOCK_TYPE.IMAGE_LIST_D]: ({ title, items, key }) => {
 		return (
 			<ImageList
-				key={[BlOCK_TYPE.IMAGE_LIST_D]}
+				key={key}
 				data={{
 					type: [BlOCK_TYPE.IMAGE_LIST_A],
 					topic: title,
@@ -165,10 +174,10 @@ const block2element = {
 			/>
 		)
 	},
-	[BlOCK_TYPE.IMAGE_LIST_E]: ({ title, items }) => {
+	[BlOCK_TYPE.IMAGE_LIST_E]: ({ title, items, key }) => {
 		return (
 			<ImageList
-				key={[BlOCK_TYPE.IMAGE_LIST_E]}
+				key={key}
 				data={{
 					type: [BlOCK_TYPE.IMAGE_LIST_E],
 					topic: title,
