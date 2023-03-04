@@ -4,7 +4,7 @@ import BlockInterpreter from '../utils/blockInterpreter';
 import { BlOCK_TYPE, getEvent } from '@leon123858/ntuaf-sdk';
 import Textbox from '../components/Textbox/TextBox';
 import ImageBox from '../components/ImageBox/ImageBox';
-import Video from '../components/VideoBox/videoBox';
+import Video from '../components/VideoBox/VideoBox';
 import ImageList from '../components/ImageList/ImageList';
 import Link from '../components/Link/Link';
 import Map from '../components/Map/Map';
