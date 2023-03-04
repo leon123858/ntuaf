@@ -6,25 +6,20 @@ import { BreakPointContext } from '../../useBreakPoint';
 const LoginButton = () => {
 	const { isLogin, handleLogout } = useContext(BreakPointContext);
 
-	return (
-		(isLogin)
-			? (
-				<button onClick={async () => await login()} className={styles.loginButton}>
-					登入
-				</button>
-			)
-			: (
-				<button
-					onClick={async () => {
-						await logout();
-						handleLogout();
-					}}
-					className={styles.loginButton}
-				>
-					登出
-				</button>
-			)
-
+	return !isLogin ? (
+		<button onClick={async () => await login()} className={styles.loginButton}>
+			登入
+		</button>
+	) : (
+		<button
+			onClick={async () => {
+				await logout();
+				handleLogout();
+			}}
+			className={styles.loginButton}
+		>
+			登出
+		</button>
 	);
 };
 

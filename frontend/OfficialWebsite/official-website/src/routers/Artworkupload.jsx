@@ -3,13 +3,14 @@ import style from './Artwork.module.css';
 import Form from '../components/ArtWork/Form';
 import ArtEvent from '../components/ArtWork/ArtWork';
 
-function Artwork() {
+function Artworkupload() {
 	return (
 		<>
 			<div className={style.APP}></div>
-			<ArtEvent/> 
+			{/* <ArtEvent/> */}
+			<Form/>
 		</>
 	);
 }
 
-export default Artwork;
+export default Artworkupload;

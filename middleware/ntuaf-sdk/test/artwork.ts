@@ -34,6 +34,7 @@ describe('test artwork create operation', function () {
 			name: '王小小',
 			url,
 			text: '測試文字內容',
+			artworkName: '投稿名稱',
 		});
 		expect(typeof result).eql('string');
 		await logout();
@@ -49,6 +50,7 @@ describe('test artwork create operation', function () {
 				name: '王小小',
 				url,
 				text: '測試文字內容',
+				artworkName: '投稿名稱',
 			});
 			expect(true, 'should be error here').is.false;
 		} catch (err) {
@@ -63,6 +65,7 @@ describe('test artwork create operation', function () {
 				type: ARTWORK_TYPE.PAINTING,
 				name: '王小小',
 				text: '測試文字內容',
+				artworkName: '投稿名稱',
 			});
 			expect(true, 'should be error here').is.false;
 		} catch (err) {
@@ -73,16 +76,22 @@ describe('test artwork create operation', function () {
 				type: 'WRONG TYPE' as ARTWORK_TYPE,
 				name: '王小小',
 				text: '測試文字內容',
+				artworkName: '投稿名稱',
 			});
 			expect(true, 'should be error here').is.false;
 		} catch (err) {
 			expect(err).eql('not exist type of artwork');
 		}
-		await createArtwork({
-			type: ARTWORK_TYPE.PURE_TEXT,
-			name: '王小小',
-			text: '測試文字內容',
-		});
+		try {
+			await createArtwork({
+				type: ARTWORK_TYPE.PURE_TEXT,
+				name: '王小小',
+				text: '測試文字內容',
+			} as any);
+			expect(true, 'should be error here').is.false;
+		} catch (err) {
+			expect(err).eql('less name or url or text');
+		}
 		await logout();
 	});
 
@@ -134,39 +143,49 @@ describe('test artwork get operation', function () {
 					type: ARTWORK_TYPE.PURE_TEXT,
 					name: 'testName' + i,
 					text: 'test text' + i,
+					artworkName: '投稿名稱' + i,
 				})
 			)
 		);
 		await logout();
 	});
 	it('Should get artwork list success', async () => {
-		['like', 'createTime'].forEach(async (v: any) => {
-			const firstFetch = await getArtworkList(ARTWORK_TYPE.PURE_TEXT, v);
-			expect(firstFetch.cursor).is.not.null;
-			expect(firstFetch.data[0]).includes({
-				like: 0,
-				type: '純文字組',
-				email: 'a0970785699@gmail.com',
-				url: null,
-				tmpLike: 0,
-			});
-			expect(typeof firstFetch.data[0].id).eql('string');
-			expect(typeof firstFetch.data[0].text).eql('string');
-			expect(typeof firstFetch.data[0].name).eql('string');
-			const secondFetch = await getArtworkList(
-				ARTWORK_TYPE.PURE_TEXT,
-				v,
-				firstFetch.cursor
-			);
-			expect(secondFetch.cursor).is.not.null;
-			expect(secondFetch.data.length).eql(10);
-			const finalFetch = await getArtworkList(
-				ARTWORK_TYPE.PURE_TEXT,
-				v,
-				secondFetch.cursor
-			);
-			expect(finalFetch.cursor).is.null;
-		});
+		await Promise.all(
+			['like', 'createTime'].map(async (v: any) => {
+				const firstFetch = await getArtworkList(ARTWORK_TYPE.PURE_TEXT, v);
+				expect(firstFetch.cursor).is.not.null;
+				const num = firstFetch.data[0].name.replace('testName', '');
+				expect(firstFetch.data[0]).includes({
+					id: firstFetch.data[0]['id'],
+					type: '純文字組',
+					name: 'testName' + num,
+					artworkName: '投稿名稱' + num,
+					email: 'a0970785699@gmail.com',
+					url: null,
+					createTime: firstFetch.data[0].createTime,
+					text: 'test text' + num,
+					like: 0,
+					tmpLike: 0,
+				});
+				expect(typeof firstFetch.data[0].id).eql('string');
+				expect(typeof firstFetch.data[0].text).eql('string');
+				expect(typeof firstFetch.data[0].name).eql('string');
+				expect(typeof firstFetch.data[0].createTime).eql('number');
+				const secondFetch = await getArtworkList(
+					ARTWORK_TYPE.PURE_TEXT,
+					v,
+					firstFetch.cursor
+				);
+				expect(secondFetch.cursor).is.not.null;
+				expect(secondFetch.data.length).eql(10);
+				const finalFetch = await getArtworkList(
+					ARTWORK_TYPE.PURE_TEXT,
+					v,
+					secondFetch.cursor
+				);
+				expect(finalFetch.cursor).is.null;
+			})
+		);
 	});
 	it('Should error with wrong artwork type', async () => {
 		try {

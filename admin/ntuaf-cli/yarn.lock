@@ -492,10 +492,10 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@leon123858/ntuaf-sdk@0.1.8":
-  version "0.1.8"
-  resolved "https://npm.pkg.github.com/download/@leon123858/ntuaf-sdk/0.1.8/d867966bd304888fef9e48d8b745723e2539dd33#d867966bd304888fef9e48d8b745723e2539dd33"
-  integrity sha512-rdCBKMFiqe05ekptYfJfzIW92y1j4fh890NngpWqMkp+6e4zCq0IX/9NYmGTqX6Qd6uSxPmhfQvdfl9pINjRdw==
+"@leon123858/ntuaf-sdk@0.1.9":
+  version "0.1.9"
+  resolved "https://npm.pkg.github.com/download/@leon123858/ntuaf-sdk/0.1.9/856d4cfd052edc87551f0ca22f59bb582e17f282#856d4cfd052edc87551f0ca22f59bb582e17f282"
+  integrity sha512-9pD8uphonH90Fm0Vehwr9eDHAAGEfab0Te7D9TDyiFPXBQvFBkc+QK7a+cgh6aGWGTlOnaupfkkw8aI2MdaO9A==
   dependencies:
     axios "^0.27.2"
     chai "^4.3.6"
@@ -881,6 +881,13 @@ create-require@^1.1.0:
   version "1.1.1"
   resolved "https://registry.npmjs.org/create-require/-/create-require-1.1.1.tgz"
   integrity sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==
+
+csv-parser@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/csv-parser/-/csv-parser-3.0.0.tgz#b88a6256d79e090a97a1b56451f9327b01d710e7"
+  integrity sha512-s6OYSXAK3IdKqYO33y09jhypG/bSDHPuyCme/IdEHfWpLf/jKcpitVFyOC6UemgGk8v7Q5u2XE0vvwmanxhGlQ==
+  dependencies:
+    minimist "^1.2.0"
 
 debug@4, debug@^4.1.1, debug@^4.3.4:
   version "4.3.4"
