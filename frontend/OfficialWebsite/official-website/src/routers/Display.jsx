@@ -181,9 +181,6 @@ function Display() {
 	const interpreter = new BlockInterpreter(block2element);
 	const [eventState, setEventState] = useState(undefined);
 	const [messageApi, contextHolder] = message.useMessage();
-	const error = () => {
-		messageApi.error('資料版本有誤');
-	};
 
 	useEffect(() => {
 		(async function () {
@@ -191,20 +188,22 @@ function Display() {
 				const event = await getEvent(displayId);
 				setEventState(event);
 			} catch {
-				error();
+				messageApi.error('資料版本有誤');
 			}
 		})();
-	}, [displayId]);
+	}, [displayId, messageApi]);
 
 	return eventState ? (
 		<>
 			{contextHolder}
+			
 			<Image
 				className={style.Image}
 				preview={false}
 				src={eventState.image?.banner}
 				fallback='https://fakeimg.pl/1900x500/?text=WrongImage'
 			/>
+			<h1 style={{ textAlign: 'center' }}>{eventState.title}</h1>
 			<div className={style.APP}>{interpreter.transfer(eventState.blocks)}</div>
 		</>
 	) : (
