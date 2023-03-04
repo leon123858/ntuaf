@@ -30,12 +30,12 @@ const transformTabEvents = async () => {
 				.collection(toDbPath)
 				.doc(EVENT_TYPE.展覽)
 				.update({
-					//? what is the meaning for different field
+					//? what is the meaning for each field
 					[key]: FieldValue.arrayUnion({
-						subTab: data.title,
+						subTab: data.type,
 						title: data.title,
 						date: createDateString(data.startTime, data.endTime),
-						url: data.title,
+						url: data.image.card,
 						id: data.id,
 					}),
 				});
@@ -45,10 +45,10 @@ const transformTabEvents = async () => {
 				.doc('活動')
 				.update({
 					[key]: FieldValue.arrayUnion({
-						subTab: data.title,
+						subTab: data.type,
 						title: data.title,
 						date: createDateString(data.startTime, data.endTime),
-						url: data.title,
+						url: data.image.card,
 						id: data.id,
 					}),
 				});

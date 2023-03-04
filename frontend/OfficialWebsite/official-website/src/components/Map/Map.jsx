@@ -8,22 +8,24 @@ const Map = ({ type, url, text }) => {
 	return (
 		{
 			[BlOCK_TYPE.MAP_A]: (
-				<div style={{ textAlign: 'center' }}>
-					<div style={{ textAlign: 'center', margin: '20px auto', width: 'props.width' }}>藝術家地圖</div>
-					<div>
-						<iframe loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="myFrame" ></iframe>
-					</div>
-
-				</div>
-			),
-			[BlOCK_TYPE.MAP_B]: (
 				<div className={style.container}>
-                    <h1 className={`${style.topic} ${style.three}`}>{'活動資訊'}</h1>
-                    <div className={style.content}>
+					<h1 className={`${style.topic} ${style.three}`}>{'活動資訊'}</h1>
+					<div className={style.content}>
 						<p>{text}</p>
 						<Button style={{ marginTop: 16, backgroundColor: 'grey', color: 'white' }}>活動位置</Button>
 					</div>
-                </div>
+				</div>
+			),
+			[BlOCK_TYPE.MAP_B]: (
+				<div style={{ textAlign: 'center' }}>
+					<div style={{ width: '80%', margin: '0 auto' }}>
+						<iframe width="100%" height="600" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=1%20Grafton%20Street,%20Dublin,%20Ireland+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+							<a href="https://www.maps.ie/distance-area-calculator.html">
+								measure area map
+							</a>
+						</iframe>
+					</div>
+				</div>
 			)
 		}[type]
 	);

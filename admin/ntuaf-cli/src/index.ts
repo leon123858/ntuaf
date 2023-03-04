@@ -4,7 +4,7 @@ import { assert } from 'console';
 import { Command } from 'commander';
 import { insertMember, insertArtwork, insertEvent } from './utils/insertSample';
 import { deleteCollection } from './utils/deleteSample';
-import { askMode, MODE_TYPE, askId } from './utils/prompts';
+import { askMode, MODE_TYPE, askId, askMemberEmail, askMemberName, askMemberJob, askMemberDep, askEventId } from './utils/prompts';
 import {
 	transformMembers,
 	transformRecommendEvents,
@@ -18,6 +18,10 @@ import {
 	updateArtworkLike,
 	setAllTmpDataAsInit,
 } from './utils/updateUserData';
+import { insertDirectory } from "./utils/insertDirectory"
+import { insertMemberManually } from './utils/insertMemberManually';
+import {insertAdmin, removeAdmin} from "./utils/manageAdmin"
+
 const figlet = require('figlet');
 
 const program = new Command();
@@ -67,7 +71,7 @@ const options = program.opts();
 
 	switch (mode) {
 		case MODE_TYPE.插入測試資料: {
-			await insertMember();
+			// await insertMember();
 			await insertArtwork();
 			await insertEvent();
 			break;
@@ -76,16 +80,16 @@ const options = program.opts();
 		case MODE_TYPE.刪除測試資料: {
 			// const o = (await askEnv()).env;
 			// console.log(o)
-			await deleteCollection('Members');
+			// await deleteCollection('Members');
 			await deleteCollection('Events');
 			await deleteCollection('Artworks');
 			break;
 		}
 		case MODE_TYPE.更新系統暫存: {
-			transformMembers();
-			transformRecommendEvents();
-			transformDayEvents();
-			transformTabEvents();
+			await transformMembers();
+			await transformRecommendEvents();
+			await transformDayEvents();
+			await transformTabEvents();
 			break;
 		}
 		case MODE_TYPE.彙整當日用戶操作: {
@@ -100,6 +104,31 @@ const options = program.opts();
 			await createAlwaysEvent(id);
 			break;
 		}
+		case MODE_TYPE.自動匯入人員列表: {
+			await insertDirectory()
+			break;
+		}
+		case MODE_TYPE.手動匯入人員列表: {
+			const email = (await askMemberEmail()).memberEmail
+			const name = (await askMemberName()).memberName
+			const job = (await askMemberJob()).memberJob
+			const department = (await askMemberDep()).memberDepartment
+			await insertMemberManually(email, name, job, department)
+			break;
+		}
+		case MODE_TYPE.增加權限: {
+			const email = (await askMemberEmail()).memberEmail
+			const eventId = (await askEventId()).eventId
+			await insertAdmin(email, eventId)
+			break
+		}
+		case MODE_TYPE.刪除權限: {
+			const email = (await askMemberEmail()).memberEmail
+			const eventId = (await askEventId()).eventId
+			await removeAdmin(email, eventId)
+			break
+		}
+		
 		default: {
 			console.log('未選擇');
 			break;

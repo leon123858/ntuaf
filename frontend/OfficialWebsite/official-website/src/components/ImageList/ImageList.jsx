@@ -42,7 +42,6 @@ const ImageList = ({ data }) => {
                 <p className={style.topic}>{data.url}</p>
                 <h1>{data.title}</h1>
                 <TextBox
-                    key={2}
                     text={{
                         type: BlOCK_TYPE.TEXT_C,
                         title: "活動介紹",
