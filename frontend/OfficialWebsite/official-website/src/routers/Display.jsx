@@ -4,7 +4,7 @@ import BlockInterpreter from '../utils/blockInterpreter';
 import { BlOCK_TYPE, getEvent } from '@leon123858/ntuaf-sdk';
 import Textbox from '../components/Textbox/TextBox';
 import ImageBox from '../components/ImageBox/ImageBox';
-import Video from '../components/VideoBox/videoBox';
+import Video from '../components/VideoBox/VideoBox';
 import ImageList from '../components/ImageList/ImageList';
 import Link from '../components/Link/Link';
 import Map from '../components/Map/Map';
@@ -88,24 +88,10 @@ const block2element = {
 		return <Link url={url} title={title} key={key} />;
 	},
 	[BlOCK_TYPE.MAP_A]: ({ text, url, key }) => {
-		return (
-			<Map
-				key={key}
-				type={[BlOCK_TYPE.MAP_A]}
-				url={url}
-				text={text}
-			/>
-		);
+		return <Map key={key} type={[BlOCK_TYPE.MAP_A]} url={url} text={text} />;
 	},
 	[BlOCK_TYPE.MAP_B]: ({ text, url, key }) => {
-		return (
-			<Map
-				key={key}
-				type={[BlOCK_TYPE.MAP_B]}
-				url={url}
-				text={text}
-			/>
-		);
+		return <Map key={key} type={[BlOCK_TYPE.MAP_B]} url={url} text={text} />;
 	},
 	[BlOCK_TYPE.VIDEO_A]: ({ title, url, key }) => {
 		return <Video url={url} text={title} key={key} />;
@@ -196,7 +182,7 @@ function Display() {
 	return eventState ? (
 		<>
 			{contextHolder}
-			
+
 			<Image
 				className={style.Image}
 				preview={false}
