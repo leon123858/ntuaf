@@ -1,16 +1,16 @@
-import { useState } from "react";
-import Form from "./Form";
-import { Collapse, Icon , Typography , Button } from 'antd';
-import Artwork from "../../routers/Artwork";
-import { upload } from "@testing-library/user-event/dist/upload";
+// import { useState } from "react";
+// import Form from "./Form";
+import { Collapse , Typography , Button } from 'antd';
+// import Artwork from "../../routers/Artwork";
+// import { upload } from "@testing-library/user-event/dist/upload";
 
 const { Panel } = Collapse;
-const { Title, Paragraph, Text, Link } = Typography;
+const { Title, Paragraph } = Typography;
 
 
 const ArtEvent = () => {
 
-    const [isOpened,setOpen] = useState(true);
+    // const [isOpened,setOpen] = useState(true);
     const titleStyle = { fontSize: '25px' };
 
     const onChange = (key) => {
