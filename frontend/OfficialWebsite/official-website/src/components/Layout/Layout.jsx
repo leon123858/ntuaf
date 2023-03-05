@@ -8,7 +8,10 @@ const Layout = () => {
 	return (
 		<div
 			className={styles.layout}
-			style={{ backgroundImage: "url('/background/c1.png')" }}
+			style={{
+				backgroundImage: "url('/background/c1.png')",
+				backgroundSize: '100vw 100vh',
+			}}
 		>
 			<Header />
 			<Outlet />
