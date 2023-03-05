@@ -1,6 +1,7 @@
 // import { useState } from "react";
 // import Form from "./Form";
-import { Collapse , Typography , Button } from 'antd';
+import { Collapse , Typography , Button , Image } from 'antd';
+import { Link } from 'react-router-dom';
 // import Artwork from "../../routers/Artwork";
 // import { upload } from "@testing-library/user-event/dist/upload";
 
@@ -94,11 +95,14 @@ const ArtEvent = () => {
                         </span>
                         </Paragraph>
                     </Typography>
-                    <div style={{ display: 'flex', justifyContent: 'right'}}>
-                        <Button href="Artwork/upload" > 我要參賽 </Button>
-                    </div>
                 </Panel>
             </Collapse>
+            <div style={{ display: 'flex', justifyContent: 'right', marginBottom : '3rem' }}>
+                <Button size='large' href="Artwork/upload" > 我要參賽 </Button>
+            </div>
+            <Link to = "/ArtworkList" >
+                <Image src = "https://cdn.jwplayer.com/v2/media/pJuRvmCU/poster.jpg?width=1920"></Image>
+            </Link>
             </div>
         </div>
         </>

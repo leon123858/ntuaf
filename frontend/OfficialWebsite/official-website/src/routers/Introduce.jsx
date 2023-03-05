@@ -3,6 +3,7 @@ import { Tabs, Spin } from 'antd';
 import { useParams } from 'react-router-dom';
 import style from './Introduce.module.css';
 import EventList from '../components/EventList/EventList';
+import EventListEx from '../components/EventList/EventListEx';
 import { getTabEvents } from '@leon123858/ntuaf-sdk';
 
 function Introduce() {
@@ -59,7 +60,7 @@ function Introduce() {
 						children: (
 							(firstData.events.length === 0) 
 							? <div className={style.Spin}><Spin /></div>
-							: <EventList data={firstData} />
+							: <EventListEx data={firstData} />
 						),
 					},
 					{
