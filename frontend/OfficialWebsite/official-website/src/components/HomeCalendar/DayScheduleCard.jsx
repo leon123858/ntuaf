@@ -9,6 +9,10 @@ const DayScheduleCard = ({ data }) => {
 
 	return (
 		<Card
+			style={{
+				backgroundColor: 'transparent',
+				border: '0px',
+			}}
 			title={inBreakPoint ? '' : `${data.month} / ${data.date}`}
 			className={inBreakPoint ? style.container : style.lgContainer}
 		>

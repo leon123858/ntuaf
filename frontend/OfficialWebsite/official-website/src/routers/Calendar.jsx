@@ -4,11 +4,11 @@ import HomeCalendar from '../components/HomeCalendar/HomeCalendar';
 
 function Calendar() {
 	return (
-		<>
+		<div>
 			<div className={style.APP}>
 				<HomeCalendar />
 			</div>
-		</>
+		</div>
 	);
 }
 

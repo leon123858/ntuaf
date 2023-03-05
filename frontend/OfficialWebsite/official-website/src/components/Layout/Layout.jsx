@@ -6,7 +6,10 @@ import Footer from '../Footer/Footer';
 
 const Layout = () => {
 	return (
-		<div className={styles.layout}>
+		<div
+			className={styles.layout}
+			style={{ backgroundImage: "url('/background/c1.png')" }}
+		>
 			<Header />
 			<Outlet />
 			<Footer />
