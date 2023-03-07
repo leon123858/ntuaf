@@ -34,10 +34,9 @@ const getDayHighlightType = (day, monthType) => {
 	if (day.month() !== 3 && day.month() !== 4) {
 		return HIGHT_LIGHT_TYPE.不用點;
 	}
-	if (monthType[day.month() + 1][`${day.month() + 1}_${day.date()}`]) {
-		const tmpArr =
-			monthType[day.month() + 1][`${day.month() + 1}_${day.date()}`];
-		return (tmpArr[0] ? 1 : 0) + (tmpArr[1] ? 2 : 0) + (tmpArr[2] ? 4 : 0);
+	const tmpArr = monthType[day.month() + 1][`${day.month() + 1}_${day.date()}`];
+	if (tmpArr) {
+		return tmpArr[0] + (tmpArr[1] << 1) + (tmpArr[2] << 2);
 	}
 	return HIGHT_LIGHT_TYPE.不用點;
 };
