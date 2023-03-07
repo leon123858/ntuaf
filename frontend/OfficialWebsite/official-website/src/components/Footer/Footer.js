@@ -10,8 +10,6 @@ import Logo from '../Header/Logo';
 const Footer = () => {
 	function topFunction() {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
-		// document.body.scrollTop = 0; // For Safari
-		// document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 	}
 	return (
 		<div className={styles.footerWrapper}>
