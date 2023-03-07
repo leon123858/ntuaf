@@ -4,6 +4,13 @@ const { FieldValue } = require('firebase-admin/firestore');
 
 import { EVENT_TYPE } from '@leon123858/ntuaf-sdk';
 
+const createTimeString = (start: number, end: number) => {
+	if (moment(start).isSame(moment(end), 'day')) {
+		return `${moment(start).format('hh:mm')} - ${moment(end).format('hh:mm')}`;
+	}
+	return `${moment(start).format('MM/DD')} - ${moment(end).format('MM/DD')}`;
+};
+
 const transformDayEvents = async () => {
 	const monthEvent = { '4': {}, '5': {} } as any;
 	const toDbPath = 'Cache/Events/DayEvents';
@@ -69,7 +76,9 @@ const transformDayEvents = async () => {
 						.update({
 							'data.activity': FieldValue.arrayUnion({
 								name: data.title,
-								info: data.blocks[0]?.text || '無資料',
+								info: `${createTimeString(data.startTime, data.endTime)} | ${
+									data.place.name
+								}`,
 								id: data.id,
 							}),
 						});
@@ -80,7 +89,9 @@ const transformDayEvents = async () => {
 						.update({
 							'data.exhibition': FieldValue.arrayUnion({
 								name: data.title,
-								info: data.blocks[0]?.text || '無資料',
+								info: `${createTimeString(data.startTime, data.endTime)} | ${
+									data.place.name
+								}`,
 								id: data.id,
 							}),
 						});
