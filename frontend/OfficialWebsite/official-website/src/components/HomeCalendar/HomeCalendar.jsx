@@ -100,19 +100,40 @@ const HomeCalendar = () => {
 						: `${style.container} ${style.lgContainer}`
 				}
 			>
-				<DayPickerSingleDateController
-					date={date}
-					focused={focused}
-					onDateChange={onDateChange}
-					onFocusChange={onFocusChange}
-					initialVisibleMonth={() => startDate}
-					renderDayContents={(day) => {
-						return <DayWithHighlightDot day={day} monthType={monthType} />;
-					}}
-					isDayBlocked={(day) => day.month() !== 4 && day.month() !== 3}
-					hideKeyboardShortcutsPanel={true}
-				/>
+				<div>
+					<DayPickerSingleDateController
+						date={date}
+						focused={focused}
+						onDateChange={onDateChange}
+						onFocusChange={onFocusChange}
+						initialVisibleMonth={() => startDate}
+						renderDayContents={(day) => {
+							return <DayWithHighlightDot day={day} monthType={monthType} />;
+						}}
+						isDayBlocked={(day) => day.month() !== 4 && day.month() !== 3}
+						hideKeyboardShortcutsPanel={true}
+					/>
+
+					<div style={(inBreakPoint) ? { display: 'flex', marginTop: '12px' } : { display: 'grid', marginTop: '12px' }}>
+						<div style={{marginRight: 20, fontSize: 12}}>
+							<div className={style.lgDot} style={{ background: '#25499D' }}></div>
+							<span>一般活動</span>
+						</div>
+						<div style={{marginRight: 20, fontSize: 12}}>
+							<div className={style.lgDot} style={{ background: '#A9CF59' }}></div>
+							<span>講座 / 工作坊</span>
+						</div>
+						<div style={{marginRight: 20, fontSize: 12}}>
+							<div className={style.lgDot} style={{ background: '#D7497C' }}></div>
+							<span>常設展覽</span>
+						</div>
+					</div>
+				</div>
+
+
 				<DayScheduleCard data={dayEvents} />
+
+
 			</div>
 		</>
 
