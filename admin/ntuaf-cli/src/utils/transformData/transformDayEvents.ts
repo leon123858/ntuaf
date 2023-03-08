@@ -29,6 +29,7 @@ const transformDayEvents = async () => {
 				[key]: {
 					activity: [],
 					exhibition: [],
+					workshop: [],
 				},
 			});
 		handleDay.add(1, 'days');
@@ -74,7 +75,23 @@ const transformDayEvents = async () => {
 						.collection(toDbPath)
 						.doc(id)
 						.update({
-							'data.activity': FieldValue.arrayUnion({
+							'data.exhibition': FieldValue.arrayUnion({
+								name: data.title,
+								info: `${createTimeString(data.startTime, data.endTime)} | ${
+									data.place.name
+								}`,
+								id: data.id,
+							}),
+						});
+				} else if (
+					eventType === EVENT_TYPE.講座 ||
+					eventType === EVENT_TYPE.工作坊
+				) {
+					await db
+						.collection(toDbPath)
+						.doc(id)
+						.update({
+							'data.workshop': FieldValue.arrayUnion({
 								name: data.title,
 								info: `${createTimeString(data.startTime, data.endTime)} | ${
 									data.place.name
@@ -87,7 +104,7 @@ const transformDayEvents = async () => {
 						.collection(toDbPath)
 						.doc(id)
 						.update({
-							'data.exhibition': FieldValue.arrayUnion({
+							'data.activity': FieldValue.arrayUnion({
 								name: data.title,
 								info: `${createTimeString(data.startTime, data.endTime)} | ${
 									data.place.name

@@ -51,7 +51,7 @@ export const getRecommendEvents = async (type: 'recent' | 'always') => {
 };
 
 /**
- * 根據日期取得當天展覽與活動
+ * 根據日期取得當天展覽與活動與(工作坊+講座)
  * @param month
  * @param day
  * @returns
@@ -70,6 +70,7 @@ export const getDayEvents = async (
 		| {
 				data: {
 					activity: { name: string; info: string; id: string }[];
+					workshop: { name: string; info: string; id: string }[];
 					exhibition: { name: string; info: string; id: string }[];
 				};
 		  }
