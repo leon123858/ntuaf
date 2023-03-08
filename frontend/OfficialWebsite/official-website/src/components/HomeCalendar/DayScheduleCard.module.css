@@ -3,6 +3,7 @@
 	border: 1px solid #e4e4e4;
 	max-height: 30vh;
 	overflow: scroll;
+	width: 105%;
 }
 
 .container::-webkit-scrollbar,
@@ -15,7 +16,6 @@ lgEventContainer::-webkit-scrollbar {
 	margin: 0 0 0 20px;
 	border: 1px solid #e4e4e4;
 	width: 100%;
-	/* overflow: scroll; */
 }
 
 .lgDisplay {
@@ -36,42 +36,40 @@ lgEventContainer::-webkit-scrollbar {
 .dataContainer {
 	display: grid;
 	grid-template-columns: 100%;
-	gap: 10px;
 }
 
 .lgEventContainer {
 	display: grid;
 	width: 100%;
-	gap: 10px;
 	grid-template-columns: 1fr !important;
-	max-height: 176px !important;
+	min-height: 8vh;
+	min-height: 200px;
+	max-height: 300px !important;
 	overflow-x: scroll;
 }
 
 .lgExhibitionContainer {
 	display: grid;
 	width: 100%;
-	gap: 10px;
 	grid-template-columns: 1fr 1fr !important;
-	max-height: 176px !important;
+	min-height: 200px;
+	max-height: 300px !important;
 	overflow-x: scroll;
 }
 
 .event {
-	height: 35px;
-	padding: 7.5px 14px;
-	margin: auto 0;
+	height: 8vh;
+	width: 95%;
+	padding: 14px;
 	cursor: pointer;
-	border: 1px solid #e4e4e4;
 	border-radius: 1.25em;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	min-height: 50px;
 	background-color: white;
-	-moz-box-shadow: 3px 3px 3px 3px gray;
-	-webkit-box-shadow: 3px 3px 3px 3px gray;
-	box-shadow: 3px 3px 3px 3px gray;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+	margin-bottom: 12px;
 }
 
 .eventName {

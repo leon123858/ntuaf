@@ -13,12 +13,12 @@ const DayScheduleCard = ({ data }) => {
 				backgroundColor: 'transparent',
 				border: '0px',
 			}}
-			title={inBreakPoint ? '' : `${data.month} / ${data.date}`}
+			bodyStyle={{padding: "0"}}
 			className={inBreakPoint ? style.container : style.lgContainer}
 		>
 			<div className={inBreakPoint ? '' : style.lgDisplay}>
 				<div>
-					<p className={`${style.category} ${style.firstCategory}`}>當天活動</p>
+					<p className={`${style.category} ${style.firstCategory}`}>一般活動  General Activity</p>
 					<div
 						className={
 							inBreakPoint ? style.dataContainer : style.lgEventContainer
@@ -30,6 +30,7 @@ const DayScheduleCard = ({ data }) => {
 									key={idx}
 									className={style.event}
 									onClick={() => handleOnClick(a.id)}
+									style={{color: '#25499D'}}
 								>
 									<p className={style.eventName}>{a.name}</p>
 									<p className={style.eventInfo}>{a.info}</p>
@@ -50,7 +51,7 @@ const DayScheduleCard = ({ data }) => {
 							inBreakPoint ? '' : style.firstCategory
 						}`}
 					>
-						常態展覽
+						常設展覽  Permanent Exhibition
 					</p>
 					<div
 						className={
@@ -63,6 +64,7 @@ const DayScheduleCard = ({ data }) => {
 									key={idx}
 									className={style.event}
 									onClick={() => handleOnClick(a.id)}
+									style={{color: '#D7497C'}}
 								>
 									<p className={style.eventName}>{a.name}</p>
 									<p className={style.eventInfo}>{a.info}</p>
