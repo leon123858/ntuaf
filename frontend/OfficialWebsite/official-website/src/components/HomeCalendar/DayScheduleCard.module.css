@@ -1,9 +1,10 @@
 .container {
 	margin-top: 16px;
 	border: 1px solid #e4e4e4;
-	max-height: 30vh;
+	height: 30vh;
 	overflow: scroll;
 	width: 105%;
+	font-family: 'Noto Sans TC';
 }
 
 .container::-webkit-scrollbar,

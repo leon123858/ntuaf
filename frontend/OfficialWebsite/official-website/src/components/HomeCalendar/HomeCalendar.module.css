@@ -1,11 +1,14 @@
 .container {
 	width: 320px;
 	margin: 40px auto;
+	font-family: 'Noto Sans TC'
 }
 
 .lgContainer {
 	width: 80%;
+	height: 60vh;
 	display: flex;
+	font-family: 'Noto Sans TC'
 }
 
 :global .SingleDatePickerInput {
