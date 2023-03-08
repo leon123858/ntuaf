@@ -12,10 +12,7 @@
 	display: inline-block;
 	background-color: #fff;
 }
-:global .SingleDatePickerInput__withBorder {
-	border-radius: 2px;
-	border: 1px solid #dbdbdb;
-}
+
 :global .SingleDatePickerInput__rtl {
 	direction: rtl;
 }
@@ -154,7 +151,7 @@
 	cursor: default;
 }
 :global .CalendarDay__default {
-	border: 1px solid #e4e7e7;
+	border: 0px solid #e4e7e7;
 	color: #484848;
 	background: #fff;
 }
@@ -190,17 +187,22 @@
 	color: #484848;
 	position: relative;
 }
-:global .CalendarDay__highlighted_calendar::before {
+.dot {
 	content: '';
-	position: absolute;
-	transform: translateX(-50%);
 	border-radius: 100%;
-	background: #d5d8dc;
-	height: 6px;
-	width: 6px;
-	top: 28px;
-	left: 50%;
+	height: 7px;
+  	width: 7px;
+  	display: inline-block;
+	margin-bottom: 3px;
 }
+
+.lgDot {
+	content: '';
+	border-radius: 100%;
+	height: 12px;
+  	width: 12px;
+}
+
 :global .CalendarDay__highlighted_calendar:active,
 :global .CalendarDay__highlighted_calendar:hover {
 	background: #cacccd;
@@ -209,20 +211,16 @@
 :global .CalendarDay__selected_span {
 	background: #66e2da;
 	border: 1px double #33dacd;
-	color: #fff;
 }
 :global .CalendarDay__selected_span:active,
 :global .CalendarDay__selected_span:hover {
 	background: #33dacd;
 	border: 1px double #33dacd;
-	color: #fff;
 }
 :global .CalendarDay__selected,
 :global .CalendarDay__selected:active,
 :global .CalendarDay__selected:hover {
-	background: #fe3d2f;
-	border: 1px none #fe3d2f;
-	color: #fff;
+	box-shadow: inset 1px 1px 6px 1px rgba(0, 0, 0, 0.1);
 }
 :global .CalendarDay__hovered_span,
 :global .CalendarDay__hovered_span:hover {
@@ -360,7 +358,6 @@
 	margin: 0;
 }
 :global .DayPickerNavigation_button__default {
-	border: 1px solid #e4e7e7;
 	background-color: #fff;
 	color: #757575;
 }
@@ -445,8 +442,8 @@
 	visibility: hidden;
 }
 :global .DayPicker__withBorder {
-	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.07);
-	border-radius: 3px;
+	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+	border-radius: 20px;
 }
 :global .DayPicker_portal__horizontal {
 	box-shadow: none;
@@ -505,7 +502,7 @@
 :global .DayPicker_transitionContainer {
 	position: relative;
 	overflow: hidden;
-	border-radius: 3px;
+	border-radius: 20px;
 }
 :global .DayPicker_transitionContainer__horizontal {
 	-webkit-transition: height 0.2s ease-in-out;

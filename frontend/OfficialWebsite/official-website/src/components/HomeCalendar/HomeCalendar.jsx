@@ -20,14 +20,14 @@ const HIGHT_LIGHT_TYPE = {
 };
 // TODO:這裡的點要是該類別, 可以分 8 種 case
 const eachTypeDot = {
-	0: <div>{0}</div>,
-	1: <div>{1}</div>,
-	2: <div>{2}</div>,
-	3: <div>{3}</div>,
-	4: <div>{4}</div>,
-	5: <div>{5}</div>,
-	6: <div>{6}</div>,
-	7: <div>{7}</div>,
+	0: <div className={style.dot}></div>,
+	1: <div className={style.dot} style={{ background: '#25499D' }}></div>,
+	2: <div className={style.dot} style={{ background: '#A9CF59' }}></div>,
+	3: <div className={style.dot} style={{ background: 'linear-gradient(90deg, #AAC952 22.22%, #25499D 100%)' }}></div>,
+	4: <div className={style.dot} style={{ background: '#D7497C' }}></div>,
+	5: <div className={style.dot} style={{ background: 'linear-gradient(90deg, #DD0E65 11.11%, #25499D 100%)' }}></div>,
+	6: <div className={style.dot} style={{ background: 'inear-gradient(90deg, #AAC952 27.78%, #DD0E65 111.11%)' }}></div>,
+	7: <div className={style.dot} style={{ background: 'conic-gradient(from 185.19deg at 50% 50%, #AAC952 -35.66deg, #AAC952 0.59deg, #AAC952 34.29deg, #25499D 86.18deg, #25499D 121.94deg, #25499D 153.61deg, #DD0E65 220.2deg, #DD0E65 246.82deg, #DD0E65 274.61deg, #DD0E65 279.01deg, #AAC952 324.34deg, #AAC952 360.59deg)' }}></div>,
 };
 
 const getDayHighlightType = (day, monthType) => {
@@ -92,29 +92,30 @@ const HomeCalendar = () => {
 	const onFocusChange = () => setFocused(true);
 
 	return (
-		<div
-			className={
-				inBreakPoint
-					? style.container
-					: `${style.container} ${style.lgContainer}`
-			}
-		>
-			<DayPickerSingleDateController
-				date={date}
-				focused={focused}
-				onDateChange={onDateChange}
-				onFocusChange={onFocusChange}
-				initialVisibleMonth={() => startDate}
-				// isDayHighlighted={(day) => {
-				// }}
-				renderDayContents={(day) => {
-					return <DayWithHighlightDot day={day} monthType={monthType} />;
-				}}
-				isDayBlocked={(day) => day.month() !== 4 && day.month() !== 3}
-				hideKeyboardShortcutsPanel={true}
-			/>
-			<DayScheduleCard data={dayEvents} />
-		</div>
+		<>
+			<div
+				className={
+					inBreakPoint
+						? style.container
+						: `${style.container} ${style.lgContainer}`
+				}
+			>
+				<DayPickerSingleDateController
+					date={date}
+					focused={focused}
+					onDateChange={onDateChange}
+					onFocusChange={onFocusChange}
+					initialVisibleMonth={() => startDate}
+					renderDayContents={(day) => {
+						return <DayWithHighlightDot day={day} monthType={monthType} />;
+					}}
+					isDayBlocked={(day) => day.month() !== 4 && day.month() !== 3}
+					hideKeyboardShortcutsPanel={true}
+				/>
+				<DayScheduleCard data={dayEvents} />
+			</div>
+		</>
+
 	);
 };
 export default HomeCalendar;
