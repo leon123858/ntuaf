@@ -1,3 +1,8 @@
+.container::-webkit-scrollbar,
+.lgContainer::-webkit-scrollbar {
+	display: none;
+}
+
 .container {
 	margin-top: 16px;
 	border: 1px solid #e4e4e4;
@@ -7,16 +12,11 @@
 	font-family: 'Noto Sans TC';
 }
 
-.container::-webkit-scrollbar,
-.lgExhibitionContainer::-webkit-scrollbar,
-lgEventContainer::-webkit-scrollbar {
-	display: none;
-}
-
 .lgContainer {
-	margin: 0 0 0 20px;
+	margin: 0 0 0 40px;
 	border: 1px solid #e4e4e4;
 	width: 100%;
+	overflow: scroll;
 }
 
 .category {
@@ -42,7 +42,6 @@ lgEventContainer::-webkit-scrollbar {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	min-height: 50px;
 	background-color: white;
 	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 	margin-bottom: 12px;

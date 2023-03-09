@@ -34,8 +34,8 @@ const DayScheduleCard = ({ data }) => {
 							))
 						) : (
 							<div className={style.event}>
-								<p className={style.eventName}>今日沒有活動</p>
-								<p className={style.eventInfo}>明天再來</p>
+									<p className={style.eventName}>今日沒有活動</p>
+									<p className={style.eventInfo}>明天再來</p>
 							</div>
 						)}
 					</div>

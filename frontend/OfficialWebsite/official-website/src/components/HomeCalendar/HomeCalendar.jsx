@@ -110,8 +110,11 @@ const HomeCalendar = () => {
 						renderDayContents={(day) => {
 							return <DayWithHighlightDot day={day} monthType={monthType} />;
 						}}
-						isDayBlocked={(day) => day.month() !== 4 && day.month() !== 3}
+						isOutsideRange={(day) => (day.month() !== 4 && day.month() !== 3) || (day.year() !== 2023)}
 						hideKeyboardShortcutsPanel={true}
+						monthFormat="YYYY, M[月]"
+						weekDayFormat="ddd"
+						daySize={50}
 					/>
 
 					<div style={(inBreakPoint) ? { display: 'flex', marginTop: '12px' } : { display: 'grid', marginTop: '12px' }}>

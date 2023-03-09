@@ -1,11 +1,12 @@
 .container {
-  width: 320px;
-  margin: 40px auto;
+  width: 395px;
   font-family: 'Noto Sans TC';
+  margin: 50px auto;
 }
 
 .lgContainer {
   width: 80%;
+  max-width: 1000px;
   height: 60vh;
   display: flex;
   font-family: 'Noto Sans TC';
@@ -139,7 +140,7 @@
 }
 :global .CalendarDay__hovered_offset {
   background: #f4f5f5;
-  border: 1px double #e4e7e7;
+  border: 0px double #e4e7e7;
   color: inherit;
 }
 :global .CalendarDay__outside {
@@ -150,7 +151,7 @@
 
 :global .CalendarDay__blocked_minimum_nights {
   background: #fff;
-  border: 1px solid #eceeee;
+  border: 0px;
   color: #cacccd;
 }
 :global .CalendarDay__blocked_minimum_nights:active,
@@ -267,7 +268,6 @@
 }
 :global .CalendarMonthGrid_month__hideForAnimation {
   position: absolute;
-  z-index: -1;
   opacity: 0;
   pointer-events: none;
 }
@@ -276,7 +276,7 @@
 }
 :global .DayPickerNavigation {
   position: relative;
-  z-index: 2;
+  z-index: 1;
 }
 :global .DayPickerNavigation__horizontal {
   height: 0;
@@ -401,7 +401,7 @@
   background: #fff;
   position: relative;
   text-align: left;
-  height: 350px;
+  height: 405px;
 }
 :global .DayPicker__horizontal {
   background: #fff;
@@ -433,9 +433,6 @@
   display: inline-block;
   vertical-align: top;
 }
-
-
-
 
 
 
