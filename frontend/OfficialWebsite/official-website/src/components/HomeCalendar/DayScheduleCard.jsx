@@ -12,18 +12,15 @@ const DayScheduleCard = ({ data }) => {
 			style={{
 				backgroundColor: 'transparent',
 				border: '0px',
+				minHeight: 400,
 			}}
 			bodyStyle={{padding: "0"}}
 			className={inBreakPoint ? style.container : style.lgContainer}
 		>
-			<div className={inBreakPoint ? '' : style.lgDisplay}>
+			<div>
 				<div>
 					<p className={`${style.category} ${style.firstCategory}`}>一般活動  General Activity</p>
-					<div
-						className={
-							inBreakPoint ? style.dataContainer : style.lgEventContainer
-						}
-					>
+					<div className={ style.eventContainer}>
 						{data.data.activity.length !== 0 ? (
 							data.data.activity.map((a, idx) => (
 								<div
@@ -45,18 +42,10 @@ const DayScheduleCard = ({ data }) => {
 				</div>
 
 				<div>
-					<p
-						className={`${style.category} ${
-							inBreakPoint ? '' : style.firstCategory
-						}`}
-					>
+					<p className={style.category}>
 						講座/工作坊  Lecture / Workshop
 					</p>
-					<div
-						className={
-							inBreakPoint ? style.dataContainer : style.lgExhibitionContainer
-						}
-					>
+					<div className={ style.eventContainer}>
 						{data.data.workshop.length !== 0 ? (
 							data.data.workshop.map((a, idx) => (
 								<div
@@ -78,18 +67,10 @@ const DayScheduleCard = ({ data }) => {
 				</div>
 
 				<div>
-					<p
-						className={`${style.category} ${
-							inBreakPoint ? '' : style.firstCategory
-						}`}
-					>
+					<p className={style.category}>
 						常設展覽  Permanent Exhibition
 					</p>
-					<div
-						className={
-							inBreakPoint ? style.dataContainer : style.lgExhibitionContainer
-						}
-					>
+					<div className={ style.eventContainer}>
 						{data.data.exhibition.length !== 0 ? (
 							data.data.exhibition.map((a, idx) => (
 								<div
