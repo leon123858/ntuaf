@@ -116,16 +116,19 @@ const HomeCalendar = () => {
 
 					<div style={(inBreakPoint) ? { display: 'flex', marginTop: '12px' } : { display: 'grid', marginTop: '12px' }}>
 						<div style={{marginRight: 20, fontSize: 12}}>
-							<div className={style.lgDot} style={{ background: '#25499D' }}></div>
-							<span>一般活動</span>
+							<div className={style.lgDot} style={{ background: '#25499D'}}></div>
+							<span style={(inBreakPoint) ? {} : { marginRight: 12 }}>一般活動 </span>
+							<span>{(inBreakPoint) ? '' : ' General Activity'}</span>
 						</div>
 						<div style={{marginRight: 20, fontSize: 12}}>
 							<div className={style.lgDot} style={{ background: '#A9CF59' }}></div>
-							<span>講座 / 工作坊</span>
+							<span style={(inBreakPoint) ? {} : { marginRight: 12 }}>講座 / 工作坊</span>
+							<span>{(inBreakPoint) ? '' : ' Lecture / Workshop'}</span>
 						</div>
 						<div style={{marginRight: 20, fontSize: 12}}>
 							<div className={style.lgDot} style={{ background: '#D7497C' }}></div>
-							<span>常設展覽</span>
+							<span style={(inBreakPoint) ? {} : { marginRight: 12 }}>常設展覽</span>
+							<span>{(inBreakPoint) ? '' : ` Permanent Exhibition`}</span>
 						</div>
 					</div>
 				</div>
