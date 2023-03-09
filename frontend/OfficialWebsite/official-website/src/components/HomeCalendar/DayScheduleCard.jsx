@@ -28,9 +28,8 @@ const DayScheduleCard = ({ data }) => {
 							data.data.activity.map((a, idx) => (
 								<div
 									key={idx}
-									className={style.event}
+									className={`${style.event} ${style.blue}`}
 									onClick={() => handleOnClick(a.id)}
-									style={{color: '#25499D'}}
 								>
 									<p className={style.eventName}>{a.name}</p>
 									<p className={style.eventInfo}>{a.info}</p>
@@ -58,13 +57,12 @@ const DayScheduleCard = ({ data }) => {
 							inBreakPoint ? style.dataContainer : style.lgExhibitionContainer
 						}
 					>
-						{data.data.exhibition.length !== 0 ? (
+						{data.data.workshop.length !== 0 ? (
 							data.data.workshop.map((a, idx) => (
 								<div
 									key={idx}
-									className={style.event}
+									className={`${style.event} ${style.green}`}
 									onClick={() => handleOnClick(a.id)}
-									style={{color: '#9AC342'}}
 								>
 									<p className={style.eventName}>{a.name}</p>
 									<p className={style.eventInfo}>{a.info}</p>
@@ -96,9 +94,8 @@ const DayScheduleCard = ({ data }) => {
 							data.data.exhibition.map((a, idx) => (
 								<div
 									key={idx}
-									className={style.event}
+									className={`${style.event} ${style.pink}`}
 									onClick={() => handleOnClick(a.id)}
-									style={{color: '#D7497C'}}
 								>
 									<p className={style.eventName}>{a.name}</p>
 									<p className={style.eventInfo}>{a.info}</p>

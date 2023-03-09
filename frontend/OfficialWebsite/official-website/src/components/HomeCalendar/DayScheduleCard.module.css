@@ -73,6 +73,34 @@ lgEventContainer::-webkit-scrollbar {
 	margin-bottom: 12px;
 }
 
+
+.blue {
+	color: #25499D;
+}
+
+.blue:active, .blue:hover {
+	color: white;
+	background-color: #25499D;
+}
+
+.green {
+	color: #9AC342;
+}
+
+.green:active, .green:hover {
+	color: white;
+	background-color: #9AC342;
+}
+
+.pink {
+	color: #D7497C;
+}
+
+.pink:active, .pink:hover {
+	color: white;
+	background-color: #D7497C;
+}
+
 .eventName {
 	overflow: hidden;
 	text-overflow: ellipsis;
