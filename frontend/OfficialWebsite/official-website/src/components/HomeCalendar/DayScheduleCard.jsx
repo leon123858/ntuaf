@@ -51,6 +51,40 @@ const DayScheduleCard = ({ data }) => {
 							inBreakPoint ? '' : style.firstCategory
 						}`}
 					>
+						講座/工作坊  Lecture / Workshop
+					</p>
+					<div
+						className={
+							inBreakPoint ? style.dataContainer : style.lgExhibitionContainer
+						}
+					>
+						{data.data.exhibition.length !== 0 ? (
+							data.data.workshop.map((a, idx) => (
+								<div
+									key={idx}
+									className={style.event}
+									onClick={() => handleOnClick(a.id)}
+									style={{color: '#9AC342'}}
+								>
+									<p className={style.eventName}>{a.name}</p>
+									<p className={style.eventInfo}>{a.info}</p>
+								</div>
+							))
+						) : (
+							<div className={style.event}>
+								<p className={style.eventName}>今日沒有活動</p>
+								<p className={style.eventInfo}>明天再來</p>
+							</div>
+						)}
+					</div>
+				</div>
+
+				<div>
+					<p
+						className={`${style.category} ${
+							inBreakPoint ? '' : style.firstCategory
+						}`}
+					>
 						常設展覽  Permanent Exhibition
 					</p>
 					<div
@@ -78,6 +112,7 @@ const DayScheduleCard = ({ data }) => {
 						)}
 					</div>
 				</div>
+
 			</div>
 		</Card>
 	);

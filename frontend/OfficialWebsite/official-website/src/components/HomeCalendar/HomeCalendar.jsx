@@ -60,7 +60,7 @@ const HomeCalendar = () => {
 	const [dayEvents, setDayEvents] = useState({
 		month: date.month() + 1,
 		date: date.date(),
-		data: { activity: [], exhibition: [] },
+		data: { activity: [], exhibition: [], workshop: [] },
 	});
 	const { inBreakPoint } = useContext(BreakPointContext);
 	// 獲取兩個月各日活動分類
@@ -82,7 +82,7 @@ const HomeCalendar = () => {
 				{
 					month: date.month() + 1,
 					date: date.date(),
-					data: { activity: [], exhibition: [] },
+					data: { activity: [], exhibition: [], workshop: [] },
 				}()
 			);
 		})();
