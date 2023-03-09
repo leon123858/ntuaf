@@ -116,20 +116,7 @@
 :global .SingleDatePicker_picker__fullScreenPortal {
 	background-color: #fff;
 }
-:global .SingleDatePicker_closeButton {
-	background: 0 0;
-	border: 0;
-	color: inherit;
-	font: inherit;
-	line-height: normal;
-	overflow: visible;
-	cursor: pointer;
-	position: absolute;
-	top: 0;
-	right: 0;
-	padding: 15px;
-	z-index: 2;
-}
+
 :global .SingleDatePicker_closeButton:focus,
 :global .SingleDatePicker_closeButton:hover {
 	color: #b0b3b4;
@@ -296,6 +283,7 @@
 	z-index: 0;
 }
 :global .CalendarMonthGrid__animating {
+	border-radius: 20px;
 	z-index: 1;
 }
 :global .CalendarMonthGrid__horizontal {
