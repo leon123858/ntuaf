@@ -39,10 +39,6 @@ const transformDayEvents = async () => {
 	}
 	//info distribute event to corresponding bucket based on their own period
 	const eventRef = await db.collection('Events').get();
-	const event: any = {
-		activity: [] as any[],
-		exhibition: [] as any[],
-	};
 	let countL = 0;
 	await Promise.all(
 		eventRef.docs.map(async (doc) => {
@@ -54,6 +50,9 @@ const transformDayEvents = async () => {
 				const id = handleTime.format('M_D');
 				const month = handleTime.format('M');
 				const eventType = data.type;
+				if (monthEvent[month] == undefined) {
+					monthEvent[month] = {};
+				}
 				if (monthEvent[month][id] == undefined) {
 					monthEvent[month][id] = [false, false, false];
 				}
