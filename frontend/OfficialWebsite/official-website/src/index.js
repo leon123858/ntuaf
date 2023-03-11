@@ -16,14 +16,12 @@ import Map from './routers/Map';
 import Layout from './components/Layout/Layout';
 import { BreakPointProvider } from './useBreakPoint.jsx';
 import Artworkupload from './routers/Artworkupload';
+import { getMonthsEventsType } from '@leon123858/ntuaf-sdk';
 
 const router = createBrowserRouter([
 	{
 		path: '/',
 		element: <Layout />,
-		loader: async () => {
-			return {};
-		},
 		children: [
 			{
 				path: '/',
@@ -35,6 +33,16 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/calendar',
+				loader: async () => {
+					const [month4, month5] = await Promise.all([
+						await getMonthsEventsType(4),
+						await getMonthsEventsType(5),
+					]);
+					return {
+						4: month4,
+						5: month5,
+					};
+				},
 				element: <Calendar />,
 			},
 			{

@@ -7,7 +7,7 @@ const Video = ({url, text}) => {
 	function insertAtIndex(str, substring, index) {
 		return str.slice(0, index) + substring + str.slice(index);
 	}
-	// const video = url;
+
 	const str = "https://www.youtube.com/";
 	const video = insertAtIndex(url, "embed/", str.length);
 	console.log("url after changed =",video);
@@ -18,7 +18,7 @@ const Video = ({url, text}) => {
 				<p>{text}</p>
 			</Card>
 			<iframe
-				height="480"
+				height="300"
 				src={video}
 				title="YouTube video player"
 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"

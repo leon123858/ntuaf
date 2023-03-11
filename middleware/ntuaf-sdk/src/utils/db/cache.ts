@@ -51,7 +51,7 @@ export const getRecommendEvents = async (type: 'recent' | 'always') => {
 };
 
 /**
- * 根據日期取得當天展覽與活動
+ * 根據日期取得當天展覽與活動與(工作坊+講座)
  * @param month
  * @param day
  * @returns
@@ -70,7 +70,33 @@ export const getDayEvents = async (
 		| {
 				data: {
 					activity: { name: string; info: string; id: string }[];
+					workshop: { name: string; info: string; id: string }[];
 					exhibition: { name: string; info: string; id: string }[];
+				};
+		  }
+		| undefined;
+	if (!data) throw 'can not fetch target cache';
+	return data.data;
+};
+
+/**
+ * 根據月份取得各天有哪些類別的事件
+ * @param month
+ * @returns
+ * @example
+ * // 獲取 5 月的事件類別列表
+ * await getMonthsEventsType(5) // {'5_1':[true,false,true],'5_2':[false,true,false],...}
+ * // '5_1':[true,false,true] 表示 5月1日 有一般活動, 沒講座工作坊, 有常設展覽
+ * // '5_2':[false,true,false] 表示 5月2日 沒一般活動, 有講座工作坊, 沒常設展覽
+ */
+export const getMonthsEventsType = async (month: '4' | '5') => {
+	// ex: Cache/Events/MonthEvents/4
+	const data = (
+		await getDoc(doc(dbInstance, 'Cache/Events/MonthEvents', `${month}`))
+	).data() as
+		| {
+				data: {
+					[key: string]: [boolean, boolean, boolean];
 				};
 		  }
 		| undefined;

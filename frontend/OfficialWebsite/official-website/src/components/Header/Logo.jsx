@@ -1,7 +1,19 @@
+import { Image } from 'antd';
 import styles from './Logo.module.css';
 import { Link } from 'react-router-dom';
 
-const Logo = ()=>{
-    return(<div className={styles.logo}><Link className={styles.link} to={'/'}>Logo</Link></div>)
-}
-export default Logo
+const Logo = () => {
+	return (
+		<div>
+			<Link className={styles.link} to={'/'}>
+				<Image
+					className={styles.logo}
+					preview={false}
+					width={'40%'}
+					src='/ntuaf1.png'
+				></Image>
+			</Link>
+		</div>
+	);
+};
+export default Logo;

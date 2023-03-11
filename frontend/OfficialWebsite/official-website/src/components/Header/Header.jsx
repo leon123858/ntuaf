@@ -5,7 +5,7 @@ import { Menu } from 'antd';
 import { Link } from 'react-router-dom';
 // import SearchBar from './SearchBar.jsx';
 import LoginButton from './LoginButton.jsx';
-import Logo from "./Logo"
+import Logo from './Logo';
 
 const items = [
 	{
@@ -51,11 +51,7 @@ const items = [
 		key: 'calendar',
 	},
 	{
-		label: (
-			<p className={styles.link}>
-				特別企劃
-			</p>
-		),
+		label: <p className={styles.link}>特別企劃</p>,
 		key: 'special',
 		children: [
 			{
@@ -84,8 +80,10 @@ const items = [
 
 const Header = () => {
 	const [sideBarActive, setSideBarActive] = useState(false);
-	const onClose = () => { setSideBarActive(false); };
-	
+	const onClose = () => {
+		setSideBarActive(false);
+	};
+
 	useEffect(() => {
 		const add_class_on_scroll = (element, className) => {
 			element.classList.add(className);
@@ -111,8 +109,8 @@ const Header = () => {
 	return (
 		<div className={styles.totalWrapper}>
 			<div className={styles.headerWrapper}>
-				<Logo/>
-				<h1 className={styles.title}><Link className={styles.link} to={'/'}>台大藝術季28th</Link></h1>
+				<Logo />
+				{/* <h1 className={styles.title}><Link className={styles.link} to={'/'}>台大藝術季28th</Link></h1> */}
 				<div className={styles.menuWrapper}>
 					<Menu
 						selectable={false}

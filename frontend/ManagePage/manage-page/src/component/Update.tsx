@@ -59,6 +59,15 @@ function Update({ email, admin }: { email: string; admin: string[] }) {
 				})}
 			/>
 			<hr></hr>
+			{/* eslint-disable-next-line react/jsx-no-target-blank */}
+			<a
+				href={`https://ntuaf28-dev.firebaseapp.com/display/${eventId}`}
+				target='_blank'
+				style={disableForm ? { pointerEvents: 'none' } : {}}
+			>
+				{disableForm ? '請選擇編輯對象' : '實際網址跳轉'}
+			</a>
+			<hr></hr>
 			<ProForm<FormEvent>
 				onFinish={async (values) => {
 					try {

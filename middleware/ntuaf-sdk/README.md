@@ -91,6 +91,8 @@ await getRecommendEvents('recent');
 await getDayEvents(2, 28);
 // 獲取大類別事件列表
 await getTabEvents('展覽');
+// 根據月份取得各天有哪些類別的事件
+await getMonthsEventsType('4');
 ```
 
 ### 用戶相關

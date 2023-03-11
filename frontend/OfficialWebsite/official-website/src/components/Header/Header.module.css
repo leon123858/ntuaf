@@ -1,154 +1,151 @@
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
-
 
 .headerWrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgb(255, 248, 240, 0);
-    padding: 0 2%;
-    /* overflow: hidden; */
-    height: 80px;
-    transition:all 1s
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: rgb(255, 248, 240, 0);
+	padding: 0 2%;
+	/* overflow: hidden; */
+	height: 80px;
+	transition: all 1s;
 }
 
-.menuWrapper{
-    display:none
+.menuWrapper {
+	display: none;
 }
 .iconContainer {
-    display: inline-block;
-    cursor: pointer;
+	display: inline-block;
+	cursor: pointer;
 }
 
 .bar1,
 .bar2,
 .bar3 {
-    width: 35px;
-    height: 5px;
-    background-color: #333;
-    margin: 6px 0;
-    transition: 0.4s;
+	width: 35px;
+	height: 5px;
+	background-color: #333;
+	margin: 6px 0;
+	transition: 0.4s;
 }
 
 .change .bar1 {
-    transform: translate(0, 11px) rotate(-45deg);
+	transform: translate(0, 11px) rotate(-45deg);
 }
 
 .change .bar2 {
-    opacity: 0;
+	opacity: 0;
 }
 
 .change .bar3 {
-    transform: translate(0, -11px) rotate(45deg);
+	transform: translate(0, -11px) rotate(45deg);
 }
 
-.hidden{
-    display: none;
+.hidden {
+	display: none;
 }
 
+.totalWrapper {
+	border-bottom: #c3c0c0 1px solid;
+}
 
-
-@media screen and (min-width:769px){
-    .headerWrapper{
-        position: sticky;
-        width:100%
-        /* top: 0; */
-    }
-    .headerWrapperTransparent{
-        background-color: rgb(255, 248, 240);
-    }
-    .menuWrapper{
-        position: fixed;
-        top: 0;
-        height: 50%;
-        position: relative;
-        background-color: rgba(50, 50, 50, 0.2);
-        border-radius: 2rem;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        transition: all 1s;
-    }
-    .menuWrapperTransparent{
-        transition: all 1s;
-        background-color: rgba(50, 50, 50, 0);
-    }
-    .subMenu{
-        text-align: center;
-    }
-    .searchBarWrapperActive{
-        background-color: rgba(110, 110, 110, 1);
-        position: absolute;
-        right:-10px;
-        border-radius: inherit;
-        height: 100%;
-        width: 50%;
-        display: flex;
-        justify-content: space-between;
-        padding: 0 4px;
-        align-items: center;
-        transition: all 0.3s;
-    }
-    .searchBarWrapper{
-        position: absolute;
-        right:-10px;
-        /* width:auto; */
-        /* padding:auto; */
-        /* width: 20px; */
-        /* height: 20px; */
-        background-color: rgba(110, 110, 110, 0);
-        /* transition: all 1s; */
-        /* overflow: hidden; */
-        /* width: 100%; */
-        height:100% !important;;
-        min-height:100%;
-        width:32px;
-        border-radius: inherit;
-        display: flex;
-        align-items: center;
-        overflow: hidden;
-        transition: all 0.3s;
-        
-
-    }
-    .inputWrapperHidden{
-        display:none
-        
-    }
-    .searchIconWrapper{
-        /* display: absolute; */
-        position: relative;
-        right:0px;
-        /* width:20px; */
-        /* height:20px; */
-        /* background-color: blue; */
-    }
-    .exitButton{
-        position: relative;
-        font-size:1rem;
-        width:32px;
-        color:white;
-        text-align:center;
-    }
-    .exitButtonHidden{
-        display:none
-    }
-    .exitButton:hover{
-        cursor: pointer;
-    }
-    .link{
-        margin: 0 0.3rem;
-        text-decoration: none;
-        color:black
-    }
-    .iconContainer{
-        display: none;
-    }
-    .hidden{
-        display: block;
-    }
-
+@media screen and (min-width: 769px) {
+	.headerWrapper {
+		position: sticky;
+		width: 100%;
+		/* top: 0; */
+	}
+	.headerWrapperTransparent {
+		background-color: rgb(255, 248, 240);
+	}
+	.menuWrapper {
+		position: fixed;
+		top: 0;
+		height: 50%;
+		position: relative;
+		background-color: rgba(50, 50, 50, 0.2);
+		border-radius: 2rem;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		transition: all 1s;
+	}
+	.menuWrapperTransparent {
+		transition: all 1s;
+		background-color: rgba(50, 50, 50, 0);
+	}
+	.subMenu {
+		text-align: center;
+	}
+	.searchBarWrapperActive {
+		background-color: rgba(110, 110, 110, 1);
+		position: absolute;
+		right: -10px;
+		border-radius: inherit;
+		height: 100%;
+		width: 50%;
+		display: flex;
+		justify-content: space-between;
+		padding: 0 4px;
+		align-items: center;
+		transition: all 0.3s;
+	}
+	.searchBarWrapper {
+		position: absolute;
+		right: -10px;
+		/* width:auto; */
+		/* padding:auto; */
+		/* width: 20px; */
+		/* height: 20px; */
+		background-color: rgba(110, 110, 110, 0);
+		/* transition: all 1s; */
+		/* overflow: hidden; */
+		/* width: 100%; */
+		height: 100% !important;
+		min-height: 100%;
+		width: 32px;
+		border-radius: inherit;
+		display: flex;
+		align-items: center;
+		overflow: hidden;
+		transition: all 0.3s;
+	}
+	.inputWrapperHidden {
+		display: none;
+	}
+	.searchIconWrapper {
+		/* display: absolute; */
+		position: relative;
+		right: 0px;
+		/* width:20px; */
+		/* height:20px; */
+		/* background-color: blue; */
+	}
+	.exitButton {
+		position: relative;
+		font-size: 1rem;
+		width: 32px;
+		color: white;
+		text-align: center;
+	}
+	.exitButtonHidden {
+		display: none;
+	}
+	.exitButton:hover {
+		cursor: pointer;
+	}
+	.link {
+		margin: 0 0.3rem;
+		text-decoration: none;
+		color: black;
+	}
+	.iconContainer {
+		display: none;
+	}
+	.hidden {
+		display: block;
+	}
 }
