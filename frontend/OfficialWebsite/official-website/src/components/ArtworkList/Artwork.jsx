@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
 import { Card, Typography, Modal, Divider, Image } from 'antd';
-import Heart from '../artBox/heart';
+import Heart from '../ArtBox/heart';
 import styles from './ArtworkList.module.css';
 import styled from 'styled-components';
 const { Paragraph, Text } = Typography;
@@ -29,7 +29,6 @@ export const ArtworkText = ({ data, heartOnClick }) => {
 	const [likeShow, setLikeShow] = useState(data.tmpLike + data.like);
 	return (
 		<>
-			{data.like ? 'true' : 'false'}
 			<div className={styles.container}>
 				<Card
 					bordered={false}
