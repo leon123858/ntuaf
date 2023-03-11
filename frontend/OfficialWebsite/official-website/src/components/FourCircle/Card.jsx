@@ -2,6 +2,7 @@ import styles from "./Card.module.css"
 import { Modal } from 'antd';
 import { useState } from 'react';
 import DoubleCard from "./DoubleCard.jsx"
+import { Col, Row } from 'antd';
 const Card = ({ content }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const showModal = () => {
@@ -15,9 +16,16 @@ const Card = ({ content }) => {
             <div className={styles.circle}>
                 <div className={styles.circleText} onClick={showModal}>{content.title}</div>
             </div>
-            <Modal title="Basic Modal" style={{pointerEvents:"auto"}} open={isModalOpen} onCancel={handleCancel} modalRender={()=><DoubleCard FrontCardContent={content} BackCardContent={content} closeModel={handleCancel}/>}>
+            
+            <Modal  title="Basic Modal" style={{pointerEvents:"auto"}} open={isModalOpen} onCancel={handleCancel} modalRender={()=><DoubleCard FrontCardContent={content} BackCardContent={content} closeModel={handleCancel}/>}>
                 <p>{content.title}</p>
             </Modal>
+            {/* <Modal title="Basic Modal" style={{pointerEvents:"auto", display:"absolute", right:"0"}} open={isModalOpen} onCancel={handleCancel} modalRender={()=><DoubleCard FrontCardContent={content} BackCardContent={content} closeModel={handleCancel}/>}>
+                <p>{content.title}</p>
+            </Modal>
+            <Modal title="Basic Modal" style={{pointerEvents:"auto", display:"absolute", top:"0"}} open={isModalOpen} onCancel={handleCancel} modalRender={()=><DoubleCard FrontCardContent={content} BackCardContent={content} closeModel={handleCancel}/>}>
+                <p>{content.title}</p>
+            </Modal> */}
         </div>)
 }
 

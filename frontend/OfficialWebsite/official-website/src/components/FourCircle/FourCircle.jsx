@@ -2,10 +2,21 @@ import Card from "./Card.jsx"
 import styles from "./FourCircle.module.css"
 import {useState, useEffect, useContext} from "react"
 import { BreakPointContext } from '../../useBreakPoint';
+import { Col, Row } from 'antd';
 const FourCircle = () => {
     const [contents, setContents] = useState([])
-    const { inBreakPoint } = useContext(BreakPointContext);
+    const { inBreakPoint, breakPoint } = useContext(BreakPointContext);
+    document.body.style.setProperty('--fourBallOffset', `-${1000/2}px`);
+    window.addEventListener('scroll', () => {
+        let tmp = document.getElementsByClassName(styles.lgCardWrapper)[0];
+
+        let animationPortion = window.pageYOffset / window.innerHeight
+        animationPortion = animationPortion>=1?0.99:animationPortion
+        document.body.style.setProperty('--scroll', animationPortion);
+        console.log(window.pageYOffset, document.body.offsetHeight, window.innerHeight, tmp.offsetParent)
+    }, false);
     useEffect(()=>{
+        
         setContents([
             {
                 title: "起",
@@ -34,16 +45,29 @@ const FourCircle = () => {
         ])
     }, [])
     return (
+
         <>
-            <div className={inBreakPoint?styles.cardWrapper:styles.lgCardWrapper}>
-                {contents.map((content, index) => {
-                    return (
-                        <Card content={content} key={index} />
-                    )
-                })}
-            </div>
-            
-        </>)
+        {inBreakPoint?
+        <div className={styles.cardWrapper}>
+        {contents.map((content, index) => {
+            return (
+                <Card content={content} key={index} />
+            )
+        })}
+        </div>:
+        <div className={styles.lgContainer} style={{width:`${breakPoint}px`}}>
+        <div className={styles.lgCardWrapper} style={{width:`${breakPoint}px`}}>
+        {contents.map((content, index) => {
+            return (
+                <Card content={content} key={index} />
+            )
+        })}
+        </div>
+        </div>
+        }
+        
+        </>
+        )
 }
 
 

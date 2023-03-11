@@ -61,7 +61,7 @@ const Carousel = () => {
 			setRecentContent(fillList(recentList));
 			setAlwaysContent(fillList(alwaysList));
 		})();
-		console.log('render');
+		// console.log('render');
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
