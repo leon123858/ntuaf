@@ -19,7 +19,9 @@ const transformMembers = async () => {
 				name: doc.data().name,
 				job: doc.data().job,
 			}),
+			
 		});
+		console.log(doc.data().name, doc.data().job, department)
 	});
 };
 export { transformMembers };
