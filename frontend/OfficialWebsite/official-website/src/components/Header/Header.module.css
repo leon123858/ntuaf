@@ -1,12 +1,19 @@
-* {
+.totalWrapper {
 	box-sizing: border-box;
+	position: fixed;
+	top: 0;
+    left: 0;
+    width: 100%; 
+}
+
+.scrollHeader {
+	background: #FFFFFF;
 }
 
 .headerWrapper {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: rgb(255, 248, 240, 0);
 	padding: 0 3%;
 	height: 80px;
 	transition: all 1s;
@@ -31,6 +38,11 @@
 .menu {
 	border-radius: 100px;
 	box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.21);
+}
+
+.scrollMenu {
+	border-radius: 100px;
+	box-shadow: 0;
 }
 
 .iconContainer {
@@ -73,14 +85,7 @@
 	transform: translate(0, -11px) rotate(45deg);
 }
 
-.totalWrapper {
-	border-bottom: #c3c0c0 1px solid;
-}
 
-.menuWrapperTransparent {
-	transition: all 1s;
-	background-color: rgba(50, 50, 50, 0);
-}
 .subMenu {
 	text-align: center;
 }

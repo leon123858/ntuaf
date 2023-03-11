@@ -87,25 +87,35 @@ const Header = () => {
 
 	useEffect(() => {
 		const add_class_on_scroll = (element, className) => {
-			element.classList.add(className);
+			if(element) {
+				element.classList.add(className);
+			}
+			
 		};
 		const remove_class_on_scroll = (element, className) => {
-			element.classList.remove(className);
+			if (element) {
+				element.classList.remove(className);
+			}
+			
 		};
 		window.addEventListener('scroll', function () {
-			const menuE = document.getElementsByClassName(styles.menuWrapper)[0];
-			const headerE = document.getElementsByClassName(styles.headerWrapper)[0];
-			let offsetChangeHeader = 10;
-			let scrollpos = window.scrollY;
-			if (scrollpos > offsetChangeHeader) {
-				add_class_on_scroll(menuE, styles.menuWrapperTransparent);
-				add_class_on_scroll(headerE, styles.headerWrapperTransparent);
-			} else {
-				remove_class_on_scroll(menuE, styles.menuWrapperTransparent);
-				remove_class_on_scroll(headerE, styles.headerWrapperTransparent);
+			if (!inBreakPoint) {
+				const menuE = document.getElementsByClassName(styles.menu)[0];
+				const headerE = document.getElementsByClassName(styles.headerWrapper)[0];
+				let offsetChangeHeader = 10;
+				let scrollpos = window.scrollY;
+				if (scrollpos > offsetChangeHeader) {
+					remove_class_on_scroll(menuE, styles.menu);
+					add_class_on_scroll(menuE, styles.scrollMenu);
+					add_class_on_scroll(headerE, styles.scrollHeader);
+				} else {
+					remove_class_on_scroll(menuE, styles.scrollMenu);
+					remove_class_on_scroll(headerE, styles.scrollHeader);
+					add_class_on_scroll(menuE, styles.menu);
+				}
 			}
 		});
-	}, []);
+	}, [inBreakPoint]);
 
 	return (
 		<div className={styles.totalWrapper}>
