@@ -2116,10 +2116,10 @@
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz#b2ac626d6cb9c8718ab459166d4bb405b8ffa78b"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
-"@leon123858/ntuaf-sdk@0.1.8":
-  version "0.1.8"
-  resolved "https://npm.pkg.github.com/download/@leon123858/ntuaf-sdk/0.1.8/d867966bd304888fef9e48d8b745723e2539dd33#d867966bd304888fef9e48d8b745723e2539dd33"
-  integrity sha512-rdCBKMFiqe05ekptYfJfzIW92y1j4fh890NngpWqMkp+6e4zCq0IX/9NYmGTqX6Qd6uSxPmhfQvdfl9pINjRdw==
+"@leon123858/ntuaf-sdk@0.2.1":
+  version "0.2.1"
+  resolved "https://npm.pkg.github.com/download/@leon123858/ntuaf-sdk/0.2.1/e1a9571051cf32251dfd1a17354fd23836e39191#e1a9571051cf32251dfd1a17354fd23836e39191"
+  integrity sha512-sRqHulbw+USZCENdSk7xnM9pmhiVSJ+3Zb86b1+Tw1GFY/D6IU5+kyb2XGvt8pxfLSqFc5uRhxcWJQxO++qtTg==
   dependencies:
     axios "^0.27.2"
     chai "^4.3.6"
@@ -9045,6 +9045,13 @@ react-error-overlay@^6.0.11:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.11.tgz#92835de5841c5cf08ba00ddd2d677b6d17ff9adb"
   integrity sha512-/6UZ2qgEyH2aqzYZgQPxEnz33NJ2gNsnHA2o5+o4wW9bLM/JYQitNP9xPhsXwC08hMMovfGe/8retsdDsczPRg==
 
+react-infinite-scroll-component@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/react-infinite-scroll-component/-/react-infinite-scroll-component-6.1.0.tgz#7e511e7aa0f728ac3e51f64a38a6079ac522407f"
+  integrity sha512-SQu5nCqy8DxQWpnUVLx7V7b7LcA37aM7tvoWjTLZp1dk6EJibM5/4EJKzOnl07/BsM1Y40sKLuqjCwwH/xV0TQ==
+  dependencies:
+    throttle-debounce "^2.1.0"
+
 react-is@^16.12.0, react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
@@ -10205,6 +10212,11 @@ throat@^6.0.1:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/throat/-/throat-6.0.2.tgz#51a3fbb5e11ae72e2cf74861ed5c8020f89f29fe"
   integrity sha512-WKexMoJj3vEuK0yFEapj8y64V0A6xcuPuK9Gt1d0R+dzCSJc0lHqQytAbSB4cDAK0dWh4T0E2ETkoLE2WZ41OQ==
+
+throttle-debounce@^2.1.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/throttle-debounce/-/throttle-debounce-2.3.0.tgz#fd31865e66502071e411817e241465b3e9c372e2"
+  integrity sha512-H7oLPV0P7+jgvrk+6mwwwBDmxTaxnu9HMXmloNLXwnNO0ZxZ31Orah2n8lU1eMPvsaowP2CX+USCgyovXfdOFQ==
 
 throttle-debounce@^5.0.0:
   version "5.0.0"

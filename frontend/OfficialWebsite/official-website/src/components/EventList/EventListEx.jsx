@@ -2,9 +2,6 @@ import React, { useContext } from 'react';
 import { Card, Tag, Image } from 'antd';
 import style from './EventList.module.css';
 import { BreakPointContext } from '../../useBreakPoint';
-import { Typography } from 'antd';
-
-const { Title } = Typography;
 
 const { Meta } = Card;
 
@@ -52,48 +49,21 @@ function EventList({ data }) {
 	const { inBreakPoint } = useContext(BreakPointContext);
 	const spanRWD = inBreakPoint ? 24 : 12;
 	return (
-		<div className={`${style.container}`}>
-			<div className={`${style.flexCenter} ${style.container}`}>
-				<div className={inBreakPoint ? style.grid : style.lgGrid}>
-					{data.events
-						.filter(
-							(event) =>
-								!(event.tagName === '講座' || event.tagName === '工作坊')
-						)
-						.map((event) => (
-							<div className={style.flexCenter} span={spanRWD} key={event.id}>
-								<Event
-									tagName={event.tagName}
-									imgUrl={event.imgUrl}
-									title={event.title}
-									date={event.date}
-									id={event.id}
-									inBreakPoint={inBreakPoint}
-								/>
-							</div>
-						))}
-				</div>
-			</div>
-			<Title style={{ textAlign: 'center' }}> 講座/工作訪 </Title>
-			<div className={`${style.flexCenter} ${style.container}`}>
-				<div className={inBreakPoint ? style.grid : style.lgGrid}>
-					{data.events
-						.filter(
-							(event) => event.tagName === '講座' || event.tagName === '工作坊'
-						)
-						.map((event) => (
-							<div className={style.flexCenter} span={spanRWD} key={event.id}>
-								<Event
-									tagName={event.tagName}
-									imgUrl={event.imgUrl}
-									title={event.title}
-									date={event.date}
-									id={event.id}
-									inBreakPoint={inBreakPoint}
-								/>
-							</div>
-						))}
-				</div>
+		<div className={`${style.flexCenter} ${style.container}`}>
+			<div className={(inBreakPoint) ? style.grid : style.lgGrid}>
+				{data.events
+				.map((event) => (
+					<div className={style.flexCenter} span={spanRWD} key={event.id}>
+						<Event
+							tagName={event.tagName}
+							imgUrl={event.imgUrl}
+							title={event.title}
+							date={event.date}
+							id={event.id}
+							inBreakPoint={inBreakPoint}
+						/>
+					</div>
+				))}
 			</div>
 		</div>
 	);

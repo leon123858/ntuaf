@@ -1,4 +1,4 @@
-import { PlusOutlined , UploadOutlined} from '@ant-design/icons';
+import { UploadOutlined} from '@ant-design/icons';
 import {
   Button,
   Form,
@@ -8,34 +8,33 @@ import {
   Spin,
   message,
   Modal,
-  Image,
   Typography,
 } from 'antd';
-import { useEffect, useState , useContext } from 'react';
+import { useState , useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { RcFile, UploadFile, UploadProps } from 'antd/lib/upload';
-import { UploadRequestOption } from 'rc-upload/lib/interface';
-import { createArtwork, ARTWORK_TYPE, userId } from '@leon123858/ntuaf-sdk';
-import Artwork from '../../routers/Artwork';
+// import { RcFile, UploadFile, UploadProps } from 'antd/lib/upload';
+// import { UploadRequestOption } from 'rc-upload/lib/interface';
+import { createArtwork, ARTWORK_TYPE } from '@leon123858/ntuaf-sdk';
+// import Artwork from '../../routers/Artwork';
 import { BreakPointContext } from '../../useBreakPoint';
 
 
 
 const { TextArea } = Input;
-const { Title, Paragraph, Text, Link } = Typography;
+const { Title, Paragraph } = Typography;
 
 
 
 const FormDisabledDemo = () => {
     const [form] = Form.useForm();
-    const [componentDisabled, setComponentDisabled] = useState(false);
+    // const [componentDisabled, setComponentDisabled] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [imageSrc, setImageSrc] = useState('');
+    // const [imageSrc, setImageSrc] = useState('');
     const [hidden,setHidden] = useState(true);
     const [fileList, setFileList] = useState([]);
 
     const [previewVisible, setPreviewVisible] = useState(false);
-    const [previewOpen, setPreviewOpen] = useState(false);
+    // const [previewOpen, setPreviewOpen] = useState(false);
     const [previewImage, setPreviewImage] = useState('');
     const [previewTitle, setPreviewTitle] = useState('');
 
@@ -67,7 +66,7 @@ const FormDisabledDemo = () => {
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
-    const [imageUrl, setImageUrl] = useState();
+    // const [imageUrl, setImageUrl] = useState();
 
     const handleCancel = () => setPreviewVisible(false);
 
@@ -79,10 +78,10 @@ const FormDisabledDemo = () => {
         return [previewImage];
     };
 
-    const beforeUpload = (file) => {
-        setFileList([file]);
-        return false;
-    };
+    // const beforeUpload = (file) => {
+    //     setFileList([file]);
+    //     return false;
+    // };
     
     const handleRemove = () => {
         setFileList([]);
@@ -281,4 +280,4 @@ const FormDisabledDemo = () => {
     </>
   );
 };
-export default () => <FormDisabledDemo />;
+export default FormDisabledDemo ;

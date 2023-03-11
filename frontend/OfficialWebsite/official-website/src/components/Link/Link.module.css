@@ -1,3 +1,11 @@
-.btn {
+.container {
     text-align: center;
+    margin: 32px auto;
+}
+
+.btn {
+    background-color: grey;
+    color: white;
+    width: 40%;
+    height: 50px;
 }

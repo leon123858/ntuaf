@@ -9,7 +9,7 @@ import { Slider, Image } from 'antd'
 
 const ImageList = ({ data }) => {
     const { inBreakPoint } = useContext(BreakPointContext);
-    const [curPic, setCurPic] = useState(1);
+    const [curPic, setCurPic] = useState(0);
 
     return ({
         [BlOCK_TYPE.IMAGE_LIST_A]: (
@@ -42,7 +42,6 @@ const ImageList = ({ data }) => {
                 <p className={style.topic}>{data.url}</p>
                 <h1>{data.title}</h1>
                 <TextBox
-                    key={2}
                     text={{
                         type: BlOCK_TYPE.TEXT_C,
                         title: "活動介紹",

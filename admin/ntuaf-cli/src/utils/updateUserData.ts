@@ -30,16 +30,16 @@ const createFakeTmpData = async () => {
 		const innerArtworkIds = [...new Array(randomCount([0, 1, 2, 3]))].map((_) =>
 			randomArtwork()
 		);
-		await db.collection('UserTmpDatas').add({
+		await db.collection('UserTmpData').add({
 			likeArtwork: innerArtworkIds,
 		});
 	}
 };
 
 const deleteAllUserTmpData = async () => {
-	const snapshot = await db.collection('UserTmpDatas').get();
+	const snapshot = await db.collection('UserTmpData').get();
 	snapshot.forEach(async (doc) => {
-		await db.collection('UserTmpDatas').doc(doc.id).delete();
+		await db.collection('UserTmpData').doc(doc.id).delete();
 	});
 };
 
@@ -75,7 +75,7 @@ const updateArtworkLike = async () => {
 		}
 		return true;
 	};
-	const snapshot = await db.collection('UserTmpDatas').get();
+	const snapshot = await db.collection('UserTmpData').get();
 	for (let i of snapshot.docs) {
 		const data = i.data() as UserTmpData;
 		if (!isValidateTmpData(data, i.id)) {
