@@ -22,11 +22,7 @@ const transformMembers = async () => {
 				job: doc.data().job,
 			}),
 		});
-		console.log("insert ", doc.data().name)
-	}))
-
-	// init2()
-	
-	
+		// console.log(doc.data().name, doc.data().job, department)
+	});
 };
 export { transformMembers };

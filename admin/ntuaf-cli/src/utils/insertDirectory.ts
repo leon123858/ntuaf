@@ -10,7 +10,6 @@ const insertDirectory = async ()=>{
     // const bar = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
 	// bar.start(1, 0);
     //read csv file
-    console.log("insertDirectory")
     let memberList:any = [];
     fs.createReadStream(path.resolve(__dirname, '../../src/data/directory.csv'))
     .pipe(csv({ headers:["email","name","job","department"]}))
