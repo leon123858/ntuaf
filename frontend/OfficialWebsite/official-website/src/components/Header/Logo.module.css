@@ -3,7 +3,8 @@
 }
 .logo {
 	cursor: pointer;
-	border: solid gray;
-	border-radius: 50%;
 	padding: 0.5em;
+	box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.21);
+	border-radius: 100px;
+	background: #FFFFFF;
 }

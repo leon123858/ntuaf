@@ -9,7 +9,8 @@ const Logo = () => {
 				<Image
 					className={styles.logo}
 					preview={false}
-					width={'40%'}
+					width={'50px'}
+					height={'50px'}
 					src='/ntuaf1.png'
 				></Image>
 			</Link>
