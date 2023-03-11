@@ -57,7 +57,6 @@ const MemberTab = () => {
 				return;
 			}
 			const data = await getMembersByDepartment(curDepartment);
-			console.log(data)
 			setMemeberData(data);
 			setMemberStorage({ ...memberStorage, [curDepartment]: data });
 		})();
