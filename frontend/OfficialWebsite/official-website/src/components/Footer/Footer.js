@@ -1,9 +1,6 @@
 import styles from './Footer.module.css';
 import {
-	InstagramOutlined,
-	FacebookOutlined,
 	ArrowUpOutlined,
-	YoutubeOutlined,
 } from '@ant-design/icons';
 import Logo from '../Header/Logo';
 
