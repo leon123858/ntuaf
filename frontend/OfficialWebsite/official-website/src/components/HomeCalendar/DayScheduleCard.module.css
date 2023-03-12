@@ -6,7 +6,7 @@
 .container {
 	margin-top: 16px;
 	border: 1px solid #e4e4e4;
-	height: 30vh;
+	height: 35vh;
 	overflow: scroll;
 	width: 105%;
 	font-family: 'Noto Sans TC';
@@ -17,10 +17,15 @@
 	border: 1px solid #e4e4e4;
 	width: 100%;
 	overflow: scroll;
+	height: 67vh;
 }
 
 .category {
 	font-weight: 700;
+	margin-left: 10px;
+	font-size: 16px;
+	font-weight: 500;
+	margin-bottom: 8px;
 }
 
 .firstCategory {
@@ -36,7 +41,7 @@
 .event {
 	min-height: 70px;
 	width: 95%;
-	padding: 14px;
+	padding: 16px 30px;
 	cursor: pointer;
 	border-radius: 1.25em;
 	overflow: hidden;
@@ -51,7 +56,7 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	font-size: 12px;
+	font-size: 14px;
 	margin: 0;
 }
 
@@ -59,7 +64,7 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	font-size: 10px;
+	font-size: 12px;
 	margin: 0;
 }
 

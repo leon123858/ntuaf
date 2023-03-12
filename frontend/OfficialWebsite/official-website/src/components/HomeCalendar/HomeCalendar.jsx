@@ -93,6 +93,9 @@ const HomeCalendar = () => {
 
 	return (
 		<>
+			<br></br>
+			<br></br>
+			<br></br>
 			<div
 				className={
 					inBreakPoint
@@ -114,10 +117,10 @@ const HomeCalendar = () => {
 						hideKeyboardShortcutsPanel={true}
 						monthFormat="YYYY, M[月]"
 						weekDayFormat="ddd"
-						daySize={50}
+						daySize={(inBreakPoint) ? 50 : 55}
 					/>
 
-					<div style={(inBreakPoint) ? { display: 'flex', marginTop: '12px' } : { display: 'grid', marginTop: '12px' }}>
+					<div style={(inBreakPoint) ? { display: 'flex', marginTop: '12px'} : { display: 'grid', marginTop: '14px', marginLeft: '18px' }}>
 						<div style={{marginRight: 20, fontSize: 12}}>
 							<div className={style.lgDot} style={{ background: '#25499D'}}></div>
 							<span style={(inBreakPoint) ? {} : { marginRight: 12 }}>一般活動 </span>
@@ -141,6 +144,9 @@ const HomeCalendar = () => {
 
 
 			</div>
+			<br></br>
+			<br></br>
+			<br></br>
 		</>
 
 	);

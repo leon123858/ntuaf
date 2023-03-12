@@ -119,6 +119,7 @@ const Header = () => {
 
 	return (
 		<div className={styles.totalWrapper}>
+			
 			<div className={styles.headerWrapper}>
 				<Logo />
 				{
