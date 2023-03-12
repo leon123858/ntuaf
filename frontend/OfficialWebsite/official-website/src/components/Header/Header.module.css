@@ -1,24 +1,67 @@
-* {
+.totalWrapper {
 	box-sizing: border-box;
+	position: fixed;
+	top: 0;
+    left: 0;
+    width: 100%; 
+	z-index: 100000;
+}
+
+.scrollHeader {
+	background: #FFFFFF;
 }
 
 .headerWrapper {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: rgb(255, 248, 240, 0);
-	padding: 0 2%;
-	/* overflow: hidden; */
+	padding: 0 3%;
 	height: 80px;
 	transition: all 1s;
 }
 
 .menuWrapper {
-	display: none;
+	display: flex;
+	margin-right: 24px;
+	position: fixed;
+	top: 0;
+	height: 50%;
+	position: relative;
+	background-color: rgba(50, 50, 50, 0.2);
+	border-radius: 2rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	transition: all 1s;
 }
+
+.menu {
+	border-radius: 100px;
+	box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.21);
+}
+
+.scrollMenu {
+	border-radius: 100px;
+	box-shadow: 0;
+}
+
 .iconContainer {
 	display: inline-block;
 	cursor: pointer;
+	background: #FFFFFF;
+	box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.21);
+	border-radius: 100px;
+	width: 44px;
+	height: 44px;
+	text-align: center;
+	display: flex;   
+	justify-content: center; 
+}
+
+.menuIcon {
+	margin: auto;
+	display: block;
 }
 
 .bar1,
@@ -43,109 +86,13 @@
 	transform: translate(0, -11px) rotate(45deg);
 }
 
-.hidden {
-	display: none;
+
+.subMenu {
+	text-align: center;
 }
 
-.totalWrapper {
-	border-bottom: #c3c0c0 1px solid;
-}
-
-@media screen and (min-width: 769px) {
-	.headerWrapper {
-		position: sticky;
-		width: 100%;
-		/* top: 0; */
-	}
-	.headerWrapperTransparent {
-		background-color: rgb(255, 248, 240);
-	}
-	.menuWrapper {
-		position: fixed;
-		top: 0;
-		height: 50%;
-		position: relative;
-		background-color: rgba(50, 50, 50, 0.2);
-		border-radius: 2rem;
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-		transition: all 1s;
-	}
-	.menuWrapperTransparent {
-		transition: all 1s;
-		background-color: rgba(50, 50, 50, 0);
-	}
-	.subMenu {
-		text-align: center;
-	}
-	.searchBarWrapperActive {
-		background-color: rgba(110, 110, 110, 1);
-		position: absolute;
-		right: -10px;
-		border-radius: inherit;
-		height: 100%;
-		width: 50%;
-		display: flex;
-		justify-content: space-between;
-		padding: 0 4px;
-		align-items: center;
-		transition: all 0.3s;
-	}
-	.searchBarWrapper {
-		position: absolute;
-		right: -10px;
-		/* width:auto; */
-		/* padding:auto; */
-		/* width: 20px; */
-		/* height: 20px; */
-		background-color: rgba(110, 110, 110, 0);
-		/* transition: all 1s; */
-		/* overflow: hidden; */
-		/* width: 100%; */
-		height: 100% !important;
-		min-height: 100%;
-		width: 32px;
-		border-radius: inherit;
-		display: flex;
-		align-items: center;
-		overflow: hidden;
-		transition: all 0.3s;
-	}
-	.inputWrapperHidden {
-		display: none;
-	}
-	.searchIconWrapper {
-		/* display: absolute; */
-		position: relative;
-		right: 0px;
-		/* width:20px; */
-		/* height:20px; */
-		/* background-color: blue; */
-	}
-	.exitButton {
-		position: relative;
-		font-size: 1rem;
-		width: 32px;
-		color: white;
-		text-align: center;
-	}
-	.exitButtonHidden {
-		display: none;
-	}
-	.exitButton:hover {
-		cursor: pointer;
-	}
-	.link {
-		margin: 0 0.3rem;
-		text-decoration: none;
-		color: black;
-	}
-	.iconContainer {
-		display: none;
-	}
-	.hidden {
-		display: block;
-	}
+.link {
+	margin: 0 0.3rem;
+	text-decoration: none;
+	color: black;
 }

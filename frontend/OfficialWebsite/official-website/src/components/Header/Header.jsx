@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import styles from './Header.module.css';
 import SideBar from './SideBar.jsx';
 import { Menu } from 'antd';
 import { Link } from 'react-router-dom';
-// import SearchBar from './SearchBar.jsx';
 import LoginButton from './LoginButton.jsx';
 import Logo from './Logo';
+import { BreakPointContext } from '../../useBreakPoint';
 
 const items = [
 	{
@@ -83,60 +83,83 @@ const Header = () => {
 	const onClose = () => {
 		setSideBarActive(false);
 	};
+	const { inBreakPoint } = useContext(BreakPointContext);
 
 	useEffect(() => {
 		const add_class_on_scroll = (element, className) => {
-			element.classList.add(className);
+			if(element) {
+				element.classList.add(className);
+			}
+			
 		};
 		const remove_class_on_scroll = (element, className) => {
-			element.classList.remove(className);
+			if (element) {
+				element.classList.remove(className);
+			}
+			
 		};
 		window.addEventListener('scroll', function () {
-			const menuE = document.getElementsByClassName(styles.menuWrapper)[0];
-			const headerE = document.getElementsByClassName(styles.headerWrapper)[0];
-			let offsetChangeHeader = 10;
-			let scrollpos = window.scrollY;
-			if (scrollpos > offsetChangeHeader) {
-				add_class_on_scroll(menuE, styles.menuWrapperTransparent);
-				add_class_on_scroll(headerE, styles.headerWrapperTransparent);
-			} else {
-				remove_class_on_scroll(menuE, styles.menuWrapperTransparent);
-				remove_class_on_scroll(headerE, styles.headerWrapperTransparent);
+			if (!inBreakPoint) {
+				const menuE = document.getElementsByClassName(styles.menu)[0];
+				const headerE = document.getElementsByClassName(styles.headerWrapper)[0];
+				let offsetChangeHeader = 10;
+				let scrollpos = window.scrollY;
+				if (scrollpos > offsetChangeHeader) {
+					remove_class_on_scroll(menuE, styles.menu);
+					add_class_on_scroll(menuE, styles.scrollMenu);
+					add_class_on_scroll(headerE, styles.scrollHeader);
+				} else {
+					remove_class_on_scroll(menuE, styles.scrollMenu);
+					remove_class_on_scroll(headerE, styles.scrollHeader);
+					add_class_on_scroll(menuE, styles.menu);
+				}
 			}
 		});
-	}, []);
+	}, [inBreakPoint]);
 
 	return (
 		<div className={styles.totalWrapper}>
+			
 			<div className={styles.headerWrapper}>
 				<Logo />
-				{/* <h1 className={styles.title}><Link className={styles.link} to={'/'}>台大藝術季28th</Link></h1> */}
-				<div className={styles.menuWrapper}>
-					<Menu
-						selectable={false}
-						selectedKeys={'1'}
-						multiple={true}
-						mode='horizontal'
-						items={items}
-						style={{ backgroundColor: 'rgba(0, 0, 0,0)', border: 'none' }}
-						disabledOverflow={true}
-					/>
-					{/* <SearchBar /> */}
-				</div>
-				<div className={styles.hidden}>
-					<LoginButton />
-				</div>
+				{
+					(inBreakPoint) 
+					? (
+						<div
+							className={styles.iconContainer}
+							onClick={() => {
+								setSideBarActive(!sideBarActive);
+							}}
+							style={(sideBarActive) ? {display: 'none'} : {}}
+						>
+							<svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.menuIcon}>
+								<path d="M0 0.5H22" stroke="black"/>
+								<path d="M0 9.5H22" stroke="black"/>
+								<path d="M0 18.5H22" stroke="black"/>
+							</svg>
 
-				<div
-					className={styles.iconContainer}
-					onClick={() => {
-						setSideBarActive(!sideBarActive);
-					}}
-				>
-					<div className={styles.bar1}></div>
-					<div className={styles.bar2}></div>
-					<div className={styles.bar3}></div>
-				</div>
+						</div>
+					) 
+					: (
+						<div style={{ display: 'flex', alignItems: 'center' }}>
+							<div className={styles.menuWrapper}>
+								<Menu
+									selectable={false}
+									selectedKeys={'1'}
+									multiple={true}
+									mode='horizontal'
+									items={items}
+									disabledOverflow={true}
+									className={styles.menu}
+								/>
+							</div>
+							<div>
+								<LoginButton />
+							</div>
+						</div>
+					)
+				}
+				
 				<SideBar
 					activeSideBar={sideBarActive}
 					setSideBarActive={setSideBarActive}
