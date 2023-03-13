@@ -1,6 +1,7 @@
 const prompts = require('prompts');
 
 enum MODE_TYPE {
+	'給予所有權限' = 'insertAllAdmin',
 	'增加權限' = 'insertAdmin',
 	'刪除權限' = 'removeAdmin',
 	'手動匯入人員列表' = 'insertMemberManually',
