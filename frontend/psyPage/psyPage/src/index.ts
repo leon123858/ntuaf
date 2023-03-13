@@ -11,12 +11,12 @@ import { ImgSystem } from '@eva/plugin-renderer-img';
 import { EventSystem } from '@eva/plugin-renderer-event';
 import { SpriteAnimationSystem } from '@eva/plugin-renderer-sprite-animation';
 import { RenderSystem } from '@eva/plugin-renderer-render';
-import { TransitionSystem, Transition } from '@eva/plugin-transition';
+import { TransitionSystem } from '@eva/plugin-transition';
 import { GraphicsSystem } from '@eva/plugin-renderer-graphics';
 import { TextSystem } from '@eva/plugin-renderer-text';
 
+// basic setting
 resource.addResource(resources);
-
 const game = new Game({
 	systems: [
 		new RendererSystem({
@@ -34,19 +34,17 @@ const game = new Game({
 		new TextSystem(),
 	],
 });
-
 game.scene.transform.size.width = 750;
 game.scene.transform.size.height = 1484;
+window.game = game;
 
+// ball
 const pos = {
 	x: 500,
 	y: 1100,
 };
-
 let isBallExist = true;
-
 let ball = createBall(pos);
-const { basetFront, playAnim } = createBasketFront();
 const btn = createBtn({
 	text: '讓球消失出現',
 	transform: {
@@ -76,7 +74,10 @@ const btn = createBtn({
 	},
 });
 
-const btn2 = createBtn({
+// background
+let sceneIndex = 9;
+const backgroundList = [...new Array(10)].map((_) => createBackground());
+const changeSceneBtn = createBtn({
 	text: '換場景',
 	transform: {
 		position: {
@@ -93,91 +94,27 @@ const btn2 = createBtn({
 		},
 	},
 	callback: () => {
-		animation.play('move', 1);
-		animation.on('finish', (name) => {
-			// name === 'move' && animation.play('back', 1);
+		const animate = backgroundList[sceneIndex].animation;
+		animate.play('move', 1);
+		animate.on('finish', (name) => {
+			backgroundList[sceneIndex].background.remove();
+			if (--sceneIndex == -1) {
+				changeSceneBtn.remove();
+			}
 		});
 	},
 });
 
-const background = createBackground();
-const animation = background.addComponent(new Transition());
-animation.group = {
-	back: [
-		{
-			name: 'position.x',
-			component: background.transform,
-			values: [
-				{
-					time: 0,
-					value: 1,
-					tween: 'ease-out',
-				},
-				{
-					time: 300,
-					value: 0,
-					tween: 'ease-in',
-				},
-			],
-		},
-		{
-			name: 'position.y',
-			component: background.transform,
-			values: [
-				{
-					time: 0,
-					value: 1,
-					tween: 'ease-in',
-				},
-				{
-					time: 300,
-					value: 0,
-				},
-			],
-		},
-	],
-	move: [
-		{
-			name: 'position.x',
-			component: background.transform,
-			values: [
-				{
-					time: 0,
-					value: 0,
-					tween: 'ease-out',
-				},
-				{
-					time: 1000,
-					value: 800,
-					tween: 'ease-in',
-				},
-			],
-		},
-		{
-			name: 'position.y',
-			component: background.transform,
-			values: [
-				{
-					time: 0,
-					value: 0,
-					tween: 'ease-in',
-				},
-				{
-					time: 300,
-					value: 0,
-				},
-			],
-		},
-	],
-};
-const background2 = createBackground();
-game.scene.addChild(background2);
-game.scene.addChild(background);
+// BasketFront
+const { basetFront, playAnim } = createBasketFront();
+window.playAnim = playAnim;
+
+/**
+ * add child
+ */
+backgroundList.forEach((item) => game.scene.addChild(item.background));
 game.scene.addChild(createBoard());
 game.scene.addChild(ball);
 game.scene.addChild(basetFront);
 game.scene.addChild(btn);
-game.scene.addChild(btn2);
-
-window.playAnim = playAnim;
-window.game = game;
+game.scene.addChild(changeSceneBtn);
