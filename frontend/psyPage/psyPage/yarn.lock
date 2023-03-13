@@ -564,7 +564,7 @@
     lodash-es "^4.17.21"
     pixi.js "^4.8.9"
 
-"@eva/plugin-transition@^1.1.5":
+"@eva/plugin-transition@^1.2.8":
   version "1.2.8"
   resolved "https://registry.yarnpkg.com/@eva/plugin-transition/-/plugin-transition-1.2.8.tgz#1e49e1edd2e7b7ccaeb5d57ac721c5eee9f11b96"
   integrity sha512-3ojLWKYniTUlDcfmJ+cU3seaKEu20DadkNVgXuytaIvHAvkNiSqG64PiuxwGqixI/CORXQNFM+pN45WI8num4g==
