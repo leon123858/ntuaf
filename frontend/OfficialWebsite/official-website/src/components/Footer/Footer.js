@@ -3,13 +3,14 @@ import {
 	ArrowUpOutlined,
 } from '@ant-design/icons';
 import Logo from '../Header/Logo';
+import { Image } from 'antd';
 
 const Footer = () => {
 	function topFunction() {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	}
 	return (
-		<div className={styles.footerWrapper} style={{ background: 'url(footer.png)', backgroundSize: '100vw 100vh' }}>
+		<div className={styles.footerWrapper} style={{ background: 'url(footer.png)', backgroundSize: '100vw 100vh', height: 200 }}>
 			<ArrowUpOutlined
 				onClick={topFunction}
 				className={styles.top}
@@ -17,7 +18,13 @@ const Footer = () => {
 			/>
 			<div className={styles.title}>
 				<Logo />
-				<h2>台大藝術季28th</h2>
+				<Image
+					className={styles.logo}
+					preview={false}
+					width={'100px'}
+					height={'100px'}
+					src='/logo2.svg'
+				></Image>
 			</div>
 			<hr></hr>
 			<div className={styles.infoWrapper}>

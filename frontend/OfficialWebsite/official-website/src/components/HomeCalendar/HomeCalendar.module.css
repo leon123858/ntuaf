@@ -33,11 +33,6 @@
   transform: translateY(100%);
 }
 
-:global .SingleDatePickerInput {
-  display: inline-block;
-  background-color: #fff;
-}
-
 :global .SingleDatePickerInput__rtl {
   direction: rtl;
 }
@@ -226,6 +221,7 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  border-radius: 30px;
 }
 :global .CalendarMonth_table {
   border-collapse: collapse;
