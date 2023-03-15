@@ -29,7 +29,6 @@ export const ArtworkText = ({ data, heartOnClick }) => {
 	const [likeShow, setLikeShow] = useState(data.tmpLike + data.like);
 	return (
 		<>
-			{data.like ? 'true' : 'false'}
 			<div className={styles.container}>
 				<Card
 					bordered={false}
@@ -115,7 +114,7 @@ export const ArtworkImg = ({ data, heartOnClick }) => {
 					cover={
 						<img
 							alt='img'
-							src='https://imgs.gvm.com.tw/upload/gallery/20221204/125075.jpg'
+							src={data.url}
 						/>
 					}
 				>
@@ -167,7 +166,8 @@ export const ArtworkImg = ({ data, heartOnClick }) => {
 				<br />
 				<Image
 					witdh={'100%'}
-					src='https://imgs.gvm.com.tw/upload/gallery/20221204/125075.jpg'
+					src={data.url
+					}
 				></Image>
 				<Text>
 					<br />
