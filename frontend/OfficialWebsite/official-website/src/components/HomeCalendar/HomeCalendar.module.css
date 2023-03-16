@@ -222,6 +222,7 @@
   -ms-user-select: none;
   user-select: none;
   border-radius: 30px;
+  height: 400px;
 }
 :global .CalendarMonth_table {
   border-collapse: collapse;
