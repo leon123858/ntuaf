@@ -1,92 +1,77 @@
-* {
-	box-sizing: border-box;
+.top {
+  color: black;
+  position: absolute;
+  top: -25px;
+  right: 20px;
+  font-size: 38px;
+  background: #ffffff;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.21);
+  border-radius: 50px;
+  padding: 8px;
+  cursor: pointer;
 }
+
 .footerWrapper {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	background-repeat: no-repeat;
-	white-space: nowrap;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+  background-size: 100vw 100vh;
+  padding: 0 8% 2% 8%;
 }
-.title{
-    display:flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding:0 0 0 10%;
+
+.lgFooterWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  background-size: 100vw 100vh;
+  padding: 2% 12%;
 }
-hr {
-	width: 80%;
+
+.title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
+
+.lgTitle {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 45%;
+}
+
 .logo {
-	cursor: pointer;
-	border: solid gray;
-	border-radius: 1em;
-	padding: 0.25em;
-	margin-left: 12px;
+  cursor: pointer;
+  margin-left: 20px;
 }
-h2 {
-	display: inline;
-}
+
 .infoWrapper {
-	display: flex;
-	justify-content: space-between;
-	padding: 0 0 5vw 10%;
-	align-items: flex-end;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  color: #ffffff;
 }
-.infoWrapper > div:first-child {
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-end;
-}
-h2 {
-	font-size: 20px;
+
+.lgInfoWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  color: #ffffff;
+  align-items: safe center;
 }
 
 .iconGroup {
-	display: flex;
-	flex-direction: column;
-	padding: 0 10% 0 0;
-	align-items: center;
-}
-.iconGroup div {
-	display: flex;
-	flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
 }
 
-.iconGroup a {
-	display: inline-block;
-	margin: auto 0;
-	text-decoration: none;
-	color: black;
-	font-size: 2em;
-	margin: 0 10px;
-}
-.top {
-	color: rgb(100, 100, 100, 1);
-	background-color: #efefefef;
-	position: absolute;
-	top: -50px;
-	right: 10px;
-	font-size: 50px;
-	border-radius: 50%;
-	background-color: rgb(0, 0, 0, 0);
-}
-@media screen and (min-width: 768px) {
-	.footerWrapper {
-		flex-direction: row;
-		justify-content: space-between;
-		padding: 5vh 10vw;
-	}
-	.infoWrapper {
-		margin: 0;
-		padding: 0;
-		width: 50vw;
-	}
-	.title {
-		width: 50vw;
-		padding: 0;
-	}
-	hr {
-		display: none;
-	}
+.lgIconGroup {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px;
 }
