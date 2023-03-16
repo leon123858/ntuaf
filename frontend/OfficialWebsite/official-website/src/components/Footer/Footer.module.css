@@ -39,7 +39,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-right: 45%;
+  margin-right: 38%;
 }
 
 .logo {
@@ -58,7 +58,6 @@
 .lgInfoWrapper {
   width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: flex-end;
   color: #ffffff;
   align-items: safe center;
@@ -74,4 +73,5 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 10px;
+  flex-shrink: 0;
 }
