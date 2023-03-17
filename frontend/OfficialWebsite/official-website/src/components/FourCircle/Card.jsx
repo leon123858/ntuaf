@@ -3,9 +3,10 @@ import { Modal } from "antd";
 import { useState, useContext } from "react";
 import { BreakPointContext } from "../../useBreakPoint";
 import DoubleCard from "./DoubleCard.jsx";
+import { Image } from 'antd';
 const Card = ({ content, index }) => {
 	const { inBreakPoint } = useContext(BreakPointContext);
-	const cardWidth = 326;
+	const cardWidth = window.innerWidth/4-30;
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const showModal = () => {
 		setIsModalOpen(true);
@@ -23,7 +24,10 @@ const Card = ({ content, index }) => {
 							showModal();
 						}}
 					>
-						<img src={content.iconTextUrl} alt={"loading"}></img>
+						<Image src={content.iconTextUrl} alt={"loading"}
+							preview={false}
+							fallback='https://images.squarespace-cdn.com/content/v1/5452d441e4b0c188b51fef1a/1615326541809-TW01PVTOJ4PXQUXVRLHI/male-orange-tabby-cat.jpg?format=600w'>
+						</Image>
 					</div>
 					<Modal
 						title="Basic Modal"

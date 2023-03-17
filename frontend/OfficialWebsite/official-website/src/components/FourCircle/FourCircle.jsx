@@ -67,6 +67,7 @@ const FourCircle = () => {
         {contents.map((content, index) => {
             return (
                 <Card content={content} index={index} />
+                // <div style={{width:"150px", height:"150px", border:"solid 2px red"}}></div>
             )
         })}
         </div>:

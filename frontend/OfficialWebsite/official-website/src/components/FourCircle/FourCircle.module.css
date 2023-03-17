@@ -6,10 +6,7 @@
     justify-content: space-around;
     flex-direction: column;
     padding:10vh 0 ;
-    height: 100vh;
-    background-color: blue;
-    border:solid black 10px;
-
+    min-height: 100vh;
 }
 .lgCardWrapper{
     display: flex;
