@@ -7,7 +7,7 @@ const FourCircle = () => {
     const { inBreakPoint, breakPoint } = useContext(BreakPointContext);
     document.body.style.setProperty('--fourBallOffset', `-${1000/2}px`);
     window.addEventListener('scroll', () => {
-        let tmp = document.getElementsByClassName(styles.lgCardWrapper)[0];
+        // let tmp = document.getElementsByClassName(styles.lgCardWrapper)[0];
 
         let animationPortion = window.pageYOffset / window.innerHeight
         animationPortion = animationPortion>=1?0.99:animationPortion
@@ -70,15 +70,15 @@ const FourCircle = () => {
             )
         })}
         </div>:
-        <div className={styles.lgCardWrapper} style={{height:`${breakPoint}px`}}>
-        {contents.map((content, index) => {
-            console.log("index", index)
-            return (
-                <Card content={content} index={index} />
-            )
-        })}
+        <div className={styles.lgBackground} style={{height:`${breakPoint}px`, backgroundImage:`url(https://drive.google.com/uc?id=1JvmPGuuZ5-99q7ByKoZMAPAayF6lWdNn)`}}>
+            <div className={styles.lgCardWrapper} style={{height:`${breakPoint}px`}}>
+            {contents.map((content, index) => {
+                return (
+                    <Card content={content} key={index} index={index} />
+                )
+            })}
+            </div>
         </div>
-
         }
         
         </>

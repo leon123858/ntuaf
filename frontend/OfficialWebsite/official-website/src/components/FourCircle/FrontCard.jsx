@@ -1,5 +1,5 @@
 import styles from "./FrontCard.module.css"
-import {CloseOutlined} from "@ant-design/icons"
+// import {CloseOutlined} from "@ant-design/icons"
 const FrontCard = ({ FrontCardContent, setFlip, closeModel}) => {
     // console.log("FrontCardContent", FrontCardContent)
     const handleFlip = () => {

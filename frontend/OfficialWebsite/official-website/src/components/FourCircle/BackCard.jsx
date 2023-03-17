@@ -1,5 +1,4 @@
 import styles from "./BackCard.module.css"
-import {CloseOutlined} from "@ant-design/icons"
 const BackCard = ({BackCardContent, setFlip, closeModel})=>{
     const handleFlip = () => {
         setFlip((prev) => {

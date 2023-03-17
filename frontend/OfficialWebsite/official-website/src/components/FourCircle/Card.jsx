@@ -4,7 +4,7 @@ import {useState, useContext} from "react"
 import { BreakPointContext } from '../../useBreakPoint';
 import DoubleCard from './DoubleCard.jsx';
 const Card = ({ content, index }) => {
-	const { inBreakPoint, breakPoint } = useContext(BreakPointContext);
+	const { inBreakPoint } = useContext(BreakPointContext);
 	const cardWidth =  326
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const showModal = () => {
@@ -21,7 +21,7 @@ const Card = ({ content, index }) => {
 					showModal();
 				}}
 			>
-				<img src={content.iconTextUrl}></img>
+				<img src={content.iconTextUrl} alt={"loading"}></img>
 			</div>
 			{inBreakPoint?
 				<Modal
