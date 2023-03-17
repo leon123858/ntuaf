@@ -7,7 +7,8 @@
     flex-direction: column;
     padding:10vh 0 ;
     height: 100vh;
-    background-color: red;
+    background-color: blue;
+    border:solid black 10px;
 
 }
 .lgCardWrapper{
