@@ -9,6 +9,17 @@ const { Title } = Typography;
 const { Meta } = Card;
 
 const EventImg = ({ tagName, imgUrl, inBreakPoint }) => {
+
+
+	const tagStyle = {
+		borderRadius: '20px',
+		backgroundColor: '#D7497C',
+		color: '#FFFFFF',
+		padding: '13px 8px',
+		fontSize : 20,
+		fontWeight: 'bold',
+	};
+
 	return (
 		<div className={inBreakPoint ? style.eventImg1 : style.eventImg2}>
 			<div className={`${style.img} ${style.flexCenter}`}>
@@ -18,7 +29,7 @@ const EventImg = ({ tagName, imgUrl, inBreakPoint }) => {
 				/>
 			</div>
 			<div className={style.tag}>
-				<Tag color='geekblue'>{tagName}</Tag>
+				<Tag style={tagStyle}>{tagName}</Tag>
 			</div>
 		</div>
 	);
@@ -74,7 +85,7 @@ function EventList({ data }) {
 						))}
 				</div>
 			</div>
-			<Title style={{ textAlign: 'center' }}> 講座/工作訪 </Title>
+			<Title style={{ textAlign: 'center' }}> 講座/工作坊 </Title>
 			<div className={`${style.flexCenter} ${style.container}`}>
 				<div className={inBreakPoint ? style.grid : style.lgGrid}>
 					{data.events
