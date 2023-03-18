@@ -3,32 +3,29 @@
 }
 
 .backCardWrapper{
-    /* background-color:  darkgray; */
     display: flex;
     flex-direction: column;
     height: 100%;
     justify-content: space-around;
     align-items: center;
-    background-size:100% 100%;
+    background-size:cover;
     border-radius: 10px;
-    /* -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover; */
-
+}
+.lgBackCardWrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
+    background-size:cover;
+    border-radius: 10px;
 }
 
-
 .title{
-    /* border: solid black 2px; */
-    /* background-color: white;
-    border-radius: 50%; */
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center;
-    /* border:solid black 0.5px; */
-    /* width: 100%; */
     height: 100px;
-    width: 100px;
+    width: 128px;
     margin: 0 auto;
     display:flex;
     flex-direction: row;
@@ -37,8 +34,23 @@
     align-items: center;
     position:absolute;
     top:-50px;
-    /* padding-top: 100%; 1:1 Aspect Ratio */
+
     /* position: relative; If you want text inside of it */
+}
+.lgTitle{
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100px;
+    width: 128px;
+    margin: 0 auto;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
+    position:absolute;
+    top: -50px;
 }
 
 .closeIconWrapper{
@@ -57,6 +69,6 @@
 }
 .flipButton{
     position: absolute;
-    bottom: 20px;
-    right: 40px;
+    bottom: 10px;
+    right: 15px;
 }

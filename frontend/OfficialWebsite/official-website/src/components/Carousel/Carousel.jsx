@@ -65,14 +65,6 @@ const Carousel = () => {
 				);
 			setRecentContent(fillList(recentList));
 			setAlwaysContent(fillList(alwaysList));
-			
-			// 			</>
-		
-			// 		),
-			// 	};
-			// }))
-
-
 		})();
 		// console.log('render');
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -124,7 +116,7 @@ const Carousel = () => {
 								onClick={() => {
 									setFlip(false);
 								}}
-								style={flip ? { borderBottom: "solid 2px #DD0E65" } : { borderBottom: "solid 2px #DD0E65" }}
+								style={flip ? {} : { textDecoration: "underline", textDecorationColor: "black", color: "#DD0E65" }}
 							>
 								近期活動
 							</h1>
@@ -133,6 +125,7 @@ const Carousel = () => {
 								onClick={() => {
 									setFlip(true);
 								}}
+								style={flip ? { textDecoration: "underline", textDecorationColor: "black", color: "#DD0E65" } : {}}
 							>
 								常設展覽
 							</h1>
@@ -192,7 +185,7 @@ const Carousel = () => {
 									<CarouselImport
 										slides={slides}
 										goToSlide={activateImg}
-										offsetRadius={4}
+										offsetRadius={2}
 										animationConfig={{ tension: 120, friction: 14 }}
 									></CarouselImport>
 							}
