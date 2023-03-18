@@ -7,6 +7,7 @@ import { useLocation } from 'react-router-dom';
 
 const LAYOUT_BACKGROUND_IMAGE = {
 	'/calendar': '/background/c1.png',
+	'/introduce/exhibition' : '/background/background.png',
 };
 
 const Layout = () => {

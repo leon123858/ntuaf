@@ -10,10 +10,19 @@ const { Meta } = Card;
 
 const EventImg = ({ tagName, imgUrl, inBreakPoint }) => {
 
-
+	console.log(tagName);
 	const tagStyle = {
 		borderRadius: '20px',
-		backgroundColor: '#D7497C',
+		backgroundColor: '#25499D',
+		color: '#FFFFFF',
+		padding: '13px 8px',
+		fontSize : 20,
+		fontWeight: 'bold',
+	};
+
+	const tagStyle2 = {
+		borderRadius: '20px',
+		backgroundColor: '#A9CF59',
 		color: '#FFFFFF',
 		padding: '13px 8px',
 		fontSize : 20,
@@ -29,7 +38,7 @@ const EventImg = ({ tagName, imgUrl, inBreakPoint }) => {
 				/>
 			</div>
 			<div className={style.tag}>
-				<Tag style={tagStyle}>{tagName}</Tag>
+				<Tag style={ tagName=='開幕式'? tagStyle : tagStyle2 }>{tagName}</Tag>
 			</div>
 		</div>
 	);
@@ -39,7 +48,7 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 	return (
 		<Card
 			hoverable
-			style={{ width: 320, position: 'relative' }}
+			style={{ width: 320, position: 'relative' , boxShadow: '0px 0px 8px rgba(0, 0, 0, 0.5)' }}
 			cover={
 				<EventImg
 					tagName={tagName}
