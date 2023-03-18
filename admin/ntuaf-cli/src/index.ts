@@ -163,16 +163,15 @@ const options = program.opts();
 			await removeAdmin(email, eventId);
 			break;
 		}
-
+		case MODE_TYPE.給予所有權限: {
+			const email = (await askMemberEmail()).memberEmail;
+			const allEvent = await db.collection('Events').get();
+			const allEventId = allEvent.docs.map((v) => v.id);
+			await db.collection('Members').doc(email).update({ admin: allEventId });
+			break;
+		}
 		default: {
 			console.log('未選擇');
-			// const allEvent = await db.collection('Events').get();
-			// const allEventId = allEvent.docs.map((v) => v.id);
-			// await db
-			// 	.collection('Members')
-			// 	.doc('guanmingchiu@gmail.com')
-			// 	.update({ admin: allEventId });
-			break;
 		}
 	}
 })();
