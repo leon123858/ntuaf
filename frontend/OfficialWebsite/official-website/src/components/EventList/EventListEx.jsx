@@ -6,6 +6,16 @@ import { BreakPointContext } from '../../useBreakPoint';
 const { Meta } = Card;
 
 const EventImg = ({ tagName, imgUrl, inBreakPoint }) => {
+
+	const tagStyle = {
+		borderRadius: '23px',
+		backgroundColor: '#D7497C',
+		color: '#FFFFFF',
+		padding: '13px 15px',
+		fontSize : 20,
+		fontWeight: 'bold',
+	};
+
 	return (
 		<div className={inBreakPoint ? style.eventImg1 : style.eventImg2}>
 			<div className={`${style.img} ${style.flexCenter}`}>
@@ -15,7 +25,7 @@ const EventImg = ({ tagName, imgUrl, inBreakPoint }) => {
 				/>
 			</div>
 			<div className={style.tag}>
-				<Tag color='geekblue'>{tagName}</Tag>
+				<Tag style={tagStyle} >{tagName}</Tag>
 			</div>
 		</div>
 	);
@@ -25,7 +35,7 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 	return (
 		<Card
 			hoverable
-			style={{ width: 320, position: 'relative' }}
+			style={{ width: 320, position: 'relative' , boxShadow: '0px 0px 8px rgba(0, 0, 0, 0.5)' }}
 			cover={
 				<EventImg
 					tagName={tagName}
