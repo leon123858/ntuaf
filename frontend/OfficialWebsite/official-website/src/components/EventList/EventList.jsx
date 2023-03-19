@@ -38,7 +38,7 @@ const EventImg = ({ tagName, imgUrl, inBreakPoint }) => {
 				/>
 			</div>
 			<div className={style.tag}>
-				<Tag style={ tagName=='開幕式'? tagStyle : tagStyle2 }>{tagName}</Tag>
+				<Tag style={ tagName==='開幕式'? tagStyle : tagStyle2 }>{tagName}</Tag>
 			</div>
 		</div>
 	);

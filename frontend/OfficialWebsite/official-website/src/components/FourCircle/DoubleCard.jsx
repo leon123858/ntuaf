@@ -2,7 +2,7 @@
 import style from "./DoubleCard.module.css"
 import FrontCard from "./FrontCard.jsx"
 import BackCard from "./BackCard.jsx"
-import {useState, useContext} from "react"
+import { useContext } from "react"
 import { BreakPointContext } from '../../useBreakPoint';
 
 const DoubleSideCard = ({FrontCardContent, BackCardContent, closeModel, flip, setFlip}) => {

@@ -1,6 +1,4 @@
-// import { useState } from "react";
-// import Form from "./Form";
-import { Collapse, Typography, Button, Image , Icon } from 'antd';
+import { Collapse, Typography, Image } from 'antd';
 import { Link } from 'react-router-dom';
 import { RightOutlined } from '@ant-design/icons';
 
