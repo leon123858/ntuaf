@@ -40,7 +40,7 @@ const FormDisabledDemo = () => {
 
     const navigate = useNavigate();
 	const goBack = () => {
-		navigate(-1);
+        window.location = '/Artwork';
 	}
 
     const onFinish = async(values) => {
@@ -57,10 +57,11 @@ const FormDisabledDemo = () => {
             message.error("上傳失敗");
             return;
         }
-        form.resetFields();
-        message.success("上傳成功",()=>{},()=>{
-            goBack();
-        });
+        handleRemove();
+        message.success("上傳成功",3,
+            goBack
+        );
+        
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -84,6 +85,7 @@ const FormDisabledDemo = () => {
     // };
     
     const handleRemove = () => {
+        form.resetFields();
         setFileList([]);
         setPreviewImage('');
     };

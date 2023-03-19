@@ -1,5 +1,5 @@
 import { React, useState, useEffect, useContext } from 'react';
-import { List, Skeleton, Divider, Tabs, message } from 'antd';
+import { List, Skeleton, Divider, Tabs, message, Select } from 'antd';
 import { ArtworkText, ArtworkImg } from './Artwork';
 import {
 	getArtworkList,
@@ -15,16 +15,19 @@ export const ArtworkList = () => {
 	const [loading, setLoading] = useState(false);
 	const [typeText, setTypeText] = useState({
 		type: ARTWORK_TYPE.PURE_TEXT,
+		sortBy: '',
 		dataList: [],
 		cursor: 0,
 	});
 	const [typePhoto, setTypePhoto] = useState({
 		type: ARTWORK_TYPE.PHOTO,
+		sortBy: '',
 		dataList: [],
 		cursor: 0,
 	});
 	const [typePainting, setTypePainting] = useState({
 		type: ARTWORK_TYPE.PAINTING,
+		sortBy: '',
 		dataList: [],
 		cursor: 0,
 	});
@@ -47,7 +50,13 @@ export const ArtworkList = () => {
 	}, [isLogin]);
 
 	useEffect(() => {
-		initData()
+		let datas =
+			activeKey === '1'
+				? typeText
+				: activeKey === '2'
+				? typePhoto
+				: typePainting;
+		initData(datas.sortBy)
 			.then(setLoading(false))
 			.then(() => {
 				const top = document.querySelectorAll('.scrollToTop');
@@ -69,33 +78,49 @@ export const ArtworkList = () => {
 		return dataListWithLike;
 	};
 
-	const initData = async () => {
-		const datas =
+	const initData = async (sortBy) => {
+		console.log('initial called');
+		let datas =
 			activeKey === '1'
 				? typeText
 				: activeKey === '2'
 				? typePhoto
 				: typePainting;
+		if (datas.sortBy !== sortBy) {
+			console.log('change sortBy');
+			datas = {
+				...datas,
+				sortBy: sortBy,
+				dataList: [],
+				cursor: 0,
+			};
+		}
+		if (sortBy === '') sortBy = 'like';
 		if (datas.dataList.length > 0) {
 			//handle cache
 			return;
 		}
 		const { data: partialData, cursor: tempCursor } = await getArtworkList(
 			datas.type,
-			'like'
+			sortBy
 		);
-		const likeList = await getLikeArtworkToday();
-		console.log(likeList);
+		// const likeList = await getLikeArtworkToday();
 		await delay(100);
 		switch (activeKey) {
 			case '1':
-				setTypeText({ ...typeText, dataList: partialData, cursor: tempCursor });
+				setTypeText({
+					...typeText,
+					dataList: partialData,
+					cursor: tempCursor,
+					sortBy: datas.sortBy,
+				});
 				break;
 			case '2':
 				setTypePhoto({
 					...typePhoto,
 					dataList: partialData,
 					cursor: tempCursor,
+					sortBy: datas.sortBy,
 				});
 				break;
 			case '3':
@@ -103,6 +128,7 @@ export const ArtworkList = () => {
 					...typePainting,
 					dataList: partialData,
 					cursor: tempCursor,
+					sortBy: datas.sortBy,
 				});
 				break;
 			default:
@@ -120,7 +146,7 @@ export const ArtworkList = () => {
 				: typePainting;
 		const { data: partialData, cursor: tempCursor } = await getArtworkList(
 			datas.type,
-			'like',
+			datas.sortBy,
 			datas.cursor
 		);
 		switch (activeKey) {
@@ -246,9 +272,50 @@ export const ArtworkList = () => {
 		return new Promise((resolve) => setTimeout(resolve, delayInms));
 	};
 
+	const handleChange = (value) => {
+		initData(value.value);
+	};
+	const Selecter = () => {
+		let datas =
+			activeKey === '1'
+				? typeText
+				: activeKey === '2'
+				? typePhoto
+				: typePainting;
+		return (
+			<Select
+				labelInValue
+				defaultValue={{
+					value: 'default',
+					label:
+						datas.sortBy === 'like'
+							? '愛心排行'
+							: datas.sortBy === 'createTime'
+							? '最近上傳'
+							: '排序',
+				}}
+				style={{
+					width: 120,
+				}}
+				onChange={handleChange}
+				options={[
+					{
+						value: 'createTime',
+						label: '最近上傳',
+					},
+					{
+						value: 'like',
+						label: '愛心排行',
+					},
+				]}
+			/>
+		);
+	};
+
 	const items = ['純文字組', '照片組', '繪畫組'];
 	return (
 		<>
+			<Selecter />
 			<Tabs
 				activeKey={activeKey}
 				centered

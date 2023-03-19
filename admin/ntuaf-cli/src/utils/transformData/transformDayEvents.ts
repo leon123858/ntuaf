@@ -29,6 +29,7 @@ const transformDayEvents = async () => {
 				[key]: {
 					activity: [],
 					exhibition: [],
+					workshop: [],
 				},
 			});
 		handleDay.add(1, 'days');
@@ -38,10 +39,6 @@ const transformDayEvents = async () => {
 	}
 	//info distribute event to corresponding bucket based on their own period
 	const eventRef = await db.collection('Events').get();
-	const event: any = {
-		activity: [] as any[],
-		exhibition: [] as any[],
-	};
 	let countL = 0;
 	await Promise.all(
 		eventRef.docs.map(async (doc) => {
@@ -53,6 +50,9 @@ const transformDayEvents = async () => {
 				const id = handleTime.format('M_D');
 				const month = handleTime.format('M');
 				const eventType = data.type;
+				if (monthEvent[month] == undefined) {
+					monthEvent[month] = {};
+				}
 				if (monthEvent[month][id] == undefined) {
 					monthEvent[month][id] = [false, false, false];
 				}
@@ -74,7 +74,23 @@ const transformDayEvents = async () => {
 						.collection(toDbPath)
 						.doc(id)
 						.update({
-							'data.activity': FieldValue.arrayUnion({
+							'data.exhibition': FieldValue.arrayUnion({
+								name: data.title,
+								info: `${createTimeString(data.startTime, data.endTime)} | ${
+									data.place.name
+								}`,
+								id: data.id,
+							}),
+						});
+				} else if (
+					eventType === EVENT_TYPE.講座 ||
+					eventType === EVENT_TYPE.工作坊
+				) {
+					await db
+						.collection(toDbPath)
+						.doc(id)
+						.update({
+							'data.workshop': FieldValue.arrayUnion({
 								name: data.title,
 								info: `${createTimeString(data.startTime, data.endTime)} | ${
 									data.place.name
@@ -87,7 +103,7 @@ const transformDayEvents = async () => {
 						.collection(toDbPath)
 						.doc(id)
 						.update({
-							'data.exhibition': FieldValue.arrayUnion({
+							'data.activity': FieldValue.arrayUnion({
 								name: data.title,
 								info: `${createTimeString(data.startTime, data.endTime)} | ${
 									data.place.name

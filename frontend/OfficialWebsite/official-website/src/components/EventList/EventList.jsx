@@ -9,6 +9,26 @@ const { Title } = Typography;
 const { Meta } = Card;
 
 const EventImg = ({ tagName, imgUrl, inBreakPoint }) => {
+
+	console.log(tagName);
+	const tagStyle = {
+		borderRadius: '20px',
+		backgroundColor: '#25499D',
+		color: '#FFFFFF',
+		padding: '13px 8px',
+		fontSize : 20,
+		fontWeight: 'bold',
+	};
+
+	const tagStyle2 = {
+		borderRadius: '20px',
+		backgroundColor: '#A9CF59',
+		color: '#FFFFFF',
+		padding: '13px 8px',
+		fontSize : 20,
+		fontWeight: 'bold',
+	};
+
 	return (
 		<div className={inBreakPoint ? style.eventImg1 : style.eventImg2}>
 			<div className={`${style.img} ${style.flexCenter}`}>
@@ -18,7 +38,7 @@ const EventImg = ({ tagName, imgUrl, inBreakPoint }) => {
 				/>
 			</div>
 			<div className={style.tag}>
-				<Tag color='geekblue'>{tagName}</Tag>
+				<Tag style={ tagName=='開幕式'? tagStyle : tagStyle2 }>{tagName}</Tag>
 			</div>
 		</div>
 	);
@@ -28,7 +48,7 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 	return (
 		<Card
 			hoverable
-			style={{ width: 320, position: 'relative' }}
+			style={{ width: 320, position: 'relative' , boxShadow: '0px 0px 8px rgba(0, 0, 0, 0.5)' }}
 			cover={
 				<EventImg
 					tagName={tagName}
@@ -74,7 +94,7 @@ function EventList({ data }) {
 						))}
 				</div>
 			</div>
-			<Title style={{ textAlign: 'center' }}> 講座/工作訪 </Title>
+			<Title style={{ textAlign: 'center' }}> 講座/工作坊 </Title>
 			<div className={`${style.flexCenter} ${style.container}`}>
 				<div className={inBreakPoint ? style.grid : style.lgGrid}>
 					{data.events

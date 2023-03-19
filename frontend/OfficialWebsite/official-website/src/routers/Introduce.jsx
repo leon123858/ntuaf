@@ -47,16 +47,29 @@ function Introduce() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [key]);
 
+
+	const tabBarStyle = {
+		//fontSize: 35,
+		activeTab: {
+			borderColor: 'linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet) 1 !important',
+			borderImageSlice: 1,
+		},
+	};
+	
+
 	return (
 		<div className={style.APP}>
+			<br/>
+			<br/><br/>
 			<Tabs
-				className={style.container}
+				// className={style.container}
 				activeKey={key}
 				centered
+				tabBarStyle={tabBarStyle}
 				items={[
 					{
 						key: '1',
-						label: `展覽`,
+						label: '展覽',
 						children: (
 							(firstData.events.length === 0) 
 							? <div className={style.Spin}><Spin /></div>
