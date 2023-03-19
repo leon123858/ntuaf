@@ -45,7 +45,7 @@ const Footer = () => {
 			<div className={(inBreakPoint) ? styles.infoWrapper : styles.lgInfoWrapper}>
 				<div style={{ marginRight: 60 }}>
 					<h3 style={{ fontSize: 16, margin: '0 0 0 0' }}>聯絡我們</h3>
-					<p style={{ fontSize: 14, margin: '8px 0 6px 0' }}>台北市大安區羅斯福路四段1號</p>
+					<p style={{ fontSize: 14, margin: '8px 0 8px 0' }}>台北市大安區羅斯福路四段1號</p>
 					<div style={{ display: 'flex', alignItems: 'center', fontSize: 14, marginBottom: 3 }}>
 						<svg width="23" height="14" viewBox="0 0 26 17" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginRight: 10 }}>
 							<path d="M22.2194 1H3.78063C2.24493 1 1 2.09006 1 3.43471V13.6764C1 15.0211 2.24493 16.1111 3.78063 16.1111H22.2194C23.7551 16.1111 25 15.0211 25 13.6764V3.43471C25 2.09006 23.7551 1 22.2194 1Z" stroke="white" strokeMiterlimit="10"/>

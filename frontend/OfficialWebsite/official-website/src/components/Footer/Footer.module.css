@@ -25,7 +25,7 @@
   position: relative;
   display: flex;
   background-size: 100vw 100vh;
-  padding: 5% 12%;
+  padding: 4% 12%;
   align-items: center;
 }
 
@@ -62,7 +62,9 @@
   align-items: safe center;
   white-space: nowrap;
   position: absolute;
-  right: 15%;
+  right: 12%;
+  top: 30%;
+  bottom: 30%;
 }
 
 .iconGroup {
@@ -76,8 +78,4 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 10px;
   flex-shrink: 0;
-}
-
-hr {
-  border-top: 1px dashed red;
 }
