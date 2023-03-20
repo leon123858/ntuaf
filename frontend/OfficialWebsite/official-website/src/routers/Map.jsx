@@ -1,11 +1,10 @@
 import React from 'react';
-import style from './Map.module.css';
-import { Collapse, Typography, Button, Image , Icon } from 'antd';
+import { Typography } from 'antd';
 import { Link } from 'react-router-dom';
 import { RightOutlined } from '@ant-design/icons';
 
 
-const { Title, Paragraph , Text } = Typography;
+const { Title, Text } = Typography;
 
 function Map() {
 	return (

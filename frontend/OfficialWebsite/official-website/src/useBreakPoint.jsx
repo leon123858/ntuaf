@@ -12,7 +12,7 @@ const BreakPointContext = createContext({
 function BreakPointProvider({ children }) {
 	const [inBreakPoint, setInBreakPoint] = useState(true);
 	const [isLogin, setLogin] = useState(false);
-	const [breakPoint, setBreakPoint] = useState(834);
+	const breakPoint = 834;
 	const width = useWindowWidth();
 
 	useEffect(() => {
