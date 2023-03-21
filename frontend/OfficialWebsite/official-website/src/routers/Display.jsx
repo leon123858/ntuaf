@@ -184,7 +184,9 @@ function Display() {
 			{contextHolder}
 
 			<Image
-				className={style.Image}
+				style={{
+					width: '98.5vw',
+				}}
 				preview={false}
 				src={eventState.image?.banner}
 				fallback='https://fakeimg.pl/1900x500/?text=WrongImage'
