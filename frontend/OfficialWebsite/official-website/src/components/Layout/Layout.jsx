@@ -13,6 +13,10 @@ const LAYOUT_BACKGROUND_IMAGE = {
 		web: '/background/iWebB.png',
 		mobile: '/background/iMobileB.png',
 	},
+	'/': {
+		web: '/background/fWeb.png',
+		mobile: '/background/fMobile.png',
+	},
 };
 
 const getBackgroundImage = (path, inBreakPoint) => {
