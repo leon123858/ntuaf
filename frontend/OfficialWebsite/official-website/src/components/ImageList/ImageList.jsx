@@ -14,8 +14,7 @@ const ImageList = ({ data }) => {
     return ({
         [BlOCK_TYPE.IMAGE_LIST_A]: (
             <div className={style.container}>
-                <p className={style.lgTopic}>{data.topic}</p>
-
+                <p className={style.topic}>{data.topic}</p>
                 <div className={style.lgImgList}>
                     {data.items.map((image, idx) => (
                         <div className={style.lgImgContainer} key={idx}>
@@ -73,7 +72,7 @@ const ImageList = ({ data }) => {
         [BlOCK_TYPE.IMAGE_LIST_D]: (
             <div className={style.container}>
                 <p className={style.topic}>{data.topic}</p>
-
+                
                 <div className={style.imgList2}>
                     {data.items.map((image, idx) =>
                         <div className={style.imgContainer2} key={idx}>

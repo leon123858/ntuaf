@@ -188,8 +188,10 @@ function Display() {
 				preview={false}
 				src={eventState.image?.banner}
 				fallback='https://fakeimg.pl/1900x500/?text=WrongImage'
+				width={'100vw'}
+				height={'25vw'}
 			/>
-			<h1 style={{ textAlign: 'center' }}>{eventState.title}</h1>
+			<h1 style={{ textAlign: 'center', margin: '32px 0' }}>{eventState.title}</h1>
 			<div className={style.APP}>{interpreter.transfer(eventState.blocks)}</div>
 		</>
 	) : (
