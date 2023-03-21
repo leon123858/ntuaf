@@ -36,7 +36,7 @@ const Carousel = () => {
 		(async function (food) {
 			const recentList = (await getRecommendEvents('recent')).map((v, i) => {
 				return {
-					imageUrl: v.image.card,
+					imageUrl: v.image.banner,
 					header: v.text,
 					date: v.date,
 					id: v.id,
@@ -46,7 +46,7 @@ const Carousel = () => {
 			});
 			const alwaysList = (await getRecommendEvents('always')).map((v, i) => {
 				return {
-					imageUrl: v.image.card,
+					imageUrl: v.image.banner,
 					header: v.text,
 					date: v.date,
 					id: v.id,
@@ -73,15 +73,16 @@ const Carousel = () => {
 		return {
 			key: i,
 			content: (
-				<>{
-					inBreakPoint ?
+				<>
+					{inBreakPoint ? (
 						<div className={style.cardWrapper}>
 							<DoubleSideCard
 								FrontCardContent={recentContent[i]}
 								BackCardContent={alwaysContent[i]}
 								flip={flip}
 							></DoubleSideCard>
-						</div> :
+						</div>
+					) : (
 						<div className={style.LgCardWrapper}>
 							<LgDoubleSideCard
 								FrontCardContent={recentContent[i]}
@@ -89,13 +90,12 @@ const Carousel = () => {
 								flip={flip}
 							></LgDoubleSideCard>
 						</div>
-				}
+					)}
 				</>
-
 			),
 		};
-	})
-	
+	});
+
 	const handlers = useSwipeable({
 		onSwipedLeft: () => {
 			setActivateImg(activateImg + 1);
@@ -107,94 +107,122 @@ const Carousel = () => {
 
 	return (
 		<div className={style.carouselComponentWrapper}>
-			{
-				inBreakPoint ?
-					<div className={style.App}>
-						<div className={style.headerWrapper}>
-							<h1
-								className={style.header}
-								onClick={() => {
-									setFlip(false);
-								}}
-								style={flip ? {} : { textDecoration: "underline", textDecorationColor: "black", color: "#DD0E65" }}
-							>
-								近期活動
-							</h1>
-							<h1
-								className={style.header}
-								onClick={() => {
-									setFlip(true);
-								}}
-								style={flip ? { textDecoration: "underline", textDecorationColor: "black", color: "#DD0E65" } : {}}
-							>
-								常設展覽
-							</h1>
-							<div className={style.prev} onClick={moveLeft}>
-								❮
-							</div>
-							<div className={style.next} onClick={moveRight}>
-								❯
-							</div>
-						</div>
-						<div className={style.carouselWrapper} {...handlers}>
-						{
-								slides.length === 0?
-									<></> :
-									<CarouselImport
-										slides={slides}
-										goToSlide={activateImg}
-										offsetRadius={2}
-										animationConfig={{ tension: 120, friction: 14 }}
-									></CarouselImport>
+			{inBreakPoint ? (
+				<div className={style.App}>
+					<div className={style.headerWrapper}>
+						<h1
+							className={style.header}
+							onClick={() => {
+								setFlip(false);
+							}}
+							style={
+								flip
+									? {}
+									: {
+											textDecoration: 'underline',
+											textDecorationColor: 'black',
+											color: '#DD0E65',
+									  }
 							}
-
+						>
+							近期活動
+						</h1>
+						<h1
+							className={style.header}
+							onClick={() => {
+								setFlip(true);
+							}}
+							style={
+								flip
+									? {
+											textDecoration: 'underline',
+											textDecorationColor: 'black',
+											color: '#DD0E65',
+									  }
+									: {}
+							}
+						>
+							常設展覽
+						</h1>
+						<div className={style.prev} onClick={moveLeft}>
+							❮
+						</div>
+						<div className={style.next} onClick={moveRight}>
+							❯
 						</div>
 					</div>
-					:
-					<div className={style.App}>
-						<div className={style.headerWrapper}>
-							<h1
-								className={style.header}
-								onClick={() => {
-									setFlip(false);
-								}}
-								style={flip ? {} : { textDecoration: "underline", textDecorationColor: "black", color: "#DD0E65" }}
-							>
-								近期活動
-							</h1>
-							<h1
-								className={style.header}
-								onClick={() => {
-									setFlip(true);
-								}}
-								style={flip ? { textDecoration: "underline", textDecorationColor: "black", color: "#DD0E65" } : {}}
-							>
-								常設展覽
-							</h1>
-							<div className={style.prev} onClick={moveLeft}>
-								❮
-							</div>
-							<div className={style.next} onClick={moveRight}>
-								❯
-							</div>
-						</div>
-						<div className={style.carouselWrapper} {...handlers}>
-							{
-								slides.length === 0?
-									<></> :
-									<CarouselImport
-										slides={slides}
-										goToSlide={activateImg}
-										offsetRadius={2}
-										animationConfig={{ tension: 120, friction: 14 }}
-									></CarouselImport>
+					<div className={style.carouselWrapper} {...handlers}>
+						{slides.length === 0 ? (
+							<></>
+						) : (
+							<CarouselImport
+								slides={slides}
+								goToSlide={activateImg}
+								offsetRadius={2}
+								animationConfig={{ tension: 120, friction: 14 }}
+							></CarouselImport>
+						)}
+					</div>
+				</div>
+			) : (
+				<div className={style.App}>
+					<div className={style.headerWrapper}>
+						<h1
+							className={style.header}
+							onClick={() => {
+								setFlip(false);
+							}}
+							style={
+								flip
+									? {}
+									: {
+											textDecoration: 'underline',
+											textDecorationColor: 'black',
+											color: '#DD0E65',
+									  }
 							}
-
+						>
+							近期活動
+						</h1>
+						<h1
+							className={style.header}
+							onClick={() => {
+								setFlip(true);
+							}}
+							style={
+								flip
+									? {
+											textDecoration: 'underline',
+											textDecorationColor: 'black',
+											color: '#DD0E65',
+									  }
+									: {}
+							}
+						>
+							常設展覽
+						</h1>
+						<div className={style.prev} onClick={moveLeft}>
+							❮
+						</div>
+						<div className={style.next} onClick={moveRight}>
+							❯
 						</div>
 					</div>
-			}
+					<div className={style.carouselWrapper} {...handlers}>
+						{slides.length === 0 ? (
+							<></>
+						) : (
+							<CarouselImport
+								slides={slides}
+								goToSlide={activateImg}
+								offsetRadius={2}
+								animationConfig={{ tension: 120, friction: 14 }}
+							></CarouselImport>
+						)}
+					</div>
+				</div>
+			)}
 		</div>
-
 	);
 };
 
