@@ -1,5 +1,4 @@
 import styles from './Footer.module.css';
-import Logo from '../Header/Logo';
 import { Image } from 'antd';
 import { BreakPointContext } from '../../useBreakPoint';
 import { useContext } from 'react';
