@@ -26,7 +26,7 @@ const eachTypeDot = {
 	3: <div className={style.dot} style={{ background: 'linear-gradient(90deg, #AAC952 22.22%, #25499D 100%)' }}></div>,
 	4: <div className={style.dot} style={{ background: '#D7497C' }}></div>,
 	5: <div className={style.dot} style={{ background: 'linear-gradient(90deg, #DD0E65 11.11%, #25499D 100%)' }}></div>,
-	6: <div className={style.dot} style={{ background: 'inear-gradient(90deg, #AAC952 27.78%, #DD0E65 111.11%)' }}></div>,
+	6: <div className={style.dot} style={{ background: 'linear-gradient(90deg, #AAC952 27.78%, #DD0E65 111.11%)' }}></div>,
 	7: <div className={style.dot} style={{ background: 'conic-gradient(from 185.19deg at 50% 50%, #AAC952 -35.66deg, #AAC952 0.59deg, #AAC952 34.29deg, #25499D 86.18deg, #25499D 121.94deg, #25499D 153.61deg, #DD0E65 220.2deg, #DD0E65 246.82deg, #DD0E65 274.61deg, #DD0E65 279.01deg, #AAC952 324.34deg, #AAC952 360.59deg)' }}></div>,
 };
 
@@ -36,7 +36,7 @@ const getDayHighlightType = (day, monthType) => {
 	}
 	const tmpArr = monthType[day.month() + 1][`${day.month() + 1}_${day.date()}`];
 	if (tmpArr) {
-		return tmpArr[0] + (tmpArr[1] << 1) + (tmpArr[2] << 2);
+		return tmpArr[0] * 1 + (tmpArr[1] * 2) + (tmpArr[2] * 4);
 	}
 	return HIGHT_LIGHT_TYPE.不用點;
 };

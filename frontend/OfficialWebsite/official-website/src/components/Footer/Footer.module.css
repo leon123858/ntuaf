@@ -19,6 +19,7 @@
   padding: 4% 8% 4% 8%;
   white-space: nowrap;
   justify-content: space-between;
+  background-size: cover;
 }
 
 .lgFooterWrapper {
@@ -27,13 +28,14 @@
   background-size: 100vw 100vh;
   padding: 4% 12%;
   align-items: center;
+  background-size: cover; 
 }
 
 .title {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: 32px;
+  margin-bottom: 12px;
 }
 
 .lgTitle {
@@ -43,8 +45,9 @@
 }
 
 .logo {
-  cursor: pointer;
-  margin-left: 20px;
+  padding: 0.5em;
+	border-radius: 100px;
+	background: #FFFFFF;
 }
 
 .infoWrapper {
@@ -62,7 +65,7 @@
   align-items: safe center;
   white-space: nowrap;
   position: absolute;
-  right: 12%;
+  right: 20%;
   top: 30%;
   bottom: 30%;
 }
@@ -70,12 +73,22 @@
 .iconGroup {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 14px;
+  column-gap: 14px;
+  row-gap: 8px;
 }
 
 .lgIconGroup {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 10px;
+  gap: 14px;
   flex-shrink: 0;
+}
+
+.icon {
+  filter: drop-shadow(4px 4px 100px rgba(0, 0, 0, 0.21)) !important;
+}
+
+.hr {
+  border-top: 0.5px solid white !important;
+  margin-bottom: 12px;
 }

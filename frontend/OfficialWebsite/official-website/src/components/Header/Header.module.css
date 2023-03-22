@@ -45,6 +45,7 @@
 .scrollMenu {
 	border-radius: 100px;
 	box-shadow: 0;
+	border: none;
 }
 
 .iconContainer {
