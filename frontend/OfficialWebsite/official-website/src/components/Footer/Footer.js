@@ -11,7 +11,10 @@ const Footer = () => {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	}
 	return (
-		<footer className={(inBreakPoint) ? styles.footerWrapper : styles.lgFooterWrapper} style={(inBreakPoint) ? {backgroundImage: 'url(../smFooter.png)'} : { backgroundImage: 'url(../lgFooter.png)'}}>
+		<footer 
+			className={(inBreakPoint) ? styles.footerWrapper : styles.lgFooterWrapper} 
+			style={(inBreakPoint) ? {backgroundImage: 'url(../smFooter.png)'} : { backgroundImage: 'url(../lgFooter.png)'}}
+		>
 			<svg 
 				width="40" 
 				height="43" 
