@@ -10,7 +10,7 @@ const transformMembers = async () => {
 		const department = doc.data().department;
 		const docRef = db.collection('Cache/Members/Department').doc(department);
 		await docRef.set({ [key]: [] });
-		console.log('init ', department);
+		// console.log('init ', department);
 	}
 	// fill list
 	await Promise.all(
