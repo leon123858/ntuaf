@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
 import { Card, Typography, Modal, Divider, Image } from 'antd';
-import Heart from '../ArtBox/heart';
+import Heart from '../ArtBox/Heart';
 import styles from './ArtworkList.module.css';
 import styled from 'styled-components';
 const { Paragraph, Text } = Typography;
@@ -111,12 +111,7 @@ export const ArtworkImg = ({ data, heartOnClick }) => {
 					onClick={() => {
 						setOpen(true);
 					}}
-					cover={
-						<img
-							alt='img'
-							src={data.url}
-						/>
-					}
+					cover={<img alt='img' src={data.url} />}
 				>
 					<ArtworkName>{data.artworkName}</ArtworkName>
 					<CreaterName>{data.name}</CreaterName>
@@ -164,11 +159,7 @@ export const ArtworkImg = ({ data, heartOnClick }) => {
 					</div>
 				</div>
 				<br />
-				<Image
-					witdh={'100%'}
-					src={data.url
-					}
-				></Image>
+				<Image witdh={'100%'} src={data.url}></Image>
 				<Text>
 					<br />
 					{data.text}

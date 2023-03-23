@@ -119,7 +119,6 @@ const SideBar = (props) => {
 		},
 	});
 	// const handleClickLink = () => { setActiveSearch(false); };
-
 	return (
 		<Drawer
 			placement='right'

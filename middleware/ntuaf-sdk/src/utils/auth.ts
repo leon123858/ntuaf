@@ -2,7 +2,7 @@ import {
 	signInWithEmailAndPassword,
 	signOut,
 	getRedirectResult,
-	signInWithRedirect,
+	signInWithPopup,
 	GoogleAuthProvider,
 	onAuthStateChanged,
 	User,
@@ -109,7 +109,7 @@ export const subscriptAuthState = (func: (user: User) => void) => {
  * await login()
  */
 export const login = async () => {
-	await signInWithRedirect(authInstance, new GoogleAuthProvider());
+	await signInWithPopup(authInstance, new GoogleAuthProvider());
 };
 
 /**

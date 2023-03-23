@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import style from './Carousel.module.css';
 import { useSwipeable } from 'react-swipeable';
 import { default as CarouselImport } from 'react-spring-3d-carousel';
 import DoubleSideCard from './DoubleSideCard.jsx';
+import LgDoubleSideCard from './LgDoubleSideCard.jsx';
 import { getRecommendEvents } from '@leon123858/ntuaf-sdk';
+import { BreakPointContext } from '../../useBreakPoint';
 
 //info for sample data
 const defaultContent = {
@@ -18,6 +20,8 @@ const Carousel = () => {
 	const [flip, setFlip] = useState(false);
 	const [recentContent, setRecentContent] = useState([]);
 	const [alwaysContent, setAlwaysContent] = useState([]);
+	// const [slides, setSlides] = useState([]);
+	const { inBreakPoint } = useContext(BreakPointContext);
 
 	const moveLeft = () => {
 		setActivateImg(activateImg - 1);
@@ -32,7 +36,7 @@ const Carousel = () => {
 		(async function (food) {
 			const recentList = (await getRecommendEvents('recent')).map((v, i) => {
 				return {
-					imageUrl: v.image.card,
+					imageUrl: v.image.banner,
 					header: v.text,
 					date: v.date,
 					id: v.id,
@@ -42,7 +46,7 @@ const Carousel = () => {
 			});
 			const alwaysList = (await getRecommendEvents('always')).map((v, i) => {
 				return {
-					imageUrl: v.image.card,
+					imageUrl: v.image.banner,
 					header: v.text,
 					date: v.date,
 					id: v.id,
@@ -50,6 +54,7 @@ const Carousel = () => {
 					index: i,
 				};
 			});
+			// console.log("alwaysList", alwaysList)
 			//info make two content lists to the same length
 			const maxContentLength = Math.max(recentList.length, alwaysList.length);
 			const fillList = (list) =>
@@ -61,26 +66,36 @@ const Carousel = () => {
 			setRecentContent(fillList(recentList));
 			setAlwaysContent(fillList(alwaysList));
 		})();
-		console.log('render');
+		// console.log('render');
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
-
-	//info create carousel cards for carousel
 	let slides = recentContent.map((content, i) => {
 		return {
 			key: i,
 			content: (
-				<div className={style.cardWrapper}>
-					<DoubleSideCard
-						FrontCardContent={recentContent[i]}
-						BackCardContent={alwaysContent[i]}
-						flip={flip}
-					></DoubleSideCard>
-				</div>
+				<>
+					{inBreakPoint ? (
+						<div className={style.cardWrapper}>
+							<DoubleSideCard
+								FrontCardContent={recentContent[i]}
+								BackCardContent={alwaysContent[i]}
+								flip={flip}
+							></DoubleSideCard>
+						</div>
+					) : (
+						<div className={style.LgCardWrapper}>
+							<LgDoubleSideCard
+								FrontCardContent={recentContent[i]}
+								BackCardContent={alwaysContent[i]}
+								flip={flip}
+							></LgDoubleSideCard>
+						</div>
+					)}
+				</>
 			),
 		};
 	});
-	//info swipe effect
+
 	const handlers = useSwipeable({
 		onSwipedLeft: () => {
 			setActivateImg(activateImg + 1);
@@ -91,40 +106,122 @@ const Carousel = () => {
 	});
 
 	return (
-		<div className={style.App}>
-			<div className={style.headerWrapper}>
-				<h1
-					className={style.header}
-					onClick={() => {
-						setFlip(false);
-					}}
-				>
-					近期活動
-				</h1>
-				<h1
-					className={style.header}
-					onClick={() => {
-						setFlip(true);
-					}}
-				>
-					常設展覽
-				</h1>
-				<div className={style.prev} onClick={moveLeft}>
-					❮
+		<div className={style.carouselComponentWrapper}>
+			{inBreakPoint ? (
+				<div className={style.App}>
+					<div className={style.headerWrapper}>
+						<h1
+							className={style.header}
+							onClick={() => {
+								setFlip(false);
+							}}
+							style={
+								flip
+									? {}
+									: {
+											textDecoration: 'underline',
+											textDecorationColor: 'black',
+											color: '#DD0E65',
+									  }
+							}
+						>
+							近期活動
+						</h1>
+						<h1
+							className={style.header}
+							onClick={() => {
+								setFlip(true);
+							}}
+							style={
+								flip
+									? {
+											textDecoration: 'underline',
+											textDecorationColor: 'black',
+											color: '#DD0E65',
+									  }
+									: {}
+							}
+						>
+							常設展覽
+						</h1>
+						<div className={style.prev} onClick={moveLeft}>
+							❮
+						</div>
+						<div className={style.next} onClick={moveRight}>
+							❯
+						</div>
+					</div>
+					<div className={style.carouselWrapper} {...handlers}>
+						{slides.length === 0 ? (
+							<></>
+						) : (
+							<CarouselImport
+								slides={slides}
+								goToSlide={activateImg}
+								offsetRadius={2}
+								animationConfig={{ tension: 120, friction: 14 }}
+							></CarouselImport>
+						)}
+					</div>
 				</div>
-				<div className={style.next} onClick={moveRight}>
-					❯
+			) : (
+				<div className={style.App}>
+					<div className={style.headerWrapper}>
+						<h1
+							className={style.header}
+							onClick={() => {
+								setFlip(false);
+							}}
+							style={
+								flip
+									? {}
+									: {
+											textDecoration: 'underline',
+											textDecorationColor: 'black',
+											color: '#DD0E65',
+									  }
+							}
+						>
+							近期活動
+						</h1>
+						<h1
+							className={style.header}
+							onClick={() => {
+								setFlip(true);
+							}}
+							style={
+								flip
+									? {
+											textDecoration: 'underline',
+											textDecorationColor: 'black',
+											color: '#DD0E65',
+									  }
+									: {}
+							}
+						>
+							常設展覽
+						</h1>
+						<div className={style.prev} onClick={moveLeft}>
+							❮
+						</div>
+						<div className={style.next} onClick={moveRight}>
+							❯
+						</div>
+					</div>
+					<div className={style.carouselWrapper} {...handlers}>
+						{slides.length === 0 ? (
+							<></>
+						) : (
+							<CarouselImport
+								slides={slides}
+								goToSlide={activateImg}
+								offsetRadius={2}
+								animationConfig={{ tension: 120, friction: 14 }}
+							></CarouselImport>
+						)}
+					</div>
 				</div>
-			</div>
-
-			<div className={style.carouselWrapper} {...handlers}>
-				<CarouselImport
-					slides={slides}
-					goToSlide={activateImg}
-					offsetRadius={2}
-					animationConfig={{ tension: 120, friction: 14 }}
-				></CarouselImport>
-			</div>
+			)}
 		</div>
 	);
 };

@@ -11,11 +11,7 @@ import {
   Typography,
 } from 'antd';
 import { useState , useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-// import { RcFile, UploadFile, UploadProps } from 'antd/lib/upload';
-// import { UploadRequestOption } from 'rc-upload/lib/interface';
 import { createArtwork, ARTWORK_TYPE } from '@leon123858/ntuaf-sdk';
-// import Artwork from '../../routers/Artwork';
 import { BreakPointContext } from '../../useBreakPoint';
 
 
@@ -38,7 +34,6 @@ const FormDisabledDemo = () => {
     const [previewImage, setPreviewImage] = useState('');
     const [previewTitle, setPreviewTitle] = useState('');
 
-    const navigate = useNavigate();
 	const goBack = () => {
         window.location = '/Artwork';
 	}

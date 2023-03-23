@@ -11,12 +11,6 @@
   margin: 40px 0;
 }
 
-.lgTopic {
-  text-align: center;
-  font-weight: 700;
-  margin: 40px 0;
-}
-
 .imgList {
   display: grid;
   grid-template-columns: 50% 50%;
