@@ -1,13 +1,13 @@
-import styles from "./Card.module.css";
-import { Modal } from "antd";
-import { useState, useContext } from "react";
-import { BreakPointContext } from "../../useBreakPoint";
-import DoubleCard from "./DoubleCard.jsx";
+import styles from './Card.module.css';
+import { Popover, Modal } from 'antd';
+import { useState, useContext } from 'react';
+import { BreakPointContext } from '../../useBreakPoint';
+import DoubleCard from './DoubleCard.jsx';
 
 const Card = ({ content, index }) => {
 	const { inBreakPoint } = useContext(BreakPointContext);
-	const [flip, setFlip] = useState(false)
-	const cardWidth = window.innerWidth / 4 - 30;
+	const [flip, setFlip] = useState(false);
+	// const cardWidth = window.innerWidth / 4 - 30;
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [isHover, setIsHover] = useState(false);
 	const showModal = () => {
@@ -15,15 +15,15 @@ const Card = ({ content, index }) => {
 	};
 	const handleCancel = () => {
 		setIsModalOpen((prev) => false);
-		setFlip(false)
+		setFlip(false);
 	};
 	const handleMouseEnter = () => {
 		setIsHover(true);
-	  };
-	
-	  const handleMouseLeave = () => {
+	};
+
+	const handleMouseLeave = () => {
 		setIsHover(false);
-	  };
+	};
 	return (
 		<>
 			{inBreakPoint ? (
@@ -34,11 +34,10 @@ const Card = ({ content, index }) => {
 							showModal();
 						}}
 						style={{ backgroundImage: `url("${content.iconTextUrl}")` }}
-					>
-					</div>
+					></div>
 					<Modal
-						title="Basic Modal"
-						style={{ pointerEvents: "auto" }}
+						title='Basic Modal'
+						style={{ pointerEvents: 'auto' }}
 						open={isModalOpen}
 						onCancel={handleCancel}
 						width={300}
@@ -51,54 +50,62 @@ const Card = ({ content, index }) => {
 								setFlip={setFlip}
 							/>
 						)}
-
 					>
 						<p>{content.title}</p>
 					</Modal>
 				</div>
 			) : (
-				<div className={styles.lgCardWrapper}	onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} >
-					{
-						isHover ?
-							<>
-								<div
-									className={styles.lgCircle}
-									onClick={() => {
-										showModal();
-									}}
-									style={{ backgroundImage: `url("${content.iconTextShadowUrl}")` }}
-								>
-								</div>					
-								<div
-									className={styles.lgCircle}
-									onClick={() => {
-										showModal();
-									}}
-									style={{ backgroundImage: `url("${content.iconTextShadowUrl}")` }}
-								>
-								</div>
-							</>
-							:
+				<div
+					className={styles.lgCardWrapper}
+					onMouseEnter={handleMouseEnter}
+					onMouseLeave={handleMouseLeave}
+				>
+					{isHover ? (
+						<>
 							<div
 								className={styles.lgCircle}
 								onClick={() => {
-									showModal();
+									isModalOpen ? setIsModalOpen(false) : showModal();
 								}}
-								style={{ backgroundImage: `url("${content.iconTextShadowUrl}")` }}
+								style={{
+									backgroundImage: `url("${content.iconTextShadowUrl}")`,
+								}}
+							></div>
+							<div
+								className={styles.lgCircle}
+								onClick={() => {
+									isModalOpen ? setIsModalOpen(false) : showModal();
+								}}
+								style={{
+									backgroundImage: `url("${content.iconTextShadowUrl}")`,
+								}}
+							></div>
+						</>
+					) : (
+						<div
+							className={styles.lgCircle}
+							onClick={() => {
+								isModalOpen ? setIsModalOpen(false) : showModal();
+							}}
+							style={{ backgroundImage: `url("${content.iconTextShadowUrl}")` }}
+						></div>
+					)}
 
-							>
-							</div>
-					}
-					<Modal
-						title="Basic Modal"
-						style={{
-							pointerEvents: "auto",
-							right: `${1.5 * cardWidth - index * cardWidth}px`,
+					<Popover
+						align={{
+							// points: ['tl', 'tr'], // align top left point of sourceNode with top right point of targetNode
+							offset: [65, 0], // the offset sourceNode by 10px in x and 20px in y,
+							// targetOffset: ['100%', '40%'], // the offset targetNode by 30% of targetNode width in x and 40% of targetNode height in y,
 						}}
-						width={326}
+						overlayStyle={{
+							width: '23%',
+						}}
+						overlayInnerStyle={{
+							backgroundColor: 'transparent',
+							boxShadow: 'none',
+						}}
 						open={isModalOpen}
-						onCancel={handleCancel}
-						modalRender={() => (
+						content={() => (
 							<DoubleCard
 								FrontCardContent={content}
 								BackCardContent={content}
@@ -107,12 +114,7 @@ const Card = ({ content, index }) => {
 								setFlip={setFlip}
 							/>
 						)}
-						flip={flip}
-						setFlip={setFlip}
-						mask={false}
-					>
-						<p>{content.title}</p>
-					</Modal>
+					></Popover>
 				</div>
 			)}
 		</>
