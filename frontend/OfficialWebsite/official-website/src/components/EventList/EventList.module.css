@@ -11,6 +11,13 @@
     border-radius: 8px;
 }
 
+.img2 {
+    width: 92%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
 .eventImg2 {
     position: relative;
     top: -10px;

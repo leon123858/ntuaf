@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState , useContext } from 'react';
 import { Tabs, Spin } from 'antd';
 import { useParams } from 'react-router-dom';
 import style from './Introduce.module.css';
 import EventList from '../components/EventList/EventList';
 import EventListEx from '../components/EventList/EventListEx';
 import { getTabEvents } from '@leon123858/ntuaf-sdk';
+import { BreakPointContext } from '../useBreakPoint';
 
 function Introduce() {
 	const { type = 1 } = useParams();
@@ -12,6 +13,8 @@ function Introduce() {
 	const [firstData, setFirstData] = useState({ events: [] });
 	const [secondData, setSecondData] = useState({ events: [] });
 	const onChange = (e) => setKey(e);
+	const { inBreakPoint } = useContext(BreakPointContext);
+
 
 	useEffect(() => {
 		const curKey = (type === 'exhibition') ? '1' : '2'
@@ -49,7 +52,7 @@ function Introduce() {
 
 
 	const tabBarStyle = {
-		//fontSize: 35,
+		padding: 10,
 		activeTab: {
 			borderColor: 'linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet) 1 !important',
 			borderImageSlice: 1,
@@ -87,7 +90,39 @@ function Introduce() {
 					},
 				]}
 				onChange={onChange}
+				className={style.customTabs}
+				tabBarGutter={ inBreakPoint ? 80 : 150 }
 			></Tabs>
+			<style>{`
+			
+			:where(.css-dev-only-do-not-override-1km3mtt).ant-tabs .ant-tabs-ink-bar {
+				position: absolute;
+				background: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+				pointer-events: none;
+			}
+			:where(.css-dev-only-do-not-override-1km3mtt).ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+				color: #070707;
+				text-shadow: 0 0 0.25px currentcolor;
+			}
+
+			:where(.css-dev-only-do-not-override-1km3mtt).ant-tabs .ant-tabs-tab {
+				position: relative;
+				display: inline-flex;
+				align-items: center;
+				padding: 12px 0;
+				font-family: Noto Sans CJK TC;
+				font-style: normal;
+				font-weight: 500;
+				font-size: 18px;
+				line-height: 27px;
+				background: transparent;
+				border: 0;
+				outline: none;
+				cursor: pointer;
+			}
+
+			`
+			}</style>
 		</div>
 	);
 }

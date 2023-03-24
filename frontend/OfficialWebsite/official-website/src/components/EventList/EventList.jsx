@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext , useState } from 'react';
 import { Card, Tag, Image } from 'antd';
 import style from './EventList.module.css';
 import { BreakPointContext } from '../../useBreakPoint';
@@ -12,49 +12,62 @@ const EventImg = ({ tagName, imgUrl, inBreakPoint }) => {
 
 	console.log(tagName);
 	const tagStyle = {
-		borderRadius: '20px',
-		backgroundColor: '#25499D',
-		color: '#FFFFFF',
-		padding: '13px 8px',
-		fontSize : 20,
+		borderRadius: '15px',
+		backgroundColor: '#FFFFFF',
+		color: '#25499D',
+		padding: '8px 10px',
+		fontSize : 14,
 		fontWeight: 'bold',
 	};
 
 	const tagStyle2 = {
-		borderRadius: '20px',
-		backgroundColor: '#A9CF59',
-		color: '#FFFFFF',
-		padding: '13px 8px',
-		fontSize : 20,
+		borderRadius: '15px',
+		backgroundColor: '#FFFFFF',
+		color: '#A9CF59',
+		padding: '8px 10px',
+		fontSize : 14,
 		fontWeight: 'bold',
+		fontfamily: 'Noto Sans CJK TC',
 	};
 
 	return (
 		<div className={inBreakPoint ? style.eventImg1 : style.eventImg2}>
-			<div className={`${style.img} ${style.flexCenter}`}>
+			<div className={inBreakPoint ? `${style.img} ${style.flexCenter}`: `${style.img2} ${style.flexCenter}`}>
 				<Image
 					src={imgUrl}
 					fallback='https://images.squarespace-cdn.com/content/v1/5452d441e4b0c188b51fef1a/1615326541809-TW01PVTOJ4PXQUXVRLHI/male-orange-tabby-cat.jpg?format=600w'
 				/>
 			</div>
 			<div className={style.tag}>
-				<Tag style={ tagName==='開幕式'? tagStyle : tagStyle2 }>{tagName}</Tag>
+				<Tag style={ tagName==='講座'||tagName==='工作坊'? tagStyle2 : tagStyle }>{tagName}</Tag>
 			</div>
 		</div>
 	);
 };
 const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
+	const [isHovered, setIsHovered] = useState(false);
+
+	const handleMouseEnter = () => {
+		setIsHovered(true);
+	};
+	
+	const handleMouseLeave = () => {
+		setIsHovered(false);
+	};
 	const handleOnClick = (id) => window.open(`/display/${id}`, '_blank');
 	return (
+
 		<Card
 			hoverable
-			style={{ width: 320, position: 'relative' , boxShadow: '0px 0px 8px rgba(0, 0, 0, 0.5)' }}
+			style={{ width: 320, position: 'relative' , boxShadow: '0px 0px 8px rgba(0, 0, 0, 0.5)' , background : !isHovered || (tagName==='講座'||tagName==='工作坊')? '#FFFFFF' : '#25499D'}}
 			cover={
+				<div style={{ height: '150px' }}>
 				<EventImg
 					tagName={tagName}
 					imgUrl={imgUrl}
 					inBreakPoint={inBreakPoint}
 				/>
+				</div>
 			}
 			onClick={(e) => {
 				if (e.target.className === 'ant-image-mask') {
@@ -62,8 +75,10 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 				}
 				handleOnClick(id);
 			}}
+			onMouseEnter={handleMouseEnter}
+     		onMouseLeave={handleMouseLeave}
 		>
-			<Meta title={title} description={date} className={style.meta} />
+			<Meta title={<span style={{ fontSize: '20px' }}>{title}</span>} description={date} className={style.meta} />
 		</Card>
 	);
 };
@@ -94,7 +109,10 @@ function EventList({ data }) {
 						))}
 				</div>
 			</div>
-			<Title style={{ textAlign: 'center' }}> 講座/工作坊 </Title>
+			<br/>
+			<br/>
+			<Title style={{ textAlign: 'center' , fontSize : '20px' }}> 講座  /  工作坊 </Title>
+			<br/>
 			<div className={`${style.flexCenter} ${style.container}`}>
 				<div className={inBreakPoint ? style.grid : style.lgGrid}>
 					{data.events
