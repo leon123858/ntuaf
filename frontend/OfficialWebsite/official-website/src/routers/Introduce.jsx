@@ -14,7 +14,7 @@ function Introduce() {
 	const onChange = (e) => setKey(e);
 
 	useEffect(() => {
-		const curKey = (type === 'exhibition') ? '1' : '2'
+		const curKey = type === 'exhibition' ? '1' : '2';
 		setKey(curKey);
 	}, [type]);
 
@@ -47,20 +47,20 @@ function Introduce() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [key]);
 
-
 	const tabBarStyle = {
 		//fontSize: 35,
 		activeTab: {
-			borderColor: 'linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet) 1 !important',
+			borderColor:
+				'linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet) 1 !important',
 			borderImageSlice: 1,
 		},
 	};
-	
 
 	return (
 		<div className={style.APP}>
-			<br/>
-			<br/><br/>
+			<br />
+			<br />
+			<br />
 			<Tabs
 				// className={style.container}
 				activeKey={key}
@@ -70,20 +70,34 @@ function Introduce() {
 					{
 						key: '1',
 						label: '展覽',
-						children: (
-							(firstData.events.length === 0) 
-							? <div className={style.Spin}><Spin /></div>
-							: <EventListEx data={firstData} />
-						),
+						children:
+							firstData.events.length === 0 ? (
+								<div className={style.Spin}>
+									<Spin
+										size='large'
+										indicator={<img src={'/logo512.png'} alt='loading...' />}
+										tip={<span>努力加載中請稍候...</span>}
+									></Spin>
+								</div>
+							) : (
+								<EventListEx data={firstData} />
+							),
 					},
 					{
 						key: '2',
 						label: `活動`,
-						children: (
-							(secondData.events.length === 0) 
-							? <div className={style.Spin}><Spin /></div>
-							: <EventList data={secondData} />
-						),
+						children:
+							secondData.events.length === 0 ? (
+								<div className={style.Spin}>
+									<Spin
+										size='large'
+										indicator={<img src={'/logo512.png'} alt='loading...' />}
+										tip={<span>努力加載中請稍候...</span>}
+									></Spin>
+								</div>
+							) : (
+								<EventList data={secondData} />
+							),
 					},
 				]}
 				onChange={onChange}

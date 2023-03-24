@@ -193,13 +193,19 @@ function Display() {
 				width={'100vw'}
 				height={'25vw'}
 			/>
-			<h1 style={{ textAlign: 'center', margin: '32px 0' }}>{eventState.title}</h1>
+			<h1 style={{ textAlign: 'center', margin: '32px 0' }}>
+				{eventState.title}
+			</h1>
 			<div className={style.APP}>{interpreter.transfer(eventState.blocks)}</div>
 		</>
 	) : (
 		<div className={style.Spin}>
 			{contextHolder}
-			<Spin></Spin>
+			<Spin
+				size='large'
+				indicator={<img src={'/logo512.png'} alt='loading...' />}
+				tip={<span>努力加載中請稍候...</span>}
+			></Spin>
 		</div>
 	);
 }
