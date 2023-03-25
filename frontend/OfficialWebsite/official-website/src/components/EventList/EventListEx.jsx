@@ -12,9 +12,9 @@ const EventImg = ({ tagName, imgUrl, inBreakPoint , isHovered }) => {
 		borderRadius: '15px',
 		backgroundColor: '#FFFFFF',
 		color: '#D7497C',
-		padding: '8px 15px',
-		fontSize : 14,
-		fontWeight: 'bold',
+		padding: '7px 12px',
+		fontSize : 12,
+		letterSpacing: '2px',
 	};
 
 	const tagStyle2 = {
@@ -22,9 +22,9 @@ const EventImg = ({ tagName, imgUrl, inBreakPoint , isHovered }) => {
 		borderRadius: '15px',
 		backgroundColor: '#D7497C',
 		color: '#FFFFFF',
-		padding: '8px 15px',
-		fontSize : 14,
-		fontWeight: 'bold',
+		padding: '7px 12px',
+		fontSize : 12,
+		letterSpacing: '2px',
 	};
 
 	return (
@@ -57,7 +57,7 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 	return (
 		<Card
 			hoverable
-			style={{ width: 320, position: 'relative' , boxShadow: '4px 4px 15px rgba(0 0 0/21%)', background : !isHovered? '#FFFFFF' : '#D7497C' , marginBottom : '20px' }}
+			style={{ width: 320, position: 'relative' , boxShadow: '4px 4px 15px rgba(0 0 0/21%)', background : !isHovered? '#FFFFFF' : '#D7497C' , marginBottom : '30px', borderRadius : '15px' }}
 			cover={
 				<div style={{ height : '150px' }}>
 				<EventImg
@@ -78,7 +78,7 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 			onMouseEnter={handleMouseEnter}
      		onMouseLeave={handleMouseLeave}
 		>
-			<Meta title={<span style={{ fontSize: '18px' , fontWeight : '500' ,color : isHovered? '#FFFFFF': '#D7497C' }}>{title}</span>}  description={<span style={{ fontSize: '14px' , color : isHovered? '#FFFFFF': '#D7497C' }}>{date}</span>} className={style.meta} />
+			<Meta title={<span style={{ fontSize: '16px' , fontWeight : '450' ,color : isHovered? '#FFFFFF': '#D7497C' , letterSpacing: '2px' }}>{title}</span>}  description={<span style={{ fontSize: '14px' , color : isHovered? '#FFFFFF': '#D7497C' , letterSpacing: '2px' }}>{date}</span>} className={style.meta} />
 		</Card>
 		
 	);

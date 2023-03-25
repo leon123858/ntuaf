@@ -7,7 +7,7 @@ import EventList from '../components/EventList/EventList';
 import EventListEx from '../components/EventList/EventListEx';
 import { getTabEvents } from '@leon123858/ntuaf-sdk';
 import { BreakPointContext } from '../useBreakPoint';
-import './custom.css';
+import './Introduce.css';
 
 function Introduce() {
 	const { type = 1 } = useParams();
@@ -55,9 +55,11 @@ function Introduce() {
 
 	const tabBarStyle = {
 		padding: 10,
+		fontSize : '50px',
 		activeTab: {
 			color : 'gray',
 		},
+		borderStyle : 'none',
 	};
 	
 
@@ -65,6 +67,7 @@ function Introduce() {
 		<div className={style.APP}>
 			<br/>
 			<br/><br/>
+			<br/>
 			<Tabs
 				// className={style.container}
 				activeKey={key}

@@ -33,17 +33,19 @@
     position: absolute;
     background: linear-gradient(to left, rgba(169, 207, 89, 1), rgba(231, 50, 115, 1), rgba(37, 73, 157, 1));;
     pointer-events: none;
-    width: 55px ;
+    width: 53px !important;
+    height: 1.5px !important;
+    //margin-left: 0.5%;
 }
 .ant-tabs .ant-tabs-tab {
     position: relative;
     display: inline-flex;
     align-items: center;
-    padding: 12px 0;
+    padding: 8px 0;
     font-family: Noto Sans CJK TC;
     font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
+    font-weight: 425;
+    font-size: 16px;
     line-height: 27px;
     background: transparent;
     border: 0;

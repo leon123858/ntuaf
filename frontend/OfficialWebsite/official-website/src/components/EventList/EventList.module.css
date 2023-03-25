@@ -1,7 +1,9 @@
 .tag {
     position: relative;
-    bottom: 43px;
+    bottom: 40px;
     left: 5px;
+    textAlign : center;
+    fontWeight: 400 ;
 }
 
 .img {
@@ -42,12 +44,14 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
+    grid-column-gap: 80px
 }
 
 .grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 40px;
+    grid-column-gap: 20px;
 }
 
 .meta {

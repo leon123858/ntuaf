@@ -16,18 +16,18 @@ const EventImg = ({ tagName, imgUrl, inBreakPoint, isHovered }) => {
 		borderRadius: '15px',
 		backgroundColor: '#25499D',
 		color: '#FFFFFF',
-		padding: '8px 10px',
-		fontSize : 14,
-		fontWeight: 'bold',
+		padding: '7px 12px',
+		fontSize : 12,
+		letterSpacing: '2px' 
 	};
 	const tagStyle = {
 		borderStyle : 'none',
 		borderRadius: '15px',
 		backgroundColor: '#FFFFFF',
 		color: '#25499D',
-		padding: '8px 10px',
-		fontSize : 14,
-		fontWeight: 'bold',
+		padding: '7px 12px',
+		fontSize : 12,
+		letterSpacing: '2px' 
 	};
 
 	const tagStyle22 = {
@@ -35,10 +35,10 @@ const EventImg = ({ tagName, imgUrl, inBreakPoint, isHovered }) => {
 		borderRadius: '15px',
 		backgroundColor: '#A9CF59',
 		color: '#FFFFFF',
-		padding: '8px 10px',
-		fontSize : 14,
-		fontWeight: 'bold',
+		padding: '7px 12px',
+		fontSize : 12,
 		fontfamily: 'Noto Sans CJK TC',
+		letterSpacing: '2px' 
 	};
 
 	const tagStyle2 = {
@@ -46,10 +46,10 @@ const EventImg = ({ tagName, imgUrl, inBreakPoint, isHovered }) => {
 		borderRadius: '15px',
 		backgroundColor: '#FFFFFF',
 		color: '#A9CF59',
-		padding: '8px 10px',
-		fontSize : 14,
-		fontWeight: 'bold',
+		padding: '7px 12px',
+		fontSize : 12,
 		fontfamily: 'Noto Sans CJK TC',
+		letterSpacing: '2px' 
 	};
 
 	return (
@@ -81,7 +81,7 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 
 		<Card
 			hoverable
-			style={{ width: 320, position: 'relative' , boxShadow: '4px 4px 15px rgba(0 0 0/21%)' , background : !isHovered ? '#FFFFFF' : (tagName==='講座'||tagName==='工作坊')? '#A9CF59' : '#25499D' , marginBottom : '20px' }}
+			style={{ width: 320, position: 'relative' , boxShadow: '4px 4px 15px rgba(0 0 0/21%)' , background : !isHovered ? '#FFFFFF' : (tagName==='講座'||tagName==='工作坊')? '#A9CF59' : '#25499D' , marginBottom : '30px' }}
 			cover={
 				<div style={{ height: '150px' }}>
 				<EventImg
@@ -101,7 +101,7 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 			onMouseEnter={handleMouseEnter}
      		onMouseLeave={handleMouseLeave}
 		>
-			<Meta title={<span style={{ fontSize: '18px' , color : isHovered? '#FFFFFF': (tagName==='講座'||tagName==='工作坊')? '#A9CF59' : '#25499D' }}>{title}</span>} description={<span style={{ fontSize: '14px' , color : isHovered? '#FFFFFF': (tagName==='講座'||tagName==='工作坊')? '#A9CF59' : '#25499D' }}>{date}</span>} className={style.meta} />
+			<Meta title={<span style={{ fontSize: '16px' , fontWeight : '450', color : isHovered? '#FFFFFF': (tagName==='講座'||tagName==='工作坊')? '#A9CF59' : '#25499D' , letterSpacing: '2px' }}>{title}</span>} description={<span style={{ fontSize: '14px' , color : isHovered? '#FFFFFF': (tagName==='講座'||tagName==='工作坊')? '#A9CF59' : '#25499D' , letterSpacing: '2px' }}>{date}</span>} className={style.meta} />
 		</Card>
 	);
 };
@@ -134,7 +134,7 @@ function EventList({ data }) {
 			</div>
 			<br/>
 			<br/>
-			<Title style={{ textAlign: 'center' , fontSize : '20px' }}> 講座  /  工作坊 </Title>
+			<Title style={{ textAlign: 'center' , fontSize : '16px', letterSpacing: '2px' ,fontWeight : '400' }}> 講座  /  工作坊 </Title>
 			<br/>
 			<div className={`${style.flexCenter} ${style.container}`}>
 				<div className={inBreakPoint ? style.grid : style.lgGrid}>
