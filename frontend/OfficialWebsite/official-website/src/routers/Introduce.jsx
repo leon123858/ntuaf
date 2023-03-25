@@ -1,11 +1,13 @@
 import React, { useEffect, useState , useContext } from 'react';
 import { Tabs, Spin } from 'antd';
+
 import { useParams } from 'react-router-dom';
 import style from './Introduce.module.css';
 import EventList from '../components/EventList/EventList';
 import EventListEx from '../components/EventList/EventListEx';
 import { getTabEvents } from '@leon123858/ntuaf-sdk';
 import { BreakPointContext } from '../useBreakPoint';
+import './custom.css';
 
 function Introduce() {
 	const { type = 1 } = useParams();
@@ -92,52 +94,7 @@ function Introduce() {
 				className={style.customTabs}
 				tabBarGutter={ inBreakPoint ? 80 : 150 }
 			></Tabs>
-			<style>{`
 			
-			:where(.css-dev-only-do-not-override-1km3mtt).ant-tabs .ant-tabs-ink-bar {
-				position: absolute;
-				background: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
-				pointer-events: none;
-			}
-			:where(.css-dev-only-do-not-override-1km3mtt).ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-				color: #070707;
-				text-shadow: 0 0 0.25px currentcolor;
-			}
-
-			.ant-tabs .ant-tabs-tab {
-				position: relative;
-				display: inline-flex;
-				align-items: center;
-				padding: 12px 0;
-				font-family: Noto Sans CJK TC;
-				font-style: normal;
-				font-weight: 500;
-				font-size: 18px;
-				line-height: 27px;
-				background: transparent;
-				border: 0;
-				outline: none;
-				cursor: pointer;
-				letter-spacing: 20px;
-			}
-			.ant-tabs .ant-tabs-nav .ant-tabs-tab-active {
-				color: #8080;
-			}
-
-			.ant-tabs {
-				box-sizing: border-box;
-				margin: 0;
-				padding: 0;
-				color: rgb(0 0 0 / 58%);
-				font-size: 14px;
-				line-height: 1.5714285714285714;
-				list-style: none;
-				font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';
-				display: flex;
-			}
-
-			`
-			}</style>
 		</div>
 	);
 }

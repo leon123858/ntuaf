@@ -23,3 +23,8 @@
 .ant-tabs .ant-tabs-nav .ant-tabs-tab-active {
 	color: #8080;
 }
+:.ant-tabs .ant-tabs-ink-bar {
+	position: center;
+	background: linear-gradient(to left, rgba(169, 207, 89, 1), rgba(231, 50, 115, 1), rgba(37, 73, 157, 1));;
+	pointer-events: none;
+}

@@ -11,7 +11,7 @@ const { Meta } = Card;
 const EventImg = ({ tagName, imgUrl, inBreakPoint, isHovered }) => {
 
 	console.log(tagName);
-	const tagStyle = {
+	const tagStyle12 = {
 		borderStyle : 'none',
 		borderRadius: '15px',
 		backgroundColor: '#25499D',
@@ -20,7 +20,7 @@ const EventImg = ({ tagName, imgUrl, inBreakPoint, isHovered }) => {
 		fontSize : 14,
 		fontWeight: 'bold',
 	};
-	const tagStyle12 = {
+	const tagStyle = {
 		borderStyle : 'none',
 		borderRadius: '15px',
 		backgroundColor: '#FFFFFF',
@@ -30,7 +30,7 @@ const EventImg = ({ tagName, imgUrl, inBreakPoint, isHovered }) => {
 		fontWeight: 'bold',
 	};
 
-	const tagStyle2 = {
+	const tagStyle22 = {
 		borderStyle : 'none',
 		borderRadius: '15px',
 		backgroundColor: '#A9CF59',
@@ -41,7 +41,7 @@ const EventImg = ({ tagName, imgUrl, inBreakPoint, isHovered }) => {
 		fontfamily: 'Noto Sans CJK TC',
 	};
 
-	const tagStyle22 = {
+	const tagStyle2 = {
 		borderStyle : 'none',
 		borderRadius: '15px',
 		backgroundColor: '#FFFFFF',
