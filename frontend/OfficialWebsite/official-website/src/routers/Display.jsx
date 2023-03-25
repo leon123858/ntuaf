@@ -98,14 +98,16 @@ const block2element = {
 	},
 	[BlOCK_TYPE.IMAGE_LIST_A]: ({ title, items, key }) => {
 		return (
-			<ImageList
-				key={key}
-				data={{
-					type: [BlOCK_TYPE.IMAGE_LIST_A],
-					topic: title,
-					items: items,
-				}}
-			/>
+			<>
+				<ImageList
+					key={key}
+					data={{
+						type: [BlOCK_TYPE.IMAGE_LIST_A],
+						topic: title,
+						items: items,
+					}}
+				/>
+			</>
 		);
 	},
 	[BlOCK_TYPE.IMAGE_LIST_B]: ({ title, url, items, text, key }) => {
@@ -141,7 +143,7 @@ const block2element = {
 			<ImageList
 				key={key}
 				data={{
-					type: [BlOCK_TYPE.IMAGE_LIST_A],
+					type: [BlOCK_TYPE.IMAGE_LIST_D],
 					topic: title,
 					items: items,
 				}}
