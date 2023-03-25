@@ -53,6 +53,7 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 					tagName={tagName}
 					imgUrl={imgUrl}
 					inBreakPoint={inBreakPoint}
+					style={{ boxShadow: '0px 0px 8px rgba(0, 0, 0, 0.5)' }}
 				/>
 				</div>
 			}
@@ -65,7 +66,7 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 			onMouseEnter={handleMouseEnter}
      		onMouseLeave={handleMouseLeave}
 		>
-			<Meta title={<span style={{ fontSize: '20px' }}>{title}</span>}  description={date} className={style.meta} />
+			<Meta title={<span style={{ fontSize: '20px' , color : isHovered? '#FFFFFF': '#D7497C' }}>{title}</span>}  description={<span style={{ color : isHovered? '#FFFFFF': '#D7497C' }}>{date}</span>} className={style.meta} />
 		</Card>
 		
 	);
@@ -91,7 +92,6 @@ function EventList({ data }) {
 					</div>
 				))}
 			</div>
-			
 		</div>
 	);
 }

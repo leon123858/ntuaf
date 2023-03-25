@@ -9,6 +9,7 @@
     aspect-ratio: 16 / 9;
     overflow: hidden;
     border-radius: 8px;
+    box-Shadow: 4px 4px 8px rgb(0 0 0 / 50%);
 }
 
 .img2 {
@@ -16,17 +17,18 @@
     aspect-ratio: 16 / 9;
     overflow: hidden;
     border-radius: 8px;
+    box-Shadow: 4px 4px 8px rgb(0 0 0 / 50%);
 }
 
 .eventImg2 {
     position: relative;
-    top: -10px;
-    left: 10px;
+    top: -20px;
+    left: 5px;
 }
 .eventImg1 {
     position: relative;
-    top: -20px;
-    left: 2.5%;
+    top: -30px;
+    left: 1.5%;
     width: 95% !important;
 }
 
