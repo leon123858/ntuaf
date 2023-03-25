@@ -7,7 +7,8 @@ const Video = ({url, text}) => {
 	function insertAtIndex(str, substring, index) {
 		return str.slice(0, index) + substring + str.slice(index);
 	}
-
+	
+	url = "https://www.youtube.com/jyRCXdu7W-0"
 	const str = "https://www.youtube.com/";
 	const video = insertAtIndex(url, "embed/", str.length);
 	console.log("url after changed =",video);

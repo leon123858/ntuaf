@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext , useState } from 'react';
 import { Card, Tag, Image } from 'antd';
 import style from './EventList.module.css';
 import { BreakPointContext } from '../../useBreakPoint';
@@ -8,53 +8,89 @@ const { Title } = Typography;
 
 const { Meta } = Card;
 
-const EventImg = ({ tagName, imgUrl, inBreakPoint }) => {
+const EventImg = ({ tagName, imgUrl, inBreakPoint, isHovered }) => {
 
 	console.log(tagName);
-	const tagStyle = {
-		borderRadius: '20px',
+	const tagStyle12 = {
+		borderStyle : 'none',
+		borderRadius: '15px',
 		backgroundColor: '#25499D',
 		color: '#FFFFFF',
-		padding: '13px 8px',
-		fontSize : 20,
-		fontWeight: 'bold',
+		padding: '7px 12px',
+		fontSize : 12,
+		letterSpacing: '2px' 
+	};
+	const tagStyle = {
+		borderStyle : 'none',
+		borderRadius: '15px',
+		backgroundColor: '#FFFFFF',
+		color: '#25499D',
+		padding: '7px 12px',
+		fontSize : 12,
+		letterSpacing: '2px' 
+	};
+
+	const tagStyle22 = {
+		borderStyle : 'none',
+		borderRadius: '15px',
+		backgroundColor: '#A9CF59',
+		color: '#FFFFFF',
+		padding: '7px 12px',
+		fontSize : 12,
+		fontfamily: 'Noto Sans CJK TC',
+		letterSpacing: '2px' 
 	};
 
 	const tagStyle2 = {
-		borderRadius: '20px',
-		backgroundColor: '#A9CF59',
-		color: '#FFFFFF',
-		padding: '13px 8px',
-		fontSize : 20,
-		fontWeight: 'bold',
+		borderStyle : 'none',
+		borderRadius: '15px',
+		backgroundColor: '#FFFFFF',
+		color: '#A9CF59',
+		padding: '7px 12px',
+		fontSize : 12,
+		fontfamily: 'Noto Sans CJK TC',
+		letterSpacing: '2px' 
 	};
 
 	return (
 		<div className={inBreakPoint ? style.eventImg1 : style.eventImg2}>
-			<div className={`${style.img} ${style.flexCenter}`}>
+			<div className={inBreakPoint ? `${style.img} ${style.flexCenter}`: `${style.img2} ${style.flexCenter}`}>
 				<Image
 					src={imgUrl}
 					fallback='https://images.squarespace-cdn.com/content/v1/5452d441e4b0c188b51fef1a/1615326541809-TW01PVTOJ4PXQUXVRLHI/male-orange-tabby-cat.jpg?format=600w'
 				/>
 			</div>
 			<div className={style.tag}>
-				<Tag style={ tagName==='開幕式'? tagStyle : tagStyle2 }>{tagName}</Tag>
+				<Tag style={ tagName==='講座'||tagName==='工作坊'? isHovered? tagStyle2 :tagStyle22 : isHovered? tagStyle : tagStyle12 }>{tagName}</Tag>
 			</div>
 		</div>
 	);
 };
 const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
+	const [isHovered, setIsHovered] = useState(false);
+
+	const handleMouseEnter = () => {
+		setIsHovered(true);
+	};
+	
+	const handleMouseLeave = () => {
+		setIsHovered(false);
+	};
 	const handleOnClick = (id) => window.open(`/display/${id}`, '_blank');
 	return (
+
 		<Card
 			hoverable
-			style={{ width: 320, position: 'relative' , boxShadow: '0px 0px 8px rgba(0, 0, 0, 0.5)' }}
+			style={{ width: 320, position: 'relative' , boxShadow: '4px 4px 15px rgba(0 0 0/21%)' , background : !isHovered ? '#FFFFFF' : (tagName==='講座'||tagName==='工作坊')? '#A9CF59' : '#25499D' , marginBottom : '30px' }}
 			cover={
+				<div style={{ height: '150px' }}>
 				<EventImg
 					tagName={tagName}
 					imgUrl={imgUrl}
 					inBreakPoint={inBreakPoint}
+					isHovered={isHovered}
 				/>
+				</div>
 			}
 			onClick={(e) => {
 				if (e.target.className === 'ant-image-mask') {
@@ -62,8 +98,10 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 				}
 				handleOnClick(id);
 			}}
+			onMouseEnter={handleMouseEnter}
+     		onMouseLeave={handleMouseLeave}
 		>
-			<Meta title={title} description={date} className={style.meta} />
+			<Meta title={<span style={{ fontSize: '16px' , fontWeight : '450', color : isHovered? '#FFFFFF': (tagName==='講座'||tagName==='工作坊')? '#A9CF59' : '#25499D' , letterSpacing: '2px' }}>{title}</span>} description={<span style={{ fontSize: '14px' , color : isHovered? '#FFFFFF': (tagName==='講座'||tagName==='工作坊')? '#A9CF59' : '#25499D' , letterSpacing: '2px' }}>{date}</span>} className={style.meta} />
 		</Card>
 	);
 };
@@ -94,7 +132,10 @@ function EventList({ data }) {
 						))}
 				</div>
 			</div>
-			<Title style={{ textAlign: 'center' }}> 講座/工作坊 </Title>
+			<br/>
+			<br/>
+			<Title style={{ textAlign: 'center' , fontSize : '16px', letterSpacing: '2px' ,fontWeight : '400' }}> 講座  /  工作坊 </Title>
+			<br/>
 			<div className={`${style.flexCenter} ${style.container}`}>
 				<div className={inBreakPoint ? style.grid : style.lgGrid}>
 					{data.events

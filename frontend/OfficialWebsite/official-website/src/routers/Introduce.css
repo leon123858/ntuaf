@@ -1,0 +1,78 @@
+.Spin {
+	margin-bottom: 20px;
+	padding: 30px 50px;
+	text-align: center;
+	border-radius: 4px;
+}
+
+.container{
+	borderBottom: 2px solid;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.customTabs .ant-tabs-tab {
+    //font-size: 26px  !important ;/* set the desired font size here */
+}
+
+.ant-tabs-ink-bar {
+	background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+}
+.ant-tabs-tab-btn{
+	letter-spacing: 3px;
+}
+.ant-tabs .ant-tabs-nav .ant-tabs-tab-active {
+	color: #8080;
+}
+:.ant-tabs .ant-tabs-ink-bar {
+	position: center;
+	background: linear-gradient(to left, rgba(169, 207, 89, 1), rgba(231, 50, 115, 1), rgba(37, 73, 157, 1));;
+	pointer-events: none;
+}
+
+.ant-tabs .ant-tabs-ink-bar {
+    position: absolute;
+    background: linear-gradient(to left, rgba(169, 207, 89, 1), rgba(231, 50, 115, 1), rgba(37, 73, 157, 1));;
+    pointer-events: none;
+    width: 53px !important;
+    height: 1.5px !important;
+    //margin-left: 0.5%;
+}
+.ant-tabs .ant-tabs-tab {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 0;
+    font-family: Noto Sans CJK TC;
+    font-style: normal;
+    font-weight: 425;
+    font-size: 16px;
+    line-height: 27px;
+    background: transparent;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    letter-spacing: 30px;
+}
+
+:where(.css-dev-only-do-not-override-mxhywb).ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #000000;
+    text-shadow: 0 0 0.25px currentcolor;
+}
+
+.ant-tabs-tab-btn {
+    letter-spacing: 18px;
+    //color: #000000;
+}
+
+
+:where(.css-dev-only-do-not-override-mxhywb).ant-tabs {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: rgb(0 0 0 / 40%);
+    font-size: 14px;
+    line-height: 1.5714285714285714;
+    list-style: none;
+    font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';
+    display: flex;
+}
