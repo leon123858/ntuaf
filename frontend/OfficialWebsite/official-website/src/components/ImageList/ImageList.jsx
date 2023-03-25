@@ -39,14 +39,7 @@ const ImageList = ({ data }) => {
         [BlOCK_TYPE.IMAGE_LIST_C]: (
             <div className={style.container}>
                 <p className={style.topic}>{data.url}</p>
-                <h1>{data.title}</h1>
-                <TextBox
-                    text={{
-                        type: BlOCK_TYPE.TEXT_C,
-                        title: "活動介紹",
-                        text: data?.text,
-                    }}
-                />
+                {/* <h1>{data.title}</h1> */}
                 <div className={(inBreakPoint) ? style.picBox1 : style.lgPicBox1}>
                     {
                         data.items.map((image, idx) => (
@@ -78,7 +71,7 @@ const ImageList = ({ data }) => {
                         <div className={style.imgContainer2} key={idx}>
                             <img alt='team img' src={image.url} className={style.img} />
                             <p className={style.imgName2}>
-                                / {image.name}
+                                {image.name}
                             </p>
                         </div>
                     )}
