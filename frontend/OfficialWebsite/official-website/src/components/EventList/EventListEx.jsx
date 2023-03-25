@@ -46,7 +46,7 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 	return (
 		<Card
 			hoverable
-			style={{ width: 320, position: 'relative' , boxShadow: '0px 0px 8px rgba(0, 0, 0, 0.5)', background : !isHovered? '#FFFFFF' : '#D7497C'}}
+			style={{ width: 320, position: 'relative' , boxShadow: '0px 0px 8px rgba(0, 0, 0, 0.5)', background : !isHovered? '#FFFFFF' : '#D7497C' , marginBottom : '20px' }}
 			cover={
 				<div style={{ height : '150px' }}>
 				<EventImg

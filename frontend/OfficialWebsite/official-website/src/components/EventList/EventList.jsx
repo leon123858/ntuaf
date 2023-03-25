@@ -59,7 +59,7 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 
 		<Card
 			hoverable
-			style={{ width: 320, position: 'relative' , boxShadow: '0px 0px 8px rgba(0, 0, 0, 0.5)' , background : !isHovered ? '#FFFFFF' : (tagName==='講座'||tagName==='工作坊')? '#A9CF59' : '#25499D' }}
+			style={{ width: 320, position: 'relative' , boxShadow: '0px 0px 8px rgba(0, 0, 0, 0.5)' , background : !isHovered ? '#FFFFFF' : (tagName==='講座'||tagName==='工作坊')? '#A9CF59' : '#25499D' , marginBottom : '20px' }}
 			cover={
 				<div style={{ height: '150px' }}>
 				<EventImg
