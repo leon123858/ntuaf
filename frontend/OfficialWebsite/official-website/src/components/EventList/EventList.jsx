@@ -8,10 +8,11 @@ const { Title } = Typography;
 
 const { Meta } = Card;
 
-const EventImg = ({ tagName, imgUrl, inBreakPoint }) => {
+const EventImg = ({ tagName, imgUrl, inBreakPoint, isHovered }) => {
 
 	console.log(tagName);
 	const tagStyle = {
+		borderStyle : 'none',
 		borderRadius: '15px',
 		backgroundColor: '#25499D',
 		color: '#FFFFFF',
@@ -19,11 +20,32 @@ const EventImg = ({ tagName, imgUrl, inBreakPoint }) => {
 		fontSize : 14,
 		fontWeight: 'bold',
 	};
+	const tagStyle12 = {
+		borderStyle : 'none',
+		borderRadius: '15px',
+		backgroundColor: '#FFFFFF',
+		color: '#25499D',
+		padding: '8px 10px',
+		fontSize : 14,
+		fontWeight: 'bold',
+	};
 
 	const tagStyle2 = {
+		borderStyle : 'none',
 		borderRadius: '15px',
 		backgroundColor: '#A9CF59',
 		color: '#FFFFFF',
+		padding: '8px 10px',
+		fontSize : 14,
+		fontWeight: 'bold',
+		fontfamily: 'Noto Sans CJK TC',
+	};
+
+	const tagStyle22 = {
+		borderStyle : 'none',
+		borderRadius: '15px',
+		backgroundColor: '#FFFFFF',
+		color: '#A9CF59',
 		padding: '8px 10px',
 		fontSize : 14,
 		fontWeight: 'bold',
@@ -39,7 +61,7 @@ const EventImg = ({ tagName, imgUrl, inBreakPoint }) => {
 				/>
 			</div>
 			<div className={style.tag}>
-				<Tag style={ tagName==='講座'||tagName==='工作坊'? tagStyle2 : tagStyle }>{tagName}</Tag>
+				<Tag style={ tagName==='講座'||tagName==='工作坊'? isHovered? tagStyle2 :tagStyle22 : isHovered? tagStyle : tagStyle12 }>{tagName}</Tag>
 			</div>
 		</div>
 	);
@@ -59,13 +81,14 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 
 		<Card
 			hoverable
-			style={{ width: 320, position: 'relative' , boxShadow: '0px 0px 8px rgba(0, 0, 0, 0.5)' , background : !isHovered ? '#FFFFFF' : (tagName==='講座'||tagName==='工作坊')? '#A9CF59' : '#25499D' , marginBottom : '20px' }}
+			style={{ width: 320, position: 'relative' , boxShadow: '4px 4px 15px rgba(0 0 0/21%)' , background : !isHovered ? '#FFFFFF' : (tagName==='講座'||tagName==='工作坊')? '#A9CF59' : '#25499D' , marginBottom : '20px' }}
 			cover={
 				<div style={{ height: '150px' }}>
 				<EventImg
 					tagName={tagName}
 					imgUrl={imgUrl}
 					inBreakPoint={inBreakPoint}
+					isHovered={isHovered}
 				/>
 				</div>
 			}
@@ -78,7 +101,7 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 			onMouseEnter={handleMouseEnter}
      		onMouseLeave={handleMouseLeave}
 		>
-			<Meta title={<span style={{ fontSize: '20px' , color : isHovered? '#FFFFFF': (tagName==='講座'||tagName==='工作坊')? '#A9CF59' : '#25499D' }}>{title}</span>} description={<span style={{ color : isHovered? '#FFFFFF': (tagName==='講座'||tagName==='工作坊')? '#A9CF59' : '#25499D' }}>{date}</span>} className={style.meta} />
+			<Meta title={<span style={{ fontSize: '18px' , color : isHovered? '#FFFFFF': (tagName==='講座'||tagName==='工作坊')? '#A9CF59' : '#25499D' }}>{title}</span>} description={<span style={{ fontSize: '14px' , color : isHovered? '#FFFFFF': (tagName==='講座'||tagName==='工作坊')? '#A9CF59' : '#25499D' }}>{date}</span>} className={style.meta} />
 		</Card>
 	);
 };

@@ -17,3 +17,9 @@
 .ant-tabs-ink-bar {
 	background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
 }
+.ant-tabs-tab-btn{
+	letter-spacing: 3px;
+}
+.ant-tabs .ant-tabs-nav .ant-tabs-tab-active {
+	color: #8080;
+}
