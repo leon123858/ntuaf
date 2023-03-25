@@ -14,10 +14,7 @@ const Video = ({url, text}) => {
 	console.log("url after changed =",video);
 	return (
 		<div className={style.container}>
-			<h1 style={{ marginBottom: 20 }}>回顧片</h1>
-			<Card style={{ marginBottom: 20 }}>
-				<p>{text}</p>
-			</Card>
+			<p style={{ marginBottom: 20, textAlign: 'left' }}>{text}</p>
 			<iframe
 				height="300"
 				src={video}
