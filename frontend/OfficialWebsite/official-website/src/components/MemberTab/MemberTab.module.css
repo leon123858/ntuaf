@@ -1,31 +1,43 @@
 .container {
   margin: 0 auto 20px auto;
   width: 100%;
+  position: relative;
 }
+
 .department {
   display: grid;
   text-align: center;
   justify-content: center;
   width: 100%;
-  margin-top: 8px;
+  margin-top: 200px;
+  /* min-height: 200px; */
 }
+
 .lgDepartment {
   display: flex;
-  align-items: center;
+  flex-direction: row-reverse;
+  /* align-items: center; */
   justify-content: center;
   margin-top: 12px;
+  min-height: 200px;
+
 }
+
 .img {
   width: 125px;
   border-radius: 50%;
   margin: 0 auto 32px auto;
 }
+
 .lgImg {
-  width: 125px;
-  height: 125px;
-  border-radius: 50%;
+  width: 300px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  background-color: aliceblue;
   margin-right: 70px;
 }
+
 .positionRow {
   display: grid;
   grid-template-columns: 20% 80%;
@@ -33,14 +45,53 @@
   font-size: 16px;
   white-space: nowrap;
 }
+
 .memberContainer {
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   row-gap: 8px;
 }
+
 .member {
   width: 80px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.lgcarouelContainer {
+  width: 300px;
+  margin: 0 50px;
+  height: auto;
+  position: absolute;
+  top: 90px;
+  right: 50%;
+}
+
+.carouelContainer {
+  width: 300px;
+  margin: 0 ;
+  height: auto;
+  position: absolute;
+  top: 160px;
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+
+.arrowRight {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+}
+
+.arrowLeft {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+}
+
+.flexHalf {
+  transform: translate(50%, 0);
 }

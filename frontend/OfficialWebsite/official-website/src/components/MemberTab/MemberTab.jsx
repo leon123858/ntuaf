@@ -1,6 +1,7 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useRef } from 'react';
 import style from './MemberTab.module.css';
-import { Tabs } from 'antd';
+import { Tabs, Carousel, Button } from 'antd';
+import { RightOutlined, LeftOutlined } from '@ant-design/icons';
 import { BreakPointContext } from '../../useBreakPoint';
 import { getMembersByDepartment, DEPARTMENT } from '@leon123858/ntuaf-sdk';
 
@@ -13,16 +14,28 @@ const departmentNames = [
 ];
 
 const teamImages = {
-	[DEPARTMENT.核心團隊]:
+	[DEPARTMENT.核心團隊]: [
 		'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-	[DEPARTMENT.公關部]:
 		'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-	[DEPARTMENT.策展部]:
+	],
+	[DEPARTMENT.公關部]: [
+		'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+		'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+		'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+	],
+	[DEPARTMENT.策展部]: [
 		'https://i.seadn.io/gcs/files/9d1db9251715abbf63586037840a319c.png?auto=format',
-	[DEPARTMENT.行政部]:
+		'https://i.seadn.io/gcs/files/9d1db9251715abbf63586037840a319c.png?auto=format'
+	],
+	[DEPARTMENT.行政部]: [
 		'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-	[DEPARTMENT.設計部]:
+		'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+	],
+	[DEPARTMENT.設計部]: [
 		'https://i.seadn.io/gcs/files/9d1db9251715abbf63586037840a319c.png?auto=format',
+		'https://i.seadn.io/gcs/files/9d1db9251715abbf63586037840a319c.png?auto=format',
+		'https://i.seadn.io/gcs/files/9d1db9251715abbf63586037840a319c.png?auto=format',
+	]
 };
 
 const PositionRow = ({ members, position }) => {
@@ -43,6 +56,31 @@ const PositionRow = ({ members, position }) => {
 		</div>
 	);
 };
+
+const ImgCarousel = ({ imgList }) => {
+	const imgs = useRef(null)
+	const contentStyle = {
+		height: '160px',
+		color: '#fff',
+		lineHeight: '100px',
+		textAlign: 'center',
+		background: '#364d79',
+	};
+	console.log(imgList)
+	return (
+		<>
+			<Carousel autoplay ref={imgs}>
+				{imgList.map(img => (
+					<div key={img}>
+						<img src={img} alt="" className={style.lgImg} />
+					</div>
+				))}
+			</Carousel>
+			<Button className={style.arrowRight} icon={<RightOutlined />} shape="circle" onClick={() => imgs.current.next()}></Button>
+			<Button className={style.arrowLeft} icon={<LeftOutlined />} shape="circle" onClick={() => imgs.current.prev()}></Button>
+		</>
+	)
+}
 
 const MemberTab = () => {
 	const { inBreakPoint } = useContext(BreakPointContext);
@@ -77,18 +115,18 @@ const MemberTab = () => {
 							<div
 								className={inBreakPoint ? style.department : style.lgDepartment}
 							>
-								<img
+								{/* <img
 									alt='team img'
 									src={teamImages[departmentName]}
 									className={inBreakPoint ? style.img : style.lgImg}
-								/>
+								/> */}
 								{curDepartment === '核心團隊' ? (
-									<div>
+									<div className={inBreakPoint ? "" : style.flexHalf}>
 										<PositionRow members={memberData} position={'總召'} />
 										<PositionRow members={memberData} position={'副召'} />
 									</div>
 								) : (
-									<div>
+									<div className={inBreakPoint ? "" : style.flexHalf}>
 										<PositionRow members={memberData} position={'部長'} />
 										<PositionRow members={memberData} position={'組員'} />
 									</div>
@@ -99,6 +137,9 @@ const MemberTab = () => {
 				})}
 				onChange={(key) => setCurDepartment(key)}
 			></Tabs>
+			<div className={inBreakPoint? style.carouelContainer:style.lgcarouelContainer}>
+				<ImgCarousel imgList={teamImages[curDepartment]} />
+			</div>
 		</div>
 	);
 };

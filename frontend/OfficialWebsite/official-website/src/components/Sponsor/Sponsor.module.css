@@ -3,12 +3,34 @@
 }
 .iconsWrapper{
     display: flex;
-    width: 100vw;
+    width: 100%;
+    padding: 50px;
+    /* justify-content: space-evenly; */
+    /* align-items: center; */
     flex-wrap: wrap;
 
 }
 .iconWrapper{
-    width:33%;
-    padding:10%;
+    width: 33%;
+    padding:10px;
     text-align: center;
+}
+.lgIconWrapper{
+    width: 25%;
+    padding:10px;
+    text-align: center;
+}
+.sponsorWrapper {
+    margin-top: 50px;
+    padding: 0 100px;
+}
+
+.title {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+} 
+
+.lgTitle {
+    
 }
