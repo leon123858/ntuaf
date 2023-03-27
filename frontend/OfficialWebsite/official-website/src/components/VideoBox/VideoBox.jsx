@@ -1,9 +1,7 @@
 import React from 'react';
 import style from './VideoBox.module.css';
-import { Card } from 'antd';
 
 const Video = ({url, text, title}) => {
-	console.log("url =",url);
 	function insertAtIndex(str, substring, index) {
 		return str.slice(0, index) + substring + str.slice(index);
 	}

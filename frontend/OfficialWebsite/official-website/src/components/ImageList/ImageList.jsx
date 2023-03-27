@@ -9,7 +9,6 @@ import TextBox from '../Textbox/TextBox';
 const ImageList = ({ data }) => {
     const { inBreakPoint } = useContext(BreakPointContext);
     const [curPic, setCurPic] = useState(0);
-    console.log(data)
     return ({
         [BlOCK_TYPE.IMAGE_LIST_A]: (
             <div className={style.container}>
