@@ -5,7 +5,7 @@ import { Button } from 'antd';
 const Link = ({ url, title }) => {
 	return (
 		<div className={style.container}>
-			<a href={url} target='_blank'>
+			<a href={url}>
 				<Button className={style.btn}>
 					{title} {'>'}
 				</Button>
