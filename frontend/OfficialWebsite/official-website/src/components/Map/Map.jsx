@@ -26,6 +26,7 @@ const Map = ({ type, url, text }) => {
 						width='100%'
 						height='200'
 						src={url}
+						title='video'
 					>
 						<a href='https://www.maps.ie/distance-area-calculator.html'>
 							measure area map

@@ -49,13 +49,14 @@ const block2element = {
 			/>
 		);
 	},
-	[BlOCK_TYPE.TEXT_D]: ({ text, key }) => {
+	[BlOCK_TYPE.TEXT_D]: ({ text, key, url }) => {
 		return (
 			<Textbox
 				key={key}
 				text={{
 					type: BlOCK_TYPE.TEXT_D,
 					text: text,
+					url: url,
 				}}
 			/>
 		);
@@ -93,8 +94,8 @@ const block2element = {
 	[BlOCK_TYPE.MAP_B]: ({ text, url, key }) => {
 		return <Map key={key} type={[BlOCK_TYPE.MAP_B]} url={url} text={text} />;
 	},
-	[BlOCK_TYPE.VIDEO_A]: ({ title, url, key }) => {
-		return <Video url={url} text={title} key={key} />;
+	[BlOCK_TYPE.VIDEO_A]: ({ title, url, key, text }) => {
+		return <Video url={url} title={title} text={text} key={key} />;
 	},
 	[BlOCK_TYPE.IMAGE_LIST_A]: ({ title, items, key }) => {
 		return (
@@ -198,7 +199,9 @@ function Display() {
 			<h1 style={{ textAlign: 'center', margin: '32px 0' }}>
 				{eventState.title}
 			</h1>
-			<div className={style.APP}>{interpreter.transfer(eventState.blocks)}</div>
+			<div className={style.APP} style={{ maxWidth: 800, margin: '0 auto', width: '80%'}}>
+				{interpreter.transfer(eventState.blocks)}
+			</div>
 		</>
 	) : (
 		<div className={style.Spin}>

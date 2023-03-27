@@ -9,13 +9,14 @@ const ImageBox = ({ image }) => {
     return (
         {
             [BlOCK_TYPE.IMAGE_A]: (
-                <div className={style.container} style={{ margin: '32px auto' }}>
+                <div className={style.container} style={{ marginTop: 80 }}>
                     <h1 className={`${style.topic} ${style.three}`}>{image?.text}</h1>
                     <div className={style.content}>
                         <Image
-                        alt='img'
-                        src={image.url}
-                    />
+                            alt='img'
+                            src={image.url}
+                            width='50%'
+                        />
                     </div>
                 </div>
             ),
@@ -25,6 +26,7 @@ const ImageBox = ({ image }) => {
                     <Image
                         alt='img'
                         src={image.url}
+                        width='50%'
                     />
                 </div>
             )
