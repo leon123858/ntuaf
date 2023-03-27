@@ -4,11 +4,12 @@ import { BreakPointContext } from '../../useBreakPoint';
 import { BlOCK_TYPE } from '@leon123858/ntuaf-sdk'
 import Card from 'antd/es/card/Card';
 import { Slider, Image } from 'antd'
+import TextBox from '../Textbox/TextBox';
 
 const ImageList = ({ data }) => {
     const { inBreakPoint } = useContext(BreakPointContext);
     const [curPic, setCurPic] = useState(0);
-
+    console.log(data)
     return ({
         [BlOCK_TYPE.IMAGE_LIST_A]: (
             <div className={style.container}>
@@ -92,22 +93,23 @@ const ImageList = ({ data }) => {
         ),
         [BlOCK_TYPE.IMAGE_LIST_E]: (
             <div className={style.container}>
-                {/* <div className={style.picBox2}>
-                    <Slide
-                        indicators={true}
-                        transitionDuration={300}
-                        autoplay={false}
-                    >
-                        {
-                            data.items.map((image, idx) => (
-                                <div className={style.slide} key={idx}>
-                                    <img src={image.url} alt="" style={{ height: 300 }} />
-                                </div>
-                            ))
-                        }
-                    </Slide>
-                </div> */}
-                <p style={{ textAlign: 'center' }}>還沒做 IMAGE_LIST_E</p>
+                <p className={style.topic}>{data.topic}</p>
+                <div>
+                    {
+                        data.items.map((image, idx) => (
+                            <div key={idx} style={(idx % 2 === 0) ? { maxWidth: '70%', textAlign: 'left' } : { marginLeft: '30%', textAlign: 'left', maxWidth: '70%' }}>
+                                <TextBox
+                                    key={idx}
+                                    text={{
+                                        type: BlOCK_TYPE.TEXT_A,
+                                        text: image.name,
+                                        url: image.url,
+                                    }}
+                                />
+                            </div>
+                        ))
+                    }
+                </div>
             </div>
         )
 
