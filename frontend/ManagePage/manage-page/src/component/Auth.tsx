@@ -1,11 +1,8 @@
 import React from 'react';
-import { Space, Table, Tag, Button, Modal, Typography } from 'antd';
-import type { ColumnsType } from 'antd/es/table';
+import { Space, Table, Button, Modal } from 'antd';
 import { getEvent } from '@leon123858/ntuaf-sdk';
 import { useState } from 'react';
 import moment from 'moment';
-
-const { Title, Paragraph, Text } = Typography;
 
 function Auth({ user }: { user: any }) {
 	console.log('user', user);
