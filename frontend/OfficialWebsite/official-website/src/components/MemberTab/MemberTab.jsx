@@ -15,8 +15,7 @@ const departmentNames = [
 
 const teamImages = {
 	[DEPARTMENT.核心團隊]: [
-		'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-		'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+		'../../about/team/召部.jpg',
 	],
 	[DEPARTMENT.公關部]: [
 		'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
@@ -59,6 +58,7 @@ const PositionRow = ({ members, position }) => {
 
 const ImgCarousel = ({ imgList }) => {
 	const imgs = useRef(null)
+	if (!imgList) return <></>
 	const contentStyle = {
 		height: '160px',
 		color: '#fff',
@@ -67,6 +67,7 @@ const ImgCarousel = ({ imgList }) => {
 		background: '#364d79',
 	};
 	console.log(imgList)
+	const showArrow = imgList.length > 1 ? true : false
 	return (
 		<>
 			<Carousel autoplay ref={imgs}>
@@ -76,8 +77,14 @@ const ImgCarousel = ({ imgList }) => {
 					</div>
 				))}
 			</Carousel>
-			<Button className={style.arrowRight} icon={<RightOutlined />} shape="circle" onClick={() => imgs.current.next()}></Button>
-			<Button className={style.arrowLeft} icon={<LeftOutlined />} shape="circle" onClick={() => imgs.current.prev()}></Button>
+			{showArrow ?
+				<div>
+					<Button className={style.arrowRight} icon={<RightOutlined />} shape="circle" onClick={() => imgs.current.next()}></Button>
+					<Button className={style.arrowLeft} icon={<LeftOutlined />} shape="circle" onClick={() => imgs.current.prev()}></Button>
+				</div>
+				:
+				""
+			}
 		</>
 	)
 }
@@ -106,7 +113,7 @@ const MemberTab = () => {
 			<Tabs
 				centered
 				defaultActiveKey='1'
-				size='large'
+				size={inBreakPoint ? "small" : 'large'}
 				items={departmentNames.map((departmentName, i) => {
 					return {
 						label: departmentName,
@@ -137,7 +144,7 @@ const MemberTab = () => {
 				})}
 				onChange={(key) => setCurDepartment(key)}
 			></Tabs>
-			<div className={inBreakPoint? style.carouelContainer:style.lgcarouelContainer}>
+			<div className={inBreakPoint ? style.carouelContainer : style.lgcarouelContainer}>
 				<ImgCarousel imgList={teamImages[curDepartment]} />
 			</div>
 		</div>
