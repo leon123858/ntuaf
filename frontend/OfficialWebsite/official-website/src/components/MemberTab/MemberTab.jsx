@@ -18,29 +18,29 @@ const teamImages = {
 		'../../about/team/召部.jpg',
 	],
 	[DEPARTMENT.公關部]: [
-		'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-		'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-		'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+		'../../about/team/召部.jpg',
+		'../../about/team/召部.jpg',
+		'../../about/team/召部.jpg',
 	],
 	[DEPARTMENT.策展部]: [
-		'https://i.seadn.io/gcs/files/9d1db9251715abbf63586037840a319c.png?auto=format',
-		'https://i.seadn.io/gcs/files/9d1db9251715abbf63586037840a319c.png?auto=format'
+		'../../about/team/召部.jpg',
+		'../../about/team/召部.jpg'
 	],
 	[DEPARTMENT.行政部]: [
-		'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-		'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+		'../../about/team/召部.jpg',
+		'../../about/team/召部.jpg',
 	],
 	[DEPARTMENT.設計部]: [
-		'https://i.seadn.io/gcs/files/9d1db9251715abbf63586037840a319c.png?auto=format',
-		'https://i.seadn.io/gcs/files/9d1db9251715abbf63586037840a319c.png?auto=format',
-		'https://i.seadn.io/gcs/files/9d1db9251715abbf63586037840a319c.png?auto=format',
+		'../../about/team/召部.jpg',
+		'../../about/team/召部.jpg',
+		'../../about/team/召部.jpg',
 	]
 };
 
-const PositionRow = ({ members, position }) => {
+const PositionRow = ({ members, position, fontSize }) => {
 	return (
-		<div className={style.positionRow}>
-			<p style={{ margin: 0 }}>{position}</p>
+		<div className={style.positionRow} style={{ fontSize, }}>
+			<p style={{ margin: 0, fontWeight: "550" }}>{position}</p>
 			<div className={style.memberContainer}>
 				{members.map((member, idx) =>
 					member.job === position ? (
@@ -59,13 +59,6 @@ const PositionRow = ({ members, position }) => {
 const ImgCarousel = ({ imgList }) => {
 	const imgs = useRef(null)
 	if (!imgList) return <></>
-	const contentStyle = {
-		height: '160px',
-		color: '#fff',
-		lineHeight: '100px',
-		textAlign: 'center',
-		background: '#364d79',
-	};
 	console.log(imgList)
 	const showArrow = imgList.length > 1 ? true : false
 	return (
@@ -73,7 +66,7 @@ const ImgCarousel = ({ imgList }) => {
 			<Carousel autoplay ref={imgs}>
 				{imgList.map(img => (
 					<div key={img}>
-						<img src={img} alt="" className={style.lgImg} />
+						<img src={img} alt="" style={{ borderRadius: "30px" }} />
 					</div>
 				))}
 			</Carousel>
@@ -128,14 +121,16 @@ const MemberTab = () => {
 									className={inBreakPoint ? style.img : style.lgImg}
 								/> */}
 								{curDepartment === '核心團隊' ? (
-									<div className={inBreakPoint ? "" : style.flexHalf}>
-										<PositionRow members={memberData} position={'總召'} />
-										<PositionRow members={memberData} position={'副召'} />
+									<div className={inBreakPoint ? style.flexHalf : style.lgFlexHalf}>
+										<PositionRow members={memberData} position={'總召'} fontSize={inBreakPoint ? "18px" : "18px"} />
+										<div style={{ height: "15px" }}></div>
+										<PositionRow members={memberData} position={'副召'} fontSize={inBreakPoint ? "18px" : "18px"} />
 									</div>
 								) : (
-									<div className={inBreakPoint ? "" : style.flexHalf}>
-										<PositionRow members={memberData} position={'部長'} />
-										<PositionRow members={memberData} position={'組員'} />
+									<div className={inBreakPoint ? style.flexHalf : style.lgFlexHalf}>
+										<PositionRow members={memberData} position={'部長'} fontSize={inBreakPoint ? "18px" : "18px"} />
+										<div style={{ height: "15px" }}></div>
+										<PositionRow members={memberData} position={'組員'} fontSize={inBreakPoint ? "18px" : "18px"} />
 									</div>
 								)}
 							</div>

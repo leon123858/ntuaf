@@ -21,9 +21,9 @@
     text-align: center;
 }
 .sponsorWrapper {
-    margin-top: 50px;
     display: block;
     margin: 0 auto;
+    margin-top: 50px;
     width: 80vw;
 }
 
@@ -31,8 +31,11 @@
     display: block;
     margin: 0 auto;
     text-align: center;
+    font-size: 20px;
+    color: #25499D;
 } 
 
 .lgTitle {
-    
+    color: #25499D;
+    font-size: 32px;
 }
