@@ -208,7 +208,7 @@ const Carousel = () => {
 							❯
 						</div>
 					</div>
-					<div className={style.carouselWrapper} {...handlers}>
+					<div className={style.lgCarouselWrapper} {...handlers}>
 						{slides.length === 0 ? (
 							<></>
 						) : (
