@@ -60,6 +60,7 @@ const transformDayEvents = async () => {
 					case EVENT_TYPE.展覽:
 						monthEvent[month][id][2] = true;
 						break;
+					case EVENT_TYPE['講座/工作坊']:
 					case EVENT_TYPE.工作坊:
 					case EVENT_TYPE.講座:
 						monthEvent[month][id][1] = true;
@@ -84,7 +85,8 @@ const transformDayEvents = async () => {
 						});
 				} else if (
 					eventType === EVENT_TYPE.講座 ||
-					eventType === EVENT_TYPE.工作坊
+					eventType === EVENT_TYPE.工作坊 ||
+					eventType === EVENT_TYPE['講座/工作坊']
 				) {
 					await db
 						.collection(toDbPath)

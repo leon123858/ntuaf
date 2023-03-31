@@ -107,6 +107,7 @@ const options = program.opts();
 				image: { card: '', banner: '' },
 				type: EVENT_TYPE.展覽,
 				title: '新事件',
+				topic: '',
 				blocks: [],
 			};
 			await db.collection('Events').doc(`${event.id}`).set(event);

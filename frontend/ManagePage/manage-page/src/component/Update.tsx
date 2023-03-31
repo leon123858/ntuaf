@@ -102,6 +102,14 @@ function Update({ email, admin }: { email: string; admin: string[] }) {
 						rules={[{ required: true, message: '必填' }]}
 						addonAfter={<span>最長 X 個字</span>}
 					/>
+					<ProFormText
+						width='md'
+						name='topic'
+						label='主題'
+						placeholder='工作坊/講座要有主題'
+						tooltip='最長 X 個字'
+						addonAfter={<span>最長 X 個字</span>}
+					/>
 				</ProForm.Group>
 				<ProForm.Group>
 					<ProFormDateTimeRangePicker

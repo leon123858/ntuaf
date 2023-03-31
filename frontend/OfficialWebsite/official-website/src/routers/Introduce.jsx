@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { Tabs, Spin } from 'antd';
+import React, { useEffect, useState, useContext } from 'react';
+import { Tabs } from 'antd';
+
 import { useParams } from 'react-router-dom';
 import style from './Introduce.module.css';
 import EventList from '../components/EventList/EventList';
 import EventListEx from '../components/EventList/EventListEx';
 import { getTabEvents } from '@leon123858/ntuaf-sdk';
+import { BreakPointContext } from '../useBreakPoint';
+import './Introduce.css';
 
 function Introduce() {
 	const { type = 1 } = useParams();
@@ -12,6 +15,7 @@ function Introduce() {
 	const [firstData, setFirstData] = useState({ events: [] });
 	const [secondData, setSecondData] = useState({ events: [] });
 	const onChange = (e) => setKey(e);
+	const { inBreakPoint } = useContext(BreakPointContext);
 
 	useEffect(() => {
 		const curKey = type === 'exhibition' ? '1' : '2';
@@ -48,12 +52,15 @@ function Introduce() {
 	}, [key]);
 
 	const tabBarStyle = {
-		//fontSize: 35,
+		padding: 10,
+		fontSize: '50px',
 		activeTab: {
+			color: 'gray',
 			borderColor:
 				'linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet) 1 !important',
 			borderImageSlice: 1,
 		},
+		borderStyle: 'none',
 	};
 
 	return (
@@ -73,11 +80,7 @@ function Introduce() {
 						children:
 							firstData.events.length === 0 ? (
 								<div className={style.Spin}>
-									<Spin
-										size='large'
-										indicator={<img src={'/logo512.png'} alt='loading...' />}
-										tip={<span>努力加載中請稍候...</span>}
-									></Spin>
+									<img src={'/loading.gif'} alt='loading...' />
 								</div>
 							) : (
 								<EventListEx data={firstData} />
@@ -89,11 +92,7 @@ function Introduce() {
 						children:
 							secondData.events.length === 0 ? (
 								<div className={style.Spin}>
-									<Spin
-										size='large'
-										indicator={<img src={'/logo512.png'} alt='loading...' />}
-										tip={<span>努力加載中請稍候...</span>}
-									></Spin>
+									<img src={'/loading.gif'} alt='loading...' />
 								</div>
 							) : (
 								<EventList data={secondData} />
@@ -101,6 +100,8 @@ function Introduce() {
 					},
 				]}
 				onChange={onChange}
+				className={style.customTabs}
+				tabBarGutter={inBreakPoint ? 80 : 150}
 			></Tabs>
 		</div>
 	);

@@ -2,6 +2,8 @@ import React from 'react';
 import { Typography } from 'antd';
 import { Link } from 'react-router-dom';
 import { RightOutlined } from '@ant-design/icons';
+import Mapo from '../components/Map/Map'
+import Video from '../components/VideoBox/VideoBox'
 
 
 const { Title, Text } = Typography;
@@ -64,6 +66,7 @@ function Map() {
 				<div>
 					<Text style={{ fontSize: 30 }}>
 						藝術家地圖
+						<Mapo></Mapo>
 					</Text>
 				</div>
 			</div>

@@ -149,6 +149,7 @@ const insertEvent = async () => {
 			image: image,
 			type: typeList[Math.floor(Math.random() * typeList.length)],
 			title: 'title_' + uuidv4(),
+			topic: '',
 			blocks: createBlockList(),
 		};
 		const res = await db.collection('Events').doc(`${event.id}`).set(event);

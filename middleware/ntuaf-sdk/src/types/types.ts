@@ -47,6 +47,7 @@ export interface Member {
  * @property endTime 事件結束時間
  * @property place 事件發生地點
  * @property image 事件展示圖片
+ * @property topic 事件主題
  * @property type 事件類別
  * @property title 事件標題
  * @property blocks 事件詳細資訊塊s
@@ -58,6 +59,7 @@ export interface Event {
 	place: Place;
 	image: Images;
 	type: enums.EVENT_TYPE;
+	topic: string;
 	title: string;
 	blocks: Block[];
 }

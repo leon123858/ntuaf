@@ -23,6 +23,7 @@ describe('test get event info', function () {
 			},
 			type: EVENT_TYPE.工作坊,
 			title: 'test2',
+			topic: '',
 			blocks: [],
 		});
 	});
@@ -47,6 +48,7 @@ describe('test update event', function () {
 			endTime: 0,
 			place: { name: '待訂', url: null },
 			title: '未定義標題',
+			topic: '',
 		});
 		await logout();
 	});
@@ -141,6 +143,7 @@ describe('test update event', function () {
 			image: { card: null, banner: null },
 			type: '展覽',
 			title: '未定義標題',
+			topic: '',
 			blocks: [
 				{
 					type: BlOCK_TYPE.IMAGE_A,
@@ -168,6 +171,7 @@ describe('test update event', function () {
 			image: { card: null, banner: null },
 			type: '展覽',
 			title: '未定義標題',
+			topic: '',
 			blocks: [
 				{
 					type: BlOCK_TYPE.IMAGE_A,

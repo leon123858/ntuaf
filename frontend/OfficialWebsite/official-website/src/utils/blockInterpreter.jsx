@@ -15,6 +15,7 @@ class BlockInterpreter {
 	/**
 	 * 轉換成 JSX.element[]
 	 * @param {Block[]} blocks
+	 * @param {string} theme 可以傳入轉換的參數, 每個組件可以依據此參數做對應的顏色設置, 預設: "DEFAULT"
 	 * @returns {JSX.element[]}
 	 * @example
 	 * const sampleBlocks = [
@@ -56,9 +57,9 @@ class BlockInterpreter {
 	 *	},
 	 * ];
 	 * const block2element = {
-	 *	[BlOCK_TYPE.TEXT_A]: ({ text, url, title, items, key }) => {
+	 *	[BlOCK_TYPE.TEXT_A]: ({ text, url, title, items, key, theme }) => {
 	 *		return (
-	 *			<div key={key}>
+	 *			<div key={key} style={{backgroundColor: theme == "DEFAULT" ? 'black' : 'green'}}>
 	 *				TEXT_A
 	 *				<span>
 	 *					{text},{url},{title}
@@ -87,13 +88,16 @@ class BlockInterpreter {
 	 *		);
 	 *	},
 	 * };
-	 * let interpreter = new BlockInterpreter(block2element, item2element);
+	 * let interpreter = new BlockInterpreter(block2element);
 	 * // 可以直接渲染
 	 * // render(interpreter.transfer(sampleBlocks));
+	 * // 配合特定顏色 (預設: "DEFAULT")
+	 * // render(interpreter.transfer(sampleBlocks), "GREEN");
 	 */
-	transfer(blocks) {
+	transfer(blocks, theme = 'DEFAULT') {
 		return blocks.map((block, i) =>
 			this.block2element[block.type]({
+				theme,
 				text: block.text,
 				url: block.url,
 				title: block.title,

@@ -9,7 +9,7 @@ import ImageList from '../components/ImageList/ImageList';
 import Link from '../components/Link/Link';
 import Map from '../components/Map/Map';
 import { useParams } from 'react-router-dom';
-import { Spin, Image, message } from 'antd';
+import { Image, message } from 'antd';
 
 const block2element = {
 	[BlOCK_TYPE.TEXT_A]: ({ text, title, url, key }) => {
@@ -199,18 +199,17 @@ function Display() {
 			<h1 style={{ textAlign: 'center', margin: '32px 0' }}>
 				{eventState.title}
 			</h1>
-			<div className={style.APP} style={{ maxWidth: 800, margin: '0 auto', width: '80%'}}>
+			<div
+				className={style.APP}
+				style={{ maxWidth: 800, margin: '0 auto', width: '80%' }}
+			>
 				{interpreter.transfer(eventState.blocks)}
 			</div>
 		</>
 	) : (
 		<div className={style.Spin}>
 			{contextHolder}
-			<Spin
-				size='large'
-				indicator={<img src={'/logo512.png'} alt='loading...' />}
-				tip={<span>努力加載中請稍候...</span>}
-			></Spin>
+			<img src={'/loading.gif'} alt='loading...' />
 		</div>
 	);
 }

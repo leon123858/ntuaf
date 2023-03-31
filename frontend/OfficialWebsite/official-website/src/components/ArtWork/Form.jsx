@@ -5,7 +5,6 @@ import {
 	Input,
 	Select,
 	Upload,
-	Spin,
 	message,
 	Modal,
 	Typography,
@@ -276,12 +275,7 @@ const FormDisabledDemo = () => {
 										src={previewImage}
 									/>
 								</Modal>
-								<Spin
-									spinning={loading}
-									size='large'
-									indicator={<img src={'/logo512.png'} alt='loading...' />}
-									tip={<span>努力加載中請稍候...</span>}
-								></Spin>
+								<img src={'/loading.gif'} alt='loading...' />
 							</div>
 						</Form.Item>
 
