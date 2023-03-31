@@ -10,17 +10,17 @@ const Map = ({ type, url, text }) => {
 			<div className={style.container}>
 				<h1 className={`${style.topic} ${style.three}`}>{'活動資訊'}</h1>
 				<div className={style.content}>
-				<div className={style.content} style={{ textAlign: 'left' }}>
-					{text.split('\n').map((str, idx) => (
-						<p key={idx}>{str}</p>
-					))}
-				</div>
-				<hr />
-				<div className={style.content} style={{ textAlign: 'left' }}>
-					{url.split('\n').map((str, idx) => (
-						<p key={idx}>{str}</p>
-					))}
-				</div>
+					<div className={style.content} style={{ textAlign: 'left' }}>
+						{text.split('\n').map((str, idx) => (
+							<p key={idx}>{str}</p>
+						))}
+					</div>
+					<hr style={{ margin: '20px 0' }} />
+					<div className={style.content} style={{ textAlign: 'left' }}>
+						{url.split('\n').map((str, idx) => (
+							<p key={idx}>{str}</p>
+						))}
+					</div>
 					{/* <Button
 						style={{ marginTop: 16, backgroundColor: 'grey', color: 'white' }}
 					>

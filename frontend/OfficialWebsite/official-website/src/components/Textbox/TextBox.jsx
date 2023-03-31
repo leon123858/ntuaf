@@ -63,7 +63,7 @@ const TextBox = ({ text }) => {
             [BlOCK_TYPE.TEXT_D]: (
                 <div style={{ display: 'flex', alignItems: 'center' }} className={style.container}>
                     <div>
-                        <img src={text.url} alt="" style={{ width: 100 }} />
+                        <img src={text.url} alt="" style={{ width: 140, marginRight: '30px' }} />
                     </div>
                     
                     <div className={style.content}>
