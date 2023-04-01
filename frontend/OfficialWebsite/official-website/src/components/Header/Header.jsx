@@ -10,7 +10,7 @@ import { BreakPointContext } from '../../useBreakPoint';
 const items = [
 	{
 		label: (
-			<Link className={styles.link} to={'/about'}>
+			<Link className={styles.link} to={'/about'}>				
 				關於我們
 			</Link>
 		),

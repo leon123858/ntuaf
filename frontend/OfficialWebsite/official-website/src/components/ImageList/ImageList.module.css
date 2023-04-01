@@ -14,7 +14,7 @@
   top: -64px;
   border-radius: 10px;
   padding: 4px 30px;
-  color: #FFFFFF;
+  color: #ffffff;
   font-weight: 300;
   background-color: #171414;
 }
@@ -61,7 +61,7 @@
 .img {
   width: 75%;
   border-radius: 10px;
-  maxWidth: 600px;
+  max-width: 600px;
 }
 
 .lgImg {
@@ -77,7 +77,7 @@
   border-radius: 10px;
   background-color: #808080;
   padding: 14px;
-  color: #FFFFFF;
+  color: #ffffff;
   transform: translateY(-35%);
 }
 
@@ -94,26 +94,12 @@
   font-size: 12px;
 }
 
-.picBox1 {
-  display: grid;
-  gap: 70px;
-  margin-bottom: 64px;
+.smpicbox {
+    display: flex;
+    text-align: left;
+    align-items: center;
 }
 
-.lgPicBox1 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  margin-bottom: 64px;
-}
-
-.iimg {
-  width: 10vh;
-  height: 10vh;
-  display: block;
-  position: absolute;
-  right: -38px;
-  bottom: -38px;
-  border-radius: 50%;
-  z-index: 100;
+.picBox {
+    max-width: 120px;
 }

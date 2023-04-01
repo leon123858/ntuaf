@@ -49,7 +49,7 @@ const Footer = () => {
 						preview={false}
 						width={'50px'}
 						height={'50px'}
-						src='/ntuaf1.png'
+						src='/ntuaf1.svg'
 					></Image>
 				</div>
 				<svg 
