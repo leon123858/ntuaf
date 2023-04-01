@@ -1,0 +1,174 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.lgTitle {
+    font-size: 44px;
+    font-weight: 500;
+    margin-bottom: 50px;
+}
+
+.lgTitle div {
+    font-size: 36px;
+    font-weight: 400;
+}
+
+.title {
+    padding: 0 20px;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 50px;
+
+}
+.title div {
+    font-size: 26px;
+}
+
+.lgSubtitle {
+    font-size: 20px;
+    width: 70vw;
+    margin-bottom: 50px;
+}
+
+.subtitle {
+    padding: 0 20px;
+    font-size: 16px;
+    font-weight: 500;
+    width: 80vw;
+    margin-bottom: 30px;
+}
+
+.lgEvent {
+    width: 55vw;
+    background-color: #EFEFEF;
+    display: block;
+    margin: 0px auto;
+    margin-top: 100px;
+    border-radius: 30px;
+    padding: 50px;
+    text-align: left;
+    position: relative;
+    font-size: 16px;
+}
+
+.lgEvent p {
+    line-height: 40px;
+}
+
+.lgEvent div {
+    font-size: 20px;
+    font-weight: 500;
+    position: absolute;
+    top: -15px
+}
+.event {
+    width: 80vw;
+    background-color: #EFEFEF;
+    display: block;
+    margin: 0px auto;
+    margin-top: 50px;
+    border-radius: 30px;
+    padding: 25px 25px;
+    text-align: left;
+    position: relative;
+    font-size: 14px;
+}
+
+.event p {
+    line-height: 40px;
+}
+.event ol {
+    padding-left: 17px;
+}
+.event div {
+    font-size: 20px;
+    font-weight: 500;
+    position: absolute;
+    top: -15px
+}
+
+.lgLinkButton {
+    width: 347px;
+    height: 50px;
+    border-radius: 25px;
+    background: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    font-size: 20px;
+    color: white;
+    margin-top: 10px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.linkButton {
+    width: 256px;
+    height: 44px;
+    border-radius: 22px;
+    background: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-size: 16px;
+    color: white;
+    margin-top: 10px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.lgStoreContainer {
+
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    font-size: 16px;
+}
+.storeContainer {
+
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-items: center;
+    font-size: 16px;
+}
+
+.lgStoreContainer img {
+    width: 40vw;
+}
+
+.store {
+    width: 50%;
+    min-width: 300px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px
+}
+.store ul {
+    padding-left: 10px;
+}
+
+.store p {
+    font-size: 20px;
+    font-weight: 500;
+
+}
+
+.map {
+    width: 80vw;
+    height: 400px;
+    background: #EFEFEF;
+    margin-top: 90px;
+    text-align: center;
+}
