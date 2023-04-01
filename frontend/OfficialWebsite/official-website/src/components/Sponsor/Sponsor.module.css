@@ -24,7 +24,7 @@
 .sponsorWrapper {
     display: block;
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 80px;
     width: 80vw;
     min-width: 350px
 }
@@ -40,5 +40,6 @@
 
 .lgTitle {
     color: #25499D;
-    font-size: 32px;
+    font-size: 30px;
+    font-weight: 400  ;
 }

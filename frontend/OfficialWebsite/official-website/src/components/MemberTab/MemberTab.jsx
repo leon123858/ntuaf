@@ -38,8 +38,8 @@ const teamImages = {
 const PositionRow = ({ members, position, inBreakPoint }) => {
 	const fontSize = inBreakPoint ? "16px" : "18px"
 	return (
-		<div className={inBreakPoint? style.positionRow :style.ldPositionRow} style={{ fontSize, }}>
-			<p style={{ margin: 0, fontWeight: "550" }}>{position}</p>
+		<div className={inBreakPoint? style.positionRow :style.lgPositionRow} style={{ fontSize, }}>
+			<p style={{ margin: 0, fontWeight: inBreakPoint?"bold":"550" }}>{position}</p>
 			<div className={inBreakPoint? style.memberContainer:style.lgMemberContainer}>
 				{members.map((member, idx) =>
 					member.job === position ? (
@@ -55,17 +55,17 @@ const PositionRow = ({ members, position, inBreakPoint }) => {
 	);
 };
 
-const ImgCarousel = ({ imgList }) => {
+const ImgCarousel = ({ imgList ,inBreakPoint }) => {
 	const imgs = useRef(null)
 	if (!imgList) return <></>
 	console.log(imgList)
-	const showArrow = imgList.length > 1 ? true : false
+	const showArrow = imgList.length > 1 && !inBreakPoint? true : false
 	return (
 		<>
 			<Carousel autoplay ref={imgs}>
 				{imgList.map(img => (
 					<div key={img}>
-						<img src={img} alt="" style={{ borderRadius: "30px" }} />
+						<img src={img} alt="" style={{ borderRadius: "10px" }} />
 					</div>
 				))}
 			</Carousel>
@@ -139,7 +139,7 @@ const MemberTab = () => {
 				onChange={(key) => setCurDepartment(key)}
 			></Tabs>
 			<div className={inBreakPoint ? style.carouelContainer : style.lgcarouelContainer}>
-				<ImgCarousel imgList={teamImages[curDepartment]} />
+				<ImgCarousel imgList={teamImages[curDepartment]} inBreakPoint={inBreakPoint}/>
 			</div>
 		</div>
 	);

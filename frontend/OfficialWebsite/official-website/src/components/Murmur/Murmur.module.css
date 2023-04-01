@@ -37,13 +37,14 @@
     /* border: solid black 2px; */
     margin-top: 5em;
     /* border-radius: 3px; */
-    width: 75vw;
+    width: 70vw;
     text-align: center;
     margin-bottom: 5em;
     position: absolute;
-    top: -100px;
-    font-size: 18px;
-    font-weight: 400;
+    top: -90px;
+    font-size: 17px;
+    font-weight: 380;
+    line-height: 30px;
 }
 .lgShortMurmur {
     /* border: solid black 2px; */
@@ -53,7 +54,7 @@
     text-align: center;
     margin-bottom: 5em;
     position: absolute;
-    top: -530px;
+    top: -540px;
     right: 50%;
     transform: translate(55%, 0);
 
@@ -69,14 +70,15 @@
     position: relative;
     width: 85vw;
     text-align: left;
-    margin-top: 10em;
+    margin-top: 23em;
     margin-bottom: 5em;
     border-radius: 30px;
-    padding: 30px 20px;
+    padding: 30px 27px;
     padding-top: 50px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 300;
-    line-height: 20px;
+    line-height: 21px;
+    letter-spacing: 10%;
     background-color: #F4F4F4;
 }
 
@@ -87,10 +89,10 @@
     width: 60vw;
     text-align: left;
     margin-top: 5em;
-    margin-bottom: 5em;
+    margin-bottom: 10em;
     border-radius: 30px;
-    padding: 80px 80px;
-    padding-top: 123px;
+    padding: 40px 80px;
+    padding-top: 70px;
     background-color: #F4F4F4;
     font-size: 18px;
     font-weight: 400;
