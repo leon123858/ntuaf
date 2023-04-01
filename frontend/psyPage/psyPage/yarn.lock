@@ -500,7 +500,7 @@
     "@eva/plugin-renderer" "1.2.8"
     pixi.js "^4.8.7"
 
-"@eva/plugin-renderer-graphics@^1.1.5":
+"@eva/plugin-renderer-graphics@^1.2.8":
   version "1.2.8"
   resolved "https://registry.yarnpkg.com/@eva/plugin-renderer-graphics/-/plugin-renderer-graphics-1.2.8.tgz#e6261f2565b75c145c61e58edabe25f848c30838"
   integrity sha512-mLHpBgq27MX8UOM/RxqVPTH8U3lhiOupqkE+phmMm2ezMdSv1QZd2N8ChUGTg+FgzK+SXi7E6h0BJcsqVu6MCQ==
@@ -519,7 +519,7 @@
     "@eva/renderer-adapter" "1.2.8"
     pixi.js "^4.8.7"
 
-"@eva/plugin-renderer-render@^1.1.5":
+"@eva/plugin-renderer-render@^1.2.8":
   version "1.2.8"
   resolved "https://registry.yarnpkg.com/@eva/plugin-renderer-render/-/plugin-renderer-render-1.2.8.tgz#adcbae346d367feb8b0a650a990b6cc2583caeb8"
   integrity sha512-EKShuz+j7i63qonn8HEawrlVy3W1Z8GkSo+p7lRn0xmP6GcXK5Zv1pWRe6pskuIuiB97+9doAOEntt465ZHxZA==
@@ -564,6 +564,14 @@
     lodash-es "^4.17.21"
     pixi.js "^4.8.9"
 
+"@eva/plugin-sound@^1.2.8":
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/@eva/plugin-sound/-/plugin-sound-1.2.8.tgz#53113a7f88821409522abbd9e4f777958b5584d0"
+  integrity sha512-Ku/vL8ZZHqfPMFLZ9Jyqvy3DpVin2dlHc1hiZmBX8yjslgJaakpVr8W3Vegsp3yQpYGK1/+alCWG20bGs25v+Q==
+  dependencies:
+    "@eva/eva.js" "1.2.8"
+    eventemitter3 "^3.1.2"
+
 "@eva/plugin-transition@^1.2.8":
   version "1.2.8"
   resolved "https://registry.yarnpkg.com/@eva/plugin-transition/-/plugin-transition-1.2.8.tgz#1e49e1edd2e7b7ccaeb5d57ac721c5eee9f11b96"
@@ -573,7 +581,7 @@
     "@tweenjs/tween.js" "^18.6.4"
     sprite-timeline "^1.10.2"
 
-"@eva/renderer-adapter@1.2.8", "@eva/renderer-adapter@^1.1.5":
+"@eva/renderer-adapter@1.2.8", "@eva/renderer-adapter@^1.2.8":
   version "1.2.8"
   resolved "https://registry.yarnpkg.com/@eva/renderer-adapter/-/renderer-adapter-1.2.8.tgz#423b627bcd09674c0e9e0b3ac3637fd77e8532a1"
   integrity sha512-GGVGn9Pq4A5CYmgis+xJ5bqvhm3eE0gxuk2MEXiG9RjX5DDs900OnScJ190Dl0ftRSgvhg3Q0HTedq6CLxpGhw==

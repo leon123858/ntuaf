@@ -3,6 +3,8 @@ import { Event } from '@eva/plugin-renderer-event';
 import { Graphics } from '@eva/plugin-renderer-graphics';
 import { Text } from '@eva/plugin-renderer-text';
 import { Transition } from '@eva/plugin-transition';
+import { Render } from '@eva/plugin-renderer-render';
+
 
 interface BtnParams {
   text: string;
@@ -17,6 +19,8 @@ export default function createBtn({ text, transform = {}, callback = ()=>{} }: B
     },
     ...transform
   });
+
+  box.addComponent(new Render({ alpha: 0 }));
 
   const btnGO = new GameObject('btn');
   const textGO = new GameObject('text', {
@@ -92,16 +96,54 @@ export default function createBtn({ text, transform = {}, callback = ()=>{} }: B
             },
           ],
         },
-      ]
-    }
+      ],
+      appear : [
+        {
+          name: 'alpha',
+          component : box.getComponent(Render),
+          values :[
+            {
+              value : 0,
+              time : 0,
+              tween : 'linear'
+            },
+            {
+              value : 1,
+              time : 1000,
+            }
+          ]
+        },
+      ],
+      disappear : [
+        {
+          name: 'alpha',
+          component : box.getComponent(Render),
+          values :[
+            {
+              value : 1,
+              time : 0,
+              tween : 'linear'
+            },
+            {
+              value : 0,
+              time : 1000,
+            }
+          ]
+        },
+      ],
+    },
   }))
 
   transition.play('idle', Infinity)
+  transition.play('appear',1);
 
   const evt = box.addComponent(new Event)
   evt.on('tap', () => {
     callback()
   })
+  .on('tap', () => {
+    console.log('The box was clicked!');
+  });
   
-  return box;
+  return { button : box , transition } ;
 }

@@ -24,13 +24,37 @@ export default [
     preload: true,
   },
   {
-    name: 'bg',
+    name: 'bg0',
     type: RESOURCE_TYPE.IMAGE,
     src: {
       image: {
         type: 'png',
         url:
           './statics/TB15Upxqk9l0K4jSZFKXXXFjpXa-750-1624.jpg',
+      },
+    },
+    preload: true,
+  },
+  {
+    name: 'bg1',
+    type: RESOURCE_TYPE.IMAGE,
+    src: {
+      image: {
+        type: 'png',
+        url:
+          './statics/工作區域 2.png',
+      },
+    },
+    preload: true,
+  },
+  {
+    name: 'bg2',
+    type: RESOURCE_TYPE.IMAGE,
+    src: {
+      image: {
+        type: 'png',
+        url:
+          './statics/工作區域 3.png',
       },
     },
     preload: true,
@@ -81,4 +105,15 @@ export default [
     },
     preload: true,
   },
+  {
+	  name: 'bgSound',
+	  type: RESOURCE_TYPE.AUDIO,
+	  src: {
+		audio: {
+		  type: 'audio',
+		  url: './statics/Audio/bgm.mp3',
+		},
+	  },
+	  preload: true,
+	},
 ];

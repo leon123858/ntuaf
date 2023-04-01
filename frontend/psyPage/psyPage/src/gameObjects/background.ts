@@ -1,30 +1,44 @@
 import { GameObject } from '@eva/eva.js';
 import { Img } from '@eva/plugin-renderer-img';
 import { Transition } from '@eva/plugin-transition';
-export default function createBackground() {
+import { Render } from '@eva/plugin-renderer-render';
+
+export default function createBackground(index : number) {
 	const bg = new GameObject('bg', {
-		size: { width: 750, height: 1624 },
-		origin: { x: 0.5, y: 1 },
+		size: { width: 790, height: 1630 },
 		position: {
 			x: 0,
-			y: 120,
+			y: 0,
+		},
+		origin: {
+			x: 0,
+			y: 0,
 		},
 		anchor: {
-			x: 0.5,
-			y: 1,
+			x: 0,
+			y: 0,
 		},
 	});
 
-	bg.addComponent(
-		new Img({
-			resource: 'bg',
-		})
-	);
+	
+	let string = 'bg'
+	console.log(string+index);
+
+	const img = new Img({
+		resource: string+index,
+	});
+
+	bg.addComponent(new Render({
+		alpha: 1, 
+	}));
+
+	bg.addComponent(img);
+	
 
 	const animation = bg.addComponent(new Transition());
 
 	animation.group = {
-		move: [
+		fadeOut: [
 			{
 				name: 'position.x',
 				component: bg.transform,
@@ -57,6 +71,17 @@ export default function createBackground() {
 				],
 			},
 		],
+		move: [
+			{
+			  name: 'alpha',
+			  component: bg.getComponent(Render),
+			  values: [
+				{ time: 0, value: 1, tween: "linear" },
+				{ time: 1000, value: 0, tween: "linear" },
+			  ],
+			},
+		],
 	};
+	console.log(bg);
 	return { background: bg, animation };
 }
