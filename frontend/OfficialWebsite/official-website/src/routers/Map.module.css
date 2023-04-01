@@ -58,7 +58,9 @@
 .lgEvent p {
     line-height: 40px;
 }
-
+.lgEvent ol{
+    padding-left: 20px;
+}
 .lgEvent div {
     font-size: 20px;
     font-weight: 500;
