@@ -25,10 +25,10 @@
 	margin-right: 24px;
 	position: fixed;
 	top: 0;
-	height: 50%;
+	height: 100%;
 	position: relative;
-	background-color: rgba(50, 50, 50, 0.2);
-	border-radius: 2rem;
+	/* background-color: rgba(50, 50, 50, 0.2); */
+	/* border-radius: 2rem; */
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -40,6 +40,10 @@
 .menu {
 	border-radius: 100px;
 	box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.21);
+	padding: 0.5rem 2%;
+	background-color:white;
+	/* z-index: -1; */
+
 }
 
 .scrollMenu {
@@ -70,8 +74,37 @@
 	text-align: center;
 }
 
-.link {
-	margin: 0 0.3rem;
-	text-decoration: none;
-	color: black;
+
+
+.link{
+	/* background: linear-gradient(to right, rgba(37, 73, 157, 1) ,rgba(231, 50, 115, 1)); */
+	/* background-color: red; */
+}
+.link:hover{
+	/* font-size: 50px; */
+	background: linear-gradient(to right, rgba(37, 73, 157, 1) ,rgba(231, 50, 115, 1));
+	/* background-color: red; */
+	/* text-decoration: none; */
+	/* color: black; */
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.link div{
+	line-height: normal;
+	height: 100%;
+	text-align: center ;
+}
+.link div:hover{
+	/* font-size: 50px; */
+	/* background-color: linear-gradient(to right, rgba(37, 73, 157, 1) ,rgba(231, 50, 115, 1)); */
+	/* background-color: red;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent; */
+}
+.tabName:hover{
+	/* font-size: 50px; */
+	background: linear-gradient(to right, rgba(37, 73, 157, 1) ,rgba(231, 50, 115, 1));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }

@@ -6,20 +6,30 @@ import { Link } from 'react-router-dom';
 import LoginButton from './LoginButton.jsx';
 import Logo from './Logo';
 import { BreakPointContext } from '../../useBreakPoint';
+import styled from 'styled-components';
+const StyledLink = styled(Link)`
+    text-decoration: none;
 
+    &:focus, &:hover, &:visited, &:link, &:active {
+        text-decoration: none;
+    }
+`;
 const items = [
 	{
 		label: (
 			<Link className={styles.link} to={'/about'}>
-				關於我們
+					<div className={styles.tabName}>關於我們</div>
+					<div className={styles.tabName}>ABOUT</div>
 			</Link>
 		),
 		key: 'about',
+		children:[]
 	},
 	{
 		label: (
-			<Link className={styles.link} to={'/introduce/exhibition'}>
-				展覽/活動
+			<Link className={styles.link}>
+				<div className={styles.tabName}>展覽/活動</div>
+				<div className={styles.tabName}>EVENTS</div>
 			</Link>
 		),
 		key: 'event',
@@ -27,7 +37,9 @@ const items = [
 			{
 				label: (
 					<div className={styles.subMenu}>
-						<Link to='/introduce/exhibition'>展覽</Link>
+						<Link to='/introduce/exhibition'>
+							展覽
+							</Link>
 					</div>
 				),
 				key: 'show',
@@ -45,13 +57,18 @@ const items = [
 	{
 		label: (
 			<Link className={styles.link} to={'/calendar'}>
-				行事曆
+				<div className={styles.tabName}>行事曆</div>
+				<div className={styles.tabName}>CHALENDAR</div>
 			</Link>
 		),
 		key: 'calendar',
+		children:[]
 	},
 	{
-		label: <p className={styles.link}>特別企劃</p>,
+		label: <Link className={styles.link}>
+			<div className={styles.tabName}>特別企劃</div>
+			<div className={styles.tabName}>SPECIALS</div>
+			</Link>,
 		key: 'special',
 		children: [
 			{
@@ -141,10 +158,16 @@ const Header = () => {
 						</div>
 					) 
 					: (
-						<div style={{ display: 'flex', alignItems: 'center' }}>
+						<div style={{ display: 'flex', alignItems: 'center', height:"100%" }}>
+							<Link className={styles.link} to={'/about'}>
+								{/* <div className={styles.tabWrapper}> */}
+									<div className={styles.tabName}>關於我們</div>
+									<div className={styles.tabName}>ABOUT</div>
+								{/* </div> */}
+							</Link>
 							<div className={styles.menuWrapper}>
 								<Menu
-									selectable={false}
+									// selectable={false}
 									selectedKeys={'1'}
 									multiple={true}
 									mode='horizontal'

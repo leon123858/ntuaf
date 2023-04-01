@@ -22,7 +22,8 @@ const LinkGroup = ({ setSideBarActive }) => {
 								to={'/about'}
 								onClick={handleClickLink}
 							>
-								關於我們
+								<div>關於我們</div>
+								<div>ABOUT</div>
 							</Link>
 						</div>
 					}
@@ -32,7 +33,10 @@ const LinkGroup = ({ setSideBarActive }) => {
 				<Panel
 					header={
 						<div className={styles.headerWrapper}>
-							<Link className={styles.link}>展覽/活動</Link>
+							<Link className={styles.link}>
+							<div>展覽/活動</div>
+							<div>EVENTS</div>
+							</Link>
 						</div>
 					}
 					key='3'
@@ -44,14 +48,16 @@ const LinkGroup = ({ setSideBarActive }) => {
 							to={'/introduce/exhibition'}
 							onClick={handleClickLink}
 						>
-							展覽
+							<div>展覽</div>
+							<div>EXHIBITIONS</div>
 						</Link>
 						<Link
 							className={styles.link}
 							to={'/introduce/activity'}
 							onClick={handleClickLink}
 						>
-							活動
+							<div>活動</div>
+							<div>ACTIVITIES</div>
 						</Link>
 					</div>
 				</Panel>
@@ -63,7 +69,8 @@ const LinkGroup = ({ setSideBarActive }) => {
 								to={'/calendar'}
 								onClick={handleClickLink}
 							>
-								行事曆
+								<div>行事曆</div>
+								<div>CHALENDAR</div>
 							</Link>
 						</div>
 					}
@@ -74,7 +81,9 @@ const LinkGroup = ({ setSideBarActive }) => {
 					header={
 						<div className={styles.headerWrapper}>
 							<Link className={styles.link}>
-								特別企劃
+								
+								<div>特別企劃</div>
+								<div>SPECIALS</div>
 							</Link>
 						</div>
 					}
@@ -86,14 +95,17 @@ const LinkGroup = ({ setSideBarActive }) => {
 							className={styles.link}
 							to={'/artwork'}
 							onClick={handleClickLink}
-						>
-							洄溯
+						>						
+							<div>尋洄地圖</div>
+							<div>Map of ArtFest</div>
 						</Link>
 						<Link className={styles.link} to={'/map'} onClick={handleClickLink}>
-							藝術季地圖
+							<div>心理測驗</div>
+							<div>Reply 2023</div>
 						</Link>
 						<Link className={styles.link} to={'/'} onClick={handleClickLink}>
-							心理測驗
+							<div>洄溯展覽暨比賽</div>
+							<div>Throwback</div>
 						</Link>
 					</div>
 				</Panel>
