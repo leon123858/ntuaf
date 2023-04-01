@@ -71,7 +71,11 @@ const items = [
 				key: 'afMap',
 			},
 			{
-				label: <div className={styles.subMenu}>心理測驗</div>,
+				label: (
+				<Link to ={'http://localhost:9000'} target="_blank">
+					<div className={styles.subMenu}>心理測驗</div>
+				</Link>
+				),
 				key: 'psychoTest',
 			},
 		],
