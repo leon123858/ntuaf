@@ -82,10 +82,22 @@
 }
 .link:hover{
 	/* font-size: 50px; */
-	background: linear-gradient(to right, rgba(37, 73, 157, 1) ,rgba(231, 50, 115, 1));
+	
 	/* background-color: red; */
 	/* text-decoration: none; */
 	/* color: black; */
+	/* background: linear-gradient(to right, rgba(37, 73, 157, 1) ,rgba(231, 50, 115, 1)); */
+	/* -webkit-background-clip: text; */
+	/* -webkit-text-fill-color: transparent; */
+}
+
+:global(.ant-menu-item:hover) {
+	background: blue!important;
+}
+
+:global(.ant-menu-submenu-title:hover){
+	/* make colorfule hover effect on header text */
+	background: linear-gradient(to right, rgba(37, 73, 157, 1) ,rgba(231, 50, 115, 1));
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
@@ -104,7 +116,7 @@
 }
 .tabName:hover{
 	/* font-size: 50px; */
-	background: linear-gradient(to right, rgba(37, 73, 157, 1) ,rgba(231, 50, 115, 1));
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+	/* background: linear-gradient(to right, rgba(37, 73, 157, 1) ,rgba(231, 50, 115, 1)); */
+	/* -webkit-background-clip: text; */
+	/* -webkit-text-fill-color: transparent; */
 }

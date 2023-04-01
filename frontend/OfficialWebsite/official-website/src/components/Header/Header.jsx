@@ -159,12 +159,6 @@ const Header = () => {
 					) 
 					: (
 						<div style={{ display: 'flex', alignItems: 'center', height:"100%" }}>
-							<Link className={styles.link} to={'/about'}>
-								{/* <div className={styles.tabWrapper}> */}
-									<div className={styles.tabName}>關於我們</div>
-									<div className={styles.tabName}>ABOUT</div>
-								{/* </div> */}
-							</Link>
 							<div className={styles.menuWrapper}>
 								<Menu
 									// selectable={false}
