@@ -18,30 +18,29 @@ const teamImages = {
 		'../../about/team/召部.jpg',
 	],
 	[DEPARTMENT.公關部]: [
-		'../../about/team/召部.jpg',
-		'../../about/team/召部.jpg',
-		'../../about/team/召部.jpg',
+		'../../about/team/學術.jpg',
 	],
 	[DEPARTMENT.策展部]: [
-		'../../about/team/召部.jpg',
-		'../../about/team/召部.jpg'
+		'../../about/team/數位.jpg',
+		'../../about/team/活動.jpg',
+		'../../about/team/展覽.jpg'
 	],
 	[DEPARTMENT.行政部]: [
-		'../../about/team/召部.jpg',
-		'../../about/team/召部.jpg',
+		'../../about/team/行政.jpg',
 	],
 	[DEPARTMENT.設計部]: [
-		'../../about/team/召部.jpg',
-		'../../about/team/召部.jpg',
-		'../../about/team/召部.jpg',
+		'../../about/team/文宣組.jpg',
+		'../../about/team/主視覺組.jpg',
+		'../../about/team/影像組.jpg',
 	]
 };
 
-const PositionRow = ({ members, position, fontSize }) => {
+const PositionRow = ({ members, position, inBreakPoint }) => {
+	const fontSize = inBreakPoint ? "16px" : "18px"
 	return (
-		<div className={style.positionRow} style={{ fontSize, }}>
+		<div className={inBreakPoint? style.positionRow :style.ldPositionRow} style={{ fontSize, }}>
 			<p style={{ margin: 0, fontWeight: "550" }}>{position}</p>
-			<div className={style.memberContainer}>
+			<div className={inBreakPoint? style.memberContainer:style.lgMemberContainer}>
 				{members.map((member, idx) =>
 					member.job === position ? (
 						<div key={idx} className={style.member}>
@@ -122,15 +121,15 @@ const MemberTab = () => {
 								/> */}
 								{curDepartment === '核心團隊' ? (
 									<div className={inBreakPoint ? style.flexHalf : style.lgFlexHalf}>
-										<PositionRow members={memberData} position={'總召'} fontSize={inBreakPoint ? "18px" : "18px"} />
+										<PositionRow members={memberData} position={'總召'} inBreakPoint={inBreakPoint} />
 										<div style={{ height: "15px" }}></div>
-										<PositionRow members={memberData} position={'副召'} fontSize={inBreakPoint ? "18px" : "18px"} />
+										<PositionRow members={memberData} position={'副召'} inBreakPoint={inBreakPoint} />
 									</div>
 								) : (
 									<div className={inBreakPoint ? style.flexHalf : style.lgFlexHalf}>
-										<PositionRow members={memberData} position={'部長'} fontSize={inBreakPoint ? "18px" : "18px"} />
+										<PositionRow members={memberData} position={'部長'} inBreakPoint={inBreakPoint} />
 										<div style={{ height: "15px" }}></div>
-										<PositionRow members={memberData} position={'組員'} fontSize={inBreakPoint ? "18px" : "18px"} />
+										<PositionRow members={memberData} position={'組員'} inBreakPoint={inBreakPoint} />
 									</div>
 								)}
 							</div>
