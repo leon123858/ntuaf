@@ -13,7 +13,7 @@ const LinkGroup = ({ setSideBarActive }) => {
 	};
 	return (
 		<div className={styles.sideBarWrapper}>
-			<Collapse ghost>
+			<Collapse ghost accordion>
 				<Panel
 					header={
 						<div className={styles.headerWrapper}>
@@ -22,20 +22,21 @@ const LinkGroup = ({ setSideBarActive }) => {
 								to={'/about'}
 								onClick={handleClickLink}
 							>
-								<div>關於我們</div>
-								<div>ABOUT</div>
+								<div className={styles.chineseTab}>關於我們</div>
+								<div className={styles.engTab}>ABOUT</div>
 							</Link>
 						</div>
 					}
 					key='2'
 					showArrow={false}
+					collapsible="icon"
 				/>
 				<Panel
 					header={
 						<div className={styles.headerWrapper}>
 							<Link className={styles.link}>
-							<div>展覽/活動</div>
-							<div>EVENTS</div>
+							<div className={styles.chineseTab}>展覽/活動</div>
+							<div className={styles.engTab}>EVENTS</div>
 							</Link>
 						</div>
 					}
@@ -44,20 +45,20 @@ const LinkGroup = ({ setSideBarActive }) => {
 				>
 					<div className={styles.collapseItemWrapper}>
 						<Link
-							className={styles.link}
+							className={styles.subLink}
 							to={'/introduce/exhibition'}
 							onClick={handleClickLink}
 						>
-							<div>展覽</div>
-							<div>EXHIBITIONS</div>
+							<div className={styles.chineseSubTab}>展覽</div>
+							<div className={styles.engSubTab}>EXHIBITIONS</div>
 						</Link>
 						<Link
-							className={styles.link}
+							className={styles.subLink}
 							to={'/introduce/activity'}
 							onClick={handleClickLink}
 						>
-							<div>活動</div>
-							<div>ACTIVITIES</div>
+							<div className={styles.chineseSubTab}>活動</div>
+							<div className={styles.engSubTab}>ACTIVITIES</div>
 						</Link>
 					</div>
 				</Panel>
@@ -69,21 +70,22 @@ const LinkGroup = ({ setSideBarActive }) => {
 								to={'/calendar'}
 								onClick={handleClickLink}
 							>
-								<div>行事曆</div>
-								<div>CHALENDAR</div>
+								<div className={styles.chineseTab}>行事曆</div>
+								<div className={styles.engTab}>CALENDAR</div>
 							</Link>
 						</div>
 					}
 					key='4'
 					showArrow={false}
+					collapsible="icon"
 				/>
 				<Panel
 					header={
 						<div className={styles.headerWrapper}>
 							<Link className={styles.link}>
 								
-								<div>特別企劃</div>
-								<div>SPECIALS</div>
+								<div className={styles.chineseTab}>特別企劃</div>
+								<div className={styles.engTab}>SPECIALS</div>
 							</Link>
 						</div>
 					}
@@ -92,20 +94,20 @@ const LinkGroup = ({ setSideBarActive }) => {
 				>
 					<div className={styles.collapseItemWrapper}>
 						<Link
-							className={styles.link}
+							className={styles.subLink}
 							to={'/artwork'}
 							onClick={handleClickLink}
 						>						
-							<div>尋洄地圖</div>
-							<div>Map of ArtFest</div>
+							<div className={styles.chineseSubTab}>尋洄地圖</div>
+							<div className={styles.engSubTab}>Map of ArtFest</div>
 						</Link>
-						<Link className={styles.link} to={'/map'} onClick={handleClickLink}>
-							<div>心理測驗</div>
-							<div>Reply 2023</div>
+						<Link className={styles.subLink} to={'/map'} onClick={handleClickLink}>
+							<div className={styles.chineseSubTab}>心理測驗</div>
+							<div className={styles.engSubTab}>Reply 2023</div>
 						</Link>
-						<Link className={styles.link} to={'/'} onClick={handleClickLink}>
-							<div>洄溯展覽暨比賽</div>
-							<div>Throwback</div>
+						<Link className={styles.subLink} to={'/'} onClick={handleClickLink}>
+							<div className={styles.chineseSubTab}>洄溯展覽暨比賽</div>
+							<div className={styles.engSubTab}>Throwback</div>
 						</Link>
 					</div>
 				</Panel>
@@ -144,12 +146,12 @@ const SideBar = (props) => {
 		>
 			<div className={styles.drawerBodyWrapper} {...handlers}>
 				<div className={styles.header}>
-					<SearchOutlined
+					{/* <SearchOutlined
 						style={{ fontSize: '32px' }}
 						onClick={() => {
 							setActiveSearch(!activeSearch);
 						}}
-					/>
+					/> */}
 					<div
 						id={'inputSearch'}
 						className={activeSearch ? styles.input : styles.defaultInput}
@@ -163,19 +165,15 @@ const SideBar = (props) => {
 							onKeyDown={search}
 						/>
 					</div>
-					<LoginButton />
+					<div className={styles.loginWrapper}><LoginButton /></div>
+					
 				</div>
-				<div>
+
 					<LinkGroup setSideBarActive={props.setSideBarActive} />
-				</div>
-				<div className={styles.closeIcon}>
-					<span
-						style={{ fontSize: '32px', width: '32px' }}
-						onClick={props.onClose}
-					>
-						X
-					</span>
-				</div>
+				{/* <div className={styles.closeIcon}> */}
+
+					<img onClick={props.onClose} className={styles.closeIcon} src="https://drive.google.com/uc?export=view&id=1cP59d2uWfbFBoflyGC0dVDHfARRahUWF"></img>
+				{/* </div> */}
 			</div>
 		</Drawer>
 	);
