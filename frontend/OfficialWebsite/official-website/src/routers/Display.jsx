@@ -9,7 +9,7 @@ import ImageList from '../components/ImageList/ImageList';
 import Link from '../components/Link/Link';
 import Map from '../components/Map/Map';
 import { useParams } from 'react-router-dom';
-import { Spin, Image, message } from 'antd';
+import { Image, message } from 'antd';
 
 const block2element = {
 	[BlOCK_TYPE.TEXT_A]: ({ text, title, url, key }) => {
@@ -49,13 +49,14 @@ const block2element = {
 			/>
 		);
 	},
-	[BlOCK_TYPE.TEXT_D]: ({ text, key }) => {
+	[BlOCK_TYPE.TEXT_D]: ({ text, key, url }) => {
 		return (
 			<Textbox
 				key={key}
 				text={{
 					type: BlOCK_TYPE.TEXT_D,
 					text: text,
+					url: url,
 				}}
 			/>
 		);
@@ -93,19 +94,21 @@ const block2element = {
 	[BlOCK_TYPE.MAP_B]: ({ text, url, key }) => {
 		return <Map key={key} type={[BlOCK_TYPE.MAP_B]} url={url} text={text} />;
 	},
-	[BlOCK_TYPE.VIDEO_A]: ({ title, url, key }) => {
-		return <Video url={url} text={title} key={key} />;
+	[BlOCK_TYPE.VIDEO_A]: ({ title, url, key, text }) => {
+		return <Video url={url} title={title} text={text} key={key} />;
 	},
 	[BlOCK_TYPE.IMAGE_LIST_A]: ({ title, items, key }) => {
 		return (
-			<ImageList
-				key={key}
-				data={{
-					type: [BlOCK_TYPE.IMAGE_LIST_A],
-					topic: title,
-					items: items,
-				}}
-			/>
+			<>
+				<ImageList
+					key={key}
+					data={{
+						type: [BlOCK_TYPE.IMAGE_LIST_A],
+						topic: title,
+						items: items,
+					}}
+				/>
+			</>
 		);
 	},
 	[BlOCK_TYPE.IMAGE_LIST_B]: ({ title, url, items, text, key }) => {
@@ -141,7 +144,7 @@ const block2element = {
 			<ImageList
 				key={key}
 				data={{
-					type: [BlOCK_TYPE.IMAGE_LIST_A],
+					type: [BlOCK_TYPE.IMAGE_LIST_D],
 					topic: title,
 					items: items,
 				}}
@@ -184,18 +187,29 @@ function Display() {
 			{contextHolder}
 
 			<Image
-				className={style.Image}
+				style={{
+					width: '98.5vw',
+				}}
 				preview={false}
 				src={eventState.image?.banner}
 				fallback='https://fakeimg.pl/1900x500/?text=WrongImage'
+				width={'100vw'}
+				height={'25vw'}
 			/>
-			<h1 style={{ textAlign: 'center' }}>{eventState.title}</h1>
-			<div className={style.APP}>{interpreter.transfer(eventState.blocks)}</div>
+			<h1 style={{ textAlign: 'center', margin: '32px 0' }}>
+				{eventState.title}
+			</h1>
+			<div
+				className={style.APP}
+				style={{ maxWidth: 800, margin: '0 auto', width: '80%' }}
+			>
+				{interpreter.transfer(eventState.blocks)}
+			</div>
 		</>
 	) : (
 		<div className={style.Spin}>
 			{contextHolder}
-			<Spin></Spin>
+			<img src={'/loading.gif'} alt='loading...' />
 		</div>
 	);
 }

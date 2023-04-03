@@ -1,12 +1,10 @@
-// import { useState } from "react";
-// import Form from "./Form";
-import { Collapse, Typography, Button, Image } from 'antd';
+import { Collapse, Typography, Image } from 'antd';
 import { Link } from 'react-router-dom';
-// import Artwork from "../../routers/Artwork";
-// import { upload } from "@testing-library/user-event/dist/upload";
+import { RightOutlined } from '@ant-design/icons';
 
 const { Panel } = Collapse;
-const { Title, Paragraph } = Typography;
+const { Title, Paragraph , Text } = Typography;
+
 
 const ArtEvent = () => {
 	// const [isOpened,setOpen] = useState(true);
@@ -40,15 +38,15 @@ const ArtEvent = () => {
 					<Collapse
 						onChange={onChange}
 						expandIconPosition='end'
-						style={{}}
-						ghost
+						bordered={false}
+						defaultActiveKey={['2']}
+						// ghost
 					>
 						<Panel
 							header={<span style={titleStyle}>比賽規則</span>}
 							key='1'
-							level='2'
 						>
-							<Typography>
+							<Typography >
 								<Paragraph>
 									<span style={{ fontSize: 20 }}>
 										1. 共分為三組： 純文字組 照片組（須附100字內說明文字）
@@ -69,9 +67,11 @@ const ArtEvent = () => {
 						onChange={onChange}
 						expandIconPosition='end'
 						style={{}}
-						ghost
+						bordered={false}
+						// ghost
+						defaultActiveKey={['2']}
 					>
-						<Panel header={<span style={titleStyle}>比賽獎勵</span>} key='1'>
+						<Panel header={<span style={titleStyle}>比賽獎勵</span>} style={{ borderBottom : "red" }} key='1'>
 							<Typography>
 								<Paragraph>
 									<span style={{ fontSize: 20 }}>
@@ -111,12 +111,17 @@ const ArtEvent = () => {
 							display: 'flex',
 							justifyContent: 'right',
 							marginBottom: '3rem',
+							marginTop: '2rem',
 						}}
 					>
-						<Button size='large' href='Artwork/upload'>
-							{' '}
-							我要參賽{' '}
-						</Button>
+					<Link to='/Artwork/Upload'>
+						<div style={{ backgroundColor : 'lightgrey' ,textAlign : 'center' }}>
+							<Text style={{ fontSize: 35 , margin : '40px' }}>
+								我要參賽
+							</Text>
+							<RightOutlined style={{ fontSize: 35 }}/>
+						</div>
+					</Link>
 					</div>
 					<Link to='/ArtworkList'>
 						<Image

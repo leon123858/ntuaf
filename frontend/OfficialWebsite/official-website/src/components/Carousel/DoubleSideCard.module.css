@@ -8,7 +8,7 @@
 }
 .dCardInnerWrapper {
 	padding: auto;
-	transition: all 3s;
+	transition: all 1s;
 	transform-style: preserve-3d;
 	position: relative;
 	width: 100%;

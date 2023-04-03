@@ -71,6 +71,7 @@ export const correctEvent = (event: Event) => {
 		image = correctImage({} as Images),
 		type = EVENT_TYPE.展覽,
 		title = '未定義標題',
+		topic = '',
 		blocks = [],
 	} = event;
 	if (!Object.values(EVENT_TYPE).includes(type))
@@ -82,6 +83,7 @@ export const correctEvent = (event: Event) => {
 		image: correctImage(image),
 		type,
 		title,
+		topic,
 		blocks: blocks.map((v) => correctBlock(v)),
 	} as Event;
 };

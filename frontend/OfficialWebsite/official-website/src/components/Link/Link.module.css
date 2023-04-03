@@ -4,7 +4,7 @@
 }
 
 .btn {
-    background-color: grey;
+    background: linear-gradient(90deg, #DD0E65 11.11%, #25499D 100%);
     color: white;
     width: 40%;
     height: 50px;

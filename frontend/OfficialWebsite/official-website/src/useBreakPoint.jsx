@@ -5,12 +5,14 @@ import { subscriptAuthState } from '@leon123858/ntuaf-sdk';
 const BreakPointContext = createContext({
 	inBreakPoint: true,
 	isLogin: false,
+	breakPoint: 834,
 	handleLogout: () => {}
 });
 
 function BreakPointProvider({ children }) {
 	const [inBreakPoint, setInBreakPoint] = useState(true);
 	const [isLogin, setLogin] = useState(false);
+	const breakPoint = 834;
 	const width = useWindowWidth();
 
 	useEffect(() => {
@@ -20,7 +22,7 @@ function BreakPointProvider({ children }) {
 	}, []);
 
 	useEffect(() => {
-		if (width > 834) {
+		if (width > breakPoint) {
 			setInBreakPoint(false);
 		} else {
 			setInBreakPoint(true);
@@ -34,6 +36,7 @@ function BreakPointProvider({ children }) {
 	const defaultValue = {
 		inBreakPoint,
 		isLogin,
+		breakPoint,
 		handleLogout
 	};
 

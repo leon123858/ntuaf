@@ -1,6 +1,5 @@
 *{
     box-sizing: border-box;
-    border: none !important;
 }
 .Wrapper {
     /* height: 100vh;
@@ -8,5 +7,4 @@
     /* background-color: antiquewhite; */
     margin-top: 0PX;
     /* margin-top: 45PX; */
-    
 }

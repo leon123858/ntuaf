@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { Tabs, Spin } from 'antd';
+import React, { useEffect, useState, useContext } from 'react';
+import { Tabs } from 'antd';
+
 import { useParams } from 'react-router-dom';
 import style from './Introduce.module.css';
 import EventList from '../components/EventList/EventList';
 import EventListEx from '../components/EventList/EventListEx';
 import { getTabEvents } from '@leon123858/ntuaf-sdk';
+import { BreakPointContext } from '../useBreakPoint';
+import './Introduce.css';
 
 function Introduce() {
 	const { type = 1 } = useParams();
@@ -12,9 +15,10 @@ function Introduce() {
 	const [firstData, setFirstData] = useState({ events: [] });
 	const [secondData, setSecondData] = useState({ events: [] });
 	const onChange = (e) => setKey(e);
+	const { inBreakPoint } = useContext(BreakPointContext);
 
 	useEffect(() => {
-		const curKey = (type === 'exhibition') ? '1' : '2'
+		const curKey = type === 'exhibition' ? '1' : '2';
 		setKey(curKey);
 	}, [type]);
 
@@ -47,33 +51,57 @@ function Introduce() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [key]);
 
+	const tabBarStyle = {
+		padding: 10,
+		fontSize: '50px',
+		activeTab: {
+			color: 'gray',
+			borderColor:
+				'linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet) 1 !important',
+			borderImageSlice: 1,
+		},
+		borderStyle: 'none',
+	};
+
 	return (
 		<div className={style.APP}>
+			<br />
+			<br />
+			<br />
 			<Tabs
-				className={style.container}
+				// className={style.container}
 				activeKey={key}
 				centered
+				tabBarStyle={tabBarStyle}
 				items={[
 					{
 						key: '1',
-						label: `展覽`,
-						children: (
-							(firstData.events.length === 0) 
-							? <div className={style.Spin}><Spin /></div>
-							: <EventListEx data={firstData} />
-						),
+						label: '展覽',
+						children:
+							firstData.events.length === 0 ? (
+								<div className={style.Spin}>
+									<img src={'/loading.gif'} alt='loading...' />
+								</div>
+							) : (
+								<EventListEx data={firstData} />
+							),
 					},
 					{
 						key: '2',
 						label: `活動`,
-						children: (
-							(secondData.events.length === 0) 
-							? <div className={style.Spin}><Spin /></div>
-							: <EventList data={secondData} />
-						),
+						children:
+							secondData.events.length === 0 ? (
+								<div className={style.Spin}>
+									<img src={'/loading.gif'} alt='loading...' />
+								</div>
+							) : (
+								<EventList data={secondData} />
+							),
 					},
 				]}
 				onChange={onChange}
+				className={style.customTabs}
+				tabBarGutter={inBreakPoint ? 80 : 150}
 			></Tabs>
 		</div>
 	);
