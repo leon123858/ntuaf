@@ -20,7 +20,7 @@ const TextBox = ({ text }) => {
 
                     <div className={style.container} style={{ paddingLeft: 20, marginTop: 32, paddingRight: 20}}>
 
-                        <h1 className={`${style.topic} ${style.one}`}>{text.url}</h1>
+                        <h1 className={style.one}>{text.url}</h1>
                         <div className={style.content} style={{ paddingTop: '22px', backgroundColor: '#EFEFEF' }}>
                             {text.text.split('\n').map((str, idx) => (
                                 <p key={idx}>{str}</p>
@@ -36,7 +36,7 @@ const TextBox = ({ text }) => {
                     {
                         (text.title) 
                         ? (
-                            <h1 className={`${style.topic} ${style.two}`}>{text.title}</h1>
+                            <h1 className={style.two}>{text.title}</h1>
                         )
                         : ''
                     }
@@ -51,7 +51,7 @@ const TextBox = ({ text }) => {
 
             [BlOCK_TYPE.TEXT_C]: (
                 <div className={style.container} style={{ marginTop: 52 }}>
-                    <h1 className={`${style.topic} ${style.three}`}>{text.title}</h1>
+                    <h1 className={style.three}>{text.title}</h1>
                     <div className={style.content}>
                         {text.text.split('\n').map((str, idx) => (
                             <p key={idx}>{str}</p>

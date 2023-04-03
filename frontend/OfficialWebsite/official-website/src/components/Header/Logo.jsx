@@ -9,10 +9,10 @@ const Logo = () => {
 				<Image
 					className={styles.logo}
 					preview={false}
-					width={'125px'}
-					height={'50px'}
+					width={'154px'}
+					height={'49.5px'}
 					src='/ntuaf1.svg'
-				></Image>
+				/>
 			</Link>
 		</div>
 	);

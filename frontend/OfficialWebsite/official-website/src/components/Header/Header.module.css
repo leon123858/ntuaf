@@ -15,7 +15,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0 3%;
+	padding: 0 2%;
 	height: 80px;
 	transition: all 1s;
 }
@@ -74,4 +74,12 @@
 	margin: 0 0.3rem;
 	text-decoration: none;
 	color: black;
+}
+
+.box {
+	border-radius: 100px;
+}
+
+.boxS {
+	box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.21);
 }

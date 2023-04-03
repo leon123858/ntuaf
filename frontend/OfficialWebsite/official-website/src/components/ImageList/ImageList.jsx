@@ -13,9 +13,10 @@ const ImageList = ({ data }) => {
         [BlOCK_TYPE.IMAGE_LIST_A]: (
             <div className={style.container}>
                 <p className={style.topic}>{data.topic}</p>
-                <div className={style.lgImgList}>
+
+                <div className={style.imgListA}>
                     {data.items.map((image, idx) => (
-                        <div className={style.lgImgContainer} key={idx}>
+                        <div key={idx}>
                             <Image src={image.url} width='95%' style={{ borderRadius: 10 }} />
                         </div>
                     ))}
@@ -24,16 +25,14 @@ const ImageList = ({ data }) => {
         ),
         [BlOCK_TYPE.IMAGE_LIST_B]: (
             <div className={style.container}>
-                <div className={style.picBox2}>
-                    <Image src={data.items[curPic].url} width='50%'></Image>
-                    <div style={{ width: '60%', margin: '0 auto' }}>
-                        <Slider
-                            min={1}
-                            max={data.items.length}
-                            onChange={(e) => setCurPic(e - 1)}
-                        />
-                    </div>
+                <Image src={data.items[curPic].url} width='50%'></Image>
 
+                <div style={{ width: '60%', margin: '0 auto' }}>
+                    <Slider
+                        min={1}
+                        max={data.items.length}
+                        onChange={(e) => setCurPic(e - 1)}
+                    />
                 </div>
             </div>
         ),
@@ -43,11 +42,11 @@ const ImageList = ({ data }) => {
                 <div>
                     {
                         data.items.map((image, idx) => (
-                            <div key={idx} className={style.smpicbox}>
+                            <div key={idx} className={style.imgItemC}>
                                 {
                                     (image.url) ?
                                         (
-                                            <div className={style.picBox}>
+                                            <div className={style.imgC}>
                                                 <Image
                                                     alt='img'
                                                     src={image.url}
@@ -55,23 +54,18 @@ const ImageList = ({ data }) => {
                                                     style={{ borderRadius: '50%' }}
                                                 />
                                             </div>
-
                                         )
                                         : ''
                                 }
-                                <div>
-                                    {
-                                        <div key={idx}>
-                                            <TextBox
-                                                key={idx}
-                                                text={{
-                                                    type: BlOCK_TYPE.TEXT_A,
-                                                    text: image.name,
-                                                    // url: image.url,
-                                                }}
-                                            />
-                                        </div>
-                                    }
+                                <div key={idx}>
+                                    <TextBox
+                                        key={idx}
+                                        text={{
+                                            type: BlOCK_TYPE.TEXT_A,
+                                            text: image.name,
+                                            // url: image.url,
+                                        }}
+                                    />
                                 </div>
                             </div>
                         ))
@@ -84,11 +78,11 @@ const ImageList = ({ data }) => {
             <div className={style.container}>
                 <p className={style.topic}>{data.topic}</p>
 
-                <div className={(inBreakPoint) ? style.imgList2 : style.lgImgList2}>
+                <div className={(inBreakPoint) ? style.imgListD : style.lgImgListD}>
                     {data.items.map((image, idx) =>
-                        <div className={style.imgContainer2} key={idx}>
+                        <div className={style.imgitemD} key={idx}>
                             <Image src={image.url} width='75%' style={{ borderRadius: 10 }} />
-                            <p className={style.imgName2}>
+                            <p className={style.textD}>
                                 {image.name}
                             </p>
                         </div>
@@ -102,7 +96,7 @@ const ImageList = ({ data }) => {
                 <div>
                     {
                         data.items.map((image, idx) => (
-                            <div key={idx} style={(idx % 2 === 0) ? { maxWidth: '70%', textAlign: 'left' } : { marginLeft: '30%', textAlign: 'left', maxWidth: '70%' }}>
+                            <div key={idx} className={(idx % 2 === 0) ? style.left : style.right}>
                                 <TextBox
                                     key={idx}
                                     text={{
