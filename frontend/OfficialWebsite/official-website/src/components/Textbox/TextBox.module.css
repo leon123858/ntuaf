@@ -1,7 +1,3 @@
-:root {
-  --top: -24px;
-}
-
 .container {
   margin: 32px auto;
   position: relative;
@@ -15,12 +11,8 @@
   font-size: 14px;
 }
 
-.topic {
+.one {
   font-size: 14px;
-  background-color: transparent;
-}
-
-.topic.one {
   margin: 0;
   position: absolute;
   top: -10px;
@@ -28,13 +20,13 @@
   font-weight: 700;
 }
 
-.topic.two {
+.two {
   font-size: 16px;
   position: static;
   margin-top: 0px;
 }
 
-.topic.three {
+.three {
   font-size: 14px;
   margin: 0;
   position: absolute;
