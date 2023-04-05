@@ -6,7 +6,7 @@ import { EVENT_TYPE } from '@leon123858/ntuaf-sdk';
 
 const createTimeString = (start: number, end: number) => {
 	if (moment(start).isSame(moment(end), 'day')) {
-		return `${moment(start).format('hh:mm')} - ${moment(end).format('hh:mm')}`;
+		return `${moment(start).format('HH:mm')} - ${moment(end).format('HH:mm')}`;
 	}
 	return `${moment(start).format('MM/DD')} - ${moment(end).format('MM/DD')}`;
 };

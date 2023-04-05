@@ -7,24 +7,30 @@ import { useLocation } from 'react-router-dom';
 import { BreakPointContext } from '../../useBreakPoint';
 
 const LAYOUT_BACKGROUND_IMAGE = {
-	default: '/background/c1.png',
-	'/calendar': '/background/c1.png',
-	'/introduce/exhibition': {
+	default: {
 		web: '/background/iWebB.png',
 		mobile: '/background/iMobileB.png',
 	},
+	'/calendar': {
+		web: '/background/3Web.png',
+		mobile: '/background/3Mob.png',
+	},
 	'/': {
-		web: '/background/fWeb.png',
-		mobile: '/background/fMobile.png',
+		web: '/background/1Web.png',
+		mobile: '/background/1Mob.png',
 	},
 };
 
 const getBackgroundImage = (path, inBreakPoint) => {
 	if (!LAYOUT_BACKGROUND_IMAGE[path]) {
-		return LAYOUT_BACKGROUND_IMAGE.default;
+		return inBreakPoint
+			? LAYOUT_BACKGROUND_IMAGE.default.mobile
+			: LAYOUT_BACKGROUND_IMAGE.default.web;
 	}
 	if (typeof LAYOUT_BACKGROUND_IMAGE[path] == 'string') {
-		return LAYOUT_BACKGROUND_IMAGE[path];
+		return inBreakPoint
+			? LAYOUT_BACKGROUND_IMAGE[path].mobile
+			: LAYOUT_BACKGROUND_IMAGE[path].web;
 	}
 	return inBreakPoint
 		? LAYOUT_BACKGROUND_IMAGE[path].mobile

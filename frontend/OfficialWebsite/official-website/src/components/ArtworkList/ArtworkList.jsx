@@ -317,6 +317,7 @@ export const ArtworkList = () => {
 		<>
 			<Selecter />
 			<Tabs
+				animated={false}
 				activeKey={activeKey}
 				centered
 				items={items.map((item, i) => {

@@ -11,3 +11,7 @@
 code {
 	font-family: 'Noto Sans TC', sans-serif !important;
 }
+
+.ant-tabs-tab-btn {
+	color: gray !important;
+}

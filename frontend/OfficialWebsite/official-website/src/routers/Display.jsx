@@ -187,14 +187,10 @@ function Display() {
 			{contextHolder}
 
 			<Image
-				style={{
-					width: '98.5vw',
-				}}
 				preview={false}
 				src={eventState.image?.banner}
 				fallback='https://fakeimg.pl/1900x500/?text=WrongImage'
-				width={'100vw'}
-				height={'25vw'}
+				width={'100%'}
 			/>
 			<h1 style={{ textAlign: 'center', margin: '32px 0' }}>
 				{eventState.title}
@@ -209,7 +205,7 @@ function Display() {
 	) : (
 		<div className={style.Spin}>
 			{contextHolder}
-			<img src={'/loading.gif'} alt='loading...' />
+			<img src={'/loading.gif'} style={{ width: '18vw' }} alt='loading...' />
 		</div>
 	);
 }

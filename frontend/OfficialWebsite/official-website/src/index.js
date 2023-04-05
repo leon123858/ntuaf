@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import {
+	createBrowserRouter,
+	RouterProvider,
+	useLocation,
+} from 'react-router-dom';
 import './index.css';
 import ErrorPage from './error-page';
 import reportWebVitals from './reportWebVitals';
@@ -18,10 +22,25 @@ import { BreakPointProvider } from './useBreakPoint.jsx';
 import Artworkupload from './routers/Artworkupload';
 import { getMonthsEventsType } from '@leon123858/ntuaf-sdk';
 
+function ScrollToTop() {
+	const { pathname } = useLocation();
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, [pathname]);
+
+	return null;
+}
+
 const router = createBrowserRouter([
 	{
 		path: '/',
-		element: <Layout />,
+		element: (
+			<>
+				<ScrollToTop />
+				<Layout />
+			</>
+		),
 		children: [
 			{
 				path: '/',
@@ -81,7 +100,16 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
 		<BreakPointProvider>
-			<RouterProvider router={router} />
+			<RouterProvider
+				fallbackElement={
+					<img
+						src={'/loading.gif'}
+						style={{ width: '18vw' }}
+						alt='loading...'
+					/>
+				}
+				router={router}
+			/>
 		</BreakPointProvider>
 	</React.StrictMode>
 );

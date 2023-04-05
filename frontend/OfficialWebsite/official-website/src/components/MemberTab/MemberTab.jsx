@@ -4,6 +4,7 @@ import { Tabs, Carousel, Button } from 'antd';
 import { RightOutlined, LeftOutlined } from '@ant-design/icons';
 import { BreakPointContext } from '../../useBreakPoint';
 import { getMembersByDepartment, DEPARTMENT } from '@leon123858/ntuaf-sdk';
+import Hr from '../Hr/Hr';
 
 const departmentNames = [
 	DEPARTMENT.核心團隊,
@@ -14,33 +15,36 @@ const departmentNames = [
 ];
 
 const teamImages = {
-	[DEPARTMENT.核心團隊]: [
-		'../../about/team/召部.jpg',
-	],
-	[DEPARTMENT.公關部]: [
-		'../../about/team/學術.jpg',
-	],
+	[DEPARTMENT.核心團隊]: ['../../about/team/召部.jpg'],
+	[DEPARTMENT.公關部]: ['../../about/team/學術.jpg'],
 	[DEPARTMENT.策展部]: [
 		'../../about/team/數位.jpg',
 		'../../about/team/活動.jpg',
-		'../../about/team/展覽.jpg'
+		'../../about/team/展覽.jpg',
 	],
-	[DEPARTMENT.行政部]: [
-		'../../about/team/行政.jpg',
-	],
+	[DEPARTMENT.行政部]: ['../../about/team/行政.jpg'],
 	[DEPARTMENT.設計部]: [
 		'../../about/team/文宣組.jpg',
 		'../../about/team/主視覺組.jpg',
 		'../../about/team/影像組.jpg',
-	]
+	],
 };
 
 const PositionRow = ({ members, position, inBreakPoint }) => {
-	const fontSize = inBreakPoint ? "16px" : "18px"
+	const fontSize = inBreakPoint ? '16px' : '18px';
 	return (
-		<div className={inBreakPoint? style.positionRow :style.lgPositionRow} style={{ fontSize, }}>
-			<p style={{ margin: 0, fontWeight: inBreakPoint?"bold":"550" }}>{position}</p>
-			<div className={inBreakPoint? style.memberContainer:style.lgMemberContainer}>
+		<div
+			className={inBreakPoint ? style.positionRow : style.lgPositionRow}
+			style={{ fontSize }}
+		>
+			<p style={{ margin: 0, fontWeight: inBreakPoint ? 'bold' : '550' }}>
+				{position}
+			</p>
+			<div
+				className={
+					inBreakPoint ? style.memberContainer : style.lgMemberContainer
+				}
+			>
 				{members.map((member, idx) =>
 					member.job === position ? (
 						<div key={idx} className={style.member}>
@@ -55,31 +59,41 @@ const PositionRow = ({ members, position, inBreakPoint }) => {
 	);
 };
 
-const ImgCarousel = ({ imgList ,inBreakPoint }) => {
-	const imgs = useRef(null)
-	if (!imgList) return <></>
-	console.log(imgList)
-	const showArrow = imgList.length > 1 && !inBreakPoint? true : false
+const ImgCarousel = ({ imgList, inBreakPoint }) => {
+	const imgs = useRef(null);
+	if (!imgList) return <></>;
+	console.log(imgList);
+	const showArrow = imgList.length > 1 && !inBreakPoint ? true : false;
 	return (
 		<>
 			<Carousel autoplay ref={imgs}>
-				{imgList.map(img => (
+				{imgList.map((img) => (
 					<div key={img}>
-						<img src={img} alt="" style={{ borderRadius: "10px" }} />
+						<img src={img} alt='' style={{ borderRadius: '10px' }} />
 					</div>
 				))}
 			</Carousel>
-			{showArrow ?
+			{showArrow ? (
 				<div>
-					<Button className={style.arrowRight} icon={<RightOutlined />} shape="circle" onClick={() => imgs.current.next()}></Button>
-					<Button className={style.arrowLeft} icon={<LeftOutlined />} shape="circle" onClick={() => imgs.current.prev()}></Button>
+					<Button
+						className={style.arrowRight}
+						icon={<RightOutlined />}
+						shape='circle'
+						onClick={() => imgs.current.next()}
+					></Button>
+					<Button
+						className={style.arrowLeft}
+						icon={<LeftOutlined />}
+						shape='circle'
+						onClick={() => imgs.current.prev()}
+					></Button>
 				</div>
-				:
-				""
-			}
+			) : (
+				''
+			)}
 		</>
-	)
-}
+	);
+};
 
 const MemberTab = () => {
 	const { inBreakPoint } = useContext(BreakPointContext);
@@ -104,11 +118,18 @@ const MemberTab = () => {
 		<div className={style.container}>
 			<Tabs
 				centered
+				type='card'
+				animated={false}
 				defaultActiveKey='1'
-				size={inBreakPoint ? "small" : 'large'}
+				size={inBreakPoint ? 'small' : 'large'}
 				items={departmentNames.map((departmentName, i) => {
 					return {
-						label: departmentName,
+						label:
+							curDepartment === departmentName ? (
+								<Hr title={departmentName}></Hr>
+							) : (
+								<h5>{departmentName}</h5>
+							),
 						key: departmentName,
 						children: (
 							<div
@@ -120,16 +141,36 @@ const MemberTab = () => {
 									className={inBreakPoint ? style.img : style.lgImg}
 								/> */}
 								{curDepartment === '核心團隊' ? (
-									<div className={inBreakPoint ? style.flexHalf : style.lgFlexHalf}>
-										<PositionRow members={memberData} position={'總召'} inBreakPoint={inBreakPoint} />
-										<div style={{ height: "15px" }}></div>
-										<PositionRow members={memberData} position={'副召'} inBreakPoint={inBreakPoint} />
+									<div
+										className={inBreakPoint ? style.flexHalf : style.lgFlexHalf}
+									>
+										<PositionRow
+											members={memberData}
+											position={'總召'}
+											inBreakPoint={inBreakPoint}
+										/>
+										<div style={{ height: '15px' }}></div>
+										<PositionRow
+											members={memberData}
+											position={'副召'}
+											inBreakPoint={inBreakPoint}
+										/>
 									</div>
 								) : (
-									<div className={inBreakPoint ? style.flexHalf : style.lgFlexHalf}>
-										<PositionRow members={memberData} position={'部長'} inBreakPoint={inBreakPoint} />
-										<div style={{ height: "15px" }}></div>
-										<PositionRow members={memberData} position={'組員'} inBreakPoint={inBreakPoint} />
+									<div
+										className={inBreakPoint ? style.flexHalf : style.lgFlexHalf}
+									>
+										<PositionRow
+											members={memberData}
+											position={'部長'}
+											inBreakPoint={inBreakPoint}
+										/>
+										<div style={{ height: '15px' }}></div>
+										<PositionRow
+											members={memberData}
+											position={'組員'}
+											inBreakPoint={inBreakPoint}
+										/>
 									</div>
 								)}
 							</div>
@@ -138,8 +179,15 @@ const MemberTab = () => {
 				})}
 				onChange={(key) => setCurDepartment(key)}
 			></Tabs>
-			<div className={inBreakPoint ? style.carouelContainer : style.lgcarouelContainer}>
-				<ImgCarousel imgList={teamImages[curDepartment]} inBreakPoint={inBreakPoint}/>
+			<div
+				className={
+					inBreakPoint ? style.carouelContainer : style.lgcarouelContainer
+				}
+			>
+				<ImgCarousel
+					imgList={teamImages[curDepartment]}
+					inBreakPoint={inBreakPoint}
+				/>
 			</div>
 		</div>
 	);
