@@ -65,7 +65,12 @@ function Introduce() {
 				items={[
 					{
 						key: '1',
-						label: key === '1' ? <Hr title={'展覽'}></Hr> : <h5>展覽</h5>,
+						label:
+							key === '1' ? (
+								<Hr title={'展覽'}></Hr>
+							) : (
+								<h5 style={{ fontSize: '20px' }}>展覽</h5>
+							),
 						children:
 							firstData.events.length === 0 ? (
 								<div className={style.Spin}>
@@ -77,7 +82,12 @@ function Introduce() {
 					},
 					{
 						key: '2',
-						label: key === '2' ? <Hr title={'活動'}></Hr> : <h5>活動</h5>,
+						label:
+							key === '2' ? (
+								<Hr title={'活動'}></Hr>
+							) : (
+								<h5 style={{ fontSize: '20px' }}>活動</h5>
+							),
 						children:
 							secondData.events.length === 0 ? (
 								<div className={style.Spin}>
@@ -90,7 +100,7 @@ function Introduce() {
 				]}
 				onChange={onChange}
 				tabBarGutter={inBreakPoint ? 80 : 150}
-				type='card'
+				// type='card'
 			></Tabs>
 		</div>
 	);

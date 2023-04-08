@@ -124,7 +124,7 @@ const MemberTab = () => {
 		<div className={style.container}>
 			<Tabs
 				centered
-				type='card'
+				// type='card'
 				animated={false}
 				defaultActiveKey='1'
 				size={inBreakPoint ? 'small' : 'large'}
@@ -134,7 +134,7 @@ const MemberTab = () => {
 							curDepartment === departmentName ? (
 								<Hr title={departmentName}></Hr>
 							) : (
-								<h5>{departmentName}</h5>
+								<h5 style={{ fontSize: '20px' }}>{departmentName}</h5>
 							),
 						key: departmentName,
 						children: (

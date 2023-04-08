@@ -3,7 +3,7 @@ import React from 'react';
 const Hr = ({ title }) => {
 	return (
 		<>
-			<h3 style={{ color: '#D7497C' }}>{title}</h3>
+			<h5 style={{ color: '#D7497C', fontSize: '20px' }}>{title}</h5>
 			<div>
 				<hr
 					style={{
