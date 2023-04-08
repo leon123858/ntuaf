@@ -134,7 +134,9 @@ const MemberTab = () => {
 							curDepartment === departmentName ? (
 								<Hr title={departmentName}></Hr>
 							) : (
-								<h5 style={{ fontSize: '20px' }}>{departmentName}</h5>
+								<h5 style={{ fontSize: '20px', paddingBottom: '5px' }}>
+									{departmentName}
+								</h5>
 							),
 						key: departmentName,
 						children: (

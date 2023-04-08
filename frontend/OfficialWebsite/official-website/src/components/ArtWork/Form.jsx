@@ -4,6 +4,7 @@ import {
 	Form,
 	Input,
 	Select,
+	Spin,
 	Upload,
 	message,
 	Modal,
@@ -74,6 +75,7 @@ const FormDisabledDemo = () => {
 	const handleRemove = () => {
 		form.resetFields();
 		setFileList([]);
+		URL.revokeObjectURL(previewImage);
 		setPreviewImage('');
 	};
 
@@ -275,7 +277,7 @@ const FormDisabledDemo = () => {
 										src={previewImage}
 									/>
 								</Modal>
-								<img src={'/loading.gif'} alt='loading...' />
+								<Spin spinning={loading} />
 							</div>
 						</Form.Item>
 

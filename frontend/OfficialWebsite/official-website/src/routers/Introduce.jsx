@@ -69,7 +69,7 @@ function Introduce() {
 							key === '1' ? (
 								<Hr title={'展覽'}></Hr>
 							) : (
-								<h5 style={{ fontSize: '20px' }}>展覽</h5>
+								<h5 style={{ fontSize: '20px', paddingBottom: '5px' }}>展覽</h5>
 							),
 						children:
 							firstData.events.length === 0 ? (
@@ -86,7 +86,7 @@ function Introduce() {
 							key === '2' ? (
 								<Hr title={'活動'}></Hr>
 							) : (
-								<h5 style={{ fontSize: '20px' }}>活動</h5>
+								<h5 style={{ fontSize: '20px', paddingBottom: '5px' }}>活動</h5>
 							),
 						children:
 							secondData.events.length === 0 ? (

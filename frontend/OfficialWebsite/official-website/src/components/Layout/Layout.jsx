@@ -11,14 +11,14 @@ const LAYOUT_BACKGROUND_IMAGE = {
 		web: '/background/dWebB.png',
 		mobile: '/background/dMobileB.png',
 	},
-	'/calendar': {
-		web: '/background/3web.png',
-		mobile: '/background/3mob.png',
-	},
-	'/': {
-		web: '/background/1web.png',
-		mobile: '/background/1mob.png',
-	},
+	// '/calendar': {
+	// 	web: '/background/3web.png',
+	// 	mobile: '/background/3mob.png',
+	// },
+	// '/': {
+	// 	web: '/background/1web.png',
+	// 	mobile: '/background/1mob.png',
+	// },
 };
 
 const getBackgroundImage = (path, inBreakPoint) => {
@@ -51,7 +51,7 @@ const Layout = () => {
 						inBreakPoint
 					)}')`,
 					backgroundSize: '100vw 100vh',
-					backgroundAttachment: 'fixed',
+					backgroundAttachment: inBreakPoint ? 'scroll' : 'fixed',
 				}}
 			>
 				<Outlet />
