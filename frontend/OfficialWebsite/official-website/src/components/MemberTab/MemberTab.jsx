@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect, useRef } from 'react';
 import style from './MemberTab.module.css';
-import { Tabs, Carousel, Button } from 'antd';
+import { Tabs, Carousel, Button, Image, Spin } from 'antd';
 import { RightOutlined, LeftOutlined } from '@ant-design/icons';
 import { BreakPointContext } from '../../useBreakPoint';
 import { getMembersByDepartment, DEPARTMENT } from '@leon123858/ntuaf-sdk';
@@ -69,7 +69,13 @@ const ImgCarousel = ({ imgList, inBreakPoint }) => {
 			<Carousel autoplay ref={imgs}>
 				{imgList.map((img) => (
 					<div key={img}>
-						<img src={img} alt='' style={{ borderRadius: '10px' }} />
+						<Image
+							src={img}
+							preview={false}
+							placeholder={<Spin />}
+							alt=''
+							style={{ borderRadius: '10px' }}
+						/>
 					</div>
 				))}
 			</Carousel>
