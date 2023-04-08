@@ -224,11 +224,11 @@ function Update({ email, admin }: { email: string; admin: string[] }) {
 									}}
 									text='上傳圖片且複製'
 								></UploadImage>
-								<ProFormText
+								<ProFormTextArea
 									width='md'
 									name='url'
 									placeholder='請輸入相關連結'
-								></ProFormText>
+								></ProFormTextArea>
 								<ProFormList name='items'>
 									{() => {
 										return (
@@ -264,11 +264,11 @@ function Update({ email, admin }: { email: string; admin: string[] }) {
 													}}
 													text='上傳圖片且複製'
 												></UploadImage>
-												<ProFormText
+												<ProFormTextArea
 													width='md'
 													name='url'
 													placeholder='請輸入相關連結'
-												></ProFormText>
+												></ProFormTextArea>
 												<ProFormText
 													width='md'
 													name='name'
