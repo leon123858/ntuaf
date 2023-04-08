@@ -1,4 +1,6 @@
 import { RESOURCE_TYPE } from '@eva/eva.js';
+
+
 export default [
   {
     name: 'basketball',
@@ -30,7 +32,7 @@ export default [
       image: {
         type: 'png',
         url:
-          './statics/TB15Upxqk9l0K4jSZFKXXXFjpXa-750-1624.jpg',
+          './statics/心理測驗(題目)_5.png',
       },
     },
     preload: true,
@@ -42,7 +44,7 @@ export default [
       image: {
         type: 'png',
         url:
-          './statics/工作區域 2.png',
+          './statics/心理測驗(題目)_4.png',
       },
     },
     preload: true,
@@ -54,7 +56,43 @@ export default [
       image: {
         type: 'png',
         url:
-          './statics/工作區域 3.png',
+          './statics/心理測驗(題目)_3.png',
+      },
+    },
+    preload: true,
+  },
+  {
+    name: 'bg3',
+    type: RESOURCE_TYPE.IMAGE,
+    src: {
+      image: {
+        type: 'png',
+        url:
+          './statics/心理測驗(題目)_2.png',
+      },
+    },
+    preload: true,
+  },
+  {
+    name: 'bg4',
+    type: RESOURCE_TYPE.IMAGE,
+    src: {
+      image: {
+        type: 'png',
+        url:
+          './statics/心理測驗(題目)_1.png',
+      },
+    },
+    preload: true,
+  },
+  {
+    name: 'bg5',
+    type: RESOURCE_TYPE.IMAGE,
+    src: {
+      image: {
+        type: 'png',
+        url:
+          './statics/心理測驗(題目)_0.png',
       },
     },
     preload: true,
@@ -116,4 +154,159 @@ export default [
 	  },
 	  preload: true,
 	},
+  {
+    name:'startTest',
+    type: RESOURCE_TYPE.IMAGE,
+    src: {
+      image: {
+        type: 'png',
+        url: './statics/進入測驗.png'
+      }
+    },
+    preload: true
+  },
+  {
+    name:'Q1Op1',
+    type: RESOURCE_TYPE.IMAGE,
+    src: {
+      image: {
+        type: 'png',
+        url: './statics/Q1按鈕/Ａ按下改變.svg'
+      }
+    },
+    preload: true
+  },
+  {
+    name:'Q1Op2',
+    type: RESOURCE_TYPE.IMAGE,
+    src: {
+      image: {
+        type: 'png',
+        url: './statics/Q1按鈕/Ｂ按下改變.svg'
+      }
+    },
+    preload: true
+  },
+  {
+    name:'Q1Op3',
+    type: RESOURCE_TYPE.IMAGE,
+    src: {
+      image: {
+        type: 'png',
+        url: './statics/Q1按鈕/Ｃ按下改變.svg'
+      }
+    },
+    preload: true
+  },
+  {
+    name:'Q1Op1tap',
+    type: RESOURCE_TYPE.IMAGE,
+    src: {
+      image: {
+        type: 'png',
+        url: './statics/Q1按鈕/工作區域 17.svg'
+      }
+    },
+    preload: true
+  },
+  {
+    name:'Q1Op2tap',
+    type: RESOURCE_TYPE.IMAGE,
+    src: {
+      image: {
+        type: 'png',
+        url: './statics/Q1按鈕/工作區域 18.svg'
+      }
+    },
+    preload: true
+  },
+  {
+    name:'Q1Op3tap',
+    type: RESOURCE_TYPE.IMAGE,
+    src: {
+      image: {
+        type: 'png',
+        url: './statics/Q1按鈕/工作區域 19.svg'
+      }
+    },
+    preload: true
+  },
+
+  {
+    name:'Q2Op1',
+    type: RESOURCE_TYPE.IMAGE,
+    src: {
+      image: {
+        type: 'png',
+        url: './statics/Q2按鈕/Ａ按下改變.png'
+      }
+    },
+    preload: true
+  },
+  {
+    name:'Q2Op1tap',
+    type: RESOURCE_TYPE.IMAGE,
+    src: {
+      image: {
+        type: 'png',
+        url: './statics/Q2按鈕/工作區域 22.png'
+      }
+    },
+    preload: true
+  },
+  {
+    name:'Q2Op2',
+    type: RESOURCE_TYPE.IMAGE,
+    src: {
+      image: {
+        type: 'png',
+        url: './statics/Q2按鈕/Ｂ按下改變.png'
+      }
+    },
+    preload: true
+  },
+  {
+    name:'Q2Op3',
+    type: RESOURCE_TYPE.IMAGE,
+    src: {
+      image: {
+        type: 'png',
+        url: './statics/Q2按鈕/Ｃ按下改變.png'
+      }
+    },
+    preload: true
+  },
+  {
+    name:'Q3Op1',
+    type: RESOURCE_TYPE.IMAGE,
+    src: {
+      image: {
+        type: 'png',
+        url: './statics/Q3按鈕/工作區域 38.png'
+      }
+    },
+    preload: true
+  },
+  {
+    name:'Q3Op2',
+    type: RESOURCE_TYPE.IMAGE,
+    src: {
+      image: {
+        type: 'png',
+        url: './statics/Q3按鈕/工作區域 39.png'
+      }
+    },
+    preload: true
+  },
+  {
+    name:'Q3Op3',
+    type: RESOURCE_TYPE.IMAGE,
+    src: {
+      image: {
+        type: 'png',
+        url: './statics/Q3按鈕/工作區域 40.png'
+      }
+    },
+    preload: true
+  },
 ];

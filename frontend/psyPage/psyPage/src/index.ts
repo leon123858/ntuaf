@@ -1,6 +1,5 @@
 import createBackground from './gameObjects/background';
-import createBasketFront from './gameObjects/board/basketFront';
-import createBoard from './gameObjects/board/board';
+
 import createBall from './gameObjects/ball';
 import createBtn from './gameObjects/btn';
 import createBgm from './gameObjects/bgm';
@@ -20,8 +19,8 @@ import { SoundSystem } from '@eva/plugin-sound';
 
 
 const renderer = new RendererSystem({
-	width: 790, // the initial width of the canvas
-	height: 1630, // the initial height of the canvas
+	width: 900, // the initial width of the canvas
+	height: 1640, // the initial height of the canvas
 	canvas: document.querySelector('#canvas'), // the HTML canvas element
 	resolution: window.devicePixelRatio, // the resolution of the canvas
 });
@@ -93,7 +92,7 @@ const balltrans = {
 };
 
 let isBallExist = true;
-const numberOfScene = 2
+const numberOfScene = 5;
 
 let ball = createBall({
 	transform: balltrans
@@ -129,7 +128,259 @@ const changeScenefunt = ()=>{
 const btnLists = [
 [
 	{
-		text: '讓球消失出現',
+		name : 'startTest',
+		transform: {
+			position: {
+				x: 0,
+				y: 400,
+			},
+			origin: {
+				x: 0.5,
+				y: 0.5,
+			},
+			anchor: {
+				x: 0.65,
+				y: 0.65,
+			},
+			size: {
+				width: 450,
+				height: 200,
+			},
+		},
+		callback: () => {
+			changeScenefunt();
+		},
+	},
+],
+[
+	{
+		name : 'Q1Op1',
+		name2 : 'Q1Op1tap',
+		transform: {
+			position: {
+				x: 70,
+				y: 100,
+			},
+			origin: {
+				x: 0.5,
+				y: 0.5,
+			},
+			anchor: {
+				x: 0.7,
+				y: 0.5,
+			},
+			size: {
+				width: 350,
+				height: 130,
+			},
+		},
+		callback: () => {
+			changeScenefunt()
+		},
+	},
+	{
+		name : 'Q1Op2',
+		name2 : 'Q1Op2tap',
+		transform: {
+			position: {
+				x: 10,
+				y: 250,
+			},
+			origin: {
+				x: 0.5,
+				y: 0.3,
+			},
+			anchor: {
+				x: 0.4,
+				y: 0.5,
+			},
+			size: {
+				width: 350,
+				height: 170,
+			},
+		},
+		callback: () => {
+			changeScenefunt()
+		},
+	},
+	{
+		name : 'Q1Op3',
+		name2 : 'Q1Op3tap',
+		transform: {
+			position: {
+				x: 10,
+				y: 700,
+			},
+			origin: {
+				x: 0.5,
+				y: 0.5,
+			},
+			anchor: {
+				x: 0.7,
+				y: 0.4,
+			},
+			size: {
+				width: 350,
+				height: 170,
+			},
+		},
+		callback: () => {
+			changeScenefunt()
+		},
+	}
+],
+[
+	{
+		name : 'Q2Op1',
+		name2 : 'Q2Op1tap',
+		transform: {
+			position: {
+				x: 50,
+				y: 200,
+			},
+			origin: {
+				x: 0.5,
+				y: 0.5,
+			},
+			anchor: {
+				x: 0.75,
+				y: 0.6,
+			},
+			size: {
+				width: 600,
+				height: 600,
+			},
+		},
+		callback: () => {
+			changeScenefunt()
+		},
+	},
+	{
+		name : 'Q2Op2',
+		transform: {
+			position: {
+				x: 50,
+				y: 150,
+			},
+			origin: {
+				x: 0.5,
+				y: 0.5,
+			},
+			anchor: {
+				x: 0.25,
+				y: 0.8,
+			},
+			size: {
+				width: 600,
+				height: 600,
+			},
+		},
+		callback: () => {
+			changeScenefunt()
+		},
+	},
+	{
+		name : 'Q2Op3',
+		transform: {
+			position: {
+				x: 20,
+				y: 200,
+			},
+			origin: {
+				x: 0.5,
+				y: 0.5,
+			},
+			anchor: {
+				x: 0.75,
+				y: 1.0,
+			},
+			size: {
+				width: 650,
+				height: 650,
+			},
+		},
+		callback: () => {
+			changeScenefunt()
+		},
+	}
+],
+[
+	{
+		name : 'Q3Op1',
+		transform: {
+			position: {
+				x: 50,
+				y: 250,
+			},
+			origin: {
+				x: 0.5,
+				y: 0.5,
+			},
+			anchor: {
+				x: 0.6,
+				y: 0.45,
+			},
+			size: {
+				width: 750,
+				height: 350,
+			},
+		},
+		callback: () => {
+			changeScenefunt()
+		},
+	},
+	{
+		name : 'Q3Op2',
+		transform: {
+			position: {
+				x: 80,
+				y: 250,
+			},
+			origin: {
+				x: 0.5,
+				y: 0.5,
+			},
+			anchor: {
+				x: 0.6,
+				y: 0.7,
+			},
+			size: {
+				width: 750,
+				height: 330,
+			},
+		},
+		callback: () => {
+			changeScenefunt()
+		},
+	},
+	{
+		name : 'Q3Op3',
+		transform: {
+			position: {
+				x: 50,
+				y: 260,
+			},
+			origin: {
+				x: 0.5,
+				y: 0.5,
+			},
+			anchor: {
+				x: 0.6,
+				y: 0.9,
+			},
+			size: {
+				width: 750,
+				height: 330,
+			},
+		},
+		callback: () => {
+			changeScenefunt()
+		},
+	},
+],
+[
+	{
+		name : 'startTest',
 		transform: {
 			position: {
 				x: 50,
@@ -157,7 +408,7 @@ const btnLists = [
 		},
 	},
 	{
-		text: '換場景',
+		name : 'startTest',
 		transform: {
 			position: {
 				x: 0,
@@ -177,7 +428,7 @@ const btnLists = [
 ],
 [
 	{
-		text: '讓球消失出現',
+		name : 'startTest',
 		transform: {
 			position: {
 				x: 50,
@@ -205,7 +456,7 @@ const btnLists = [
 		},
 	},
 	{
-		text: '換場景',
+		name : 'startTest',
 		transform: {
 			position: {
 				x: 0,
@@ -222,7 +473,8 @@ const btnLists = [
 		},
 		callback: changeScenefunt,
 	}
-]
+],
+
 ]
 
 let btn_index =0;

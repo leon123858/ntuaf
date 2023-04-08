@@ -5,7 +5,7 @@ import { Render } from '@eva/plugin-renderer-render';
 
 export default function createBackground(index : number) {
 	const bg = new GameObject('bg', {
-		size: { width: 790, height: 1630 },
+		size: { width: 900, height: 1640 },
 		position: {
 			x: 0,
 			y: 0,
