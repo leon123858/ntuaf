@@ -35,6 +35,8 @@ const FormDisabledDemo = () => {
 	};
 
 	const onFinish = async (values) => {
+		if (loading) return;
+		setLoading(true);
 		values.img = previewImage;
 		console.log('img url', previewImage);
 		values.url = previewImage;
@@ -46,10 +48,12 @@ const FormDisabledDemo = () => {
 		} catch (err) {
 			console.log('上傳失敗', err);
 			message.error('上傳失敗');
+			setLoading(false);
 			return;
 		}
 		handleRemove();
 		message.success('上傳成功', 3, goBack);
+		setLoading(false);
 	};
 
 	const onFinishFailed = (errorInfo) => {
@@ -129,9 +133,8 @@ const FormDisabledDemo = () => {
 			setPreviewTitle(options.file.name);
 			console.log('img url ', url);
 			console.log('name', options.file.name);
-			setLoading(false);
-			// return false;
 		}
+		setLoading(false);
 	};
 
 	function handleChange(value) {
