@@ -582,9 +582,6 @@ let btn_index =0;
 let sceneIndex = numberOfScene;
 const backgroundList = [...new Array(numberOfScene+1)].map((_,index) => createBackground(numberOfScene-index));
 
-let btns = [...btnLists[btn_index]].map( (value,_)=> createBtn(value))
-
-
 
 // BasketFront
 // const { basetFront, playAnim } = createBasketFront();
@@ -594,6 +591,8 @@ let btns = [...btnLists[btn_index]].map( (value,_)=> createBtn(value))
  * add child
  */
 backgroundList.forEach((item) => game.scene.addChild(item.background));
+
+let btns = [...btnLists[btn_index]].map( (value,_)=> createBtn(value))
 //game.scene.addChild(createBoard());
 //game.scene.addChild(basetFront);
 btns.forEach((btn) => game.scene.addChild(btn.button));
