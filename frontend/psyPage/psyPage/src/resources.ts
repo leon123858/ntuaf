@@ -391,7 +391,7 @@ export default [
     preload: true
   },
   {
-    name:'Q3Op3',
+    name:'Q3Op3tap',
     type: RESOURCE_TYPE.IMAGE,
     src: {
       image: {
