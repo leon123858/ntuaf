@@ -36,7 +36,7 @@ const canvasStyles = `
 
 const styleElement = document.createElement('style');
 styleElement.innerHTML = canvasStyles;
-document.head.appendChild(styleElement);
+canvasElement.appendChild(styleElement);
 
 
 
