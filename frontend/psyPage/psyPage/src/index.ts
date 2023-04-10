@@ -16,6 +16,8 @@ import { TransitionSystem } from '@eva/plugin-transition';
 import { GraphicsSystem } from '@eva/plugin-renderer-graphics';
 import { TextSystem } from '@eva/plugin-renderer-text';
 import { SoundSystem } from '@eva/plugin-sound';
+import { Img } from '@eva/plugin-renderer-img';
+
 
 
 const renderer = new RendererSystem({
@@ -26,6 +28,10 @@ const renderer = new RendererSystem({
 });
   
 console.log(renderer);
+
+let A =0;
+let B =0;
+let C =0;
 
 // basic setting
 resource.addResource(resources);
@@ -91,16 +97,15 @@ const balltrans = {
 	},
 };
 
-let isBallExist = true;
-const numberOfScene = 5;
 
-let ball = createBall({
-	transform: balltrans
-});
+const numberOfScene = 6;
+
+
 
 const changeScenefunt = ()=>{
 	const animate = backgroundList[sceneIndex].animation;
 	animate.play('move',1);
+	console.log("A = ",A,",B = ",B,",C = ",C);
 
 	btns.forEach((btn)=>{
 		const disappear = btn.transition;
@@ -108,19 +113,34 @@ const changeScenefunt = ()=>{
 		//btn.button.remove()
 	})
 	//console.log(""animate.play('fadeOut',1));
+	console.log("scene",backgroundList[sceneIndex]);
+	if(sceneIndex==1){
+		console.log("start result");
+		backgroundList[sceneIndex-1].background.removeComponent("Img");
+		let resource;
+		if(A >= B && A >= C)
+			resource = "bg6"
+		else if(B>=A && B >=C)
+			resource = "bg7"
+		else if(C >=A && C >=B)
+			resource = "bg8"
+		const img = new Img({
+			resource: resource,
+		});
+		backgroundList[sceneIndex-1].background.addComponent(img);
+	}
 	animate.on('finish', (name) => {
 		backgroundList[sceneIndex].background.remove();
 
 		btns.forEach((btn)=> btn.button.remove() )
 		btn_index+=1;
-		
+		if(sceneIndex==1)
+			return;
 		btns = [...btnLists[btn_index]].map( (value,_)=> createBtn(value));
 		console.log("index = ",btn_index);
 		btns.forEach((btn) => game.scene.addChild(btn.button));
 		console.log(btns);
-		if (--sceneIndex == -1) {
-			//changeSceneBtn.remove();
-		}
+		sceneIndex--;
 	});
 }
 
@@ -171,10 +191,11 @@ const btnLists = [
 			},
 			size: {
 				width: 350,
-				height: 130,
+				height: 140,
 			},
 		},
 		callback: () => {
+			A+=1;
 			changeScenefunt()
 		},
 	},
@@ -195,11 +216,12 @@ const btnLists = [
 				y: 0.5,
 			},
 			size: {
-				width: 350,
+				width: 370,
 				height: 170,
 			},
 		},
 		callback: () => {
+			B+=1;
 			changeScenefunt()
 		},
 	},
@@ -225,6 +247,7 @@ const btnLists = [
 			},
 		},
 		callback: () => {
+			C+=1;
 			changeScenefunt()
 		},
 	}
@@ -247,16 +270,18 @@ const btnLists = [
 				y: 0.6,
 			},
 			size: {
-				width: 600,
-				height: 600,
+				width: 400,
+				height: 400,
 			},
 		},
 		callback: () => {
+			A+=1;
 			changeScenefunt()
 		},
 	},
 	{
 		name : 'Q2Op2',
+		name2 : 'Q2Op2tap',
 		transform: {
 			position: {
 				x: 50,
@@ -271,16 +296,18 @@ const btnLists = [
 				y: 0.8,
 			},
 			size: {
-				width: 600,
-				height: 600,
+				width: 400,
+				height: 400,
 			},
 		},
 		callback: () => {
+			B+=1;
 			changeScenefunt()
 		},
 	},
 	{
 		name : 'Q2Op3',
+		name2 : 'Q2Op3tap',
 		transform: {
 			position: {
 				x: 20,
@@ -295,11 +322,12 @@ const btnLists = [
 				y: 1.0,
 			},
 			size: {
-				width: 650,
-				height: 650,
+				width: 450,
+				height: 450,
 			},
 		},
 		callback: () => {
+			C+=1;
 			changeScenefunt()
 		},
 	}
@@ -307,6 +335,7 @@ const btnLists = [
 [
 	{
 		name : 'Q3Op1',
+		name2 : 'Q3Op1tap',
 		transform: {
 			position: {
 				x: 50,
@@ -322,19 +351,21 @@ const btnLists = [
 			},
 			size: {
 				width: 750,
-				height: 350,
+				height: 330,
 			},
 		},
 		callback: () => {
+			A+=1;
 			changeScenefunt()
 		},
 	},
 	{
 		name : 'Q3Op2',
+		name2 : 'Q3Op2tap',
 		transform: {
 			position: {
 				x: 80,
-				y: 250,
+				y: 200,
 			},
 			origin: {
 				x: 0.5,
@@ -346,19 +377,21 @@ const btnLists = [
 			},
 			size: {
 				width: 750,
-				height: 330,
+				height: 310,
 			},
 		},
 		callback: () => {
+			B+=1;
 			changeScenefunt()
 		},
 	},
 	{
 		name : 'Q3Op3',
+		name2 : 'Q3Op3tap',
 		transform: {
 			position: {
 				x: 50,
-				y: 260,
+				y: 240,
 			},
 			origin: {
 				x: 0.5,
@@ -374,117 +407,182 @@ const btnLists = [
 			},
 		},
 		callback: () => {
+			C+=1
 			changeScenefunt()
 		},
 	},
 ],
 [
 	{
-		name : 'startTest',
+		name : 'Q4Op1',
+		name2 : 'Q4Op1tap',
 		transform: {
 			position: {
-				x: 50,
-				y: 200,
+				x: 30,
+				y: 250,
 			},
 			origin: {
 				x: 0.5,
 				y: 0.5,
 			},
 			anchor: {
-				x: 0.5,
-				y: 0.5,
+				x: 0.3,
+				y: 0.4,
+			},
+			size: {
+				width: 900,
+				height: 250,
 			},
 		},
 		callback: () => {
-			if (isBallExist) {
-				ball.remove();
-				isBallExist = false;
-			} else {
-				ball = createBall({transform : balltrans});
-				game.scene.addChild(ball);
-				isBallExist = true;
-			}
-			// alert('还没做呢～一起来完善吧');
+			A+=1;
+			changeScenefunt()
 		},
 	},
 	{
-		name : 'startTest',
+		name : 'Q4Op2',
+		name2 : 'Q4Op2tap',
 		transform: {
 			position: {
-				x: 0,
-				y: 500,
+				x: 80,
+				y: 140,
+			},
+			origin: {
+				x: 0.5,
+				y: 0.55,
+			},
+			anchor: {
+				x: 0.7,
+				y: 0.7,
+			},
+			size: {
+				width: 1000,
+				height: 300,
+			},
+		},
+		callback: () => {
+			B+=1;
+			changeScenefunt()
+		},
+	},
+	{
+		name : 'Q4Op3',
+		name2 : 'Q4Op3tap',
+		transform: {
+			position: {
+				x: 40,
+				y: 270,
 			},
 			origin: {
 				x: 0.5,
 				y: 0.5,
 			},
 			anchor: {
-				x: 0.5,
-				y: 0.5,
+				x: 0.3,
+				y: 0.8,
+			},
+			size: {
+				width: 900,
+				height: 260,
 			},
 		},
-		callback: changeScenefunt,
-	}
+		callback: () => {
+			C+=1;
+			changeScenefunt()
+		},
+	},
 ],
 [
 	{
-		name : 'startTest',
+		name : 'Q5Op1',
+		name2 : 'Q5Op1tap',
 		transform: {
 			position: {
-				x: 50,
-				y: 200,
+				x: 30,
+				y: 250,
 			},
 			origin: {
 				x: 0.5,
 				y: 0.5,
 			},
 			anchor: {
-				x: 0.5,
-				y: 0.5,
+				x: 0.3,
+				y: 0.2,
+			},
+			size: {
+				width: 700,
+				height: 200,
 			},
 		},
 		callback: () => {
-			if (isBallExist) {
-				ball.remove();
-				isBallExist = false;
-			} else {
-				ball = createBall({transform : balltrans});
-				game.scene.addChild(ball);
-				isBallExist = true;
-			}
-			// alert('还没做呢～一起来完善吧');
+			A+=1;
+			changeScenefunt()
 		},
 	},
 	{
-		name : 'startTest',
+		name : 'Q5Op2',
+		name2 : 'Q5Op2tap',
+		transform: {
+			position: {
+				x: 150,
+				y: 140,
+			},
+			origin: {
+				x: 0.5,
+				y: 0.55,
+			},
+			anchor: {
+				x: 0.7,
+				y: 0.5,
+			},
+			size: {
+				width: 600,
+				height: 150,
+			},
+		},
+		callback: () => {
+			B+=1;
+			changeScenefunt()
+		},
+	},
+	{
+		name : 'Q5Op3',
+		name2 : 'Q5Op3tap',
 		transform: {
 			position: {
 				x: 0,
-				y: 500,
+				y: 270,
 			},
 			origin: {
 				x: 0.5,
 				y: 0.5,
 			},
 			anchor: {
-				x: 0.5,
-				y: 0.5,
+				x: 0.3,
+				y: 0.6,
+			},
+			size: {
+				width: 500,
+				height: 150,
 			},
 		},
-		callback: changeScenefunt,
-	}
+		callback: () => {
+			C+=1;
+			changeScenefunt()
+		},
+	},
 ],
 
 ]
 
 let btn_index =0;
 
-let btns = [...btnLists[btn_index]].map( (value,_)=> createBtn(value))
-
 
 // background
 let sceneIndex = numberOfScene;
-const backgroundList = [...new Array(numberOfScene+1)].map((_, index) => createBackground(index));
+const backgroundList = [...new Array(numberOfScene+1)].map((_,index) => createBackground(numberOfScene-index));
+
+let btns = [...btnLists[btn_index]].map( (value,_)=> createBtn(value))
 
 
 
@@ -497,7 +595,6 @@ const backgroundList = [...new Array(numberOfScene+1)].map((_, index) => createB
  */
 backgroundList.forEach((item) => game.scene.addChild(item.background));
 //game.scene.addChild(createBoard());
-game.scene.addChild(ball);
 //game.scene.addChild(basetFront);
 btns.forEach((btn) => game.scene.addChild(btn.button));
 //game.scene.addChild(changeSceneBtn);
