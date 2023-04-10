@@ -18,6 +18,26 @@ import { TextSystem } from '@eva/plugin-renderer-text';
 import { SoundSystem } from '@eva/plugin-sound';
 import { Img } from '@eva/plugin-renderer-img';
 
+const canvasElement = document.querySelector('#canvas') as HTMLCanvasElement;
+
+const canvasStyles = `
+  #canvas {
+    width: 100%;
+    touch-action: auto;
+    cursor: inherit;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently not supported by any browser */
+  }
+`;
+
+const styleElement = document.createElement('style');
+styleElement.innerHTML = canvasStyles;
+document.head.appendChild(styleElement);
+
 
 
 const renderer = new RendererSystem({
@@ -597,4 +617,5 @@ let btns = [...btnLists[btn_index]].map( (value,_)=> createBtn(value))
 //game.scene.addChild(basetFront);
 btns.forEach((btn) => game.scene.addChild(btn.button));
 //game.scene.addChild(changeSceneBtn);
+
 
