@@ -62,7 +62,7 @@ const PositionRow = ({ members, position, inBreakPoint }) => {
 const ImgCarousel = ({ imgList, inBreakPoint }) => {
 	const imgs = useRef(null);
 	if (!imgList) return <></>;
-	console.log(imgList);
+	// console.log(imgList);
 	const showArrow = imgList.length > 1 && !inBreakPoint ? true : false;
 	return (
 		<>
