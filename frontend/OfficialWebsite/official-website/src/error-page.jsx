@@ -36,7 +36,10 @@ export default function ErrorPage() {
 												</a>
 												進行錯誤回報
 											</p>
-											<p>或是 email 至 a0970785699@gmail.com 描述問題</p>
+											<p>
+												或是 email 至 <span>website@ntuartfest28th.com</span>{' '}
+												描述問題
+											</p>
 										</>
 									)}
 
