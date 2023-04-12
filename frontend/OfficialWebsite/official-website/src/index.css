@@ -11,3 +11,8 @@
 code {
 	font-family: 'Noto Sans TC', sans-serif !important;
 }
+
+.ant-menu-submenu::after,
+.ant-menu-item::after {
+	border-bottom: transparent !important;
+}

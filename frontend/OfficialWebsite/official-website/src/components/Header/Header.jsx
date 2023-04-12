@@ -18,8 +18,8 @@ const items = [
 	{
 		label: (
 			<Link className={styles.link} to={'/about'}>
-					<div className={styles.tabName}>關於我們</div>
-					<div className={styles.tabName}>ABOUT</div>
+					<div className={styles.chinesTabName}>關於我們</div>
+					<div className={styles.engTabName}>ABOUT</div>
 			</Link>
 		),
 		key: 'about',
@@ -28,18 +28,21 @@ const items = [
 	{
 		label: (
 			<Link className={styles.link}>
-				<div className={styles.tabName}>展覽/活動</div>
-				<div className={styles.tabName}>EVENTS</div>
+				<div className={styles.chinesTabName}>展覽/活動</div>
+				<div className={styles.engTabName}>EVENTS</div>
 			</Link>
 		),
 		key: 'event',
+		popupOffset:[-30, 10],
 		children: [
 			{
 				label: (
 					<div className={styles.subMenu}>
 						<Link to='/introduce/exhibition'>
-							展覽
-							</Link>
+							<div className={styles.chinesTabName}>展覽</div>
+							<div className={styles.engTabName}>EXHIBITIONS</div>
+
+						</Link>
 					</div>
 				),
 				key: 'show',
@@ -47,7 +50,10 @@ const items = [
 			{
 				label: (
 					<div className={styles.subMenu}>
-						<Link to='/introduce/activity'>活動</Link>
+						<Link to='/introduce/activity'>
+						<div className={styles.chinesTabName}>活動</div>
+						<div className={styles.engTabName}>ACTIVITIES</div>
+						</Link>
 					</div>
 				),
 				key: 'activity',
@@ -57,8 +63,8 @@ const items = [
 	{
 		label: (
 			<Link className={styles.link} to={'/calendar'}>
-				<div className={styles.tabName}>行事曆</div>
-				<div className={styles.tabName}>CHALENDAR</div>
+				<div className={styles.chinesTabName}>行事曆</div>
+				<div className={styles.engTabName}>CALENDAR</div>
 			</Link>
 		),
 		key: 'calendar',
@@ -66,15 +72,19 @@ const items = [
 	},
 	{
 		label: <Link className={styles.link}>
-			<div className={styles.tabName}>特別企劃</div>
-			<div className={styles.tabName}>SPECIALS</div>
+			<div className={styles.chinesTabName}>特別企劃</div>
+			<div className={styles.engTabName}>SPECIALS</div>
 			</Link>,
 		key: 'special',
+		popupOffset:[-30, 10],
 		children: [
 			{
 				label: (
 					<div className={styles.subMenu}>
-						<Link to={'/artwork'}>洄溯</Link>
+						<Link to={'/artwork'}>
+						<div className={styles.chinesTabName}>尋洄地圖</div>
+						<div className={styles.engTabName}>Map of Art Fest</div>
+						</Link>
 					</div>
 				),
 				key: 'backward',
@@ -82,13 +92,23 @@ const items = [
 			{
 				label: (
 					<div className={styles.subMenu}>
-						<Link to={'/map'}>藝術季地圖</Link>
+						<Link to={'/map'}>
+						<div className={styles.chinesTabName}>心理測驗</div>
+						<div className={styles.engTabName}>Reply 2023</div>
+						</Link>
 					</div>
 				),
 				key: 'afMap',
 			},
 			{
-				label: <div className={styles.subMenu}>心理測驗</div>,
+				label: (
+					<div className={styles.subMenu}>
+						<Link to={'/psychoTest'}>
+						<div className={styles.chinesTabName}>洄溯展覽暨比賽</div>
+						<div className={styles.engTabName}>Throwback</div>
+						</Link>
+					</div>
+				),
 				key: 'psychoTest',
 			},
 		],

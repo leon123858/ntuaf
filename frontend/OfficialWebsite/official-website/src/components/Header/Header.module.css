@@ -22,7 +22,7 @@
 
 .menuWrapper {
 	display: flex;
-	margin-right: 24px;
+	margin-right: 60px;
 	position: fixed;
 	top: 0;
 	height: 100%;
@@ -36,11 +36,20 @@
 	transition: all 1s;
 	white-space: nowrap;
 }
+.chinesTabName{
+	font-size:14px;
+	margin:0px;
 
+}
+.engTabName{
+	font-size:12px;
+	margin:0px;
+
+}
 .menu {
 	border-radius: 100px;
 	box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.21);
-	padding: 0.5rem 2%;
+	padding: 0.15rem 5%;
 	background-color:white;
 	/* z-index: -1; */
 
@@ -72,6 +81,7 @@
 
 .subMenu {
 	text-align: center;
+	line-height: 16px;
 }
 
 
@@ -79,6 +89,7 @@
 .link{
 	/* background: linear-gradient(to right, rgba(37, 73, 157, 1) ,rgba(231, 50, 115, 1)); */
 	/* background-color: red; */
+	/* padding: 100px; */
 }
 .link:hover{
 	/* font-size: 50px; */
@@ -98,15 +109,21 @@
 	-webkit-text-fill-color: transparent;
 }
 
+:global(.ant-menu-submenu-title){
+	padding: 0px 20px 7px 20px;
+}
 :global(.ant-menu-submenu-title:hover){
 	/* make colorfule hover effect on header text */
 	background: linear-gradient(to right, rgba(37, 73, 157, 1) ,rgba(231, 50, 115, 1));
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
-
+:global(.ant-menu ant-menu-root ant-menu-horizontal ant-menu-light Header_menu__sUXLR css-dev-only-do-not-override-1km3mtt){
+	padding:0px 25px
+}
 .link div{
-	line-height: normal;
 	height: 100%;
 	text-align: center ;
+	line-height: 15px;
+	letter-spacing: 1px;
 }
