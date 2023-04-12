@@ -1,0 +1,75 @@
+.lg .wordsContainer {
+    margin-top: 180px;
+}
+
+.lg .title {
+
+    text-align: center;
+    font-size: 44px;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+.lg .content {
+    font-size: 18px;
+    margin-top: 50px;
+    display: block;
+}
+
+.lg .formContainer {
+    background-color: white;
+    width: 70vw;
+    box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.21);
+    border-radius: 20px;
+    margin: 50px 0;
+    margin-bottom: 180px;
+}
+
+.lg .formTitle {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.lg .submit {
+    align-self: center;
+    margin-bottom: -24px;
+}
+
+.sm .wordsContainer {
+    margin-top: 100px;
+}
+
+.sm .title {
+
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+.sm .content {
+
+    font-size: 14px;
+    margin-top: 30px;
+    display: block;
+    width: 70vw;
+}
+
+.sm .formContainer {
+    background-color: white;
+    width: 90vw;
+    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.21);
+    border-radius: 20px;
+    margin: 50px 0;
+    margin-bottom: 70px;
+}
+
+.sm .formTitle {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.sm .submit {
+    align-self: center;
+    margin-bottom: -24px;
+}

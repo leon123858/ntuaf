@@ -1,6 +1,7 @@
 import { Collapse, Typography, Image } from 'antd';
 import { Link } from 'react-router-dom';
 import { RightOutlined } from '@ant-design/icons';
+
 import style from './ArtWork.module.css'
 import { BreakPointContext } from '../../useBreakPoint';
 import { useContext } from 'react';
@@ -17,9 +18,9 @@ const ArtEvent = () => {
 			<div className={`${inBreakPoint ? style.sm : style.lg} ${style.container}`}>
 				<Typography>
 					<div className={style.title}>
-						回朔線上展覽比賽
+						洄溯線上展覽暨比賽
 						<div className={style.subtitle}>
-							throw back
+							Throwback
 						</div>
 					</div>
 					<div className={style.words}>
@@ -34,13 +35,14 @@ const ArtEvent = () => {
 				<Collapse
 					className={style.collapse}
 					expandIconPosition='end'
-				// bordered={false}
-				// ghost
-				>
+					expandIcon={({ isActive }) => <RightOutlined rotate={isActive ? 90 : 0} />}
+					bordered={!inBreakPoint}
+					// ghost
+					>
 					<Panel
 						header={<span className={style.title}>比賽規則</span>}
 						key='1'
-					>
+						>
 						<div className={style.content} >
 							1. 共分為三組：
 							<ul>
@@ -60,7 +62,10 @@ const ArtEvent = () => {
 				<Collapse
 					className={style.collapse}
 					expandIconPosition='end'
-				// bordered={false}
+					expandIcon={({ isActive }) => <RightOutlined rotate={isActive ? 90 : 0} />}
+					bordered={!inBreakPoint}
+					
+					// bordered={false}
 				// ghost
 				// defaultActiveKey={['2']}
 				>
@@ -68,60 +73,57 @@ const ArtEvent = () => {
 						<div className={style.content}>
 							人氣獎（不分組取2名）：環保商品組*2
 							<br></br>
+							<br />
 							評審獎（分組，每組取前2名）
 							<br></br>
+							<div>•純文字組</div>
 							<br></br>
-							純文字組
+							<span style={{ width: "16px", display: "inline-block" }} />首獎：鋼筆 + 評審簽名書
 							<br></br>
-							首獎：鋼筆 + 評審簽名書
+							<span style={{ width: "16px", display: "inline-block" }} />二獎：評審簽名小卡+商品
 							<br></br>
-							二獎：評審簽名小卡+商品
+							<div>•照片組</div>
 							<br></br>
+							<span style={{ width: "16px", display: "inline-block" }} />首獎：底片相機 + 評審簽名書
 							<br></br>
-							照片組
+							<span style={{ width: "16px", display: "inline-block" }} />二獎：評審簽名小卡+商品
 							<br></br>
-							首獎：底片相機 + 評審簽名書
+							<div>•繪畫組</div>
 							<br></br>
-							二獎：評審簽名小卡+商品
+							<span style={{ width: "16px", display: "inline-block" }} />首獎：水彩顏料&畫本 + 評審簽名書
 							<br></br>
+							<span style={{ width: "16px", display: "inline-block" }} />二獎：評審簽名小卡+商品
 							<br></br>
-							繪畫組
-							<br></br>
-							首獎：水彩顏料&畫本 + 評審簽名書
-							<br></br>
-							二獎：評審簽名小卡+商品
-							<br></br>
+							<br />
 							抽獎（不分組取10名）：韓式拍貼兌換券*10
 						</div>
 					</Panel>
 				</Collapse>
+				<div className={style.date}>
+					<div >比賽時程</div>
+					<span>
+						<p>開</p><p>放</p><p>投</p><p>稿</p>
+					</span>
+					｜4/14（五）～ 4/30（日）
+					<br />
+					<span><p>評</p><p>選</p></span>｜5/1（一）～ 5/6（六）
+					<br />
+					<span><p>公</p><p>布</p></span>｜5/7（一）23:59 前
+				</div>
 				<div className={style.midContainer}>
-					<div className={style.date}>
-						<div >比賽時程</div>
-						<span>
-							<p>開</p><p>放</p><p>投</p><p>稿</p>
-						</span>
-						｜4/14（五）～ 4/30（日）
-						<br />
-						<span><p>評</p><p>選</p></span>｜5/1（一）～ 5/6（六）
-						<br />
-						<span><p>公</p><p>布</p></span>｜5/7（一）23:59 前
-					</div>
 					<Link to='/Artwork/Upload'>
 						<div className={style.btn}>
-							<span>我要參賽</span>
-							<RightOutlined style={{ fontSize: "20px" }} />
+							<span className={style.colorful}>比賽投稿</span>
+							<RightOutlined style={{ fontSize: "18px", fontWeight: "200" ,color: inBreakPoint?'#25499D':""}} />
+						</div>
+					</Link>
+					<Link to='/ArtworkList'>
+						<div className={style.btn}>
+							<span className={style.colorful}>展覽專區</span>
+							<RightOutlined style={{ fontSize: "18px", fontWeight: "200",color: inBreakPoint?'#25499D':"" }} />
 						</div>
 					</Link>
 				</div>
-				<Link to='/ArtworkList'>
-					<Image
-						preview={false}
-						width={'100%'}
-						className={style.img}
-						src='https://cdn.jwplayer.com/v2/media/pJuRvmCU/poster.jpg?width=1920'
-					></Image>
-				</Link>
 			</div>
 		</>
 	);

@@ -6,19 +6,15 @@
 
 }
 
-.collapse {
-    background-color: white;
-    border-radius: 20px;
-    box-shadow: 4px 4px 15px 0px rgba(0, 0, 0, 0.35);
 
-}
 
 .lg .title {
     text-align: center;
     font-size: 44px;
     font-weight: 500;
     letter-spacing: 2px;
-    margin-top: 200px;
+    margin-top: 180px;
+    line-height: 53px;
 }
 
 .lg .subtitle {
@@ -26,55 +22,182 @@
 }
 
 .lg .words {
-    font-size: 20px;
+    font-size: 22px;
     letter-spacing: 1px;
-    width: 53vw;
+    width: 45vw;
     text-align: center;
+    margin-top: 80px;
+    margin-bottom: 110px;
 }
 
 .lg .collapse {
-    width: 65vw;
+    width: 55vw;
+    /* height: 100px; */
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.21);
+}
+
+.lg .arrow {
+    height: 100%;
+    font-size: 20px;
 }
 
 .lg .collapse .title {
     font-size: 20px;
-    margin-left: 50px;
+    margin-left: 30px;
+    line-height: normal;
 }
+
 .lg .collapse .content {
     font-size: 16px;
-    padding: 10px 65px;
+    padding: 35px 65px;
+    padding-bottom: 40px;
 }
+.lg .collapse .content div {
+    display: inline;
+    font-weight: 500;
+}
+
 .lg .midContainer {
-    width: 60vw;
+    width: 55vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin:30px 0;
+    margin: 80px 0;
+    margin-bottom: 180px;
 }
+
 .lg .btn {
-    width: 200px;
+    width: 220px;
     height: 56px;
     border-radius: 34px;
-    font-size: 18px;
+    font-size: 16px;
     background: linear-gradient(90deg, #DD0E65 11.11%, #25499D 100%);
+    box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.21);
     color: white;
     display: flex;
     justify-content: center;
-    gap:40px;
+    gap: 48px;
     align-items: center;
+    letter-spacing: 1px;
 }
+
+.lg .date {
+    width: 55vw;
+    margin-top: 60px;
+    padding: 0 48px;
+}
+
 .lg .date div {
     font-weight: 500;
     font-size: 20px;
     margin-bottom: 10px;
+    letter-spacing: 2px;
 }
 
 .lg .date span {
     display: inline-flex;
     justify-content: space-between;
     width: 72px;
+    line-height: 28px;
 }
+
 .lg .img {
+    width: 60vw;
+    aspect-ratio: 955 / 560;
+    margin: 50pxçc;
+}
+
+.sm .title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    margin-top: 100px;
+}
+
+.sm .subtitle {
+    font-size: 26px;
+}
+
+.sm .words {
+    font-size: 14px;
+    letter-spacing: 1px;
+    width: 68vw;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 70px;
+}
+
+.sm .collapse {
+    width: 100vw;
+    border-radius: 0;
+    border-right: 0;
+    border-left: 0;
+}
+
+.sm .collapse .title {
+    font-size: 18px;
+    margin-left: 40px;
+}
+
+.sm .collapse .content {
+    font-size: 14px;
+    padding: 10px 40px;
+}
+
+.sm .midContainer {
+    width: 60vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap:30px;
+    margin: 60px 0;
+}
+
+.sm .btn {
+    width: 150px;
+    height: 42px;
+    border-radius: 34px;
+    font-size: 14px;
+    background: white;
+    box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.21);
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
+}
+
+.sm .btn .colorful {
+  background: linear-gradient(90deg, #DD0E65 11.11%, #25499D 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sm .date div {
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.sm .date span {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 72px;
+}
+
+.sm .date {
+    width: 72vw;
+    margin-top: 50px;
+    font-size: 14px;
+    display: none;
+}
+
+.sm .img {
     width: 60vw;
     aspect-ratio: 955 / 560;
     margin: 50pxçc;

@@ -8,11 +8,12 @@ import {
 	message,
 	Modal,
 	Typography,
+	Alert
 } from 'antd';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { createArtwork, ARTWORK_TYPE } from '@leon123858/ntuaf-sdk';
 import { BreakPointContext } from '../../useBreakPoint';
-
+import style from './Form.module.css'
 const { TextArea } = Input;
 const { Title, Paragraph } = Typography;
 
@@ -28,6 +29,11 @@ const FormDisabledDemo = () => {
 	// const [previewOpen, setPreviewOpen] = useState(false);
 	const [previewImage, setPreviewImage] = useState('');
 	const [previewTitle, setPreviewTitle] = useState('');
+
+	const { inBreakPoint, isLogin } = useContext(BreakPointContext)
+	const [modal, contextHolder] = Modal.useModal();
+
+
 
 	const goBack = () => {
 		window.location = '/Artwork';
@@ -142,11 +148,11 @@ const FormDisabledDemo = () => {
 			setHidden(false);
 		else setHidden(true);
 	}
-	const { isLogin } = useContext(BreakPointContext);
 
 	return (
 		<>
 			<div
+				className={inBreakPoint ? style.sm : style.lg}
 				style={{
 					display: 'flex',
 					justifyContent: 'center',
@@ -154,13 +160,12 @@ const FormDisabledDemo = () => {
 					flexDirection: 'column',
 				}}
 			>
-				<div style={{ width: '70%' }}>
+				<div className={style.wordsContainer}>
 					<Typography>
-						<Title style={{ textAlign: 'center' }}>洄溯展覽上傳專區</Title>
+						<Title className={style.title} style={{ textAlign: 'center' }}>洄溯展覽上傳專區</Title>
 						<Paragraph>
-							<span style={{ fontSize: 20 }}>
+							<span className={style.content}>
 								注意事項：
-								<br></br>
 								<br></br>
 								1.參與者不限年齡、學校。
 								<br></br>
@@ -173,7 +178,7 @@ const FormDisabledDemo = () => {
 						</Paragraph>
 					</Typography>
 				</div>
-				<div style={{ width: '70%', backgroundColor: '#D3D3D3' }}>
+				<div className={style.formContainer}>
 					<Form
 						disabled={!isLogin}
 						layout='vertical'
@@ -182,7 +187,7 @@ const FormDisabledDemo = () => {
 							display: 'flex',
 							flexDirection: 'column',
 							justifyContent: 'center',
-							margin: 50,
+							margin: inBreakPoint?'40px 20px': 50,
 							// backgroundColor : 'gray',
 							// alignItems: 'center',
 						}}
@@ -194,11 +199,20 @@ const FormDisabledDemo = () => {
 							img: previewImage,
 						}}
 					>
+						<Alert
+							style={{display:!isLogin?"":"none", marginBottom:"15px"}}
+							message="Hey yo!"
+							description="您需要登入才能上傳作品"
+							type="warning"
+							showIcon
+							closable
+						/>
+						<div className={style.formTitle}>留下你的創作吧！</div>
 						<Form.Item
 							label='姓名/暱稱'
 							rules={[{ required: true, message: '請輸入您的名字' }]}
 							name='name'
-							// style={{ display:'flex',alignSelf: 'center' }}
+						// style={{ display:'flex',alignSelf: 'center' }}
 						>
 							<Input />
 						</Form.Item>
@@ -207,10 +221,12 @@ const FormDisabledDemo = () => {
 							name='type'
 							rules={[{ required: true, message: '請選擇組別' }]}
 						>
-							<Select onChange={handleChange}>
-								<Select.Option value={ARTWORK_TYPE.PHOTO}>照片組</Select.Option>
+							<Select onChange={handleChange} style={{ width: "120px" }}>
 								<Select.Option value={ARTWORK_TYPE.PURE_TEXT}>
 									文字組
+								</Select.Option>
+								<Select.Option value={ARTWORK_TYPE.PHOTO}>
+									照片組
 								</Select.Option>
 								<Select.Option value={ARTWORK_TYPE.PAINTING}>
 									繪畫組
@@ -241,7 +257,7 @@ const FormDisabledDemo = () => {
 								{
 									required:
 										form.getFieldValue('type') === ARTWORK_TYPE.PHOTO ||
-										form.getFieldValue('type') === ARTWORK_TYPE.PAINTING
+											form.getFieldValue('type') === ARTWORK_TYPE.PAINTING
 											? true
 											: false,
 									message: '請上傳您的作品照片',
@@ -278,13 +294,15 @@ const FormDisabledDemo = () => {
 								<img src={'/loading.gif'} alt='loading...' />
 							</div>
 						</Form.Item>
-
-						<Form.Item>
-							<Button htmlType='submit'>上傳</Button>
-						</Form.Item>
+						<div className={style.submit}>
+							<Form.Item>
+								<Button htmlType='submit'>提交</Button>
+							</Form.Item>
+						</div>
 					</Form>
 				</div>
 			</div>
+			{contextHolder}
 		</>
 	);
 };

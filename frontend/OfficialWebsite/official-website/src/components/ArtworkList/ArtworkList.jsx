@@ -9,9 +9,10 @@ import {
 import { ARTWORK_TYPE } from '@leon123858/ntuaf-sdk';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { BreakPointContext } from '../../useBreakPoint';
+import style from './ArtworkList.module.css'
 
 export const ArtworkList = () => {
-	const { isLogin } = useContext(BreakPointContext);
+	const { isLogin, inBreakPoint } = useContext(BreakPointContext);
 	const [loading, setLoading] = useState(false);
 	const [typeText, setTypeText] = useState({
 		type: ARTWORK_TYPE.PURE_TEXT,
@@ -54,14 +55,14 @@ export const ArtworkList = () => {
 			activeKey === '1'
 				? typeText
 				: activeKey === '2'
-				? typePhoto
-				: typePainting;
+					? typePhoto
+					: typePainting;
 		initData(datas.sortBy)
 			.then(setLoading(false))
 			.then(() => {
 				const top = document.querySelectorAll('.scrollToTop');
 				top.forEach((item) => {
-					item.scrollIntoView({ behavior: 'smooth', block: 'start' });
+					item.scrollTo({ top:"100",behavior: 'smooth', block: 'start' });
 				});
 			});
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -84,8 +85,8 @@ export const ArtworkList = () => {
 			activeKey === '1'
 				? typeText
 				: activeKey === '2'
-				? typePhoto
-				: typePainting;
+					? typePhoto
+					: typePainting;
 		if (datas.sortBy !== sortBy) {
 			console.log('change sortBy');
 			datas = {
@@ -142,8 +143,8 @@ export const ArtworkList = () => {
 			activeKey === '1'
 				? typeText
 				: activeKey === '2'
-				? typePhoto
-				: typePainting;
+					? typePhoto
+					: typePainting;
 		const { data: partialData, cursor: tempCursor } = await getArtworkList(
 			datas.type,
 			datas.sortBy,
@@ -213,16 +214,16 @@ export const ArtworkList = () => {
 			activeKey === '1'
 				? typeText
 				: activeKey === '2'
-				? typePhoto
-				: typePainting;
+					? typePhoto
+					: typePainting;
 		return (
 			<div
 				id='scrollableDiv'
 				style={{
-					height: 500,
+					height: 800,
 					overflow: 'auto',
-					padding: '0 16px',
-					border: '1px solid rgba(140, 140, 140, 0.35)',
+					padding: '0 ',
+					marginTop:"50px"
 				}}
 			>
 				<InfiniteScroll
@@ -238,12 +239,13 @@ export const ArtworkList = () => {
 							active
 						/>
 					}
-					height={450} //這裡的height 要比上面的"scrollableDiv"的height 小一點，不然其他tab不會loadmore
+					style={{padding:"0 10vw"}}
+					height={750} //這裡的height 要比上面的"scrollableDiv"的height 小一點，不然其他tab不會loadmore
 					endMessage={<Divider plain>It is all, nothing more 🤐</Divider>}
 					scrollableTarget='scrollableDiv'
 				>
 					<List
-						grid={{ gutter: 8, column: 2 }}
+						grid={{ gutter: 24, column: inBreakPoint?2: 3 }}
 						dataSource={handleLike(datas.dataList, likeArtworkToday)}
 						renderItem={(item, i) => (
 							<>
@@ -280,10 +282,11 @@ export const ArtworkList = () => {
 			activeKey === '1'
 				? typeText
 				: activeKey === '2'
-				? typePhoto
-				: typePainting;
+					? typePhoto
+					: typePainting;
 		return (
 			<Select
+				className={style.select}
 				labelInValue
 				defaultValue={{
 					value: 'default',
@@ -291,8 +294,8 @@ export const ArtworkList = () => {
 						datas.sortBy === 'like'
 							? '愛心排行'
 							: datas.sortBy === 'createTime'
-							? '最近上傳'
-							: '排序',
+								? '最近上傳'
+								: '排序',
 				}}
 				style={{
 					width: 120,
@@ -315,20 +318,25 @@ export const ArtworkList = () => {
 	const items = ['純文字組', '照片組', '繪畫組'];
 	return (
 		<>
-			<Selecter />
-			<Tabs
-				activeKey={activeKey}
-				centered
-				items={items.map((item, i) => {
-					const id = String(i + 1);
-					return {
-						label: item,
-						key: id,
-						children: getChild(),
-					};
-				})}
-				onChange={onChange}
-			/>
+			<div className={inBreakPoint?style.sm:style.lg} style={{height:"100vh", marginTop:"40px"}}>
+				<Selecter />
+				<div className={style.tabContainer}>
+					<Tabs
+						activeKey={activeKey}
+						centered
+						items={items.map((item, i) => {
+							const id = String(i + 1);
+							return {
+								label: item,
+								key: id,
+								children: getChild(),
+							};
+						})}
+						size={inBreakPoint?"small":"middle"}
+						onChange={onChange}
+					/>
+				</div>
+			</div>
 		</>
 	);
 };

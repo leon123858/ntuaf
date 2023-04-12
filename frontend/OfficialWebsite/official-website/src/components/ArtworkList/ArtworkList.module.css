@@ -10,3 +10,21 @@
     justify-content: center;
     align-items: center;
 }
+.tabContainer {
+    display: block;
+    margin: 0 auto;
+    width: 100vw;
+}
+.textCardContext {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    aspect-ratio: 410 / 276;
+}
+.lg .select{
+    position: absolute;
+    top :170px;
+    right: 10vw;
+
+}
