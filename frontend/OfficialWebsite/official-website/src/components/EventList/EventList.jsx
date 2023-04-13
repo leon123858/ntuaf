@@ -61,6 +61,7 @@ const EventImg = ({ tagName, imgUrl, inBreakPoint, isHovered }) => {
 				}
 			>
 				<Image
+					preview={false}
 					src={imgUrl}
 					fallback='https://images.squarespace-cdn.com/content/v1/5452d441e4b0c188b51fef1a/1615326541809-TW01PVTOJ4PXQUXVRLHI/male-orange-tabby-cat.jpg?format=600w'
 				/>
@@ -93,7 +94,8 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 	const handleMouseLeave = () => {
 		setIsHovered(false);
 	};
-	const handleOnClick = (id) => window.open(`/display/${id}`, '_blank');
+	const handleOnClick = (id) =>
+		window.open(`/display/${id}`, inBreakPoint ? '_self' : '_blank');
 	return (
 		<Card
 			hoverable

@@ -1,46 +1,121 @@
 .container {
   margin: 0 auto 20px auto;
   width: 100%;
+  position: relative;
 }
+
 .department {
-  display: grid;
+  display: flex;
   text-align: center;
   justify-content: center;
   width: 100%;
-  margin-top: 8px;
+  margin-top: 270px;
+  /* min-height: 200px; */
 }
+
 .lgDepartment {
   display: flex;
-  align-items: center;
+  flex-direction: row-reverse;
+  /* align-items: center; */
   justify-content: center;
-  margin-top: 12px;
+  margin-top: 80px;
+  min-height: 400px;
 }
+
 .img {
-  width: 125px;
+
+  width: 322px;
+  height: 216px;
   border-radius: 50%;
   margin: 0 auto 32px auto;
 }
+
 .lgImg {
-  width: 125px;
-  height: 125px;
-  border-radius: 50%;
+  width: 438px;
+  height: 278px;
+  object-fit: cover;
+  border-radius: 30px;
+  background-color: aliceblue;
   margin-right: 70px;
 }
+
 .positionRow {
   display: grid;
   grid-template-columns: 20% 80%;
   margin-bottom: 8px;
-  font-size: 16px;
+  white-space: nowrap;
+}
+
+.lgPositionRow {
+  display: grid;
+  grid-template-columns: 13% 80%;
+  margin-bottom: 8px;
   white-space: nowrap;
 }
 .memberContainer {
   display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
-  row-gap: 8px;
+  grid-template-columns: 33% 33% 33%;
+  row-gap: 16px;
+}
+
+.lgMemberContainer {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  row-gap: 16px;
 }
 .member {
-  width: 80px;
+  width: auto;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.lgcarouelContainer {
+  width: 25vw;
+  aspect-ratio: 438 / 278;
+  margin: 0 50px;
+  /* height: 278px; */
+  position: absolute;
+  top: 140px;
+  right: 55%;
+}
+
+.carouelContainer {
+  width: 322px;
+  height: 215px;
+  margin: 0 ;
+  height: auto;
+  position: absolute;
+  top: 175px;
+  right: 50%;
+  transform: translate(50%, -50%);
+  border-radius: 30px;
+}
+
+.arrowRight {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translate(0, -50%);
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.arrowLeft {
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  transform: translate(0, -50%);
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.flexHalf {
+  width: 80vw;
+}
+.lgFlexHalf {
+  transform: translate(40%, 0);
+  width: 40vw;
+}
+
+

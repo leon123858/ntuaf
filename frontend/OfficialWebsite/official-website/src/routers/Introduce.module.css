@@ -5,26 +5,40 @@
 	border-radius: 4px;
 }
 
-.container{
-	borderBottom: 2px solid;
+.container {
+	border-bottom: 2px solid;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.customTabs .ant-tabs-tab {
-    //font-size: 26px  !important ;/* set the desired font size here */
-}
-
+/* .customTabs .ant-tabs-tab {
+    font-size: 26px  !important ;set the desired font size here
+} */
+/* 
 .ant-tabs-ink-bar {
-	background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+	background-image: linear-gradient(
+		to right,
+		red,
+		orange,
+		yellow,
+		green,
+		blue,
+		indigo,
+		violet
+	);
 }
-.ant-tabs-tab-btn{
+.ant-tabs-tab-btn {
 	letter-spacing: 3px;
 }
 .ant-tabs .ant-tabs-nav .ant-tabs-tab-active {
 	color: #8080;
 }
-:.ant-tabs .ant-tabs-ink-bar {
+.ant-tabs .ant-tabs-ink-bar {
 	position: center;
-	background: linear-gradient(to left, rgba(169, 207, 89, 1), rgba(231, 50, 115, 1), rgba(37, 73, 157, 1));;
+	background: linear-gradient(
+		to left,
+		rgba(169, 207, 89, 1),
+		rgba(231, 50, 115, 1),
+		rgba(37, 73, 157, 1)
+	);
 	pointer-events: none;
-}
+} */

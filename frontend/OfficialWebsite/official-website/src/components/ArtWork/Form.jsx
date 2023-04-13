@@ -4,6 +4,7 @@ import {
 	Form,
 	Input,
 	Select,
+	Spin,
 	Upload,
 	message,
 	Modal,
@@ -34,6 +35,8 @@ const FormDisabledDemo = () => {
 	};
 
 	const onFinish = async (values) => {
+		if (loading) return;
+		setLoading(true);
 		values.img = previewImage;
 		values.url = previewImage;
 		try {
@@ -41,10 +44,12 @@ const FormDisabledDemo = () => {
 		} catch (err) {
 			console.log('上傳失敗', err);
 			message.error('上傳失敗');
+			setLoading(false);
 			return;
 		}
 		handleRemove();
 		message.success('上傳成功', 3, goBack);
+		setLoading(false);
 	};
 
 	const onFinishFailed = (errorInfo) => {
@@ -70,6 +75,7 @@ const FormDisabledDemo = () => {
 	const handleRemove = () => {
 		form.resetFields();
 		setFileList([]);
+		URL.revokeObjectURL(previewImage);
 		setPreviewImage('');
 	};
 
@@ -121,16 +127,10 @@ const FormDisabledDemo = () => {
 			setFileList(preview);
 			setPreviewImage(url);
 			setPreviewTitle(options.file.name);
-<<<<<<< Updated upstream
-			console.log('img url ', url);
-			console.log('name', options.file.name);
-			setLoading(false);
-			// return false;
-=======
 			// console.log('img url ', url);
 			// console.log('name', options.file.name);
->>>>>>> Stashed changes
 		}
+		setLoading(false);
 	};
 
 	function handleChange(value) {
@@ -276,7 +276,7 @@ const FormDisabledDemo = () => {
 										src={previewImage}
 									/>
 								</Modal>
-								<img src={'/loading.gif'} alt='loading...' />
+								<Spin spinning={loading} />
 							</div>
 						</Form.Item>
 

@@ -59,6 +59,21 @@ function Update({ email, admin }: { email: string; admin: string[] }) {
 				})}
 			/>
 			<hr></hr>
+			裁切圖片工具:
+			<UploadImage
+				setUrl={(url: string) => {
+					const el = document.createElement('textarea');
+					el.value = url;
+					document.body.appendChild(el);
+					el.select();
+					document.execCommand('copy');
+					document.body.removeChild(el);
+					message.success('已複製上傳圖片網址, 可至下方文字框貼上');
+				}}
+				text='上傳圖片且複製'
+				wantCrop
+			></UploadImage>
+			<hr></hr>
 			{/* eslint-disable-next-line react/jsx-no-target-blank */}
 			<a
 				href={`https://ntuaf28-dev.firebaseapp.com/display/${eventId}`}
@@ -224,11 +239,11 @@ function Update({ email, admin }: { email: string; admin: string[] }) {
 									}}
 									text='上傳圖片且複製'
 								></UploadImage>
-								<ProFormText
+								<ProFormTextArea
 									width='md'
 									name='url'
 									placeholder='請輸入相關連結'
-								></ProFormText>
+								></ProFormTextArea>
 								<ProFormList name='items'>
 									{() => {
 										return (
@@ -264,11 +279,11 @@ function Update({ email, admin }: { email: string; admin: string[] }) {
 													}}
 													text='上傳圖片且複製'
 												></UploadImage>
-												<ProFormText
+												<ProFormTextArea
 													width='md'
 													name='url'
 													placeholder='請輸入相關連結'
-												></ProFormText>
+												></ProFormTextArea>
 												<ProFormText
 													width='md'
 													name='name'

@@ -23,11 +23,40 @@ const eachTypeDot = {
 	0: <div className={style.dot}></div>,
 	1: <div className={style.dot} style={{ background: '#25499D' }}></div>,
 	2: <div className={style.dot} style={{ background: '#A9CF59' }}></div>,
-	3: <div className={style.dot} style={{ background: 'linear-gradient(90deg, #AAC952 22.22%, #25499D 100%)' }}></div>,
+	3: (
+		<div
+			className={style.dot}
+			style={{
+				background: 'linear-gradient(90deg, #AAC952 22.22%, #25499D 100%)',
+			}}
+		></div>
+	),
 	4: <div className={style.dot} style={{ background: '#D7497C' }}></div>,
-	5: <div className={style.dot} style={{ background: 'linear-gradient(90deg, #DD0E65 11.11%, #25499D 100%)' }}></div>,
-	6: <div className={style.dot} style={{ background: 'linear-gradient(90deg, #AAC952 27.78%, #DD0E65 111.11%)' }}></div>,
-	7: <div className={style.dot} style={{ background: 'conic-gradient(from 185.19deg at 50% 50%, #AAC952 -35.66deg, #AAC952 0.59deg, #AAC952 34.29deg, #25499D 86.18deg, #25499D 121.94deg, #25499D 153.61deg, #DD0E65 220.2deg, #DD0E65 246.82deg, #DD0E65 274.61deg, #DD0E65 279.01deg, #AAC952 324.34deg, #AAC952 360.59deg)' }}></div>,
+	5: (
+		<div
+			className={style.dot}
+			style={{
+				background: 'linear-gradient(90deg, #DD0E65 11.11%, #25499D 100%)',
+			}}
+		></div>
+	),
+	6: (
+		<div
+			className={style.dot}
+			style={{
+				background: 'linear-gradient(90deg, #AAC952 27.78%, #DD0E65 111.11%)',
+			}}
+		></div>
+	),
+	7: (
+		<div
+			className={style.dot}
+			style={{
+				background:
+					'conic-gradient(from 185.19deg at 50% 50%, #AAC952 -35.66deg, #AAC952 0.59deg, #AAC952 34.29deg, #25499D 86.18deg, #25499D 121.94deg, #25499D 153.61deg, #DD0E65 220.2deg, #DD0E65 246.82deg, #DD0E65 274.61deg, #DD0E65 279.01deg, #AAC952 324.34deg, #AAC952 360.59deg)',
+			}}
+		></div>
+	),
 };
 
 const getDayHighlightType = (day, monthType) => {
@@ -36,7 +65,7 @@ const getDayHighlightType = (day, monthType) => {
 	}
 	const tmpArr = monthType[day.month() + 1][`${day.month() + 1}_${day.date()}`];
 	if (tmpArr) {
-		return tmpArr[0] * 1 + (tmpArr[1] * 2) + (tmpArr[2] * 4);
+		return tmpArr[0] * 1 + tmpArr[1] * 2 + tmpArr[2] * 4;
 	}
 	return HIGHT_LIGHT_TYPE.不用點;
 };
@@ -113,42 +142,65 @@ const HomeCalendar = () => {
 						renderDayContents={(day) => {
 							return <DayWithHighlightDot day={day} monthType={monthType} />;
 						}}
-						isOutsideRange={(day) => (day.month() !== 4 && day.month() !== 3) || (day.year() !== 2023)}
+						isOutsideRange={(day) =>
+							(day.month() !== 4 && day.month() !== 3) || day.year() !== 2023
+						}
 						hideKeyboardShortcutsPanel={true}
-						monthFormat="YYYY, M[月]"
-						weekDayFormat="ddd"
-						daySize={(inBreakPoint) ? 48 : 50}
+						monthFormat='YYYY, M[月]'
+						weekDayFormat='ddd'
+						daySize={inBreakPoint ? 48 : 50}
 					/>
 
-					<div style={(inBreakPoint) ? { display: 'flex', marginTop: '12px', justifyContent: 'center'} : { display: 'grid', marginTop: '14px', marginLeft: '18px' }}>
-						<div style={{marginRight: 20, fontSize: 12}}>
-							<div className={style.lgDot} style={{ background: '#25499D'}}></div>
-							<span style={(inBreakPoint) ? {} : { marginRight: 12 }}>一般活動 </span>
-							<span>{(inBreakPoint) ? '' : ' General Activity'}</span>
+					<div
+						style={
+							inBreakPoint
+								? {
+										display: 'flex',
+										marginTop: '12px',
+										justifyContent: 'center',
+								  }
+								: { display: 'grid', marginTop: '14px', marginLeft: '18px' }
+						}
+					>
+						<div style={{ marginRight: 20, fontSize: 12 }}>
+							<div
+								className={style.lgDot}
+								style={{ background: '#25499D' }}
+							></div>
+							<span style={inBreakPoint ? {} : { marginRight: 12 }}>
+								一般活動{' '}
+							</span>
+							<span>{inBreakPoint ? '' : ' General Activity'}</span>
 						</div>
-						<div style={{marginRight: 20, fontSize: 12}}>
-							<div className={style.lgDot} style={{ background: '#A9CF59' }}></div>
-							<span style={(inBreakPoint) ? {} : { marginRight: 12 }}>講座 / 工作坊</span>
-							<span>{(inBreakPoint) ? '' : ' Lecture / Workshop'}</span>
+						<div style={{ marginRight: 20, fontSize: 12 }}>
+							<div
+								className={style.lgDot}
+								style={{ background: '#A9CF59' }}
+							></div>
+							<span style={inBreakPoint ? {} : { marginRight: 12 }}>
+								講座 / 工作坊
+							</span>
+							<span>{inBreakPoint ? '' : ' Lecture / Workshop'}</span>
 						</div>
-						<div style={{marginRight: 20, fontSize: 12}}>
-							<div className={style.lgDot} style={{ background: '#D7497C' }}></div>
-							<span style={(inBreakPoint) ? {} : { marginRight: 12 }}>常設展覽</span>
-							<span>{(inBreakPoint) ? '' : ` Permanent Exhibition`}</span>
+						<div style={{ marginRight: 20, fontSize: 12 }}>
+							<div
+								className={style.lgDot}
+								style={{ background: '#D7497C' }}
+							></div>
+							<span style={inBreakPoint ? {} : { marginRight: 12 }}>
+								常設展覽
+							</span>
+							<span>{inBreakPoint ? '' : ` Permanent Exhibition`}</span>
 						</div>
 					</div>
 				</div>
 
-
 				<DayScheduleCard data={dayEvents} />
-
-
 			</div>
 			<br></br>
 			<br></br>
 			<br></br>
 		</>
-
 	);
 };
 export default HomeCalendar;
