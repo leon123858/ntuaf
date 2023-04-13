@@ -3,16 +3,15 @@ import { Link } from 'react-router-dom';
 import { RightOutlined } from '@ant-design/icons';
 
 const { Panel } = Collapse;
-const { Title, Paragraph , Text } = Typography;
-
+const { Title, Paragraph, Text } = Typography;
 
 const ArtEvent = () => {
 	// const [isOpened,setOpen] = useState(true);
 	const titleStyle = { fontSize: '25px' };
 
-	const onChange = (key) => {
-		console.log(key);
-	};
+	// const onChange = (key) => {
+	// 	console.log(key);
+	// };
 	return (
 		<>
 			<div
@@ -36,17 +35,14 @@ const ArtEvent = () => {
 						</Paragraph>
 					</Typography>
 					<Collapse
-						onChange={onChange}
+						// onChange={onChange}
 						expandIconPosition='end'
 						bordered={false}
 						defaultActiveKey={['2']}
 						// ghost
 					>
-						<Panel
-							header={<span style={titleStyle}>比賽規則</span>}
-							key='1'
-						>
-							<Typography >
+						<Panel header={<span style={titleStyle}>比賽規則</span>} key='1'>
+							<Typography>
 								<Paragraph>
 									<span style={{ fontSize: 20 }}>
 										1. 共分為三組： 純文字組 照片組（須附100字內說明文字）
@@ -64,14 +60,18 @@ const ArtEvent = () => {
 						</Panel>
 					</Collapse>
 					<Collapse
-						onChange={onChange}
+						// onChange={onChange}
 						expandIconPosition='end'
 						style={{}}
 						bordered={false}
 						// ghost
 						defaultActiveKey={['2']}
 					>
-						<Panel header={<span style={titleStyle}>比賽獎勵</span>} style={{ borderBottom : "red" }} key='1'>
+						<Panel
+							header={<span style={titleStyle}>比賽獎勵</span>}
+							style={{ borderBottom: 'red' }}
+							key='1'
+						>
 							<Typography>
 								<Paragraph>
 									<span style={{ fontSize: 20 }}>
@@ -114,14 +114,14 @@ const ArtEvent = () => {
 							marginTop: '2rem',
 						}}
 					>
-					<Link to='/Artwork/Upload'>
-						<div style={{ backgroundColor : 'lightgrey' ,textAlign : 'center' }}>
-							<Text style={{ fontSize: 35 , margin : '40px' }}>
-								我要參賽
-							</Text>
-							<RightOutlined style={{ fontSize: 35 }}/>
-						</div>
-					</Link>
+						<Link to='/Artwork/Upload'>
+							<div
+								style={{ backgroundColor: 'lightgrey', textAlign: 'center' }}
+							>
+								<Text style={{ fontSize: 35, margin: '40px' }}>我要參賽</Text>
+								<RightOutlined style={{ fontSize: 35 }} />
+							</div>
+						</Link>
 					</div>
 					<Link to='/ArtworkList'>
 						<Image

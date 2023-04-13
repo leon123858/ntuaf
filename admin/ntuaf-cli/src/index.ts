@@ -70,7 +70,7 @@ const options = program.opts();
 	}
 	// 是否為允許的可自動化執行模式
 	if (options.mode) {
-		const allowModes = [MODE_TYPE.插入測試資料];
+		const allowModes = [MODE_TYPE.彙整當日用戶操作, MODE_TYPE.更新系統暫存];
 		if (!allowModes.includes(options.mode)) {
 			console.log('不允許使用自動化指令行的參數');
 			console.log('僅允許下列參數');
@@ -133,6 +133,7 @@ const options = program.opts();
 			await updateArtworkLike();
 			await deleteAllUserTmpData();
 			await setAllTmpDataAsInit();
+			console.log('彙整用戶當日操作成功!');
 			break;
 		}
 		case MODE_TYPE.插入例行展覽: {

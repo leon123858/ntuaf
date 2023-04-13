@@ -59,7 +59,6 @@ const PositionRow = ({ members, position, inBreakPoint }) => {
 	);
 };
 
-<<<<<<< HEAD
 const ImgCarousel = ({ imgList, inBreakPoint }) => {
 	const imgs = useRef(null);
 	if (!imgList) return <></>;
@@ -102,8 +101,6 @@ const ImgCarousel = ({ imgList, inBreakPoint }) => {
 	);
 };
 
-=======
->>>>>>> parent of d250851... Bug free
 const MemberTab = () => {
 	const { inBreakPoint } = useContext(BreakPointContext);
 	const [curDepartment, setCurDepartment] = useState(DEPARTMENT.核心團隊);

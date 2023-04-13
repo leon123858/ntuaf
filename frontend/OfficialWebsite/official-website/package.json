@@ -4,11 +4,7 @@
 	"private": false,
 	"dependencies": {
 		"@ant-design/icons": "^4.8.0",
-<<<<<<< HEAD
 		"@leon123858/ntuaf-sdk": "0.3.1",
-=======
-		"@leon123858/ntuaf-sdk": "0.2.4",
->>>>>>> parent of d250851... Bug free
 		"@react-hook/window-size": "^3.1.1",
 		"@testing-library/jest-dom": "^5.16.5",
 		"@testing-library/react": "^13.4.0",
