@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import style from './TextBox.module.css';
 import { BlOCK_TYPE } from '@leon123858/ntuaf-sdk'
+import { BreakPointContext } from '../../useBreakPoint';
 
 const TextBox = ({ text }) => {
-
+    const { inBreakPoint } = useContext(BreakPointContext);
     return (
 
         {
@@ -61,8 +62,8 @@ const TextBox = ({ text }) => {
             ),
 
             [BlOCK_TYPE.TEXT_D]: (
-                <div style={{ display: 'flex', alignItems: 'center' }} className={style.container}>
-                    <div>
+                <div style={(inBreakPoint) ? { } : { display: 'flex', alignItems: 'center' }} className={style.container}>
+                    <div style={{ textAlign: 'center' }}>
                         <img src={text.url} alt="" style={{ width: 140, marginRight: '30px' }} />
                     </div>
                     
