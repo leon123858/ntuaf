@@ -33,6 +33,7 @@ const DayScheduleCard = ({ data }) => {
 									<div
 										key={idx}
 										className={`${style.event} ${style.blue}`}
+										style={(inBreakPoint) ? { width: '100%' } : { }}
 										onClick={() => handleOnClick(a.id)}
 									>
 										<p className={style.eventName}>{a.name}</p>
@@ -53,6 +54,7 @@ const DayScheduleCard = ({ data }) => {
 									<div
 										key={idx}
 										className={`${style.event} ${style.green}`}
+										style={(inBreakPoint) ? { width: '100%' } : { }}
 										onClick={() => handleOnClick(a.id)}
 									>
 										<p className={style.eventName}>{a.name}</p>
@@ -74,6 +76,7 @@ const DayScheduleCard = ({ data }) => {
 									<div
 										key={idx}
 										className={`${style.event} ${style.pink}`}
+										style={(inBreakPoint) ? { width: '100%' } : { }}
 										onClick={() => handleOnClick(a.id)}
 									>
 										<p className={style.eventName}>{a.name}</p>
@@ -91,7 +94,7 @@ const DayScheduleCard = ({ data }) => {
 							一般活動 General Activity
 						</p>
 						<div className={style.eventContainer}>
-							<div className={style.event} style={{ background: '#EFEFEF', color: '#7A7979' }}>
+							<div className={style.event} style={(inBreakPoint) ? { width: '100%', background: '#EFEFEF', color: '#7A7979' } : { background: '#EFEFEF', color: '#7A7979' }}>
 								<p className={style.eventName}>今日目前無活動</p>
 								<p className={style.eventInfo}>點選其他有圓點的日子！</p>
 							</div>
@@ -101,7 +104,7 @@ const DayScheduleCard = ({ data }) => {
 					<div>
 						<p className={style.category}>講座/工作坊 Lecture / Workshop</p>
 						<div className={style.eventContainer}>
-							<div className={style.event} style={{ background: '#EFEFEF', color: '#7A7979' }}>
+							<div className={style.event} style={(inBreakPoint) ? { width: '100%', background: '#EFEFEF', color: '#7A7979' } : { background: '#EFEFEF', color: '#7A7979' }}>
 								<p className={style.eventName}>今日目前無活動</p>
 								<p className={style.eventInfo}>點選其他有圓點的日子！</p>
 							</div>
@@ -111,8 +114,7 @@ const DayScheduleCard = ({ data }) => {
 					<div>
 						<p className={style.category}>常設展覽 Permanent Exhibition</p>
 						<div className={style.eventContainer}>
-
-							<div className={style.event} style={{ background: '#EFEFEF', color: '#7A7979' }}>
+							<div className={style.event} style={(inBreakPoint) ? { width: '100%', background: '#EFEFEF', color: '#7A7979' } : { background: '#EFEFEF', color: '#7A7979' }}>
 								<p className={style.eventName}>今日目前無活動</p>
 								<p className={style.eventInfo}>點選其他有圓點的日子！</p>
 							</div>

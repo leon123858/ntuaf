@@ -1,5 +1,5 @@
 .container {
-  width: 395px;
+  display: table;
   font-family: 'Noto Sans TC';
   margin: 50px auto;
   font-weight: 300;
@@ -400,7 +400,7 @@
   background: #fff;
   position: relative;
   text-align: left;
-  height: 405px;
+  height: 390px;
 }
 :global .DayPicker__horizontal {
   background: #fff;

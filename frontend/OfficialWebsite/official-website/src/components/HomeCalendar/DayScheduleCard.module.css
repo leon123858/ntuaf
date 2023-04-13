@@ -40,6 +40,21 @@
 .event {
 	min-height: 70px;
 	width: 95%;
+	max-width: 84vw;
+	padding: 16px 30px;
+	cursor: pointer;
+	border-radius: 1.25em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	background-color: white;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+	margin-bottom: 12px;
+}
+
+.lgEvent {
+	min-height: 70px;
+	width: 95%;
 	padding: 16px 30px;
 	cursor: pointer;
 	border-radius: 1.25em;
