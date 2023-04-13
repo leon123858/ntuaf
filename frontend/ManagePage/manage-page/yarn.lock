@@ -2189,10 +2189,17 @@
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz#b2ac626d6cb9c8718ab459166d4bb405b8ffa78b"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
+<<<<<<< HEAD
 "@leon123858/ntuaf-sdk@0.3.1":
   version "0.3.1"
   resolved "https://npm.pkg.github.com/download/@leon123858/ntuaf-sdk/0.3.1/89b297df2eb68af7fcdb1fa2165e9e8e7b0b5894#89b297df2eb68af7fcdb1fa2165e9e8e7b0b5894"
   integrity sha512-tLCOXOVzrqi2g4BUGtTkR9b56p36Q6b8alzRHVJZJfNK3zamicq4b+6HKkXj/8fm/pTX/RxWBryOoimsNeCC5w==
+=======
+"@leon123858/ntuaf-sdk@0.2.4":
+  version "0.2.4"
+  resolved "https://npm.pkg.github.com/download/@leon123858/ntuaf-sdk/0.2.4/df35d1bd79ac6dfa4aef593596361a033b492434#df35d1bd79ac6dfa4aef593596361a033b492434"
+  integrity sha512-M/hoTJciysNLF6RbtdxydLpgoDCY58FLslpiS63foI3muiRfgwxNVL6NcZnFDgGrHjHMYOxETf8sWYS4RBDqDg==
+>>>>>>> parent of d250851... Bug free
   dependencies:
     axios "^0.27.2"
     chai "^4.3.6"

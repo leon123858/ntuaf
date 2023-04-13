@@ -11,7 +11,7 @@ function Post() {
 	const [activeKey, setActiveKey] = useState('1');
 
 	useEffect(() => {
-		// console.log('rerander');
+		console.log('rerander');
 		(async () => {
 			await initData();
 		})();
@@ -27,9 +27,9 @@ function Post() {
 	}, [activeKey]);
 
 	const loadMoreData = () => {
-		// console.log('loadMore');
+		console.log('loadMore');
 		if (loading) {
-			// console.log('return');
+			console.log('return');
 			return;
 		}
 		setLoading(true);
@@ -55,7 +55,7 @@ function Post() {
 		cursor.current = tempCursor;
 	};
 	const initData = async () => {
-		// console.log('init');
+		console.log('init');
 		const type =
 			activeKey === '1'
 				? ARTWORK_TYPE.PURE_TEXT

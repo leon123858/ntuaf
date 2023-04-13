@@ -87,8 +87,9 @@ const transformRecentEvent = async () => {
 		.set({ [key]: recentEvents });
 };
 const transformRecommendEvents = async () => {
-	await Promise.all([transformRegularEvent(), transformRecentEvent()]);
-	console.log('transformRecommendEvents OK!');
+	console.log('transformRecommendEvents');
+	transformRegularEvent();
+	transformRecentEvent();
 };
 
 export { transformRecommendEvents };

@@ -138,7 +138,6 @@ const transformDayEvents = async () => {
 				...monthEvent['5'],
 			},
 		});
-	console.log('transformDayEvents OK!');
 };
 
 export { transformDayEvents };

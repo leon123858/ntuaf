@@ -11,6 +11,7 @@ const createDateString = (start: number, end: number) => {
 };
 
 const transformTabEvents = async () => {
+	console.log('transformTabEvents');
 	const toDbPath = '/Cache/Events/TabEvents';
 	const fromDbPath = 'Events';
 	const key = 'data';
@@ -68,8 +69,6 @@ const transformTabEvents = async () => {
 			}
 		}
 	}
-
-	console.log('transformTabEvents OK!');
 };
 
 export { transformTabEvents };

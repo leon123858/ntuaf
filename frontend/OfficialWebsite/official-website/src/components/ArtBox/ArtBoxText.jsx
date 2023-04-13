@@ -1,6 +1,6 @@
 import styles from './ArtBox.module.css';
 import React, { useState } from 'react';
-import { Card } from 'antd';
+import { Avatar, Card, Image, Button } from 'antd';
 import Meta from 'antd/es/card/Meta';
 import Heart from './Heart';
 import ReactTextCollapse from 'react-text-collapse';
@@ -20,7 +20,7 @@ const TEXT_COLLAPSE_OPTIONS = {
 
 const ArtBox = (props) => {
 	const [active, setActive] = useState(false);
-	// console.log(props);
+	console.log(props);
 	const mystyle = {
 		width: `${props.width}%`,
 	};
