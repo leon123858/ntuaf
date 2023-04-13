@@ -110,6 +110,7 @@ const Carousel = () => {
 			{inBreakPoint ? (
 				<div className={style.App}>
 					<div className={style.headerWrapper}>
+					<div className={flip?"":style.headerActive}>
 						<h1
 							className={style.header}
 							onClick={() => {
@@ -119,14 +120,15 @@ const Carousel = () => {
 								flip
 									? {}
 									: {
-											textDecoration: 'underline',
-											textDecorationColor: 'black',
-											color: '#DD0E65',
-									  }
+										textDecorationColor: 'black',
+										color: 'black',
+									}
 							}
 						>
-							近期活動
+							近 期 活 動
 						</h1>
+						</div>
+						<div className={flip?style.headerActive:""}>
 						<h1
 							className={style.header}
 							onClick={() => {
@@ -135,21 +137,23 @@ const Carousel = () => {
 							style={
 								flip
 									? {
-											textDecoration: 'underline',
-											textDecorationColor: 'black',
-											color: '#DD0E65',
-									  }
-									: {}
+										textDecorationColor: 'black',
+										color: 'black',
+									}
+									: {
+										color: 'gray'
+									}
 							}
 						>
-							常設展覽
+							常 設 展 覽
 						</h1>
-						<div className={style.prev} onClick={moveLeft}>
-							❮
 						</div>
-						<div className={style.next} onClick={moveRight}>
-							❯
-						</div>
+					</div>
+					<div className={style.prev} onClick={moveLeft}>
+						<img className={style.imgArrow} src="https://drive.google.com/uc?export=view&id=1dOLnrGzRRmbbNdfx7QGaVoJcpEFzYPJ4"></img>
+					</div>
+					<div className={style.next} onClick={moveRight}>
+						<img className={style.imgArrow} src="https://drive.google.com/uc?export=view&id=1a-fv9MscBBAhWxCmMv1B4LYqAjtPwfj2"></img>
 					</div>
 					<div className={style.carouselWrapper} {...handlers}>
 						{slides.length === 0 ? (
@@ -165,48 +169,57 @@ const Carousel = () => {
 					</div>
 				</div>
 			) : (
-				<div className={style.App}>
-					<div className={style.headerWrapper}>
-						<h1
-							className={style.header}
-							onClick={() => {
-								setFlip(false);
-							}}
-							style={
-								flip
-									? {}
-									: {
-											textDecoration: 'underline',
+				<div className={style.lgApp}>
+					<div className={style.lgHeaderWrapper}>
+						<div className={flip?"":style.headerActive}
+							>
+							<h1
+								className={style.header}
+								onClick={() => {
+									setFlip(false);
+								}}
+								style={
+									flip
+										? {
+											color: 'gray'
+										}
+										: {
+											// textDecoration: 'underline',
 											textDecorationColor: 'black',
-											color: '#DD0E65',
-									  }
-							}
-						>
-							近期活動
-						</h1>
-						<h1
-							className={style.header}
-							onClick={() => {
-								setFlip(true);
-							}}
-							style={
-								flip
-									? {
-											textDecoration: 'underline',
+											color: 'black',
+										}
+								}
+							>
+								近 期 活 動
+							</h1>
+						</div>
+						<div className={flip?style.headerActive:""}>
+							<h1
+								className={style.header}
+								onClick={() => {
+									setFlip(true);
+								}}
+								style={
+									flip
+										? {
 											textDecorationColor: 'black',
-											color: '#DD0E65',
-									  }
-									: {}
-							}
-						>
-							常設展覽
-						</h1>
-						<div className={style.prev} onClick={moveLeft}>
-							❮
+											color: 'black',
+										}
+										: {
+											color: 'gray'
+										}
+								}
+							>
+								常 設 展 覽
+							</h1>
 						</div>
-						<div className={style.next} onClick={moveRight}>
-							❯
-						</div>
+
+					</div>
+					<div className={style.prev} onClick={moveLeft}>
+						<img className={style.imgArrow} src="https://drive.google.com/uc?export=view&id=1dOLnrGzRRmbbNdfx7QGaVoJcpEFzYPJ4"></img>
+					</div>
+					<div className={style.next} onClick={moveRight}>
+						<img className={style.imgArrow} src="https://drive.google.com/uc?export=view&id=1a-fv9MscBBAhWxCmMv1B4LYqAjtPwfj2"></img>
 					</div>
 					<div className={style.lgCarouselWrapper} {...handlers}>
 						{slides.length === 0 ? (
@@ -215,7 +228,7 @@ const Carousel = () => {
 							<CarouselImport
 								slides={slides}
 								goToSlide={activateImg}
-								offsetRadius={2}
+								offsetRadius={3}
 								animationConfig={{ tension: 120, friction: 14 }}
 							></CarouselImport>
 						)}
