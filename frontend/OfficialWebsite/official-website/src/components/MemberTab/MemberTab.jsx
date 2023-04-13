@@ -44,6 +44,51 @@ const PositionRow = ({ members, position }) => {
 	);
 };
 
+<<<<<<< Updated upstream
+=======
+const ImgCarousel = ({ imgList, inBreakPoint }) => {
+	const imgs = useRef(null);
+	if (!imgList) return <></>;
+	// console.log(imgList);
+	const showArrow = imgList.length > 1 && !inBreakPoint ? true : false;
+	return (
+		<>
+			<Carousel autoplay ref={imgs}>
+				{imgList.map((img) => (
+					<div key={img}>
+						<Image
+							src={img}
+							preview={false}
+							placeholder={<Spin />}
+							alt=''
+							style={{ borderRadius: '10px' }}
+						/>
+					</div>
+				))}
+			</Carousel>
+			{showArrow ? (
+				<div>
+					<Button
+						className={style.arrowRight}
+						icon={<RightOutlined />}
+						shape='circle'
+						onClick={() => imgs.current.next()}
+					></Button>
+					<Button
+						className={style.arrowLeft}
+						icon={<LeftOutlined />}
+						shape='circle'
+						onClick={() => imgs.current.prev()}
+					></Button>
+				</div>
+			) : (
+				''
+			)}
+		</>
+	);
+};
+
+>>>>>>> Stashed changes
 const MemberTab = () => {
 	const { inBreakPoint } = useContext(BreakPointContext);
 	const [curDepartment, setCurDepartment] = useState(DEPARTMENT.核心團隊);

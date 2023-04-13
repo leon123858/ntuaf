@@ -35,11 +35,7 @@ const FormDisabledDemo = () => {
 
 	const onFinish = async (values) => {
 		values.img = previewImage;
-		console.log('img url', previewImage);
 		values.url = previewImage;
-		console.log(values);
-		// form.url = previewImage;
-		console.log('form', form);
 		try {
 			await createArtwork(values);
 		} catch (err) {
@@ -59,7 +55,7 @@ const FormDisabledDemo = () => {
 	const handleCancel = () => setPreviewVisible(false);
 
 	const normFile = (e) => {
-		console.log('Upload event:', e);
+		// console.log('Upload event:', e);
 		if (Array.isArray(e)) {
 			return previewImage;
 		}
@@ -96,8 +92,8 @@ const FormDisabledDemo = () => {
 		const file = options.file;
 		// setFileList([file]);
 		const isLt2M = file.size > 25 * 1024 * 1024;
-		console.log('options', options);
-		console.log('file size', file.size);
+		// console.log('options', options);
+		// console.log('file size', file.size);
 
 		const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
 		if (!isJpgOrPng) {
@@ -112,7 +108,7 @@ const FormDisabledDemo = () => {
 		}
 
 		if (isOK) {
-			console.log('file', file);
+			// console.log('file', file);
 			const url = URL.createObjectURL(file);
 			const preview = [
 				{
@@ -125,16 +121,21 @@ const FormDisabledDemo = () => {
 			setFileList(preview);
 			setPreviewImage(url);
 			setPreviewTitle(options.file.name);
+<<<<<<< Updated upstream
 			console.log('img url ', url);
 			console.log('name', options.file.name);
 			setLoading(false);
 			// return false;
+=======
+			// console.log('img url ', url);
+			// console.log('name', options.file.name);
+>>>>>>> Stashed changes
 		}
 	};
 
 	function handleChange(value) {
-		console.log(`Selected ${value}`);
-		console.log(form.getFieldValue('type'));
+		// console.log(`Selected ${value}`);
+		// console.log(form.getFieldValue('type'));
 		if (
 			form.getFieldValue('type') === ARTWORK_TYPE.PHOTO ||
 			form.getFieldValue('type') === ARTWORK_TYPE.PAINTING

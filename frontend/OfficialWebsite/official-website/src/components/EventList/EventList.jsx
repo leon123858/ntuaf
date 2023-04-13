@@ -9,7 +9,7 @@ const { Title } = Typography;
 const { Meta } = Card;
 
 const EventImg = ({ tagName, imgUrl, inBreakPoint, isHovered }) => {
-	console.log(tagName);
+	// console.log(tagName);
 	const tagStyle12 = {
 		borderStyle: 'none',
 		borderRadius: '15px',
