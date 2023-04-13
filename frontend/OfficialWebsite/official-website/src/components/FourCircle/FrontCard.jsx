@@ -18,7 +18,8 @@ const FrontCard = ({ FrontCardContent, setFlip, closeModel}) => {
         <div className={styles.flipButton} onClick={handleFlip}>
         <Image src={"https://drive.google.com/uc?export=view&id=1kMG-u5ilEWa3i2_CSuxAEP9xS2JVekDl"} alt={"loading"}
                     preview={false}
-                    fallback='https://images.squarespace-cdn.com/content/v1/5452d441e4b0c188b51fef1a/1615326541809-TW01PVTOJ4PXQUXVRLHI/male-orange-tabby-cat.jpg?format=600w'>
+                    fallback='https://images.squarespace-cdn.com/content/v1/5452d441e4b0c188b51fef1a/1615326541809-TW01PVTOJ4PXQUXVRLHI/male-orange-tabby-cat.jpg?format=600w'
+                    rel="preload">
         </Image>
         </div>
 
@@ -29,7 +30,8 @@ const FrontCard = ({ FrontCardContent, setFlip, closeModel}) => {
         <div className={styles.flipButton} onClick={handleFlip}>
         <Image src={"https://drive.google.com/uc?export=view&id=1kMG-u5ilEWa3i2_CSuxAEP9xS2JVekDl"} alt={"loading"}
                     preview={false}
-                    fallback='https://images.squarespace-cdn.com/content/v1/5452d441e4b0c188b51fef1a/1615326541809-TW01PVTOJ4PXQUXVRLHI/male-orange-tabby-cat.jpg?format=600w'>
+                    fallback='https://images.squarespace-cdn.com/content/v1/5452d441e4b0c188b51fef1a/1615326541809-TW01PVTOJ4PXQUXVRLHI/male-orange-tabby-cat.jpg?format=600w'
+                    rel="preload">
         </Image>
         </div>
 

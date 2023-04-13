@@ -5,7 +5,7 @@ import { BreakPointContext } from '../../useBreakPoint';
 const FourCircle = () => {
     const [contents, setContents] = useState([])
     const { inBreakPoint, breakPoint } = useContext(BreakPointContext);
-    document.body.style.setProperty('--fourBallOffset', `-${1000/2}px`);
+    document.body.style.setProperty('--fourBallOffset', `-${700/2}px`);
     window.addEventListener('scroll', () => {
         // let tmp = document.getElementsByClassName(styles.lgCardWrapper)[0];
 

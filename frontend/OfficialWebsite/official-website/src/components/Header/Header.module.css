@@ -82,6 +82,7 @@
 .subMenu {
 	text-align: center;
 	line-height: 16px;
+	width: auto;
 }
 
 
@@ -100,6 +101,15 @@
 	/* background: linear-gradient(to right, rgba(37, 73, 157, 1) ,rgba(231, 50, 115, 1)); */
 	/* -webkit-background-clip: text; */
 	/* -webkit-text-fill-color: transparent; */
+}
+:global(.ant-menu-item.ant-menu-item-only-child) {
+	/* make colorfule hover effect on header text */
+	background-color: lightblue !important;
+	padding: 0px;
+	margin: 0px;
+	padding-inline:0px;
+	margin-inline: 0px;
+	width:100px;
 }
 
 :global(.ant-menu-item:hover) {
