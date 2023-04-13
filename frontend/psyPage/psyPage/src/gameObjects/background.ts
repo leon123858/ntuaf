@@ -20,12 +20,27 @@ export default async function createBackground(index : number) {
 		},
 	});
 
-	
-	let string = 'bg'
 
-	let img = new Img({
-		resource: string+index,
-	});
+
+	let img = new Img();
+
+	function loadImage(src : string) {
+		return new Promise((resolve, reject) => {
+			img = new Img({
+				resource: src,
+			});
+			img.on('load', () => {
+				console.log("img "+index + " success")
+				resolve(img);
+			});
+
+			img.on('error', (err) => {
+				reject(err);
+			});
+		});
+	}
+
+	console.log(loadImage('bg'+index));
 	
 	bg.addComponent(new Render({
 		sortableChildren: true,

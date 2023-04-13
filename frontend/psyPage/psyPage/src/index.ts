@@ -23,6 +23,8 @@ import { Render } from '@eva/plugin-renderer-render';
 
 async function load_game(){
 
+console.log(resources)
+
 const canvasElement = document.querySelector('#canvas') as HTMLCanvasElement;
 
 const canvasStyles = `
@@ -624,4 +626,13 @@ btns.forEach((btn) => game.scene.addChild(btn.button));
 
 }
 
-load_game()
+
+resources.forEach((item,_)=>{
+	const preload = new Img({
+		resource : item.name,
+	})
+})
+setTimeout(()=>{
+	console.log("delay");
+	load_game()
+},5000)
