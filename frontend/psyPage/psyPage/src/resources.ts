@@ -458,7 +458,7 @@ export default [
     preload: true
   },
   {
-    name:'Q4Op3',
+    name:'Q4Op3tap',
     type: RESOURCE_TYPE.IMAGE,
     src: {
       image: {
@@ -525,7 +525,7 @@ export default [
     preload: true
   },
   {
-    name:'Q5Op3',
+    name:'Q5Op3tap',
     type: RESOURCE_TYPE.IMAGE,
     src: {
       image: {

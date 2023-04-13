@@ -3,7 +3,7 @@ import { Event } from '@eva/plugin-renderer-event';
 import { Transition } from '@eva/plugin-transition';
 import { Render } from '@eva/plugin-renderer-render';
 import { Img } from '@eva/plugin-renderer-img';
-import { Graphics } from '@eva/plugin-renderer-graphics';
+
 
 
 
@@ -12,14 +12,14 @@ interface BtnParams {
   name: string;
   name2? :string;
   transform?: object;
-  callback: ()=>void;
+  callback: ()=>Promise<void>;
 }
-export default function createBtn({ name , name2, transform = {}, callback = ()=>{} }: BtnParams) {
+export default function createBtn({ name , name2, transform = {}, callback = async()=>{} }: BtnParams) {
   const box = new GameObject('box', {
     ...transform
   });
 
-  box.addComponent(new Render({ alpha: 0 }));
+  box.addComponent(new Render({ alpha: 0, zIndex : 7 }));
 
 
   // const btnGO = new GameObject('btn',{
@@ -130,8 +130,10 @@ export default function createBtn({ name , name2, transform = {}, callback = ()=
   transition.play('appear',1);
 
   const evt = box.addComponent(new Event)
-  evt.on('tap', () => {
-    callback()
+ 
+  evt.on('tap', async() => {
+    await callback()
+    callback = async()=>{}
   })
   .on('touchstart', () => {
     img.resource = name2;
@@ -141,6 +143,6 @@ export default function createBtn({ name , name2, transform = {}, callback = ()=
     img.resource = name;
     console.log('The clicked end');
   });
-  console.log(img);
+  //console.log(img);
   return { button : box , transition } ;
 }

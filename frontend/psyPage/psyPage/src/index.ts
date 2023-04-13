@@ -1,12 +1,11 @@
 import createBackground from './gameObjects/background';
 
-import createBall from './gameObjects/ball';
 import createBtn from './gameObjects/btn';
 import createBgm from './gameObjects/bgm';
 
 import resources from './resources';
 
-import { Game, resource } from '@eva/eva.js';
+import { Game, Transform, resource } from '@eva/eva.js';
 import { RendererSystem } from '@eva/plugin-renderer';
 import { ImgSystem } from '@eva/plugin-renderer-img';
 import { EventSystem } from '@eva/plugin-renderer-event';
@@ -17,6 +16,12 @@ import { GraphicsSystem } from '@eva/plugin-renderer-graphics';
 import { TextSystem } from '@eva/plugin-renderer-text';
 import { SoundSystem } from '@eva/plugin-sound';
 import { Img } from '@eva/plugin-renderer-img';
+import { Event } from '@eva/plugin-renderer-event';
+
+import { Render } from '@eva/plugin-renderer-render';
+
+
+async function load_game(){
 
 const canvasElement = document.querySelector('#canvas') as HTMLCanvasElement;
 
@@ -40,6 +45,7 @@ canvasElement.appendChild(styleElement);
 
 
 
+
 const renderer = new RendererSystem({
 	width: 900, // the initial width of the canvas
 	height: 1640, // the initial height of the canvas
@@ -47,7 +53,7 @@ const renderer = new RendererSystem({
 	resolution: window.devicePixelRatio, // the resolution of the canvas
 });
   
-console.log(renderer);
+// console.log(renderer);
 
 let A =0;
 let B =0;
@@ -71,24 +77,15 @@ const game = new Game({
   	frameRate: 60,
 });
 
-function updateScale() {
-	const windowWidth = window.innerWidth;
-	const windowHeight = window.innerHeight;
-
-	const scaleX = windowWidth / renderer.params.width ;
-	const scaleY = windowHeight / renderer.params.height;
-	console.log("scale x =",scaleX);
-	console.log("scale y =",scaleY);
-
-
-	game.scene.transform.scale.x = scaleX;
-	//game.scene.transform.scale.y = scaleY;
-}
-
+game.scene.addComponent(
+	new Render({
+		sortableChildren: true,
+	}),
+);
 
 window.addEventListener('resize', () => {
 	//updateScale();
-	//console.log(window.outerWidth);
+	//// console.log(window.outerWidth);
 	//renderer.resize(window.outerWidth, window.outerWidth*16/9);
 });
   
@@ -101,42 +98,29 @@ game.scene.transform.size.width = 700;
 game.scene.transform.size.height = game.scene.transform.size.width*16/9;
 window.game = game;
 
-// ball
-const balltrans = {
-	position: {
-		x: 200,
-		y: -120,
-	},
-	origin: {
-		x: 0.5,
-		y: 0.5,
-	},
-	anchor: {
-		x: 0.5,
-		y: 1,
-	},
-};
-
 
 const numberOfScene = 6;
 
+let lock = false
 
 
-const changeScenefunt = ()=>{
+const changeScenefunt = async()=>{
+	if(lock)
+		return;
+	lock = true;
+	// console.log(backgroundList);
+	// console.log(backgroundList[0])
 	const animate = backgroundList[sceneIndex].animation;
 	animate.play('move',1);
-	console.log("A = ",A,",B = ",B,",C = ",C);
+	// console.log("A = ",A,",B = ",B,",C = ",C);
 
-	btns.forEach((btn)=>{
-		const disappear = btn.transition;
-		disappear.play('disappear',1);
-		//btn.button.remove()
-	})
-	//console.log(""animate.play('fadeOut',1));
-	console.log("scene",backgroundList[sceneIndex]);
-	if(sceneIndex==1){
-		console.log("start result");
-		backgroundList[sceneIndex-1].background.removeComponent("Img");
+	//// console.log(""animate.play('fadeOut',1));
+	// console.log("scene",backgroundList[sceneIndex]);
+	if(sceneIndex==numberOfScene-1){
+		// console.log("start result");
+		backgroundList[sceneIndex+1].background.getComponent(Transform).scale.y = 1.1;
+		//game.scene.transform.size.width = game.scene.transform.size.width*17/9;
+		backgroundList[sceneIndex+1].background.removeComponent("Img");
 		let resource;
 		if(A >= B && A >= C)
 			resource = "bg6"
@@ -147,21 +131,31 @@ const changeScenefunt = ()=>{
 		const img = new Img({
 			resource: resource,
 		});
-		backgroundList[sceneIndex-1].background.addComponent(img);
+		backgroundList[sceneIndex+1].background.addComponent(img);
 	}
-	animate.on('finish', (name) => {
+
+	btns.forEach((btn)=>{
+		const disappear = btn.transition;
+		// console.log(btn)
+		btn.button.removeComponent(Event);
+		disappear.play('disappear',1);
+	})
+	 
+	animate.on('finish', async() => {
 		backgroundList[sceneIndex].background.remove();
+		sceneIndex +=1;
 
 		btns.forEach((btn)=> btn.button.remove() )
 		btn_index+=1;
-		if(sceneIndex==1)
-			return;
-		btns = [...btnLists[btn_index]].map( (value,_)=> createBtn(value));
-		console.log("index = ",btn_index);
-		btns.forEach((btn) => game.scene.addChild(btn.button));
-		console.log(btns);
-		sceneIndex--;
+		if(sceneIndex < numberOfScene){
+			btns = [...btnLists[btn_index]].map( (value,_)=> createBtn(value));
+			// console.log("index = ",btn_index);
+			// console.log("scene index = ",sceneIndex);
+			btns.forEach((btn) => game.scene.addChild(btn.button));
+			// console.log(btns);
+		}
 	});
+	lock = false;
 }
 
 
@@ -187,8 +181,8 @@ const btnLists = [
 				height: 200,
 			},
 		},
-		callback: () => {
-			changeScenefunt();
+		callback: async() => {
+			await changeScenefunt();
 		},
 	},
 ],
@@ -214,9 +208,9 @@ const btnLists = [
 				height: 140,
 			},
 		},
-		callback: () => {
+		callback: async() => {
 			A+=1;
-			changeScenefunt()
+			await changeScenefunt()
 		},
 	},
 	{
@@ -240,9 +234,9 @@ const btnLists = [
 				height: 170,
 			},
 		},
-		callback: () => {
+		callback: async() => {
 			B+=1;
-			changeScenefunt()
+			await changeScenefunt()
 		},
 	},
 	{
@@ -266,9 +260,9 @@ const btnLists = [
 				height: 170,
 			},
 		},
-		callback: () => {
+		callback: async() => {
 			C+=1;
-			changeScenefunt()
+			await changeScenefunt()
 		},
 	}
 ],
@@ -294,9 +288,9 @@ const btnLists = [
 				height: 400,
 			},
 		},
-		callback: () => {
+		callback: async() => {
 			A+=1;
-			changeScenefunt()
+			await changeScenefunt()
 		},
 	},
 	{
@@ -320,9 +314,9 @@ const btnLists = [
 				height: 400,
 			},
 		},
-		callback: () => {
+		callback: async() => {
 			B+=1;
-			changeScenefunt()
+			await changeScenefunt()
 		},
 	},
 	{
@@ -346,9 +340,9 @@ const btnLists = [
 				height: 450,
 			},
 		},
-		callback: () => {
+		callback: async() => {
 			C+=1;
-			changeScenefunt()
+			await changeScenefunt()
 		},
 	}
 ],
@@ -374,9 +368,9 @@ const btnLists = [
 				height: 330,
 			},
 		},
-		callback: () => {
+		callback: async() => {
 			A+=1;
-			changeScenefunt()
+			await changeScenefunt()
 		},
 	},
 	{
@@ -400,9 +394,9 @@ const btnLists = [
 				height: 310,
 			},
 		},
-		callback: () => {
+		callback: async() => {
 			B+=1;
-			changeScenefunt()
+			await changeScenefunt()
 		},
 	},
 	{
@@ -426,9 +420,9 @@ const btnLists = [
 				height: 330,
 			},
 		},
-		callback: () => {
+		callback: async() => {
 			C+=1
-			changeScenefunt()
+			await changeScenefunt()
 		},
 	},
 ],
@@ -451,12 +445,12 @@ const btnLists = [
 			},
 			size: {
 				width: 900,
-				height: 250,
+				height: 280,
 			},
 		},
-		callback: () => {
+		callback: async() => {
 			A+=1;
-			changeScenefunt()
+			await changeScenefunt()
 		},
 	},
 	{
@@ -480,9 +474,9 @@ const btnLists = [
 				height: 300,
 			},
 		},
-		callback: () => {
+		callback: async() => {
 			B+=1;
-			changeScenefunt()
+			await changeScenefunt()
 		},
 	},
 	{
@@ -506,9 +500,9 @@ const btnLists = [
 				height: 260,
 			},
 		},
-		callback: () => {
+		callback: async() => {
 			C+=1;
-			changeScenefunt()
+			await changeScenefunt()
 		},
 	},
 ],
@@ -531,12 +525,12 @@ const btnLists = [
 			},
 			size: {
 				width: 700,
-				height: 200,
+				height: 280,
 			},
 		},
-		callback: () => {
+		callback: async() => {
 			A+=1;
-			changeScenefunt()
+			await changeScenefunt()
 		},
 	},
 	{
@@ -557,12 +551,12 @@ const btnLists = [
 			},
 			size: {
 				width: 600,
-				height: 150,
+				height: 200,
 			},
 		},
-		callback: () => {
+		callback: async() => {
 			B+=1;
-			changeScenefunt()
+			await changeScenefunt()
 		},
 	},
 	{
@@ -586,9 +580,9 @@ const btnLists = [
 				height: 150,
 			},
 		},
-		callback: () => {
+		callback: async() => {
 			C+=1;
-			changeScenefunt()
+			await changeScenefunt()
 		},
 	},
 ],
@@ -599,8 +593,15 @@ let btn_index =0;
 
 
 // background
-let sceneIndex = numberOfScene;
-const backgroundList = [...new Array(numberOfScene+1)].map((_,index) => createBackground(numberOfScene-index));
+let sceneIndex = 0;
+const backgroundList :any[] = [];
+for (let index =0 ; index < numberOfScene+1 ;index++){
+	const bg = await createBackground(index)
+	backgroundList.push(bg)
+};
+
+// console.log(backgroundList)
+
 
 
 // BasketFront
@@ -610,12 +611,17 @@ const backgroundList = [...new Array(numberOfScene+1)].map((_,index) => createBa
 /**
  * add child
  */
-backgroundList.forEach((item) => game.scene.addChild(item.background));
-
+for (let index =0 ; index < numberOfScene+1 ;index++){
+	game.scene.addChild(backgroundList[index].background);
+};
 let btns = [...btnLists[btn_index]].map( (value,_)=> createBtn(value))
 //game.scene.addChild(createBoard());
 //game.scene.addChild(basetFront);
+// console.log(game.scene)
+
 btns.forEach((btn) => game.scene.addChild(btn.button));
-//game.scene.addChild(changeSceneBtn);
+//game.scene.addChild(await changeSceneBtn);
 
+}
 
+load_game()

@@ -3,7 +3,7 @@ import { Img } from '@eva/plugin-renderer-img';
 import { Transition } from '@eva/plugin-transition';
 import { Render } from '@eva/plugin-renderer-render';
 
-export default function createBackground(index : number) {
+export default async function createBackground(index : number) {
 	const bg = new GameObject('bg', {
 		size: { width: 900, height: 1640 },
 		position: {
@@ -22,14 +22,15 @@ export default function createBackground(index : number) {
 
 	
 	let string = 'bg'
-	console.log(string+index);
 
-	const img = new Img({
+	let img = new Img({
 		resource: string+index,
 	});
-
+	
 	bg.addComponent(new Render({
+		sortableChildren: true,
 		alpha: 1, 
+		zIndex: 6-index,
 	}));
 
 	bg.addComponent(img);
@@ -82,6 +83,6 @@ export default function createBackground(index : number) {
 			},
 		],
 	};
-	console.log(bg);
+	//console.log(bg);
 	return { background: bg, animation };
 }
