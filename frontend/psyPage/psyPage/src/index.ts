@@ -101,7 +101,7 @@ game.scene.transform.size.height = game.scene.transform.size.width*16/9;
 window.game = game;
 
 
-const numberOfScene = 3;
+const numberOfScene = 6;
 
 
 
