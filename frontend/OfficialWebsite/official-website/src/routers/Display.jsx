@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import style from './Display.module.css';
 import BlockInterpreter from '../utils/blockInterpreter';
 import { BlOCK_TYPE, getEvent } from '@leon123858/ntuaf-sdk';
@@ -10,6 +10,7 @@ import Link from '../components/Link/Link';
 import Map from '../components/Map/Map';
 import { useParams } from 'react-router-dom';
 import { Image, message } from 'antd';
+import { BreakPointContext } from '../useBreakPoint'
 
 const block2element = {
 	[BlOCK_TYPE.TEXT_A]: ({ text, title, url, key }) => {
@@ -170,6 +171,7 @@ function Display() {
 	const interpreter = new BlockInterpreter(block2element);
 	const [eventState, setEventState] = useState(undefined);
 	const [messageApi, contextHolder] = message.useMessage();
+	const { inBreakPoint } = useContext(BreakPointContext);
 
 	useEffect(() => {
 		(async function () {
@@ -196,7 +198,7 @@ function Display() {
 			</h1>
 			<div
 				className={style.APP}
-				style={{ maxWidth: 800, margin: '0 auto', width: '80%' }}
+				style={(inBreakPoint) ? { maxWidth: 800, margin: '0 auto', width: '86%' } : { maxWidth: 800, margin: '0 auto', width: '80%' }}
 			>
 				{interpreter.transfer(eventState.blocks)}
 			</div>
