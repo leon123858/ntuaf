@@ -2116,10 +2116,10 @@
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz#b2ac626d6cb9c8718ab459166d4bb405b8ffa78b"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
-"@leon123858/ntuaf-sdk@0.2.2":
-  version "0.2.2"
-  resolved "https://npm.pkg.github.com/download/@leon123858/ntuaf-sdk/0.2.2/c31f4e007651177a796a38c91b0c3a9ac53b6e48#c31f4e007651177a796a38c91b0c3a9ac53b6e48"
-  integrity sha512-jumu94vbsgago42ofRC+V0xMCDi/JeweObHJ12uPt67vCiQX8h5sMxP7W2sin+G3JP98J/fVoEJga//LegRgOA==
+"@leon123858/ntuaf-sdk@0.3.1":
+  version "0.3.1"
+  resolved "https://npm.pkg.github.com/download/@leon123858/ntuaf-sdk/0.3.1/89b297df2eb68af7fcdb1fa2165e9e8e7b0b5894#89b297df2eb68af7fcdb1fa2165e9e8e7b0b5894"
+  integrity sha512-tLCOXOVzrqi2g4BUGtTkR9b56p36Q6b8alzRHVJZJfNK3zamicq4b+6HKkXj/8fm/pTX/RxWBryOoimsNeCC5w==
   dependencies:
     axios "^0.27.2"
     chai "^4.3.6"
@@ -4198,7 +4198,14 @@ cosmiconfig@^7.0.0:
     path-type "^4.0.0"
     yaml "^1.10.0"
 
-cross-spawn@^7.0.2, cross-spawn@^7.0.3:
+cross-env@^7.0.3:
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-7.0.3.tgz#865264b29677dc015ba8418918965dd232fc54cf"
+  integrity sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==
+  dependencies:
+    cross-spawn "^7.0.1"
+
+cross-spawn@^7.0.1, cross-spawn@^7.0.2, cross-spawn@^7.0.3:
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-7.0.3.tgz#f73a85b9d5d41d045551c177e2882d4ac85728a6"
   integrity sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==

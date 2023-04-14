@@ -6,7 +6,7 @@ import { EVENT_TYPE } from '@leon123858/ntuaf-sdk';
 
 const createTimeString = (start: number, end: number) => {
 	if (moment(start).isSame(moment(end), 'day')) {
-		return `${moment(start).format('hh:mm')} - ${moment(end).format('hh:mm')}`;
+		return `${moment(start).format('HH:mm')} - ${moment(end).format('HH:mm')}`;
 	}
 	return `${moment(start).format('MM/DD')} - ${moment(end).format('MM/DD')}`;
 };
@@ -60,6 +60,7 @@ const transformDayEvents = async () => {
 					case EVENT_TYPE.展覽:
 						monthEvent[month][id][2] = true;
 						break;
+					case EVENT_TYPE['講座/工作坊']:
 					case EVENT_TYPE.工作坊:
 					case EVENT_TYPE.講座:
 						monthEvent[month][id][1] = true;
@@ -84,7 +85,8 @@ const transformDayEvents = async () => {
 						});
 				} else if (
 					eventType === EVENT_TYPE.講座 ||
-					eventType === EVENT_TYPE.工作坊
+					eventType === EVENT_TYPE.工作坊 ||
+					eventType === EVENT_TYPE['講座/工作坊']
 				) {
 					await db
 						.collection(toDbPath)
@@ -136,6 +138,7 @@ const transformDayEvents = async () => {
 				...monthEvent['5'],
 			},
 		});
+	console.log('transformDayEvents OK!');
 };
 
 export { transformDayEvents };

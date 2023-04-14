@@ -3,12 +3,43 @@
 }
 .iconsWrapper{
     display: flex;
-    width: 100vw;
+    width: 100%;
+    padding: 10%;
+    
+    /* justify-content: space-evenly; */
+    /* align-items: center; */
     flex-wrap: wrap;
 
 }
 .iconWrapper{
-    width:33%;
-    padding:10%;
+    width: 33%;
+    padding:10px;
     text-align: center;
+}
+.lgIconWrapper{
+    width: 25%;
+    padding:10px;
+    text-align: center;
+}
+.sponsorWrapper {
+    display: block;
+    margin: 0 auto;
+    margin-top: 80px;
+    width: 80vw;
+    min-width: 350px
+}
+
+.title {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+    color: #25499D;
+} 
+
+.lgTitle {
+    color: #25499D;
+    font-size: 30px;
+    font-weight: 400  ;
 }

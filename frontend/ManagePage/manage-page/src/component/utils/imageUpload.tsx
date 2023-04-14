@@ -8,10 +8,12 @@ import { RcFile, UploadFile, UploadProps } from 'antd/lib/upload';
 import { UploadRequestOption } from 'rc-upload/lib/interface';
 import React from 'react';
 import { uploadImage as uploadImageToCloud } from '@leon123858/ntuaf-sdk/dist/utils/storage';
+import ImgCrop from 'antd-img-crop';
 
 type Props = {
 	setUrl: (url: string) => void;
 	isUpload?: boolean | undefined;
+	wantCrop?: boolean;
 	text?: string;
 };
 
@@ -91,17 +93,34 @@ export const UploadImage = (props: Props) => {
 	};
 	return (
 		<>
-			<Upload
-				accept='image/*'
-				style={{ width: 230 }}
-				customRequest={localPreview}
-				listType='picture-card'
-				fileList={fileList}
-				onPreview={() => setPreviewVisible(true)}
-				onChange={handleChange}
-			>
-				{fileList.length === 1 ? null : uploadButton}
-			</Upload>
+			{props.wantCrop ? (
+				<ImgCrop>
+					<Upload
+						accept='image/*'
+						style={{ width: 230 }}
+						customRequest={localPreview}
+						listType='picture-card'
+						fileList={fileList}
+						onPreview={() => setPreviewVisible(true)}
+						onChange={handleChange}
+					>
+						{fileList.length === 1 ? null : uploadButton}
+					</Upload>
+				</ImgCrop>
+			) : (
+				<Upload
+					accept='image/*'
+					style={{ width: 230 }}
+					customRequest={localPreview}
+					listType='picture-card'
+					fileList={fileList}
+					onPreview={() => setPreviewVisible(true)}
+					onChange={handleChange}
+				>
+					{fileList.length === 1 ? null : uploadButton}
+				</Upload>
+			)}
+
 			<Modal
 				visible={previewVisible}
 				title={previewTitle}

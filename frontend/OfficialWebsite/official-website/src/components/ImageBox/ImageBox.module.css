@@ -1,5 +1,4 @@
 .container {
-  width: 80%;
   margin: 48px auto;
   position: relative;
   text-align: center;
@@ -21,7 +20,7 @@
 .picBox2 {
   width: 100px; 
   margin: 0 auto;
-  minWidth: 400;
+  min-width: 400;
 }
 
 .topic {
@@ -30,36 +29,11 @@
   margin-top: 0px;
 }
 
-.img {
-  width: 10vh;
-  height: 10vh;
-  display: block;
-  position: absolute;
-  right: -38px;
-  bottom: -38px;
-  border-radius: 50%;
-  z-index: 100;
-}
-
-.card {
-  borderColor: 'black';
-  margin-bottom: 32px
-}
-
-.slide {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-size: cover;
-  height: 100%;
-}
-
 .content {
   margin: 0px;
   width: 100%;
-  border: 1px solid #000000;
   border-radius: 10px;
-  padding: 18px;
+  padding-top: 32px;
   font-size: 14px;
 }
 
@@ -67,11 +41,10 @@
   font-size: 14px;
   margin: 0;
   position: absolute;
-  top: var(--top);
-  left: -8px;
-  background-color: #808080;
+  top: -32px;
+  background-color: #171414;
   border-radius: 10px;
-  padding: 8px 40px;
+  padding: 4px 30px;
   color: #FFFFFF;
   font-weight: 300;
 }

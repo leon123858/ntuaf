@@ -1,5 +1,5 @@
-import React, { useEffect, useState , useContext } from 'react';
-import { Tabs, Spin } from 'antd';
+import React, { useEffect, useState, useContext } from 'react';
+import { Tabs } from 'antd';
 
 import { useParams } from 'react-router-dom';
 import style from './Introduce.module.css';
@@ -7,6 +7,7 @@ import EventList from '../components/EventList/EventList';
 import EventListEx from '../components/EventList/EventListEx';
 import { getTabEvents } from '@leon123858/ntuaf-sdk';
 import { BreakPointContext } from '../useBreakPoint';
+import Hr from '../components/Hr/Hr';
 import './Introduce.css';
 
 function Introduce() {
@@ -16,7 +17,6 @@ function Introduce() {
 	const [secondData, setSecondData] = useState({ events: [] });
 	const onChange = (e) => setKey(e);
 	const { inBreakPoint } = useContext(BreakPointContext);
-
 
 	useEffect(() => {
 		const curKey = type === 'exhibition' ? '1' : '2';
@@ -52,18 +52,6 @@ function Introduce() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [key]);
 
-	const tabBarStyle = {
-		padding: 10,
-		fontSize : '50px',
-		activeTab: {
-			color : 'gray',
-			borderColor:
-				'linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet) 1 !important',
-			borderImageSlice: 1,
-		},
-		borderStyle : 'none',
-	};
-
 	return (
 		<div className={style.APP}>
 			<br />
@@ -71,21 +59,22 @@ function Introduce() {
 			<br />
 			<Tabs
 				// className={style.container}
+				animated={false}
 				activeKey={key}
 				centered
-				tabBarStyle={tabBarStyle}
 				items={[
 					{
 						key: '1',
-						label: '展覽',
+						label:
+							key === '1' ? (
+								<Hr title={'展覽'}></Hr>
+							) : (
+								<h5 style={{ fontSize: '20px', paddingBottom: '5px' }}>展覽</h5>
+							),
 						children:
 							firstData.events.length === 0 ? (
 								<div className={style.Spin}>
-									<Spin
-										size='large'
-										indicator={<img src={'/logo512.png'} alt='loading...' />}
-										tip={<span>努力加載中請稍候...</span>}
-									></Spin>
+									<img src={'/loading.gif'} alt='loading...' />
 								</div>
 							) : (
 								<EventListEx data={firstData} />
@@ -93,15 +82,16 @@ function Introduce() {
 					},
 					{
 						key: '2',
-						label: `活動`,
+						label:
+							key === '2' ? (
+								<Hr title={'活動'}></Hr>
+							) : (
+								<h5 style={{ fontSize: '20px', paddingBottom: '5px' }}>活動</h5>
+							),
 						children:
 							secondData.events.length === 0 ? (
 								<div className={style.Spin}>
-									<Spin
-										size='large'
-										indicator={<img src={'/logo512.png'} alt='loading...' />}
-										tip={<span>努力加載中請稍候...</span>}
-									></Spin>
+									<img src={'/loading.gif'} alt='loading...' />
 								</div>
 							) : (
 								<EventList data={secondData} />
@@ -109,10 +99,9 @@ function Introduce() {
 					},
 				]}
 				onChange={onChange}
-				className={style.customTabs}
-				tabBarGutter={ inBreakPoint ? 80 : 150 }
+				tabBarGutter={inBreakPoint ? 80 : 150}
+				// type='card'
 			></Tabs>
-			
 		</div>
 	);
 }

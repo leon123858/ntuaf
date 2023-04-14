@@ -6,9 +6,9 @@
 .container {
 	margin-top: 16px;
 	border: 1px solid #e4e4e4;
-	height: 35vh;
-	overflow: scroll;
-	width: 105%;
+	/* height: 35vh;
+	overflow: scroll; */
+	width: 100%;
 	font-family: 'Noto Sans TC';
 }
 
@@ -37,8 +37,22 @@
 	grid-template-columns: 100%;
 }
 
-
 .event {
+	min-height: 70px;
+	width: 95%;
+	max-width: 92vw;
+	padding: 16px 30px;
+	cursor: pointer;
+	border-radius: 1.25em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	background-color: white;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+	margin-bottom: 12px;
+}
+
+.lgEvent {
 	min-height: 70px;
 	width: 95%;
 	padding: 16px 30px;
@@ -68,31 +82,32 @@
 	margin: 0;
 }
 
-
-
 .blue {
-	color: #25499D;
+	color: #25499d;
 }
 
-.blue:active, .blue:hover {
+.blue:active,
+.blue:hover {
 	color: white;
-	background-color: #25499D;
+	background-color: #25499d;
 }
 
 .green {
-	color: #9AC342;
+	color: #9ac342;
 }
 
-.green:active, .green:hover {
+.green:active,
+.green:hover {
 	color: white;
-	background-color: #9AC342;
+	background-color: #9ac342;
 }
 
 .pink {
-	color: #D7497C;
+	color: #d7497c;
 }
 
-.pink:active, .pink:hover {
+.pink:active,
+.pink:hover {
 	color: white;
-	background-color: #D7497C;
+	background-color: #d7497c;
 }

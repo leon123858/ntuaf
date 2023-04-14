@@ -1,37 +1,46 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import style from './Map.module.css';
 import { BlOCK_TYPE } from '@leon123858/ntuaf-sdk';
-import { Button } from 'antd';
+import { BreakPointContext } from '../../useBreakPoint';
 
 const Map = ({ type, url, text }) => {
-	console.log(url);
+	const { inBreakPoint } = useContext(BreakPointContext);
 	return {
 		[BlOCK_TYPE.MAP_A]: (
 			<div className={style.container}>
-				<h1 className={`${style.topic} ${style.three}`}>{'活動資訊'}</h1>
+				<h1 className={`${style.topic}`}>{'活動資訊'}</h1>
 				<div className={style.content}>
-					<p>{text}</p>
-					<Button
+					<div className={style.content} style={{ textAlign: 'left' }}>
+						{text.split('\n').map((str, idx) => (
+							<p key={idx}>{str}</p>
+						))}
+					</div>
+					<hr style={{ margin: '20px 0' }} />
+					<div className={style.content} style={{ textAlign: 'left' }}>
+						{url.split('\n').map((str, idx) => (
+							<p key={idx}>{str}</p>
+						))}
+					</div>
+					{/* <Button
 						style={{ marginTop: 16, backgroundColor: 'grey', color: 'white' }}
 					>
 						活動位置
-					</Button>
+					</Button> */}
 				</div>
 			</div>
 		),
 		[BlOCK_TYPE.MAP_B]: (
-			<div style={{ textAlign: 'center' }}>
-				<div style={{ width: '80%', margin: '0 auto' }}>
-					<iframe
-						width='100%'
-						height='200'
-						src={url}
-					>
-						<a href='https://www.maps.ie/distance-area-calculator.html'>
-							measure area map
-						</a>
-					</iframe>
-				</div>
+			<div style={{ textAlign: 'center' }} className={style.container}>
+				<iframe
+					width='100%'
+					height={(inBreakPoint) ? 300 : 400}
+					src={url}
+					title='video'
+				>
+					<a href='https://www.maps.ie/distance-area-calculator.html'>
+						measure area map
+					</a>
+				</iframe>
 			</div>
 		),
 	}[type];

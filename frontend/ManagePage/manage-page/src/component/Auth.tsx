@@ -1,14 +1,11 @@
 import React from 'react';
-import { Space, Table, Tag, Button, Modal, Typography } from 'antd';
-import type { ColumnsType } from 'antd/es/table';
+import { Space, Table, Button, Modal } from 'antd';
 import { getEvent } from '@leon123858/ntuaf-sdk';
 import { useState } from 'react';
 import moment from 'moment';
 
-const { Title, Paragraph, Text } = Typography;
-
 function Auth({ user }: { user: any }) {
-	console.log('user', user);
+	// console.log('user', user);
 	// const data = user;
 	const [isModalOpen, ModalOpen] = useState(false);
 
@@ -60,7 +57,7 @@ function Auth({ user }: { user: any }) {
 						onClick={async () => {
 							//alert(text);
 							event = await getEvent(text);
-							console.log('event', event);
+							// console.log('event', event);
 							MyModalComponent(event);
 							event.startTime = moment(event.startTime).format('MM-DD-YYYY');
 							event.endTime = moment(event.endTime).format('MM-DD-YYYY');

@@ -1,75 +1,93 @@
-import React from 'react';
-import { Typography } from 'antd';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { RightOutlined } from '@ant-design/icons';
-import Mapo from '../components/Map/Map'
-import Video from '../components/VideoBox/VideoBox'
-
-
-const { Title, Text } = Typography;
+import { BreakPointContext } from '../useBreakPoint';
+import style from './Map.module.css';
 
 function Map() {
+	const { inBreakPoint } = useContext(BreakPointContext);
 	return (
 		<>
-			<div style={{
-					display: 'flex',
-					flexDirection: 'column',
-					justifyContent: 'center',
-					alignItems: 'center',
-					padding : 30
-			}}>
-			<div style={{ width: '70%'}}>
+			<br />
+			<br />
+			<br />
+			<div className={style.container}>
 				<div style={{ marginBottom: '3rem' }}>
-					<Typography >
-						<Title style={{ textAlign: 'center' , borderStyle : 'solid' , padding : 15 }}>
-						尋洄地圖 <br></br>
-						ArtFest Map
-						</Title>
-						<Title style={{ textAlign: 'center' , borderStyle : 'solid' , padding : 20 }}>
-						副標題副標題副標題副標題副標題副標題副標題
-						</Title>
-					</Typography>
-					<div style={{  borderStyle : 'solid' , padding : 30 }}>
-						<Text style={{ fontSize: 20 }}>
-							於藝術季店家消費後，可掃描櫃檯藝術季地圖中「集點換獎品」的QRcode，進入line@集點卡集點，每集到三點，便可於藝術季期間（5/5-5/20）向工作人員領取一組藝術季貼紙。
-							<br></br>
-							<br></br>
-							注意事項：
-							<br></br>
-							1.於同個店家重複消費可重複集點。
-							<br></br>
-							2.貼紙領取時間將於5/5公佈於藝術季FB、IG粉絲專頁。
-						</Text>
+					<div>
+						<div className={inBreakPoint ? style.title : style.lgTitle}>
+							尋洄地圖
+							<div>Map of ArtFest</div>
+						</div>
+						<div className={inBreakPoint ? style.subtitle : style.lgSubtitle}>
+							在公館探索藝術季合作店家，徜徉於藝術與永續的氛圍；
+							向臺大校園內探索，一窺臺大藝術季全貌。
+						</div>
+					</div>
+					<div className={inBreakPoint ? style.event : style.lgEvent}>
+						<div>活動辦法</div>
+						<p>於藝術季合作店家消費後</p>
+						<ol>
+							<li>
+								掃描尋洄地圖中 LINE@
+								集點卡集點，每集到三點便可兌換一組藝術季貼紙。
+							</li>
+							<li>
+								拍攝店家櫃檯上尋洄地圖，並上傳至 Instagram 限時動態，即可獲得
+								AirTag 抽獎機會！
+							</li>
+						</ol>
+						<br />
+						<p>注意事項：</p>
+						<ol>
+							<li>於同個店家重複消費可以重複集點</li>
+							<li>貼紙領取時間將於 5/5 公佈於藝術季臉書及IG粉絲專頁</li>
+							<li>AirTag 抽獎辦法請見 （到時放哎居連結）</li>
+						</ol>
 					</div>
 				</div>
 				<div
 					style={{
 						display: 'flex',
-						justifyContent: 'right',
+						justifyContent: 'center',
 						marginBottom: '3rem',
 					}}
-					>
+				>
 					<Link to='/Artwork/Upload'>
-						<div style={{ backgroundColor : 'lightgrey' ,textAlign : 'center' , padding : 6 }}>
-							<Text style={{ fontSize: 30 , margin : '40px' }}>
-								我要集點
-							</Text>
-							<RightOutlined style={{ fontSize: 30 }}/>
+						<div
+							className={inBreakPoint ? style.linkButton : style.lgLinkButton}
+						>
+							<p>加入Line好友開始集點</p>
+							<RightOutlined style={{ fontWeight: '300' }} />
 						</div>
 					</Link>
 				</div>
-				<div>
-					<Text style={{ fontSize: 30 }}>
-						合作商家名單
-					</Text>
+				<div
+					className={
+						inBreakPoint ? style.storeContainer : style.lgStoreContainer
+					}
+				>
+					<img src='../../尋洄地圖.png' alt='巡迴地圖' />
+					<div className={style.store}>
+						<p>合作店家</p>
+						<ul>
+							<li>PICNIC CAFE 野餐咖啡</li>
+							<li>小蔬杭 絕對蔬食</li>
+							<li>古今書廊二手書店</li>
+							<li>白鹿洞書坊</li>
+							<li>半路咖啡</li>
+							<li>直物生活</li>
+							<li>索菲烤布蕾</li>
+							<li>理想の部屋</li>
+							<li>雅博客二手書店</li>
+							<li>綠林寮動漫交誼廳</li>
+							<li>薄霧書店</li>
+						</ul>
+						（依店名筆畫排序）
+					</div>
 				</div>
-				<div>
-					<Text style={{ fontSize: 30 }}>
-						藝術家地圖
-						<Mapo></Mapo>
-					</Text>
+				<div className={style.map}>
+					{/* <iframe src="https://www.google.com.tw/maps/d/embed?mid=1U6jabAde83n_30Ic2gN9e_yhZHk&ehbc=2E312F" width="640" height="480"></iframe> */}
 				</div>
-			</div>
 			</div>
 		</>
 	);

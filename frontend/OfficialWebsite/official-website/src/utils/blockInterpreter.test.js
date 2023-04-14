@@ -85,7 +85,7 @@ test('should translate correct', async () => {
 		},
 	};
 	let interpreter = new BlockInterpreter(block2element);
-	render(interpreter.transfer(sampleBlocks));
+	render(interpreter.transfer(sampleBlocks, 'Green'));
 	let linkElement = screen.getByText(
 		/name_ee2203d6-f3c1-40c0-9e7c-de17f2e1212d/i
 	);
