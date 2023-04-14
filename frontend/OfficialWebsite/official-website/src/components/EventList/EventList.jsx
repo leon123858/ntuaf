@@ -106,6 +106,7 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 					: '#25499D',
 				marginBottom: '30px',
 			}}
+      
 			cover={
 				<div style={{ height: '150px' }}>
 					<EventImg
