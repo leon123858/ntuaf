@@ -185,14 +185,13 @@ function Display() {
 	return eventState ? (
 		<>
 			{contextHolder}
-
 			<Image
 				preview={false}
 				src={eventState.image?.banner}
 				fallback='https://fakeimg.pl/1900x500/?text=WrongImage'
 				width={'100%'}
 			/>
-			<h1 style={{ textAlign: 'center', margin: '32px 0' }}>
+			<h1 style={{ textAlign: 'center', margin: '8% 0', fontWeight: '500' }}>
 				{eventState.title}
 			</h1>
 			<div

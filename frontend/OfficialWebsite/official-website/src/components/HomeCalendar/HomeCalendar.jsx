@@ -148,7 +148,7 @@ const HomeCalendar = () => {
 						hideKeyboardShortcutsPanel={true}
 						monthFormat='YYYY, M[月]'
 						weekDayFormat='ddd'
-						daySize={inBreakPoint ? Math.min(window.screen.width / 10, 48) : 50}
+						daySize={inBreakPoint ? Math.min(window.screen.width / 8.5, 48) : 50}
 					/>
 
 
