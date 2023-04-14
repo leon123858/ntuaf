@@ -4,6 +4,7 @@ import {
 	Form,
 	Input,
 	Select,
+	Spin,
 	Upload,
 	message,
 	Modal,
@@ -40,21 +41,21 @@ const FormDisabledDemo = () => {
 	};
 
 	const onFinish = async (values) => {
+		if (loading) return;
+		setLoading(true);
 		values.img = previewImage;
-		console.log('img url', previewImage);
 		values.url = previewImage;
-		console.log(values);
-		// form.url = previewImage;
-		console.log('form', form);
 		try {
 			await createArtwork(values);
 		} catch (err) {
 			console.log('上傳失敗', err);
 			message.error('上傳失敗');
+			setLoading(false);
 			return;
 		}
 		handleRemove();
 		message.success('上傳成功', 3, goBack);
+		setLoading(false);
 	};
 
 	const onFinishFailed = (errorInfo) => {
@@ -65,7 +66,7 @@ const FormDisabledDemo = () => {
 	const handleCancel = () => setPreviewVisible(false);
 
 	const normFile = (e) => {
-		console.log('Upload event:', e);
+		// console.log('Upload event:', e);
 		if (Array.isArray(e)) {
 			return previewImage;
 		}
@@ -80,6 +81,7 @@ const FormDisabledDemo = () => {
 	const handleRemove = () => {
 		form.resetFields();
 		setFileList([]);
+		URL.revokeObjectURL(previewImage);
 		setPreviewImage('');
 	};
 
@@ -102,8 +104,8 @@ const FormDisabledDemo = () => {
 		const file = options.file;
 		// setFileList([file]);
 		const isLt2M = file.size > 25 * 1024 * 1024;
-		console.log('options', options);
-		console.log('file size', file.size);
+		// console.log('options', options);
+		// console.log('file size', file.size);
 
 		const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
 		if (!isJpgOrPng) {
@@ -118,7 +120,7 @@ const FormDisabledDemo = () => {
 		}
 
 		if (isOK) {
-			console.log('file', file);
+			// console.log('file', file);
 			const url = URL.createObjectURL(file);
 			const preview = [
 				{
@@ -131,16 +133,15 @@ const FormDisabledDemo = () => {
 			setFileList(preview);
 			setPreviewImage(url);
 			setPreviewTitle(options.file.name);
-			console.log('img url ', url);
-			console.log('name', options.file.name);
-			setLoading(false);
-			// return false;
+			// console.log('img url ', url);
+			// console.log('name', options.file.name);
 		}
+		setLoading(false);
 	};
 
 	function handleChange(value) {
-		console.log(`Selected ${value}`);
-		console.log(form.getFieldValue('type'));
+		// console.log(`Selected ${value}`);
+		// console.log(form.getFieldValue('type'));
 		if (
 			form.getFieldValue('type') === ARTWORK_TYPE.PHOTO ||
 			form.getFieldValue('type') === ARTWORK_TYPE.PAINTING
@@ -291,7 +292,7 @@ const FormDisabledDemo = () => {
 										src={previewImage}
 									/>
 								</Modal>
-								<img src={'/loading.gif'} alt='loading...' />
+								<Spin spinning={loading} />
 							</div>
 						</Form.Item>
 						<div className={style.submit}>

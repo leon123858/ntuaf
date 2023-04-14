@@ -80,7 +80,7 @@ export const ArtworkList = () => {
 	};
 
 	const initData = async (sortBy) => {
-		console.log('initial called');
+		// console.log('initial called');
 		let datas =
 			activeKey === '1'
 				? typeText
@@ -88,7 +88,7 @@ export const ArtworkList = () => {
 					? typePhoto
 					: typePainting;
 		if (datas.sortBy !== sortBy) {
-			console.log('change sortBy');
+			// console.log('change sortBy');
 			datas = {
 				...datas,
 				sortBy: sortBy,
@@ -135,7 +135,7 @@ export const ArtworkList = () => {
 			default:
 				break;
 		}
-		console.log('data initialed');
+		// console.log('data initialed');
 	};
 
 	const updateData = async () => {
@@ -175,7 +175,7 @@ export const ArtworkList = () => {
 			default:
 				break;
 		}
-		console.log('data updated');
+		// console.log('data updated');
 	};
 
 	const loadMoreData = () => {
@@ -183,7 +183,7 @@ export const ArtworkList = () => {
 			return;
 		}
 		setLoading(true);
-		console.log('loading more');
+		// console.log('loading more');
 		updateData().then(setLoading(false));
 	};
 
@@ -197,8 +197,8 @@ export const ArtworkList = () => {
 			const newLikeList = await triggerLikeArtwork(artworkId);
 			const newHave = newLikeList.includes(artworkId);
 			setLikeArtworkToday(newLikeList);
-			console.log(newLikeList);
-			console.log(`Heart ${artworkId} triggered`);
+			// console.log(newLikeList);
+			// console.log(`Heart ${artworkId} triggered`);
 			if (originHave === newHave) return 0;
 			if (originHave) return -1;
 			return 1;

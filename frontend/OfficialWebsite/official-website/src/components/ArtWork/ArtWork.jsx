@@ -8,7 +8,6 @@ import { useContext } from 'react';
 const { Panel } = Collapse;
 const { Title, Paragraph, Text } = Typography;
 
-
 const ArtEvent = () => {
 	// const [isOpened,setOpen] = useState(true);
 	const titleStyle = { fontSize: '25px' };

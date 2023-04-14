@@ -1,8 +1,8 @@
 * {
 	box-sizing: border-box;
 }
-.carouselComponentWrapper{
-	width:100%;
+.carouselComponentWrapper {
+	width: 100%;
 	/* background-color: red; */
 }
 .App {
@@ -33,9 +33,10 @@
 	height: 100%;
 	min-width: 70vw; /* width have to be absolute size */
 }
-.headerWrapper{
+.headerWrapper {
 	/* height: 100%; */
-	width: 500px; /* width have to be absolute size */
+	width: 300px; /* width have to be absolute size */
+	padding-bottom: 50px;
 }
 .carouselWrapper {
 	position: 'relative';
@@ -107,7 +108,7 @@
 	color: white;
 }
 
-.lgCarouselWrapper{
+.lgCarouselWrapper {
 	position: 'relative';
 	/* border: solid 5px blue; */
 	/* background-color: aqua; */
@@ -117,9 +118,9 @@
 	margin: '0px auto';
 	overflow: hidden;
 }
-.LgCardWrapper{
-	width:600px;
-	height:600px
+.LgCardWrapper {
+	width: 600px;
+	height: 600px;
 }
 
 @media screen and (min-width: 769px) {

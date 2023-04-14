@@ -1,11 +1,4 @@
-import {
-	EditOutlined,
-	EllipsisOutlined,
-	SettingOutlined,
-	HeartOutlined,
-	HeartFilled,
-} from '@ant-design/icons';
-import { Avatar, Card, Image, Button } from 'antd';
+import { Card, Image } from 'antd';
 import styles from './ArtBox.module.css';
 import React, { useState } from 'react';
 import Heart from './Heart';
@@ -13,10 +6,9 @@ import Heart from './Heart';
 const { Meta } = Card;
 
 const ArtBox = (props) => {
-	const [isClick, setClick] = useState(false);
 	const [active, setActive] = useState(false);
 
-	console.log(props);
+	// console.log(props);
 	const mystyle = {
 		width: `${props.width}%`,
 	};
