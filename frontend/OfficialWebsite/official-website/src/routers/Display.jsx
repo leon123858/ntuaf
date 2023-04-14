@@ -10,7 +10,7 @@ import Link from '../components/Link/Link';
 import Map from '../components/Map/Map';
 import { useParams } from 'react-router-dom';
 import { Image, message } from 'antd';
-import { BreakPointContext } from '../useBreakPoint'
+import { BreakPointContext } from '../useBreakPoint';
 
 const block2element = {
 	[BlOCK_TYPE.TEXT_A]: ({ text, title, url, key }) => {
@@ -190,7 +190,7 @@ function Display() {
 			<Image
 				preview={false}
 				src={eventState.image?.banner}
-				fallback='https://fakeimg.pl/1900x500/?text=WrongImage'
+				fallback='/loading.jpg'
 				width={'100%'}
 			/>
 			<h1 style={{ textAlign: 'center', margin: '8% 0', fontWeight: '500' }}>
@@ -198,7 +198,11 @@ function Display() {
 			</h1>
 			<div
 				className={style.APP}
-				style={(inBreakPoint) ? { maxWidth: 800, margin: '0 auto', width: '86%' } : { maxWidth: 800, margin: '0 auto', width: '80%' }}
+				style={
+					inBreakPoint
+						? { maxWidth: 800, margin: '0 auto', width: '86%' }
+						: { maxWidth: 800, margin: '0 auto', width: '80%' }
+				}
 			>
 				{interpreter.transfer(eventState.blocks)}
 			</div>
