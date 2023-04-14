@@ -13,7 +13,7 @@ const ImageList = ({ data }) => {
 			<div className={style.container}>
 				<p className={style.topic}>{data.topic}</p>
 
-				<div className={style.imgListA}>
+				<div className={(inBreakPoint) ? style.imgListA : style.lgImgListA}>
 					{data.items.map((image, idx) => (
 						<div key={idx}>
 							<Image src={image.url} width='95%' style={{ borderRadius: 10 }} />
@@ -24,9 +24,9 @@ const ImageList = ({ data }) => {
 		),
 		[BlOCK_TYPE.IMAGE_LIST_B]: (
 			<div className={style.container}>
-				<Image src={data.items[curPic].url} width='50%'></Image>
+				<Image src={data.items[curPic].url} width={(inBreakPoint) ? '90%' : '60%'}></Image>
 
-				<div style={{ width: '60%', margin: '0 auto' }}>
+				<div style={{ width: (inBreakPoint) ? '90%' : '60%', margin: '0 auto' }}>
 					<Slider
 						min={1}
 						max={data.items.length}
@@ -40,13 +40,13 @@ const ImageList = ({ data }) => {
 				<p className={style.topic}>{data.title}</p>
 				<div>
 					{data.items.map((image, idx) => (
-						<div key={idx} className={style.imgItemC}>
+						<div key={idx} className={(inBreakPoint) ? style.imgItemC : style.lgImgItemC }>
 							{image.url ? (
-								<div className={style.imgC}>
+								<div className={(inBreakPoint) ? style.imgC : style.lgImgC}>
 									<Image
 										alt='img'
 										src={image.url}
-										width={'100%'}
+										width={'170px'}
 										style={{ borderRadius: '50%' }}
 									/>
 								</div>
@@ -75,7 +75,7 @@ const ImageList = ({ data }) => {
 				<div className={inBreakPoint ? style.imgListD : style.lgImgListD}>
 					{data.items.map((image, idx) => (
 						<div className={style.imgitemD} key={idx}>
-							<Image src={image.url} width='75%' style={{ borderRadius: 10 }} />
+							<Image src={image.url} width='85%' style={{ borderRadius: 10 }} />
 							<p className={style.textD}>{image.name}</p>
 						</div>
 					))}
@@ -87,7 +87,7 @@ const ImageList = ({ data }) => {
 				<p className={style.topic}>{data.topic}</p>
 				<div>
 					{data.items.map((image, idx) => (
-						<div key={idx} className={idx % 2 === 0 ? style.left : style.right}>
+						<div key={idx} className={(inBreakPoint) ? style.center : idx % 2 === 0 ? style.left : style.right}>
 							<TextBox
 								key={idx}
 								text={{

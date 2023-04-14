@@ -6,8 +6,8 @@
 .container {
 	margin-top: 16px;
 	border: 1px solid #e4e4e4;
-	height: 35vh;
-	overflow: scroll;
+	/* height: 35vh;
+	overflow: scroll; */
 	width: 100%;
 	font-family: 'Noto Sans TC';
 }
@@ -38,6 +38,21 @@
 }
 
 .event {
+	min-height: 70px;
+	width: 95%;
+	max-width: 92vw;
+	padding: 16px 30px;
+	cursor: pointer;
+	border-radius: 1.25em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	background-color: white;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+	margin-bottom: 12px;
+}
+
+.lgEvent {
 	min-height: 70px;
 	width: 95%;
 	padding: 16px 30px;
