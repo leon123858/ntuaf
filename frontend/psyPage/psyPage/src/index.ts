@@ -101,15 +101,13 @@ game.scene.transform.size.height = game.scene.transform.size.width*16/9;
 window.game = game;
 
 
-const numberOfScene = 6;
+const numberOfScene = 3;
 
-let lock = false
+
 
 
 const changeScenefunt = async()=>{
-	if(lock)
-		return;
-	lock = true;
+
 	// console.log(backgroundList);
 	// console.log(backgroundList[0])
 	const animate = backgroundList[sceneIndex].animation;
@@ -157,7 +155,7 @@ const changeScenefunt = async()=>{
 			// console.log(btns);
 		}
 	});
-	lock = false;
+
 }
 
 
@@ -594,35 +592,29 @@ const btnLists = [
 let btn_index =0;
 
 
-// background
 let sceneIndex = 0;
 const backgroundList :any[] = [];
 for (let index =0 ; index < numberOfScene+1 ;index++){
 	const bg = await createBackground(index)
 	backgroundList.push(bg)
 };
+console.log(backgroundList)
+async function addchild(index : number){
+	setTimeout(()=>{
+		console.log("index = ",index);
+		game.scene.addChild(backgroundList[index].background);
+	},5000)
+}
 
-// console.log(backgroundList)
 
-
-
-// BasketFront
-// const { basetFront, playAnim } = createBasketFront();
-// window.playAnim = playAnim;
-
-/**
- * add child
- */
 for (let index =0 ; index < numberOfScene+1 ;index++){
-	game.scene.addChild(backgroundList[index].background);
+	const result = await addchild(index);
 };
 let btns = [...btnLists[btn_index]].map( (value,_)=> createBtn(value))
-//game.scene.addChild(createBoard());
-//game.scene.addChild(basetFront);
-// console.log(game.scene)
 
-btns.forEach((btn) => game.scene.addChild(btn.button));
-//game.scene.addChild(await changeSceneBtn);
+setTimeout(()=>{
+	btns.forEach((btn) => game.scene.addChild(btn.button));
+},10000)
 
 }
 
