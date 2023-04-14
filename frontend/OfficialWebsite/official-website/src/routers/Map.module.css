@@ -1,0 +1,206 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+.lgTitle {
+    font-size: 44px;
+    font-weight: 500;
+    margin-bottom: 50px;
+}
+
+.lgTitle div {
+    font-size: 36px;
+    font-weight: 400;
+}
+
+.title {
+    padding: 0 20px;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 30px;
+
+}
+.title div {
+    font-size: 26px;
+}
+
+.lgSubtitle {
+    font-size: 20px;
+    width: 70vw;
+    margin-bottom: 50px;
+}
+
+.subtitle {
+    padding: 0 20px;
+    font-size: 16px;
+    font-weight: 500;
+    width: 80vw;
+    margin-bottom: 30px;
+}
+
+.lgEvent {
+    width: 60vw;
+    background-color: #EFEFEF;
+    display: block;
+    margin: 0px auto;
+    margin-top: 100px;
+    border-radius: 30px;
+    padding: 50px;
+    text-align: left;
+    position: relative;
+    font-size: 16px;
+}
+
+.lgEvent p {
+    line-height: 40px;
+}
+.lgEvent ol{
+    padding-left: 20px;
+}
+.lgEvent div {
+    font-size: 20px;
+    font-weight: 500;
+    position: absolute;
+    top: -15px
+}
+.event {
+    width: 85vw;
+    background-color: #EFEFEF;
+    display: block;
+    margin: 0px auto;
+    margin-top: 50px;
+    border-radius: 30px;
+    padding: 25px 30px;
+    text-align: left;
+    position: relative;
+    font-size: 14px;
+}
+
+.event p {
+    line-height: 40px;
+}
+.event ol {
+    padding-left: 17px;
+}
+.event div {
+    font-size: 16px;
+    font-weight: 500;
+    position: absolute;
+    top: -10px
+}
+
+.lgLinkButton {
+    width: 347px;
+    height: 50px;
+    border-radius: 25px;
+    background: linear-gradient(90deg, #DD0E65 11.11%, #25499D 100%);;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    font-size: 20px;
+    color: white;
+    margin-top: 50px;
+    box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.2);
+}
+
+.linkButton {
+    width: 256px;
+    height: 44px;
+    border-radius: 22px;
+    background: linear-gradient(90deg, #DD0E65 11.11%, #25499D 100%);;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-size: 16px;
+    color: white;
+    margin-top: 10px;
+    box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.2);
+    letter-spacing: 1px;
+
+}
+
+.lgStoreContainer {
+
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    align-items: center;
+    font-size: 18px;
+    margin-top: 50px;
+}
+.storeContainer {
+
+    width: 65vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-items: center;
+    font-size: 14px;
+}
+
+
+.lgStoreContainer img {
+    width: 30vw;
+}
+.storeContainer img {
+    width: 65vw;
+    display: none;
+}
+
+.lgStoreContainer .store {
+
+    width: 30vw;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px
+}
+.storeContainer .store {
+    width: 100%;
+    min-width: 300px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px
+}
+.store ul {
+    padding-left: 0px;
+    list-style: none;
+}
+
+.store ul li::before{
+
+    content: "•";
+    font-size:16px;
+    vertical-align:middle;
+}
+
+.storeContainer .store p {
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 10px;
+}
+.lgStoreContainer .store p {
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 10px;
+}
+
+
+.map {
+    width: 80vw;
+    height: 400px;
+    background: #EFEFEF;
+    margin: 50px 0;
+    text-align: center;
+}

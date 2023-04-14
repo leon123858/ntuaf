@@ -17,6 +17,7 @@ import History from './routers/History';
 import Artwork from './routers/Artwork';
 import ArtworkList from './routers/ArtworkList';
 import Map from './routers/Map';
+import PsyTest from './routers/PsyTest';
 import Layout from './components/Layout/Layout';
 import { BreakPointProvider } from './useBreakPoint.jsx';
 import Artworkupload from './routers/Artworkupload';
@@ -92,6 +93,10 @@ const router = createBrowserRouter([
 				path: 'display/:displayId',
 				element: <Display />,
 			},
+			{
+				path: '/psyTest',
+				element: <PsyTest/>
+			}
 		],
 		errorElement: <ErrorPage />,
 	},

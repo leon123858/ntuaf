@@ -71,7 +71,11 @@ const items = [
 				key: 'afMap',
 			},
 			{
-				label: <div className={styles.subMenu}>心理測驗</div>,
+				label: (
+					<div className={styles.subMenu}>
+						<Link to={'/psyTest'}>心理測驗</Link>
+					</div>
+				),
 				key: 'psychoTest',
 			},
 		],
@@ -87,16 +91,16 @@ const Header = () => {
 
 	useEffect(() => {
 		const add_class_on_scroll = (element, className) => {
-			if(element) {
+			if (element) {
 				element.classList.add(className);
 			}
-			
+
 		};
 		const remove_class_on_scroll = (element, className) => {
 			if (element) {
 				element.classList.remove(className);
 			}
-			
+
 		};
 		window.addEventListener('scroll', function () {
 			if (!inBreakPoint) {
@@ -125,50 +129,50 @@ const Header = () => {
 
 	return (
 		<div className={styles.totalWrapper}>
-			
+
 			<div className={styles.headerWrapper}>
 				<div className={styles.box}>
 					<Logo />
 				</div>
 				
 				{
-					(inBreakPoint) 
-					? (
-						<div
-							className={styles.iconContainer}
-							onClick={() => {
-								setSideBarActive(!sideBarActive);
-							}}
-							style={(sideBarActive) ? {display: 'none'} : {}}
-						>
-							<svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.menuIcon}>
-								<path d="M0 0.5H22" stroke="black"/>
-								<path d="M0 9.5H22" stroke="black"/>
-								<path d="M0 18.5H22" stroke="black"/>
-							</svg>
+					(inBreakPoint)
+						? (
+							<div
+								className={styles.iconContainer}
+								onClick={() => {
+									setSideBarActive(!sideBarActive);
+								}}
+								style={(sideBarActive) ? { display: 'none' } : {}}
+							>
+								<svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.menuIcon}>
+									<path d="M0 0.5H22" stroke="black" />
+									<path d="M0 9.5H22" stroke="black" />
+									<path d="M0 18.5H22" stroke="black" />
+								</svg>
 
-						</div>
-					) 
-					: (
-						<div style={{ display: 'flex', alignItems: 'center' }}>
-							<div className={styles.menuWrapper}>
-								<Menu
-									selectable={false}
-									selectedKeys={'1'}
-									multiple={true}
-									mode='horizontal'
-									items={items}
-									disabledOverflow={true}
-									className={styles.menu}
-								/>
 							</div>
-							<div>
-								<LoginButton />
+						)
+						: (
+							<div style={{ display: 'flex', alignItems: 'center' }}>
+								<div className={styles.menuWrapper}>
+									<Menu
+										selectable={false}
+										selectedKeys={'1'}
+										multiple={true}
+										mode='horizontal'
+										items={items}
+										disabledOverflow={true}
+										className={styles.menu}
+									/>
+								</div>
+								<div>
+									<LoginButton />
+								</div>
 							</div>
-						</div>
-					)
+						)
 				}
-				
+
 				<SideBar
 					activeSideBar={sideBarActive}
 					setSideBarActive={setSideBarActive}
