@@ -245,7 +245,7 @@ export const ArtworkList = () => {
 					scrollableTarget='scrollableDiv'
 				>
 					<List
-						grid={{ gutter: 24, column: inBreakPoint?2: 3 }}
+						grid={{ gutter: 12, column: inBreakPoint?2: 3 }}
 						dataSource={handleLike(datas.dataList, likeArtworkToday)}
 						renderItem={(item, i) => (
 							<>
@@ -318,7 +318,7 @@ export const ArtworkList = () => {
 	const items = ['純文字組', '照片組', '繪畫組'];
 	return (
 		<>
-			<div className={inBreakPoint?style.sm:style.lg} style={{height:"100vh", marginTop:"40px"}}>
+			<div className={inBreakPoint?style.sm:style.lg} style={{ marginTop:"40px"}}>
 				<Selecter />
 				<div className={style.tabContainer}>
 					<Tabs

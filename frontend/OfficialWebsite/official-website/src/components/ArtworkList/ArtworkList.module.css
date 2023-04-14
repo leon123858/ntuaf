@@ -1,5 +1,6 @@
 .container {
     position: relative;
+
 }
 
 .heart {
@@ -27,4 +28,8 @@
     top :170px;
     right: 10vw;
 
+}
+
+.smArtworkName {
+    font-size: 18px;
 }
