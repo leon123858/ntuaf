@@ -8,7 +8,6 @@ import EventListEx from '../components/EventList/EventListEx';
 import { getTabEvents } from '@leon123858/ntuaf-sdk';
 import { BreakPointContext } from '../useBreakPoint';
 import Hr from '../components/Hr/Hr';
-import './Introduce.css';
 
 function Introduce() {
 	const { type = 1 } = useParams();
