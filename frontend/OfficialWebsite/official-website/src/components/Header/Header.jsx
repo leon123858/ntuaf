@@ -6,28 +6,43 @@ import { Link } from 'react-router-dom';
 import LoginButton from './LoginButton.jsx';
 import Logo from './Logo';
 import { BreakPointContext } from '../../useBreakPoint';
+import styled from 'styled-components';
+const StyledLink = styled(Link)`
+    text-decoration: none;
 
+    &:focus, &:hover, &:visited, &:link, &:active {
+        text-decoration: none;
+    }
+`;
 const items = [
 	{
 		label: (
-			<Link className={styles.link} to={'/about'}>				
-				關於我們
+			<Link className={styles.link} to={'/about'}>
+					<div className={styles.chinesTabName}>關於我們</div>
+					<div className={styles.engTabName}>ABOUT</div>
 			</Link>
 		),
 		key: 'about',
+		children:[]
 	},
 	{
 		label: (
-			<Link className={styles.link} to={'/introduce/exhibition'}>
-				展覽/活動
+			<Link className={styles.link}>
+				<div className={styles.chinesTabName}>展覽/活動</div>
+				<div className={styles.engTabName}>EVENTS</div>
 			</Link>
 		),
 		key: 'event',
+		popupOffset:[-30, 10],
 		children: [
 			{
 				label: (
 					<div className={styles.subMenu}>
-						<Link to='/introduce/exhibition'>展覽</Link>
+						<Link to='/introduce/exhibition'>
+							<div className={styles.chinesTabName}>展覽</div>
+							<div className={styles.engTabName}>EXHIBITIONS</div>
+
+						</Link>
 					</div>
 				),
 				key: 'show',
@@ -35,7 +50,10 @@ const items = [
 			{
 				label: (
 					<div className={styles.subMenu}>
-						<Link to='/introduce/activity'>活動</Link>
+						<Link to='/introduce/activity'>
+						<div className={styles.chinesTabName}>活動</div>
+						<div className={styles.engTabName}>ACTIVITIES</div>
+						</Link>
 					</div>
 				),
 				key: 'activity',
@@ -45,19 +63,28 @@ const items = [
 	{
 		label: (
 			<Link className={styles.link} to={'/calendar'}>
-				行事曆
+				<div className={styles.chinesTabName}>行事曆</div>
+				<div className={styles.engTabName}>CALENDAR</div>
 			</Link>
 		),
 		key: 'calendar',
+		children:[]
 	},
 	{
-		label: <p className={styles.link}>特別企劃</p>,
+		label: <Link className={styles.link}>
+			<div className={styles.chinesTabName}>特別企劃</div>
+			<div className={styles.engTabName}>SPECIALS</div>
+			</Link>,
 		key: 'special',
+		popupOffset:[-30, 10],
 		children: [
 			{
 				label: (
 					<div className={styles.subMenu}>
-						<Link to={'/artwork'}>洄溯</Link>
+						<Link to={'/artwork'}>
+						<div className={styles.chinesTabName}>尋洄地圖</div>
+						<div className={styles.engTabName}>Map of Art Fest</div>
+						</Link>
 					</div>
 				),
 				key: 'backward',
@@ -65,7 +92,10 @@ const items = [
 			{
 				label: (
 					<div className={styles.subMenu}>
-						<Link to={'/map'}>藝術季地圖</Link>
+						<Link to={'/map'}>
+						<div className={styles.chinesTabName}>心理測驗</div>
+						<div className={styles.engTabName}>Reply 2023</div>
+						</Link>
 					</div>
 				),
 				key: 'afMap',
@@ -73,7 +103,10 @@ const items = [
 			{
 				label: (
 					<div className={styles.subMenu}>
-						<Link to={'/psyTest'}>心理測驗</Link>
+						<Link to={'/psychoTest'}>
+						<div className={styles.chinesTabName}>洄溯展覽暨比賽</div>
+						<div className={styles.engTabName}>Throwback</div>
+						</Link>
 					</div>
 				),
 				key: 'psychoTest',
@@ -150,7 +183,20 @@ const Header = () => {
 									<path d="M0 9.5H22" stroke="black" />
 									<path d="M0 18.5H22" stroke="black" />
 								</svg>
-
+						</div>
+					) 
+					: (
+						<div style={{ display: 'flex', alignItems: 'center', height:"100%" }}>
+							<div className={styles.menuWrapper}>
+								<Menu
+									// selectable={false}
+									selectedKeys={'1'}
+									multiple={true}
+									mode='horizontal'
+									items={items}
+									disabledOverflow={true}
+									className={styles.menu}
+								/>
 							</div>
 						)
 						: (
