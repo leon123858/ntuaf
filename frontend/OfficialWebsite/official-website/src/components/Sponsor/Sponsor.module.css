@@ -9,6 +9,7 @@
     align-items: center;
     flex-wrap: wrap;
     padding: 50px 0;
+    padding-top: 30px;
     margin-left: 3%;
 
 }
@@ -20,6 +21,7 @@
     /* align-items: center; */
     flex-wrap: wrap;
     padding: 50px 0;
+    padding-top: 30px;
     gap:6%;
     row-gap: 0;
 
@@ -27,17 +29,25 @@
 .lg .sponsorWrapper {
     display: block;
     margin: 0 auto;
-    margin-top: 120px;
+    margin-top: 50px;
     width: 80vw;
     min-width: 350px;
-    margin-bottom: 100px;
+    /* margin-bottom: 100px; */
+}
+.lg .bigContainer {
+    margin-top: 120px;
+    margin-bottom: 80px;
 }
 .sm .sponsorWrapper {
     display: block;
     margin: 0 auto;
-    margin-top: 80px;
+    margin-top: 20px;
     width:70vw;
-    margin-bottom: 60px;
+    /* margin-bottom: 60px; */
+}
+.sm .bigContainer {
+    margin-top: 100px;
+    margin-bottom: 0px;
 }
 
 .lg .title {
@@ -89,6 +99,10 @@
 .lg img.ntu {
     width: 13vw;
     margin-right: -10px;
+}
+.lg img.ntuu {
+    width: 13vw;
+    /* margin-right: -1px; */
 }
 
 .lg img.bb {

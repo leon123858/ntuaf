@@ -22,12 +22,12 @@ a {
 	/* border: solid 2px; */
 	border-radius: inherit;
 }
-img {
+/* img {
 	object-fit: fill;
 	width: 100%;
 	height: auto;
 	border-radius: inherit;
-}
+} */
 .disc {
 	flex-grow: 1;
 	display: flex;

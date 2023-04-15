@@ -132,9 +132,22 @@ const MemberTab = () => {
 					return {
 						label:
 							curDepartment === departmentName ? (
-								<Hr title={departmentName}></Hr>
+								<>
+									<h5 style={{ color: '#000000', fontSize: inBreakPoint ? "16px" : "18px", paddingBottom: '5px', letterSpacing: "0px" }}>
+										{departmentName}
+									</h5>
+									<div>
+										<hr
+											style={{
+												background: 'linear-gradient(to left, #A9CF59, #E73273, #25499D)',
+												height: '2px',
+												border: '0px',
+											}}
+										/>
+									</div>
+								</>
 							) : (
-								<h5 style={{ fontSize: inBreakPoint?"16px":"18px" , paddingBottom: '5px', letterSpacing:"2px"}}>
+								<h5 style={{ fontSize: inBreakPoint ? "16px" : "18px", paddingBottom: '5px', letterSpacing: "0px" }}>
 									{departmentName}
 								</h5>
 							),
