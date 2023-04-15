@@ -17,7 +17,7 @@ const ArtEvent = () => {
 			>
 				<Typography>
 					<div className={style.title}>
-						洄溯線上展覽暨比賽
+						洄溯展覽暨比賽
 						<div className={style.subtitle}>Throwback</div>
 					</div>
 					<div className={style.words}>
@@ -52,6 +52,9 @@ const ArtEvent = () => {
 							<br></br>
 							<br></br>
 							3. 為鼓勵參與，加開2名人氣獎得獎者及10名抽獎得獎者。
+							<br></br>
+							<br></br>
+							4.主辦單位保有最終修改、變更、活動解釋及取消本活動之權利，若有相關異動將會另行公告於粉專或官網。
 						</div>
 					</Panel>
 				</Collapse>
@@ -111,19 +114,19 @@ const ArtEvent = () => {
 						<p>投</p>
 						<p>稿</p>
 					</span>
-					｜4/14（五）～ 4/30（日）
+					｜04/14（五）～ 04/30（日）
 					<br />
 					<span>
 						<p>評</p>
 						<p>選</p>
 					</span>
-					｜5/1（一）～ 5/6（六）
+					｜05/01（一）～ 05/06（六）
 					<br />
 					<span>
 						<p>公</p>
 						<p>布</p>
 					</span>
-					｜5/7（一）23:59 前
+					｜05/07（一）23:59 前
 				</div>
 				<div className={style.midContainer}>
 					<Link to='/Artwork/Upload'>

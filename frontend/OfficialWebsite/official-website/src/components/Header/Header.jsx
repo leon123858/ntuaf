@@ -88,7 +88,7 @@ const items = [
 					<div className={styles.subMenu}>
 						<Link to={'/artwork'}>
 							<div className={styles.chinesTabName}>尋洄地圖</div>
-							<div className={styles.engTabName}>Map of Art Fest</div>
+							<div className={styles.engTabName}>Map of ArtFest</div>
 						</Link>
 					</div>
 				),
