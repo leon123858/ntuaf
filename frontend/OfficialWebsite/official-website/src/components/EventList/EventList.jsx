@@ -108,7 +108,7 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 			}}
       
 			cover={
-				<div style={{ height: '150px' }}>
+				<div style={{ height: '120px' }}>
 					<EventImg
 						tagName={tagName}
 						imgUrl={imgUrl}
