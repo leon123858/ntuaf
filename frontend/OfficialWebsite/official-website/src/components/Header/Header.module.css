@@ -105,7 +105,7 @@
 }
 :global(.ant-menu-item.ant-menu-item-only-child) {
 	/* make colorfule hover effect on header text */
-	/* background-color: lightblue !important; */
+	background-color: white !important;
 	padding: 0px;
 	margin: 0px;
 	padding-inline:0px;
