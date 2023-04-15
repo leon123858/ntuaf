@@ -1,60 +1,56 @@
 .container {
-    position: relative;
-    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.15);
-
+	position: relative;
+	box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.15);
 }
 
 .heart {
-    position: absolute;
-    right: 24px;
-    bottom: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	position: absolute;
+	right: 24px;
+	bottom: 24px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .tabContainer {
-    display: block;
-    margin: 0 auto;
-    width: 100vw;
+	display: block;
+	margin: 0 auto;
+	width: 100%;
 }
 .textCardContext {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    aspect-ratio: 410 / 276;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100%;
+	aspect-ratio: 410 / 276;
 }
-.lg .select{
-    position: absolute;
-    top :180px;
-    right: 10vw;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.15);
-    
-    
+.lg .select {
+	position: absolute;
+	top: 180px;
+	right: 10vw;
+	background-color: white;
+	border-radius: 8px;
+	box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.15);
 }
-.sm .select{
-    position: absolute;
-    top :205px;
-    right: 5vw;
-    width: 90px !important;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.15);
-    
+.sm .select {
+	position: absolute;
+	top: 205px;
+	right: 5vw;
+	width: 90px !important;
+	background-color: white;
+	border-radius: 8px;
+	box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.15);
 }
 
 .smArtworkName {
-    font-size: 18px !important;
-    margin-bottom: 10px !important;
+	font-size: 18px !important;
+	margin-bottom: 10px !important;
 }
 
 .modelImg {
-    display: flex;
-    justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 
 .container.Model img {
-    object-fit: contain;
+	object-fit: contain;
 }

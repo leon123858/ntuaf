@@ -145,7 +145,7 @@ const SideBar = (props) => {
 			placement='right'
 			open={props.activeSideBar}
 			closable={false}
-			width={'100vw'}
+			width={'100%'}
 			mask={false}
 			bodyStyle={
 				activeSearch ? { backgroundColor: 'gray', transition: 'all 1s' } : {}
