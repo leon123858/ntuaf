@@ -1,10 +1,9 @@
-:root {
-  --top: -24px;
-}
-
 .container {
   margin: 32px auto;
   position: relative;
+  line-height: 25px;
+  letter-spacing: 1px;
+  font-size: 18px;
 }
 
 .content {
@@ -12,36 +11,33 @@
   width: 100%;
   border-radius: 10px;
   padding: 20px;
-  font-size: 14px;
+  font-size: 16px;
 }
 
-.topic {
-  font-size: 14px;
-  background-color: transparent;
-}
-
-.topic.one {
+.one {
+  font-size: 16px;
   margin: 0;
   position: absolute;
-  top: -10px;
+  top: -12px;
   left: 38px;
   font-weight: 700;
 }
 
-.topic.two {
-  font-size: 16px;
+.two {
+  font-size: 20px;
   position: static;
-  margin-top: 0px;
+  padding-top: 50px;
+  font-weight: 500;
 }
 
-.topic.three {
-  font-size: 14px;
+.three {
+  font-size: 16px;
   margin: 0;
   position: absolute;
-  top: -32px;
+  top: -48px;
   background-color: #171414;
   border-radius: 10px;
   padding: 4px 30px;
   color: #FFFFFF;
-  font-weight: 300;
+  font-weight: 500;
 }

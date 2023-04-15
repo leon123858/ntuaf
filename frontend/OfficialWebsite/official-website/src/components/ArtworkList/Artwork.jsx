@@ -1,8 +1,9 @@
-import { React, useState } from 'react';
+import { React, useState, useContext } from 'react';
 import { Card, Typography, Modal, Divider, Image } from 'antd';
 import Heart from '../ArtBox/Heart';
 import styles from './ArtworkList.module.css';
 import styled from 'styled-components';
+import { BreakPointContext } from '../../useBreakPoint';
 const { Paragraph, Text } = Typography;
 // const test = {
 // 	id: 123,
@@ -27,9 +28,10 @@ const CreaterName = styled.div`
 export const ArtworkText = ({ data, heartOnClick }) => {
 	const [open, setOpen] = useState(false);
 	const [likeShow, setLikeShow] = useState(data.tmpLike + data.like);
+	const { inBreakPoint } = useContext(BreakPointContext)
 	return (
 		<>
-			<div className={styles.container}>
+			<div className={`${styles.container} ${inBreakPoint ? styles.sm : styles.lg}`}>
 				<Card
 					bordered={false}
 					style={{ width: '100%' }}
@@ -37,17 +39,20 @@ export const ArtworkText = ({ data, heartOnClick }) => {
 					onClick={() => {
 						setOpen(true);
 					}}
+					className={styles.lgCard}
 				>
-					<ArtworkName>{data.artworkName}</ArtworkName>
-					<Paragraph
-						style={{ width: '100%' }}
-						ellipsis={{
-							rows: 2,
-						}}
-					>
-						{data.text}
-					</Paragraph>
-					<CreaterName>{data.name}</CreaterName>
+					<div className={styles.textCardContext}>
+						<Paragraph ellipsis={{ rows: 1 }} style={{ fontWeight: "600", fontSize: "24px" }} className={inBreakPoint ? styles.smArtworkName : ""}>{data.artworkName}</Paragraph>
+						<Paragraph
+							style={{ width: '100%', minHeight: "44px" }}
+							ellipsis={{
+								rows: 2,
+							}}
+						>
+							{data.text}
+						</Paragraph>
+						<CreaterName>{data.name}</CreaterName>
+					</div>
 				</Card>
 				<div className={styles.heart}>
 					<Text strong>{likeShow}</Text>
@@ -72,11 +77,11 @@ export const ArtworkText = ({ data, heartOnClick }) => {
 				}}
 				footer={null}
 			>
-				<div className={styles.container}>
-					<ArtworkName>{data.artworkName}</ArtworkName>
+				<div className={styles.containerModel}>
+					<ArtworkName >{data.artworkName}</ArtworkName>
 					<CreaterName>撰文者：{data.name}</CreaterName>
 
-					<div className={styles.heart} style={{ bottom: 0, right: 0 }}>
+					<div className={styles.heart} style={{ bottom: "20px", right: "24px" }}>
 						<Text strong>{likeShow}</Text>
 						<Heart
 							style={{
@@ -101,20 +106,23 @@ export const ArtworkText = ({ data, heartOnClick }) => {
 export const ArtworkImg = ({ data, heartOnClick }) => {
 	const [open, setOpen] = useState(false);
 	const [likeShow, setLikeShow] = useState(data.tmpLike + data.like);
+	const { inBreakPoint } = useContext(BreakPointContext)
 	return (
 		<>
 			<div className={styles.container}>
 				<Card
 					bordered={false}
-					style={{ width: '100%' }}
+					style={{ width: '100%', aspectRatio: "343 / 351" }}
 					hoverable
 					onClick={() => {
 						setOpen(true);
 					}}
-					cover={<img alt='img' src={data.url} />}
+					cover={<Image alt='img' src={data.url} style={{ objectFit: "cover", aspectRatio: "3 /2" }} preview={false} fallback='./loading.jpg' />}
 				>
-					<ArtworkName>{data.artworkName}</ArtworkName>
-					<CreaterName>{data.name}</CreaterName>
+					<div className={styles.imgCardContext}>
+						<Paragraph ellipsis={{ rows: 1 }} style={{ fontWeight: "600", fontSize: "24px" }} className={inBreakPoint ? styles.smArtworkName : ""}>{data.artworkName}</Paragraph>
+						<CreaterName>{data.name}</CreaterName>
+					</div>
 				</Card>
 				<div className={styles.heart}>
 					<Text strong>{likeShow}</Text>
@@ -139,11 +147,11 @@ export const ArtworkImg = ({ data, heartOnClick }) => {
 				}}
 				footer={null}
 			>
-				<div className={styles.container}>
+				<div className={styles.containerModel}>
 					<ArtworkName>{data.artworkName}</ArtworkName>
 					<CreaterName>創作者：{data.name}</CreaterName>
 
-					<div className={styles.heart} style={{ bottom: 0, right: 0 }}>
+					<div className={styles.heart} style={{  bottom: "20px", right: "24px"  }}>
 						<Text strong>{likeShow}</Text>
 						<Heart
 							style={{
@@ -159,7 +167,9 @@ export const ArtworkImg = ({ data, heartOnClick }) => {
 					</div>
 				</div>
 				<br />
-				<Image witdh={'100%'} src={data.url}></Image>
+				<div className={styles.modelImg}>
+					<Image src={data.url} height={400} preview={{src:data.url}}></Image>
+				</div>
 				<Text>
 					<br />
 					{data.text}

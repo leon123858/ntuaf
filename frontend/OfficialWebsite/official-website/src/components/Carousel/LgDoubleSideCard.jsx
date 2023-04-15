@@ -1,5 +1,5 @@
-import LgOneSideCard from "./LgOneSideCard.jsx"
-import style from "./LgDoubleSideCard.module.css"
+import LgOneSideCard from './LgOneSideCard.jsx';
+import style from './LgDoubleSideCard.module.css';
 
 const LgDoubleSideCard = ({FrontCardContent, BackCardContent, flip}) => {
     return (
@@ -12,4 +12,4 @@ const LgDoubleSideCard = ({FrontCardContent, BackCardContent, flip}) => {
     )
 }
 
-export default LgDoubleSideCard
+export default LgDoubleSideCard;

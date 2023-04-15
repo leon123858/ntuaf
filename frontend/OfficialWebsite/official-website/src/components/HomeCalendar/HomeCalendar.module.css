@@ -1,5 +1,5 @@
 .container {
-  width: 395px;
+  display: table;
   font-family: 'Noto Sans TC';
   margin: 50px auto;
   font-weight: 300;
@@ -221,9 +221,15 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  border-radius: 30px;
+  border-radius: 10px;
   height: 400px;
+  border-radius: 50% !important;
 }
+
+:global .DayPicker_focusRegion_1 {
+  border-radius: 50% !important;
+}
+
 :global .CalendarMonth_table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -249,16 +255,13 @@
   z-index: 0;
 }
 :global .CalendarMonthGrid__animating {
-  border-radius: 20px;
-  z-index: 1;
+  border-radius: 100px !important;
+  z-index: -1;
+  background-color: transparent;
 }
 :global .CalendarMonthGrid__horizontal {
   position: absolute;
   left: 9px;
-}
-:global .CalendarMonthGrid__vertical,
-:global .CalendarMonthGrid__vertical_scrollable {
-  margin: 0 auto;
 }
 :global .CalendarMonthGrid_month__horizontal {
   display: inline-block;
@@ -400,13 +403,11 @@
   background: #fff;
   position: relative;
   text-align: left;
-  height: 405px;
+  height: 60vh;
+  max-height: 410px;
 }
 :global .DayPicker__horizontal {
   background: #fff;
-}
-:global .DayPicker__verticalScrollable {
-  height: 100%;
 }
 :global .DayPicker__hidden {
   visibility: hidden;
@@ -475,24 +476,12 @@
 }
 :global .DayPicker_transitionContainer {
   position: relative;
+  border-radius: 50px 50px 50px 4px !important;
   overflow: hidden;
-  border-radius: 20px;
+  height: 370px !important;
 }
 :global .DayPicker_transitionContainer__horizontal {
   -webkit-transition: height 0.2s ease-in-out;
   -moz-transition: height 0.2s ease-in-out;
   transition: height 0.2s ease-in-out;
-}
-:global .DayPicker_transitionContainer__vertical {
-  width: 100%;
-}
-:global .DayPicker_transitionContainer__verticalScrollable {
-  padding-top: 20px;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  overflow-y: scroll;
 }

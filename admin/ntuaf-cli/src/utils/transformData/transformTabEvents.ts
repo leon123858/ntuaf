@@ -4,11 +4,13 @@ import { EVENT_TYPE } from '@leon123858/ntuaf-sdk';
 const { FieldValue } = require('firebase-admin/firestore');
 
 const createDateString = (start: number, end: number) => {
+	if (moment(start).isSame(moment(end), 'day')) {
+		return `${moment(start).format('MM/DD')}`;
+	}
 	return `${moment(start).format('MM/DD')}-${moment(end).format('MM/DD')}`;
 };
 
 const transformTabEvents = async () => {
-	console.log('transformTabEvents');
 	const toDbPath = '/Cache/Events/TabEvents';
 	const fromDbPath = 'Events';
 	const key = 'data';
@@ -66,6 +68,8 @@ const transformTabEvents = async () => {
 			}
 		}
 	}
+
+	console.log('transformTabEvents OK!');
 };
 
 export { transformTabEvents };

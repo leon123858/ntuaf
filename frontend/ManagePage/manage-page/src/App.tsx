@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import {
-	ChromeFilled,
+	// ChromeFilled,
 	CrownFilled,
 	SmileFilled,
 	HomeFilled,
@@ -58,11 +58,11 @@ const defaultProps = {
 				name: '更新事件',
 				icon: <SmileFilled />,
 			},
-			{
-				path: PATH_NAME.SUPPORT,
-				name: '相關協助',
-				icon: <ChromeFilled />,
-			},
+			// {
+			// 	path: PATH_NAME.SUPPORT,
+			// 	name: '相關協助',
+			// 	icon: <ChromeFilled />,
+			// },
 			{
 				path: PATH_NAME.POST,
 				name: '查看投稿',
@@ -81,7 +81,7 @@ function App() {
 	const [memberInfo, setMemberInfo] = useState(
 		{} as { name?: string; admin?: string[]; email: string }
 	);
-	console.log('member info', memberInfo);
+	// console.log('member info', memberInfo);
 	useEffect(() => {
 		subscriptAuthState(async (user: any) => {
 			userId() ? setLogin(true) : setLogin(false);
@@ -92,7 +92,7 @@ function App() {
 	useEffect(() => {
 		if (isLogin) {
 			(async () => {
-				console.log('fetch user info');
+				// console.log('fetch user info');
 				try {
 					const { name, admin, id } = (await getMemberInfo()) as {
 						name: string;

@@ -1,20 +1,20 @@
 import { GameObject } from '@eva/eva.js';
-import { Img } from '@eva/plugin-renderer-img'
-export default function createBall(position: any) {
-  const ball = new GameObject('ball', {
-    size: { width: 79, height: 79 },
-    origin: { x: 0.5, y: 0.5 },
-    position,
-    anchor: {
-      x: 0,
-      y: 0,
-    },
-  });
+import { Img } from '@eva/plugin-renderer-img';
 
-  ball.addComponent(
-    new Img({
-      resource: 'basketball',
-    })
-  );
-  return ball;
+interface BallParams {
+	transform?: object;
+}
+export default function createBall({ transform = {} }: BallParams) {
+	// console.log(transform);
+	const ball = new GameObject('ball', {
+		size: { width: 79, height: 79 },
+		...transform,
+	});
+
+	ball.addComponent(
+		new Img({
+			resource: 'basketball',
+		})
+	);
+	return ball;
 }

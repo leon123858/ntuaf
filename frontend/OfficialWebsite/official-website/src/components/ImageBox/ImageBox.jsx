@@ -15,7 +15,6 @@ const ImageBox = ({ image }) => {
                         <Image
                             alt='img'
                             src={image.url}
-                            width='50%'
                         />
                     </div>
                 </div>
@@ -26,7 +25,6 @@ const ImageBox = ({ image }) => {
                     <Image
                         alt='img'
                         src={image.url}
-                        width='50%'
                     />
                 </div>
             )

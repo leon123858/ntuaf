@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@eva/renderer-adapter": "^1.2.8",
+    "@svgdotjs/svg.js": "^3.1.2",
+    "svg": "^0.1.0",
+    "svg.js": "^2.7.1"
+  },
+  "devDependencies": {
+    "css-loader": "^6.7.3",
+    "style-loader": "^3.3.2"
+  }
+}

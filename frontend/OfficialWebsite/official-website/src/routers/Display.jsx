@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import style from './Display.module.css';
 import BlockInterpreter from '../utils/blockInterpreter';
 import { BlOCK_TYPE, getEvent } from '@leon123858/ntuaf-sdk';
@@ -10,6 +10,7 @@ import Link from '../components/Link/Link';
 import Map from '../components/Map/Map';
 import { useParams } from 'react-router-dom';
 import { Image, message } from 'antd';
+import { BreakPointContext } from '../useBreakPoint';
 
 const block2element = {
 	[BlOCK_TYPE.TEXT_A]: ({ text, title, url, key }) => {
@@ -170,6 +171,7 @@ function Display() {
 	const interpreter = new BlockInterpreter(block2element);
 	const [eventState, setEventState] = useState(undefined);
 	const [messageApi, contextHolder] = message.useMessage();
+	const { inBreakPoint } = useContext(BreakPointContext);
 
 	useEffect(() => {
 		(async function () {
@@ -185,23 +187,22 @@ function Display() {
 	return eventState ? (
 		<>
 			{contextHolder}
-
 			<Image
-				style={{
-					width: '98.5vw',
-				}}
 				preview={false}
 				src={eventState.image?.banner}
-				fallback='https://fakeimg.pl/1900x500/?text=WrongImage'
-				width={'100vw'}
-				height={'25vw'}
+				fallback='/loading.jpg'
+				width={'100%'}
 			/>
-			<h1 style={{ textAlign: 'center', margin: '32px 0' }}>
+			<h1 style={{ textAlign: 'center', margin: '8% 0', fontWeight: '500' }}>
 				{eventState.title}
 			</h1>
 			<div
 				className={style.APP}
-				style={{ maxWidth: 800, margin: '0 auto', width: '80%' }}
+				style={
+					inBreakPoint
+						? { maxWidth: 800, margin: '0 auto', width: '86%' }
+						: { maxWidth: 800, margin: '0 auto', width: '80%' }
+				}
 			>
 				{interpreter.transfer(eventState.blocks)}
 			</div>
@@ -209,7 +210,7 @@ function Display() {
 	) : (
 		<div className={style.Spin}>
 			{contextHolder}
-			<img src={'/loading.gif'} alt='loading...' />
+			<img src={'/loading.gif'} style={{ width: '18vw' }} alt='loading...' />
 		</div>
 	);
 }

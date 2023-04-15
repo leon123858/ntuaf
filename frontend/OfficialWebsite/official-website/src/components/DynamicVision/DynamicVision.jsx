@@ -1,7 +1,18 @@
 import styles from "./DynamicVision.module.css"
+import { BreakPointContext } from '../../useBreakPoint';
+import { useContext} from "react"
 const DynamicVision = ()=>{
+    const { inBreakPoint, breakPoint } = useContext(BreakPointContext);
     return (
-        <div className={styles.Wrapper}>Dynamic vision</div>
+        <div className={styles.Wrapper}>
+            {inBreakPoint?
+            <img src="https://drive.google.com/uc?export=view&id=1ywFn4Q82LNivQ-4yEyODJeJZ_jpdIpXS"></img>
+            // <>helo</>
+            :
+            <img src="https://drive.google.com/uc?export=view&id=1mZvb9NhPA-XW2_4OynsnBFd9oHVjsCLT"></img>
+            }
+            
+        </div>
     )
 }
 export default DynamicVision

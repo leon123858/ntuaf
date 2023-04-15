@@ -5,7 +5,7 @@ import { useState } from 'react';
 import moment from 'moment';
 
 function Auth({ user }: { user: any }) {
-	console.log('user', user);
+	// console.log('user', user);
 	// const data = user;
 	const [isModalOpen, ModalOpen] = useState(false);
 
@@ -57,7 +57,7 @@ function Auth({ user }: { user: any }) {
 						onClick={async () => {
 							//alert(text);
 							event = await getEvent(text);
-							console.log('event', event);
+							// console.log('event', event);
 							MyModalComponent(event);
 							event.startTime = moment(event.startTime).format('MM-DD-YYYY');
 							event.endTime = moment(event.endTime).format('MM-DD-YYYY');

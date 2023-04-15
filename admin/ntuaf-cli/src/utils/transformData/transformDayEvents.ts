@@ -6,7 +6,7 @@ import { EVENT_TYPE } from '@leon123858/ntuaf-sdk';
 
 const createTimeString = (start: number, end: number) => {
 	if (moment(start).isSame(moment(end), 'day')) {
-		return `${moment(start).format('hh:mm')} - ${moment(end).format('hh:mm')}`;
+		return `${moment(start).format('HH:mm')} - ${moment(end).format('HH:mm')}`;
 	}
 	return `${moment(start).format('MM/DD')} - ${moment(end).format('MM/DD')}`;
 };
@@ -15,7 +15,7 @@ const transformDayEvents = async () => {
 	const monthEvent = { '4': {}, '5': {} } as any;
 	const toDbPath = 'Cache/Events/DayEvents';
 	const afStart = moment('04/20/2023', 'MM/DD/YYYY');
-	const afEnd = moment('05/20/2023', 'MM/DD/YYYY');
+	const afEnd = moment('05/30/2023', 'MM/DD/YYYY');
 	const key = 'data';
 	const handleDay = afStart.clone();
 	//info create bucket aka empty list
@@ -138,6 +138,7 @@ const transformDayEvents = async () => {
 				...monthEvent['5'],
 			},
 		});
+	console.log('transformDayEvents OK!');
 };
 
 export { transformDayEvents };

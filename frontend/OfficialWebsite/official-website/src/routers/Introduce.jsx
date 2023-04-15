@@ -7,7 +7,7 @@ import EventList from '../components/EventList/EventList';
 import EventListEx from '../components/EventList/EventListEx';
 import { getTabEvents } from '@leon123858/ntuaf-sdk';
 import { BreakPointContext } from '../useBreakPoint';
-import './Introduce.css';
+import Hr from '../components/Hr/Hr';
 
 function Introduce() {
 	const { type = 1 } = useParams();
@@ -51,18 +51,6 @@ function Introduce() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [key]);
 
-	const tabBarStyle = {
-		padding: 10,
-		fontSize: '50px',
-		activeTab: {
-			color: 'gray',
-			borderColor:
-				'linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet) 1 !important',
-			borderImageSlice: 1,
-		},
-		borderStyle: 'none',
-	};
-
 	return (
 		<div className={style.APP}>
 			<br />
@@ -70,13 +58,18 @@ function Introduce() {
 			<br />
 			<Tabs
 				// className={style.container}
+				animated={false}
 				activeKey={key}
 				centered
-				tabBarStyle={tabBarStyle}
 				items={[
 					{
 						key: '1',
-						label: '展覽',
+						label:
+							key === '1' ? (
+								<Hr title={'展覽'}></Hr>
+							) : (
+								<h5 style={{ fontSize: '20px', paddingBottom: '5px' }}>展覽</h5>
+							),
 						children:
 							firstData.events.length === 0 ? (
 								<div className={style.Spin}>
@@ -88,7 +81,12 @@ function Introduce() {
 					},
 					{
 						key: '2',
-						label: `活動`,
+						label:
+							key === '2' ? (
+								<Hr title={'活動'}></Hr>
+							) : (
+								<h5 style={{ fontSize: '20px', paddingBottom: '5px' }}>活動</h5>
+							),
 						children:
 							secondData.events.length === 0 ? (
 								<div className={style.Spin}>
@@ -100,8 +98,8 @@ function Introduce() {
 					},
 				]}
 				onChange={onChange}
-				className={style.customTabs}
 				tabBarGutter={inBreakPoint ? 80 : 150}
+				// type='card'
 			></Tabs>
 		</div>
 	);

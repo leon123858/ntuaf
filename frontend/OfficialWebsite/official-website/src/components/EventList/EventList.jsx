@@ -9,7 +9,7 @@ const { Title } = Typography;
 const { Meta } = Card;
 
 const EventImg = ({ tagName, imgUrl, inBreakPoint, isHovered }) => {
-	console.log(tagName);
+	// console.log(tagName);
 	const tagStyle12 = {
 		borderStyle: 'none',
 		borderRadius: '15px',
@@ -60,10 +60,7 @@ const EventImg = ({ tagName, imgUrl, inBreakPoint, isHovered }) => {
 						: `${style.img2} ${style.flexCenter}`
 				}
 			>
-				<Image
-					src={imgUrl}
-					fallback='https://images.squarespace-cdn.com/content/v1/5452d441e4b0c188b51fef1a/1615326541809-TW01PVTOJ4PXQUXVRLHI/male-orange-tabby-cat.jpg?format=600w'
-				/>
+				<Image preview={false} src={imgUrl} fallback='/loading.jpg' />
 			</div>
 			<div className={style.tag}>
 				<Tag
@@ -93,7 +90,8 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 	const handleMouseLeave = () => {
 		setIsHovered(false);
 	};
-	const handleOnClick = (id) => window.open(`/display/${id}`, '_blank');
+	const handleOnClick = (id) =>
+		window.open(`/display/${id}`, inBreakPoint ? '_self' : '_blank');
 	return (
 		<Card
 			hoverable
@@ -108,6 +106,7 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 					: '#25499D',
 				marginBottom: '30px',
 			}}
+      
 			cover={
 				<div style={{ height: '150px' }}>
 					<EventImg
