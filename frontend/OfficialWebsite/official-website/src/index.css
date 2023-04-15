@@ -40,6 +40,9 @@ code {
 	width: 90%;
 	object-fit: contain;
 }
+.ant-alert-info .ant-alert-icon {
+	color: #25499d !important;
+}
 
 @media screen and (max-width: 834px) {
 

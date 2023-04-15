@@ -205,13 +205,13 @@ const FormDisabledDemo = () => {
 							style={{ display: !isLogin ? '' : 'none', marginBottom: '15px' }}
 							message='Hey yo!'
 							description='您需要登入才能上傳作品'
-							type='warning'
+							type='info'
 							showIcon
 							closable
 						/>
 						<div className={style.formTitle}>留下你的創作吧！</div>
 						<Form.Item
-							label='姓名/暱稱'
+							label='姓名／暱稱'
 							rules={[{ required: true, message: '請輸入您的名字' }]}
 							name='name'
 							// style={{ display:'flex',alignSelf: 'center' }}

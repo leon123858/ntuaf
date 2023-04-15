@@ -193,7 +193,7 @@ export const ArtworkList = () => {
 
 	const heartOnClick = async (artworkId) => {
 		if (!isLogin) {
-			message.warning('Should login first!');
+			message.info('您需要先登入!');
 			return 0;
 		}
 		try {
