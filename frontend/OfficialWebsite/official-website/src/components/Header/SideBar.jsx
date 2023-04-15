@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import styles from './SideBar.module.css';
 import { Collapse, Drawer, Input } from 'antd';
-import { SearchOutlined } from '@ant-design/icons';
 import LoginButton from './LoginButton.jsx';
 const { Panel } = Collapse;
 
@@ -29,14 +28,14 @@ const LinkGroup = ({ setSideBarActive }) => {
 					}
 					key='2'
 					showArrow={false}
-					collapsible="icon"
+					collapsible='icon'
 				/>
 				<Panel
 					header={
 						<div className={styles.headerWrapper}>
 							<Link className={styles.link}>
-							<div className={styles.chineseTab}>展覽/活動</div>
-							<div className={styles.engTab}>EVENTS</div>
+								<div className={styles.chineseTab}>展覽/活動</div>
+								<div className={styles.engTab}>EVENTS</div>
 							</Link>
 						</div>
 					}
@@ -77,13 +76,12 @@ const LinkGroup = ({ setSideBarActive }) => {
 					}
 					key='4'
 					showArrow={false}
-					collapsible="icon"
+					collapsible='icon'
 				/>
 				<Panel
 					header={
 						<div className={styles.headerWrapper}>
 							<Link className={styles.link}>
-								
 								<div className={styles.chineseTab}>特別企劃</div>
 								<div className={styles.engTab}>SPECIALS</div>
 							</Link>
@@ -97,11 +95,15 @@ const LinkGroup = ({ setSideBarActive }) => {
 							className={styles.subLink}
 							to={'/artwork'}
 							onClick={handleClickLink}
-						>						
+						>
 							<div className={styles.chineseSubTab}>尋洄地圖</div>
 							<div className={styles.engSubTab}>Map of ArtFest</div>
 						</Link>
-						<Link className={styles.subLink} to={'/map'} onClick={handleClickLink}>
+						<Link
+							className={styles.subLink}
+							to={'/map'}
+							onClick={handleClickLink}
+						>
 							<div className={styles.chineseSubTab}>心理測驗</div>
 							<div className={styles.engSubTab}>Reply 2023</div>
 						</Link>
@@ -116,7 +118,8 @@ const LinkGroup = ({ setSideBarActive }) => {
 	);
 };
 const SideBar = (props) => {
-	const [activeSearch, setActiveSearch] = useState(false);
+	// eslint-disable-next-line no-unused-vars
+	const [activeSearch, _] = useState(false);
 	// const [activeSideBar, setActiveSideBar] = useState(false)
 	const [searchWord, setSearchWord] = useState('');
 	const search = (e) => {
@@ -165,14 +168,20 @@ const SideBar = (props) => {
 							onKeyDown={search}
 						/>
 					</div>
-					<div className={styles.loginWrapper}><LoginButton /></div>
-					
+					<div className={styles.loginWrapper}>
+						<LoginButton />
+					</div>
 				</div>
 
-					<LinkGroup setSideBarActive={props.setSideBarActive} />
+				<LinkGroup setSideBarActive={props.setSideBarActive} />
 				{/* <div className={styles.closeIcon}> */}
 
-					<img onClick={props.onClose} className={styles.closeIcon} src="https://drive.google.com/uc?export=view&id=1cP59d2uWfbFBoflyGC0dVDHfARRahUWF"></img>
+				<img
+					alt='sidebar'
+					onClick={props.onClose}
+					className={styles.closeIcon}
+					src='https://drive.google.com/uc?export=view&id=1cP59d2uWfbFBoflyGC0dVDHfARRahUWF'
+				></img>
 				{/* </div> */}
 			</div>
 		</Drawer>

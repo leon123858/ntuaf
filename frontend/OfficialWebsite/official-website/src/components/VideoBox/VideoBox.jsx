@@ -14,11 +14,11 @@ const Video = ({ url, text, title }) => {
 	// console.log("url after changed =",video);
 	return (
 		<div className={style.container}>
-			<p className={ style.title }>{title}</p>
-			<div className={ style.content }>
-				{text.split('\n').map((str, idx) => (
-					<p key={idx}>{str}</p>
-				))}
+			<p className={style.title}>{title}</p>
+			<div className={style.content}>
+				{text.split('\n').map((str, idx) => {
+					return (str === '') ? <span>&nbsp;</span> : <p key={idx}>{str}</p>
+				})}
 			</div>
 			<iframe
 				height={(inBreakPoint) ? Math.min(window.screen.width / 2, 400) : 450}
