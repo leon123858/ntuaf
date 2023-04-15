@@ -6,8 +6,20 @@
 	/* background-color: red; */
 }
 .App {
-	max-width: 80%;
-	width: 100%;
+	/* max-width: 80%; */
+	/* padding:0px 0px 200px 0px; */
+	width: 90%;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	/* overflow: hidden; */
+	margin: auto;
+}
+.lgApp {
+	/* max-width: 80%; */
+	padding:0px 0px 200px 0px;
+	width: 90%;
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -19,24 +31,53 @@
 	width: 100%;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: space-evenly;
+	padding: 0 10%;
+	position:relative;
+	top:100px;
+	z-index: 100;
+}
+.lgHeaderWrapper{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	padding: 0 5%;
+	position:relative;
+	z-index: 100;
+	top: 50px;
+}
+
+.headerActive{
+	border-bottom: 2px solid;
+	border-image: linear-gradient(to left, #A9CF59, #E73273, #25499D) 3;
+	padding: 0px 0px 10px 0px;
 }
 .header {
-	flex: 1;
-	text-align: center;
+	/* flex: 1; */
+	/* text-align: center; */
+	font-size: 18px;
 	padding: '10px';
+	font-weight: 500;
+	word-spacing: 4px;
+	
+}
+.lgHeader{
+	font-size: 20px;
+	padding: '10px';
+	font-weight: 500;
+	word-spacing: 4px;
 }
 .header:hover {
 	cursor: pointer;
+	/* background-color: red; */
 }
 .cardWrapper {
-	height: 100%;
-	min-width: 70vw; /* width have to be absolute size */
-}
-.headerWrapper {
 	/* height: 100%; */
-	width: 300px; /* width have to be absolute size */
-	padding-bottom: 50px;
+	height:328px;
+	width:261px;
+	/* min-width: 70vw; width have to be absolute size */
+	aspect-ratio: 261 / 328;
 }
 .carouselWrapper {
 	position: 'relative';
@@ -83,6 +124,8 @@
 }
 .prev,
 .next {
+	/* width:20px; */
+	/* height:20px; */
 	cursor: pointer;
 	position: absolute;
 	top: 50%;
@@ -95,11 +138,12 @@
 	transition: all 0.6s ease;
 	border-radius: 10%;
 }
+
 .prev {
-	left: -32px;
+	left: 0px;
 }
 .next {
-	right: -32px;
+	right: 0px;
 }
 
 .prev:active,
@@ -107,31 +151,54 @@
 	background-color: rgb(65, 65, 65, 0.7);
 	color: white;
 }
+.lgPrev,
+.lgNext {
+	/* width:20px; */
+	/* height:20px; */
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	z-index: 100;
+	padding: 16px;
+	margin-top: -40px;
+	color: rgba(0, 0, 0, 0.5);
+	font-weight: bold;
+	font-size: 40px;
+	transition: all 0.6s ease;
+	border-radius: 10%;
+}
 
-.lgCarouselWrapper {
+.lgPrev {
+	left: 50px;
+}
+.lgNext {
+	right: 50px;
+}
+
+.lgPrev:active,
+.lgNext:active {
+	background-color: rgb(65, 65, 65, 0.7);
+	color: white;
+}
+.imgArrow{
+	width: 50px;
+	height:50px;
+}
+.lgCarouselWrapper{
 	position: 'relative';
 	/* border: solid 5px blue; */
 	/* background-color: aqua; */
-	width: 100%; /* for position the arrow */
+	width: 80%; /* for position the arrow */
 	max-width: 100vw;
 	height: 100vh; /* it determine the height of carousel card */
-	margin: '0px auto';
-	overflow: hidden;
-}
-.LgCardWrapper {
-	width: 600px;
-	height: 600px;
+	/* margin: '0px auto'; */
+	/* overflow: hidden; */
 }
 
-@media screen and (min-width: 769px) {
-	.App {
-		width: 80%;
-		/* transform: scale(0.7); */
-		margin: auto;
-	}
-	.prev:hover,
-	.next:hover {
-		background-color: rgb(65, 65, 65, 0.7);
-		color: rgb(221, 221, 221);
-	}
+.LgCardWrapper{
+	width:60vw;
+	/* height:620px; */
+	max-width: 800px;
+	aspect-ratio: 80 / 62;
 }
+

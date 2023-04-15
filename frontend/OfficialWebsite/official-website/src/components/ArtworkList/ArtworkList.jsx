@@ -10,6 +10,7 @@ import { ARTWORK_TYPE } from '@leon123858/ntuaf-sdk';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { BreakPointContext } from '../../useBreakPoint';
 import style from './ArtworkList.module.css'
+import Hr from '../Hr/Hr';
 
 export const ArtworkList = () => {
 	const { isLogin, inBreakPoint } = useContext(BreakPointContext);
@@ -135,6 +136,7 @@ export const ArtworkList = () => {
 			default:
 				break;
 		}
+		console.log()
 		// console.log('data initialed');
 	};
 
@@ -145,11 +147,14 @@ export const ArtworkList = () => {
 				: activeKey === '2'
 					? typePhoto
 					: typePainting;
+		console.log(datas)
+		const sortBy = datas.sortBy===""?'like':datas.sortBy
 		const { data: partialData, cursor: tempCursor } = await getArtworkList(
 			datas.type,
-			datas.sortBy,
+			sortBy,
 			datas.cursor
 		);
+
 		switch (activeKey) {
 			case '1':
 				setTypeText({
@@ -175,7 +180,6 @@ export const ArtworkList = () => {
 			default:
 				break;
 		}
-		// console.log('data updated');
 	};
 
 	const loadMoreData = () => {
@@ -239,13 +243,13 @@ export const ArtworkList = () => {
 							active
 						/>
 					}
-					style={{padding:"0 10vw"}}
-					height={750} //這裡的height 要比上面的"scrollableDiv"的height 小一點，不然其他tab不會loadmore
+					style={{padding:`0 ${inBreakPoint?"5vw":'10vw'}`}}
+					height={740} //這裡的height 要比上面的"scrollableDiv"的height 小一點，不然其他tab不會loadmore
 					endMessage={<Divider plain>It is all, nothing more 🤐</Divider>}
 					scrollableTarget='scrollableDiv'
 				>
 					<List
-						grid={{ gutter: 12, column: inBreakPoint?2: 3 }}
+						grid={{ gutter: 16, column: inBreakPoint?2: 3 }}
 						dataSource={handleLike(datas.dataList, likeArtworkToday)}
 						renderItem={(item, i) => (
 							<>
@@ -311,6 +315,7 @@ export const ArtworkList = () => {
 						label: '愛心排行',
 					},
 				]}
+				bordered={false}
 			/>
 		);
 	};
@@ -327,7 +332,13 @@ export const ArtworkList = () => {
 						items={items.map((item, i) => {
 							const id = String(i + 1);
 							return {
-								label: item,
+								label: activeKey-1 == i? (
+									<Hr title={item}></Hr>
+								) : (
+									<h5 style={{ fontSize: inBreakPoint?"16px":"18px" , paddingBottom: '5px', letterSpacing:"2px"}}>
+										{item}
+									</h5>
+								),
 								key: id,
 								children: getChild(),
 							};

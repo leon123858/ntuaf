@@ -3,10 +3,16 @@ import { Link } from 'react-router-dom';
 import { Image } from 'antd';
 
 const OneSideCard = ({ cardContent }) => {
+	const numOfContentString = 40
+	const content = cardContent.content.length>numOfContentString?cardContent.content.substring(0, numOfContentString)+"...":cardContent.content;
 	return (
 		<Link to={`/display/${cardContent.id}`}>
 			<div className={styles.oneSideCard}>
 				{/* <a href='https://google.com' style={{textDecoration:"none", color:"black"}}> */}
+
+				<div className={styles.headerWrapper}>
+					<h4 className={styles.header}>{cardContent.header}</h4>
+				</div>
 				<div className={styles.imageWrapper}>
 					<Image
 						src={cardContent.imageUrl}
@@ -14,14 +20,10 @@ const OneSideCard = ({ cardContent }) => {
 						fallback='/loading.jpg'
 					/>
 				</div>
-				<div className={styles.headerWrapper}>
-					<h4>{cardContent.header}</h4>
-					<h4>{cardContent.date}</h4>
+				<h4 className={styles.date}>{cardContent.date}</h4>
+				<div className={styles.disc}>
+					{content}
 				</div>
-
-				<p className={styles.disc}>
-					{cardContent.content} {cardContent.index}
-				</p>
 			</div>
 		</Link>
 	);

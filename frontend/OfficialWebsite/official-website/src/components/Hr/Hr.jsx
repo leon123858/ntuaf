@@ -1,9 +1,13 @@
 import React from 'react';
+import { useContext } from 'react';
+import { BreakPointContext } from '../../useBreakPoint';
+
 
 const Hr = ({ title }) => {
+	const {inBreakPoint} = useContext(BreakPointContext)
 	return (
 		<>
-			<h5 style={{ color: '#000000', fontSize: '20px', paddingBottom: '5px' }}>
+			<h5 style={{ color: '#000000', fontSize: inBreakPoint?"16px":"18px", paddingBottom: '5px' ,letterSpacing:"2px"}}>
 				{title}
 			</h5>
 			<div>

@@ -15,7 +15,8 @@
     background-size: 100%;
 }
 .lgFrontCardWrapper{
-    overflow: visible;
+    background-repeat: no-repeat;
+    object-fit: cover;
     background-color: white;
     display: flex;
     flex-direction: column;
