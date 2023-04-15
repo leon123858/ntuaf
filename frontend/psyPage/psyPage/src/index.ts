@@ -603,7 +603,7 @@ async function addchild(index : number){
 	setTimeout(()=>{
 		console.log("index = ",index);
 		game.scene.addChild(backgroundList[index].background);
-	},100)
+	},200)
 }
 
 
