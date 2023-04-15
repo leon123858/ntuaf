@@ -15,7 +15,7 @@ const transformDayEvents = async () => {
 	const monthEvent = { '4': {}, '5': {} } as any;
 	const toDbPath = 'Cache/Events/DayEvents';
 	const afStart = moment('04/20/2023', 'MM/DD/YYYY');
-	const afEnd = moment('05/20/2023', 'MM/DD/YYYY');
+	const afEnd = moment('05/22/2023', 'MM/DD/YYYY');
 	const key = 'data';
 	const handleDay = afStart.clone();
 	//info create bucket aka empty list

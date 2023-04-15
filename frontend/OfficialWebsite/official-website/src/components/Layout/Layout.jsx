@@ -51,7 +51,7 @@ const Layout = () => {
 						inBreakPoint
 					)}')`,
 					backgroundSize: '100vw 100vh',
-					backgroundAttachment: inBreakPoint ? 'scroll' : 'fixed',
+					backgroundAttachment: 'scroll',
 				}}
 			>
 				<Outlet />
