@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import style from './TextBox.module.css';
 import { BlOCK_TYPE } from '@leon123858/ntuaf-sdk'
+import { BreakPointContext } from '../../useBreakPoint';
 
 const TextBox = ({ text }) => {
-
+    const { inBreakPoint } = useContext(BreakPointContext);
     return (
 
         {
@@ -12,15 +13,15 @@ const TextBox = ({ text }) => {
                     {(text.title) 
                         ? (
                             <div className={style.container}>
-                                <h2 style={{ fontSize: 20 }}>{text.title}</h2>
+                                <h2 style={{ fontSize: 20, paddingTop: 40 }}>{text.title}</h2>
                             </div>
                         ) 
                         : ''
                     }
 
-                    <div className={style.container} style={{ paddingLeft: 20, marginTop: 32, paddingRight: 20}}>
+                    <div className={style.container} style={(text.title) ? { paddingLeft: 20, marginTop: 44, paddingRight: 20} : { paddingLeft: 20, marginTop: 32, paddingRight: 20}}>
 
-                        <h1 className={`${style.topic} ${style.one}`}>{text.url}</h1>
+                        <h1 className={style.one}>{text.url}</h1>
                         <div className={style.content} style={{ paddingTop: '22px', backgroundColor: '#EFEFEF' }}>
                             {text.text.split('\n').map((str, idx) => (
                                 <p key={idx}>{str}</p>
@@ -36,12 +37,12 @@ const TextBox = ({ text }) => {
                     {
                         (text.title) 
                         ? (
-                            <h1 className={`${style.topic} ${style.two}`}>{text.title}</h1>
+                            <h1 className={style.two}>{text.title}</h1>
                         )
                         : ''
                     }
                     
-                    <div className={style.content}>
+                    <div className={style.content} style={(text.title) ? { marginTop: 24 } : {}}>
                         {text.text.split('\n').map((str, idx) => (
                             <p key={idx}>{str}</p>
                         ))}
@@ -50,8 +51,8 @@ const TextBox = ({ text }) => {
             ),
 
             [BlOCK_TYPE.TEXT_C]: (
-                <div className={style.container} style={{ marginTop: 52 }}>
-                    <h1 className={`${style.topic} ${style.three}`}>{text.title}</h1>
+                <div className={style.container} style={{ marginTop: 120 }}>
+                    <h1 className={style.three}>{text.title}</h1>
                     <div className={style.content}>
                         {text.text.split('\n').map((str, idx) => (
                             <p key={idx}>{str}</p>
@@ -61,9 +62,9 @@ const TextBox = ({ text }) => {
             ),
 
             [BlOCK_TYPE.TEXT_D]: (
-                <div style={{ display: 'flex', alignItems: 'center' }} className={style.container}>
-                    <div>
-                        <img src={text.url} alt="" style={{ width: 100 }} />
+                <div style={(inBreakPoint) ? { padding: '50px 0' } : { display: 'flex', alignItems: 'center', padding: '50px 0' }} className={style.container}>
+                    <div style={{ textAlign: 'center' }}>
+                        <img src={text.url} alt="" style={{ width: 140, marginRight: '30px' }} />
                     </div>
                     
                     <div className={style.content}>

@@ -1,7 +1,6 @@
 import { db } from '../../init';
 const { FieldValue } = require('firebase-admin/firestore');
 const transformMembers = async () => {
-	console.log('transformMembersByDepartment');
 	const key: string = 'data';
 	const ref = await db.collection('Members').get();
 
@@ -26,5 +25,7 @@ const transformMembers = async () => {
 			// console.log(doc.data().name, doc.data().job, department)
 		})
 	);
+
+	console.log('transformMembersByDepartment OK!');
 };
 export { transformMembers };

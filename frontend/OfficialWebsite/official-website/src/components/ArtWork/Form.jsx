@@ -4,15 +4,17 @@ import {
 	Form,
 	Input,
 	Select,
+	Spin,
 	Upload,
 	message,
 	Modal,
 	Typography,
+	Alert,
 } from 'antd';
 import { useState, useContext } from 'react';
 import { createArtwork, ARTWORK_TYPE } from '@leon123858/ntuaf-sdk';
 import { BreakPointContext } from '../../useBreakPoint';
-
+import style from './Form.module.css';
 const { TextArea } = Input;
 const { Title, Paragraph } = Typography;
 
@@ -29,26 +31,30 @@ const FormDisabledDemo = () => {
 	const [previewImage, setPreviewImage] = useState('');
 	const [previewTitle, setPreviewTitle] = useState('');
 
+	const { inBreakPoint, isLogin } = useContext(BreakPointContext);
+	// eslint-disable-next-line no-unused-vars
+	const [_, contextHolder] = Modal.useModal();
+
 	const goBack = () => {
 		window.location = '/Artwork';
 	};
 
 	const onFinish = async (values) => {
+		if (loading) return;
+		setLoading(true);
 		values.img = previewImage;
-		console.log('img url', previewImage);
 		values.url = previewImage;
-		console.log(values);
-		// form.url = previewImage;
-		console.log('form', form);
 		try {
 			await createArtwork(values);
 		} catch (err) {
 			console.log('上傳失敗', err);
 			message.error('上傳失敗');
+			setLoading(false);
 			return;
 		}
 		handleRemove();
 		message.success('上傳成功', 3, goBack);
+		setLoading(false);
 	};
 
 	const onFinishFailed = (errorInfo) => {
@@ -59,7 +65,7 @@ const FormDisabledDemo = () => {
 	const handleCancel = () => setPreviewVisible(false);
 
 	const normFile = (e) => {
-		console.log('Upload event:', e);
+		// console.log('Upload event:', e);
 		if (Array.isArray(e)) {
 			return previewImage;
 		}
@@ -74,6 +80,7 @@ const FormDisabledDemo = () => {
 	const handleRemove = () => {
 		form.resetFields();
 		setFileList([]);
+		URL.revokeObjectURL(previewImage);
 		setPreviewImage('');
 	};
 
@@ -96,8 +103,8 @@ const FormDisabledDemo = () => {
 		const file = options.file;
 		// setFileList([file]);
 		const isLt2M = file.size > 25 * 1024 * 1024;
-		console.log('options', options);
-		console.log('file size', file.size);
+		// console.log('options', options);
+		// console.log('file size', file.size);
 
 		const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
 		if (!isJpgOrPng) {
@@ -112,7 +119,7 @@ const FormDisabledDemo = () => {
 		}
 
 		if (isOK) {
-			console.log('file', file);
+			// console.log('file', file);
 			const url = URL.createObjectURL(file);
 			const preview = [
 				{
@@ -125,16 +132,15 @@ const FormDisabledDemo = () => {
 			setFileList(preview);
 			setPreviewImage(url);
 			setPreviewTitle(options.file.name);
-			console.log('img url ', url);
-			console.log('name', options.file.name);
-			setLoading(false);
-			// return false;
+			// console.log('img url ', url);
+			// console.log('name', options.file.name);
 		}
+		setLoading(false);
 	};
 
 	function handleChange(value) {
-		console.log(`Selected ${value}`);
-		console.log(form.getFieldValue('type'));
+		// console.log(`Selected ${value}`);
+		// console.log(form.getFieldValue('type'));
 		if (
 			form.getFieldValue('type') === ARTWORK_TYPE.PHOTO ||
 			form.getFieldValue('type') === ARTWORK_TYPE.PAINTING
@@ -142,11 +148,11 @@ const FormDisabledDemo = () => {
 			setHidden(false);
 		else setHidden(true);
 	}
-	const { isLogin } = useContext(BreakPointContext);
 
 	return (
 		<>
 			<div
+				className={inBreakPoint ? style.sm : style.lg}
 				style={{
 					display: 'flex',
 					justifyContent: 'center',
@@ -154,13 +160,14 @@ const FormDisabledDemo = () => {
 					flexDirection: 'column',
 				}}
 			>
-				<div style={{ width: '70%' }}>
+				<div className={style.wordsContainer}>
 					<Typography>
-						<Title style={{ textAlign: 'center' }}>洄溯展覽上傳專區</Title>
+						<Title className={style.title} style={{ textAlign: 'center' }}>
+							洄溯展覽上傳專區
+						</Title>
 						<Paragraph>
-							<span style={{ fontSize: 20 }}>
+							<span className={style.content}>
 								注意事項：
-								<br></br>
 								<br></br>
 								1.參與者不限年齡、學校。
 								<br></br>
@@ -173,7 +180,7 @@ const FormDisabledDemo = () => {
 						</Paragraph>
 					</Typography>
 				</div>
-				<div style={{ width: '70%', backgroundColor: '#D3D3D3' }}>
+				<div className={style.formContainer}>
 					<Form
 						disabled={!isLogin}
 						layout='vertical'
@@ -182,7 +189,7 @@ const FormDisabledDemo = () => {
 							display: 'flex',
 							flexDirection: 'column',
 							justifyContent: 'center',
-							margin: 50,
+							margin: inBreakPoint ? '40px 20px' : 50,
 							// backgroundColor : 'gray',
 							// alignItems: 'center',
 						}}
@@ -194,6 +201,15 @@ const FormDisabledDemo = () => {
 							img: previewImage,
 						}}
 					>
+						<Alert
+							style={{ display: !isLogin ? '' : 'none', marginBottom: '15px' }}
+							message='Hey yo!'
+							description='您需要登入才能上傳作品'
+							type='warning'
+							showIcon
+							closable
+						/>
+						<div className={style.formTitle}>留下你的創作吧！</div>
 						<Form.Item
 							label='姓名/暱稱'
 							rules={[{ required: true, message: '請輸入您的名字' }]}
@@ -207,11 +223,11 @@ const FormDisabledDemo = () => {
 							name='type'
 							rules={[{ required: true, message: '請選擇組別' }]}
 						>
-							<Select onChange={handleChange}>
-								<Select.Option value={ARTWORK_TYPE.PHOTO}>照片組</Select.Option>
+							<Select onChange={handleChange} style={{ width: '120px' }}>
 								<Select.Option value={ARTWORK_TYPE.PURE_TEXT}>
 									文字組
 								</Select.Option>
+								<Select.Option value={ARTWORK_TYPE.PHOTO}>照片組</Select.Option>
 								<Select.Option value={ARTWORK_TYPE.PAINTING}>
 									繪畫組
 								</Select.Option>
@@ -275,16 +291,18 @@ const FormDisabledDemo = () => {
 										src={previewImage}
 									/>
 								</Modal>
-								<img src={'/loading.gif'} alt='loading...' />
+								<Spin spinning={loading} />
 							</div>
 						</Form.Item>
-
-						<Form.Item>
-							<Button htmlType='submit'>上傳</Button>
-						</Form.Item>
+						<div className={style.submit}>
+							<Form.Item>
+								<Button htmlType='submit'>提交</Button>
+							</Form.Item>
+						</div>
 					</Form>
 				</div>
 			</div>
+			{contextHolder}
 		</>
 	);
 };

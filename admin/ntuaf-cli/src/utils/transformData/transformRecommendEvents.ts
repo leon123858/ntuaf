@@ -4,6 +4,9 @@ import { Event } from '@leon123858/ntuaf-sdk';
 const { FieldValue } = require('firebase-admin/firestore');
 
 const createDateString = (start: number, end: number) => {
+	if (moment(start).isSame(moment(end), 'day')) {
+		return `${moment(start).format('MM/DD')}`;
+	}
 	return `${moment(start).format('MM/DD')}-${moment(end).format('MM/DD')}`;
 };
 
@@ -84,9 +87,8 @@ const transformRecentEvent = async () => {
 		.set({ [key]: recentEvents });
 };
 const transformRecommendEvents = async () => {
-	console.log('transformRecommendEvents');
-	transformRegularEvent();
-	transformRecentEvent();
+	await Promise.all([transformRegularEvent(), transformRecentEvent()]);
+	console.log('transformRecommendEvents OK!');
 };
 
 export { transformRecommendEvents };

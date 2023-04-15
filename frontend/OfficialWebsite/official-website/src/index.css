@@ -6,6 +6,7 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	font-weight: 400;
+	letter-spacing: 1px;
 }
 
 code {
@@ -15,4 +16,28 @@ code {
 .ant-menu-submenu::after,
 .ant-menu-item::after {
 	border-bottom: transparent !important;
+
+:where(.css-dev-only-do-not-override-1km3mtt).ant-collapse .ant-collapse-item:last-child >.ant-collapse-content{
+	border-radius: 0 0 20px 20px;
+}
+
+.ant-tabs-tab-btn {
+	color: gray !important;
+}
+.ant-tabs-nav::before {
+	display: none !important;
+}
+.ant-tabs-ink-bar {
+	display: none !important;
+	background: linear-gradient(to left, #A9CF59, #E73273, #25499D) !important;
+}
+.ant-tabs-tab+.ant-tabs-tab {
+	margin: 0 0 0 55px !important;
+}
+
+@media screen and (max-width: 834px) {
+	.ant-tabs-tab+.ant-tabs-tab {
+		margin: 0 0 0 30px !important;
+	}
+	
 }

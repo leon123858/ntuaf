@@ -1,4 +1,4 @@
-import styles from "./FrontCard.module.css"
+import styles from './FrontCard.module.css';
 import { Image } from 'antd';
 import { useContext } from "react";
 import { BreakPointContext } from "../../useBreakPoint";

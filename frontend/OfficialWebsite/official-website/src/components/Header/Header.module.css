@@ -2,20 +2,20 @@
 	box-sizing: border-box;
 	position: fixed;
 	top: 0;
-    left: 0;
-    width: 100%; 
+	left: 0;
+	width: 100%;
 	z-index: 10;
 }
 
 .scrollHeader {
-	background: #FFFFFF;
+	background: #ffffff;
 }
 
 .headerWrapper {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0 3%;
+	padding: 0 2%;
 	height: 80px;
 	transition: all 1s;
 }
@@ -64,14 +64,14 @@
 .iconContainer {
 	display: inline-block;
 	cursor: pointer;
-	background: #FFFFFF;
+	background: #ffffff;
 	box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.21);
 	border-radius: 100px;
 	width: 44px;
 	height: 44px;
 	text-align: center;
-	display: flex;   
-	justify-content: center; 
+	display: flex;
+	justify-content: center;
 }
 
 .menuIcon {
@@ -136,4 +136,12 @@
 	text-align: center ;
 	line-height: 15px;
 	letter-spacing: 1px;
+}
+
+.box {
+	border-radius: 100px;
+}
+
+.boxS {
+	box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.21);
 }

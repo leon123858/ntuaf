@@ -11,7 +11,7 @@ const OneSideCard = ({ cardContent }) => {
 					<Image
 						src={cardContent.imageUrl}
 						preview={false}
-						fallback='https://images.squarespace-cdn.com/content/v1/5452d441e4b0c188b51fef1a/1615326541809-TW01PVTOJ4PXQUXVRLHI/male-orange-tabby-cat.jpg?format=600w'
+						fallback='/loading.jpg'
 					/>
 				</div>
 				<div className={styles.headerWrapper}>

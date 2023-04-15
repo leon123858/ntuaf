@@ -7,24 +7,30 @@ import { useLocation } from 'react-router-dom';
 import { BreakPointContext } from '../../useBreakPoint';
 
 const LAYOUT_BACKGROUND_IMAGE = {
-	default: '/background/c1.png',
-	'/calendar': '/background/c1.png',
-	'/introduce/exhibition': {
-		web: '/background/iWebB.png',
-		mobile: '/background/iMobileB.png',
+	default: {
+		web: '/background/dWebB.png',
+		mobile: '/background/dMobileB.png',
 	},
-	'/': {
-		web: '/background/fWeb.png',
-		mobile: '/background/fMobile.png',
-	},
+	// '/calendar': {
+	// 	web: '/background/3web.png',
+	// 	mobile: '/background/3mob.png',
+	// },
+	// '/': {
+	// 	web: '/background/1web.png',
+	// 	mobile: '/background/1mob.png',
+	// },
 };
 
 const getBackgroundImage = (path, inBreakPoint) => {
 	if (!LAYOUT_BACKGROUND_IMAGE[path]) {
-		return LAYOUT_BACKGROUND_IMAGE.default;
+		return inBreakPoint
+			? LAYOUT_BACKGROUND_IMAGE.default.mobile
+			: LAYOUT_BACKGROUND_IMAGE.default.web;
 	}
 	if (typeof LAYOUT_BACKGROUND_IMAGE[path] == 'string') {
-		return LAYOUT_BACKGROUND_IMAGE[path];
+		return inBreakPoint
+			? LAYOUT_BACKGROUND_IMAGE[path].mobile
+			: LAYOUT_BACKGROUND_IMAGE[path].web;
 	}
 	return inBreakPoint
 		? LAYOUT_BACKGROUND_IMAGE[path].mobile
@@ -45,7 +51,7 @@ const Layout = () => {
 						inBreakPoint
 					)}')`,
 					backgroundSize: '100vw 100vh',
-					backgroundAttachment: 'fixed',
+					backgroundAttachment: 'scroll',
 				}}
 			>
 				<Outlet />

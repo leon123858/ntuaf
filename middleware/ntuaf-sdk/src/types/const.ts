@@ -7,3 +7,5 @@ export const FIREBASE_CONFIG = {
 	appId: '1:281635459532:web:54038c43771e4b90294d69',
 	measurementId: 'G-5Y1RLMG2DB',
 };
+
+export const APP_CHECK_KEY = '6LcMhnElAAAAAO6Tj9kqi50GVPCgMUtITfbFKZgW';
