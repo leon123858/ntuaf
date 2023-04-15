@@ -145,7 +145,7 @@ const SideBar = (props) => {
 			placement='right'
 			open={props.activeSideBar}
 			closable={false}
-			width={'100vw'}
+			width={'100%'}
 			mask={false}
 			bodyStyle={
 				activeSearch ? { backgroundColor: 'gray', transition: 'all 1s' } : {}
@@ -178,13 +178,12 @@ const SideBar = (props) => {
 				</div>
 
 				<LinkGroup setSideBarActive={props.setSideBarActive} />
-				{/* <div className={styles.closeIcon}> */}
 
 				<img
 					alt='sidebar'
 					onClick={props.onClose}
 					className={styles.closeIcon}
-					src='https://drive.google.com/uc?export=view&id=1cP59d2uWfbFBoflyGC0dVDHfARRahUWF'
+					src='/sidebar/sidebarCancel.svg'
 				></img>
 				{/* </div> */}
 			</div>

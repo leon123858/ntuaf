@@ -50,7 +50,7 @@ const Layout = () => {
 						location.pathname,
 						inBreakPoint
 					)}')`,
-					backgroundSize: '100vw 100vh',
+					backgroundSize: '100% 100vh',
 					backgroundAttachment: 'scroll',
 				}}
 			>

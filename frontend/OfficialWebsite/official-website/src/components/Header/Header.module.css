@@ -18,7 +18,7 @@
 	padding: 0 2%;
 	height: 80px;
 	transition: all 1s;
-	width:100vw;
+	width: 100%;
 }
 
 .menuWrapper {
@@ -37,23 +37,20 @@
 	transition: all 1s;
 	white-space: nowrap;
 }
-.chinesTabName{
-	font-size:14px;
-	margin:0px;
-
+.chinesTabName {
+	font-size: 14px;
+	margin: 0px;
 }
-.engTabName{
-	font-size:12px;
-	margin:0px;
-
+.engTabName {
+	font-size: 12px;
+	margin: 0px;
 }
 .menu {
 	border-radius: 100px;
 	box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.21);
 	padding: 0.15rem 5%;
-	background-color:white;
+	background-color: white;
 	/* z-index: -1; */
-
 }
 
 .scrollMenu {
@@ -86,16 +83,14 @@
 	width: auto;
 }
 
-
-
-.link{
+.link {
 	/* background: linear-gradient(to right, rgba(37, 73, 157, 1) ,rgba(231, 50, 115, 1)); */
 	/* background-color: red; */
 	/* padding: 100px; */
 }
-.link:hover{
+.link:hover {
 	/* font-size: 50px; */
-	
+
 	/* background-color: red; */
 	/* text-decoration: none; */
 	/* color: black; */
@@ -105,36 +100,51 @@
 }
 :global(.ant-menu-item.ant-menu-item-only-child) {
 	/* make colorfule hover effect on header text */
-	/* background-color: lightblue !important; */
+	background-color: white !important;
 	padding: 0px;
 	margin: 0px;
-	padding-inline:0px;
+	padding-inline: 0px;
 	margin-inline: 0px;
-	width:100px;
+	width: 100px;
 }
 
 :global(.ant-menu-item:hover) {
 	/* make colorfule hover effect on header text */
-	background: linear-gradient(to right, rgba(37, 73, 157, 1) ,rgba(231, 50, 115, 1));
+	background: linear-gradient(
+		to right,
+		rgba(37, 73, 157, 1),
+		rgba(231, 50, 115, 1)
+	);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
 
-:global(.ant-menu-submenu-title){
+:global(.ant-menu-submenu-title) {
 	padding: 0px 20px 7px 20px;
 }
-:global(.ant-menu-submenu-title:hover){
+:global(.ant-menu-submenu-title:hover) {
 	/* make colorfule hover effect on header text */
-	background: linear-gradient(to right, rgba(37, 73, 157, 1) ,rgba(231, 50, 115, 1));
+	background: linear-gradient(
+		to right,
+		rgba(37, 73, 157, 1),
+		rgba(231, 50, 115, 1)
+	);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
-:global(.ant-menu ant-menu-root ant-menu-horizontal ant-menu-light Header_menu__sUXLR css-dev-only-do-not-override-1km3mtt){
-	padding:0px 25px
+:global(
+		.ant-menu
+			ant-menu-root
+			ant-menu-horizontal
+			ant-menu-light
+			Header_menu__sUXLR
+			css-dev-only-do-not-override-1km3mtt
+	) {
+	padding: 0px 25px;
 }
-.link div{
+.link div {
 	height: 100%;
-	text-align: center ;
+	text-align: center;
 	line-height: 15px;
 	letter-spacing: 1px;
 }

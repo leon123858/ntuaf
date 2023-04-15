@@ -1,21 +1,20 @@
 .container {
-    position: relative;
-    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.15);
-
+	position: relative;
+	box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.15);
 }
 
 .heart {
-    position: absolute;
-    right: 24px;
-    bottom: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	position: absolute;
+	right: 24px;
+	bottom: 24px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .tabContainer {
-    display: block;
-    margin: 0 auto;
-    width: 100vw;
+	display: block;
+	margin: 0 auto;
+	width: 100%;
 }
 .textCardContext {
     display: flex;
@@ -43,18 +42,19 @@
     border-radius: 8px;
     box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.15);
     
+
 }
 
 .smArtworkName {
-    font-size: 18px !important;
-    margin-bottom: 10px !important;
+	font-size: 18px !important;
+	margin-bottom: 10px !important;
 }
 
 .modelImg {
-    display: flex;
-    justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 
 .container.Model img {
-    object-fit: contain;
+	object-fit: contain;
 }

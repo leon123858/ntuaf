@@ -1,6 +1,6 @@
 .tag {
 	position: relative;
-	bottom: 40px;
+	bottom: 20px;
 	left: 5px;
 	/* text-align: center;
 	font-weight: 400; */
@@ -8,31 +8,30 @@
 
 .img {
 	width: 100%;
-	height: 100%;
 	/* aspect-ratio: 16 / 9; */
 	overflow: hidden;
 	border-radius: 8px;
-	box-shadow: 4px 4px 8px rgb(0 0 0 / 15%);
+	//box-shadow: 4px 4px 8px rgb(0 0 0 / 15%);
 }
 
 .img2 {
 	width: 100%;
-	height: 100%;
 	/* aspect-ratio: 16 / 9; */
 	overflow: hidden;
 	border-radius: 8px;
-	box-shadow: 4px 4px 8px rgb(0 0 0 / 15%);
+	//box-shadow: 4px 4px 8px rgb(0 0 0 / 15%);
 }
 
 .eventImg2 {
 	position: relative;
 	top: -20px;
 	left: 5px;
+	width: 95% !important;
 }
 .eventImg1 {
 	position: relative;
 	top: -30px;
-	left: 1.5%;
+	left: 5px;
 	width: 95% !important;
 }
 
@@ -58,6 +57,7 @@
 
 .meta {
 	text-align: center;
+	//height : 60px;
 }
 
 .container {
