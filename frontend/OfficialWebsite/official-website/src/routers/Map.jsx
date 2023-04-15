@@ -85,9 +85,6 @@ function Map() {
 						（依店名筆畫排序）
 					</div>
 				</div>
-				<div className={style.map}>
-					{/* <iframe src="https://www.google.com.tw/maps/d/embed?mid=1U6jabAde83n_30Ic2gN9e_yhZHk&ehbc=2E312F" width="640" height="480"></iframe> */}
-				</div>
 			</div>
 		</>
 	);
