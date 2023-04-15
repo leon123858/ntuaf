@@ -6,17 +6,9 @@ const AboutBackground = () => {
 	return (
 		<div className={styles.Wrapper}>
 			<img
-				src={inBreakPoint ? '../../about/環-手機版.svg' : '../../about/環.svg'}
-				alt=''
+				src={inBreakPoint ? '/about/環-手機版.svg' : '/about/環.svg'}
+				alt='BackGround'
 			/>
-			{/* <video
-				src={'/video.mp4'}
-				width={'100%'}
-				autoPlay
-				muted
-				preload
-				loop
-			></video> */}
 		</div>
 	);
 };
