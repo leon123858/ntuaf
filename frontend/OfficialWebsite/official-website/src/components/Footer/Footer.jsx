@@ -163,7 +163,7 @@ const Footer = () => {
 					<div style={{ marginRight: '30%', whiteSpace: 'nowrap' }}>
 						<h3 style={{ fontSize: 16, margin: '0 0 0 0' }}>聯絡我們</h3>
 						<p style={{ fontSize: 12, margin: '8px 0 6px 0' }}>
-							台北市大安區羅斯福路四段1號
+							臺北市大安區羅斯福路四段1號
 						</p>
 						<div
 							style={{
