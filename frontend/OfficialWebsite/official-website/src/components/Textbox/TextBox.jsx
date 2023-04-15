@@ -5,7 +5,6 @@ import { BreakPointContext } from '../../useBreakPoint';
 
 const TextBox = ({ text }) => {
     const { inBreakPoint } = useContext(BreakPointContext);
-    console.log(text.text);
     return (
 
         {

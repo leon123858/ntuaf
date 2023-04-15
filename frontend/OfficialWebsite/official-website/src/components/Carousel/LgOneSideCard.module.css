@@ -28,15 +28,7 @@ a {
 	justify-content: center;
 	overflow: hidden;
 }
-img {
-	/* object-fit: fill; */
-	width: 100%;
-	height: auto;
-	aspect-ratio: 720/310;
-	/* background-color: blanchedalmond; */
-	border-radius: 10px;
-	/* border-radius: inherit; */
-}
+
 .disc {
 	/* flex-grow: 1; */
 	/* display: flex;
