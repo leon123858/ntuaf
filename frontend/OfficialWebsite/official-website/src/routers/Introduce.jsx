@@ -67,9 +67,23 @@ function Introduce() {
 						key: '1',
 						label:
 							key === '1' ? (
-								<Hr title={'展覽'}></Hr>
+								<>
+									<h5 style={{ color: '#000000', fontSize: inBreakPoint?"16px":"18px", paddingBottom: '5px' ,letterSpacing:"10px"}}>
+										{'展覽'}
+									</h5>
+									<div>
+										<hr
+											style={{
+												background: 'linear-gradient(to left, #A9CF59, #E73273, #25499D)',
+												height: '2px',
+												border: '0px',
+												width : '85%',
+											}}
+										/>
+									</div>
+								</>
 							) : (
-								<h5 style={{ fontSize: inBreakPoint? '18px': '16px', paddingBottom: '5px' }}>展覽</h5>
+								<h5 style={{ letterSpacing: '10px', fontSize: inBreakPoint? '16px': '18px', paddingBottom: '5px' }}>展覽</h5>
 							),
 						children:
 							firstData.events.length === 0 ? (
@@ -84,9 +98,23 @@ function Introduce() {
 						key: '2',
 						label:
 							key === '2' ? (
-								<Hr title={'活動'}></Hr>
+								<>
+									<h5 style={{ color: '#000000', fontSize: inBreakPoint?"16px":"18px", paddingBottom: '5px' ,letterSpacing:"10px"}}>
+										{'活動'}
+									</h5>
+									<div>
+										<hr
+											style={{
+												background: 'linear-gradient(to left, #A9CF59, #E73273, #25499D)',
+												height: '2px',
+												border: '0px',
+												width : '85%',
+											}}
+										/>
+									</div>
+								</>
 							) : (
-								<h5 style={{ fontSize: inBreakPoint? '18px': '16px' , paddingBottom: '5px' }}>活動</h5>
+								<h5 style={{ letterSpacing: '10px', fontSize: inBreakPoint? '16px': '18px', paddingBottom: '5px' }}>活動</h5>
 							),
 						children:
 							secondData.events.length === 0 ? (
