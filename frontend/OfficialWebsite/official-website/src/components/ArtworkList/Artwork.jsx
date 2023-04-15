@@ -42,9 +42,9 @@ export const ArtworkText = ({ data, heartOnClick }) => {
 					className={styles.lgCard}
 				>
 					<div className={styles.textCardContext}>
-						<ArtworkName className={inBreakPoint?styles.smArtworkName:""}>{data.artworkName}</ArtworkName>
+						<Paragraph ellipsis={{ rows: 1 }} style={{ fontWeight: "600", fontSize: "24px" }} className={inBreakPoint ? styles.smArtworkName : ""}>{data.artworkName}</Paragraph>
 						<Paragraph
-							style={{ width: '100%' }}
+							style={{ width: '100%', minHeight: "44px" }}
 							ellipsis={{
 								rows: 2,
 							}}
@@ -77,11 +77,11 @@ export const ArtworkText = ({ data, heartOnClick }) => {
 				}}
 				footer={null}
 			>
-				<div className={styles.container}>
+				<div className={styles.containerModel}>
 					<ArtworkName >{data.artworkName}</ArtworkName>
 					<CreaterName>撰文者：{data.name}</CreaterName>
 
-					<div className={styles.heart} style={{ bottom: 0, right: 0 }}>
+					<div className={styles.heart} style={{ bottom: "20px", right: "24px" }}>
 						<Text strong>{likeShow}</Text>
 						<Heart
 							style={{
@@ -106,21 +106,21 @@ export const ArtworkText = ({ data, heartOnClick }) => {
 export const ArtworkImg = ({ data, heartOnClick }) => {
 	const [open, setOpen] = useState(false);
 	const [likeShow, setLikeShow] = useState(data.tmpLike + data.like);
-	const {inBreakPoint} = useContext(BreakPointContext)
+	const { inBreakPoint } = useContext(BreakPointContext)
 	return (
 		<>
 			<div className={styles.container}>
 				<Card
 					bordered={false}
-					style={{ width: '100%' ,aspectRatio:"343 / 351"}}
+					style={{ width: '100%', aspectRatio: "343 / 351" }}
 					hoverable
 					onClick={() => {
 						setOpen(true);
 					}}
-					cover={<Image alt='img' src={data.url} style={{ objectFit: "cover" ,aspectRatio:"3 /2"}} preview={false}/>}
+					cover={<Image alt='img' src={data.url} style={{ objectFit: "cover", aspectRatio: "3 /2" }} preview={false} fallback='./loading.jpg' />}
 				>
 					<div className={styles.imgCardContext}>
-						<ArtworkName className={inBreakPoint?styles.smArtworkName:""}>{data.artworkName}</ArtworkName>
+						<Paragraph ellipsis={{ rows: 1 }} style={{ fontWeight: "600", fontSize: "24px" }} className={inBreakPoint ? styles.smArtworkName : ""}>{data.artworkName}</Paragraph>
 						<CreaterName>{data.name}</CreaterName>
 					</div>
 				</Card>
@@ -147,11 +147,11 @@ export const ArtworkImg = ({ data, heartOnClick }) => {
 				}}
 				footer={null}
 			>
-				<div className={styles.container}>
+				<div className={styles.containerModel}>
 					<ArtworkName>{data.artworkName}</ArtworkName>
 					<CreaterName>創作者：{data.name}</CreaterName>
 
-					<div className={styles.heart} style={{ bottom: 0, right: 0 }}>
+					<div className={styles.heart} style={{  bottom: "20px", right: "24px"  }}>
 						<Text strong>{likeShow}</Text>
 						<Heart
 							style={{
@@ -167,7 +167,9 @@ export const ArtworkImg = ({ data, heartOnClick }) => {
 					</div>
 				</div>
 				<br />
-				<Image witdh={'100%'} src={data.url}></Image>
+				<div className={styles.modelImg}>
+					<Image src={data.url} height={400} preview={{src:data.url}}></Image>
+				</div>
 				<Text>
 					<br />
 					{data.text}
