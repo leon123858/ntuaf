@@ -4,7 +4,7 @@ import { Image, Col, Row } from 'antd';
 
 // const DemoBox = (props) => <p style={{height:`${props.value}px`, backgroundColor:"red"}}>{props.value}</p>;
 const LgOneSideCard = ({ cardContent }) => {
-	const numOfContentString = 70;
+	const numOfContentString = 85;
 	const content =
 		cardContent.content.length > numOfContentString
 			? cardContent.content.substring(0, numOfContentString) + '...'
@@ -34,13 +34,13 @@ const LgOneSideCard = ({ cardContent }) => {
 						</Col>
 						<Col span={6}>
 							{/* <div style={{backgroundImage: 'url(../cardNext.png)'}} ></div> */}
-							{/* <div className={styles.nextImgWrapper}> */}
+							<div className={styles.nextImgWrapper}>
 							<img
 								alt='nextCard'
 								src='../cardNext.png'
 								className={styles.nextImg}
 							></img>
-							{/* </div> */}
+							</div>
 							{/* <DemoBox value={50}><img src="../cardNext.png" className={styles.nextImg}></img></DemoBox> */}
 
 							{/* <div>CTA</div> */}

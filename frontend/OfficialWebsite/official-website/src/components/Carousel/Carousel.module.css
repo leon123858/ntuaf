@@ -34,7 +34,7 @@
 	justify-content: space-evenly;
 	padding: 0 10%;
 	position: relative;
-	top: 100px;
+	top: 65px;
 	z-index: 9;
 }
 .lgHeaderWrapper {
@@ -59,14 +59,14 @@
 	font-size: 18px;
 	padding: '10px';
 	font-weight: 500;
-	word-spacing: 4px;
+	letter-spacing: 4px;
 }
 
 .lgHeader {
 	font-size: 20px;
 	padding: '10px';
 	font-weight: 500;
-	word-spacing: 4px;
+	letter-spacing: 4px;
 }
 .header:hover {
 	cursor: pointer;
@@ -87,7 +87,6 @@
 	max-width: 100vw;
 	height: 100vh; /* it determine the height of carousel card */
 	margin: '0px auto';
-	overflow: hidden;
 }
 
 .arrowWrapper {
@@ -140,10 +139,10 @@
 }
 
 .prev {
-	left: 0px;
+	left: -15px;
 }
 .next {
-	right: 0px;
+	right: -15px;
 }
 
 .prev:active,
@@ -196,7 +195,7 @@
 }
 
 .LgCardWrapper {
-	width: 60vw;
+	width: 50vw;
 	/* height:620px; */
 	max-width: 800px;
 	aspect-ratio: 80 / 62;
