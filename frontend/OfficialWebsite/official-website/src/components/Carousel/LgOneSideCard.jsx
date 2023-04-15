@@ -24,7 +24,7 @@ const LgOneSideCard = ({ cardContent }) => {
 					<Row>
 						<Col span={18}>
 						<p className={styles.disc}>
-						{content} {cardContent.index}
+						{content}
 						</p>
 						</Col>
 						<Col span={6}>

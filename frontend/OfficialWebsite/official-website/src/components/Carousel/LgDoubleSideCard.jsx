@@ -2,7 +2,6 @@ import LgOneSideCard from "./LgOneSideCard.jsx"
 import style from "./LgDoubleSideCard.module.css"
 
 const LgDoubleSideCard = ({FrontCardContent, BackCardContent, flip}) => {
-    console.log("render double side card")
     return (
         <div className={style.dCardWrapper}>
             {/* <a href='https://google.com' style={{textDecoration:"none", color:"black"}}> */}

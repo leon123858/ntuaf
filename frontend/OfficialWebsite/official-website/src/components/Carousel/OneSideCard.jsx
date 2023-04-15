@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Image } from 'antd';
 
 const OneSideCard = ({ cardContent }) => {
-	const numOfContentString = 50
+	const numOfContentString = 40
 	const content = cardContent.content.length>numOfContentString?cardContent.content.substring(0, numOfContentString)+"...":cardContent.content;
 	return (
 		<Link to={`/display/${cardContent.id}`}>
@@ -22,7 +22,7 @@ const OneSideCard = ({ cardContent }) => {
 				</div>
 				<h4 className={styles.date}>{cardContent.date}</h4>
 				<p className={styles.disc}>
-					{content} {cardContent.index}
+					{content}
 				</p>
 			</div>
 		</Link>

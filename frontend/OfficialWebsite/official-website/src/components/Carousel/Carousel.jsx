@@ -215,10 +215,10 @@ const Carousel = () => {
 						</div>
 
 					</div>
-					<div className={style.prev} onClick={moveLeft}>
+					<div className={style.lgPrev} onClick={moveLeft}>
 						<img className={style.imgArrow} src="https://drive.google.com/uc?export=view&id=1dOLnrGzRRmbbNdfx7QGaVoJcpEFzYPJ4"></img>
 					</div>
-					<div className={style.next} onClick={moveRight}>
+					<div className={style.lgNext} onClick={moveRight}>
 						<img className={style.imgArrow} src="https://drive.google.com/uc?export=view&id=1a-fv9MscBBAhWxCmMv1B4LYqAjtPwfj2"></img>
 					</div>
 					<div className={style.lgCarouselWrapper} {...handlers}>

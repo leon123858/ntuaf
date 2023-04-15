@@ -5,13 +5,21 @@ import { BreakPointContext } from '../../useBreakPoint';
 const FourCircle = () => {
     const [contents, setContents] = useState([])
     const { inBreakPoint, breakPoint } = useContext(BreakPointContext);
+    const {fourCircleClickable, setFourCircleClickable} = useState(false);
     document.body.style.setProperty('--fourBallOffset', `-${1000/2}px`);
+
     window.addEventListener('scroll', () => {
         // let tmp = document.getElementsByClassName(styles.lgCardWrapper)[0];
 
         let animationPortion = window.pageYOffset / window.innerHeight
         animationPortion = animationPortion>=1?0.99:animationPortion
         document.body.style.setProperty('--scroll', animationPortion);
+        if (animationPortion>=1){
+            console.log("bigger")
+        }else{
+            console.log("smaller")
+        }
+
         // console.log(window.pageYOffset, document.body.offsetHeight, window.innerHeight, tmp.offsetParent)
     }, false);
     useEffect(()=>{
