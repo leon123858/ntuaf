@@ -94,6 +94,7 @@ const Card = ({ content, index }) => {
 						style={{
 							pointerEvents: "auto",
 							right: `${1.5 * cardWidth - index * cardWidth}px`,
+							top:"180px",
 						}}
 						width={326}
 						open={isModalOpen}

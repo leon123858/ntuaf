@@ -5,8 +5,8 @@
 .link{
     text-decoration: none;
     color: black;
-    font-size: 24px;
-    padding: 0;
+    font-size: 18px;
+    /* padding: 12px; */
     margin: 0px;
     text-align: center;
 }
@@ -36,15 +36,9 @@
     /* height: 30%; */
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
     text-align: center;
 
-}
-.header button{
-    height: 32px;
-    background-color: white ;
-    border: solid 2px;
-    border-radius: 5px;
 }
 
 .defaultInput{
@@ -76,13 +70,14 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    /* padding:5px 0px 0px 0px; */
 }
 
 
 
 .closeIcon{
-    height: 30%;
-
+    height: 12%;
+    margin:0px 0px 50px 0px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -94,3 +89,47 @@
     cursor: pointer;
 }
 
+.chineseTab{
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing:2px;
+    font-weight: 450;
+}
+
+.engTab{
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing:2px;
+}
+.chineseSubTab{
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing:1px;
+}
+.engSubTab{
+    font-size: 12px;
+    line-height: 17px;
+    letter-spacing:1px;
+}
+
+.subLink{
+    text-align: center;
+    padding:5px;
+    color: rgba(100, 100 ,100 , 1);
+}
+:global(.ant-collapse-content-box){
+    padding:2px !important;
+    /* background-color: red !important; */
+}
+:global(.ant-collapse-header){
+    padding:20px 0px 10px 0px!important;
+    /* background-color: red !important; */
+}
+:global(.ant-drawer-body){
+    padding:30px 0px 0px 0px!important;
+    background-image: url("https://drive.google.com/uc?export=view&id=10A4NxUqOEJG9Ae-asjSN2oR5dZaRRjeo");
+    background-size: cover;
+}
+.loginWrapper{
+    padding:10px 30px 00px 0px;
+}
