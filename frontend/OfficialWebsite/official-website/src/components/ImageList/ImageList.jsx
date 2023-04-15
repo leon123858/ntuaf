@@ -37,7 +37,12 @@ const ImageList = ({ data }) => {
 		),
 		[BlOCK_TYPE.IMAGE_LIST_C]: (
 			<div className={style.container}>
-				<p className={style.topic}>{data.title}</p>
+				{
+					(data.title) ? (
+						<p className={style.topic}>{data.title}</p>
+					) : (<></>)
+				}
+				
 				<div>
 					{data.items.map((image, idx) => (
 						<div key={idx} className={(inBreakPoint) ? style.imgItemC : style.lgImgItemC }>

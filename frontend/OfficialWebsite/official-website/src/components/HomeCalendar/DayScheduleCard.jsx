@@ -7,6 +7,7 @@ const DayScheduleCard = ({ data }) => {
 	const { inBreakPoint } = useContext(BreakPointContext);
 	const handleOnClick = (id) =>
 		window.open(`/display/${id}`, inBreakPoint ? '_self' : '_blank');
+	console.log(data);
 
 	return (
 		<Card
