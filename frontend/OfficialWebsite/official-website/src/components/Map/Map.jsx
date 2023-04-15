@@ -11,9 +11,9 @@ const Map = ({ type, url, text }) => {
 				<h1 className={`${style.topic}`}>{'活動資訊'}</h1>
 				<div className={style.content}>
 					<div className={style.content} style={{ textAlign: 'left' }}>
-						{text.split('\n').map((str, idx) => (
-							<p key={idx}>{str}</p>
-						))}
+						{text.split('\n').map((str, idx) => {
+							return (str === '') ? <span>&nbsp;</span> : <p key={idx}>{str}</p>
+						})}
 					</div>
 					<hr style={{ margin: '20px 0' }} />
 					<div className={style.content} style={{ textAlign: 'left' }}>
