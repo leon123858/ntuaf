@@ -61,13 +61,8 @@ function Update({ email, admin }: { email: string; admin: string[] }) {
 			<hr></hr>
 			裁切圖片工具:
 			<UploadImage
-				setUrl={(url: string) => {
-					const el = document.createElement('textarea');
-					el.value = url;
-					document.body.appendChild(el);
-					el.select();
-					document.execCommand('copy');
-					document.body.removeChild(el);
+				setUrl={async (url: string) => {
+					await navigator.clipboard.writeText(url);
 					message.success('已複製上傳圖片網址, 可至下方文字框貼上');
 				}}
 				text='上傳圖片且複製'
