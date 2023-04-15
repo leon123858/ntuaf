@@ -215,11 +215,11 @@ function Update({ email, admin }: { email: string; admin: string[] }) {
 									name='type'
 									label='類別'
 								></ProFormSelect>
-								<ProFormText
+								<ProFormTextArea
 									width='md'
 									name='title'
 									placeholder='請輸入標題'
-								></ProFormText>
+								></ProFormTextArea>
 								<ProFormTextArea
 									width='md'
 									name='text'
