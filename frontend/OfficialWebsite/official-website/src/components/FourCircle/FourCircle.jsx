@@ -5,19 +5,27 @@ import { BreakPointContext } from '../../useBreakPoint';
 const FourCircle = () => {
     const [contents, setContents] = useState([])
     const { inBreakPoint, breakPoint } = useContext(BreakPointContext);
-    const {fourCircleClickable, setFourCircleClickable} = useState(false);
+    const [fourCircleClickable, setFourCircleClickable] = useState(false);
     document.body.style.setProperty('--fourBallOffset', `-${1000/2}px`);
 
     window.addEventListener('scroll', () => {
         // let tmp = document.getElementsByClassName(styles.lgCardWrapper)[0];
+        let switcher = false;
+        let animationPortion = window.pageYOffset / window.innerHeight;
 
-        let animationPortion = window.pageYOffset / window.innerHeight
         animationPortion = animationPortion>=1?0.99:animationPortion
         document.body.style.setProperty('--scroll', animationPortion);
-        if (animationPortion>=1){
-            console.log("bigger")
+        // console.log(animationPortion)
+        if (animationPortion===0.99){
+            if(!fourCircleClickable){
+                setFourCircleClickable(true)
+            }
+            // console.log("ready", fourCircleClickable)
         }else{
-            console.log("smaller")
+            if(fourCircleClickable){
+                setFourCircleClickable(false)
+            }
+            // console.log("not ready", fourCircleClickable)
         }
 
         // console.log(window.pageYOffset, document.body.offsetHeight, window.innerHeight, tmp.offsetParent)
@@ -84,7 +92,8 @@ const FourCircle = () => {
         })}
         </div>:
         <div className={styles.lgBackground} style={{height:`${breakPoint}px`, backgroundImage:`url(https://drive.google.com/uc?id=1JvmPGuuZ5-99q7ByKoZMAPAayF6lWdNn)`}}>
-            <div className={styles.lgCardWrapper} style={{height:`${breakPoint}px`}}>
+            {/* <div className={styles.lgCardWrapper} style={{height:`${breakPoint}px`}}> */}
+            <div className={`${fourCircleClickable?styles.lgCardWrapper:`${styles.lgCardWrapper} ${styles.notReady}`}`} style={{height:`${breakPoint}px`}}>
             {contents.map((content, index) => {
                 return (
                     <Card content={content} key={index} index={index} />
