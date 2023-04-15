@@ -54,15 +54,18 @@ function Map() {
 						marginBottom: '3rem',
 					}}
 				>
-					<Link to='/'>
+					<a href="https://lin.ee/ymEZTbB" target="_blank">
+
 						<div
 							className={inBreakPoint ? style.linkButton : style.lgLinkButton}
 						>
 							<p>加入LINE好友開始集點</p>
 							<RightOutlined style={{ fontWeight: '300' }} />
 						</div>
-					</Link>
-				</div> */}
+
+					</a>
+				</div>
+
 				<div
 					className={
 						inBreakPoint ? style.storeContainer : style.lgStoreContainer
@@ -85,6 +88,18 @@ function Map() {
 							<li>薄霧書店</li>
 						</ul>
 						（依店名筆畫排序）
+						<a href='https://www.google.com/maps/placelists/list/ggfToSlsSK-j6kSVonMD3A' target="_blank">
+							<div className={style.lgBtn}>
+								<span className={style.colorful}>合作店家地圖清單</span>
+								<RightOutlined
+									style={{
+										fontSize: '18px',
+										fontWeight: '200',
+										color: '#25499D',
+									}}
+								/>
+							</div>
+						</a>
 					</div>
 				</div>
 			</div>

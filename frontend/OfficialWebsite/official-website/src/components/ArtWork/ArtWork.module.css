@@ -195,7 +195,16 @@
 }
 
 .sm .img {
-	width: 60vw;
-	aspect-ratio: 955 / 560;
-	margin: 50pxçc;
+    width: 60vw;
+    aspect-ratio: 955 / 560;
+    margin: 50pxçc;
 }
+:global(.collapse .ant-collapse-header){
+    padding: 12px 16px !important;
+    align-items: center;
+    /* background-color: red !important; */
+}
+:global(.collapse .ant-collapse-arrow){
+    font-size: 18px !important;
+}
+

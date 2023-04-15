@@ -21,6 +21,7 @@ const teamImages = {
 		'../../about/team/數位.jpeg',
 		'../../about/team/活動.jpeg',
 		'../../about/team/展覽.jpeg',
+		'../../about/team/學術.jpeg'
 	],
 	[DEPARTMENT.行政部]: ['../../about/team/行政.jpeg'],
 	[DEPARTMENT.設計部]: [

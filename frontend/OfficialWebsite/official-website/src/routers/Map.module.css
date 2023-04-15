@@ -190,9 +190,31 @@
 }
 
 .map {
-	width: 80vw;
-	height: 400px;
-	background: #efefef;
-	margin: 50px 0;
-	text-align: center;
+    width: 80vw;
+    height: 400px;
+    background: #EFEFEF;
+    margin: 50px 0;
+    text-align: center;
 }
+
+.lgBtn {
+    margin-top: 10px;
+    /* width: 160px; */
+    height: 40px;
+    border-radius: 34px;
+    font-size: 16px;
+    background: white;
+    box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.21);
+    color: white;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
+    letter-spacing: 1px;
+}
+.colorful {
+    background: linear-gradient(90deg, #DD0E65 11.11%, #25499D 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
