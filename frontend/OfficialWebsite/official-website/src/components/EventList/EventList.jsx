@@ -104,11 +104,11 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 					: tagName.includes('講座') || tagName.includes('工作坊')
 					? '#A9CF59'
 					: '#25499D',
-				marginBottom: '30px',
+				marginBottom: '45px',
 			}}
       
 			cover={
-				<div style={{ height: '120px' }}>
+				<div style={{ height: '110px' }}>
 					<EventImg
 						tagName={tagName}
 						imgUrl={imgUrl}
