@@ -29,8 +29,8 @@
 	transform: rotateY(180deg);
 }
 
-@media screen and (min-width: 769px) {
+/* @media screen and (min-width: 769px) {
 	.dCardWrapper {
 		max-width: 250px;
 	}
-}
+} */

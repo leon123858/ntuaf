@@ -25,8 +25,8 @@ const teamImages = {
 	[DEPARTMENT.行政部]: ['../../about/team/行政.jpg'],
 	[DEPARTMENT.設計部]: [
 		'../../about/team/文宣組.jpg',
-		'../../about/team/主視覺組.jpg',
-		'../../about/team/影像組.jpg',
+		'../../about/team/主視覺組.JPG',
+		'../../about/team/影像組.JPG',
 	],
 };
 
@@ -134,7 +134,13 @@ const MemberTab = () => {
 							curDepartment === departmentName ? (
 								<Hr title={departmentName}></Hr>
 							) : (
-								<h5 style={{ fontSize: inBreakPoint?"16px":"18px" , paddingBottom: '5px', letterSpacing:"2px"}}>
+								<h5
+									style={{
+										fontSize: inBreakPoint ? '16px' : '18px',
+										paddingBottom: '5px',
+										letterSpacing: '2px',
+									}}
+								>
 									{departmentName}
 								</h5>
 							),

@@ -35,7 +35,9 @@ from {
     /* transform: translateY(var(--fourBallOffset)) rotateZ(360deg); */
 }
 }
-
+.notReady{
+	pointer-events: none;
+}
 .lgContainer{
     height: 1000px;
     

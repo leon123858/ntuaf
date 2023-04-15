@@ -24,19 +24,6 @@ import $ from 'jquery';
 
 async function load_game() {
 	// console.log(resources);
-	resource.addResource(resources);
-	resource.on(LOAD_EVENT.START, async () => {
-		console.log('start load');
-		resource.on(LOAD_EVENT.COMPLETE, async (e) => {
-			console.log('load OK', e);
-			$('#loading').hide();
-			$('#canvas').show();
-		});
-	});
-	// resource.on(LOAD_EVENT.ERROR, () => {
-	// 	$('#progress').html('加載資源失敗！');
-	// }); // 某文件加载失败
-	resource.preload();
 
 	const canvasElement = document.querySelector('#canvas') as HTMLCanvasElement;
 
@@ -58,13 +45,6 @@ async function load_game() {
 	styleElement.innerHTML = canvasStyles;
 	canvasElement.appendChild(styleElement);
 
-	const renderer = new RendererSystem({
-		width: 900, // the initial width of the canvas
-		height: 1640, // the initial height of the canvas
-		canvas: document.querySelector('#canvas'), // the HTML canvas element
-		resolution: window.devicePixelRatio, // the resolution of the canvas
-	});
-
 	// console.log(renderer);
 
 	let A = 0;
@@ -75,21 +55,6 @@ async function load_game() {
 	bgSound.play();
 
 	// basic setting
-	const game = new Game({
-		systems: [
-			renderer,
-			new ImgSystem(),
-			new TransitionSystem(),
-			new SpriteAnimationSystem(),
-			new RenderSystem(),
-			new EventSystem(),
-			new GraphicsSystem(),
-			new TextSystem(),
-			new SoundSystem(),
-		],
-		autoStart: true,
-		frameRate: 60,
-	});
 
 	game.scene.addComponent(
 		new Render({
@@ -97,15 +62,14 @@ async function load_game() {
 		})
 	);
 
-	window.addEventListener('resize', () => {
-		//updateScale();
-		//// console.log(window.outerWidth);
-		//renderer.resize(window.outerWidth, window.outerWidth*16/9);
-	});
+	// window.addEventListener('resize', () => {
+	// 	//updateScale();
+	// 	//// console.log(window.outerWidth);
+	// 	//renderer.resize(window.outerWidth, window.outerWidth*16/9);
+	// });
 
 	game.scene.transform.size.width = 700;
 	game.scene.transform.size.height = (game.scene.transform.size.width * 16) / 9;
-	window.game = game;
 
 	const numberOfScene = 6;
 
@@ -125,12 +89,12 @@ async function load_game() {
 			).scale.y = 1.1;
 			//game.scene.transform.size.width = game.scene.transform.size.width*17/9;
 			backgroundList[sceneIndex + 1].background.removeComponent('Img');
-			let resource;
-			if (A >= B && A >= C) resource = 'bg6';
-			else if (B >= A && B >= C) resource = 'bg7';
-			else if (C >= A && C >= B) resource = 'bg8';
+			let resourceIN;
+			if (A >= B && A >= C) resourceIN = 'bg6';
+			else if (B >= A && B >= C) resourceIN = 'bg7';
+			else if (C >= A && C >= B) resourceIN = 'bg8';
 			const img = new Img({
-				resource: resource,
+				resource: resourceIN,
 			});
 			backgroundList[sceneIndex + 1].background.addComponent(img);
 			$('#canvas').hide();
@@ -610,4 +574,44 @@ async function load_game() {
 	btns.forEach((btn) => game.scene.addChild(btn.button));
 }
 
-load_game();
+declare global {
+	interface Window {
+		resources: any;
+	}
+}
+
+resource.addResource(resources);
+window.resources = resources;
+
+const renderer = new RendererSystem({
+	width: 900, // the initial width of the canvas
+	height: 1640, // the initial height of the canvas
+	canvas: document.querySelector('#canvas'), // the HTML canvas element
+	resolution: window.devicePixelRatio, // the resolution of the canvas
+});
+
+const game = new Game({
+	systems: [
+		renderer,
+		new ImgSystem(),
+		new TransitionSystem(),
+		new SpriteAnimationSystem(),
+		new RenderSystem(),
+		new EventSystem(),
+		new GraphicsSystem(),
+		new TextSystem(),
+		new SoundSystem(),
+	],
+	autoStart: true,
+	frameRate: 60,
+});
+
+window.game = game;
+
+resource.on(LOAD_EVENT.COMPLETE, async () => {
+	await load_game();
+	$('#loading').hide();
+	$('#canvas').show();
+});
+
+resource.preload();

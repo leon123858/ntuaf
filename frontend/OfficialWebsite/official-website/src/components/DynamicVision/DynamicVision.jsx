@@ -1,22 +1,22 @@
 import styles from './DynamicVision.module.css';
-import { useContext } from 'react';
 import { BreakPointContext } from '../../useBreakPoint';
+import { useContext } from 'react';
 const DynamicVision = () => {
 	const { inBreakPoint } = useContext(BreakPointContext);
 	return (
 		<div className={styles.Wrapper}>
-			<img
-				src={inBreakPoint ? '../../about/環-手機版.svg' : '../../about/環.svg'}
-				alt=''
-			/>
-			{/* <video
-				src={'/video.mp4'}
-				width={'100%'}
-				autoPlay
-				muted
-				preload
-				loop
-			></video> */}
+			{inBreakPoint ? (
+				<img
+					src='https://drive.google.com/uc?export=view&id=1ywFn4Q82LNivQ-4yEyODJeJZ_jpdIpXS'
+					alt='dv'
+				></img>
+			) : (
+				// <>helo</>
+				<img
+					src='https://drive.google.com/uc?export=view&id=1mZvb9NhPA-XW2_4OynsnBFd9oHVjsCLT'
+					alt='dv'
+				></img>
+			)}
 		</div>
 	);
 };
