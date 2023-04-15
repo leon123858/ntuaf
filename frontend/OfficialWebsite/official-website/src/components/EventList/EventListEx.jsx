@@ -35,11 +35,7 @@ const EventImg = ({ tagName, imgUrl, inBreakPoint, isHovered }) => {
 						: `${style.img2} ${style.flexCenter}`
 				}
 			>
-				<Image
-					preview={false}
-					src={imgUrl}
-					fallback='https://images.squarespace-cdn.com/content/v1/5452d441e4b0c188b51fef1a/1615326541809-TW01PVTOJ4PXQUXVRLHI/male-orange-tabby-cat.jpg?format=600w'
-				/>
+				<Image preview={false} src={imgUrl} fallback='/loading.jpg' />
 			</div>
 			<div className={style.tag}>
 				<Tag style={isHovered ? tagStyle : tagStyle2}>{tagName}</Tag>

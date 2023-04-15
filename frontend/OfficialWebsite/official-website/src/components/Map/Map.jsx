@@ -8,7 +8,7 @@ const Map = ({ type, url, text }) => {
 	return {
 		[BlOCK_TYPE.MAP_A]: (
 			<div className={style.container}>
-				<h1 className={`${style.topic} ${style.three}`}>{'活動資訊'}</h1>
+				<h1 className={`${style.topic}`}>{'活動資訊'}</h1>
 				<div className={style.content}>
 					<div className={style.content} style={{ textAlign: 'left' }}>
 						{text.split('\n').map((str, idx) => (

@@ -9,12 +9,12 @@ import {
 	message,
 	Modal,
 	Typography,
-	Alert
+	Alert,
 } from 'antd';
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import { createArtwork, ARTWORK_TYPE } from '@leon123858/ntuaf-sdk';
 import { BreakPointContext } from '../../useBreakPoint';
-import style from './Form.module.css'
+import style from './Form.module.css';
 const { TextArea } = Input;
 const { Title, Paragraph } = Typography;
 
@@ -31,10 +31,9 @@ const FormDisabledDemo = () => {
 	const [previewImage, setPreviewImage] = useState('');
 	const [previewTitle, setPreviewTitle] = useState('');
 
-	const { inBreakPoint, isLogin } = useContext(BreakPointContext)
-	const [modal, contextHolder] = Modal.useModal();
-
-
+	const { inBreakPoint, isLogin } = useContext(BreakPointContext);
+	// eslint-disable-next-line no-unused-vars
+	const [_, contextHolder] = Modal.useModal();
 
 	const goBack = () => {
 		window.location = '/Artwork';
@@ -163,7 +162,9 @@ const FormDisabledDemo = () => {
 			>
 				<div className={style.wordsContainer}>
 					<Typography>
-						<Title className={style.title} style={{ textAlign: 'center' }}>洄溯展覽上傳專區</Title>
+						<Title className={style.title} style={{ textAlign: 'center' }}>
+							洄溯展覽上傳專區
+						</Title>
 						<Paragraph>
 							<span className={style.content}>
 								注意事項：
@@ -188,7 +189,7 @@ const FormDisabledDemo = () => {
 							display: 'flex',
 							flexDirection: 'column',
 							justifyContent: 'center',
-							margin: inBreakPoint?'40px 20px': 50,
+							margin: inBreakPoint ? '40px 20px' : 50,
 							// backgroundColor : 'gray',
 							// alignItems: 'center',
 						}}
@@ -201,10 +202,10 @@ const FormDisabledDemo = () => {
 						}}
 					>
 						<Alert
-							style={{display:!isLogin?"":"none", marginBottom:"15px"}}
-							message="Hey yo!"
-							description="您需要登入才能上傳作品"
-							type="warning"
+							style={{ display: !isLogin ? '' : 'none', marginBottom: '15px' }}
+							message='Hey yo!'
+							description='您需要登入才能上傳作品'
+							type='warning'
 							showIcon
 							closable
 						/>
@@ -213,7 +214,7 @@ const FormDisabledDemo = () => {
 							label='姓名/暱稱'
 							rules={[{ required: true, message: '請輸入您的名字' }]}
 							name='name'
-						// style={{ display:'flex',alignSelf: 'center' }}
+							// style={{ display:'flex',alignSelf: 'center' }}
 						>
 							<Input />
 						</Form.Item>
@@ -222,13 +223,11 @@ const FormDisabledDemo = () => {
 							name='type'
 							rules={[{ required: true, message: '請選擇組別' }]}
 						>
-							<Select onChange={handleChange} style={{ width: "120px" }}>
+							<Select onChange={handleChange} style={{ width: '120px' }}>
 								<Select.Option value={ARTWORK_TYPE.PURE_TEXT}>
 									文字組
 								</Select.Option>
-								<Select.Option value={ARTWORK_TYPE.PHOTO}>
-									照片組
-								</Select.Option>
+								<Select.Option value={ARTWORK_TYPE.PHOTO}>照片組</Select.Option>
 								<Select.Option value={ARTWORK_TYPE.PAINTING}>
 									繪畫組
 								</Select.Option>
@@ -258,7 +257,7 @@ const FormDisabledDemo = () => {
 								{
 									required:
 										form.getFieldValue('type') === ARTWORK_TYPE.PHOTO ||
-											form.getFieldValue('type') === ARTWORK_TYPE.PAINTING
+										form.getFieldValue('type') === ARTWORK_TYPE.PAINTING
 											? true
 											: false,
 									message: '請上傳您的作品照片',

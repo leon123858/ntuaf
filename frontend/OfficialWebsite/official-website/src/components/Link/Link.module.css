@@ -1,11 +1,22 @@
 .container {
-    text-align: center;
-    margin: 32px auto;
+  text-align: center;
+  margin: 60px auto;
 }
 
 .btn {
-    background: linear-gradient(90deg, #DD0E65 11.11%, #25499D 100%);
-    color: white;
-    width: 40%;
-    height: 50px;
+  background: white;
+  border: none;
+  width: 40%;
+  height: 50px;
+  border-radius: 50px;
+  box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.21);
+  font-size: 16px;
+  background: -webkit-linear-gradient(222.73deg, #e73273 41.91%, #25499d 73.62%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+}
+
+.btn:active {
+  box-shadow: none;
 }

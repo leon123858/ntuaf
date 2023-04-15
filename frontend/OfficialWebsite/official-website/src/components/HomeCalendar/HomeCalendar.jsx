@@ -148,17 +148,18 @@ const HomeCalendar = () => {
 						hideKeyboardShortcutsPanel={true}
 						monthFormat='YYYY, M[月]'
 						weekDayFormat='ddd'
-						daySize={inBreakPoint ? 48 : 50}
+						daySize={inBreakPoint ? Math.min(window.screen.width / 8.5, 48) : 50}
 					/>
+
 
 					<div
 						style={
 							inBreakPoint
 								? {
-										display: 'flex',
-										marginTop: '12px',
-										justifyContent: 'center',
-								  }
+									display: 'flex',
+									marginTop: '12px',
+									justifyContent: 'center',
+								}
 								: { display: 'grid', marginTop: '14px', marginLeft: '18px' }
 						}
 					>

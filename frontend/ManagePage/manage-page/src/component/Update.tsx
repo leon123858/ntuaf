@@ -168,7 +168,6 @@ function Update({ email, admin }: { email: string; admin: string[] }) {
 					></UploadImage>
 					<ProFormText
 						width='md'
-						disabled
 						name={['image', 'banner']}
 						addonAfter={
 							<a href={imageBanner} target='_blank' rel='noreferrer'>
@@ -187,7 +186,6 @@ function Update({ email, admin }: { email: string; admin: string[] }) {
 					></UploadImage>
 					<ProFormText
 						width='md'
-						disabled
 						name={['image', 'card']}
 						addonAfter={
 							<a href={imageCard} target='_blank' rel='noreferrer'>

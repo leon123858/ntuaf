@@ -6,16 +6,16 @@ const LgOneSideCard = ({ cardContent }) => {
 	return (
 		<Link to={`/display/${cardContent.id}`}>
 			<div className={styles.oneSideCard}>
-
 				<Row>
 					<Col span={14}>
 						<div className={styles.imageWrapper}>
 							<Image
 								src={cardContent.imageUrl}
 								preview={false}
-								fallback='https://images.squarespace-cdn.com/content/v1/5452d441e4b0c188b51fef1a/1615326541809-TW01PVTOJ4PXQUXVRLHI/male-orange-tabby-cat.jpg?format=600w'
+								fallback='/loading.jpg'
 							/>
-						</div></Col>
+						</div>
+					</Col>
 					<Col span={10}>
 						<div className={styles.contentWrapper}>
 							<div className={styles.headerWrapper}>
@@ -30,7 +30,6 @@ const LgOneSideCard = ({ cardContent }) => {
 						</div>
 					</Col>
 				</Row>
-
 			</div>
 		</Link>
 	);

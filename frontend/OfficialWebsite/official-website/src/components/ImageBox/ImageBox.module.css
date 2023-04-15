@@ -20,7 +20,7 @@
 .picBox2 {
   width: 100px; 
   margin: 0 auto;
-  minWidth: 400;
+  min-width: 400;
 }
 
 .topic {
