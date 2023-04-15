@@ -282,11 +282,11 @@ function Update({ email, admin }: { email: string; admin: string[] }) {
 													name='url'
 													placeholder='請輸入相關連結'
 												></ProFormTextArea>
-												<ProFormText
+												<ProFormTextArea
 													width='md'
 													name='name'
 													placeholder='請輸入名稱描述'
-												></ProFormText>
+												></ProFormTextArea>
 											</ProCard>
 										);
 									}}
