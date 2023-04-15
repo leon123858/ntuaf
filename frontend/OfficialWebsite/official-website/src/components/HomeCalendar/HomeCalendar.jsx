@@ -96,24 +96,31 @@ const HomeCalendar = () => {
 	const monthType = useLoaderData();
 	useEffect(() => {
 		(async function () {
-			const result = await getDbDayEvents(date.month() + 1, date.date());
-			if (result) {
-				setDayEvents({
-					month: date.month() + 1,
-					date: date.date(),
-					data: {
-						...result,
-					},
-				});
-				return;
+			try {
+				const result = await getDbDayEvents(date.month() + 1, date.date());
+				if (result) {
+					setDayEvents({
+						month: date.month() + 1,
+						date: date.date(),
+						data: {
+							...result,
+						},
+					});
+					return;
+				}
+			} catch(error) {
+				console.log("YESSS")
+				setDayEvents(
+					{
+						month: date.month() + 1,
+						date: date.date(),
+						data: { activity: [], exhibition: [], workshop: [] },
+					}
+				);
 			}
-			setDayEvents(
-				{
-					month: date.month() + 1,
-					date: date.date(),
-					data: { activity: [], exhibition: [], workshop: [] },
-				}()
-			);
+			
+			
+			
 		})();
 	}, [date]);
 

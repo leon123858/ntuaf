@@ -3,7 +3,7 @@ import { Img } from '@eva/plugin-renderer-img';
 import { Transition } from '@eva/plugin-transition';
 import { Render } from '@eva/plugin-renderer-render';
 
-export default async function createBackground(index : number) {
+export default async function createBackground(index: number) {
 	const bg = new GameObject('bg', {
 		size: { width: 900, height: 1640 },
 		position: {
@@ -20,36 +20,19 @@ export default async function createBackground(index : number) {
 		},
 	});
 
+	let img = new Img({
+		resource: `bg${index}`,
+	});
 
-
-	let img = new Img();
-
-	function loadImage(src : string) {
-		return new Promise((resolve, reject) => {
-			img = new Img({
-				resource: src,
-			});
-			img.on('load', () => {
-				console.log("img "+index + " success")
-				resolve(img);
-			});
-
-			img.on('error', (err) => {
-				reject(err);
-			});
-		});
-	}
-
-	console.log(loadImage('bg'+index));
-	
-	bg.addComponent(new Render({
-		sortableChildren: true,
-		alpha: 1, 
-		zIndex: 6-index,
-	}));
+	bg.addComponent(
+		new Render({
+			sortableChildren: true,
+			alpha: 1,
+			zIndex: 6 - index,
+		})
+	);
 
 	bg.addComponent(img);
-	
 
 	const animation = bg.addComponent(new Transition());
 
@@ -89,12 +72,12 @@ export default async function createBackground(index : number) {
 		],
 		move: [
 			{
-			  name: 'alpha',
-			  component: bg.getComponent(Render),
-			  values: [
-				{ time: 0, value: 1, tween: "linear" },
-				{ time: 1000, value: 0, tween: "linear" },
-			  ],
+				name: 'alpha',
+				component: bg.getComponent(Render),
+				values: [
+					{ time: 0, value: 1, tween: 'linear' },
+					{ time: 1000, value: 0, tween: 'linear' },
+				],
 			},
 		],
 	};

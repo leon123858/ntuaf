@@ -95,7 +95,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/psyTest',
-				element: <PsyTest/>
+				element: <PsyTest />
 			}
 		],
 		errorElement: <ErrorPage />,
