@@ -6,7 +6,7 @@ const FourCircle = () => {
 	const [contents, setContents] = useState([]);
 	const { inBreakPoint, breakPoint } = useContext(BreakPointContext);
 	const [fourCircleClickable, setFourCircleClickable] = useState(false);
-	document.body.style.setProperty('--fourBallOffset', `-${1000 / 2}px`);
+	document.body.style.setProperty('--fourBallOffset', `-${350 / 2}px`);
 
 	window.addEventListener(
 		'scroll',

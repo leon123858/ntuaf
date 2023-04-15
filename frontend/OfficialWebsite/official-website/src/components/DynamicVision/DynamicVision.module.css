@@ -13,3 +13,8 @@
     object-fit: cover;
     width: 100vw;
 }
+.lgDynamicVision{
+    /* background-repeat: no-repeat; */
+    object-fit: cover;
+    width: 100vw;
+}

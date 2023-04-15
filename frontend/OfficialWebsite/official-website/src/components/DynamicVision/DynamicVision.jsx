@@ -12,11 +12,10 @@ const DynamicVision = () => {
 					className={styles.dynamicVision}
 				></img>
 			) : (
-				// <>helo</>
 				<img
 					src='/dynamicVision/lgDynamicVision.gif'
 					alt='dv'
-					className={styles.dynamicVision}
+					className={styles.lgDynamicVision}
 				></img>
 			)}
 		</div>
