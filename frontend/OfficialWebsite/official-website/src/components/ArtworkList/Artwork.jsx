@@ -168,7 +168,7 @@ export const ArtworkImg = ({ data, heartOnClick }) => {
 				</div>
 				<br />
 				<div className={styles.modelImg}>
-					<Image src={data.url} height={400} preview={{src:data.url}}></Image>
+					<Image src={data.url} width='95%' preview={{src:data.url}}></Image>
 				</div>
 				<Text>
 					<br />

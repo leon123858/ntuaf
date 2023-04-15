@@ -36,9 +36,15 @@ code {
 .ant-tabs-tab + .ant-tabs-tab {
 	margin: 0 0 0 55px !important;
 }
+.ant-image-preview-img {
+	width: 90%;
+	object-fit: contain;
+}
 
 @media screen and (max-width: 834px) {
-	.ant-tabs-tab + .ant-tabs-tab {
-		margin: 0 0 0 30px !important;
+
+	.ant-tabs-tab+.ant-tabs-tab {
+		margin: 0 0 0 18px !important;
+
 	}
 }
