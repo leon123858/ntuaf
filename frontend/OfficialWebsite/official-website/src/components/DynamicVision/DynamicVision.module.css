@@ -8,3 +8,8 @@
     margin-top: 0PX;
     /* margin-top: 45PX; */
 }
+.dynamicVision{
+    /* background-repeat: no-repeat; */
+    object-fit: cover;
+    width: 100vw;
+}
