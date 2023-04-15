@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { RightOutlined } from '@ant-design/icons';
 import { BreakPointContext } from '../useBreakPoint';
 import style from './Map.module.css';
@@ -47,22 +47,20 @@ function Map() {
 						</ol>
 					</div>
 				</div>
-				{/* <div
+				<div
 					style={{
 						display: 'flex',
 						justifyContent: 'center',
 						marginBottom: '3rem',
 					}}
 				>
-					<a href="https://lin.ee/ymEZTbB" target="_blank">
-
+					<a href='https://lin.ee/ymEZTbB' target='_blank' rel='noreferrer'>
 						<div
 							className={inBreakPoint ? style.linkButton : style.lgLinkButton}
 						>
 							<p>加入LINE好友開始集點</p>
 							<RightOutlined style={{ fontWeight: '300' }} />
 						</div>
-
 					</a>
 				</div>
 
@@ -88,7 +86,11 @@ function Map() {
 							<li>薄霧書店</li>
 						</ul>
 						（依店名筆畫排序）
-						<a href='https://www.google.com/maps/placelists/list/ggfToSlsSK-j6kSVonMD3A' target="_blank">
+						<a
+							href='https://www.google.com/maps/placelists/list/ggfToSlsSK-j6kSVonMD3A'
+							target='_blank'
+							rel='noreferrer'
+						>
 							<div className={style.lgBtn}>
 								<span className={style.colorful}>合作店家地圖清單</span>
 								<RightOutlined
