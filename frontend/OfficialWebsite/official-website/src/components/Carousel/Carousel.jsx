@@ -6,8 +6,12 @@ import DoubleSideCard from './DoubleSideCard.jsx';
 import LgDoubleSideCard from './LgDoubleSideCard.jsx';
 import { getRecommendEvents } from '@leon123858/ntuaf-sdk';
 import { BreakPointContext } from '../../useBreakPoint';
-import { Col, Divider, Row } from 'antd';
-const DemoBox = (props) => <p style={{height:`${props.value}px`, backgroundColor:"red"}}>{props.value}</p>;
+// import { Col, Divider, Row } from 'antd';
+// const DemoBox = (props) => (
+// 	<p style={{ height: `${props.value}px`, backgroundColor: 'red' }}>
+// 		{props.value}
+// 	</p>
+// );
 //info for sample data
 const defaultContent = {
 	imageUrl: '',
@@ -126,50 +130,58 @@ const Carousel = () => {
 			{inBreakPoint ? (
 				<div className={style.App}>
 					<div className={style.headerWrapper}>
-					<div className={flip?"":style.headerActive}>
-						<h1
-							className={style.header}
-							onClick={() => {
-								setFlip(false);
-							}}
-							style={
-								flip
-									? {}
-									: {
-										textDecorationColor: 'black',
-										color: 'black',
-									}
-							}
-						>
-							近 期 活 動
-						</h1>
+						<div className={flip ? '' : style.headerActive}>
+							<h1
+								className={style.header}
+								onClick={() => {
+									setFlip(false);
+								}}
+								style={
+									flip
+										? {}
+										: {
+												textDecorationColor: 'black',
+												color: 'black',
+										  }
+								}
+							>
+								近 期 活 動
+							</h1>
 						</div>
-						<div className={flip?style.headerActive:""}>
-						<h1
-							className={style.header}
-							onClick={() => {
-								setFlip(true);
-							}}
-							style={
-								flip
-									? {
-										textDecorationColor: 'black',
-										color: 'black',
-									}
-									: {
-										color: 'gray'
-									}
-							}
-						>
-							常 設 展 覽
-						</h1>
+						<div className={flip ? style.headerActive : ''}>
+							<h1
+								className={style.header}
+								onClick={() => {
+									setFlip(true);
+								}}
+								style={
+									flip
+										? {
+												textDecorationColor: 'black',
+												color: 'black',
+										  }
+										: {
+												color: 'gray',
+										  }
+								}
+							>
+								常 設 展 覽
+							</h1>
 						</div>
 					</div>
 					<div className={style.prev} onClick={moveLeft}>
-						<img className={style.imgArrow} src="https://drive.google.com/uc?export=view&id=1dOLnrGzRRmbbNdfx7QGaVoJcpEFzYPJ4"></img>
+						<img
+							alt='arrowLeft'
+							className={style.imgArrow}
+							src='https://drive.google.com/uc?export=view&id=1dOLnrGzRRmbbNdfx7QGaVoJcpEFzYPJ4'
+						></img>
 					</div>
 					<div className={style.next} onClick={moveRight}>
-						<img className={style.imgArrow} src="https://drive.google.com/uc?export=view&id=1a-fv9MscBBAhWxCmMv1B4LYqAjtPwfj2"></img>
+						<img
+							alt='arrowRight'
+							className={style.imgArrow}
+							src='https://drive.google.com/uc?export=view&id=1a-fv9MscBBAhWxCmMv1B4LYqAjtPwfj2'
+						></img>
 					</div>
 					<div className={style.carouselWrapper} {...handlers}>
 						{slides.length === 0 ? (
@@ -187,8 +199,7 @@ const Carousel = () => {
 			) : (
 				<div className={style.lgApp}>
 					<div className={style.lgHeaderWrapper}>
-						<div className={flip?"":style.headerActive}
-							>
+						<div className={flip ? '' : style.headerActive}>
 							<h1
 								className={style.lgHeader}
 								onClick={() => {
@@ -197,19 +208,19 @@ const Carousel = () => {
 								style={
 									flip
 										? {
-											color: 'gray'
-										}
+												color: 'gray',
+										  }
 										: {
-											// textDecoration: 'underline',
-											textDecorationColor: 'black',
-											color: 'black',
-										}
+												// textDecoration: 'underline',
+												textDecorationColor: 'black',
+												color: 'black',
+										  }
 								}
 							>
 								近 期 活 動
 							</h1>
 						</div>
-						<div className={flip?style.headerActive:""}>
+						<div className={flip ? style.headerActive : ''}>
 							<h1
 								className={style.lgHeader}
 								onClick={() => {
@@ -218,24 +229,31 @@ const Carousel = () => {
 								style={
 									flip
 										? {
-											textDecorationColor: 'black',
-											color: 'black',
-										}
+												textDecorationColor: 'black',
+												color: 'black',
+										  }
 										: {
-											color: 'gray'
-										}
+												color: 'gray',
+										  }
 								}
 							>
 								常 設 展 覽
 							</h1>
 						</div>
-
 					</div>
 					<div className={style.lgPrev} onClick={moveLeft}>
-						<img className={style.imgArrow} src="https://drive.google.com/uc?export=view&id=1dOLnrGzRRmbbNdfx7QGaVoJcpEFzYPJ4"></img>
+						<img
+							alt='arrowLeft'
+							className={style.imgArrow}
+							src='https://drive.google.com/uc?export=view&id=1dOLnrGzRRmbbNdfx7QGaVoJcpEFzYPJ4'
+						></img>
 					</div>
 					<div className={style.lgNext} onClick={moveRight}>
-						<img className={style.imgArrow} src="https://drive.google.com/uc?export=view&id=1a-fv9MscBBAhWxCmMv1B4LYqAjtPwfj2"></img>
+						<img
+							alt='arrowRight'
+							className={style.imgArrow}
+							src='https://drive.google.com/uc?export=view&id=1a-fv9MscBBAhWxCmMv1B4LYqAjtPwfj2'
+						></img>
 					</div>
 					<div className={style.lgCarouselWrapper} {...handlers}>
 						{slides.length === 0 ? (
