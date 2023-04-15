@@ -4,7 +4,7 @@ import { Tabs, Carousel, Button, Image, Spin } from 'antd';
 import { RightOutlined, LeftOutlined } from '@ant-design/icons';
 import { BreakPointContext } from '../../useBreakPoint';
 import { getMembersByDepartment, DEPARTMENT } from '@leon123858/ntuaf-sdk';
-import Hr from '../Hr/Hr';
+// import Hr from '../Hr/Hr';
 
 const departmentNames = [
 	DEPARTMENT.核心團隊,
@@ -133,13 +133,21 @@ const MemberTab = () => {
 						label:
 							curDepartment === departmentName ? (
 								<>
-									<h5 style={{ color: '#000000', fontSize: inBreakPoint ? "16px" : "18px", paddingBottom: '5px', letterSpacing: "0px" }}>
+									<h5
+										style={{
+											color: '#000000',
+											fontSize: inBreakPoint ? '16px' : '18px',
+											paddingBottom: '5px',
+											letterSpacing: '0px',
+										}}
+									>
 										{departmentName}
 									</h5>
 									<div>
 										<hr
 											style={{
-												background: 'linear-gradient(to left, #A9CF59, #E73273, #25499D)',
+												background:
+													'linear-gradient(to left, #A9CF59, #E73273, #25499D)',
 												height: '2px',
 												border: '0px',
 											}}
@@ -147,9 +155,13 @@ const MemberTab = () => {
 									</div>
 								</>
 							) : (
-
-								<h5 style={{ fontSize: inBreakPoint ? "16px" : "18px", paddingBottom: '5px', letterSpacing: "0px" }}>
-
+								<h5
+									style={{
+										fontSize: inBreakPoint ? '16px' : '18px',
+										paddingBottom: '5px',
+										letterSpacing: '0px',
+									}}
+								>
 									{departmentName}
 								</h5>
 							),
