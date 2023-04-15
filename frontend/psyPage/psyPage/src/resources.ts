@@ -2,34 +2,12 @@ import { RESOURCE_TYPE } from '@eva/eva.js';
 
 export default [
 	{
-		name: 'basketball',
-		type: RESOURCE_TYPE.IMAGE,
-		src: {
-			image: {
-				type: 'png',
-				url: './statics/TB1WF1R0Ez1gK0jSZLeXXb9kVXa-99-99.png',
-			},
-		},
-		preload: false,
-	},
-	{
-		name: 'backboard',
-		type: RESOURCE_TYPE.IMAGE,
-		src: {
-			image: {
-				type: 'png',
-				url: './statics/TB1a11YoRFR4u4jSZFPXXanzFXa-109-263.png',
-			},
-		},
-		preload: false,
-	},
-	{
 		name: 'bg0',
 		type: RESOURCE_TYPE.IMAGE,
 		src: {
 			image: {
 				type: 'png',
-				url: './statics/心理測驗(題目)_0.png',
+				url: './statics/心理測驗(題目)_0.jpg',
 			},
 		},
 		preload: false,
@@ -40,7 +18,7 @@ export default [
 		src: {
 			image: {
 				type: 'png',
-				url: './statics/心理測驗(題目)_1.png',
+				url: './statics/心理測驗(題目)_1.jpg',
 			},
 		},
 		preload: false,
@@ -51,7 +29,7 @@ export default [
 		src: {
 			image: {
 				type: 'png',
-				url: './statics/心理測驗(題目)_2.png',
+				url: './statics/心理測驗(題目)_2.jpg',
 			},
 		},
 		preload: false,
@@ -62,7 +40,7 @@ export default [
 		src: {
 			image: {
 				type: 'png',
-				url: './statics/心理測驗(題目)_3.png',
+				url: './statics/心理測驗(題目)_3.jpg',
 			},
 		},
 		preload: false,
@@ -73,7 +51,7 @@ export default [
 		src: {
 			image: {
 				type: 'png',
-				url: './statics/心理測驗(題目)_4.png',
+				url: './statics/心理測驗(題目)_4.jpg',
 			},
 		},
 		preload: false,
@@ -84,7 +62,7 @@ export default [
 		src: {
 			image: {
 				type: 'png',
-				url: './statics/心理測驗(題目)_5.png',
+				url: './statics/心理測驗(題目)_5.jpg',
 			},
 		},
 		preload: false,
@@ -95,7 +73,7 @@ export default [
 		src: {
 			image: {
 				type: 'png',
-				url: './statics/心理測驗(結果)_A.png',
+				url: './statics/心理測驗(結果)_A.jpg',
 			},
 		},
 		preload: false,
@@ -106,7 +84,7 @@ export default [
 		src: {
 			image: {
 				type: 'png',
-				url: './statics/心理測驗(結果)_B.png',
+				url: './statics/心理測驗(結果)_B.jpg',
 			},
 		},
 		preload: false,
@@ -117,7 +95,7 @@ export default [
 		src: {
 			image: {
 				type: 'png',
-				url: './statics/心理測驗(結果)_C.png',
+				url: './statics/心理測驗(結果)_C.jpg',
 			},
 		},
 		preload: false,
