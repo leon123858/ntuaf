@@ -140,7 +140,7 @@ const Header = () => {
 		};
 		window.addEventListener('scroll', function () {
 			if (!inBreakPoint) {
-				const menuE = document.getElementsByClassName(styles.menu)[0];
+				const menuE = document.getElementById("menu");
 				const headerE = document.getElementsByClassName(
 					styles.headerWrapper
 				)[0];
@@ -205,6 +205,7 @@ const Header = () => {
 								items={items}
 								disabledOverflow={true}
 								className={styles.menu}
+								id='menu'
 							/>
 						</div>
 						<div>

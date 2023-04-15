@@ -18,6 +18,7 @@
 	padding: 0 2%;
 	height: 80px;
 	transition: all 1s;
+	width:100vw;
 }
 
 .menuWrapper {
@@ -104,7 +105,7 @@
 }
 :global(.ant-menu-item.ant-menu-item-only-child) {
 	/* make colorfule hover effect on header text */
-	background-color: lightblue !important;
+	/* background-color: lightblue !important; */
 	padding: 0px;
 	margin: 0px;
 	padding-inline:0px;
