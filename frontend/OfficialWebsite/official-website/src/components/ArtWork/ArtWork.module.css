@@ -194,7 +194,7 @@
     width: 72vw;
     margin-top: 50px;
     font-size: 14px;
-    display: none;
+    /* display: none; */
 }
 
 .sm .img {
