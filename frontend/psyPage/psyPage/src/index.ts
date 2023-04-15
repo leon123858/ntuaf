@@ -615,3 +615,19 @@ resource.on(LOAD_EVENT.COMPLETE, async () => {
 });
 
 resource.preload();
+
+
+const getDeviceType = async() => {
+	const ua = navigator.userAgent;
+	if (
+	  /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+		ua
+	  )
+	) {
+		await load_game();
+		return "mobile";
+	}
+};
+
+getDeviceType();
+  
