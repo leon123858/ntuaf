@@ -18,7 +18,7 @@ const FrontCard = ({ FrontCardContent, setFlip, closeModel}) => {
         <div className={styles.flipButton}>
         <Image src={"/toSeeMoreTextArrow.svg"} alt={"loading"}
                     preview={false}
-                    fallback='https://images.squarespace-cdn.com/content/v1/5452d441e4b0c188b51fef1a/1615326541809-TW01PVTOJ4PXQUXVRLHI/male-orange-tabby-cat.jpg?format=600w'
+                    fallback='/loading.jpg'
                     rel="preload">
         </Image>
         </div>
@@ -30,7 +30,7 @@ const FrontCard = ({ FrontCardContent, setFlip, closeModel}) => {
         <div className={styles.flipButton}>
         <Image src={"/toSeeMoreTextArrow.svg"} alt={"loading"}
                     preview={false}
-                    fallback='https://images.squarespace-cdn.com/content/v1/5452d441e4b0c188b51fef1a/1615326541809-TW01PVTOJ4PXQUXVRLHI/male-orange-tabby-cat.jpg?format=600w'
+                    fallback='/loading.jpg'
                     rel="preload">
         </Image>
         </div>

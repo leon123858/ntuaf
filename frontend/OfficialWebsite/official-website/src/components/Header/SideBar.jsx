@@ -93,7 +93,7 @@ const LinkGroup = ({ setSideBarActive }) => {
 					<div className={styles.collapseItemWrapper}>
 						<Link
 							className={styles.subLink}
-							to={'/artwork'}
+							to={'/map'}
 							onClick={handleClickLink}
 						>
 							<div className={styles.chineseSubTab}>尋洄地圖</div>
@@ -101,13 +101,17 @@ const LinkGroup = ({ setSideBarActive }) => {
 						</Link>
 						<Link
 							className={styles.subLink}
-							to={'/map'}
+							to={'/psytest'}
 							onClick={handleClickLink}
 						>
 							<div className={styles.chineseSubTab}>心理測驗</div>
 							<div className={styles.engSubTab}>Reply 2023</div>
 						</Link>
-						<Link className={styles.subLink} to={'/'} onClick={handleClickLink}>
+						<Link
+							className={styles.subLink}
+							to={'/artwork'}
+							onClick={handleClickLink}
+						>
 							<div className={styles.chineseSubTab}>洄溯展覽暨比賽</div>
 							<div className={styles.engSubTab}>Throwback</div>
 						</Link>
