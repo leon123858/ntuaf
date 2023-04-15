@@ -32,7 +32,7 @@ export default [
       image: {
         type: 'png',
         url:
-          './statics/心理測驗(題目)_0.png',
+          './statics/心理測驗(題目)_0.jpg',
       },
     },
     preload: true,
@@ -44,7 +44,7 @@ export default [
       image: {
         type: 'png',
         url:
-          './statics/心理測驗(題目)_1.png',
+          './statics/心理測驗(題目)_1.jpg',
       },
     },
     preload: true,
@@ -56,7 +56,7 @@ export default [
       image: {
         type: 'png',
         url:
-          './statics/心理測驗(題目)_2.png',
+          './statics/心理測驗(題目)_2.jpg',
       },
     },
     preload: true,
@@ -68,7 +68,7 @@ export default [
       image: {
         type: 'png',
         url:
-          './statics/心理測驗(題目)_3.png',
+          './statics/心理測驗(題目)_3.jpg',
       },
     },
     preload: true,
@@ -80,7 +80,7 @@ export default [
       image: {
         type: 'png',
         url:
-          './statics/心理測驗(題目)_4.png',
+          './statics/心理測驗(題目)_4.jpg',
       },
     },
     preload: true,
@@ -92,7 +92,7 @@ export default [
       image: {
         type: 'png',
         url:
-          './statics/心理測驗(題目)_5.png',
+          './statics/心理測驗(題目)_5.jpg',
       },
     },
     preload: true,
@@ -104,7 +104,7 @@ export default [
       image: {
         type: 'png',
         url:
-          './statics/心理測驗(結果)_A.png',
+          './statics/心理測驗(結果)_A.jpg',
       },
     },
     preload: true,
@@ -116,7 +116,7 @@ export default [
       image: {
         type: 'png',
         url:
-          './statics/心理測驗(結果)_B.png',
+          './statics/心理測驗(結果)_B.jpg',
       },
     },
     preload: true,
@@ -128,7 +128,7 @@ export default [
       image: {
         type: 'png',
         url:
-          './statics/心理測驗(結果)_C.png',
+          './statics/心理測驗(結果)_C.jpg',
       },
     },
     preload: true,

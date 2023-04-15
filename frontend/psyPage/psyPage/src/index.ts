@@ -603,7 +603,7 @@ async function addchild(index : number){
 	setTimeout(()=>{
 		console.log("index = ",index);
 		game.scene.addChild(backgroundList[index].background);
-	},10000)
+	},200)
 }
 
 
@@ -614,7 +614,7 @@ let btns = [...btnLists[btn_index]].map( (value,_)=> createBtn(value))
 
 setTimeout(()=>{
 	btns.forEach((btn) => game.scene.addChild(btn.button));
-},10000)
+},500)
 
 }
 
@@ -624,7 +624,4 @@ resources.forEach((item,_)=>{
 		resource : item.name,
 	})
 })
-setTimeout(()=>{
-	console.log("delay");
-	load_game()
-},5000)
+load_game()
