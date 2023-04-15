@@ -86,9 +86,9 @@ const items = [
 			{
 				label: (
 					<div className={styles.subMenu}>
-						<Link to={'/artwork'}>
+						<Link to={'/map'}>
 							<div className={styles.chinesTabName}>尋洄地圖</div>
-							<div className={styles.engTabName}>Map of Art Fest</div>
+							<div className={styles.engTabName}>Map of ArtFest</div>
 						</Link>
 					</div>
 				),
@@ -97,7 +97,7 @@ const items = [
 			{
 				label: (
 					<div className={styles.subMenu}>
-						<Link to={'/map'}>
+						<Link to={'/psytest'}>
 							<div className={styles.chinesTabName}>心理測驗</div>
 							<div className={styles.engTabName}>Reply 2023</div>
 						</Link>
@@ -108,7 +108,7 @@ const items = [
 			{
 				label: (
 					<div className={styles.subMenu}>
-						<Link to={'/psychoTest'}>
+						<Link to={'/artwork'}>
 							<div className={styles.chinesTabName}>洄溯展覽暨比賽</div>
 							<div className={styles.engTabName}>Throwback</div>
 						</Link>

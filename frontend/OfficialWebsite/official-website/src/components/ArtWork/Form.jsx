@@ -173,7 +173,7 @@ const FormDisabledDemo = () => {
 								<br></br>
 								2.作品內容需與主題相關，文字內容得以任何形式呈現。
 								<br></br>
-								3.不得包含髒話、色情、裸露、猥褻、暴力及其他具爭議性或不當題材內容。
+								3.不得包含色情、裸露、猥褻、暴力及其他具爭議性或不當題材內容。
 								<br></br>
 								4.不得抄襲。
 							</span>
@@ -205,13 +205,13 @@ const FormDisabledDemo = () => {
 							style={{ display: !isLogin ? '' : 'none', marginBottom: '15px' }}
 							message='Hey yo!'
 							description='您需要登入才能上傳作品'
-							type='warning'
+							type='info'
 							showIcon
 							closable
 						/>
 						<div className={style.formTitle}>留下你的創作吧！</div>
 						<Form.Item
-							label='姓名/暱稱'
+							label='姓名／暱稱'
 							rules={[{ required: true, message: '請輸入您的名字' }]}
 							name='name'
 							// style={{ display:'flex',alignSelf: 'center' }}
@@ -250,7 +250,7 @@ const FormDisabledDemo = () => {
 
 						<Form.Item
 							name='url'
-							label='上傳檔案：（XXX檔，？像素以上，？mb以內）'
+							label='上傳檔案（限 jpg, jpeg, png 檔；大小限制 10MB 以內）'
 							value=''
 							getValueFromEvent={normFile}
 							rules={[
