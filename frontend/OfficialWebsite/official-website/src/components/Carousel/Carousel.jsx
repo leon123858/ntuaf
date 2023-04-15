@@ -6,7 +6,8 @@ import DoubleSideCard from './DoubleSideCard.jsx';
 import LgDoubleSideCard from './LgDoubleSideCard.jsx';
 import { getRecommendEvents } from '@leon123858/ntuaf-sdk';
 import { BreakPointContext } from '../../useBreakPoint';
-
+import { Col, Divider, Row } from 'antd';
+const DemoBox = (props) => <p style={{height:`${props.value}px`, backgroundColor:"red"}}>{props.value}</p>;
 //info for sample data
 const defaultContent = {
 	imageUrl: '',
@@ -104,7 +105,22 @@ const Carousel = () => {
 			setActivateImg(activateImg - 1);
 		},
 	});
-
+	// return (
+	// 	<Row >
+	// 		<Col span={4}>
+	// 		<DemoBox value={100}>col-4</DemoBox>
+	// 		</Col>
+	// 		<Col span={4}>
+	// 		<DemoBox value={50}>col-4</DemoBox>
+	// 		</Col>
+	// 		<Col span={4}>
+	// 		<DemoBox value={120}>col-4</DemoBox>
+	// 		</Col>
+	// 		<Col span={4}>
+	// 		<DemoBox value={80}>col-4</DemoBox>
+	// 		</Col>
+	//   </Row>
+	// )
 	return (
 		<div className={style.carouselComponentWrapper}>
 			{inBreakPoint ? (
@@ -174,7 +190,7 @@ const Carousel = () => {
 						<div className={flip?"":style.headerActive}
 							>
 							<h1
-								className={style.header}
+								className={style.lgHeader}
 								onClick={() => {
 									setFlip(false);
 								}}
@@ -195,7 +211,7 @@ const Carousel = () => {
 						</div>
 						<div className={flip?style.headerActive:""}>
 							<h1
-								className={style.header}
+								className={style.lgHeader}
 								onClick={() => {
 									setFlip(true);
 								}}

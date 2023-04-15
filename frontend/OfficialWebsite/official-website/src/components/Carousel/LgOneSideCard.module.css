@@ -3,29 +3,23 @@ a {
 	color: black;
 }
 .oneSideCard {
-	display: flex;
+	display:flex;
 	flex-direction: column;
 	justify-content: space-evenly;
 	background-color: whitesmoke;
 	width:100%;
 	height:100%;
-	align-items: center;
+	/* align-items: center; */
 
-	/* margin: auto; */
-	/* width:80%; */
-	/* min-width: 100%; */
-	/* max-width: 300px; */
-	/* padding: 10px; */
-	/* height: 70%; */
+
 	border-radius: 10px;
-	/* border: solid 0.5px; */
-	/* height: inherit; */
 	box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.25);
 	padding:10px 30px;
+	/* position:relative; */
 }
 .imageWrapper {
 	/* border: solid 2px; */
-	height: 310px;
+	/* height: 310px; */
 	width: 100%;
 	border-radius: inherit;
 	/* padding: 10px; */
@@ -44,14 +38,19 @@ img {
 	/* border-radius: inherit; */
 }
 .disc {
-	flex-grow: 1;
-	display: flex;
-	flex-direction: column;
+	/* flex-grow: 1; */
+	/* display: flex;
+	flex-direction: column; */
 	border-radius: inherit;
-	height: 100%;
+	/* height: 100%; */
 	color: #7A7979;
 	font-weight: 400;
-	line-height:23.68px;
+	line-height:20px;
+	font-size: 12px;
+	letter-spacing: 1px;
+	/* background-color: blue; */
+	/* position: relative;
+	bottom:0px; */
 	/* text-overflow: ellipsis; */
 	/* white-space: nowrap; */
 	/* padding:10px; */
@@ -61,33 +60,54 @@ img {
 }
 .headerWrapper {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	justify-content: space-between;
 	width:100%;
+	align-items: center;
+
+	padding: auto 10px;
 
 }
 .header{
 	text-align: center;
 	width:100%;
-	font-size: 24px;
+	font-size: 22px;
 	color: #25499D;
+	font-weight: 500;
+	letter-spacing: 1px;
+
 }
 .date{
 	text-align: end;
 	width:100%;
 	color:#25499D;
+	font-size: 14px;
+	letter-spacing: 1px;
 }
 
 .contentWrapper{
-	height: 25%;
+	/* height: 25%; */
 	width: 100%;
-	overflow: hidden;
-	padding: 5px;
-	/* padding: */
-	/* display: flex; */
-	/* flex-direction: column; */
-	/* justify-content: space-evenly; */
-	/* padding:10px; */
-	/* align-items: center; */
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	position:relative
+	/* overflow: hidden; */
+	/* background-color: red; */
 
+	/* padding: 14px 0px 0px 5px; */
+}
+.nextImgWrapper{
+	/* position: relative;
+	padding: 0px 0px;
+	height:100%;
+	width:100%; */
+}
+.nextImg{
+	/* position: absolute; */
+	/* bottom: -10px; */
+	/* right:-10px */
+	/* width: 80%; */
+
+	
 }

@@ -21,9 +21,9 @@ const OneSideCard = ({ cardContent }) => {
 					/>
 				</div>
 				<h4 className={styles.date}>{cardContent.date}</h4>
-				<p className={styles.disc}>
+				<div className={styles.disc}>
 					{content}
-				</p>
+				</div>
 			</div>
 		</Link>
 	);

@@ -6,11 +6,11 @@ a {
 	display: flex;
 	flex-direction: column;
 	background-color: white;
-	justify-content: space-between;
+	/* justify-content: space-evenly; */
 	margin: auto;
 	width:100%;
 	height:100%;
-	padding:30px 10px;
+	padding:10px 10px;
 	border-radius: 10px;
 	border: solid 0.2px;
 	/* height: inherit; */
@@ -19,28 +19,43 @@ a {
 .imageWrapper {
 	/* border: solid 2px; */
 	border-radius: inherit;
+	padding: 5px 0px;
 }
 
 .disc {
 	color: #7A7979;
 	font-weight: 400;
 	line-height:23.68px;
+	font-size: 12px;
+	/* height: 100%; */
+	vertical-align: bottom;
+	padding: 0px 10px;
+	text-align: justify;
+	text-justify: inter-word;
+	margin:auto 0px;
+	line-height: 20px;
+	letter-spacing: 1px;
 }
 .date{
 	text-align: end;
 	width:100%;
 	color:#262483;
 	font-weight: 400;
+	font-size: 12px;
+	padding: 0px 10px;
+	letter-spacing: 1px;;
 }
 .header{
 	text-align: center;
 	width:100%;
-	font-size: 14px;
+	font-size: 16px;
 	color: #262483;
 	font-weight: 500;
+	letter-spacing: 1px;;
 }
 .headerWrapper {
 	display: flex;
 	justify-content: space-between;
+	padding:18px 28px;
 }
 
