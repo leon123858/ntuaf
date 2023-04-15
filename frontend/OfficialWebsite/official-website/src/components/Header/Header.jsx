@@ -146,19 +146,26 @@ const Header = () => {
 				)[0];
 				const logoE = document.getElementsByClassName(styles.box)[0];
 
+				const iconE = document.getElementsByClassName(styles.iconContainer)[0];
 				let offsetChangeHeader = 10;
 				let scrollpos = window.scrollY;
 				add_class_on_scroll(logoE, styles.boxS);
 				if (scrollpos > offsetChangeHeader) {
 					remove_class_on_scroll(menuE, styles.menu);
+					remove_class_on_scroll(iconE, styles.boxS)
 					add_class_on_scroll(menuE, styles.scrollMenu);
 					add_class_on_scroll(headerE, styles.scrollHeader);
 					remove_class_on_scroll(logoE, styles.boxS);
+					
+					
 				} else {
 					remove_class_on_scroll(menuE, styles.scrollMenu);
 					remove_class_on_scroll(headerE, styles.scrollHeader);
+					add_class_on_scroll(iconE, styles.boxS)
 					add_class_on_scroll(menuE, styles.menu);
 					add_class_on_scroll(logoE, styles.boxS);
+
+					
 				}
 			}
 		});
@@ -173,7 +180,7 @@ const Header = () => {
 
 				{inBreakPoint ? (
 					<div
-						className={styles.iconContainer}
+						className={`${styles.iconContainer}`}
 						onClick={() => {
 							setSideBarActive(!sideBarActive);
 						}}

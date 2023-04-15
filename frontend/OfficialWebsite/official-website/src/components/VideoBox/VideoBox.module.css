@@ -13,7 +13,8 @@
   padding-top: 50px;
   font-weight: 500;
   margin-bottom: 32px;
-  text-align: left
+  text-align: left;
+  letter-spacing: 1px;
 }
 
 .content {
