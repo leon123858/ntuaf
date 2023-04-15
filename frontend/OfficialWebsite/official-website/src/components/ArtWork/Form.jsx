@@ -250,7 +250,7 @@ const FormDisabledDemo = () => {
 
 						<Form.Item
 							name='url'
-							label='上傳檔案：（XXX檔，？像素以上，？mb以內）'
+							label='上傳檔案（限 jpg, jpeg, png 檔；大小限制 10MB 以內）'
 							value=''
 							getValueFromEvent={normFile}
 							rules={[
