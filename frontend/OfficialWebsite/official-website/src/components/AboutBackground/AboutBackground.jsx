@@ -8,6 +8,7 @@ const AboutBackground = () => {
 			<img
 				src={inBreakPoint ? '/about/環-手機版.svg' : '/about/環.svg'}
 				alt='BackGround'
+				style={{ width: '100%' }}
 			/>
 		</div>
 	);
