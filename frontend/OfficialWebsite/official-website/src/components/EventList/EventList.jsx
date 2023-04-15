@@ -106,8 +106,8 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 					: '#25499D',
 				marginBottom: '45px',
 			}}
-      
-			cover={
+			bodyStyle={{ padding : '30px 44px 20px 44px' ,  height : 138 }}
+			cover={ 
 				<div style={{ height: '118px' }}>
 					<EventImg
 						tagName={tagName}
@@ -126,9 +126,9 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
 		>
-			<Meta
-				title={
-					<span
+			<div className={style.meta}>
+	
+					<p
 						style={{
 							fontSize: '16px',
 							fontWeight: '450',
@@ -141,10 +141,9 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 						}}
 					>
 						{title}
-					</span>
-				}
-				description={
-					<span
+					</p>
+				
+					<p
 						style={{
 							fontSize: '14px',
 							color: isHovered
@@ -153,13 +152,12 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 								? '#A9CF59'
 								: '#25499D',
 							letterSpacing: '2px',
+							marginTop: 'auto 0',
 						}}
 					>
 						{date}
-					</span>
-				}
-				className={style.meta}
-			/>
+					</p>
+			</div>
 		</Card>
 	);
 };
