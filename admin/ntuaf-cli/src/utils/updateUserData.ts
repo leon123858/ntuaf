@@ -10,9 +10,28 @@
  * step5. 所有 tmpLike 歸 0 (for in Array 該 await await)
  */
 
-import { UserTmpData } from '@leon123858/ntuaf-sdk';
+import { ARTWORK_TYPE, Artwork, UserTmpData } from '@leon123858/ntuaf-sdk';
 import { firestore } from 'firebase-admin';
-import { db } from '../init';
+import { db, storage } from '../init';
+import fs from 'fs/promises';
+import { randomUUID } from 'crypto';
+
+/**
+ * Executes a shell command and return it as a Promise.
+ * @param cmd {string}
+ * @return {Promise<string>}
+ */
+function execShellCommand(cmd) {
+	const exec = require('child_process').exec;
+	return new Promise((resolve, reject) => {
+		exec(cmd, (error, stdout, stderr) => {
+			if (error) {
+				console.warn(error);
+			}
+			resolve(stdout ? stdout : stderr);
+		});
+	});
+}
 
 const createFakeTmpData = async () => {
 	// get all artwork id
@@ -96,9 +115,65 @@ const updateArtworkLike = async () => {
 	}
 };
 
+const compressNewArtworkImage = async () => {
+	const newArtworks = await db
+		.collection('Artworks')
+		.where('originUrl', '==', '')
+		.where('type', '!=', ARTWORK_TYPE.PURE_TEXT)
+		.get();
+	if (newArtworks.size === 0) {
+		console.log('new image artwork count is zero');
+		return;
+	}
+	await fs.mkdir('./tmp', { recursive: true });
+	newArtworks.forEach(async (doc) => {
+		const tmpFileName = randomUUID();
+		let path = `./tmp/${tmpFileName}`;
+		const data = doc.data() as Artwork;
+		const file = await fetch(data.url).then((result) => result.blob());
+		const preBuffer = Buffer.from(await file.arrayBuffer());
+		if (file.type === 'image/png') {
+			path += '.png';
+		} else if (file.type === 'image/jpeg') {
+			path += '.jpg';
+		} else {
+			console.log(`image type of ${doc.id} error`);
+			return;
+		}
+		await fs.writeFile(path, preBuffer);
+		await execShellCommand(`optimizt ${path}`);
+		const newImage = await fs.readFile(path);
+		const remoteFile = storage.bucket().file(`preview/${doc.id}`);
+		const stream = remoteFile.createWriteStream({
+			contentType: file.type,
+		});
+		stream.on('error', (err) => {
+			throw `upload to cloud storage for ${doc.id} error: ${err.message}`;
+		});
+		stream.end(newImage, async () => {
+			const newUrl = (
+				await remoteFile.getSignedUrl({
+					action: 'read',
+					expires: '01-01-2030',
+				})
+			)[0];
+			await db
+				.collection('Artworks')
+				.doc(doc.id)
+				.update({
+					url: newUrl,
+					originUrl: data.url,
+				} as Pick<Artwork, 'url' | 'originUrl'>);
+			await fs.rm(path);
+			return;
+		});
+	});
+};
+
 export {
 	createFakeTmpData,
 	deleteAllUserTmpData,
 	setAllTmpDataAsInit,
 	updateArtworkLike,
+	compressNewArtworkImage,
 };

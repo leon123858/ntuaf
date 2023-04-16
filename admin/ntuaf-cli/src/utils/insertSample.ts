@@ -65,6 +65,7 @@ const insertArtwork = async () => {
 			like: Math.floor(Math.random() * likeMax),
 			tmpLike: Math.floor(Math.random() * tmpLiktMax),
 			artworkName: 'name_' + uuidv4(),
+			originUrl: '',
 		};
 		const res = await db
 			.collection('Artworks')
