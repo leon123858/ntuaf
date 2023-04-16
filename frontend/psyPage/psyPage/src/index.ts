@@ -637,6 +637,6 @@ const getDeviceType = async() => {
 		//window.history.go(-1);
 	}
 };
-load_game();
+//load_game();
 getDeviceType();
   
