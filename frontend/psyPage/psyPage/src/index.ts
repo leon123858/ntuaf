@@ -661,7 +661,7 @@ const getDeviceType = async() => {
 	}
 	else{
 		alert("請使用手機")
-		//window.history.go(-1);
+		window.history.go(-1);
 	}
 };
 //load_game();
