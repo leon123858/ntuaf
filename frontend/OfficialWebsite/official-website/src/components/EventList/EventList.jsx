@@ -152,7 +152,7 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 								? '#A9CF59'
 								: '#25499D',
 							letterSpacing: '2px',
-							marginTop: 'auto 0',
+							marginTop: '13px',
 						}}
 					>
 						{date}
