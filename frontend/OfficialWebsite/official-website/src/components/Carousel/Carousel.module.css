@@ -47,6 +47,9 @@
 
 .headerActive {
 	border-bottom: 2px solid;
+	border-top: 0px;
+	border-right: 0px;
+	border-left: 0px;
 	border-image: linear-gradient(to left, #a9cf59, #e73273, #25499d) 3;
 	padding: 0px 0px 10px 0px;
 }
