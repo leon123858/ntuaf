@@ -1,6 +1,6 @@
 import { db } from '../../init';
 import moment from 'moment';
-import { Event } from '@leon123858/ntuaf-sdk';
+import { EVENT_TYPE, Event } from '@leon123858/ntuaf-sdk';
 const { FieldValue } = require('firebase-admin/firestore');
 
 const createDateString = (start: number, end: number) => {
@@ -10,33 +10,47 @@ const createDateString = (start: number, end: number) => {
 	return `${moment(start).format('MM/DD')}-${moment(end).format('MM/DD')}`;
 };
 
+function randomNoRepeats(array: Event[]) {
+	let copy = array.slice(0);
+	return function () {
+		if (copy.length < 1) {
+			copy = array.slice(0);
+		}
+		const index = Math.floor(Math.random() * copy.length);
+		const item = copy[index];
+		copy.splice(index, 1);
+		return item;
+	};
+}
+
 const transformRegularEvent = async () => {
 	const toDbPath = 'Cache/Events/Recommend';
-	const fromDbPath = 'Cache/RegularEvents/Events';
+	const fromDbPath = 'Events';
 	const id: string = 'always';
 	const key: string = 'data';
+	const maxNumOfEvent = 5;
 	const ref = await db.collection(fromDbPath).get();
 	//info for regular events: transform Cache/RegularEvents/Events document to Cache/Events/Recommend
 	const docRef = db.collection(toDbPath).doc(id);
+	const exhibitions = ref.docs
+		.filter((doc) => (doc.data() as Event).type === EVENT_TYPE.展覽)
+		.map((doc) => doc.data() as Event);
+	const randomExhibitionGet = randomNoRepeats(exhibitions);
 	// initialize list
 	await docRef.set({ [key]: [] });
-	ref.forEach(async (doc) => {
-		// fill list
-		const docRef = db.collection(toDbPath).doc(id);
+	for (let i = 0; i < maxNumOfEvent; i++) {
+		const doc = randomExhibitionGet();
 		await docRef.update({
 			//? what is image and text for an event
 			[key]: FieldValue.arrayUnion({
-				image: doc.data().data.image,
-				text: doc.data().data.title,
-				id: doc.data().data.id,
-				date: createDateString(
-					doc.data().data.startTime,
-					doc.data().data.endTime
-				),
-				info: doc.data().data.blocks[0]?.text || '無資料',
+				image: doc.image,
+				text: doc.title,
+				id: doc.id,
+				date: createDateString(doc.startTime, doc.endTime),
+				info: doc.blocks[0]?.text || '無資料',
 			}),
 		});
-	});
+	}
 };
 
 const transformRecentEvent = async () => {
@@ -53,15 +67,15 @@ const transformRecentEvent = async () => {
 	});
 	const orderedKey = Object.keys(event).sort();
 	const currentTimeStamp = moment().valueOf();
-	const maxNumOfEvent = 10;
+	const maxNumOfEvent = 5;
 	let count = 0;
 	let recentEvents = orderedKey.map((startTime) => {
 		if (
-			parseInt(startTime) > currentTimeStamp ||
-			(parseInt(startTime) < currentTimeStamp &&
-				currentTimeStamp < event[startTime].endTime)
+			(parseInt(startTime) > currentTimeStamp ||
+				(parseInt(startTime) < currentTimeStamp &&
+					currentTimeStamp < event[startTime].endTime)) &&
+			event[startTime].type !== EVENT_TYPE.展覽
 		) {
-			//? what is image and text for an event
 			count++;
 			if (count > maxNumOfEvent) {
 				return;
