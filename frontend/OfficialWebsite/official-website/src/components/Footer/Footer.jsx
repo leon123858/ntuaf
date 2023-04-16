@@ -49,7 +49,7 @@ const Footer = () => {
 					</linearGradient>
 				</svg>
 
-				<div>
+				<div style={{ overflow: 'hidden' }}>
 					<svg
 						width='220'
 						height='60'
