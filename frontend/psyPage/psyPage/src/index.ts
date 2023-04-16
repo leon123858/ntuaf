@@ -72,6 +72,11 @@ async function load_game() {
 
 	const numberOfScene = 6;
 
+	const shareOnFacebook = ()=>{
+		const navUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + 'https://ntuartfest28th.com/psytest';
+		window.open(navUrl , '_blank');
+	}
+
 	const changeScenefunt = async () => {
 		// console.log(backgroundList);
 		// console.log(backgroundList[0])
@@ -96,8 +101,8 @@ async function load_game() {
 				resource: resourceIN,
 			});
 			backgroundList[sceneIndex + 1].background.addComponent(img);
-			//$('#canvas').hide();
-			$('#share').show();
+			// $('#canvas').hide();
+			// $('#share').show();
 		}
 
 		btns.forEach((btn) => {
@@ -114,13 +119,8 @@ async function load_game() {
 			bgSoundList[sceneIndex].play();
 			btns.forEach((btn) => btn.button.remove());
 			btn_index += 1;
-			if (sceneIndex < numberOfScene) {
-				btns = [...btnLists[btn_index]].map((value, _) => createBtn(value));
-				// console.log("index = ",btn_index);
-				// console.log("scene index = ",sceneIndex);
-				btns.forEach((btn) => game.scene.addChild(btn.button));
-				// console.log(btns);
-			}
+			btns = [...btnLists[btn_index]].map((value, _) => createBtn(value));
+			btns.forEach((btn) => game.scene.addChild(btn.button));
 		});
 	};
 
@@ -495,7 +495,7 @@ async function load_game() {
 					},
 				},
 				callback: async () => {
-					A += 1;
+					A += 1.1;
 					await changeScenefunt();
 				},
 			},
@@ -521,7 +521,7 @@ async function load_game() {
 					},
 				},
 				callback: async () => {
-					B += 1;
+					B += 1.1;
 					await changeScenefunt();
 				},
 			},
@@ -547,11 +547,38 @@ async function load_game() {
 					},
 				},
 				callback: async () => {
-					C += 1;
+					C += 1.1;
 					await changeScenefunt();
 				},
 			},
 		],
+		[
+			{
+				name: 'fbshare',
+				name2: 'fbshare',
+				transform: {
+					position: {
+						x: 100,
+						y: 270,
+					},
+					origin: {
+						x: 0.5,
+						y: 0.5,
+					},
+					anchor: {
+						x: 0.5,
+						y: 0.9,
+					},
+					size: {
+						width: 90,
+						height: 80,
+					},
+				},
+				callback: async () => {
+					shareOnFacebook();
+				},
+			},
+		]
 	];
 
 	let btn_index = 0;

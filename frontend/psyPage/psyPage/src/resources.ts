@@ -523,4 +523,15 @@ export default [
 		},
 		preload: false,
 	},
+	{
+		name: 'fbshare',
+		type: RESOURCE_TYPE.IMAGE,
+		src: {
+			image: {
+				type: 'png',
+				url: './statics/free-facebook-icon.png',
+			},
+		},
+		preload: false,
+	},
 ];
