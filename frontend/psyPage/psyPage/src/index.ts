@@ -609,7 +609,7 @@ const game = new Game({
 window.game = game;
 
 resource.on(LOAD_EVENT.COMPLETE, async () => {
-	await load_game();
+	//await load_game();
 	$('#loading').hide();
 	$('#canvas').show();
 });
@@ -618,7 +618,11 @@ resource.preload();
 
 
 const getDeviceType = async() => {
-	const ua = navigator.userAgent;
+	const ua = navigator.userAgent.toLowerCase();
+	console.log((ua))
+	console.log(/Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+		ua
+	  ))
 	if (
 	  /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
 		ua
@@ -626,6 +630,9 @@ const getDeviceType = async() => {
 	) {
 		await load_game();
 		return "mobile";
+	}
+	else{
+		alert("請使用手機")
 	}
 };
 
