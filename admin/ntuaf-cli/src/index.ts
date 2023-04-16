@@ -2,7 +2,7 @@
 import { Socket } from 'net';
 import { assert } from 'console';
 import { Command } from 'commander';
-import { insertMember, insertArtwork, insertEvent } from './utils/insertSample';
+import { insertArtwork, insertEvent } from './utils/insertSample';
 import { deleteCollection } from './utils/deleteSample';
 import {
 	askMode,

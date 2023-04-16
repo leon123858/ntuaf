@@ -20,6 +20,7 @@ export interface Artwork {
 	artworkName: string;
 	email: string;
 	url: string;
+	originUrl: string;
 	text: string;
 	createTime: number;
 	like: number;
