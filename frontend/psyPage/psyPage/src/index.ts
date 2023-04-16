@@ -51,9 +51,8 @@ async function load_game() {
 	let B = 0;
 	let C = 0;
 
-	const bgSound = createBgm();
-	bgSound.play();
-
+	const bgSoundList =[...new Array(7)].map((_,index)=>createBgm(index));
+	
 	// basic setting
 
 	game.scene.addComponent(
@@ -97,7 +96,7 @@ async function load_game() {
 				resource: resourceIN,
 			});
 			backgroundList[sceneIndex + 1].background.addComponent(img);
-			$('#canvas').hide();
+			//$('#canvas').hide();
 			$('#share').show();
 		}
 
@@ -110,8 +109,9 @@ async function load_game() {
 
 		animate.on('finish', async () => {
 			backgroundList[sceneIndex].background.remove();
+			bgSoundList[sceneIndex].stop();
 			sceneIndex += 1;
-
+			bgSoundList[sceneIndex].play();
 			btns.forEach((btn) => btn.button.remove());
 			btn_index += 1;
 			if (sceneIndex < numberOfScene) {
@@ -128,6 +128,7 @@ async function load_game() {
 		[
 			{
 				name: 'startTest',
+				name2: 'startTest',
 				transform: {
 					position: {
 						x: 0,
@@ -572,6 +573,7 @@ async function load_game() {
 	let btns = [...btnLists[btn_index]].map((value, _) => createBtn(value));
 
 	btns.forEach((btn) => game.scene.addChild(btn.button));
+	bgSoundList[0].play()
 }
 
 declare global {
@@ -619,9 +621,9 @@ resource.preload();
 
 const getDeviceType = async() => {
 	const ua = navigator.userAgent;
-	console.log(/Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
-		ua
-	  ))
+	// console.log(/Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+	// 	ua
+	//   ))
 	if (
 	  /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
 		ua
@@ -632,8 +634,9 @@ const getDeviceType = async() => {
 	}
 	else{
 		alert("請使用手機")
+		//window.history.go(-1);
 	}
 };
-
+load_game();
 getDeviceType();
   
