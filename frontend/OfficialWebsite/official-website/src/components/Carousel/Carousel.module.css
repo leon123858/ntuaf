@@ -4,21 +4,17 @@
 .carouselComponentWrapper {
 	width: 100%;
 	max-width: 100%;
-	/* background-color: red; */
+	overflow: hidden;
 }
 .App {
-	/* max-width: 80%; */
-	/* padding:0px 0px 200px 0px; */
 	width: 90%;
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	/* overflow: hidden; */
 	margin: auto;
 }
 .lgApp {
-	/* max-width: 80%; */
 	padding: 0px 0px 200px 0px;
 	width: 90%;
 	position: relative;
@@ -186,13 +182,9 @@
 }
 .lgCarouselWrapper {
 	position: 'relative';
-	/* border: solid 5px blue; */
-	/* background-color: aqua; */
 	width: 80%; /* for position the arrow */
 	max-width: 100%;
 	height: 100vh; /* it determine the height of carousel card */
-	/* margin: '0px auto'; */
-	/* overflow: hidden; */
 }
 
 .LgCardWrapper {
