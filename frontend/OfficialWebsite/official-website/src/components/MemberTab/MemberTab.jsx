@@ -4,7 +4,7 @@ import { Tabs, Carousel, Button, Image, Spin } from 'antd';
 import { RightOutlined, LeftOutlined } from '@ant-design/icons';
 import { BreakPointContext } from '../../useBreakPoint';
 import { getMembersByDepartment, DEPARTMENT } from '@leon123858/ntuaf-sdk';
-import Hr from '../Hr/Hr';
+// import Hr from '../Hr/Hr';
 
 const departmentNames = [
 	DEPARTMENT.核心團隊,
@@ -15,18 +15,19 @@ const departmentNames = [
 ];
 
 const teamImages = {
-	[DEPARTMENT.核心團隊]: ['../../about/team/召部.jpg'],
-	[DEPARTMENT.公關部]: ['../../about/team/學術.jpg'],
+	[DEPARTMENT.核心團隊]: ['../../about/team/召部.jpeg'],
+	[DEPARTMENT.公關部]: ['../../about/team/學術.jpeg'],
 	[DEPARTMENT.策展部]: [
-		'../../about/team/數位.jpg',
-		'../../about/team/活動.jpg',
-		'../../about/team/展覽.jpg',
+		'../../about/team/數位.jpeg',
+		'../../about/team/活動.jpeg',
+		'../../about/team/展覽.jpeg',
+		'../../about/team/學術.jpeg'
 	],
-	[DEPARTMENT.行政部]: ['../../about/team/行政.jpg'],
+	[DEPARTMENT.行政部]: ['../../about/team/行政.jpeg'],
 	[DEPARTMENT.設計部]: [
-		'../../about/team/文宣組.jpg',
-		'../../about/team/主視覺組.JPG',
-		'../../about/team/影像組.JPG',
+		'../../about/team/文宣組.jpeg',
+		'../../about/team/主視覺組.jpeg',
+		'../../about/team/影像組.jpeg',
 	],
 };
 
@@ -132,13 +133,34 @@ const MemberTab = () => {
 					return {
 						label:
 							curDepartment === departmentName ? (
-								<Hr title={departmentName}></Hr>
+								<>
+									<h5
+										style={{
+											color: '#000000',
+											fontSize: inBreakPoint ? '16px' : '18px',
+											paddingBottom: '5px',
+											letterSpacing: '0px',
+										}}
+									>
+										{departmentName}
+									</h5>
+									<div>
+										<hr
+											style={{
+												background:
+													'linear-gradient(to left, #A9CF59, #E73273, #25499D)',
+												height: '2px',
+												border: '0px',
+											}}
+										/>
+									</div>
+								</>
 							) : (
 								<h5
 									style={{
 										fontSize: inBreakPoint ? '16px' : '18px',
 										paddingBottom: '5px',
-										letterSpacing: '2px',
+										letterSpacing: '0px',
 									}}
 								>
 									{departmentName}

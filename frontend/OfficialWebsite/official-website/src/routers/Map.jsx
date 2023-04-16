@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { RightOutlined } from '@ant-design/icons';
 import { BreakPointContext } from '../useBreakPoint';
 import style from './Map.module.css';
@@ -40,7 +40,9 @@ function Map() {
 						<p>注意事項：</p>
 						<ol>
 							<li>於同個店家重複消費可以重複集點</li>
-							<li>貼紙領取時間將於 5/5 公佈於藝術季臉書及IG粉絲專頁</li>
+							<li>
+								貼紙領取時間將於 5/5 公佈於藝術季臉書及 Instagram 粉絲專頁
+							</li>
 							<li>AirTag 抽獎辦法請見 （到時放哎居連結）</li>
 						</ol>
 					</div>
@@ -52,15 +54,16 @@ function Map() {
 						marginBottom: '3rem',
 					}}
 				>
-					<Link to='/Artwork/Upload'>
+					<a href='https://lin.ee/ymEZTbB' target='_blank' rel='noreferrer'>
 						<div
 							className={inBreakPoint ? style.linkButton : style.lgLinkButton}
 						>
-							<p>加入Line好友開始集點</p>
+							<p>加入LINE好友開始集點</p>
 							<RightOutlined style={{ fontWeight: '300' }} />
 						</div>
-					</Link>
+					</a>
 				</div>
+
 				<div
 					className={
 						inBreakPoint ? style.storeContainer : style.lgStoreContainer
@@ -83,10 +86,23 @@ function Map() {
 							<li>薄霧書店</li>
 						</ul>
 						（依店名筆畫排序）
+						<a
+							href='https://www.google.com/maps/placelists/list/ggfToSlsSK-j6kSVonMD3A'
+							target='_blank'
+							rel='noreferrer'
+						>
+							<div className={style.lgBtn}>
+								<span className={style.colorful}>合作店家地圖清單</span>
+								<RightOutlined
+									style={{
+										fontSize: '18px',
+										fontWeight: '200',
+										color: '#25499D',
+									}}
+								/>
+							</div>
+						</a>
 					</div>
-				</div>
-				<div className={style.map}>
-					{/* <iframe src="https://www.google.com.tw/maps/d/embed?mid=1U6jabAde83n_30Ic2gN9e_yhZHk&ehbc=2E312F" width="640" height="480"></iframe> */}
 				</div>
 			</div>
 		</>

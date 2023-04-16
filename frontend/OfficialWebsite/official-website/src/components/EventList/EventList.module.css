@@ -25,13 +25,13 @@
 .eventImg2 {
 	position: relative;
 	top: -20px;
-	left: 2.5%;
+	left: 5px;
 	width: 95% !important;
 }
 .eventImg1 {
 	position: relative;
 	top: -30px;
-	left: 1.5%;
+	left: 5px;
 	width: 95% !important;
 }
 
@@ -57,6 +57,7 @@
 
 .meta {
 	text-align: center;
+	//height : 60px;
 }
 
 .container {

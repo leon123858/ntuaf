@@ -6,7 +6,7 @@ const FourCircle = () => {
 	const [contents, setContents] = useState([]);
 	const { inBreakPoint, breakPoint } = useContext(BreakPointContext);
 	const [fourCircleClickable, setFourCircleClickable] = useState(false);
-	document.body.style.setProperty('--fourBallOffset', `-${1000 / 2}px`);
+	document.body.style.setProperty('--fourBallOffset', `-${350 / 2}px`);
 
 	window.addEventListener(
 		'scroll',
@@ -47,12 +47,12 @@ const FourCircle = () => {
 					'相應展覽活動',
 					'相應展覽活動',
 				],
-				iconTextUrl: '/ball1.svg',
+				iconTextUrl: '/ballText1.svg',
 				iconTextShadowUrl:
 					'https://drive.google.com/uc?export=view&id=1dPoRWcuOP2NI1wovrUYOt1MBgBr7RiOz',
 				frontCardBackgroundUrl: '/cardFront1.svg',
 				backCardBackgroundUrl: '/cardBack1.svg',
-				iconUrl: '/ballText1.svg',
+				iconUrl: '/ball1.svg',
 			},
 			{
 				title: '承',
@@ -65,12 +65,12 @@ const FourCircle = () => {
 					'相應展覽活動',
 					'相應展覽活動',
 				],
-				iconTextUrl: '/ball2.svg',
+				iconTextUrl: '/ballText2.svg',
 				iconTextShadowUrl:
 					'https://drive.google.com/uc?export=view&id=15YCh7qumuRDpWeizxP7bZCyeTEAElY7Q',
 				frontCardBackgroundUrl: '/cardFront2.svg',
 				backCardBackgroundUrl: '/cardBack3.svg',
-				iconUrl: '/ballText2.svg',
+				iconUrl: '/ball2.svg',
 			},
 			{
 				title: '轉',
@@ -83,12 +83,12 @@ const FourCircle = () => {
 					'相應展覽活動',
 					'相應展覽活動',
 				],
-				iconTextUrl: '/ball3.svg',
+				iconTextUrl: '/ballText3.svg',
 				iconTextShadowUrl:
 					'https://drive.google.com/uc?export=view&id=1TosWx1-BkWsnDYws7kxhIDMR2_cAAxVy',
 				frontCardBackgroundUrl: '/cardFront3.svg',
 				backCardBackgroundUrl: '/cardBack3.svg',
-				iconUrl: '/ballText3.svg',
+				iconUrl: '/ball3.svg',
 			},
 			{
 				title: '合',
@@ -101,12 +101,12 @@ const FourCircle = () => {
 					'相應展覽活動',
 					'相應展覽活動',
 				],
-				iconTextUrl: '/ball4.svg',
+				iconTextUrl: '/ballText4.svg',
 				iconTextShadowUrl:
 					'https://drive.google.com/uc?export=view&id=170YQGG6r_wwm26LktQQg9Q-d3-52do5H',
 				frontCardBackgroundUrl: '/cardFront4.svg',
 				backCardBackgroundUrl: '/cardBack4.svg',
-				iconUrl: '/ballText4.svg',
+				iconUrl: '/ball4.svg',
 			},
 		]);
 	}, []);
