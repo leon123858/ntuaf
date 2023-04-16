@@ -618,8 +618,7 @@ resource.preload();
 
 
 const getDeviceType = async() => {
-	const ua = navigator.userAgent.toLowerCase();
-	console.log((ua))
+	const ua = navigator.userAgent;
 	console.log(/Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
 		ua
 	  ))
