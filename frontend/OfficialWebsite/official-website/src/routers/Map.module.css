@@ -29,7 +29,8 @@
 .lgSubtitle {
 	font-size: 20px;
 	width: 70vw;
-	margin-bottom: 50px;
+	margin-bottom: 120px;
+    line-height: 30px;
 }
 
 .subtitle {
@@ -51,6 +52,7 @@
 	text-align: left;
 	position: relative;
 	font-size: 16px;
+    margin-top: 20px;
 }
 
 .lgEvent p {
@@ -83,6 +85,11 @@
 }
 .event ol {
 	padding-left: 17px;
+    /* margin-bottom: 20px; */
+}
+.lgEvent li {
+	/* padding-left: 17px; */
+    margin-bottom: 5px;
 }
 .event div {
 	font-size: 16px;
@@ -146,8 +153,9 @@
 	width: 30vw;
 }
 .storeContainer img {
+    margin-top: 10px;
 	width: 65vw;
-	display: none;
+	/* display: none; */
 }
 
 .lgStoreContainer .store {
@@ -216,5 +224,18 @@
     background: linear-gradient(90deg, #DD0E65 11.11%, #25499D 100%);
     background-clip: text;
     -webkit-text-fill-color: transparent;
-  }
+}
 
+.title2 {
+    position:static !important;
+    margin-bottom: 20px;
+}
+.lgtitle2 {
+    position:static !important;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.lgEvents {
+    margin: 200px;
+}

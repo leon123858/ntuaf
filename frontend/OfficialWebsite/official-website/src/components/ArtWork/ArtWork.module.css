@@ -208,3 +208,8 @@
     font-size: 18px !important;
 }
 
+:global(.collapse .ant-collapse-expand-icon){
+    padding: 0;
+    margin: auto;
+}
+
