@@ -6,17 +6,27 @@ const DynamicVision = () => {
 	return (
 		<div className={styles.Wrapper}>
 			{inBreakPoint ? (
-				<img
-					src='/dynamicVision/dynamicVision.gif'
-					alt='dv'
+				<video
+					src={'/dynamicVision/dynamicVision.mp4'}
+					width={'100%'}
+					autoPlay
+					muted
+					preload
+					loop
+					poster={'/dynamicVision/preview.jpeg'}
 					className={styles.dynamicVision}
-				></img>
+				></video>
 			) : (
-				<img
-					src='/dynamicVision/lgDynamicVision.gif'
-					alt='dv'
+				<video
+					src={'/dynamicVision/lgDynamicVision.mp4'}
+					width={'100%'}
+					autoPlay
+					muted
+					preload
+					loop
+					poster={'/dynamicVision/lgPreview.jpeg'}
 					className={styles.lgDynamicVision}
-				></img>
+				></video>
 			)}
 		</div>
 	);

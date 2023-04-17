@@ -65,18 +65,6 @@ const router = createBrowserRouter([
 			{
 				path: '/',
 				element: <Home />,
-				loader: async () => {
-					try {
-						await preloadImage(
-							window.screen.width > 834
-								? '/dynamicVision/lgDynamicVision.gif'
-								: '/dynamicVision/dynamicVision.gif'
-						);
-						return { preload: true };
-					} catch (err) {
-						return { preload: false };
-					}
-				},
 			},
 			{
 				path: '/introduce/:type',
@@ -99,6 +87,18 @@ const router = createBrowserRouter([
 			{
 				path: '/about',
 				element: <About />,
+				loader: async () => {
+					try {
+						await preloadImage(
+							window.screen.width > 834
+								? '/about/環-手機版.svg'
+								: '/about/環.svg'
+						);
+						return { preload: true };
+					} catch (err) {
+						return { preload: false };
+					}
+				},
 			},
 			{
 				path: '/history',
