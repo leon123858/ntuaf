@@ -13,6 +13,7 @@ const DynamicVision = () => {
 					muted
 					preload
 					loop
+					playsInline
 					poster={'/dynamicVision/preview.jpeg'}
 					className={styles.dynamicVision}
 				></video>
@@ -24,6 +25,7 @@ const DynamicVision = () => {
 					muted
 					preload
 					loop
+					playsInline
 					poster={'/dynamicVision/lgPreview.jpeg'}
 					className={styles.lgDynamicVision}
 				></video>
