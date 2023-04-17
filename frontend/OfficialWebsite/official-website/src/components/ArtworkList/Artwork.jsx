@@ -110,7 +110,18 @@ export const ArtworkText = ({ data, heartOnClick }) => {
 					</div>
 				</div>
 				<Divider />
-				<Text>{data.text}</Text>
+				<Text>
+					<br />
+					{data.text.split('\n').map((str) => {
+						return (
+							<>
+								{str}
+								<br />
+							</>
+						);
+					})}
+					<br />
+				</Text>
 			</Modal>
 		</>
 	);
@@ -202,7 +213,15 @@ export const ArtworkImg = ({ data, heartOnClick }) => {
 				</div>
 				<Text>
 					<br />
-					{data.text}
+					{data.text.split('\n').map((str) => {
+						return (
+							<>
+								{str}
+								<br />
+							</>
+						);
+					})}
+					<br />
 				</Text>
 			</Modal>
 		</>
