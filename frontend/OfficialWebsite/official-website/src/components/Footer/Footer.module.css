@@ -43,7 +43,7 @@
 	color: #ffffff;
 	position: absolute;
 	right: 15%;
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 
 .iconGroup {

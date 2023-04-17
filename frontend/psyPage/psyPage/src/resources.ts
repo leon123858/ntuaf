@@ -17,7 +17,7 @@ export default [
 		type: RESOURCE_TYPE.IMAGE,
 		src: {
 			image: {
-				type: 'png',
+				type: 'jpg',
 				url: './statics/心理測驗(題目)_1.jpg',
 			},
 		},
@@ -28,7 +28,7 @@ export default [
 		type: RESOURCE_TYPE.IMAGE,
 		src: {
 			image: {
-				type: 'png',
+				type: 'jpg',
 				url: './statics/心理測驗(題目)_2.jpg',
 			},
 		},
@@ -39,7 +39,7 @@ export default [
 		type: RESOURCE_TYPE.IMAGE,
 		src: {
 			image: {
-				type: 'png',
+				type: 'jpg',
 				url: './statics/心理測驗(題目)_3.jpg',
 			},
 		},
@@ -50,7 +50,7 @@ export default [
 		type: RESOURCE_TYPE.IMAGE,
 		src: {
 			image: {
-				type: 'png',
+				type: 'jpg',
 				url: './statics/心理測驗(題目)_4.jpg',
 			},
 		},
@@ -61,7 +61,7 @@ export default [
 		type: RESOURCE_TYPE.IMAGE,
 		src: {
 			image: {
-				type: 'png',
+				type: 'jpg',
 				url: './statics/心理測驗(題目)_5.jpg',
 			},
 		},
