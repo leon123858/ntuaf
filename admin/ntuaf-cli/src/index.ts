@@ -2,7 +2,7 @@
 import { Socket } from 'net';
 import { assert } from 'console';
 import { Command } from 'commander';
-import { insertMember, insertArtwork, insertEvent } from './utils/insertSample';
+import { insertArtwork, insertEvent } from './utils/insertSample';
 import { deleteCollection } from './utils/deleteSample';
 import {
 	askMode,
@@ -26,6 +26,7 @@ import {
 	deleteAllUserTmpData,
 	updateArtworkLike,
 	setAllTmpDataAsInit,
+	compressNewArtworkImage,
 } from './utils/updateUserData';
 import { insertDirectory } from './utils/insertDirectory';
 import { insertMemberManually } from './utils/insertMemberManually';
@@ -133,6 +134,7 @@ const options = program.opts();
 			await updateArtworkLike();
 			await deleteAllUserTmpData();
 			await setAllTmpDataAsInit();
+			await compressNewArtworkImage();
 			console.log('彙整用戶當日操作成功!');
 			break;
 		}

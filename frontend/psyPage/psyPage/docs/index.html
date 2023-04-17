@@ -30,16 +30,24 @@
     }
   </style>
 </head>
+<!-- <script src="//cdn.bootcdn.net/ajax/libs/eruda/2.3.3/eruda.js"></script>
+<script>eruda.init();</script> -->
 
 <body>
   <div id="loading" style="background-color: rgb(37, 212, 221); height:100vh"><img style="width: 100%; padding-top:30vh"
       src="./statics/loading.gif" />
-    <h1 id="progress"></h1>
+    <h1 id="progress" style="text-align: center;"></h1>
   </div>
   <canvas width="750" height="1000" id="canvas" style="width: 100%; display:none"></canvas>
   <script src="//cdn.bootcdn.net/ajax/libs/eventemitter3/3.1.2/index.min.js"></script>
   <script src="./main.js"></script>
-  <div id="share" style="background-color: blue; display:none ; width: 10vh; height:10vh">BABY</div>
+  <div id="share" style="background-color: blue; display:none ; width: 10vh; height:10vh"></div>
 </body>
+<script>
+  function shareOnFacebook() {
+    const navUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + 'https://ntuartfest28th.com/psytest';
+    window.open(navUrl, '_blank');
+  }
+</script>
 
 </html>

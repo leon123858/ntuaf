@@ -4,6 +4,7 @@
 .carouselComponentWrapper {
 	width: 100%;
 	max-width: 100%;
+	flex: 1;
 	overflow: hidden;
 }
 .App {
@@ -46,6 +47,9 @@
 }
 
 .headerActive {
+	border-top: 0px;
+	border-left: 0px;
+	border-right: 0px;
 	border-bottom: 2px solid;
 	border-top: 0px;
 	border-right: 0px;

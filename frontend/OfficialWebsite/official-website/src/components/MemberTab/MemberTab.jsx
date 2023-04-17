@@ -16,7 +16,7 @@ const departmentNames = [
 
 const teamImages = {
 	[DEPARTMENT.核心團隊]: ['../../about/team/召部.jpeg'],
-	[DEPARTMENT.公關部]: ['../../about/team/學術.jpeg'],
+	[DEPARTMENT.公關部]: ['../../about/team/公關.jpeg'],
 	[DEPARTMENT.策展部]: [
 		'../../about/team/數位.jpeg',
 		'../../about/team/活動.jpeg',
