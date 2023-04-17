@@ -51,7 +51,7 @@ const FourCircle = () => {
 				iconTextShadowUrl:
 					'https://drive.google.com/uc?export=view&id=1dPoRWcuOP2NI1wovrUYOt1MBgBr7RiOz',
 				frontCardBackgroundUrl: '/cardFront1.svg',
-				backCardBackgroundUrl: '/cardBack1.svg',
+				backCardBackgroundUrl: '/cardBack1.jpeg',
 				iconUrl: '/ball1.svg',
 			},
 			{
@@ -69,7 +69,7 @@ const FourCircle = () => {
 				iconTextShadowUrl:
 					'https://drive.google.com/uc?export=view&id=15YCh7qumuRDpWeizxP7bZCyeTEAElY7Q',
 				frontCardBackgroundUrl: '/cardFront2.svg',
-				backCardBackgroundUrl: '/cardBack3.svg',
+				backCardBackgroundUrl: '/cardBack2.jpeg',
 				iconUrl: '/ball2.svg',
 			},
 			{
@@ -87,7 +87,7 @@ const FourCircle = () => {
 				iconTextShadowUrl:
 					'https://drive.google.com/uc?export=view&id=1TosWx1-BkWsnDYws7kxhIDMR2_cAAxVy',
 				frontCardBackgroundUrl: '/cardFront3.svg',
-				backCardBackgroundUrl: '/cardBack3.svg',
+				backCardBackgroundUrl: '/cardBack3.jpeg',
 				iconUrl: '/ball3.svg',
 			},
 			{
@@ -105,7 +105,7 @@ const FourCircle = () => {
 				iconTextShadowUrl:
 					'https://drive.google.com/uc?export=view&id=170YQGG6r_wwm26LktQQg9Q-d3-52do5H',
 				frontCardBackgroundUrl: '/cardFront4.svg',
-				backCardBackgroundUrl: '/cardBack4.svg',
+				backCardBackgroundUrl: '/cardBack4.jpeg',
 				iconUrl: '/ball4.svg',
 			},
 		]);
