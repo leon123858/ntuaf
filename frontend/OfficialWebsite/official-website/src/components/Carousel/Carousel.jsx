@@ -34,7 +34,7 @@ const Carousel = () => {
 		(async function (food) {
 			const recentList = (await getRecommendEvents('recent')).map((v, i) => {
 				return {
-					imageUrl: v.image.banner,
+					imageUrl: v.image.card,
 					header: v.text,
 					date: v.date,
 					id: v.id,
@@ -44,7 +44,7 @@ const Carousel = () => {
 			});
 			const alwaysList = (await getRecommendEvents('always')).map((v, i) => {
 				return {
-					imageUrl: v.image.banner,
+					imageUrl: v.image.card,
 					header: v.text,
 					date: v.date,
 					id: v.id,
@@ -117,7 +117,7 @@ const Carousel = () => {
 										: {
 												textDecorationColor: 'black',
 												color: 'black',
-										}
+										  }
 								}
 							>
 								近期活動
@@ -134,10 +134,10 @@ const Carousel = () => {
 										? {
 												textDecorationColor: 'black',
 												color: 'black',
-										}
+										  }
 										: {
 												color: 'gray',
-										}
+										  }
 								}
 							>
 								常設展覽
