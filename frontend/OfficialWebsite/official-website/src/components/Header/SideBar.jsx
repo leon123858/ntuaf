@@ -148,17 +148,11 @@ const SideBar = (props) => {
 			width={'100%'}
 			mask={false}
 			bodyStyle={
-				activeSearch ? { backgroundColor: 'gray', transition: 'all 1s' } : {}
+				activeSearch ? { backgroundColor: 'red', transition: 'all 1s' } : {}
 			}
 		>
 			<div className={styles.drawerBodyWrapper} {...handlers}>
 				<div className={styles.header}>
-					{/* <SearchOutlined
-						style={{ fontSize: '32px' }}
-						onClick={() => {
-							setActiveSearch(!activeSearch);
-						}}
-					/> */}
 					<div
 						id={'inputSearch'}
 						className={activeSearch ? styles.input : styles.defaultInput}
@@ -185,7 +179,6 @@ const SideBar = (props) => {
 					className={styles.closeIcon}
 					src='/sidebar/sidebarCancel.svg'
 				></img>
-				{/* </div> */}
 			</div>
 		</Drawer>
 	);
