@@ -51,9 +51,8 @@ async function load_game() {
 	let B = 0;
 	let C = 0;
 
-	const bgSound = createBgm();
-	bgSound.play();
-
+	const bgSoundList =[...new Array(7)].map((_,index)=>createBgm(index));
+	
 	// basic setting
 
 	game.scene.addComponent(
@@ -72,6 +71,11 @@ async function load_game() {
 	game.scene.transform.size.height = (game.scene.transform.size.width * 16) / 9;
 
 	const numberOfScene = 6;
+
+	const shareOnFacebook = ()=>{
+		const navUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + 'https://ntuartfest28th.com/psytest';
+		window.open(navUrl , '_blank');
+	}
 
 	const changeScenefunt = async () => {
 		// console.log(backgroundList);
@@ -97,8 +101,8 @@ async function load_game() {
 				resource: resourceIN,
 			});
 			backgroundList[sceneIndex + 1].background.addComponent(img);
-			$('#canvas').hide();
-			$('#share').show();
+			// $('#canvas').hide();
+			// $('#share').show();
 		}
 
 		btns.forEach((btn) => {
@@ -110,17 +114,13 @@ async function load_game() {
 
 		animate.on('finish', async () => {
 			backgroundList[sceneIndex].background.remove();
+			bgSoundList[sceneIndex].stop();
 			sceneIndex += 1;
-
+			bgSoundList[sceneIndex].play();
 			btns.forEach((btn) => btn.button.remove());
 			btn_index += 1;
-			if (sceneIndex < numberOfScene) {
-				btns = [...btnLists[btn_index]].map((value, _) => createBtn(value));
-				// console.log("index = ",btn_index);
-				// console.log("scene index = ",sceneIndex);
-				btns.forEach((btn) => game.scene.addChild(btn.button));
-				// console.log(btns);
-			}
+			btns = [...btnLists[btn_index]].map((value, _) => createBtn(value));
+			btns.forEach((btn) => game.scene.addChild(btn.button));
 		});
 	};
 
@@ -128,6 +128,7 @@ async function load_game() {
 		[
 			{
 				name: 'startTest',
+				name2: 'startTest',
 				transform: {
 					position: {
 						x: 0,
@@ -494,7 +495,7 @@ async function load_game() {
 					},
 				},
 				callback: async () => {
-					A += 1;
+					A += 1.1;
 					await changeScenefunt();
 				},
 			},
@@ -520,7 +521,7 @@ async function load_game() {
 					},
 				},
 				callback: async () => {
-					B += 1;
+					B += 1.1;
 					await changeScenefunt();
 				},
 			},
@@ -546,11 +547,38 @@ async function load_game() {
 					},
 				},
 				callback: async () => {
-					C += 1;
+					C += 1.1;
 					await changeScenefunt();
 				},
 			},
 		],
+		[
+			{
+				name: 'fbshare',
+				name2: 'fbshare',
+				transform: {
+					position: {
+						x: 100,
+						y: 270,
+					},
+					origin: {
+						x: 0.5,
+						y: 0.5,
+					},
+					anchor: {
+						x: 0.5,
+						y: 0.9,
+					},
+					size: {
+						width: 90,
+						height: 80,
+					},
+				},
+				callback: async () => {
+					shareOnFacebook();
+				},
+			},
+		]
 	];
 
 	let btn_index = 0;
@@ -572,6 +600,7 @@ async function load_game() {
 	let btns = [...btnLists[btn_index]].map((value, _) => createBtn(value));
 
 	btns.forEach((btn) => game.scene.addChild(btn.button));
+	bgSoundList[0].play()
 }
 
 declare global {
@@ -609,7 +638,7 @@ const game = new Game({
 window.game = game;
 
 resource.on(LOAD_EVENT.COMPLETE, async () => {
-	await load_game();
+	//await load_game();
 	$('#loading').hide();
 	$('#canvas').show();
 });
@@ -619,6 +648,9 @@ resource.preload();
 
 const getDeviceType = async() => {
 	const ua = navigator.userAgent;
+	// console.log(/Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+	// 	ua
+	//   ))
 	if (
 	  /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
 		ua
@@ -627,7 +659,11 @@ const getDeviceType = async() => {
 		await load_game();
 		return "mobile";
 	}
+	else{
+		alert("請使用手機")
+		window.history.go(-1);
+	}
 };
-
+//load_game();
 getDeviceType();
   

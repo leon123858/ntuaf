@@ -102,57 +102,83 @@ export default [
 	},
 
 	{
-		name: 'basketBack',
-		type: RESOURCE_TYPE.IMAGE,
-		src: {
-			image: {
-				type: 'png',
-				url: './statics/TB1Xerd0AY2gK0jSZFgXXc5OFXa-184-175.png',
-			},
-		},
-		preload: false,
-	},
-	{
-		name: 'boardIdle',
-		type: RESOURCE_TYPE.SPRITE_ANIMATION,
-		src: {
-			image: {
-				type: 'png',
-				url: './statics/TB1LYwonSR26e4jSZFEXXbwuXXa-920-875.png',
-			},
-			json: {
-				type: 'json',
-				url: './statics/3246284841596d87b60749e88e0e26cd.json',
-			},
-		},
-		preload: false,
-	},
-	{
-		name: 'boardGoal',
-		type: RESOURCE_TYPE.SPRITE_ANIMATION,
-		src: {
-			image: {
-				type: 'png',
-				url: './statics/TB1ob_c0EY1gK0jSZFCXXcwqXXa-552-525.png',
-			},
-			json: {
-				type: 'json',
-				url: './statics/dfefdd86474cded44bdc226549ae6d81.json',
-			},
-		},
-		preload: false,
-	},
-	{
-		name: 'bgSound',
+		name: 'bgSound0',
 		type: RESOURCE_TYPE.AUDIO,
 		src: {
 			audio: {
 				type: 'audio',
-				url: './statics/Audio/bgm.mp3',
+				url: './statics/Audio/請洄答首頁.mp3',
 			},
 		},
 		preload: false,
 	},
+	{
+		name: 'bgSound1',
+		type: RESOURCE_TYPE.AUDIO,
+		src: {
+			audio: {
+				type: 'audio',
+				url: './statics/Audio/請洄答1.wav',
+			},
+		},
+		preload: false,
+	},
+	{
+		name: 'bgSound2',
+		type: RESOURCE_TYPE.AUDIO,
+		src: {
+			audio: {
+				type: 'audio',
+				url: './statics/Audio/請洄答2.wav',
+			},
+		},
+		preload: false,
+	},
+	{
+		name: 'bgSound3',
+		type: RESOURCE_TYPE.AUDIO,
+		src: {
+			audio: {
+				type: 'audio',
+				url: './statics/Audio/請洄答3.wav',
+			},
+		},
+		preload: false,
+	},
+	{
+		name: 'bgSound4',
+		type: RESOURCE_TYPE.AUDIO,
+		src: {
+			audio: {
+				type: 'audio',
+				url: './statics/Audio/請洄答4.wav',
+			},
+		},
+		preload: false,
+	},
+	{
+		name: 'bgSound5',
+		type: RESOURCE_TYPE.AUDIO,
+		src: {
+			audio: {
+				type: 'audio',
+				url: './statics/Audio/請洄答5.wav',
+			},
+		},
+		preload: false,
+	},
+	{
+		name: 'bgSound6',
+		type: RESOURCE_TYPE.AUDIO,
+		src: {
+			audio: {
+				type: 'audio',
+				url: './statics/Audio/請洄答測驗結果.mp3',
+			},
+		},
+		preload: false,
+	},
+
 	{
 		name: 'startTest',
 		type: RESOURCE_TYPE.IMAGE,
@@ -493,6 +519,17 @@ export default [
 			image: {
 				type: 'png',
 				url: './statics/Q5按鈕/C按下改變.png',
+			},
+		},
+		preload: false,
+	},
+	{
+		name: 'fbshare',
+		type: RESOURCE_TYPE.IMAGE,
+		src: {
+			image: {
+				type: 'png',
+				url: './statics/free-facebook-icon.png',
 			},
 		},
 		preload: false,
