@@ -33,6 +33,20 @@ function ScrollToTop() {
 	return null;
 }
 
+// image url which want to preload
+function preloadImage(src) {
+	return new Promise((resolve, reject) => {
+		const img = new Image();
+		img.onload = function () {
+			resolve(img);
+		};
+		img.onerror = function () {
+			reject(src);
+		};
+		img.src = src;
+	});
+}
+
 const router = createBrowserRouter([
 	{
 		path: '/',
@@ -46,6 +60,18 @@ const router = createBrowserRouter([
 			{
 				path: '/',
 				element: <Home />,
+				loader: async () => {
+					try {
+						await preloadImage(
+							window.screen.width > 834
+								? '/dynamicVision/lgDynamicVision.gif'
+								: '/dynamicVision/dynamicVision.gif'
+						);
+						return { preload: true };
+					} catch (err) {
+						return { preload: false };
+					}
+				},
 			},
 			{
 				path: '/introduce/:type',
@@ -95,8 +121,8 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/psyTest',
-				element: <PsyTest />
-			}
+				element: <PsyTest />,
+			},
 		],
 		errorElement: <ErrorPage />,
 	},

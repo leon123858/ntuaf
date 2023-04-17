@@ -9,9 +9,6 @@ function Home() {
 	return (
 		<div className={style.APP}>
 			<DynamicVision />
-			{/* <div className={style.test} >
-					<img className={style.imgWrapper} src={"https://drive.google.com/uc?export=view&id=1sOgEL8R9BFhW7KfLRYG2MrM2SOzzx_Pw"}></img>
-				</div> */}
 			<FourCircle />
 			<Carousel />
 		</div>

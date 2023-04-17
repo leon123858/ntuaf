@@ -6,12 +6,6 @@ import DoubleSideCard from './DoubleSideCard.jsx';
 import LgDoubleSideCard from './LgDoubleSideCard.jsx';
 import { getRecommendEvents } from '@leon123858/ntuaf-sdk';
 import { BreakPointContext } from '../../useBreakPoint';
-// import { Col, Divider, Row } from 'antd';
-// const DemoBox = (props) => (
-// 	<p style={{ height: `${props.value}px`, backgroundColor: 'red' }}>
-// 		{props.value}
-// 	</p>
-// );
 //info for sample data
 const defaultContent = {
 	imageUrl: '',
@@ -25,7 +19,6 @@ const Carousel = () => {
 	const [flip, setFlip] = useState(false);
 	const [recentContent, setRecentContent] = useState([]);
 	const [alwaysContent, setAlwaysContent] = useState([]);
-	// const [slides, setSlides] = useState([]);
 	const { inBreakPoint } = useContext(BreakPointContext);
 
 	const moveLeft = () => {
@@ -59,7 +52,6 @@ const Carousel = () => {
 					index: i,
 				};
 			});
-			// console.log("alwaysList", alwaysList)
 			//info make two content lists to the same length
 			const maxContentLength = Math.max(recentList.length, alwaysList.length);
 			const fillList = (list) =>
@@ -71,7 +63,6 @@ const Carousel = () => {
 			setRecentContent(fillList(recentList));
 			setAlwaysContent(fillList(alwaysList));
 		})();
-		// console.log('render');
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 	let slides = recentContent.map((content, i) => {
@@ -109,22 +100,6 @@ const Carousel = () => {
 			setActivateImg(activateImg - 1);
 		},
 	});
-	// return (
-	// 	<Row >
-	// 		<Col span={4}>
-	// 		<DemoBox value={100}>col-4</DemoBox>
-	// 		</Col>
-	// 		<Col span={4}>
-	// 		<DemoBox value={50}>col-4</DemoBox>
-	// 		</Col>
-	// 		<Col span={4}>
-	// 		<DemoBox value={120}>col-4</DemoBox>
-	// 		</Col>
-	// 		<Col span={4}>
-	// 		<DemoBox value={80}>col-4</DemoBox>
-	// 		</Col>
-	//   </Row>
-	// )
 	return (
 		<div className={style.carouselComponentWrapper}>
 			{inBreakPoint ? (
@@ -142,10 +117,10 @@ const Carousel = () => {
 										: {
 												textDecorationColor: 'black',
 												color: 'black',
-										  }
+										}
 								}
 							>
-								近 期 活 動
+								近期活動
 							</h1>
 						</div>
 						<div className={flip ? style.headerActive : ''}>
@@ -159,13 +134,13 @@ const Carousel = () => {
 										? {
 												textDecorationColor: 'black',
 												color: 'black',
-										  }
+										}
 										: {
 												color: 'gray',
-										  }
+										}
 								}
 							>
-								常 設 展 覽
+								常設展覽
 							</h1>
 						</div>
 					</div>
@@ -173,14 +148,14 @@ const Carousel = () => {
 						<img
 							alt='arrowLeft'
 							className={style.imgArrow}
-							src='https://drive.google.com/uc?export=view&id=1dOLnrGzRRmbbNdfx7QGaVoJcpEFzYPJ4'
+							src='/carousel/carouselPrev.png'
 						></img>
 					</div>
 					<div className={style.next} onClick={moveRight}>
 						<img
 							alt='arrowRight'
 							className={style.imgArrow}
-							src='https://drive.google.com/uc?export=view&id=1a-fv9MscBBAhWxCmMv1B4LYqAjtPwfj2'
+							src='/carousel/carouselNext.png'
 						></img>
 					</div>
 					<div className={style.carouselWrapper} {...handlers}>
@@ -245,14 +220,14 @@ const Carousel = () => {
 						<img
 							alt='arrowLeft'
 							className={style.imgArrow}
-							src='https://drive.google.com/uc?export=view&id=1dOLnrGzRRmbbNdfx7QGaVoJcpEFzYPJ4'
+							src='/carousel/carouselPrev.png'
 						></img>
 					</div>
 					<div className={style.lgNext} onClick={moveRight}>
 						<img
 							alt='arrowRight'
 							className={style.imgArrow}
-							src='https://drive.google.com/uc?export=view&id=1a-fv9MscBBAhWxCmMv1B4LYqAjtPwfj2'
+							src='/carousel/carouselNext.png'
 						></img>
 					</div>
 					<div className={style.lgCarouselWrapper} {...handlers}>

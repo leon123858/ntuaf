@@ -64,6 +64,7 @@ export const createArtwork = async (
 		name,
 		artworkName,
 		createTime: new Date().getTime(),
+		originUrl: '',
 		like: 0,
 		tmpLike: 0,
 	};
@@ -79,6 +80,7 @@ const correctArtworks = ({
 	url = '',
 	text = '',
 	createTime = 0,
+	originUrl = '',
 	like = 0,
 	tmpLike = 0,
 }: Artwork) => {
@@ -92,6 +94,7 @@ const correctArtworks = ({
 		createTime,
 		like,
 		tmpLike,
+		originUrl,
 	} as Artwork;
 };
 

@@ -56,8 +56,8 @@ export const ArtworkList = () => {
 			activeKey === '1'
 				? typeText
 				: activeKey === '2'
-				? typePhoto
-				: typePainting;
+					? typePhoto
+					: typePainting;
 		initData(datas.sortBy)
 			.then(setLoading(false))
 			.then(() => {
@@ -86,8 +86,8 @@ export const ArtworkList = () => {
 			activeKey === '1'
 				? typeText
 				: activeKey === '2'
-				? typePhoto
-				: typePainting;
+					? typePhoto
+					: typePainting;
 		if (datas.sortBy !== sortBy) {
 			// console.log('change sortBy');
 			datas = {
@@ -145,8 +145,8 @@ export const ArtworkList = () => {
 			activeKey === '1'
 				? typeText
 				: activeKey === '2'
-				? typePhoto
-				: typePainting;
+					? typePhoto
+					: typePainting;
 		// console.log(datas)
 		const sortBy = datas.sortBy === '' ? 'like' : datas.sortBy;
 		const { data: partialData, cursor: tempCursor } = await getArtworkList(
@@ -193,7 +193,7 @@ export const ArtworkList = () => {
 
 	const heartOnClick = async (artworkId) => {
 		if (!isLogin) {
-			message.warning('Should login first!');
+			message.info('您需要先登入!');
 			return 0;
 		}
 		try {
@@ -218,8 +218,8 @@ export const ArtworkList = () => {
 			activeKey === '1'
 				? typeText
 				: activeKey === '2'
-				? typePhoto
-				: typePainting;
+					? typePhoto
+					: typePainting;
 		return (
 			<div
 				id='scrollableDiv'
@@ -286,9 +286,10 @@ export const ArtworkList = () => {
 			activeKey === '1'
 				? typeText
 				: activeKey === '2'
-				? typePhoto
-				: typePainting;
+					? typePhoto
+					: typePainting;
 		return (
+
 			<Select
 				className={style.select}
 				labelInValue
@@ -298,8 +299,8 @@ export const ArtworkList = () => {
 						datas.sortBy === 'like'
 							? '愛心排行'
 							: datas.sortBy === 'createTime'
-							? '最近上傳'
-							: '排序',
+								? '最近上傳'
+								: '排序',
 				}}
 				style={{
 					width: 120,
@@ -315,7 +316,7 @@ export const ArtworkList = () => {
 						label: '愛心排行',
 					},
 				]}
-				bordered={false}
+			// bordered={false}
 			/>
 		);
 	};
@@ -323,11 +324,8 @@ export const ArtworkList = () => {
 	const items = ['純文字組', '照片組', '繪畫組'];
 	return (
 		<>
-			<div
-				className={inBreakPoint ? style.sm : style.lg}
-				style={{ marginTop: '40px' }}
-			>
-				<Selecter />
+			<div className={inBreakPoint ? style.sm : style.lg} style={{ marginTop: "80px" }}>
+
 				<div className={style.tabContainer}>
 					<Tabs
 						activeKey={activeKey}
@@ -357,6 +355,7 @@ export const ArtworkList = () => {
 						onChange={onChange}
 					/>
 				</div>
+				<Selecter />
 			</div>
 		</>
 	);

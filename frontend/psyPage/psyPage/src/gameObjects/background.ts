@@ -3,7 +3,7 @@ import { Img } from '@eva/plugin-renderer-img';
 import { Transition } from '@eva/plugin-transition';
 import { Render } from '@eva/plugin-renderer-render';
 
-export default async function createBackground(index: number) {
+export default function createBackground(index: number) {
 	const bg = new GameObject('bg', {
 		size: { width: 900, height: 1640 },
 		position: {

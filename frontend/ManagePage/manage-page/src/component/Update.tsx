@@ -61,13 +61,8 @@ function Update({ email, admin }: { email: string; admin: string[] }) {
 			<hr></hr>
 			裁切圖片工具:
 			<UploadImage
-				setUrl={(url: string) => {
-					const el = document.createElement('textarea');
-					el.value = url;
-					document.body.appendChild(el);
-					el.select();
-					document.execCommand('copy');
-					document.body.removeChild(el);
+				setUrl={async (url: string) => {
+					await navigator.clipboard.writeText(url);
 					message.success('已複製上傳圖片網址, 可至下方文字框貼上');
 				}}
 				text='上傳圖片且複製'
@@ -215,11 +210,11 @@ function Update({ email, admin }: { email: string; admin: string[] }) {
 									name='type'
 									label='類別'
 								></ProFormSelect>
-								<ProFormText
+								<ProFormTextArea
 									width='md'
 									name='title'
 									placeholder='請輸入標題'
-								></ProFormText>
+								></ProFormTextArea>
 								<ProFormTextArea
 									width='md'
 									name='text'
@@ -282,11 +277,11 @@ function Update({ email, admin }: { email: string; admin: string[] }) {
 													name='url'
 													placeholder='請輸入相關連結'
 												></ProFormTextArea>
-												<ProFormText
+												<ProFormTextArea
 													width='md'
 													name='name'
 													placeholder='請輸入名稱描述'
-												></ProFormText>
+												></ProFormTextArea>
 											</ProCard>
 										);
 									}}
