@@ -49,6 +49,11 @@ function preloadImage(src) {
 
 const router = createBrowserRouter([
 	{
+		path: '/sharePsyPage/:type',
+		element: <></>,
+		errorElement: <ErrorPage />,
+	},
+	{
 		path: '/',
 		element: (
 			<>
