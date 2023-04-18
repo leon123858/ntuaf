@@ -3,6 +3,19 @@ import { BreakPointContext } from '../../useBreakPoint';
 import { useContext } from 'react';
 const DynamicVision = () => {
 	const { inBreakPoint } = useContext(BreakPointContext);
+	/*
+		<video
+			src={'/dynamicVision/dynamicVision.mp4'}
+			width={'100%'}
+			autoPlay
+			muted
+			preload
+			loop
+			playsInline
+			poster={'/dynamicVision/preview.jpeg'}
+			className={styles.dynamicVision}
+		></video>
+	*/
 	return (
 		<div className={styles.Wrapper}>
 			{inBreakPoint ? (
