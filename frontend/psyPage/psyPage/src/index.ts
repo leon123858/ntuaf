@@ -631,7 +631,7 @@ resource.on(LOAD_EVENT.COMPLETE, async () => {
 		return new Promise((resolve, reject) => {
 			const img = new Image();
 			img.onload = function () {
-				$('#progress').text(`加載中: (${completeCount}/${resources.length})`);
+				$('#progress').text(`加載中: (${++completeCount}/${resources.length})`);
 				resolve(img);
 			};
 			img.onerror = function () {
@@ -643,7 +643,7 @@ resource.on(LOAD_EVENT.COMPLETE, async () => {
 	function preloadAudio(src: string) {
 		return new Promise((resolve, reject) => {
 			const audio = new Audio();
-			audio.oncanplaythrough = function () {
+			audio.oncanplay = function () {
 				$('#progress').text(`加載中: (${++completeCount}/${resources.length})`);
 				resolve(audio);
 			};
@@ -659,13 +659,13 @@ resource.on(LOAD_EVENT.COMPLETE, async () => {
 		return;
 	}
 	try {
-		$('#progress').text(`加載中: (${++completeCount}/${resources.length})`);
+		$('#progress').text(`加載中: (${completeCount}/${resources.length})`);
 
 		for (let resource of resources) {
 			if (resource.type == RESOURCE_TYPE.IMAGE) {
 				await preloadImage(resource.src.image.url);
 			} else if (resource.type == RESOURCE_TYPE.AUDIO) {
-				// await preloadAudio(resource.src.audio.url);
+				await preloadAudio(resource.src.audio.url);
 			} else {
 				throw 'wrong type';
 			}
