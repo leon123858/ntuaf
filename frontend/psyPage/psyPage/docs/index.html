@@ -61,7 +61,8 @@
   function copyurl(option){
     console.log(option.getAttribute("option"));
     const navUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + 'https://ntuartfest28th.com/sharePsyPage/'+option.getAttribute("option");
-    navigator.clipboard.writeText(navUrl);
+    //avigator.clipboard.writeText(navUrl);
+    window.Clipboard.copy(navUrl);
     alert("複製成功");
   }
 </script>
