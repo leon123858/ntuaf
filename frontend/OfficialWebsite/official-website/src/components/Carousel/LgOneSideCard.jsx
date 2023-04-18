@@ -1,13 +1,13 @@
-import styles from "./LgOneSideCard.module.css";
-import { Link } from "react-router-dom";
-import { Image, Col, Row } from "antd";
+import styles from './LgOneSideCard.module.css';
+import { Link } from 'react-router-dom';
+import { Image, Col, Row } from 'antd';
 
 // const DemoBox = (props) => <p style={{height:`${props.value}px`, backgroundColor:"red"}}>{props.value}</p>;
 const LgOneSideCard = ({ cardContent }) => {
 	const numOfContentString = 85;
 	const content =
 		cardContent.content.length > numOfContentString
-			? cardContent.content.substring(0, numOfContentString) + "..."
+			? cardContent.content.substring(0, numOfContentString) + '...'
 			: cardContent.content;
 	return (
 		<Link to={`/display/${cardContent.id}`}>
@@ -20,13 +20,13 @@ const LgOneSideCard = ({ cardContent }) => {
 					<Image
 						src={cardContent.imageUrl}
 						preview={false}
-						height={"270px"}
-						fallback="/loading.jpg"
+						height={'270px'}
+						fallback='/loadingStatic.webp'
 					/>
 				</div>
 				<div className={styles.contentWrapper}>
-					{content.includes("continue...") ? (
-						<Row justify="space-between" align="bottom">
+					{content.includes('continue...') ? (
+						<Row justify='space-between' align='bottom'>
 							<Col span={24}>
 								<p className={styles.disc}>
 									{content}
@@ -35,7 +35,7 @@ const LgOneSideCard = ({ cardContent }) => {
 							</Col>
 						</Row>
 					) : (
-						<Row justify="space-between" align="bottom">
+						<Row justify='space-between' align='bottom'>
 							<Col span={18}>
 								<p className={styles.disc}>
 									{content}
@@ -46,8 +46,8 @@ const LgOneSideCard = ({ cardContent }) => {
 								{/* <div style={{backgroundImage: 'url(../cardNext.png)'}} ></div> */}
 								<div className={styles.nextImgWrapper}>
 									<img
-										alt="nextCard"
-										src="../cardNext.png"
+										alt='nextCard'
+										src='../cardNext.png'
 										className={styles.nextImg}
 									></img>
 								</div>
@@ -57,7 +57,6 @@ const LgOneSideCard = ({ cardContent }) => {
 							</Col>
 						</Row>
 					)}
-					
 				</div>
 			</div>
 		</Link>

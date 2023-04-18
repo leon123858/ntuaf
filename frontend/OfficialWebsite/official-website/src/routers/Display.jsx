@@ -210,7 +210,7 @@ function Display() {
 	) : (
 		<div className={style.Spin}>
 			{contextHolder}
-			<img src={'/loading.gif'} style={{ width: '18vw' }} alt='loading...' />
+			<img src={'/loading.webp'} style={{ width: '18vw' }} alt='loading...' />
 		</div>
 	);
 }
