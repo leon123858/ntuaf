@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import styles from './Header.module.css';
 import SideBar from './SideBar.jsx';
 import { Menu } from 'antd';
@@ -125,102 +125,133 @@ const Header = () => {
 	const onClose = () => {
 		setSideBarActive(false);
 	};
+	const add_class_on_scroll = (element, className) => {
+		if (element) {
+			element.classList.add(className);
+		}
+	};
+	const remove_class_on_scroll = (element, className) => {
+		if (element) {
+			element.classList.remove(className);
+		}
+	};
 	const { inBreakPoint } = useContext(BreakPointContext);
-
-	useEffect(() => {
-		const add_class_on_scroll = (element, className) => {
-			if (element) {
-				element.classList.add(className);
-			}
-		};
-		const remove_class_on_scroll = (element, className) => {
-			if (element) {
-				element.classList.remove(className);
-			}
-		};
-		window.addEventListener('scroll', function () {
-			if (!inBreakPoint) {
-				const menuE = document.getElementById("menu");
-				const headerE = document.getElementsByClassName(
-					styles.headerWrapper
-				)[0];
-				const logoE = document.getElementsByClassName(styles.box)[0];
-
-				let offsetChangeHeader = 10;
-				let scrollpos = window.scrollY;
+	const headRef = useRef(null);
+	const observer = new IntersectionObserver((entries) => {
+		if (!inBreakPoint) {
+			const menuE = document.getElementById('menu');
+			const headerE = document.getElementsByClassName(styles.headerWrapper)[0];
+			const logoE = document.getElementsByClassName(styles.box)[0];
+			if (entries[0].boundingClientRect.y < 0) {
+				remove_class_on_scroll(menuE, styles.menu);
+				add_class_on_scroll(menuE, styles.scrollMenu);
+				add_class_on_scroll(headerE, styles.scrollHeader);
+				remove_class_on_scroll(logoE, styles.boxS);
+			} else {
+				remove_class_on_scroll(menuE, styles.scrollMenu);
+				remove_class_on_scroll(headerE, styles.scrollHeader);
+				add_class_on_scroll(menuE, styles.menu);
 				add_class_on_scroll(logoE, styles.boxS);
-				if (scrollpos > offsetChangeHeader) {
-					remove_class_on_scroll(menuE, styles.menu);
-					add_class_on_scroll(menuE, styles.scrollMenu);
-					add_class_on_scroll(headerE, styles.scrollHeader);
-					remove_class_on_scroll(logoE, styles.boxS);
-				} else {
-					remove_class_on_scroll(menuE, styles.scrollMenu);
-					remove_class_on_scroll(headerE, styles.scrollHeader);
-					add_class_on_scroll(menuE, styles.menu);
-					add_class_on_scroll(logoE, styles.boxS);
-				}
 			}
-		});
-	}, [inBreakPoint]);
+		}
+	});
+	if (headRef.current) {
+		observer.observe(headRef.current);
+	}
+	// useEffect(() => {
+	// 	window.addEventListener('scroll', function () {
+	// 		if (!inBreakPoint) {
+	// 			const menuE = document.getElementById('menu');
+	// 			const headerE = document.getElementsByClassName(
+	// 				styles.headerWrapper
+	// 			)[0];
+	// 			const logoE = document.getElementsByClassName(styles.box)[0];
+	// 			let offsetChangeHeader = 10;
+	// 			let scrollpos = window.scrollY;
+	// 			add_class_on_scroll(logoE, styles.boxS);
+	// 			if (scrollpos > offsetChangeHeader) {
+	// 				remove_class_on_scroll(menuE, styles.menu);
+	// 				add_class_on_scroll(menuE, styles.scrollMenu);
+	// 				add_class_on_scroll(headerE, styles.scrollHeader);
+	// 				remove_class_on_scroll(logoE, styles.boxS);
+	// 			} else {
+	// 				remove_class_on_scroll(menuE, styles.scrollMenu);
+	// 				remove_class_on_scroll(headerE, styles.scrollHeader);
+	// 				add_class_on_scroll(menuE, styles.menu);
+	// 				add_class_on_scroll(logoE, styles.boxS);
+	// 			}
+	// 		}
+	// 	});
+	// }, [inBreakPoint]);
 
 	return (
-		<div className={styles.totalWrapper}>
-			<div className={styles.headerWrapper}>
-				<div className={styles.box}>
-					<Logo />
-				</div>
+		<>
+			<div
+				style={{
+					position: 'absolute',
+					width: '1px',
+					height: '1px',
+					top: '100px',
+				}}
+				ref={headRef}
+			></div>
+			<div className={styles.totalWrapper}>
+				<div className={styles.headerWrapper}>
+					<div className={styles.box}>
+						<Logo />
+					</div>
 
-				{inBreakPoint ? (
-					<div
-						className={styles.iconContainer}
-						onClick={() => {
-							setSideBarActive(!sideBarActive);
-						}}
-						style={sideBarActive ? { display: 'none' } : {}}
-					>
-						<svg
-							width='22'
-							height='19'
-							viewBox='0 0 22 19'
-							fill='none'
-							xmlns='http://www.w3.org/2000/svg'
-							className={styles.menuIcon}
+					{inBreakPoint ? (
+						<div
+							className={styles.iconContainer}
+							onClick={() => {
+								setSideBarActive(!sideBarActive);
+							}}
+							style={sideBarActive ? { display: 'none' } : {}}
 						>
-							<path d='M0 0.5H22' stroke='black' />
-							<path d='M0 9.5H22' stroke='black' />
-							<path d='M0 18.5H22' stroke='black' />
-						</svg>
-					</div>
-				) : (
-					<div
-						style={{ display: 'flex', alignItems: 'center', height: '100%' }}
-					>
-						<div className={styles.menuWrapper}>
-							<Menu
-								selectable={false}
-								selectedKeys={'1'}
-								multiple={true}
-								mode='horizontal'
-								items={items}
-								disabledOverflow={true}
-								className={styles.menu}
-								id='menu'
-							/>
+							<svg
+								width='22'
+								height='19'
+								viewBox='0 0 22 19'
+								fill='none'
+								xmlns='http://www.w3.org/2000/svg'
+								className={styles.menuIcon}
+							>
+								<path d='M0 0.5H22' stroke='black' />
+								<path d='M0 9.5H22' stroke='black' />
+								<path d='M0 18.5H22' stroke='black' />
+							</svg>
 						</div>
-						<div>
-							<LoginButton />
+					) : (
+						<div
+							style={{ display: 'flex', alignItems: 'center', height: '100%' }}
+						>
+							<div className={styles.menuWrapper}>
+								<Menu
+									selectable={false}
+									selectedKeys={'1'}
+									multiple={true}
+									mode='horizontal'
+									items={items}
+									disabledOverflow={true}
+									className={styles.menu}
+									id='menu'
+								/>
+							</div>
+							<div>
+								<LoginButton />
+							</div>
 						</div>
-					</div>
-				)}
+					)}
 
-				<SideBar
-					activeSideBar={sideBarActive}
-					setSideBarActive={setSideBarActive}
-					onClose={onClose}
-				></SideBar>
+					<SideBar
+						activeSideBar={sideBarActive}
+						setSideBarActive={setSideBarActive}
+						onClose={onClose}
+					></SideBar>
+				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 export default Header;

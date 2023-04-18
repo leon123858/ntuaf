@@ -124,8 +124,9 @@
 }
 :global(.ant-drawer-body) {
 	padding: 30px 0px 0px 0px !important;
-	background-image: url('/public//sidebar/sidebarBackground.png');
-	background-size: cover;
+	/* background-image: url('/public//sidebar/sidebarBackground.png');
+	background-size: cover; */
+	background-color: rgb(246, 246, 246);
 }
 .loginWrapper {
 	padding: 10px 30px 00px 0px;

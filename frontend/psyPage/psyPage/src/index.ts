@@ -681,17 +681,16 @@ resource.on(LOAD_EVENT.COMPLETE, async () => {
 	}
 	try {
 		$('#progress').text(`加載中: (${++completeCount}/${resources.length})`);
-		await Promise.all(
-			resources.map((resource) => {
-				if (resource.type == RESOURCE_TYPE.IMAGE) {
-					return preloadImage(resource.src.image.url);
-				} else if (resource.type == RESOURCE_TYPE.AUDIO) {
-					return preloadAudio(resource.src.audio.url);
-				} else {
-					return Promise.reject();
-				}
-			})
-		);
+
+		for (let resource of resources) {
+			if (resource.type == RESOURCE_TYPE.IMAGE) {
+				await preloadImage(resource.src.image.url);
+			} else if (resource.type == RESOURCE_TYPE.AUDIO) {
+				// await preloadAudio(resource.src.audio.url);
+			} else {
+				throw 'wrong type';
+			}
+		}
 		await load_game();
 		$('#loading').hide();
 		$('#canvas').show();

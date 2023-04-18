@@ -109,7 +109,7 @@ const HomeCalendar = () => {
 					return;
 				}
 			} catch (error) {
-				console.log('YESSS');
+				// console.log('no this day');
 				setDayEvents({
 					month: date.month() + 1,
 					date: date.date(),

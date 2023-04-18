@@ -5,35 +5,35 @@ import { BreakPointContext } from '../../useBreakPoint';
 const FourCircle = () => {
 	const [contents, setContents] = useState([]);
 	const { inBreakPoint, breakPoint } = useContext(BreakPointContext);
-	const [fourCircleClickable, setFourCircleClickable] = useState(false);
-	document.body.style.setProperty('--fourBallOffset', `-${350 / 2}px`);
+	// const [fourCircleClickable, setFourCircleClickable] = useState(false);
+	// document.body.style.setProperty('--fourBallOffset', `-${350 / 2}px`);
 
-	window.addEventListener(
-		'scroll',
-		() => {
-			// let tmp = document.getElementsByClassName(styles.lgCardWrapper)[0];
-			// let switcher = false;
-			let animationPortion = window.pageYOffset / window.innerHeight;
+	// window.addEventListener(
+	// 	'scroll',
+	// 	() => {
+	// 		// let tmp = document.getElementsByClassName(styles.lgCardWrapper)[0];
+	// 		// let switcher = false;
+	// 		let animationPortion = window.pageYOffset / window.innerHeight;
 
-			animationPortion = animationPortion >= 1 ? 0.99 : animationPortion;
-			document.body.style.setProperty('--scroll', animationPortion);
-			// console.log(animationPortion)
-			if (animationPortion === 0.99) {
-				if (!fourCircleClickable) {
-					setFourCircleClickable(true);
-				}
-				// console.log("ready", fourCircleClickable)
-			} else {
-				if (fourCircleClickable) {
-					setFourCircleClickable(false);
-				}
-				// console.log("not ready", fourCircleClickable)
-			}
+	// 		animationPortion = animationPortion >= 1 ? 0.99 : animationPortion;
+	// 		document.body.style.setProperty('--scroll', animationPortion);
+	// 		// console.log(animationPortion)
+	// 		if (animationPortion === 0.99) {
+	// 			if (!fourCircleClickable) {
+	// 				setFourCircleClickable(true);
+	// 			}
+	// 			// console.log("ready", fourCircleClickable)
+	// 		} else {
+	// 			if (fourCircleClickable) {
+	// 				setFourCircleClickable(false);
+	// 			}
+	// 			// console.log("not ready", fourCircleClickable)
+	// 		}
 
-			// console.log(window.pageYOffset, document.body.offsetHeight, window.innerHeight, tmp.offsetParent)
-		},
-		false
-	);
+	// 		// console.log(window.pageYOffset, document.body.offsetHeight, window.innerHeight, tmp.offsetParent)
+	// 	},
+	// 	false
+	// );
 	useEffect(() => {
 		setContents([
 			{
@@ -48,8 +48,7 @@ const FourCircle = () => {
 					'相應展覽活動',
 				],
 				iconTextUrl: '/ballText1.svg',
-				iconTextShadowUrl:
-					'https://drive.google.com/uc?export=view&id=1dPoRWcuOP2NI1wovrUYOt1MBgBr7RiOz',
+				iconTextShadowUrl: '/ballTextShadow1.svg',
 				frontCardBackgroundUrl: '/cardFront1.svg',
 				backCardBackgroundUrl: '/cardBack1.jpeg',
 				iconUrl: '/ball1.svg',
@@ -66,8 +65,7 @@ const FourCircle = () => {
 					'相應展覽活動',
 				],
 				iconTextUrl: '/ballText2.svg',
-				iconTextShadowUrl:
-					'https://drive.google.com/uc?export=view&id=15YCh7qumuRDpWeizxP7bZCyeTEAElY7Q',
+				iconTextShadowUrl: '/ballTextShadow2.svg',
 				frontCardBackgroundUrl: '/cardFront2.svg',
 				backCardBackgroundUrl: '/cardBack2.jpeg',
 				iconUrl: '/ball2.svg',
@@ -84,8 +82,7 @@ const FourCircle = () => {
 					'相應展覽活動',
 				],
 				iconTextUrl: '/ballText3.svg',
-				iconTextShadowUrl:
-					'https://drive.google.com/uc?export=view&id=1TosWx1-BkWsnDYws7kxhIDMR2_cAAxVy',
+				iconTextShadowUrl: '/ballTextShadow3.svg',
 				frontCardBackgroundUrl: '/cardFront3.svg',
 				backCardBackgroundUrl: '/cardBack3.jpeg',
 				iconUrl: '/ball3.svg',
@@ -102,8 +99,7 @@ const FourCircle = () => {
 					'相應展覽活動',
 				],
 				iconTextUrl: '/ballText4.svg',
-				iconTextShadowUrl:
-					'https://drive.google.com/uc?export=view&id=170YQGG6r_wwm26LktQQg9Q-d3-52do5H',
+				iconTextShadowUrl: '/ballTextShadow4.svg',
 				frontCardBackgroundUrl: '/cardFront4.svg',
 				backCardBackgroundUrl: '/cardBack4.jpeg',
 				iconUrl: '/ball4.svg',
@@ -116,7 +112,7 @@ const FourCircle = () => {
 				<div
 					className={styles.cardWrapper}
 					style={{
-						backgroundImage: `url(https://drive.google.com/uc?id=1JvmPGuuZ5-99q7ByKoZMAPAayF6lWdNn)`,
+						backgroundImage: `url(/lines.svg)`,
 					}}
 				>
 					{contents.map((content, index) => {
@@ -131,15 +127,16 @@ const FourCircle = () => {
 					className={styles.lgBackground}
 					style={{
 						height: `${breakPoint}px`,
-						backgroundImage: `url(https://drive.google.com/uc?id=1JvmPGuuZ5-99q7ByKoZMAPAayF6lWdNn)`,
+						backgroundImage: `url(/lines.svg)`,
 					}}
 				>
 					{/* <div className={styles.lgCardWrapper} style={{height:`${breakPoint}px`}}> */}
 					<div
 						className={`${
-							fourCircleClickable
-								? styles.lgCardWrapper
-								: `${styles.lgCardWrapper} ${styles.notReady}`
+							// fourCircleClickable
+							// 	? styles.lgCardWrapper
+							// 	: `${styles.lgCardWrapper} ${styles.notReady}`
+							styles.lgCardWrapper
 						}`}
 						style={{ height: `${breakPoint}px` }}
 					>
