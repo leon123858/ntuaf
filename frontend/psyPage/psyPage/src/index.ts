@@ -643,7 +643,7 @@ resource.on(LOAD_EVENT.COMPLETE, async () => {
 	function preloadAudio(src: string) {
 		return new Promise((resolve, reject) => {
 			const audio = new Audio();
-			audio.onload = function () {
+			audio.oncanplaythrough = function () {
 				$('#progress').text(`加載中: (${++completeCount}/${resources.length})`);
 				resolve(audio);
 			};
