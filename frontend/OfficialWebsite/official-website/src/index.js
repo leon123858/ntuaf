@@ -22,6 +22,7 @@ import Layout from './components/Layout/Layout';
 import { BreakPointProvider } from './useBreakPoint.jsx';
 import Artworkupload from './routers/Artworkupload';
 import { getMonthsEventsType } from '@leon123858/ntuaf-sdk';
+import Psyshare from './routers/PsyShare';
 
 function ScrollToTop() {
 	const { pathname } = useLocation();
@@ -50,7 +51,7 @@ function preloadImage(src) {
 const router = createBrowserRouter([
 	{
 		path: '/sharePsyPage/:type',
-		element: <></>,
+		element: <Psyshare/>,
 		errorElement: <ErrorPage />,
 	},
 	{
