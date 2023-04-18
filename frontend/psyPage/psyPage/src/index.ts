@@ -76,12 +76,12 @@ async function load_game() {
 	game.scene.transform.size.width = 700;
 	game.scene.transform.size.height = (game.scene.transform.size.width * 16) / 9;
 
-	const numberOfScene = 6;
+	const numberOfScene = 5;
 
-	const shareOnFacebook = () => {
+	const shareOnFacebook = (result:string) => {
 		const navUrl =
 			'https://www.facebook.com/sharer/sharer.php?u=' +
-			'https://ntuartfest28th.com/psytest';
+			'https://ntuartfest28th.com/sharePsyPage/'+ result;
 		window.open(navUrl, '_blank');
 	};
 
@@ -89,20 +89,26 @@ async function load_game() {
 		return new Promise((resolve, reject) => {
 			const animate = backgroundList[sceneIndex].animation;
 			animate.play('move', 1);
-			if (sceneIndex == numberOfScene - 1) {
-				backgroundList[sceneIndex + 1].background.getComponent(
-					Transform
-				).scale.y = 1.1;
-				//game.scene.transform.size.width = game.scene.transform.size.width*17/9;
-				backgroundList[sceneIndex + 1].background.removeComponent('Img');
-				let resourceIN;
-				if (A >= B && A >= C) resourceIN = 'bg6';
-				else if (B >= A && B >= C) resourceIN = 'bg7';
-				else if (C >= A && C >= B) resourceIN = 'bg8';
-				const img = new Img({
-					resource: resourceIN,
-				});
-				backgroundList[sceneIndex + 1].background.addComponent(img);
+			if (sceneIndex == numberOfScene ) {
+				if (A >= B && A >= C) {
+					$('#sharebg').attr("src","./statics/心理測驗(結果)_A.jpg");
+					$('#sharebutton').attr("option","A");
+					$('#copybutton').attr("option","A");
+				}
+				else if (B >= A && B >= C){
+					$('#sharebg').attr("src","./statics/心理測驗(結果)_B.jpg");
+					$('#sharebutton').attr("option","B");
+					$('#copybutton').attr("option","B");
+				}
+				else if (C >= A && C >= B){
+					$('#sharebg').attr("src","./statics/心理測驗(結果)_C.jpg");
+					$('#sharebutton').attr("option","C");
+					$('#copybutton').attr("option","C");
+				}
+				$('#sharebutton').attr("onclick","shareOnFacebook(this)");
+				$('#copybutton').attr("onclick","copyurl(this)");
+				$('#canvas').hide()
+				$('#share').show()
 			}
 
 			btns.forEach((btn) => {
@@ -114,13 +120,14 @@ async function load_game() {
 			animate.on('finish', async () => {
 				backgroundList[sceneIndex].background.remove();
 				bgSoundList[sceneIndex].stop();
+				btns.forEach((btn) => btn.button.remove());
 				sceneIndex += 1;
 				bgSoundList[sceneIndex].play();
-				btns.forEach((btn) => btn.button.remove());
-				btn_index += 1;
-				btns = [...btnLists[btn_index]].map((value, _) => createBtn(value));
-				btns.forEach((btn) => game.scene.addChild(btn.button));
-				resolve(null);
+				if(sceneIndex <= numberOfScene){
+					btns = [...btnLists[sceneIndex]].map((value, _) => createBtn(value));
+					btns.forEach((btn) => game.scene.addChild(btn.button));
+					resolve(null);
+				}
 			});
 		});
 	};
@@ -553,38 +560,10 @@ async function load_game() {
 				},
 			},
 		],
-		[
-			{
-				name: 'fbshare',
-				name2: 'fbshare',
-				transform: {
-					position: {
-						x: 100,
-						y: 270,
-					},
-					origin: {
-						x: 0.5,
-						y: 0.5,
-					},
-					anchor: {
-						x: 0.5,
-						y: 0.9,
-					},
-					size: {
-						width: 90,
-						height: 80,
-					},
-				},
-				callback: async () => {
-					shareOnFacebook();
-				},
-			},
-		],
 	];
 
-	let btn_index = 0;
-
 	let sceneIndex = 0;
+
 	const backgroundList: any[] = [];
 	for (let index = 0; index < numberOfScene + 1; index++) {
 		const bg = createBackground(index);
@@ -595,7 +574,7 @@ async function load_game() {
 	for (let index = 1; index < numberOfScene + 1; index++) {
 		game.scene.addChild(backgroundList[index].background);
 	}
-	let btns = [...btnLists[btn_index]].map((value, _) => createBtn(value));
+	let btns = [...btnLists[sceneIndex]].map((value, _) => createBtn(value));
 
 	btns.forEach((btn) => game.scene.addChild(btn.button));
 	bgSoundList[0].play();
