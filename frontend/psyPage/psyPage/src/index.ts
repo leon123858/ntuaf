@@ -665,7 +665,7 @@ resource.on(LOAD_EVENT.COMPLETE, async () => {
 			if (resource.type == RESOURCE_TYPE.IMAGE) {
 				await preloadImage(resource.src.image.url);
 			} else if (resource.type == RESOURCE_TYPE.AUDIO) {
-				await preloadAudio(resource.src.audio.url);
+				//await preloadAudio(resource.src.audio.url);
 			} else {
 				throw 'wrong type';
 			}
