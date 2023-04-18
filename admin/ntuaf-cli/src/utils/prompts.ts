@@ -12,6 +12,7 @@ enum MODE_TYPE {
 	'插入例行展覽' = 'createAlwaysEvent',
 	'自動匯入人員列表' = 'insertMember',
 	'創建空事件' = 'createEmptyEvent',
+	'壓縮所有card圖片' = 'compressCardImage',
 }
 
 const modeChoices = Object.keys(MODE_TYPE).map((key) => {

@@ -35,6 +35,7 @@ const { v4: uuidv4 } = require('uuid');
 import { db } from './init';
 import { EVENT_TYPE, Event } from '@leon123858/ntuaf-sdk';
 import moment from 'moment';
+import { compressEventBannerImage } from './utils/convertWebp';
 
 const figlet = require('figlet');
 
@@ -172,6 +173,10 @@ const options = program.opts();
 			const allEvent = await db.collection('Events').get();
 			const allEventId = allEvent.docs.map((v) => v.id);
 			await db.collection('Members').doc(email).update({ admin: allEventId });
+			break;
+		}
+		case MODE_TYPE.壓縮所有card圖片: {
+			await compressEventBannerImage();
 			break;
 		}
 		default: {
