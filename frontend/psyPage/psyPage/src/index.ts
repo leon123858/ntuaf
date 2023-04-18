@@ -78,10 +78,11 @@ async function load_game() {
 
 	const numberOfScene = 5;
 
-	const shareOnFacebook = (result:string) => {
+	const shareOnFacebook = (result: string) => {
 		const navUrl =
 			'https://www.facebook.com/sharer/sharer.php?u=' +
-			'https://ntuartfest28th.com/sharePsyPage/'+ result;
+			'https://ntuartfest28th.com/sharePsyPage/' +
+			result;
 		window.open(navUrl, '_blank');
 	};
 
@@ -89,26 +90,24 @@ async function load_game() {
 		return new Promise((resolve, reject) => {
 			const animate = backgroundList[sceneIndex].animation;
 			animate.play('move', 1);
-			if (sceneIndex == numberOfScene ) {
+			if (sceneIndex == numberOfScene) {
 				if (A >= B && A >= C) {
-					$('#sharebg').attr("src","./statics/心理測驗(結果)_A.jpg");
-					$('#sharebutton').attr("option","A");
-					$('#copybutton').attr("option","A");
+					$('#sharebg').attr('src', './statics/心理測驗(結果)_A.jpg');
+					$('#sharebutton').attr('option', 'A');
+					$('#copybutton').attr('option', 'A');
+				} else if (B >= A && B >= C) {
+					$('#sharebg').attr('src', './statics/心理測驗(結果)_B.jpg');
+					$('#sharebutton').attr('option', 'B');
+					$('#copybutton').attr('option', 'B');
+				} else if (C >= A && C >= B) {
+					$('#sharebg').attr('src', './statics/心理測驗(結果)_C.jpg');
+					$('#sharebutton').attr('option', 'C');
+					$('#copybutton').attr('option', 'C');
 				}
-				else if (B >= A && B >= C){
-					$('#sharebg').attr("src","./statics/心理測驗(結果)_B.jpg");
-					$('#sharebutton').attr("option","B");
-					$('#copybutton').attr("option","B");
-				}
-				else if (C >= A && C >= B){
-					$('#sharebg').attr("src","./statics/心理測驗(結果)_C.jpg");
-					$('#sharebutton').attr("option","C");
-					$('#copybutton').attr("option","C");
-				}
-				$('#sharebutton').attr("onclick","shareOnFacebook(this)");
-				$('#copybutton').attr("onclick","copyurl(this)");
-				$('#canvas').hide()
-				$('#share').show()
+				$('#sharebutton').attr('onclick', 'shareOnFacebook(this)');
+				$('#copybutton').attr('onclick', 'copyurl(this)');
+				$('#canvas').hide();
+				$('#share').show();
 			}
 
 			btns.forEach((btn) => {
@@ -123,7 +122,7 @@ async function load_game() {
 				btns.forEach((btn) => btn.button.remove());
 				sceneIndex += 1;
 				bgSoundList[sceneIndex].play();
-				if(sceneIndex <= numberOfScene){
+				if (sceneIndex <= numberOfScene) {
 					btns = [...btnLists[sceneIndex]].map((value, _) => createBtn(value));
 					btns.forEach((btn) => game.scene.addChild(btn.button));
 					resolve(null);
@@ -651,6 +650,7 @@ resource.on(LOAD_EVENT.COMPLETE, async () => {
 				reject(src);
 			};
 			audio.src = src;
+			audio.load();
 		});
 	}
 	if (!isMobile()) {
@@ -660,16 +660,16 @@ resource.on(LOAD_EVENT.COMPLETE, async () => {
 	}
 	try {
 		$('#progress').text(`加載中: (${completeCount}/${resources.length})`);
-
-		for (let resource of resources) {
-			if (resource.type == RESOURCE_TYPE.IMAGE) {
-				await preloadImage(resource.src.image.url);
-			} else if (resource.type == RESOURCE_TYPE.AUDIO) {
-				//await preloadAudio(resource.src.audio.url);
-			} else {
-				throw 'wrong type';
-			}
-		}
+		await Promise.all(
+			resources.map((resource) => {
+				if (resource.type == RESOURCE_TYPE.IMAGE) {
+					return preloadImage(resource.src.image.url);
+				} else if (resource.type == RESOURCE_TYPE.AUDIO) {
+					return preloadAudio(resource.src.audio.url);
+				}
+				return Promise.reject();
+			})
+		);
 		await load_game();
 		$('#loading').hide();
 		$('#canvas').show();
