@@ -64,7 +64,7 @@ const TextBox = ({ text }) => {
             [BlOCK_TYPE.TEXT_D]: (
                 <div style={(inBreakPoint) ? { padding: '40px 0' } : { display: 'flex', alignItems: 'center', padding: '40px 0' }} className={style.container}>
                     <div style={{ textAlign: 'center' }}>
-                        <img src={text.url} alt="" style={{ width: 140, marginRight: '30px' }} />
+                        <img src={text.url} alt="" style={(inBreakPoint) ? { width: 140 } : { width: 140, marginRight: '30px' }} />
                     </div>
 
                     <div className={style.content} style={{ backgroundColor: 'transparent' }}>

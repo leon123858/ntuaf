@@ -36,7 +36,7 @@ const ImageList = ({ data }) => {
 			</div>
 		),
 		[BlOCK_TYPE.IMAGE_LIST_C]: (
-			<div className={style.container}>
+			<div className={style.container} style={(inBreakPoint) ? { margin: '60px auto 84px auto' } : { margin: '60px auto 168px auto' }}>
 				{
 					(data.title) ? (
 						<p className={style.topic}>{data.title}</p>
@@ -74,7 +74,7 @@ const ImageList = ({ data }) => {
 			</div>
 		),
 		[BlOCK_TYPE.IMAGE_LIST_D]: (
-			<div className={style.container}>
+			<div className={style.container} style={{ margin: "168px auto 84px auto" }}>
 				<p className={style.topic}>{data.topic}</p>
 
 				<div className={inBreakPoint ? style.imgListD : style.lgImgListD}>
