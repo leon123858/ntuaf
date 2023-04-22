@@ -5,7 +5,9 @@ const Link = ({ url, title }) => {
 	return (
 		<div className={style.container}>
 			<a href={url}>
-				<button className={style.btn}>{title}</button>
+				<button className={style.btn}>
+					<p className={style.content}>{title}</p>
+				</button>
 			</a>
 		</div>
 	);

@@ -193,7 +193,7 @@ function Display() {
 				fallback='/loading.jpg'
 				width={'100%'}
 			/>
-			<h1 style={{ textAlign: 'center', margin: '8% 0', fontWeight: '500' }}>
+			<h1 className={style.title} style={(inBreakPoint) ? { fontSize: 20, margin: '15% 0' } : { fontSize: 28 }}>
 				{eventState.title}
 			</h1>
 			<div
