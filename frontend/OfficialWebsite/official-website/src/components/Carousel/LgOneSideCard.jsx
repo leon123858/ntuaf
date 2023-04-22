@@ -1,5 +1,4 @@
 import styles from './LgOneSideCard.module.css';
-import { Link } from 'react-router-dom';
 import { Image, Col, Row } from 'antd';
 
 // const DemoBox = (props) => <p style={{height:`${props.value}px`, backgroundColor:"red"}}>{props.value}</p>;
@@ -10,7 +9,7 @@ const LgOneSideCard = ({ cardContent }) => {
 			? cardContent.content.substring(0, numOfContentString) + '...'
 			: cardContent.content;
 	return (
-		<Link to={`/display/${cardContent.id}`}>
+		<>
 			<div className={styles.oneSideCard}>
 				<div className={styles.headerWrapper}>
 					<h4 className={styles.header}>{cardContent.header}</h4>
@@ -59,7 +58,7 @@ const LgOneSideCard = ({ cardContent }) => {
 					)}
 				</div>
 			</div>
-		</Link>
+		</>
 	);
 };
 export default LgOneSideCard;
