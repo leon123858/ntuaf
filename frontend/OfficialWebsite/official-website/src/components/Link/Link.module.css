@@ -1,6 +1,7 @@
 .container {
   text-align: center;
-  margin: 60px auto;
+  margin: 0 auto;
+  padding: 40px 0;
 }
 
 .btn {
@@ -11,7 +12,6 @@
   border-radius: 50px;
   box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.21);
   font-size: 16px;
-
   letter-spacing: 1px;
 }
 

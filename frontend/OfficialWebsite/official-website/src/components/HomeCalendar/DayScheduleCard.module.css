@@ -35,12 +35,13 @@
 .eventContainer {
 	display: grid;
 	grid-template-columns: 100%;
+	max-width: 384px;
 }
 
 .event {
 	min-height: 70px;
 	width: 95%;
-	max-width: 92vw;
+	max-width: 94vw;
 	padding: 16px 30px;
 	cursor: pointer;
 	border-radius: 1.25em;
