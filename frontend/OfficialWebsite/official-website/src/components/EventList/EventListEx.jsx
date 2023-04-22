@@ -35,7 +35,7 @@ const EventImg = ({ tagName, imgUrl, inBreakPoint, isHovered }) => {
 						: `${style.img2} ${style.flexCenter}`
 				}
 			>
-				<Image preview={false} src={imgUrl} fallback='/loading.jpg' />
+				<Image preview={false} src={imgUrl} fallback='/loadingStatic.webp' />
 			</div>
 			<div className={style.tag}>
 				<Tag style={isHovered ? tagStyle : tagStyle2}>{tagName}</Tag>
@@ -64,11 +64,11 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 				position: 'relative',
 				boxShadow: '4px 4px 15px rgba(0 0 0/21%)',
 				background: !isHovered ? '#FFFFFF' : '#D7497C',
-				marginBottom: '30px',
+				marginBottom: '45px',
 				borderRadius: '15px',
 			}}
 			cover={
-				<div style={{ height: '150px' }}>
+				<div style={{ height: '116px' }}>
 					<EventImg
 						tagName={tagName}
 						imgUrl={imgUrl}

@@ -8,8 +8,8 @@ import { BreakPointContext } from '../../useBreakPoint';
 
 const LAYOUT_BACKGROUND_IMAGE = {
 	default: {
-		web: '/background/dWebB.png',
-		mobile: '/background/dMobileB.png',
+		web: '/background/dWebB.webp',
+		mobile: '/background/dMobileB.webp',
 	},
 	// '/calendar': {
 	// 	web: '/background/3web.png',
@@ -40,6 +40,13 @@ const getBackgroundImage = (path, inBreakPoint) => {
 const Layout = () => {
 	const location = useLocation();
 	const { inBreakPoint } = useContext(BreakPointContext);
+	const appendStyle = inBreakPoint
+		? {
+				position: 'relative',
+				minHeight: '100%',
+				paddingBottom: '200px',
+		  }
+		: {};
 	return (
 		<>
 			<Header />
@@ -50,8 +57,9 @@ const Layout = () => {
 						location.pathname,
 						inBreakPoint
 					)}')`,
-					backgroundSize: '100vw 100vh',
+					backgroundSize: '100% 100vh',
 					backgroundAttachment: 'scroll',
+					...appendStyle,
 				}}
 			>
 				<Outlet />

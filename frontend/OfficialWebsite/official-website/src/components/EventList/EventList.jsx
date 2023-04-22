@@ -6,8 +6,6 @@ import { Typography } from 'antd';
 
 const { Title } = Typography;
 
-const { Meta } = Card;
-
 const EventImg = ({ tagName, imgUrl, inBreakPoint, isHovered }) => {
 	// console.log(tagName);
 	const tagStyle12 = {
@@ -60,7 +58,7 @@ const EventImg = ({ tagName, imgUrl, inBreakPoint, isHovered }) => {
 						: `${style.img2} ${style.flexCenter}`
 				}
 			>
-				<Image preview={false} src={imgUrl} fallback='/loading.jpg' />
+				<Image preview={false} src={imgUrl} fallback='/loadingStatic.webp' />
 			</div>
 			<div className={style.tag}>
 				<Tag
@@ -104,11 +102,11 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 					: tagName.includes('講座') || tagName.includes('工作坊')
 					? '#A9CF59'
 					: '#25499D',
-				marginBottom: '30px',
+				marginBottom: '45px',
 			}}
-      
+			bodyStyle={{ padding: '30px 44px 20px 44px', height: 138 }}
 			cover={
-				<div style={{ height: '150px' }}>
+				<div style={{ height: '118px' }}>
 					<EventImg
 						tagName={tagName}
 						imgUrl={imgUrl}
@@ -126,40 +124,37 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
 		>
-			<Meta
-				title={
-					<span
-						style={{
-							fontSize: '16px',
-							fontWeight: '450',
-							color: isHovered
-								? '#FFFFFF'
-								: tagName.includes('講座') || tagName.includes('工作坊')
-								? '#A9CF59'
-								: '#25499D',
-							letterSpacing: '2px',
-						}}
-					>
-						{title}
-					</span>
-				}
-				description={
-					<span
-						style={{
-							fontSize: '14px',
-							color: isHovered
-								? '#FFFFFF'
-								: tagName.includes('講座') || tagName.includes('工作坊')
-								? '#A9CF59'
-								: '#25499D',
-							letterSpacing: '2px',
-						}}
-					>
-						{date}
-					</span>
-				}
-				className={style.meta}
-			/>
+			<div className={style.meta}>
+				<p
+					style={{
+						fontSize: '16px',
+						fontWeight: '450',
+						color: isHovered
+							? '#FFFFFF'
+							: tagName.includes('講座') || tagName.includes('工作坊')
+							? '#A9CF59'
+							: '#25499D',
+						letterSpacing: '2px',
+					}}
+				>
+					{title}
+				</p>
+
+				<p
+					style={{
+						fontSize: '14px',
+						color: isHovered
+							? '#FFFFFF'
+							: tagName.includes('講座') || tagName.includes('工作坊')
+							? '#A9CF59'
+							: '#25499D',
+						letterSpacing: '2px',
+						marginTop: '13px',
+					}}
+				>
+					{date}
+				</p>
+			</div>
 		</Card>
 	);
 };

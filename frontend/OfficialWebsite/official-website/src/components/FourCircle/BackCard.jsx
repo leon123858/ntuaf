@@ -17,19 +17,18 @@ const BackCard = ({ BackCardContent, setFlip, closeModel }) => {
 					style={{
 						backgroundImage: `url("${BackCardContent.backCardBackgroundUrl}")`,
 					}}
+					onClick={handleFlip}
 				>
 					<div
 						className={styles.title}
 						style={{ backgroundImage: `url("${BackCardContent.iconUrl}")` }}
 					></div>
-					<div className={styles.flipButton} onClick={handleFlip}>
+					<div className={styles.flipButton}>
 						<Image
-							src={
-								'https://drive.google.com/uc?export=view&id=11lajpr9gX8p5ly6GjC5ALHFosjQ5QOHA'
-							}
+							src={'/cardBackArrow.svg'}
 							alt={'loading'}
 							preview={false}
-							fallback='/loading.jpg'
+							fallback='/loadingStatic.webp'
 						></Image>
 					</div>
 				</div>
@@ -39,19 +38,18 @@ const BackCard = ({ BackCardContent, setFlip, closeModel }) => {
 					style={{
 						backgroundImage: `url("${BackCardContent.backCardBackgroundUrl}")`,
 					}}
+					onClick={handleFlip}
 				>
 					<div
 						className={styles.lgTitle}
 						style={{ backgroundImage: `url("${BackCardContent.iconUrl}")` }}
 					></div>
-					<div className={styles.flipButton} onClick={handleFlip}>
+					<div className={styles.flipButton}>
 						<Image
-							src={
-								'https://drive.google.com/uc?export=view&id=11lajpr9gX8p5ly6GjC5ALHFosjQ5QOHA'
-							}
+							src={'/cardBackArrow.svg'}
 							alt={'loading'}
 							preview={false}
-							fallback='/loading.jpg'
+							fallback='/loadingStatic.webp'
 						></Image>
 					</div>
 				</div>

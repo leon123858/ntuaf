@@ -61,13 +61,8 @@ function Update({ email, admin }: { email: string; admin: string[] }) {
 			<hr></hr>
 			裁切圖片工具:
 			<UploadImage
-				setUrl={(url: string) => {
-					const el = document.createElement('textarea');
-					el.value = url;
-					document.body.appendChild(el);
-					el.select();
-					document.execCommand('copy');
-					document.body.removeChild(el);
+				setUrl={async (url: string) => {
+					await navigator.clipboard.writeText(url);
 					message.success('已複製上傳圖片網址, 可至下方文字框貼上');
 				}}
 				text='上傳圖片且複製'
@@ -179,20 +174,16 @@ function Update({ email, admin }: { email: string; admin: string[] }) {
 				</ProForm.Group>
 				<br></br>
 				<ProForm.Group>
-					<UploadImage
-						setUrl={(url: string) => {
-							formRef.current?.setFieldsValue({ image: { card: url } });
-						}}
-					></UploadImage>
 					<ProFormText
 						width='md'
 						name={['image', 'card']}
+						disabled
 						addonAfter={
 							<a href={imageCard} target='_blank' rel='noreferrer'>
 								原圖
 							</a>
 						}
-						label='方形圖片網址'
+						label='預覽用網址(不用填, 系統生成)'
 					/>
 				</ProForm.Group>
 				<br></br>
@@ -282,11 +273,11 @@ function Update({ email, admin }: { email: string; admin: string[] }) {
 													name='url'
 													placeholder='請輸入相關連結'
 												></ProFormTextArea>
-												<ProFormText
+												<ProFormTextArea
 													width='md'
 													name='name'
 													placeholder='請輸入名稱描述'
-												></ProFormText>
+												></ProFormTextArea>
 											</ProCard>
 										);
 									}}

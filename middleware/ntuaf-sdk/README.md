@@ -183,7 +183,7 @@ export enum EVENT_TYPE {
 	'閉幕式' = '閉幕式',
 	'市集' = '市集',
 	'舞台表演' = '舞台表演',
-	'體驗實作' = '體驗實作',
+	'體驗實作' = '體驗活動',
 	'講座' = '講座',
 	'工作坊' = '工作坊',
 	'講座/工作坊' = '講座/工作坊',
@@ -241,6 +241,7 @@ export interface Artwork {
 	artworkName: string;
 	email: string;
 	url: string;
+	originUrl: string;
 	text: string;
 	createTime: number;
 	like: number;

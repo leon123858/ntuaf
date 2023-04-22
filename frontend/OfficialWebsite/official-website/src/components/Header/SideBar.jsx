@@ -93,7 +93,7 @@ const LinkGroup = ({ setSideBarActive }) => {
 					<div className={styles.collapseItemWrapper}>
 						<Link
 							className={styles.subLink}
-							to={'/artwork'}
+							to={'/map'}
 							onClick={handleClickLink}
 						>
 							<div className={styles.chineseSubTab}>尋洄地圖</div>
@@ -101,13 +101,17 @@ const LinkGroup = ({ setSideBarActive }) => {
 						</Link>
 						<Link
 							className={styles.subLink}
-							to={'/map'}
+							to={'/psytest'}
 							onClick={handleClickLink}
 						>
 							<div className={styles.chineseSubTab}>心理測驗</div>
 							<div className={styles.engSubTab}>Reply 2023</div>
 						</Link>
-						<Link className={styles.subLink} to={'/'} onClick={handleClickLink}>
+						<Link
+							className={styles.subLink}
+							to={'/artwork'}
+							onClick={handleClickLink}
+						>
 							<div className={styles.chineseSubTab}>洄溯展覽暨比賽</div>
 							<div className={styles.engSubTab}>Throwback</div>
 						</Link>
@@ -141,20 +145,14 @@ const SideBar = (props) => {
 			placement='right'
 			open={props.activeSideBar}
 			closable={false}
-			width={'100vw'}
+			width={'100%'}
 			mask={false}
 			bodyStyle={
-				activeSearch ? { backgroundColor: 'gray', transition: 'all 1s' } : {}
+				activeSearch ? { backgroundColor: 'red', transition: 'all 1s' } : {}
 			}
 		>
 			<div className={styles.drawerBodyWrapper} {...handlers}>
 				<div className={styles.header}>
-					{/* <SearchOutlined
-						style={{ fontSize: '32px' }}
-						onClick={() => {
-							setActiveSearch(!activeSearch);
-						}}
-					/> */}
 					<div
 						id={'inputSearch'}
 						className={activeSearch ? styles.input : styles.defaultInput}
@@ -174,15 +172,13 @@ const SideBar = (props) => {
 				</div>
 
 				<LinkGroup setSideBarActive={props.setSideBarActive} />
-				{/* <div className={styles.closeIcon}> */}
 
 				<img
 					alt='sidebar'
 					onClick={props.onClose}
 					className={styles.closeIcon}
-					src='https://drive.google.com/uc?export=view&id=1cP59d2uWfbFBoflyGC0dVDHfARRahUWF'
+					src='/sidebar/sidebarCancel.svg'
 				></img>
-				{/* </div> */}
 			</div>
 		</Drawer>
 	);

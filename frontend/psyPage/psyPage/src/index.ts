@@ -5,7 +5,13 @@ import createBgm from './gameObjects/bgm';
 
 import resources from './resources';
 
-import { Game, LOAD_EVENT, Transform, resource } from '@eva/eva.js';
+import {
+	Game,
+	LOAD_EVENT,
+	RESOURCE_TYPE,
+	Transform,
+	resource,
+} from '@eva/eva.js';
 import { RendererSystem } from '@eva/plugin-renderer';
 import { ImgSystem } from '@eva/plugin-renderer-img';
 import { EventSystem } from '@eva/plugin-renderer-event';
@@ -51,8 +57,7 @@ async function load_game() {
 	let B = 0;
 	let C = 0;
 
-	const bgSound = createBgm();
-	bgSound.play();
+	const bgSoundList = [...new Array(7)].map((_, index) => createBgm(index));
 
 	// basic setting
 
@@ -71,56 +76,58 @@ async function load_game() {
 	game.scene.transform.size.width = 700;
 	game.scene.transform.size.height = (game.scene.transform.size.width * 16) / 9;
 
-	const numberOfScene = 6;
+	const numberOfScene = 5;
 
-	const changeScenefunt = async () => {
-		// console.log(backgroundList);
-		// console.log(backgroundList[0])
-		const animate = backgroundList[sceneIndex].animation;
-		animate.play('move', 1);
-		// console.log("A = ",A,",B = ",B,",C = ",C);
+	const shareOnFacebook = (result: string) => {
+		const navUrl =
+			'https://www.facebook.com/sharer/sharer.php?u=' +
+			'https://ntuartfest28th.com/sharePsyPage/' +
+			result;
+		window.open(navUrl, '_blank');
+	};
 
-		//// console.log(""animate.play('fadeOut',1));
-		// console.log("scene",backgroundList[sceneIndex]);
-		if (sceneIndex == numberOfScene - 1) {
-			// console.log("start result");
-			backgroundList[sceneIndex + 1].background.getComponent(
-				Transform
-			).scale.y = 1.1;
-			//game.scene.transform.size.width = game.scene.transform.size.width*17/9;
-			backgroundList[sceneIndex + 1].background.removeComponent('Img');
-			let resourceIN;
-			if (A >= B && A >= C) resourceIN = 'bg6';
-			else if (B >= A && B >= C) resourceIN = 'bg7';
-			else if (C >= A && C >= B) resourceIN = 'bg8';
-			const img = new Img({
-				resource: resourceIN,
-			});
-			backgroundList[sceneIndex + 1].background.addComponent(img);
-			$('#canvas').hide();
-			$('#share').show();
-		}
-
-		btns.forEach((btn) => {
-			const disappear = btn.transition;
-			// console.log(btn)
-			btn.button.removeComponent(Event);
-			disappear.play('disappear', 1);
-		});
-
-		animate.on('finish', async () => {
-			backgroundList[sceneIndex].background.remove();
-			sceneIndex += 1;
-
-			btns.forEach((btn) => btn.button.remove());
-			btn_index += 1;
-			if (sceneIndex < numberOfScene) {
-				btns = [...btnLists[btn_index]].map((value, _) => createBtn(value));
-				// console.log("index = ",btn_index);
-				// console.log("scene index = ",sceneIndex);
-				btns.forEach((btn) => game.scene.addChild(btn.button));
-				// console.log(btns);
+	const changeScenefunt = () => {
+		return new Promise((resolve, reject) => {
+			const animate = backgroundList[sceneIndex].animation;
+			animate.play('move', 1);
+			if (sceneIndex == numberOfScene) {
+				if (A >= B && A >= C) {
+					$('#sharebg').attr('src', './statics/心理測驗(結果)_A.jpg');
+					$('#sharebutton').attr('option', 'A');
+					$('#copybutton').attr('option', 'A');
+				} else if (B >= A && B >= C) {
+					$('#sharebg').attr('src', './statics/心理測驗(結果)_B.jpg');
+					$('#sharebutton').attr('option', 'B');
+					$('#copybutton').attr('option', 'B');
+				} else if (C >= A && C >= B) {
+					$('#sharebg').attr('src', './statics/心理測驗(結果)_C.jpg');
+					$('#sharebutton').attr('option', 'C');
+					$('#copybutton').attr('option', 'C');
+				}
+				$('#sharebutton').attr('onclick', 'shareOnFacebook(this)');
+				$('#copybutton').attr('onclick', 'copyurl(this)');
+				$('#canvas').hide();
+				$('#share').show();
 			}
+
+			btns.forEach((btn) => {
+				const disappear = btn.transition;
+				btn.button.removeComponent(Event);
+				disappear.play('disappear', 1);
+			});
+
+			animate.on('finish', async () => {
+				backgroundList[sceneIndex].background.remove();
+				bgSoundList[sceneIndex].stop();
+				btns.forEach((btn) => btn.button.remove());
+				sceneIndex += 1;
+				bgSoundList[sceneIndex].play();
+				if (sceneIndex <= numberOfScene) {
+					btns = [...btnLists[sceneIndex]].map((value, _) => createBtn(value));
+					btns.forEach((btn) => game.scene.addChild(btn.button));
+					resolve(null);
+				}
+			});
 		});
 	};
 
@@ -128,6 +135,7 @@ async function load_game() {
 		[
 			{
 				name: 'startTest',
+				name2: 'startTest',
 				transform: {
 					position: {
 						x: 0,
@@ -494,7 +502,7 @@ async function load_game() {
 					},
 				},
 				callback: async () => {
-					A += 1;
+					A += 1.1;
 					await changeScenefunt();
 				},
 			},
@@ -520,7 +528,7 @@ async function load_game() {
 					},
 				},
 				callback: async () => {
-					B += 1;
+					B += 1.1;
 					await changeScenefunt();
 				},
 			},
@@ -546,32 +554,29 @@ async function load_game() {
 					},
 				},
 				callback: async () => {
-					C += 1;
+					C += 1.1;
 					await changeScenefunt();
 				},
 			},
 		],
 	];
 
-	let btn_index = 0;
-
 	let sceneIndex = 0;
+
 	const backgroundList: any[] = [];
 	for (let index = 0; index < numberOfScene + 1; index++) {
-		const bg = await createBackground(index);
+		const bg = createBackground(index);
 		backgroundList.push(bg);
 	}
 	// console.log(backgroundList);
-	async function addchild(index: number) {
+	game.scene.addChild(backgroundList[0].background);
+	for (let index = 1; index < numberOfScene + 1; index++) {
 		game.scene.addChild(backgroundList[index].background);
 	}
-
-	for (let index = 0; index < numberOfScene + 1; index++) {
-		const result = await addchild(index);
-	}
-	let btns = [...btnLists[btn_index]].map((value, _) => createBtn(value));
+	let btns = [...btnLists[sceneIndex]].map((value, _) => createBtn(value));
 
 	btns.forEach((btn) => game.scene.addChild(btn.button));
+	bgSoundList[0].play();
 }
 
 declare global {
@@ -609,9 +614,69 @@ const game = new Game({
 window.game = game;
 
 resource.on(LOAD_EVENT.COMPLETE, async () => {
-	await load_game();
-	$('#loading').hide();
-	$('#canvas').show();
+	let completeCount = 0;
+	function isMobile() {
+		const ua = navigator.userAgent;
+		if (
+			/Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+				ua
+			)
+		) {
+			return true;
+		}
+		return false;
+	}
+	function preloadImage(src: string) {
+		return new Promise((resolve, reject) => {
+			const img = new Image();
+			img.onload = function () {
+				$('#progress').text(`加載中: (${++completeCount}/${resources.length})`);
+				resolve(img);
+			};
+			img.onerror = function () {
+				reject(src);
+			};
+			img.src = src;
+		});
+	}
+	function preloadAudio(src: string) {
+		return new Promise((resolve, reject) => {
+			const audio = new Audio();
+			audio.oncanplaythrough = function () {
+				$('#progress').text(`加載中: (${++completeCount}/${resources.length})`);
+				resolve(audio);
+			};
+			audio.onerror = function () {
+				reject(src);
+			};
+			audio.src = src;
+			audio.load();
+		});
+	}
+	if (!isMobile()) {
+		alert('本測驗僅支援手機!');
+		$('#progress').text('本測驗僅支援手機!');
+		return;
+	}
+	try {
+		$('#progress').text(`加載中: (${completeCount}/${resources.length})`);
+		await Promise.all(
+			resources.map((resource) => {
+				if (resource.type == RESOURCE_TYPE.IMAGE) {
+					return preloadImage(resource.src.image.url);
+				} else if (resource.type == RESOURCE_TYPE.AUDIO) {
+					return preloadAudio(resource.src.audio.url);
+				}
+				return Promise.reject();
+			})
+		);
+		await load_game();
+		$('#loading').hide();
+		$('#canvas').show();
+	} catch (err) {
+		console.log(err);
+		$('#progress').text('加載錯誤！');
+	}
 });
 
 resource.preload();

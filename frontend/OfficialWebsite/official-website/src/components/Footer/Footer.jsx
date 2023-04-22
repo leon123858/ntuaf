@@ -17,8 +17,8 @@ const Footer = () => {
 				className={inBreakPoint ? styles.footerWrapper : styles.lgFooterWrapper}
 				style={
 					inBreakPoint
-						? { backgroundImage: 'url(../smFooter.png)' }
-						: { backgroundImage: 'url(../lgFooter.png)' }
+						? { backgroundImage: 'url(../smFooter.webp)' }
+						: { backgroundImage: 'url(../lgFooter.webp)' }
 				}
 			>
 				<svg
@@ -49,7 +49,7 @@ const Footer = () => {
 					</linearGradient>
 				</svg>
 
-				<div>
+				<div style={{ overflow: 'hidden' }}>
 					<svg
 						width='220'
 						height='60'
@@ -159,7 +159,9 @@ const Footer = () => {
 
 				<div className={styles.hr}></div>
 
-				<div className={inBreakPoint ? styles.infoWrapper : styles.lgInfoWrapper}>
+				<div
+					className={inBreakPoint ? styles.infoWrapper : styles.lgInfoWrapper}
+				>
 					<div style={{ marginRight: '30%', whiteSpace: 'nowrap' }}>
 						<h3 style={{ fontSize: 16, margin: '0 0 0 0' }}>聯絡我們</h3>
 						<p style={{ fontSize: 12, margin: '8px 0 6px 0' }}>
@@ -256,8 +258,6 @@ const Footer = () => {
 				</div>
 			</footer>
 		</>
-
-
 	);
 };
 
