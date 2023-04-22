@@ -324,7 +324,7 @@ export const ArtworkList = () => {
 	const items = ['純文字組', '照片組', '繪畫組'];
 	return (
 		<>
-			<div className={inBreakPoint ? style.sm : style.lg} style={{ marginTop: "80px" }}>
+			<div className={inBreakPoint ? style.sm : style.lg} style={{ marginTop: inBreakPoint?"40px":"80px" }}>
 
 				<div className={style.tabContainer}>
 					<Tabs
