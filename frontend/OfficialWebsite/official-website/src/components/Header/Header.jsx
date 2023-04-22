@@ -143,11 +143,13 @@ const Header = () => {
 			const headerE = document.getElementsByClassName(styles.headerWrapper)[0];
 			const logoE = document.getElementsByClassName(styles.box)[0];
 			if (entries[0].boundingClientRect.y < 0) {
+				// when screen isn't top
 				remove_class_on_scroll(menuE, styles.menu);
 				add_class_on_scroll(menuE, styles.scrollMenu);
 				add_class_on_scroll(headerE, styles.scrollHeader);
 				remove_class_on_scroll(logoE, styles.boxS);
 			} else {
+				// when screen is top
 				remove_class_on_scroll(menuE, styles.scrollMenu);
 				remove_class_on_scroll(headerE, styles.scrollHeader);
 				add_class_on_scroll(menuE, styles.menu);
