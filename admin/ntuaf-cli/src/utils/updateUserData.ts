@@ -101,7 +101,7 @@ const updateArtworkLike = async () => {
 			continue;
 		}
 		try {
-			await Promise.all(
+			const results = await Promise.allSettled(
 				data.likeArtwork.map(async (v) =>
 					db
 						.collection('Artworks')
@@ -109,6 +109,15 @@ const updateArtworkLike = async () => {
 						.update({ like: firestore.FieldValue.increment(1) })
 				)
 			);
+			results.forEach((item) => {
+				if (item.status == 'rejected') {
+					console.log(
+						`${i.id} 的喜歡列表:${JSON.stringify(
+							data.likeArtwork
+						)}更新失敗(若有刪除投稿則屬正常現象)`
+					);
+				}
+			});
 		} catch (err) {
 			console.error(err);
 		}

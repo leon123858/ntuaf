@@ -58,7 +58,7 @@ const EventImg = ({ tagName, imgUrl, inBreakPoint, isHovered }) => {
 						: `${style.img2} ${style.flexCenter}`
 				}
 			>
-				<Image preview={false} src={imgUrl} fallback='/loading.jpg' />
+				<Image preview={false} src={imgUrl} fallback='/loadingStatic.webp' />
 			</div>
 			<div className={style.tag}>
 				<Tag

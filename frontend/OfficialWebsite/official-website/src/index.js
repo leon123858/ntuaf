@@ -140,7 +140,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 			<RouterProvider
 				fallbackElement={
 					<img
-						src={'/loading.gif'}
+						src={'/loading.webp'}
 						style={{ width: '18vw' }}
 						alt='loading...'
 					/>

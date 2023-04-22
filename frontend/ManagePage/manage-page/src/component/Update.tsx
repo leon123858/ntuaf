@@ -174,20 +174,16 @@ function Update({ email, admin }: { email: string; admin: string[] }) {
 				</ProForm.Group>
 				<br></br>
 				<ProForm.Group>
-					<UploadImage
-						setUrl={(url: string) => {
-							formRef.current?.setFieldsValue({ image: { card: url } });
-						}}
-					></UploadImage>
 					<ProFormText
 						width='md'
 						name={['image', 'card']}
+						disabled
 						addonAfter={
 							<a href={imageCard} target='_blank' rel='noreferrer'>
 								原圖
 							</a>
 						}
-						label='方形圖片網址'
+						label='預覽用網址(不用填, 系統生成)'
 					/>
 				</ProForm.Group>
 				<br></br>

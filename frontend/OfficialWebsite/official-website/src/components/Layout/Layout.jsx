@@ -8,8 +8,8 @@ import { BreakPointContext } from '../../useBreakPoint';
 
 const LAYOUT_BACKGROUND_IMAGE = {
 	default: {
-		web: '/background/dWebB.png',
-		mobile: '/background/dMobileB.png',
+		web: '/background/dWebB.webp',
+		mobile: '/background/dMobileB.webp',
 	},
 	// '/calendar': {
 	// 	web: '/background/3web.png',

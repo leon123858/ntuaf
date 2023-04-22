@@ -104,7 +104,11 @@ function Introduce() {
 						children:
 							firstData.events.length === 0 ? (
 								<div className={style.Spin}>
-									<img src={'/loading.gif'} alt='loading...' />
+									<img
+										src={'/loading.webp'}
+										style={{ width: '18vw' }}
+										alt='loading...'
+									/>
 								</div>
 							) : (
 								<EventListEx data={firstData} />
@@ -151,7 +155,11 @@ function Introduce() {
 						children:
 							secondData.events.length === 0 ? (
 								<div className={style.Spin}>
-									<img src={'/loading.gif'} alt='loading...' />
+									<img
+										src={'/loading.webp'}
+										style={{ width: '18vw' }}
+										alt='loading...'
+									/>
 								</div>
 							) : (
 								<EventList data={secondData} />

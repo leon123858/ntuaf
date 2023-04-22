@@ -15,19 +15,19 @@ const departmentNames = [
 ];
 
 const teamImages = {
-	[DEPARTMENT.核心團隊]: ['../../about/team/召部.jpeg'],
-	[DEPARTMENT.公關部]: ['../../about/team/公關.jpeg'],
+	[DEPARTMENT.核心團隊]: ['../../about/team/召部.webp'],
+	[DEPARTMENT.公關部]: ['../../about/team/公關.webp'],
 	[DEPARTMENT.策展部]: [
-		'../../about/team/數位.jpeg',
-		'../../about/team/活動.jpeg',
-		'../../about/team/展覽.jpeg',
-		'../../about/team/學術.jpeg'
+		'../../about/team/數位.webp',
+		'../../about/team/活動.webp',
+		'../../about/team/展覽.webp',
+		'../../about/team/學術.webp',
 	],
-	[DEPARTMENT.行政部]: ['../../about/team/行政.jpeg'],
+	[DEPARTMENT.行政部]: ['../../about/team/行政.webp'],
 	[DEPARTMENT.設計部]: [
-		'../../about/team/文宣組.jpeg',
-		'../../about/team/主視覺組.jpeg',
-		'../../about/team/影像組.jpeg',
+		'../../about/team/文宣組.webp',
+		'../../about/team/主視覺組.webp',
+		'../../about/team/影像組.webp',
 	],
 };
 

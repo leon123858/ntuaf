@@ -27,6 +27,7 @@ export const uploadImage = async (url: string, skipTest = false) => {
 	const buffer = await file.arrayBuffer();
 	const result = await uploadBytes(reference, buffer, {
 		contentType: file.type,
+		cacheControl: 'public,max-age=86400',
 	});
 	const newUrl = await getDownloadURL(result.ref);
 	return newUrl;

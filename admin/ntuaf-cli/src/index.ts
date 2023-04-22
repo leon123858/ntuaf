@@ -35,6 +35,8 @@ const { v4: uuidv4 } = require('uuid');
 import { db } from './init';
 import { EVENT_TYPE, Event } from '@leon123858/ntuaf-sdk';
 import moment from 'moment';
+import { compressEventBannerImage } from './utils/convertWebp';
+import { backupCollections } from './utils/backup';
 
 const figlet = require('figlet');
 
@@ -71,7 +73,11 @@ const options = program.opts();
 	}
 	// 是否為允許的可自動化執行模式
 	if (options.mode) {
-		const allowModes = [MODE_TYPE.彙整當日用戶操作, MODE_TYPE.更新系統暫存];
+		const allowModes = [
+			MODE_TYPE.彙整當日用戶操作,
+			MODE_TYPE.更新系統暫存,
+			MODE_TYPE.備份關鍵數據,
+		];
 		if (!allowModes.includes(options.mode)) {
 			console.log('不允許使用自動化指令行的參數');
 			console.log('僅允許下列參數');
@@ -172,6 +178,15 @@ const options = program.opts();
 			const allEvent = await db.collection('Events').get();
 			const allEventId = allEvent.docs.map((v) => v.id);
 			await db.collection('Members').doc(email).update({ admin: allEventId });
+			break;
+		}
+		case MODE_TYPE.壓縮所有card圖片: {
+			await compressEventBannerImage();
+			break;
+		}
+		case MODE_TYPE.備份關鍵數據: {
+			await backupCollections(['Events', 'Artworks', 'Members', 'UserTmpData']);
+			console.log('已完成數據備份');
 			break;
 		}
 		default: {

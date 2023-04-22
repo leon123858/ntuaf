@@ -22,7 +22,7 @@ const Video = ({ url = '', text, title }) => {
 				})}
 			</div>
 			{url === '' ? (
-				<Image alt='img' preview={false} src={'/loading.jpg'} />
+				<Image alt='img' preview={false} src={'/loadingStatic.webp'} />
 			) : (
 				<iframe
 					height={inBreakPoint ? Math.min(window.screen.width / 2, 400) : 450}

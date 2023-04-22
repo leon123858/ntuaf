@@ -147,7 +147,7 @@ export const ArtworkImg = ({ data, heartOnClick }) => {
 							src={data.url}
 							style={{ objectFit: 'cover', aspectRatio: '3 /2' }}
 							preview={false}
-							fallback='./loading.jpg'
+							fallback='./loadingStatic.webp'
 						/>
 					}
 				>

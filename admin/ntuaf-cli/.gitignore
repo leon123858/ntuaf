@@ -9,6 +9,7 @@ firebase-debug.*.log*
 
 key.json
 /tmp
+/backup
 
 Questionary.json
 

@@ -17,8 +17,8 @@ const Footer = () => {
 				className={inBreakPoint ? styles.footerWrapper : styles.lgFooterWrapper}
 				style={
 					inBreakPoint
-						? { backgroundImage: 'url(../smFooter.png)' }
-						: { backgroundImage: 'url(../lgFooter.jpg)' }
+						? { backgroundImage: 'url(../smFooter.webp)' }
+						: { backgroundImage: 'url(../lgFooter.webp)' }
 				}
 			>
 				<svg
