@@ -140,18 +140,26 @@ const Header = () => {
 	const observer = new IntersectionObserver((entries) => {
 		if (!inBreakPoint) {
 			const menuE = document.getElementById('menu');
+			const menuIconContainerE = document.getElementById('menuIconContainer');
 			const headerE = document.getElementsByClassName(styles.headerWrapper)[0];
 			const logoE = document.getElementsByClassName(styles.box)[0];
+			console.log("observer")
 			if (entries[0].boundingClientRect.y < 0) {
+				// when screen isn't top, that is, screen scrolling down
 				remove_class_on_scroll(menuE, styles.menu);
 				add_class_on_scroll(menuE, styles.scrollMenu);
 				add_class_on_scroll(headerE, styles.scrollHeader);
 				remove_class_on_scroll(logoE, styles.boxS);
+				remove_class_on_scroll(menuIconContainerE, styles.iconContainer);
+				add_class_on_scroll(menuIconContainerE, styles.iconContainerScroll);
 			} else {
+				// when screen is top
 				remove_class_on_scroll(menuE, styles.scrollMenu);
 				remove_class_on_scroll(headerE, styles.scrollHeader);
 				add_class_on_scroll(menuE, styles.menu);
 				add_class_on_scroll(logoE, styles.boxS);
+				remove_class_on_scroll(menuIconContainerE, styles.iconContainerScroll);
+				add_class_on_scroll(menuIconContainerE, styles.iconContainer);
 			}
 		}
 	});
@@ -208,6 +216,7 @@ const Header = () => {
 								setSideBarActive(!sideBarActive);
 							}}
 							style={sideBarActive ? { display: 'none' } : {}}
+							id='menuIconContainer'
 						>
 							<svg
 								width='22'
@@ -216,6 +225,7 @@ const Header = () => {
 								fill='none'
 								xmlns='http://www.w3.org/2000/svg'
 								className={styles.menuIcon}
+
 							>
 								<path d='M0 0.5H22' stroke='black' />
 								<path d='M0 9.5H22' stroke='black' />
