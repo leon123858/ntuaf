@@ -23,14 +23,12 @@ const BackCard = ({ BackCardContent, setFlip, closeModel }) => {
 						className={styles.title}
 						style={{ backgroundImage: `url("${BackCardContent.iconUrl}")` }}
 					></div>
-					<div className={styles.flipButton} >
+					<div className={styles.flipButton}>
 						<Image
-							src={
-								'/cardBackArrow.svg'
-							}
+							src={'/cardBackArrow.svg'}
 							alt={'loading'}
 							preview={false}
-							fallback='/loading.jpg'
+							fallback='/loadingStatic.webp'
 						></Image>
 					</div>
 				</div>
@@ -46,14 +44,12 @@ const BackCard = ({ BackCardContent, setFlip, closeModel }) => {
 						className={styles.lgTitle}
 						style={{ backgroundImage: `url("${BackCardContent.iconUrl}")` }}
 					></div>
-					<div className={styles.flipButton} >
+					<div className={styles.flipButton}>
 						<Image
-							src={
-								'/cardBackArrow.svg'
-							}
+							src={'/cardBackArrow.svg'}
 							alt={'loading'}
 							preview={false}
-							fallback='/loading.jpg'
+							fallback='/loadingStatic.webp'
 						></Image>
 					</div>
 				</div>

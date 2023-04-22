@@ -35,7 +35,7 @@
 
 .shortMurmur {
     /* border: solid black 2px; */
-    margin-top: 5em;
+    margin-top: 3.6em;
     /* border-radius: 3px; */
     width: 75vw;
     text-align: center;
@@ -101,7 +101,7 @@
 .midMurmur {
     width: 80vw;
     font-size: 13px;
-    margin-top: 190px;
+    margin-top: 200px;
     text-align: center;
     letter-spacing: 1px;
     line-height: 21px;

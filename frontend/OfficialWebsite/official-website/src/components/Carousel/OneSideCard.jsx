@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import { Image } from 'antd';
 
 const OneSideCard = ({ cardContent }) => {
-	const numOfContentString = 40
-	const content = cardContent.content.length>numOfContentString?cardContent.content.substring(0, numOfContentString)+"...":cardContent.content;
+	const numOfContentString = 40;
+	const content =
+		cardContent.content.length > numOfContentString
+			? cardContent.content.substring(0, numOfContentString) + '...'
+			: cardContent.content;
 	return (
 		<Link to={`/display/${cardContent.id}`}>
 			<div className={styles.oneSideCard}>
@@ -17,13 +20,11 @@ const OneSideCard = ({ cardContent }) => {
 					<Image
 						src={cardContent.imageUrl}
 						preview={false}
-						fallback='/loading.jpg'
+						fallback='/loadingStatic.webp'
 					/>
 				</div>
 				<h4 className={styles.date}>{cardContent.date}</h4>
-				<div className={styles.disc}>
-					{content}
-				</div>
+				<div className={styles.disc}>{content}</div>
 			</div>
 		</Link>
 	);

@@ -11,14 +11,14 @@ const ImageBox = ({ image }) => {
 			<div className={style.container} style={{ marginTop: 80 }}>
 				<h1 className={`${style.topic} ${style.three}`}>{image?.text}</h1>
 				<div className={style.content}>
-					<Image alt='img' src={image.url} fallback='/loading.jpg' />
+					<Image alt='img' src={image.url} fallback='/loadingStatic.webp' />
 				</div>
 			</div>
 		),
 
 		[BlOCK_TYPE.IMAGE_B]: (
 			<div className={style.container} style={{ textAlign: 'center' }}>
-				<Image alt='img' src={image.url} fallback='/loading.jpg' />
+				<Image alt='img' src={image.url} fallback='/loadingStatic.webp' />
 			</div>
 		),
 	}[image.type];

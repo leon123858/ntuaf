@@ -26,7 +26,7 @@ const ArtBox = (props) => {
 								width: `${props.imageWidth}%`,
 								// height : `${imageHeight}%`,
 							}}
-							fallback='/loading.jpg'
+							fallback='/loadingStatic.webp'
 						/>
 					</div>
 				}

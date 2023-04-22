@@ -22,6 +22,7 @@ import Layout from './components/Layout/Layout';
 import { BreakPointProvider } from './useBreakPoint.jsx';
 import Artworkupload from './routers/Artworkupload';
 import { getMonthsEventsType } from '@leon123858/ntuaf-sdk';
+import Psyshare from './routers/PsyShare';
 
 function ScrollToTop() {
 	const { pathname } = useLocation();
@@ -33,7 +34,26 @@ function ScrollToTop() {
 	return null;
 }
 
+// image url which want to preload
+function preloadImage(src) {
+	return new Promise((resolve, reject) => {
+		const img = new Image();
+		img.onload = function () {
+			resolve(img);
+		};
+		img.onerror = function () {
+			reject(src);
+		};
+		img.src = src;
+	});
+}
+
 const router = createBrowserRouter([
+	{
+		path: '/sharePsyPage/:type',
+		element: <Psyshare/>,
+		errorElement: <ErrorPage />,
+	},
 	{
 		path: '/',
 		element: (
@@ -68,6 +88,18 @@ const router = createBrowserRouter([
 			{
 				path: '/about',
 				element: <About />,
+				loader: async () => {
+					try {
+						await preloadImage(
+							window.screen.width > 834
+								? '/about/環-手機版.svg'
+								: '/about/環.svg'
+						);
+						return { preload: true };
+					} catch (err) {
+						return { preload: false };
+					}
+				},
 			},
 			{
 				path: '/history',
@@ -95,8 +127,8 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/psyTest',
-				element: <PsyTest />
-			}
+				element: <PsyTest />,
+			},
 		],
 		errorElement: <ErrorPage />,
 	},
@@ -108,7 +140,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 			<RouterProvider
 				fallbackElement={
 					<img
-						src={'/loading.gif'}
+						src={'/loading.webp'}
 						style={{ width: '18vw' }}
 						alt='loading...'
 					/>

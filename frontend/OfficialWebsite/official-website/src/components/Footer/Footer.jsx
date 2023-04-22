@@ -17,8 +17,8 @@ const Footer = () => {
 				className={inBreakPoint ? styles.footerWrapper : styles.lgFooterWrapper}
 				style={
 					inBreakPoint
-						? { backgroundImage: 'url(../smFooter.png)' }
-						: { backgroundImage: 'url(../lgFooter.jpg)' }
+						? { backgroundImage: 'url(../smFooter.webp)' }
+						: { backgroundImage: 'url(../lgFooter.webp)' }
 				}
 			>
 				<svg
@@ -49,7 +49,7 @@ const Footer = () => {
 					</linearGradient>
 				</svg>
 
-				<div>
+				<div style={{ overflow: 'hidden' }}>
 					<svg
 						width='220'
 						height='60'

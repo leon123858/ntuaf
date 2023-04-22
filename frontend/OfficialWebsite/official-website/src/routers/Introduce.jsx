@@ -7,7 +7,6 @@ import EventList from '../components/EventList/EventList';
 import EventListEx from '../components/EventList/EventListEx';
 import { getTabEvents } from '@leon123858/ntuaf-sdk';
 import { BreakPointContext } from '../useBreakPoint';
-import Hr from '../components/Hr/Hr';
 
 function Introduce() {
 	const { type = 1 } = useParams();
@@ -56,7 +55,8 @@ function Introduce() {
 			<br />
 			<br />
 			<br />
-			<br /><br />
+			<br />
+			<br />
 			<Tabs
 				// className={style.container}
 				animated={false}
@@ -68,27 +68,47 @@ function Introduce() {
 						label:
 							key === '1' ? (
 								<>
-									<h5 style={{ color: '#000000', fontSize: inBreakPoint?"16px":"18px", paddingBottom: '5px' ,letterSpacing:"10px"}}>
+									<h5
+										style={{
+											color: '#000000',
+											fontSize: inBreakPoint ? '16px' : '18px',
+											paddingBottom: '5px',
+											letterSpacing: '10px',
+										}}
+									>
 										{'展覽'}
 									</h5>
 									<div>
 										<hr
 											style={{
-												background: 'linear-gradient(to left, #A9CF59, #E73273, #25499D)',
+												background:
+													'linear-gradient(to left, #A9CF59, #E73273, #25499D)',
 												height: '2px',
 												border: '0px',
-												width : '85%',
+												width: '85%',
 											}}
 										/>
 									</div>
 								</>
 							) : (
-								<h5 style={{ letterSpacing: '10px', fontSize: inBreakPoint? '16px': '18px', paddingBottom: '5px' }}>展覽</h5>
+								<h5
+									style={{
+										letterSpacing: '10px',
+										fontSize: inBreakPoint ? '16px' : '18px',
+										paddingBottom: '5px',
+									}}
+								>
+									展覽
+								</h5>
 							),
 						children:
 							firstData.events.length === 0 ? (
 								<div className={style.Spin}>
-									<img src={'/loading.gif'} alt='loading...' />
+									<img
+										src={'/loading.webp'}
+										style={{ width: '18vw' }}
+										alt='loading...'
+									/>
 								</div>
 							) : (
 								<EventListEx data={firstData} />
@@ -99,27 +119,47 @@ function Introduce() {
 						label:
 							key === '2' ? (
 								<>
-									<h5 style={{ color: '#000000', fontSize: inBreakPoint?"16px":"18px", paddingBottom: '5px' ,letterSpacing:"10px"}}>
+									<h5
+										style={{
+											color: '#000000',
+											fontSize: inBreakPoint ? '16px' : '18px',
+											paddingBottom: '5px',
+											letterSpacing: '10px',
+										}}
+									>
 										{'活動'}
 									</h5>
 									<div>
 										<hr
 											style={{
-												background: 'linear-gradient(to left, #A9CF59, #E73273, #25499D)',
+												background:
+													'linear-gradient(to left, #A9CF59, #E73273, #25499D)',
 												height: '2px',
 												border: '0px',
-												width : '85%',
+												width: '85%',
 											}}
 										/>
 									</div>
 								</>
 							) : (
-								<h5 style={{ letterSpacing: '10px', fontSize: inBreakPoint? '16px': '18px', paddingBottom: '5px' }}>活動</h5>
+								<h5
+									style={{
+										letterSpacing: '10px',
+										fontSize: inBreakPoint ? '16px' : '18px',
+										paddingBottom: '5px',
+									}}
+								>
+									活動
+								</h5>
 							),
 						children:
 							secondData.events.length === 0 ? (
 								<div className={style.Spin}>
-									<img src={'/loading.gif'} alt='loading...' />
+									<img
+										src={'/loading.webp'}
+										style={{ width: '18vw' }}
+										alt='loading...'
+									/>
 								</div>
 							) : (
 								<EventList data={secondData} />

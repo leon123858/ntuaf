@@ -21,31 +21,42 @@ const LgOneSideCard = ({ cardContent }) => {
 						src={cardContent.imageUrl}
 						preview={false}
 						height={'270px'}
-						fallback='/loading.jpg'
+						fallback='/loadingStatic.webp'
 					/>
 				</div>
 				<div className={styles.contentWrapper}>
-					<Row justify='space-between' align='bottom'>
-						<Col span={18}>
-							<p className={styles.disc}>
-								{content}
-								{/* <DemoBox value={100}>{content}</DemoBox> */}
-							</p>
-						</Col>
-						<Col span={6}>
-							{/* <div style={{backgroundImage: 'url(../cardNext.png)'}} ></div> */}
-							<div className={styles.nextImgWrapper}>
-							<img
-								alt='nextCard'
-								src='../cardNext.png'
-								className={styles.nextImg}
-							></img>
-							</div>
-							{/* <DemoBox value={50}><img src="../cardNext.png" className={styles.nextImg}></img></DemoBox> */}
+					{content.includes('continue...') ? (
+						<Row justify='space-between' align='bottom'>
+							<Col span={24}>
+								<p className={styles.disc}>
+									{content}
+									{/* <DemoBox value={100}>{content}</DemoBox> */}
+								</p>
+							</Col>
+						</Row>
+					) : (
+						<Row justify='space-between' align='bottom'>
+							<Col span={18}>
+								<p className={styles.disc}>
+									{content}
+									{/* <DemoBox value={100}>{content}</DemoBox> */}
+								</p>
+							</Col>
+							<Col span={6}>
+								{/* <div style={{backgroundImage: 'url(../cardNext.png)'}} ></div> */}
+								<div className={styles.nextImgWrapper}>
+									<img
+										alt='nextCard'
+										src='../cardNext.png'
+										className={styles.nextImg}
+									></img>
+								</div>
+								{/* <DemoBox value={50}><img src="../cardNext.png" className={styles.nextImg}></img></DemoBox> */}
 
-							{/* <div>CTA</div> */}
-						</Col>
-					</Row>
+								{/* <div>CTA</div> */}
+							</Col>
+						</Row>
+					)}
 				</div>
 			</div>
 		</Link>

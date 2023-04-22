@@ -36,10 +36,7 @@ export default function ErrorPage() {
 												</a>
 												進行錯誤回報
 											</p>
-											<p>
-												或是 email 至 <span>website@ntuartfest28th.com</span>{' '}
-												描述問題
-											</p>
+											<p>或是傳訊至台大藝術季臉書粉絲專頁描述問題</p>
 										</>
 									)}
 
