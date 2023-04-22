@@ -45,7 +45,7 @@ const Layout = () => {
 				position: 'relative',
 				minHeight: '100%',
 				paddingBottom: '70px',
-		  }
+		}
 		: {};
 	return (
 		<>
