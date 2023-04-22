@@ -118,7 +118,7 @@ export default [
 		src: {
 			audio: {
 				type: 'audio',
-				url: './statics/Audio/請洄答1.wav',
+				url: './statics/Audio/請洄答1.mp3',
 			},
 		},
 		preload: false,
