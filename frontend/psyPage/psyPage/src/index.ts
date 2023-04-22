@@ -177,8 +177,8 @@ async function load_game() {
 						y: 0.5,
 					},
 					size: {
-						width: 350,
-						height: 140,
+						width: 370,
+						height: 160,
 					},
 				},
 				callback: async () => {
@@ -204,7 +204,7 @@ async function load_game() {
 					},
 					size: {
 						width: 370,
-						height: 170,
+						height: 190,
 					},
 				},
 				callback: async () => {
@@ -272,7 +272,7 @@ async function load_game() {
 				transform: {
 					position: {
 						x: 50,
-						y: 150,
+						y: 100,
 					},
 					origin: {
 						x: 0.5,
@@ -280,7 +280,7 @@ async function load_game() {
 					},
 					anchor: {
 						x: 0.25,
-						y: 0.8,
+						y: 0.78,
 					},
 					size: {
 						width: 400,
@@ -298,7 +298,7 @@ async function load_game() {
 				transform: {
 					position: {
 						x: 20,
-						y: 200,
+						y: 150,
 					},
 					origin: {
 						x: 0.5,
@@ -306,10 +306,10 @@ async function load_game() {
 					},
 					anchor: {
 						x: 0.75,
-						y: 1.0,
+						y: 0.95,
 					},
 					size: {
-						width: 450,
+						width: 470,
 						height: 450,
 					},
 				},
@@ -337,7 +337,7 @@ async function load_game() {
 						y: 0.45,
 					},
 					size: {
-						width: 750,
+						width: 680,
 						height: 310,
 					},
 				},
@@ -363,7 +363,7 @@ async function load_game() {
 						y: 0.7,
 					},
 					size: {
-						width: 750,
+						width: 680,
 						height: 300,
 					},
 				},
@@ -389,7 +389,7 @@ async function load_game() {
 						y: 0.9,
 					},
 					size: {
-						width: 750,
+						width: 710,
 						height: 310,
 					},
 				},
@@ -417,7 +417,7 @@ async function load_game() {
 						y: 0.4,
 					},
 					size: {
-						width: 900,
+						width: 790,
 						height: 280,
 					},
 				},
@@ -443,7 +443,7 @@ async function load_game() {
 						y: 0.7,
 					},
 					size: {
-						width: 1000,
+						width: 860,
 						height: 300,
 					},
 				},
@@ -469,7 +469,7 @@ async function load_game() {
 						y: 0.8,
 					},
 					size: {
-						width: 900,
+						width: 830,
 						height: 270,
 					},
 				},
