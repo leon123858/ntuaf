@@ -338,7 +338,7 @@ async function load_game() {
 					},
 					size: {
 						width: 750,
-						height: 330,
+						height: 310,
 					},
 				},
 				callback: async () => {
@@ -364,7 +364,7 @@ async function load_game() {
 					},
 					size: {
 						width: 750,
-						height: 310,
+						height: 300,
 					},
 				},
 				callback: async () => {
@@ -390,7 +390,7 @@ async function load_game() {
 					},
 					size: {
 						width: 750,
-						height: 330,
+						height: 310,
 					},
 				},
 				callback: async () => {
@@ -422,7 +422,7 @@ async function load_game() {
 					},
 				},
 				callback: async () => {
-					A += 1;
+					A += 1.05;
 					await changeScenefunt();
 				},
 			},
@@ -448,7 +448,7 @@ async function load_game() {
 					},
 				},
 				callback: async () => {
-					B += 1;
+					B += 1.05;
 					await changeScenefunt();
 				},
 			},
@@ -470,11 +470,11 @@ async function load_game() {
 					},
 					size: {
 						width: 900,
-						height: 260,
+						height: 270,
 					},
 				},
 				callback: async () => {
-					C += 1;
+					C += 1.05;
 					await changeScenefunt();
 				},
 			},
@@ -537,7 +537,7 @@ async function load_game() {
 				name2: 'Q5Op3tap',
 				transform: {
 					position: {
-						x: 0,
+						x: 20,
 						y: 270,
 					},
 					origin: {
@@ -549,7 +549,7 @@ async function load_game() {
 						y: 0.6,
 					},
 					size: {
-						width: 500,
+						width: 550,
 						height: 150,
 					},
 				},
@@ -642,7 +642,7 @@ resource.on(LOAD_EVENT.COMPLETE, async () => {
 	function preloadAudio(src: string) {
 		return new Promise((resolve, reject) => {
 			const audio = new Audio();
-			audio.oncanplaythrough = function () {
+			audio.oncanplay = function () {
 				$('#progress').text(`加載中: (${++completeCount}/${resources.length})`);
 				resolve(audio);
 			};
