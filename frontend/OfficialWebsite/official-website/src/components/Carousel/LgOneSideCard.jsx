@@ -20,7 +20,7 @@ const LgOneSideCard = ({ cardContent }) => {
 					<Image
 						src={cardContent.imageUrl}
 						preview={false}
-						height={'270px'}
+						// height={'270px'}
 						fallback='/loadingStatic.webp'
 					/>
 				</div>
