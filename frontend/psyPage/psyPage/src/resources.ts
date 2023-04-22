@@ -118,7 +118,7 @@ export default [
 		src: {
 			audio: {
 				type: 'audio',
-				url: './statics/Audio/請洄答1.wav',
+				url: './statics/Audio/請洄答1.mp3',
 			},
 		},
 		preload: false,
@@ -129,7 +129,7 @@ export default [
 		src: {
 			audio: {
 				type: 'audio',
-				url: './statics/Audio/請洄答2.wav',
+				url: './statics/Audio/請洄答2.mp3',
 			},
 		},
 		preload: false,
@@ -140,7 +140,7 @@ export default [
 		src: {
 			audio: {
 				type: 'audio',
-				url: './statics/Audio/請洄答3.wav',
+				url: './statics/Audio/請洄答3.mp3',
 			},
 		},
 		preload: false,
@@ -151,7 +151,7 @@ export default [
 		src: {
 			audio: {
 				type: 'audio',
-				url: './statics/Audio/請洄答4.wav',
+				url: './statics/Audio/請洄答4.mp3',
 			},
 		},
 		preload: false,
@@ -162,7 +162,7 @@ export default [
 		src: {
 			audio: {
 				type: 'audio',
-				url: './statics/Audio/請洄答5.wav',
+				url: './statics/Audio/請洄答5.mp3',
 			},
 		},
 		preload: false,
