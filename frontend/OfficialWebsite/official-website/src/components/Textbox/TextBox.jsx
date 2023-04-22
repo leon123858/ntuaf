@@ -53,7 +53,7 @@ const TextBox = ({ text }) => {
             [BlOCK_TYPE.TEXT_C]: (
                 <div className={style.container} style={{ marginTop: 120 }}>
                     <h1 className={style.three}>{text.title}</h1>
-                    <div className={style.content}>
+                    <div className={style.content} style={{ backgroundColor: 'transparent' }}>
                         {text.text.split('\n').map((str, idx) => {
                             return (str === '') ? <span>&nbsp;</span> : <p key={idx}>{str}</p>
                         })}
