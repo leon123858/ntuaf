@@ -159,10 +159,10 @@ const HomeCalendar = () => {
 						style={
 							inBreakPoint
 								? {
-										display: 'flex',
-										marginTop: '12px',
-										justifyContent: 'center',
-								  }
+									display: 'flex',
+									marginTop: '12px',
+									justifyContent: 'center',
+								}
 								: { display: 'grid', marginTop: '14px', marginLeft: '18px' }
 						}
 					>
@@ -171,9 +171,13 @@ const HomeCalendar = () => {
 								className={style.lgDot}
 								style={{ background: '#25499D' }}
 							></div>
-							<span style={inBreakPoint ? {} : { marginRight: 12 }}>
-								一般活動&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							</span>
+							{(inBreakPoint)
+								? (<span>一般活動</span>)
+								: (<span style={{ marginRight: 12 }}>
+									一般活動&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								</span>)
+							}
+
 							<span>{inBreakPoint ? '' : ' General Activity'}</span>
 						</div>
 						<div style={{ marginRight: 20, fontSize: 12 }}>
@@ -181,9 +185,12 @@ const HomeCalendar = () => {
 								className={style.lgDot}
 								style={{ background: '#A9CF59' }}
 							></div>
-							<span style={inBreakPoint ? {} : { marginRight: 12 }}>
-								講座 / 工作坊&nbsp;
-							</span>
+							{(inBreakPoint)
+								? (<span>講座 / 工作坊</span>)
+								: (<span style={{ marginRight: 12 }}>
+									講座 / 工作坊&nbsp;
+								</span>)
+							}
 							<span>{inBreakPoint ? '' : ' Lecture / Workshop'}</span>
 						</div>
 						<div style={{ marginRight: 20, fontSize: 12 }}>
@@ -191,9 +198,12 @@ const HomeCalendar = () => {
 								className={style.lgDot}
 								style={{ background: '#D7497C' }}
 							></div>
-							<span style={inBreakPoint ? {} : { marginRight: 12 }}>
-								常設展覽&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							</span>
+							{(inBreakPoint)
+								? (<span>常設展覽</span>)
+								: (<span style={{ marginRight: 12 }}>
+									常設展覽&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								</span>)
+							}
 							<span>{inBreakPoint ? '' : ` Permanent Exhibition`}</span>
 						</div>
 					</div>

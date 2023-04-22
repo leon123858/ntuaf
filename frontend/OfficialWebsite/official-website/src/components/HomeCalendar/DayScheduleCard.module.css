@@ -35,7 +35,7 @@
 .eventContainer {
 	display: grid;
 	grid-template-columns: 100%;
-	max-width: 384px;
+	/* max-width: 384px; */
 }
 
 .event {
