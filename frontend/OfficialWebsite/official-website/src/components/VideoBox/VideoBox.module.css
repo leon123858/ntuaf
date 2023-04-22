@@ -1,5 +1,7 @@
 .container {
-  margin: 48px auto;
+  margin: 32px auto;
+  padding-top: 40px;
+  padding-bottom: 60px;
   text-align: center;
 }
 
