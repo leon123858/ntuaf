@@ -1,7 +1,7 @@
-const path = require('path')
-const webpack = require('webpack')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const { ESBuildMinifyPlugin } = require('esbuild-loader')
+const path = require('path');
+const webpack = require('webpack');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { ESBuildMinifyPlugin } = require('esbuild-loader');
 
 /*
  * SplitChunksPlugin is enabled by default and replaced
@@ -25,75 +25,76 @@ const { ESBuildMinifyPlugin } = require('esbuild-loader')
  */
 
 module.exports = {
-  mode: 'development',
-  entry: './src/index.ts',
-  plugins: [new webpack.ProgressPlugin()],
-  devtool: 'inline-source-map',
-  output: {
-    path: __dirname + '/docs',
-    filename: 'main.js',
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(ts|tsx)$/,
-        loader: 'esbuild-loader',
-        options: {
-          loader: 'tsx',
-          target: 'es2015',
-        },
-        include: [path.resolve(__dirname, 'src')],
-        exclude: [/node_modules/],
-      },
-      {
-        test: /.css$/,
+	mode: 'development',
+	entry: './src/index.ts',
+	plugins: [new webpack.ProgressPlugin()],
+	devtool: 'inline-source-map',
+	output: {
+		path: __dirname + '/docs',
+		filename: 'main.js',
+	},
+	module: {
+		rules: [
+			{
+				test: /\.(ts|tsx)$/,
+				loader: 'esbuild-loader',
+				options: {
+					loader: 'tsx',
+					target: 'es2015',
+				},
+				include: [path.resolve(__dirname, 'src')],
+				exclude: [/node_modules/],
+			},
+			{
+				test: /.css$/,
 
-        use: [
-          {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
-          {
-            loader: 'esbuild-loader',
-            options: {
-              loader: 'css',
-              minify: true,
-            },
-          },
-        ],
-      },
-    ],
-  },
+				use: [
+					{
+						loader: 'style-loader',
+					},
+					{
+						loader: 'css-loader',
+						options: {
+							sourceMap: true,
+						},
+					},
+					{
+						loader: 'esbuild-loader',
+						options: {
+							loader: 'css',
+							minify: true,
+						},
+					},
+				],
+			},
+		],
+	},
 
-  resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
-    fallback: { path: require.resolve('path-browserify') },
-  },
+	resolve: {
+		extensions: ['.tsx', '.ts', '.js'],
+		fallback: { path: require.resolve('path-browserify') },
+	},
 
-  devServer: {
-    port: 9000,
-    compress: true,
-    contentBase: path.join(__dirname, 'docs'),
-    allowedHosts: [''],
-  },
+	devServer: {
+		port: 9000,
+		compress: true,
+		contentBase: path.join(__dirname, 'docs'),
+		disableHostCheck: true,
+		host: '0.0.0.0',
+	},
 
-  plugins: [
-    new CleanWebpackPlugin({
-      root: __dirname + '/docs',
-      cleanStaleWebpackAssets: false,
-      cleanOnceBeforeBuildPatterns: ['main.js'],
-    }),
-  ],
-  optimization: {
-    minimizer: [
-      new ESBuildMinifyPlugin({
-        css: true,
-      }),
-    ],
-  },
-}
+	plugins: [
+		new CleanWebpackPlugin({
+			root: __dirname + '/docs',
+			cleanStaleWebpackAssets: false,
+			cleanOnceBeforeBuildPatterns: ['main.js'],
+		}),
+	],
+	optimization: {
+		minimizer: [
+			new ESBuildMinifyPlugin({
+				css: true,
+			}),
+		],
+	},
+};
