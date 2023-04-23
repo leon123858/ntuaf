@@ -38,10 +38,14 @@ const Card = ({ content, index }) => {
 					</div>
 					<Modal
 						title="Basic Modal"
-						style={{ pointerEvents: "auto" }}
+						style={{
+							pointerEvents: "auto",
+							top:"150px",
+						}}
 						open={isModalOpen}
 						onCancel={handleCancel}
 						width={300}
+
 						modalRender={() => (
 							<DoubleCard
 								FrontCardContent={content}

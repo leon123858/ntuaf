@@ -208,9 +208,13 @@ function Display() {
 			</div>
 		</>
 	) : (
-		<div className={style.Spin}>
+		<div className={style.Spin} style={{ height: '90vh' }}>
 			{contextHolder}
-			<img src={'/loading.webp'} style={{ width: '18vw' }} alt='loading...' />
+			<img
+				src={'/loading.webp'}
+				style={{ width: '18vw', paddingTop: '35vh' }}
+				alt='loading...'
+			/>
 		</div>
 	);
 }

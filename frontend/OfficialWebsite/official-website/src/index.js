@@ -48,10 +48,23 @@ function preloadImage(src) {
 	});
 }
 
+const basicLoader = () => {
+	return Promise.all([
+		preloadImage(
+			window.screen.width > 834
+				? '/dynamicVision/lgDynamicVision.webp'
+				: '/dynamicVision/dynamicVision.webp'
+		),
+		preloadImage(
+			window.screen.width > 834 ? '/about/環.svg' : '/about/環-手機版.svg'
+		),
+	]);
+};
+
 const router = createBrowserRouter([
 	{
 		path: '/sharePsyPage/:type',
-		element: <Psyshare/>,
+		element: <Psyshare />,
 		errorElement: <ErrorPage />,
 	},
 	{
@@ -66,14 +79,31 @@ const router = createBrowserRouter([
 			{
 				path: '/',
 				element: <Home />,
+				loader: async () => {
+					try {
+						await basicLoader();
+						return { preload: true };
+					} catch (err) {
+						return { preload: false };
+					}
+				},
 			},
 			{
 				path: '/introduce/:type',
 				element: <Introduce />,
+				loader: async () => {
+					try {
+						await basicLoader();
+						return { preload: true };
+					} catch (err) {
+						return { preload: false };
+					}
+				},
 			},
 			{
 				path: '/calendar',
 				loader: async () => {
+					await basicLoader();
 					const [month4, month5] = await Promise.all([
 						await getMonthsEventsType(4),
 						await getMonthsEventsType(5),
@@ -90,11 +120,7 @@ const router = createBrowserRouter([
 				element: <About />,
 				loader: async () => {
 					try {
-						await preloadImage(
-							window.screen.width > 834
-								? '/about/環-手機版.svg'
-								: '/about/環.svg'
-						);
+						await basicLoader();
 						return { preload: true };
 					} catch (err) {
 						return { preload: false };
@@ -104,22 +130,62 @@ const router = createBrowserRouter([
 			{
 				path: '/history',
 				element: <History />,
+				loader: async () => {
+					try {
+						await basicLoader();
+						return { preload: true };
+					} catch (err) {
+						return { preload: false };
+					}
+				},
 			},
 			{
 				path: '/artwork',
 				element: <Artwork />,
+				loader: async () => {
+					try {
+						await basicLoader();
+						return { preload: true };
+					} catch (err) {
+						return { preload: false };
+					}
+				},
 			},
 			{
 				path: '/artwork/upload',
 				element: <Artworkupload />,
+				loader: async () => {
+					try {
+						await basicLoader();
+						return { preload: true };
+					} catch (err) {
+						return { preload: false };
+					}
+				},
 			},
 			{
 				path: '/artworkList',
 				element: <ArtworkList />,
+				loader: async () => {
+					try {
+						await basicLoader();
+						return { preload: true };
+					} catch (err) {
+						return { preload: false };
+					}
+				},
 			},
 			{
 				path: '/map',
 				element: <Map />,
+				loader: async () => {
+					try {
+						await basicLoader();
+						return { preload: true };
+					} catch (err) {
+						return { preload: false };
+					}
+				},
 			},
 			{
 				path: 'display/:displayId',
@@ -128,6 +194,14 @@ const router = createBrowserRouter([
 			{
 				path: '/psyTest',
 				element: <PsyTest />,
+				loader: async () => {
+					try {
+						await basicLoader();
+						return { preload: true };
+					} catch (err) {
+						return { preload: false };
+					}
+				},
 			},
 		],
 		errorElement: <ErrorPage />,
@@ -139,11 +213,19 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 		<BreakPointProvider>
 			<RouterProvider
 				fallbackElement={
-					<img
-						src={'/loading.webp'}
-						style={{ width: '18vw' }}
-						alt='loading...'
-					/>
+					<div
+						style={{ width: '100%', textAlign: 'center', paddingTop: '40vh' }}
+					>
+						<img
+							src={'/loading.webp'}
+							style={
+								window.screen.width > 834
+									? { width: '12vw' }
+									: { width: '20vw' }
+							}
+							alt='loading...'
+						/>
+					</div>
 				}
 				router={router}
 			/>

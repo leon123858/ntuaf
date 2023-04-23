@@ -177,8 +177,8 @@ async function load_game() {
 						y: 0.5,
 					},
 					size: {
-						width: 350,
-						height: 140,
+						width: 370,
+						height: 160,
 					},
 				},
 				callback: async () => {
@@ -204,7 +204,7 @@ async function load_game() {
 					},
 					size: {
 						width: 370,
-						height: 170,
+						height: 190,
 					},
 				},
 				callback: async () => {
@@ -272,7 +272,7 @@ async function load_game() {
 				transform: {
 					position: {
 						x: 50,
-						y: 150,
+						y: 100,
 					},
 					origin: {
 						x: 0.5,
@@ -280,7 +280,7 @@ async function load_game() {
 					},
 					anchor: {
 						x: 0.25,
-						y: 0.8,
+						y: 0.78,
 					},
 					size: {
 						width: 400,
@@ -298,7 +298,7 @@ async function load_game() {
 				transform: {
 					position: {
 						x: 20,
-						y: 200,
+						y: 150,
 					},
 					origin: {
 						x: 0.5,
@@ -306,10 +306,10 @@ async function load_game() {
 					},
 					anchor: {
 						x: 0.75,
-						y: 1.0,
+						y: 0.95,
 					},
 					size: {
-						width: 450,
+						width: 470,
 						height: 450,
 					},
 				},
@@ -337,8 +337,8 @@ async function load_game() {
 						y: 0.45,
 					},
 					size: {
-						width: 750,
-						height: 330,
+						width: 680,
+						height: 310,
 					},
 				},
 				callback: async () => {
@@ -363,8 +363,8 @@ async function load_game() {
 						y: 0.7,
 					},
 					size: {
-						width: 750,
-						height: 310,
+						width: 680,
+						height: 300,
 					},
 				},
 				callback: async () => {
@@ -389,8 +389,8 @@ async function load_game() {
 						y: 0.9,
 					},
 					size: {
-						width: 750,
-						height: 330,
+						width: 710,
+						height: 310,
 					},
 				},
 				callback: async () => {
@@ -417,12 +417,12 @@ async function load_game() {
 						y: 0.4,
 					},
 					size: {
-						width: 900,
+						width: 790,
 						height: 280,
 					},
 				},
 				callback: async () => {
-					A += 1;
+					A += 1.05;
 					await changeScenefunt();
 				},
 			},
@@ -443,12 +443,12 @@ async function load_game() {
 						y: 0.7,
 					},
 					size: {
-						width: 1000,
+						width: 860,
 						height: 300,
 					},
 				},
 				callback: async () => {
-					B += 1;
+					B += 1.05;
 					await changeScenefunt();
 				},
 			},
@@ -469,12 +469,12 @@ async function load_game() {
 						y: 0.8,
 					},
 					size: {
-						width: 900,
-						height: 260,
+						width: 830,
+						height: 270,
 					},
 				},
 				callback: async () => {
-					C += 1;
+					C += 1.05;
 					await changeScenefunt();
 				},
 			},
@@ -537,7 +537,7 @@ async function load_game() {
 				name2: 'Q5Op3tap',
 				transform: {
 					position: {
-						x: 0,
+						x: 20,
 						y: 270,
 					},
 					origin: {
@@ -549,7 +549,7 @@ async function load_game() {
 						y: 0.6,
 					},
 					size: {
-						width: 500,
+						width: 550,
 						height: 150,
 					},
 				},
@@ -642,7 +642,7 @@ resource.on(LOAD_EVENT.COMPLETE, async () => {
 	function preloadAudio(src: string) {
 		return new Promise((resolve, reject) => {
 			const audio = new Audio();
-			audio.oncanplaythrough = function () {
+			audio.oncanplay = function () {
 				$('#progress').text(`加載中: (${++completeCount}/${resources.length})`);
 				resolve(audio);
 			};
