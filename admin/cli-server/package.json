@@ -1,0 +1,17 @@
+{
+	"name": "cli-server",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js",
+		"build": "cd ../ && docker build -t ntuaf -f ./cli-server/Dockerfile .",
+		"deploy": "cd ../ && docker buildx build --platform linux/amd64 -t ntuaf -f ./cli-server/Dockerfile ."
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"express": "^4.18.2",
+		"shelljs": "^0.8.5"
+	}
+}
