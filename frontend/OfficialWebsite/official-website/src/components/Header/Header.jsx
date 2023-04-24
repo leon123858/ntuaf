@@ -37,7 +37,7 @@ const items = [
 			</Link>
 		),
 		key: 'event',
-		popupOffset: [-30, 10],
+		popupOffset: [-10, 10],
 		children: [
 			{
 				label: (
@@ -81,7 +81,7 @@ const items = [
 			</Link>
 		),
 		key: 'special',
-		popupOffset: [-30, 10],
+		popupOffset: [-20, 10],
 		children: [
 			{
 				label: (
