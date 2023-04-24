@@ -14,7 +14,7 @@ const LgDoubleSideCard = ({ FrontCardContent, BackCardContent, flip }) => {
 				<div
 					className={style.flipFrontCard}
 					onClick={() =>
-						window.open(`/display/${BackCardContent.id}`, '_blank')
+						window.open(`/display/${FrontCardContent.id}`, '_blank')
 					}
 				>
 					<LgOneSideCard cardContent={FrontCardContent} />

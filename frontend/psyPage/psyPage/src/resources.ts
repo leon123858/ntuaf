@@ -10,62 +10,62 @@ export default [
 				url: './statics/心理測驗(題目)_0.jpg',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'bg1',
 		type: RESOURCE_TYPE.IMAGE,
 		src: {
 			image: {
-				type: 'jpg',
-				url: './statics/心理測驗(題目)_1.jpg',
+				type: 'jpeg',
+				url: './statics/心理測驗(題目)_1.jpeg',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'bg2',
 		type: RESOURCE_TYPE.IMAGE,
 		src: {
 			image: {
-				type: 'jpg',
-				url: './statics/心理測驗(題目)_2.jpg',
+				type: 'jpeg',
+				url: './statics/心理測驗(題目)_2.jpeg',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'bg3',
 		type: RESOURCE_TYPE.IMAGE,
 		src: {
 			image: {
-				type: 'jpg',
-				url: './statics/心理測驗(題目)_3.jpg',
+				type: 'jpeg',
+				url: './statics/心理測驗(題目)_3.jpeg',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'bg4',
 		type: RESOURCE_TYPE.IMAGE,
 		src: {
 			image: {
-				type: 'jpg',
-				url: './statics/心理測驗(題目)_4.jpg',
+				type: 'jpeg',
+				url: './statics/心理測驗(題目)_4.jpeg',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'bg5',
 		type: RESOURCE_TYPE.IMAGE,
 		src: {
 			image: {
-				type: 'jpg',
-				url: './statics/心理測驗(題目)_5.jpg',
+				type: 'jpeg',
+				url: './statics/心理測驗(題目)_5.jpeg',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'bg6',
@@ -76,7 +76,7 @@ export default [
 				url: './statics/心理測驗(結果)_A.jpg',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'bg7',
@@ -87,7 +87,7 @@ export default [
 				url: './statics/心理測驗(結果)_B.jpg',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'bg8',
@@ -98,7 +98,7 @@ export default [
 				url: './statics/心理測驗(結果)_C.jpg',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 
 	{
@@ -110,7 +110,7 @@ export default [
 				url: './statics/Audio/請洄答首頁.mp3',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'bgSound1',
@@ -121,7 +121,7 @@ export default [
 				url: './statics/Audio/請洄答1.mp3',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'bgSound2',
@@ -132,7 +132,7 @@ export default [
 				url: './statics/Audio/請洄答2.mp3',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'bgSound3',
@@ -143,7 +143,7 @@ export default [
 				url: './statics/Audio/請洄答3.mp3',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'bgSound4',
@@ -154,7 +154,7 @@ export default [
 				url: './statics/Audio/請洄答4.mp3',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'bgSound5',
@@ -165,7 +165,7 @@ export default [
 				url: './statics/Audio/請洄答5.mp3',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'bgSound6',
@@ -176,7 +176,7 @@ export default [
 				url: './statics/Audio/請洄答測驗結果.mp3',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 
 	{
@@ -188,7 +188,7 @@ export default [
 				url: './statics/進入測驗.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'Q1Op1',
@@ -199,7 +199,7 @@ export default [
 				url: './statics/Q1按鈕/A.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'Q1Op2',
@@ -210,7 +210,7 @@ export default [
 				url: './statics/Q1按鈕/B.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'Q1Op3',
@@ -221,7 +221,7 @@ export default [
 				url: './statics/Q1按鈕/C.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'Q1Op1tap',
@@ -232,7 +232,7 @@ export default [
 				url: './statics/Q1按鈕/A按下改變.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'Q1Op2tap',
@@ -243,7 +243,7 @@ export default [
 				url: './statics/Q1按鈕/B按下改變.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'Q1Op3tap',
@@ -254,7 +254,7 @@ export default [
 				url: './statics/Q1按鈕/C按下改變.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 
 	{
@@ -266,7 +266,7 @@ export default [
 				url: './statics/Q2按鈕/A.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'Q2Op1tap',
@@ -277,7 +277,7 @@ export default [
 				url: './statics/Q2按鈕/A按下改變.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'Q2Op2',
@@ -288,7 +288,7 @@ export default [
 				url: './statics/Q2按鈕/B.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'Q2Op2tap',
@@ -299,7 +299,7 @@ export default [
 				url: './statics/Q2按鈕/B按下改變.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'Q2Op3',
@@ -310,7 +310,7 @@ export default [
 				url: './statics/Q2按鈕/C.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'Q2Op3tap',
@@ -321,7 +321,7 @@ export default [
 				url: './statics/Q2按鈕/C按下改變.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'Q3Op1',
@@ -332,7 +332,7 @@ export default [
 				url: './statics/Q3按鈕/A.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'Q3Op1tap',
@@ -343,7 +343,7 @@ export default [
 				url: './statics/Q3按鈕/A按下改變.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'Q3Op2',
@@ -354,7 +354,7 @@ export default [
 				url: './statics/Q3按鈕/B.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'Q3Op2tap',
@@ -365,7 +365,7 @@ export default [
 				url: './statics/Q3按鈕/B按下改變.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'Q3Op3',
@@ -376,7 +376,7 @@ export default [
 				url: './statics/Q3按鈕/C.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'Q3Op3tap',
@@ -387,7 +387,7 @@ export default [
 				url: './statics/Q3按鈕/C按下改變.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 
 	{
@@ -399,7 +399,7 @@ export default [
 				url: './statics/Q4按鈕/A.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'Q4Op1tap',
@@ -410,7 +410,7 @@ export default [
 				url: './statics/Q4按鈕/A按下改變.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'Q4Op2',
@@ -421,7 +421,7 @@ export default [
 				url: './statics/Q4按鈕/B.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'Q4Op2tap',
@@ -432,7 +432,7 @@ export default [
 				url: './statics/Q4按鈕/B按下改變.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'Q4Op3',
@@ -443,7 +443,7 @@ export default [
 				url: './statics/Q4按鈕/C.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'Q4Op3tap',
@@ -454,7 +454,7 @@ export default [
 				url: './statics/Q4按鈕/C按下改變.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 
 	{
@@ -466,7 +466,7 @@ export default [
 				url: './statics/Q5按鈕/A.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'Q5Op1tap',
@@ -477,7 +477,7 @@ export default [
 				url: './statics/Q5按鈕/A按下改變.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'Q5Op2',
@@ -488,7 +488,7 @@ export default [
 				url: './statics/Q5按鈕/B.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'Q5Op2tap',
@@ -499,7 +499,7 @@ export default [
 				url: './statics/Q5按鈕/B按下改變.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'Q5Op3',
@@ -510,7 +510,7 @@ export default [
 				url: './statics/Q5按鈕/C.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'Q5Op3tap',
@@ -521,7 +521,7 @@ export default [
 				url: './statics/Q5按鈕/C按下改變.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 	{
 		name: 'fbshare',
@@ -532,6 +532,6 @@ export default [
 				url: './statics/free-facebook-icon.png',
 			},
 		},
-		preload: false,
+		preload: true,
 	},
 ];
