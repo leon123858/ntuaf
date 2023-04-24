@@ -10,6 +10,9 @@ function Artwork() {
 				<ArtEvent />
 			</div>
 			{/* <Link to={'/artworkList'}>看其他人的作品</Link> */}
+			<br></br>
+			<br></br>
+			<br></br>
 		</>
 	);
 }

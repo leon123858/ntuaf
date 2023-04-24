@@ -143,7 +143,7 @@ const Header = () => {
 			const menuIconContainerE = document.getElementById('menuIconContainer');
 			const headerE = document.getElementsByClassName(styles.headerWrapper)[0];
 			const logoE = document.getElementsByClassName(styles.box)[0];
-			console.log("observer")
+			// console.log("observer")
 			if (entries[0].boundingClientRect.y < 0) {
 				// when screen isn't top, that is, screen scrolling down
 				remove_class_on_scroll(menuE, styles.menu);
@@ -225,7 +225,6 @@ const Header = () => {
 								fill='none'
 								xmlns='http://www.w3.org/2000/svg'
 								className={styles.menuIcon}
-
 							>
 								<path d='M0 0.5H22' stroke='black' />
 								<path d='M0 9.5H22' stroke='black' />

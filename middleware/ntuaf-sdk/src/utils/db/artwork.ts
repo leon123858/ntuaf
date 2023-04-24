@@ -125,13 +125,13 @@ export const getArtworkList = async (
 				orderBy(orderByCol, 'desc'),
 				where('type', '==', type),
 				startAfter(cursor),
-				limit(10)
+				limit(11)
 		  )
 		: query(
 				collection(dbInstance, 'Artworks'),
 				orderBy(orderByCol, 'desc'),
 				where('type', '==', type),
-				limit(10)
+				limit(11)
 		  );
 	const result = await getDocs(queryCommand);
 	if (result.size == 0) {
@@ -140,10 +140,11 @@ export const getArtworkList = async (
 			data: [],
 		};
 	}
-	const nextCursor = result.size < 10 ? null : result.docs[result.size - 1];
+	const nextCursor = result.size <= 10 ? null : result.docs[result.size - 2];
+	const finalDataList = nextCursor ? result.docs.slice(0, 10) : result.docs;
 	return {
 		cursor: nextCursor as DocumentSnapshot<DocumentData>,
-		data: result.docs.map((v) => {
+		data: finalDataList.map((v) => {
 			const newData = correctArtworks(v.data() as Artwork);
 			return { id: v.id, ...newData } as Artwork;
 		}),
