@@ -403,7 +403,7 @@
   background: #fff;
   position: relative;
   text-align: left;
-  height: 60vh;
+  height: 86% !important;
   max-height: 410px;
 }
 :global .DayPicker__horizontal {
@@ -476,9 +476,9 @@
 }
 :global .DayPicker_transitionContainer {
   position: relative;
-  border-radius: 50px 50px 50px 4px !important;
+  border-radius: 50px 50px 50px 32px !important;
   overflow: hidden;
-  height: 370px !important;
+  height: 380px !important;
 }
 :global .DayPicker_transitionContainer__horizontal {
   -webkit-transition: height 0.2s ease-in-out;
