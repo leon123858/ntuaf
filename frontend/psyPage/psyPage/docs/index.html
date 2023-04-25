@@ -55,10 +55,34 @@
 </body>
 <script>
   function shareOnFacebook(option) {
-    console.log(option.getAttribute("option"));
-    const navUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + 'https://ntuartfest28th.com/sharePsyPage/'+option.getAttribute("option");
-    window.open(navUrl, '_blank');
+   // Get a reference to the image element
+  const image = document.getElementById('sharebg');
+
+  // Create a new canvas element and set its dimensions to the size of the image
+  const canvas = document.createElement('canvas');
+  canvas.width = image.width;
+  canvas.height = image.height;
+
+  // Draw the image onto the canvas
+  const ctx = canvas.getContext('2d');
+  ctx.drawImage(image, 0, 0);
+
+  // Get the data URL of the canvas and open it in a new window
+  const dataURL = canvas.toDataURL();
+
+  navigator.camera.saveImageToPhotoAlbum(
+    dataUrl,
+    function() {
+      // Success callback
+      console.log('Image saved to camera roll successfully');
+    },
+    function(error) {
+      // Error callback
+      console.error('Failed to save image to camera roll: ' + error);
+      }
+    )
   }
+
 
   function copyurl(option){
     console.log(option.getAttribute("option"));
