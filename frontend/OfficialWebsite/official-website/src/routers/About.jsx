@@ -12,6 +12,9 @@ function About() {
 			<Murmur />
 			<MemberTab />
 			<Sponsor />
+			<br></br>
+			<br></br>
+			<br></br>
 		</div>
 	);
 }
