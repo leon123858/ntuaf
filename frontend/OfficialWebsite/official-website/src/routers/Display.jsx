@@ -193,7 +193,12 @@ function Display() {
 				fallback='/loading.jpg'
 				width={'100%'}
 			/>
-			<h1 style={{ textAlign: 'center', margin: '8% 0', fontWeight: '500' }}>
+			<h1
+				className={style.title}
+				style={
+					inBreakPoint ? { fontSize: 20, margin: '15% 0' } : { fontSize: 28 }
+				}
+			>
 				{eventState.title}
 			</h1>
 			<div
@@ -206,11 +211,18 @@ function Display() {
 			>
 				{interpreter.transfer(eventState.blocks)}
 			</div>
+			<br></br>
+			<br></br>
+			<br></br>
 		</>
 	) : (
-		<div className={style.Spin}>
+		<div className={style.Spin} style={{ height: '90vh' }}>
 			{contextHolder}
-			<img src={'/loading.webp'} style={{ width: '18vw' }} alt='loading...' />
+			<img
+				src={'/loading.webp'}
+				style={{ width: '18vw', paddingTop: '35vh' }}
+				alt='loading...'
+			/>
 		</div>
 	);
 }

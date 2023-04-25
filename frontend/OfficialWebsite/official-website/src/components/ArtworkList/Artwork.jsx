@@ -61,7 +61,7 @@ export const ArtworkText = ({ data, heartOnClick }) => {
 						>
 							{data.text}
 						</Paragraph>
-						<CreaterName>{data.name}</CreaterName>
+						<Paragraph style={{fontWeight:600,fontSize:"16px"}} ellipsis={{rows:1}}>{data.name}</Paragraph>
 					</div>
 				</Card>
 				<div className={styles.heart}>
@@ -159,7 +159,8 @@ export const ArtworkImg = ({ data, heartOnClick }) => {
 						>
 							{data.artworkName}
 						</Paragraph>
-						<CreaterName>{data.name}</CreaterName>
+						<Paragraph style={{fontWeight:600,fontSize:"16px"}} ellipsis={{rows:1}}>{data.name}</Paragraph>
+
 					</div>
 				</Card>
 				<div className={styles.heart}>

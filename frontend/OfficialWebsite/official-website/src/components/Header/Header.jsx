@@ -37,7 +37,7 @@ const items = [
 			</Link>
 		),
 		key: 'event',
-		popupOffset: [-30, 10],
+		popupOffset: [-10, 10],
 		children: [
 			{
 				label: (
@@ -81,7 +81,7 @@ const items = [
 			</Link>
 		),
 		key: 'special',
-		popupOffset: [-30, 10],
+		popupOffset: [-20, 10],
 		children: [
 			{
 				label: (
@@ -140,18 +140,26 @@ const Header = () => {
 	const observer = new IntersectionObserver((entries) => {
 		if (!inBreakPoint) {
 			const menuE = document.getElementById('menu');
+			const menuIconContainerE = document.getElementById('menuIconContainer');
 			const headerE = document.getElementsByClassName(styles.headerWrapper)[0];
 			const logoE = document.getElementsByClassName(styles.box)[0];
+			// console.log("observer")
 			if (entries[0].boundingClientRect.y < 0) {
+				// when screen isn't top, that is, screen scrolling down
 				remove_class_on_scroll(menuE, styles.menu);
 				add_class_on_scroll(menuE, styles.scrollMenu);
 				add_class_on_scroll(headerE, styles.scrollHeader);
 				remove_class_on_scroll(logoE, styles.boxS);
+				remove_class_on_scroll(menuIconContainerE, styles.iconContainer);
+				add_class_on_scroll(menuIconContainerE, styles.iconContainerScroll);
 			} else {
+				// when screen is top
 				remove_class_on_scroll(menuE, styles.scrollMenu);
 				remove_class_on_scroll(headerE, styles.scrollHeader);
 				add_class_on_scroll(menuE, styles.menu);
 				add_class_on_scroll(logoE, styles.boxS);
+				remove_class_on_scroll(menuIconContainerE, styles.iconContainerScroll);
+				add_class_on_scroll(menuIconContainerE, styles.iconContainer);
 			}
 		}
 	});
@@ -208,6 +216,7 @@ const Header = () => {
 								setSideBarActive(!sideBarActive);
 							}}
 							style={sideBarActive ? { display: 'none' } : {}}
+							id='menuIconContainer'
 						>
 							<svg
 								width='22'

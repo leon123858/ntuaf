@@ -14,7 +14,7 @@ import Hr from '../Hr/Hr';
 
 export const ArtworkList = () => {
 	const { isLogin, inBreakPoint } = useContext(BreakPointContext);
-	const [loading, setLoading] = useState(false);
+	// const [loading, setLoading] = useState(false);
 	const [typeText, setTypeText] = useState({
 		type: ARTWORK_TYPE.PURE_TEXT,
 		sortBy: '',
@@ -56,16 +56,15 @@ export const ArtworkList = () => {
 			activeKey === '1'
 				? typeText
 				: activeKey === '2'
-					? typePhoto
-					: typePainting;
-		initData(datas.sortBy)
-			.then(setLoading(false))
-			.then(() => {
-				const top = document.querySelectorAll('.scrollToTop');
-				top.forEach((item) => {
-					item.scrollTo({ top: '100', behavior: 'smooth', block: 'start' });
-				});
-			});
+				? typePhoto
+				: typePainting;
+		initData(datas.sortBy);
+		// .then(() => {
+		// 	const top = document.querySelectorAll('.scrollToTop');
+		// 	top.forEach((item) => {
+		// 		item.scrollTo({ top: '100', behavior: 'smooth', block: 'start' });
+		// 	});
+		// });
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [activeKey]);
 
@@ -86,8 +85,8 @@ export const ArtworkList = () => {
 			activeKey === '1'
 				? typeText
 				: activeKey === '2'
-					? typePhoto
-					: typePainting;
+				? typePhoto
+				: typePainting;
 		if (datas.sortBy !== sortBy) {
 			// console.log('change sortBy');
 			datas = {
@@ -107,6 +106,7 @@ export const ArtworkList = () => {
 			sortBy
 		);
 		// const likeList = await getLikeArtworkToday();
+		// console.log(partialData, tempCursor);
 		await delay(100);
 		switch (activeKey) {
 			case '1':
@@ -136,7 +136,7 @@ export const ArtworkList = () => {
 			default:
 				break;
 		}
-		console.log();
+		// console.log();
 		// console.log('data initialed');
 	};
 
@@ -145,16 +145,14 @@ export const ArtworkList = () => {
 			activeKey === '1'
 				? typeText
 				: activeKey === '2'
-					? typePhoto
-					: typePainting;
-		// console.log(datas)
+				? typePhoto
+				: typePainting;
 		const sortBy = datas.sortBy === '' ? 'like' : datas.sortBy;
 		const { data: partialData, cursor: tempCursor } = await getArtworkList(
 			datas.type,
 			sortBy,
 			datas.cursor
 		);
-
 		switch (activeKey) {
 			case '1':
 				setTypeText({
@@ -183,12 +181,7 @@ export const ArtworkList = () => {
 	};
 
 	const loadMoreData = () => {
-		if (loading) {
-			return;
-		}
-		setLoading(true);
-		// console.log('loading more');
-		updateData().then(setLoading(false));
+		updateData();
 	};
 
 	const heartOnClick = async (artworkId) => {
@@ -218,14 +211,11 @@ export const ArtworkList = () => {
 			activeKey === '1'
 				? typeText
 				: activeKey === '2'
-					? typePhoto
-					: typePainting;
+				? typePhoto
+				: typePainting;
 		return (
 			<div
-				id='scrollableDiv'
 				style={{
-					height: 800,
-					overflow: 'auto',
 					padding: '0 ',
 					marginTop: '50px',
 				}}
@@ -243,17 +233,19 @@ export const ArtworkList = () => {
 							active
 						/>
 					}
-					style={{ padding: `0 ${inBreakPoint ? '5vw' : '10vw'}` }}
-					height={740} //這裡的height 要比上面的"scrollableDiv"的height 小一點，不然其他tab不會loadmore
+					style={{
+						padding: `0 ${inBreakPoint ? '5vw' : '10vw'}`,
+					}}
+					// height={'55vh'} //這裡的height 要比上面的"scrollableDiv"的height 小一點，不然其他tab不會loadmore
 					endMessage={<Divider plain>It is all, nothing more 🤐</Divider>}
-					scrollableTarget='scrollableDiv'
+					// scrollableTarget='scrollableDiv'
 				>
 					<List
 						grid={{ gutter: 16, column: inBreakPoint ? 2 : 3 }}
 						dataSource={handleLike(datas.dataList, likeArtworkToday)}
 						renderItem={(item, i) => (
 							<>
-								{i === 0 ? <div className='scrollToTop'></div> : ''}
+								{/* {i === 0 ? <div className='scrollToTop'></div> : ''} */}
 								<List.Item key={item.id}>
 									{activeKey === '1' ? (
 										<ArtworkText data={item} heartOnClick={heartOnClick} />
@@ -265,13 +257,15 @@ export const ArtworkList = () => {
 						)}
 					/>
 				</InfiniteScroll>
+				<br></br>
+				<br></br>
+				<br></br>
 			</div>
 		);
 	};
 
 	const onChange = (key) => {
 		setActiveKey(key);
-		setLoading(true);
 	};
 
 	const delay = (delayInms) => {
@@ -286,10 +280,9 @@ export const ArtworkList = () => {
 			activeKey === '1'
 				? typeText
 				: activeKey === '2'
-					? typePhoto
-					: typePainting;
+				? typePhoto
+				: typePainting;
 		return (
-
 			<Select
 				className={style.select}
 				labelInValue
@@ -299,8 +292,8 @@ export const ArtworkList = () => {
 						datas.sortBy === 'like'
 							? '愛心排行'
 							: datas.sortBy === 'createTime'
-								? '最近上傳'
-								: '排序',
+							? '最近上傳'
+							: '排序',
 				}}
 				style={{
 					width: 120,
@@ -316,7 +309,7 @@ export const ArtworkList = () => {
 						label: '愛心排行',
 					},
 				]}
-			// bordered={false}
+				// bordered={false}
 			/>
 		);
 	};
@@ -324,8 +317,10 @@ export const ArtworkList = () => {
 	const items = ['純文字組', '照片組', '繪畫組'];
 	return (
 		<>
-			<div className={inBreakPoint ? style.sm : style.lg} style={{ marginTop: "80px" }}>
-
+			<div
+				className={inBreakPoint ? style.sm : style.lg}
+				style={{ marginTop: inBreakPoint ? '40px' : '80px' }}
+			>
 				<div className={style.tabContainer}>
 					<Tabs
 						activeKey={activeKey}

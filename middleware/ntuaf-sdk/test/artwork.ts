@@ -171,19 +171,14 @@ describe('test artwork get operation', function () {
 				expect(typeof firstFetch.data[0].text).eql('string');
 				expect(typeof firstFetch.data[0].name).eql('string');
 				expect(typeof firstFetch.data[0].createTime).eql('number');
+				expect(firstFetch.data.length).eql(10);
 				const secondFetch = await getArtworkList(
 					ARTWORK_TYPE.PURE_TEXT,
 					v,
 					firstFetch.cursor
 				);
-				expect(secondFetch.cursor).is.not.null;
+				expect(secondFetch.cursor).is.null;
 				expect(secondFetch.data.length).eql(10);
-				const finalFetch = await getArtworkList(
-					ARTWORK_TYPE.PURE_TEXT,
-					v,
-					secondFetch.cursor
-				);
-				expect(finalFetch.cursor).is.null;
 			})
 		);
 	});

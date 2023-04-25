@@ -199,7 +199,7 @@ const Footer = () => {
 									stroke='white'
 								/>
 							</svg>
-							<span>ntuartfest@gmail.com</span>
+							<span>ntuartfest28@gmail.com</span>
 						</div>
 					</div>
 

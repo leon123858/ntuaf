@@ -44,8 +44,8 @@ const Layout = () => {
 		? {
 				position: 'relative',
 				minHeight: '100%',
-				paddingBottom: '200px',
-		  }
+				paddingBottom: '70px',
+		}
 		: {};
 	return (
 		<>

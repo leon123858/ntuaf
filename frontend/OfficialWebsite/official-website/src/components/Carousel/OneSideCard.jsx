@@ -1,5 +1,4 @@
 import styles from './OneSideCard.module.css';
-import { Link } from 'react-router-dom';
 import { Image } from 'antd';
 
 const OneSideCard = ({ cardContent }) => {
@@ -9,7 +8,7 @@ const OneSideCard = ({ cardContent }) => {
 			? cardContent.content.substring(0, numOfContentString) + '...'
 			: cardContent.content;
 	return (
-		<Link to={`/display/${cardContent.id}`}>
+		<>
 			<div className={styles.oneSideCard}>
 				{/* <a href='https://google.com' style={{textDecoration:"none", color:"black"}}> */}
 
@@ -26,7 +25,7 @@ const OneSideCard = ({ cardContent }) => {
 				<h4 className={styles.date}>{cardContent.date}</h4>
 				<div className={styles.disc}>{content}</div>
 			</div>
-		</Link>
+		</>
 	);
 };
 export default OneSideCard;

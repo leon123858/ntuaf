@@ -8,8 +8,8 @@
     justify-content: center; 
     align-items: center;
     flex-wrap: wrap;
-    padding: 50px 0;
-    padding-top: 30px;
+    padding: 20px 0;
+    padding-top: 20px;
     margin-left: 3%;
 
 }
@@ -104,6 +104,15 @@
     width: 13vw;
     /* margin-right: -1px; */
 }
+.lg .words {
+    display: block;
+    width: 50vw;
+    margin: 50px auto;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: normal;
+    
+}
 
 .lg img.bb {
     margin-left: -20px;
@@ -123,4 +132,14 @@
 
 .sm img.bb {
     width: 105%;
+}
+
+.sm .words {
+    display: block;
+    width: 70vw;
+    margin: 30px auto;
+    font-size: 12px;
+    margin-top: 20px;
+    line-height: 20px;
+    letter-spacing: normal;
 }

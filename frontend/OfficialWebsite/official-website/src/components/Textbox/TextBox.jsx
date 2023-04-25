@@ -33,7 +33,7 @@ const TextBox = ({ text }) => {
             ),
 
             [BlOCK_TYPE.TEXT_B]: (
-                <div className={style.container} style={(text.title) ? { margin: '32px auto' } : { margin: '-32px auto 32px auto' }}>
+                <div className={style.container} style={(text.title) ? { margin: '32px auto', backgroundColor: 'transparent' } : { margin: '-32px auto 32px auto' }}>
                     {
                         (text.title)
                             ? (
@@ -42,7 +42,7 @@ const TextBox = ({ text }) => {
                             : ''
                     }
 
-                    <div className={style.content} style={(text.title) ? { marginTop: 24 } : {}}>
+                    <div className={style.content} style={(text.title) ? { marginTop: 24, backgroundColor: 'transparent' } : { backgroundColor: 'transparent' }}>
                         {text.text.split('\n').map((str, idx) => {
                             return (str === '') ? <span>&nbsp;</span> : <p key={idx}>{str}</p>
                         })}
@@ -53,7 +53,7 @@ const TextBox = ({ text }) => {
             [BlOCK_TYPE.TEXT_C]: (
                 <div className={style.container} style={{ marginTop: 120 }}>
                     <h1 className={style.three}>{text.title}</h1>
-                    <div className={style.content}>
+                    <div className={style.content} style={{ backgroundColor: 'transparent' }}>
                         {text.text.split('\n').map((str, idx) => {
                             return (str === '') ? <span>&nbsp;</span> : <p key={idx}>{str}</p>
                         })}
@@ -62,12 +62,12 @@ const TextBox = ({ text }) => {
             ),
 
             [BlOCK_TYPE.TEXT_D]: (
-                <div style={(inBreakPoint) ? { padding: '50px 0' } : { display: 'flex', alignItems: 'center', padding: '50px 0' }} className={style.container}>
+                <div style={(inBreakPoint) ? { padding: '40px 0' } : { display: 'flex', alignItems: 'center', padding: '40px 0' }} className={style.container}>
                     <div style={{ textAlign: 'center' }}>
-                        <img src={text.url} alt="" style={{ width: 140, marginRight: '30px' }} />
+                        <img src={text.url} alt="" style={(inBreakPoint) ? { width: 140 } : { width: 140, marginRight: '30px' }} />
                     </div>
 
-                    <div className={style.content}>
+                    <div className={style.content} style={{ backgroundColor: 'transparent' }}>
                         {text.text.split('\n').map((str, idx) => {
                             return (str === '') ? <span>&nbsp;</span> : <p key={idx}>{str}</p>
                         })}

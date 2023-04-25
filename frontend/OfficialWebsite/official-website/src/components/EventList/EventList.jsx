@@ -104,7 +104,7 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 					: '#25499D',
 				marginBottom: '45px',
 			}}
-			bodyStyle={{ padding: '30px 44px 20px 44px', height: 138 }}
+			bodyStyle={{ padding: '30px 44px 20px 44px', height: 'auto' }}
 			cover={
 				<div style={{ height: '118px' }}>
 					<EventImg
@@ -135,6 +135,7 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 							? '#A9CF59'
 							: '#25499D',
 						letterSpacing: '2px',
+						minHeight: title.length > 14 ? '45px' : '35px',
 					}}
 				>
 					{title}
@@ -149,7 +150,7 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 							? '#A9CF59'
 							: '#25499D',
 						letterSpacing: '2px',
-						marginTop: '13px',
+						marginTop: '10px',
 					}}
 				>
 					{date}

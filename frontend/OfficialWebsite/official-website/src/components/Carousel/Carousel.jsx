@@ -148,14 +148,14 @@ const Carousel = () => {
 						<img
 							alt='arrowLeft'
 							className={style.imgArrow}
-							src='/carousel/carouselPrev.png'
+							src='/carousel/carouselPrev.webp'
 						></img>
 					</div>
 					<div className={style.next} onClick={moveRight}>
 						<img
 							alt='arrowRight'
 							className={style.imgArrow}
-							src='/carousel/carouselNext.png'
+							src='/carousel/carouselNext.webp'
 						></img>
 					</div>
 					<div className={style.carouselWrapper} {...handlers}>
@@ -220,14 +220,14 @@ const Carousel = () => {
 						<img
 							alt='arrowLeft'
 							className={style.imgArrow}
-							src='/carousel/carouselPrev.png'
+							src='/carousel/carouselPrev.webp'
 						></img>
 					</div>
 					<div className={style.lgNext} onClick={moveRight}>
 						<img
 							alt='arrowRight'
 							className={style.imgArrow}
-							src='/carousel/carouselNext.png'
+							src='/carousel/carouselNext.webp'
 						></img>
 					</div>
 					<div className={style.lgCarouselWrapper} {...handlers}>

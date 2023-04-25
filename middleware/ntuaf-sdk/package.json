@@ -1,6 +1,6 @@
 {
 	"name": "@leon123858/ntuaf-sdk",
-	"version": "0.3.3",
+	"version": "0.3.5",
 	"description": "an npm module to access database of ntuaf system",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
