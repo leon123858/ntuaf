@@ -17,7 +17,7 @@ in GCP console (GUI)
 3. optional: 進入 "角色" , 創建專門用來 write artifact-registry 的角色 (可略, 因預設有 `Artifact Registry 寫入者` 可以用)
 4. 進入 "身份與存取管理" 用授予存取權給步驟 2 的帳號 "write artifact-registry" 的權限
 5. 進入 "服務帳戶" 找步驟 2 的帳號, 產生與下載 JSON 金鑰 (假設命名 key.json)
-6. 執行下列指令登入 `cat key.json | docker login -u _json_key --password-stdin \ https://asia-east1-docker.pkg.dev`
+6. 執行下列指令登入 `cat key.json | docker login -u _json_key --password-stdin https://asia-east1-docker.pkg.dev`
 
 ## note: push docker
 
