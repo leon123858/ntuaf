@@ -40,6 +40,7 @@
 		"@eva/plugin-sound": "^1.2.8",
 		"@eva/plugin-transition": "^1.2.8",
 		"@eva/renderer-adapter": "^1.2.8",
+		"cordova-plugin-camera": "^6.0.0",
 		"jquery": "^3.6.4"
 	}
 }
