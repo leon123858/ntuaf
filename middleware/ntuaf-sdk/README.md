@@ -8,7 +8,6 @@
 
 ```mermaid
 classDiagram
-    Cache <-- Artworks
     Cache <-- Events
     Cache <-- Members
     Cache: Members/departmentName
