@@ -9,7 +9,9 @@
 .lgTitle {
     font-size: 44px;
     font-weight: 500;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+    text-align: center;
+    margin-top: 70px;
 }
 
 .lgTitle div {
@@ -22,6 +24,7 @@
     font-size: 30px;
     font-weight: 500;
     margin-bottom: 30px;
+    text-align: center;
 }
 
 .title div {
@@ -31,8 +34,11 @@
 .lgSubtitle {
     font-size: 20px;
     width: 70vw;
-    margin-bottom: 120px;
+    margin: 0 auto;
+    margin-bottom: 100px;
     line-height: 30px;
+    text-align: center;
+
 }
 
 .subtitle {
@@ -40,7 +46,9 @@
     font-size: 16px;
     font-weight: 500;
     width: 80vw;
+    margin:  0 auto;
     margin-bottom: 30px;
+
 }
 
 .lgEvent {
@@ -73,7 +81,7 @@
 
 .event {
     width: 85vw;
-    background-color: #efefef;
+    background-color: #E2E2E2;
     display: block;
     margin: 0px auto;
     margin-top: 50px;
