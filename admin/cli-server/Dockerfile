@@ -1,6 +1,11 @@
 # Use the official Node.js 18 image.
 FROM node:18
 
+# set Timezone as cloud run always run in UTC + 0
+ENV TZ=Asia/Taipei
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y tzdata
+
 # Create and change to the app directory.
 WORKDIR /usr/src/app
 

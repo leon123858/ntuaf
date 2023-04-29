@@ -17,6 +17,14 @@ app.get('/exec', (_req, res) => {
 	res.send('OK!');
 });
 
+app.get('/test', (_req, res) => {
+	if (shell.exec('bash ./test.sh').code !== 0) {
+		res.send('Error : ' + shell.error());
+		return;
+	}
+	res.send('OK!');
+});
+
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
 	console.log(`Listening on port ${port}`);
