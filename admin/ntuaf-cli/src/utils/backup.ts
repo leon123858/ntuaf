@@ -37,7 +37,9 @@ const backupCollections = async (names: string[]) => {
 			};
 		});
 		await uploadJson2Storage(
-			`backup/${moment().format('DD-MM-YYYY')}/${name}.json`,
+			`backup/${moment().format(
+				'DD-MM-YYYY'
+			)}/${name}_${new Date().getTime()}.json`,
 			JSON.stringify(data)
 		);
 	});

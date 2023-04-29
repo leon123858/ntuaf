@@ -6,7 +6,8 @@
 	"scripts": {
 		"start": "node index.js",
 		"build": "cd ../ && docker build -t ntuaf -f ./cli-server/Dockerfile .",
-		"deploy": "cd ../ && docker buildx build --platform linux/amd64 -t ntuaf -f ./cli-server/Dockerfile ."
+		"build:prod": "cd ../ && docker buildx build --platform linux/amd64 -t ntuaf -f ./cli-server/Dockerfile .",
+		"deploy": "yarn build:prod && docker tag ntuaf asia-east1-docker.pkg.dev/ntuaf28-dev/ntuaf/ntuaf && docker push asia-east1-docker.pkg.dev/ntuaf28-dev/ntuaf/ntuaf"
 	},
 	"author": "",
 	"license": "ISC",

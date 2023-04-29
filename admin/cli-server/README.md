@@ -2,7 +2,7 @@
 
 ## deploy process
 
-0. build image (note: 要用 `yarn deploy` 產生 x86 用的 image)
+0. build image (note: 要用 `yarn build:prod` 產生 x86 用的 image)
 1. bind local docker to GCP artifact-registry
 2. push local docker image
 3. set cloud run
@@ -50,3 +50,14 @@ in GCP console (GUI)
 6. target GET `https://ntuaf-eapzrgcxia-de.a.run.app/exec`
 7. "OIDC" with a accout have 擁有者權限
 8. 重試最多一次
+
+# note: update container in GCP
+
+in GCP console (GUI)
+
+1. 進入 cloud run
+2. 進入 目標服務
+3. 進入 編輯與部署新修訂版本
+4. 選新上傳的 container in register
+5. 發布新 container
+6. 到 register 刪除舊 container
