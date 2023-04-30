@@ -44,21 +44,32 @@
   <script src="//cdn.bootcdn.net/ajax/libs/eventemitter3/3.1.2/index.min.js"></script>
   <script src="./main.js"></script>
   <div id="share" style=" display:none" >
-    <img id = "sharebg" src="./statics/心理測驗(結果)_A.jpg">
+    <img width="1800" id = "sharebg" src="./statics/心理測驗(結果)_A.jpg">
     <img id="sharebutton" style="position: absolute ;left: 500px;
-    top: 2600px;
+    top: 3400px;
     width: 300px;" src="./statics/free-facebook-icon.png">
-    <img id="copybutton" style="position: absolute ;left: 900px;
-    top: 2600px;
+    <img id="copybutton" style="position: absolute ;left: 1100px;
+    top: 3400px;
     width: 300px;" src="./statics/link.jpg">
   </div>
 </body>
 <script>
-  function shareOnFacebook(option) {
-    console.log(option.getAttribute("option"));
-    const navUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + 'https://ntuartfest28th.com/sharePsyPage/'+option.getAttribute("option");
-    window.open(navUrl, '_blank');
+
+  document.addEventListener("deviceready", onDeviceReady, false);
+  function onDeviceReady() {
+      console.log(navigator.camera);
   }
+
+ onDeviceReady()
+
+  function shareOnFacebook(option) {
+    var a = document.createElement("a");
+    filename = `${option.getAttribute("option")}.jpg`
+    a.href = "./statics/心理測驗(結果)_" + filename;
+    a.download = filename;
+    a.click();
+  }
+
 
   function copyurl(option){
     console.log(option.getAttribute("option"));

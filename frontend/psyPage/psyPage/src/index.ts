@@ -177,8 +177,8 @@ async function load_game() {
 						y: 0.5,
 					},
 					size: {
-						width: 370,
-						height: 160,
+						width: 390,
+						height: 170,
 					},
 				},
 				callback: async () => {
@@ -203,8 +203,8 @@ async function load_game() {
 						y: 0.5,
 					},
 					size: {
-						width: 370,
-						height: 190,
+						width: 390,
+						height: 200,
 					},
 				},
 				callback: async () => {
@@ -229,8 +229,8 @@ async function load_game() {
 						y: 0.4,
 					},
 					size: {
-						width: 350,
-						height: 170,
+						width: 380,
+						height: 180,
 					},
 				},
 				callback: async () => {

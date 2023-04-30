@@ -1695,6 +1695,11 @@ copy-descriptor@^0.1.0:
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha512-XgZ0pFcakEUlbwQEVNg3+QAis1FyTL3Qel9FYy8pSkQqoG3PNoT0bOCQtOXcOkur21r2Eq2kI+IE+gsmAEVlYw==
 
+cordova-plugin-camera@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-camera/-/cordova-plugin-camera-6.0.0.tgz#083478c92cfaa59435326b5a2a28c56fa75ffdd5"
+  integrity sha512-FTFKep8HZI/2HkX+Gc/dUACfZGV9+k9waXlgoEOKXOiPPR/1zBw29Mw+adcz4FQUpdWyAgYDxNiaPUnP0P+H2Q==
+
 core-js@^2.4.0:
   version "2.6.12"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
