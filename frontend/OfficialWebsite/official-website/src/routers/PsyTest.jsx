@@ -15,10 +15,12 @@ const PsyTest = () => {
 			</div>
 			<button className={inBreakPoint ? style.btn : style.lgBtn}>
 				<p
-					// style={{ marginRight: '-10px' }}
+				// style={{ marginRight: '-10px' }}
 				>
-					{/* <a href='https://psypage.firebaseapp.com/' style={{color:"white"}}>開始測驗</a> */}
-					敬請期待
+					<a href='https://psypage.firebaseapp.com/' style={{ color: 'white' }}>
+						開始測驗
+					</a>
+					{/* 敬請期待 */}
 				</p>
 			</button>
 		</div>
