@@ -135,7 +135,7 @@ const compressNewArtworkImage = async () => {
 		return;
 	}
 	await fs.mkdir('./tmp', { recursive: true });
-	newArtworks.forEach(async (doc) => {
+	for (let doc of newArtworks.docs) {
 		const tmpFileName = randomUUID();
 		let path = `./tmp/${tmpFileName}`;
 		const data = doc.data() as Artwork;
@@ -174,9 +174,8 @@ const compressNewArtworkImage = async () => {
 					originUrl: data.url,
 				} as Pick<Artwork, 'url' | 'originUrl'>);
 			await fs.rm(path);
-			return;
 		});
-	});
+	}
 };
 
 export {
