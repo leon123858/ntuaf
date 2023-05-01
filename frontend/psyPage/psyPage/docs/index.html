@@ -28,6 +28,9 @@
       margin: 0 10px;
       border: 2px solid rgb(182, 182, 182);
     }
+    html {
+      width: 100%;
+    }
   </style>
 </head>
 <!-- <script src="//cdn.bootcdn.net/ajax/libs/eruda/2.3.3/eruda.js"></script>
@@ -43,15 +46,15 @@
   <canvas width="750" height="1000" id="canvas" style="width: 100%; display:none"></canvas>
   <script src="//cdn.bootcdn.net/ajax/libs/eventemitter3/3.1.2/index.min.js"></script>
   <script src="./main.js"></script>
-  <div id="share" style=" display:none" >
-    <img width="1800" id = "sharebg" src="./statics/心理測驗(結果)_A.jpg">
+  <!-- <div id="share" style="height: 100%;">
+    <img id = "sharebg" src="./statics/心理測驗(結果)_A.jpg" style="height: 100vh;">
     <img id="sharebutton" style="position: absolute ;left: 500px;
     top: 3400px;
     width: 300px;" src="./statics/free-facebook-icon.png">
     <img id="copybutton" style="position: absolute ;left: 1100px;
     top: 3400px;
     width: 300px;" src="./statics/link.jpg">
-  </div>
+  </div> -->
 </body>
 <script>
 
@@ -71,22 +74,6 @@
   }
 
 
-  function copyurl(option){
-    console.log(option.getAttribute("option"));
-    const navUrl = 'https://ntuartfest28th.com/sharePsyPage/'+option.getAttribute("option");
-    try{
-      var input = document.createElement("input");
-      input.setAttribute("value", navUrl);
-      document.body.appendChild(input);
-      input.select();
-      document.execCommand("copy");
-      document.body.removeChild(input);
-      alert("複製成功")
-    }
-    catch{
-      alert("複製失敗")
-    }
-  }
 </script>
 
 </html>

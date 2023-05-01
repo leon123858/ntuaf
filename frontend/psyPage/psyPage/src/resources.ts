@@ -524,12 +524,23 @@ export default [
 		preload: true,
 	},
 	{
-		name: 'fbshare',
+		name: 'download',
 		type: RESOURCE_TYPE.IMAGE,
 		src: {
 			image: {
 				type: 'png',
 				url: './statics/free-facebook-icon.png',
+			},
+		},
+		preload: true,
+	},
+	{
+		name: 'link',
+		type: RESOURCE_TYPE.IMAGE,
+		src: {
+			image: {
+				type: 'jpg',
+				url: './statics/link.jpg',
 			},
 		},
 		preload: true,
