@@ -76,45 +76,65 @@ async function load_game() {
 	game.scene.transform.size.width = 700;
 	game.scene.transform.size.height = (game.scene.transform.size.width * 16) / 9;
 
-	const numberOfScene = 5;
+	const numberOfScene = 6;
+	//game.canvas.height = 3600
+	//console.log(game);
 
-	const shareOnFacebook = (result: string) => {
-		const navUrl =
-			'https://www.facebook.com/sharer/sharer.php?u=' +
-			'https://ntuartfest28th.com/sharePsyPage/' +
-			result;
-		window.open(navUrl, '_blank');
-	};
+	function shareOnFacebook() {
+		var a = document.createElement("a");
+		const filename = `${result}.jpg`
+		a.href = "./statics/心理測驗(結果)_" + filename;
+		a.download = filename;
+		a.click();
+	}
+	
+	function copyurl(){
+		const navUrl = `https://ntuartfest28th.com/sharePsyPage/${result}`;
+		try{
+		  var input = document.createElement("input");
+		  input.setAttribute("value", navUrl);
+		  document.body.appendChild(input);
+		  input.select();
+		  document.execCommand("copy");
+		  document.body.removeChild(input);
+		  alert("複製成功")
+		}
+		catch{
+		  alert("複製失敗")
+		}
+	  }
+	let result = 'A';
 
 	const changeScenefunt = () => {
 		return new Promise((resolve, reject) => {
 			const animate = backgroundList[sceneIndex].animation;
 			animate.play('move', 1);
-			if (sceneIndex == numberOfScene) {
+
+			if (sceneIndex == numberOfScene -1 ) {
 				if (A >= B && A >= C) {
-					$('#sharebg').attr('src', './statics/心理測驗(結果)_A.jpg');
-					$('#sharebutton').attr('option', 'A');
-					$('#copybutton').attr('option', 'A');
+					result = 'A'
 				} else if (B >= A && B >= C) {
-					$('#sharebg').attr('src', './statics/心理測驗(結果)_B.jpg');
-					$('#sharebutton').attr('option', 'B');
-					$('#copybutton').attr('option', 'B');
+					result = 'B'
 				} else if (C >= A && C >= B) {
-					$('#sharebg').attr('src', './statics/心理測驗(結果)_C.jpg');
-					$('#sharebutton').attr('option', 'C');
-					$('#copybutton').attr('option', 'C');
+					result = 'C'
 				}
-				$('#sharebutton').attr('onclick', 'shareOnFacebook(this)');
-				$('#copybutton').attr('onclick', 'copyurl(this)');
-				$('#canvas').hide();
-				$('#share').show();
+				//backgroundList.push(createBackground(result))
+
+				btns.forEach((btn) => {
+					btns.forEach((btn) => btn.button.remove());
+				});
+				backgroundList[sceneIndex+1].background.transform.size.height = 1800;
+				renderer.resize(900,1800)
 			}
+
 
 			btns.forEach((btn) => {
 				const disappear = btn.transition;
 				btn.button.removeComponent(Event);
 				disappear.play('disappear', 1);
+
 			});
+
 
 			animate.on('finish', async () => {
 				backgroundList[sceneIndex].background.remove();
@@ -556,6 +576,58 @@ async function load_game() {
 				callback: async () => {
 					C += 1.1;
 					await changeScenefunt();
+				},
+			},
+		],
+		[
+			{
+				name: 'download',
+				name2: 'download',
+				transform: {
+					position: {
+						x: 30,
+						y: 500,
+					},
+					origin: {
+						x: 0.5,
+						y: 0.5,
+					},
+					anchor: {
+						x: 0.3,
+						y: 1.0,
+					},
+					size: {
+						width: 100,
+						height: 100,
+					},
+				},
+				callback: async () => {
+					shareOnFacebook()
+				},
+			},
+			{
+				name: 'link',
+				name2: 'link',
+				transform: {
+					position: {
+						x: 150,
+						y: 500,
+					},
+					origin: {
+						x: 0.5,
+						y: 0.55,
+					},
+					anchor: {
+						x: 0.7,
+						y: 1.0,
+					},
+					size: {
+						width: 100,
+						height: 100,
+					},
+				},
+				callback: async () => {
+					copyurl();
 				},
 			},
 		],
