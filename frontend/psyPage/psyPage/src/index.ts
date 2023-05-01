@@ -109,14 +109,17 @@ async function load_game() {
 		return new Promise((resolve, reject) => {
 			const animate = backgroundList[sceneIndex].animation;
 			animate.play('move', 1);
-
+			let sp;
 			if (sceneIndex == numberOfScene -1 ) {
 				if (A >= B && A >= C) {
 					result = 'A'
+					sp = 'bg6'
 				} else if (B >= A && B >= C) {
 					result = 'B'
+					sp = 'bg7'
 				} else if (C >= A && C >= B) {
 					result = 'C'
+					sp = 'bg8'
 				}
 				//backgroundList.push(createBackground(result))
 
@@ -124,6 +127,10 @@ async function load_game() {
 					btns.forEach((btn) => btn.button.remove());
 				});
 				backgroundList[sceneIndex+1].background.transform.size.height = 1800;
+				backgroundList[sceneIndex+1].background.removeComponent(Img);
+				backgroundList[sceneIndex+1].background.addComponent(new Img({
+					resource: sp,
+				}))
 				renderer.resize(900,1800)
 			}
 

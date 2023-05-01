@@ -74,22 +74,6 @@
   }
 
 
-  function copyurl(option){
-    console.log(option.getAttribute("option"));
-    const navUrl = 'https://ntuartfest28th.com/sharePsyPage/'+option.getAttribute("option");
-    try{
-      var input = document.createElement("input");
-      input.setAttribute("value", navUrl);
-      document.body.appendChild(input);
-      input.select();
-      document.execCommand("copy");
-      document.body.removeChild(input);
-      alert("複製成功")
-    }
-    catch{
-      alert("複製失敗")
-    }
-  }
 </script>
 
 </html>
