@@ -34,12 +34,15 @@ const ArtEvent = () => {
 						className={style.collapse}
 						expandIconPosition='end'
 						expandIcon={({ isActive }) => (
-							<RightOutlined rotate={isActive ? 90 : 0}/>
+							<RightOutlined rotate={isActive ? 90 : 0} />
 						)}
 						bordered={!inBreakPoint}
-					// ghost
+						// ghost
 					>
-						<Panel header={<span className={style.title}>比賽規則</span>} key='1'>
+						<Panel
+							header={<span className={style.title}>比賽規則</span>}
+							key='1'
+						>
 							<div className={style.content}>
 								1. 共分為三組：
 								<ul>
@@ -52,14 +55,12 @@ const ArtEvent = () => {
 								展期結束後將由3位評審分別依據文字、照片、繪畫進行評選，再綜合作品獲得的愛心數量，最終分別選出三組各2名得獎者，共有6名得獎者。
 								<br></br>
 								<br></br>
-								3.
-								另有2名人氣獎得獎者及10名抽獎得獎者。
+								3. 另有2名人氣獎得獎者及10名抽獎得獎者。
 								<br></br>
 								<br></br>
-								4.
-								一個帳號一天能投出三次愛心數；愛心數會於每天晚上12點更新。
-								<br/>
-								<br/>
+								4. 一個帳號一天能投出三次愛心數；愛心數會於每天晚上12點更新。
+								<br />
+								<br />
 								5.
 								主辦單位保有最終修改、變更、活動解釋及取消本活動之權利，若有相關異動將會另行公告於粉專或官網。
 							</div>
@@ -73,9 +74,9 @@ const ArtEvent = () => {
 						)}
 						bordered={!inBreakPoint}
 
-					// bordered={false}
-					// ghost
-					// defaultActiveKey={['2']}
+						// bordered={false}
+						// ghost
+						// defaultActiveKey={['2']}
 					>
 						<Panel header={<span className={style.title}>比賽獎勵</span>}>
 							<div className={style.content}>
@@ -136,7 +137,8 @@ const ArtEvent = () => {
 						｜05/07（一）23:59 前
 					</div>
 					<div className={style.midContainer}>
-						<Link to='/Artwork/Upload'>
+						{/* <Link to='/Artwork/Upload'> */}
+						<Link to='/Artwork'>
 							<div className={style.btn}>
 								<span className={style.colorful}>比賽投稿</span>
 								<RightOutlined
