@@ -88,8 +88,7 @@ const Event = ({ tagName, imgUrl, title, date, inBreakPoint, id }) => {
 	const handleMouseLeave = () => {
 		setIsHovered(false);
 	};
-	const handleOnClick = (id) =>
-		window.open(`/display/${id}`, inBreakPoint ? '_self' : '_blank');
+	const handleOnClick = (id) => window.open(`/display/${id}`, '_blank');
 	return (
 		<Card
 			hoverable

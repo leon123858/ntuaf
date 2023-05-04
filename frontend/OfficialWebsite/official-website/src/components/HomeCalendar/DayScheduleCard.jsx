@@ -5,8 +5,7 @@ import { BreakPointContext } from '../../useBreakPoint';
 
 const DayScheduleCard = ({ data }) => {
 	const { inBreakPoint } = useContext(BreakPointContext);
-	const handleOnClick = (id) =>
-		window.open(`/display/${id}`, inBreakPoint ? '_self' : '_blank');
+	const handleOnClick = (id) => window.open(`/display/${id}`, '_blank');
 	// console.log(data);
 
 	return (
@@ -33,7 +32,10 @@ const DayScheduleCard = ({ data }) => {
 							<></>
 						)}
 
-						<div className={style.eventContainer} style={(inBreakPoint) ? {maxWidth: 384} : {}}>
+						<div
+							className={style.eventContainer}
+							style={inBreakPoint ? { maxWidth: 384 } : {}}
+						>
 							{data.data.activity.map((a, idx) => (
 								<div
 									key={idx}
@@ -54,7 +56,10 @@ const DayScheduleCard = ({ data }) => {
 						) : (
 							<></>
 						)}
-						<div className={style.eventContainer} style={(inBreakPoint) ? {maxWidth: 384} : {}}>
+						<div
+							className={style.eventContainer}
+							style={inBreakPoint ? { maxWidth: 384 } : {}}
+						>
 							{data.data.workshop.map((a, idx) => (
 								<div
 									key={idx}
@@ -75,7 +80,10 @@ const DayScheduleCard = ({ data }) => {
 						) : (
 							<></>
 						)}
-						<div className={style.eventContainer} style={(inBreakPoint) ? {maxWidth: 384} : {}}>
+						<div
+							className={style.eventContainer}
+							style={inBreakPoint ? { maxWidth: 384 } : {}}
+						>
 							{data.data.exhibition.map((a, idx) => (
 								<div
 									key={idx}
@@ -96,7 +104,10 @@ const DayScheduleCard = ({ data }) => {
 						<p className={`${style.category} ${style.firstCategory}`}>
 							一般活動 General Activity
 						</p>
-						<div className={style.eventContainer} style={(inBreakPoint) ? {maxWidth: 384} : {}}>
+						<div
+							className={style.eventContainer}
+							style={inBreakPoint ? { maxWidth: 384 } : {}}
+						>
 							<div
 								className={style.event}
 								style={
@@ -113,7 +124,10 @@ const DayScheduleCard = ({ data }) => {
 
 					<div>
 						<p className={style.category}>講座/工作坊 Lecture / Workshop</p>
-						<div className={style.eventContainer} style={(inBreakPoint) ? {maxWidth: 384} : {}}>
+						<div
+							className={style.eventContainer}
+							style={inBreakPoint ? { maxWidth: 384 } : {}}
+						>
 							<div
 								className={style.event}
 								style={
@@ -130,7 +144,10 @@ const DayScheduleCard = ({ data }) => {
 
 					<div>
 						<p className={style.category}>常設展覽 Permanent Exhibition</p>
-						<div className={style.eventContainer} style={(inBreakPoint) ? {maxWidth: 384} : {}}>
+						<div
+							className={style.eventContainer}
+							style={inBreakPoint ? { maxWidth: 384 } : {}}
+						>
 							<div
 								className={style.event}
 								style={
