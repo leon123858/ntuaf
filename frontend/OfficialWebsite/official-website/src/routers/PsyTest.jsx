@@ -5,7 +5,7 @@ import { BreakPointContext } from '../useBreakPoint';
 const PsyTest = () => {
 	const { inBreakPoint } = useContext(BreakPointContext);
 	return (
-		<div className={style.container}>
+		<div className={style.container} style={{height:inBreakPoint?"800px":"100vh"}}>
 			<div className={inBreakPoint ? style.title : style.lgTitle}>
 				請洄答2023——聽見你的聲音
 				<div className={style.subtitle}>Reply 2023—Find Your Inner Voice</div>
