@@ -12,5 +12,3 @@ ntuaf28
 - [官網](https://ntuaf28-dev.firebaseapp.com/)
 - [管理頁](https://ntuaf-manage-dev.firebaseapp.com/)
 - [心理測驗](https://psypage.firebaseapp.com/)
-
-正式網址: [https://ntuartfest28th.com/](https://ntuartfest28th.com/)
